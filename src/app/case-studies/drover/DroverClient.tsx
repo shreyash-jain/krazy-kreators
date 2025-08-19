@@ -63,7 +63,7 @@ export default function DroverClient() {
       {/* Hero Section */}
       <section className="kk-hero-dark relative min-h-screen w-full flex items-center">
         <Image
-          src="/brands/drover-coverimage.png"
+          src="/brands/drover-coverimage.jpg"
           alt="Drover case study for fashion brand manufacturing and custom clothing production"
           fill
           className="object-cover object-center"
