@@ -104,7 +104,7 @@ export default function Navbar() {
 				<div className="flex items-center gap-3">
 					<Link href="/" className="block">
 						<img
-							src="/brands/logo.svg"
+							src="/brands/Logo.svg"
 							alt="Krazy Kreators"
 							className="h-10 w-auto opacity-90 hover:opacity-100 transition-opacity duration-300"
 						/>
