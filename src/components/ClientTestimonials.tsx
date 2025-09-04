@@ -18,27 +18,34 @@ const testimonials = [
     location: "London, England",
     // avatarSrc: "/avatars/jivan-purewal.jpg", // Optional: add avatar if available
   },
+  {
+    videoSrc: "/testimonial/las-testimonial.mp4",
+    clientName: "Anika McKelvey",
+    brandName: "Las Loungewear",
+    location: "Dubai, UAE",
+    // avatarSrc: "/avatars/anika-las.jpg", // Optional: add avatar if available
+  },
 ];
 
 const TestimonialsSection = () => {
   return (
     <section className="py-24 bg-gradient-to-br from-[#FAFAFA] to-white">
-      <div className="max-w-[1200px] mx-auto px-4 md:px-0 lg:px-0">
+      <div className="min-w-[90%] xl:max-w-[85%] 2xl:max-w-[80%] mx-auto px-4 sm:px-6 lg:px-8">
         {/* Section Header */}
         <div
          
           className="text-center mb-16"
         >
           <h2 className="text-4xl md:text-5xl font-semibold text-center tracking-tight mb-6 text-gray-900">
-            Hear it from our clients
+            Trusted by Founders Worldwide
           </h2>
           <p className="text-base md:text-lg text-neutral-600 text-center max-w-2xl mx-auto mb-12">
-            Real founders. Real fashion journeys. Here&apos;s what it&apos;s like to work with Krazy Kreators.
+            True Stories. Real Brands. Built with Krazy Kreators.
           </p>
         </div>
 
         {/* Testimonial Cards Grid */}
-        <div className="flex flex-col md:flex-row md:justify-center md:gap-8 gap-12 max-w-3xl mx-auto">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-7xl mx-auto">
           {testimonials.map((t, i) => (
             <TestimonialCard
               key={i}

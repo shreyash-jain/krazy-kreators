@@ -50,7 +50,7 @@ const comparisonData = [
 export default function HowWeAreDifferent() {
   return (
     <section className="w-full bg-white py-12 sm:py-16 md:py-20 lg:py-24">
-      <div className="max-w-[1200px] mx-auto px-4 md:px-0 lg:px-0">
+      <div className="min-w-[80%] xl:max-w-[75%] 2xl:max-w-[70%] mx-auto px-4 sm:px-6 lg:px-12 xl:px-16">
         {/* Title Block */}
         <div className="text-center mb-12 sm:mb-14 md:mb-16">
           <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold font-sans text-[#2D2A2E] mb-3 sm:mb-4 relative">
@@ -62,56 +62,94 @@ export default function HowWeAreDifferent() {
           </p>
         </div>
 
-        {/* Comparison Grid */}
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 sm:gap-8 mb-12 sm:mb-14 md:mb-16">
-          {/* Krazy Kreators Column */}
-          <div className="bg-gradient-to-br from-[#F8F7F4] to-[#F0EDE8] rounded-xl sm:rounded-2xl p-6 sm:p-8 border border-[#E8E4DD]">
-            <div className="text-center mb-6 sm:mb-8">
-              <h3 className="text-xl sm:text-2xl font-bold text-[#2D2A2E] mb-2">Your Creative Partner</h3>
-              <div className="w-12 sm:w-16 h-1 bg-[#CBB49A] mx-auto rounded-full"></div>
-            </div>
-            
-            <div className="space-y-4 sm:space-y-6">
-              {comparisonData.map((item, index) => (
-                <div key={index} className="bg-white/60 rounded-lg sm:rounded-xl p-4 sm:p-6 border border-white/40">
-                  <div className="mb-3 text-center sm:text-left">
-                    <h4 className="text-base sm:text-lg font-bold text-[#2D2A2E] mb-1">{item.feature}</h4>
-                    <p className="text-xs sm:text-sm text-[#3D3846]/70 font-medium">{item.subtext}</p>
-                  </div>
-                  <div className="flex items-center gap-3 justify-center sm:justify-start">
-                    <div className="flex items-center justify-center w-5 h-5 sm:w-6 sm:h-6 rounded-full bg-green-100 border border-green-200">
-                      <Check className="w-3 h-3 sm:w-4 sm:h-4 text-green-600" />
-                    </div>
-                    <span className="text-xs sm:text-sm text-[#3D3846] font-medium">{item.krazyKreators}</span>
-                  </div>
-                </div>
-              ))}
+        {/* Comparison Table */}
+        <div className="bg-white rounded-xl sm:rounded-2xl border border-[#E8E4DD] overflow-hidden mb-12 sm:mb-14 md:mb-16">
+          {/* Table Header - Hidden on mobile */}
+          <div className="hidden lg:block bg-gradient-to-r from-[#F8F7F4] to-[#F0EDE8] p-6 sm:p-8 border-b border-[#E8E4DD]">
+            <div className="grid grid-cols-1 lg:grid-cols-3 gap-4 sm:gap-6">
+              <div className="text-center lg:text-left">
+                <h3 className="text-lg sm:text-xl font-bold text-[#2D2A2E] mb-2">Feature</h3>
+              </div>
+              <div className="text-center">
+                <h3 className="text-lg sm:text-xl font-bold text-[#2D2A2E] mb-2">Krazy Kreators</h3>
+                <div className="w-12 h-1 bg-[#CBB49A] mx-auto rounded-full"></div>
+              </div>
+              <div className="text-center">
+                <h3 className="text-lg sm:text-xl font-bold text-[#2D2A2E] mb-2">Traditional Vendors</h3>
+                <div className="w-12 h-1 bg-gray-400 mx-auto rounded-full"></div>
+              </div>
             </div>
           </div>
-
-          {/* Others Column */}
-          <div className="bg-white rounded-xl sm:rounded-2xl p-6 sm:p-8 border border-[#E8E4DD]">
-            <div className="text-center mb-6 sm:mb-8">
-              <h3 className="text-xl sm:text-2xl font-bold text-[#2D2A2E] mb-2">Traditional Vendors</h3>
-              <div className="w-12 sm:w-16 h-1 bg-gray-300 mx-auto rounded-full"></div>
-            </div>
-            
-            <div className="space-y-4 sm:space-y-6">
-              {comparisonData.map((item, index) => (
-                <div key={index} className="bg-gray-50/60 rounded-lg sm:rounded-xl p-4 sm:p-6 border border-gray-100">
-                  <div className="mb-3 text-center sm:text-left">
+          
+          {/* Table Rows */}
+          <div className="divide-y divide-[#E8E4DD]">
+            {comparisonData.map((item, index) => (
+              <div key={index} className="p-4 sm:p-6 md:p-8 hover:bg-[#F8F7F4]/50 transition-colors">
+                {/* Mobile Layout - Stacked with inline headers */}
+                <div className="lg:hidden space-y-4">
+                  {/* Feature Name */}
+                  <div className="text-center">
                     <h4 className="text-base sm:text-lg font-bold text-[#2D2A2E] mb-1">{item.feature}</h4>
                     <p className="text-xs sm:text-sm text-[#3D3846]/70 font-medium">{item.subtext}</p>
                   </div>
-                  <div className="flex items-center gap-3 justify-center sm:justify-start">
-                    <div className="flex items-center justify-center w-5 h-5 sm:w-6 sm:h-6 rounded-full bg-red-100 border border-red-200">
-                      <X className="w-3 h-3 sm:w-4 sm:h-4 text-red-500" />
+                  
+                  {/* Krazy Kreators Benefit */}
+                  <div className="bg-[#F8F7F4]/30 rounded-lg p-4 border-l-4 border-[#CBB49A]">
+                    <div className="flex items-center justify-center gap-3 mb-2">
+                      <span className="text-sm font-semibold text-[#2D2A2E]">Krazy Kreators:</span>
                     </div>
-                    <span className="text-xs sm:text-sm text-[#3D3846] font-medium">{item.others}</span>
+                    <div className="flex items-center justify-center gap-3">
+                      <div className="flex items-center justify-center w-6 h-6 rounded-full bg-green-100 border border-green-200">
+                        <Check className="w-4 h-4 text-green-600" />
+                      </div>
+                      <span className="text-sm sm:text-base text-[#3D3846] font-medium">{item.krazyKreators}</span>
+                    </div>
+                  </div>
+                  
+                  {/* Traditional Vendor Limitation */}
+                  <div className="bg-gray-50/30 rounded-lg p-4 border-l-4 border-gray-400">
+                    <div className="flex items-center justify-center gap-3 mb-2">
+                      <span className="text-sm font-semibold text-[#2D2A2E]">Traditional Vendors:</span>
+                    </div>
+                    <div className="flex items-center justify-center gap-3">
+                      <div className="flex items-center justify-center w-6 h-6 rounded-full bg-red-100 border border-red-200">
+                        <X className="w-4 h-4 text-red-600" />
+                      </div>
+                      <span className="text-sm sm:text-base text-[#3D3846] font-medium">{item.others}</span>
+                    </div>
                   </div>
                 </div>
-              ))}
-            </div>
+                
+                {/* Desktop Layout - Grid */}
+                <div className="hidden lg:grid lg:grid-cols-3 gap-4 sm:gap-6 items-center">
+                  {/* Feature Name */}
+                  <div className="text-center lg:text-left">
+                    <h4 className="text-base sm:text-lg font-bold text-[#2D2A2E] mb-1">{item.feature}</h4>
+                    <p className="text-xs sm:text-sm text-[#3D3846]/70 font-medium">{item.subtext}</p>
+                  </div>
+                  
+                  {/* Krazy Kreators Benefit */}
+                  <div className="text-center">
+                    <div className="flex items-center justify-center gap-3">
+                      <div className="flex items-center justify-center w-6 h-6 rounded-full bg-green-100 border border-green-200">
+                        <Check className="w-4 h-4 text-green-600" />
+                      </div>
+                      <span className="text-sm sm:text-base text-[#3D3846] font-medium">{item.krazyKreators}</span>
+                    </div>
+                  </div>
+                  
+                  {/* Traditional Vendor Limitation */}
+                  <div className="text-center">
+                    <div className="flex items-center justify-center gap-3">
+                      <div className="flex items-center justify-center w-6 h-6 rounded-full bg-red-100 border border-red-200">
+                        <X className="w-4 h-4 text-red-600" />
+                      </div>
+                      <span className="text-sm sm:text-base text-[#3D3846] font-medium">{item.others}</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            ))}
           </div>
         </div>
 

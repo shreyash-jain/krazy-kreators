@@ -1,5 +1,4 @@
 import { Button } from "@/components/ui/button";
-import Link from "next/link";
 
 const featuredBlogs = [
   {
@@ -51,8 +50,8 @@ const techPacks = [
 
 export default function BlogAndTechPacks() {
   return (
-    <section className="w-full bg-[#F8F7F4] py-16 sm:py-20 md:py-24 lg:py-32 px-4 md:px-0 lg:px-0">
-      <div className="max-w-[1200px] mx-auto">
+    <section className="w-full bg-[#F8F7F4] py-16 sm:py-20 md:py-24 lg:py-32">
+      <div className="min-w-[80%] xl:max-w-[75%] 2xl:max-w-[70%] mx-auto px-4 sm:px-6 lg:px-12 xl:px-16">
         
         {/* Part 1: Featured Blogs */}
         <div className="mb-20 sm:mb-24 md:mb-28 lg:mb-32">

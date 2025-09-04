@@ -86,13 +86,12 @@ export default function PricingPage() {
     <main className="w-full bg-[#FAF9F7]">
       <script
         type="application/ld+json"
-        // eslint-disable-next-line react/no-danger
         dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbJsonLd) }}
       />
 
       {/* Hero - Clean white */}
       <section className="min-h-screen flex items-center bg-white py-20 sm:py-24 md:py-28">
-        <div className="max-w-[1200px] mx-auto px-4 md:px-0 lg:px-0 text-center w-full">
+        <div className="max-w-[80%] mx-auto px-4 md:px-0 lg:px-0 text-center w-full">
           <h1 className="text-3xl sm:text-4xl md:text-5xl font-serif font-bold text-[#111111]">
             Simple Pricing. Big Value.
           </h1>
@@ -113,7 +112,7 @@ export default function PricingPage() {
 
       {/* Retainership model explainer (cards) */}
       <section className="py-14 sm:py-16 md:py-20 bg-[#FAF9F7]">
-        <div className="max-w-[1200px] mx-auto px-4 md:px-0 lg:px-0">
+        <div className="max-w-[80%] mx-auto px-4 md:px-0 lg:px-0">
           <div className="grid grid-cols-1 lg:grid-cols-2 auto-rows-fr items-stretch gap-6 md:gap-8">
             {/* Card 1 */}
             <article className="rounded-2xl border border-[#E0E0E0] bg-white shadow-[0_6px_24px_rgba(0,0,0,0.06)] p-6 sm:p-7 md:p-8 h-full">
@@ -147,7 +146,7 @@ export default function PricingPage() {
 
       {/* Monthly Retainer Plans */}
       <section id="retainer-plans" className="pb-16 sm:pb-20 md:pb-24">
-        <div className="max-w-[1200px] mx-auto px-4 md:px-0 lg:px-0">
+        <div className="max-w-[80%] mx-auto px-4 md:px-0 lg:px-0">
           <h2 className="text-xl sm:text-2xl md:text-3xl font-serif font-bold text-[#2D2A2E] text-center">
             Fashion Brand Retainer Plans
           </h2>
@@ -193,7 +192,7 @@ export default function PricingPage() {
 
       {/* Custom Plans */}
       <section className="pb-20 sm:pb-24 md:pb-28">
-        <div className="max-w-[1200px] mx-auto px-4 md:px-0 lg:px-0">
+        <div className="max-w-[80%] mx-auto px-4 md:px-0 lg:px-0">
           {/* Title + subtext above */}
           <div className="text-center max-w-3xl mx-auto mb-8 sm:mb-10 md:mb-12">
             <h2 className="text-2xl sm:text-3xl md:text-4xl font-serif font-bold text-[#2D2A2E]">

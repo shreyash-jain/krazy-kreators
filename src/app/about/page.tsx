@@ -29,13 +29,12 @@ export default function AboutPage() {
     <main className="w-full bg-white">
       <script
         type="application/ld+json"
-        // eslint-disable-next-line react/no-danger
         dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbJsonLd) }}
       />
 
       {/* Hero (two-column) */}
       <section className="relative w-full bg-[#F5F0E8] min-h-screen flex items-center overflow-hidden py-16 sm:py-20 md:py-24 lg:py-28">
-        <div className="relative max-w-[1200px] mx-auto px-4 md:px-0 lg:px-0">
+        <div className="relative min-w-[80%] lg:max-w-[80%] mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 items-center">
             {/* Left copy */}
             <div>
@@ -51,7 +50,7 @@ export default function AboutPage() {
             {/* Right image */}
             <div className="rounded-2xl overflow-hidden border border-[#ECE9E2] shadow-sm">
               <img
-                src="/brands/about-hero.jpg"
+                src="/brands/contact.jpg"
                 alt="Krazy Kreators team – fashion design and manufacturing"
                 className="w-full h-64 sm:h-72 md:h-80 lg:h-96 object-cover"
               />
@@ -62,31 +61,62 @@ export default function AboutPage() {
 
       {/* Stats below hero */}
       <section className="w-full bg-white py-8 sm:py-10 md:py-12">
-        <div className="max-w-[1200px] mx-auto px-4 md:px-0 lg:px-0">
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-5 sm:gap-6 md:gap-8">
-            {/* Card 1 */}
-            <div className="bg-white rounded-2xl border border-[#ECE9E2] shadow-[0_2px_12px_rgba(0,0,0,0.04)] p-6 sm:p-7">
-              <div className="text-3xl sm:text-4xl font-extrabold text-[#6BA292] font-sans">5+</div>
-              <div className="text-[#2D2A2E] text-sm sm:text-base mt-2">Brands launched successfully</div>
+        <div className="min-w-[80%] lg:max-w-[80%] mx-auto px-4 sm:px-6 lg:px-8">
+          {/* Section Title */}
+          <div className="text-center mb-12 sm:mb-16 md:mb-20">
+            <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-serif font-bold text-[#2D2A2E] mb-6">Our Impact in Numbers</h2>
+            <div className="w-16 h-0.5 bg-[#6BA292] rounded-full mx-auto"></div>
+          </div>
+          
+          <div className="grid grid-cols-2 gap-12 sm:gap-16 md:gap-20 mb-12 sm:mb-16 md:mb-20 w-full justify-items-center px-4 max-w-4xl mx-auto">
+            {/* Stat 1 */}
+            <div className="flex flex-col items-center min-w-[120px] sm:min-w-[150px]">
+              <span className="text-3xl sm:text-4xl md:text-5xl font-extrabold text-[#6BA292] font-sans mb-2 tracking-tight">5+</span>
+              <span className="text-sm sm:text-base md:text-lg text-[#2D2A2E] font-medium opacity-90 text-center">brands launched successfully</span>
             </div>
-            {/* Card 2 */}
-            <div className="bg-white rounded-2xl border border-[#ECE9E2] shadow-[0_2px_12px_rgba(0,0,0,0.04)] p-6 sm:p-7">
-              <div className="text-3xl sm:text-4xl font-extrabold text-[#6BA292] font-sans">15+</div>
-              <div className="text-[#2D2A2E] text-sm sm:text-base mt-2">Years of industry experience</div>
+            {/* Stat 2 */}
+            <div className="flex flex-col items-center min-w-[120px] sm:min-w-[150px]">
+              <span className="text-3xl sm:text-4xl md:text-5xl font-extrabold text-[#6BA292] font-sans mb-2 tracking-tight">15+</span>
+              <span className="text-sm sm:text-base md:text-lg text-[#2D2A2E] font-medium opacity-90 text-center">years of industry experience</span>
             </div>
-            {/* Card 3 */}
-            <div className="bg-white rounded-2xl border border-[#ECE9E2] shadow-[0_2px_12px_rgba(0,0,0,0.04)] p-6 sm:p-7">
-              <div className="text-3xl sm:text-4xl font-extrabold text-[#6BA292] font-sans">1000+</div>
-              <div className="text-[#2D2A2E] text-sm sm:text-base mt-2">Designs prototyped & produced</div>
+            {/* Stat 3 */}
+            <div className="flex flex-col items-center min-w-[120px] sm:min-w-[150px]">
+              <span className="text-3xl sm:text-4xl md:text-5xl font-extrabold text-[#6BA292] font-sans mb-2 tracking-tight">3000+</span>
+              <span className="text-sm sm:text-base md:text-lg text-[#2D2A2E] font-medium opacity-90 text-center">designs prototyped & produced</span>
+            </div>
+            {/* Stat 4 */}
+            <div className="flex flex-col items-center min-w-[120px] sm:min-w-[150px]">
+              <span className="text-3xl sm:text-4xl md:text-5xl font-extrabold text-[#6BA292] font-sans mb-2 tracking-tight">1lakh+</span>
+              <span className="text-sm sm:text-base md:text-lg text-[#2D2A2E] font-medium opacity-90 text-center">garments manufactured & shipped</span>
             </div>
           </div>
-
+          
+          {/* Brand Logos Row */}
+          <div className="mt-8 sm:mt-12 md:mt-16 w-full px-4">
+            <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-6 sm:gap-8 md:gap-10 items-center">
+              <div className="flex items-center justify-center h-16 sm:h-20 md:h-24 w-full bg-white rounded-lg border border-[#ECE9E2] p-4">
+                <img src="/brands/drover.png" alt="Drover fashion brand logo - custom clothing production" className="max-h-full max-w-full w-auto h-auto object-contain opacity-90 hover:opacity-100 transition" />
+              </div>
+              <div className="flex items-center justify-center h-16 sm:h-20 md:h-24 w-full bg-white rounded-lg border border-[#ECE9E2] p-4">
+                <img src="/brands/titled-lotus.png" alt="Tilted Lotus logo - create your own fashion brand" className="max-h-full max-w-full w-auto h-auto object-contain opacity-90 hover:opacity-100 transition" />
+              </div>
+              <div className="flex items-center justify-center h-16 sm:h-20 md:h-24 w-full bg-white rounded-lg border border-[#ECE9E2] p-4">
+                <img src="/brands/las-loungewear.png" alt="Las Loungewear logo - fashion brand manufacturing" className="max-h-full max-w-full w-auto h-auto object-contain opacity-90 hover:opacity-100 transition" />
+              </div>
+              <div className="flex items-center justify-center h-16 sm:h-20 md:h-24 w-full bg-white rounded-lg border border-[#ECE9E2] p-4">
+                <img src="/brands/hy-official.png" alt="HY Official logo - clothing manufacturing services" className="max-h-full max-w-full w-auto h-auto object-contain opacity-90 hover:opacity-100 transition" />
+              </div>
+              <div className="flex items-center justify-center h-16 sm:h-20 md:h-24 w-full bg-white rounded-lg border border-[#ECE9E2] p-4">
+                <img src="/brands/badri-al-shihhi.png" alt="Badria Al Shihhi logo - custom clothing production" className="max-h-full max-w-full w-auto h-auto object-contain opacity-90 hover:opacity-100 transition" />
+              </div>
+            </div>
+          </div>
         </div>
       </section>
 
       {/* Our Story – Past, Present & Future */}
       <section className="w-full py-12 sm:py-14 md:py-18 lg:py-20">
-        <div className="max-w-[1200px] mx-auto px-4 md:px-0 lg:px-0">
+        <div className="min-w-[80%] lg:max-w-[80%] mx-auto px-4 sm:px-6 lg:px-8">
           <h2 className="text-xl sm:text-2xl md:text-3xl font-serif font-bold text-[#2D2A2E] mb-6 sm:mb-8">
             Our Story: Past, Present & Future
           </h2>
@@ -113,9 +143,9 @@ export default function AboutPage() {
                 {/* Image right on desktop */}
                 <div className="order-1 md:order-2">
                   <img
-                    src="https://images.unsplash.com/photo-1512436991641-6745cdb1723f?w=800&q=80&auto=format&fit=crop"
+                    src="/brands/about-past.jpg"
                     alt="Past – early fashion design to delivery support"
-                    className="w-full h-52 sm:h-64 md:h-72 object-cover rounded-xl border border-[#ECE9E2]"
+                    className="w-full h-64 sm:h-80 md:h-96 lg:h-[28rem] object-cover rounded-xl border border-[#ECE9E2]"
                   />
                 </div>
               </div>
@@ -129,7 +159,7 @@ export default function AboutPage() {
                   <img
                     src="/brands/about-present.jpg"
                     alt="Present – sustainable clothing manufacturing at Krazy Kreators"
-                    className="w-full h-52 sm:h-64 md:h-72 object-cover rounded-xl border border-[#ECE9E2]"
+                    className="w-full h-64 sm:h-80 md:h-96 lg:h-[28rem] object-cover rounded-xl border border-[#ECE9E2]"
                   />
                 </div>
                 {/* Text */}
@@ -170,7 +200,7 @@ export default function AboutPage() {
                   <img
                     src="/brands/about-future.jpg"
                     alt="Future – innovation in custom clothing production at Krazy Kreators"
-                    className="w-full h-52 sm:h-64 md:h-72 object-cover rounded-xl border border-[#ECE9E2]"
+                    className="w-full h-64 sm:h-80 md:h-96 lg:h-[28rem] object-cover rounded-xl border border-[#ECE9E2]"
                   />
                 </div>
               </div>
@@ -181,18 +211,18 @@ export default function AboutPage() {
 
       {/* Founder’s Message */}
       <section className="w-full bg-[#F8F7F4] py-12 sm:py-14 md:py-18 lg:py-20">
-        <div className="max-w-[1200px] mx-auto px-4 md:px-0 lg:px-0">
+        <div className="max-w-[80%] mx-auto px-4 md:px-0 lg:px-0">
           <div className="text-center mb-8 sm:mb-10">
             <h2 className="text-2xl sm:text-3xl md:text-4xl font-serif font-bold text-[#2D2A2E]">From Our Founder</h2>
             <p className="text-sm sm:text-base md:text-lg text-[#3D3846] mt-2">Crafting Clothing Brands with Passion & Precision</p>
             <div className="w-16 h-0.5 bg-[#6BA292] rounded-full mx-auto mt-3" />
           </div>
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 items-center">
-            <div className="rounded-2xl overflow-hidden shadow-sm border border-[#ECE9E2]">
+            <div className="relative mx-auto w-full max-w-md h-[34rem] sm:h-[36rem] md:h-[40rem] lg:h-[44rem] rounded-3xl overflow-hidden border border-[#ECE9E2] shadow-sm">
               <img
                 src="/brands/about-prashant.png"
                 alt="Prashant Singh — founder of Krazy Kreators, fashion brand manufacturing"
-                className="w-full h-80 sm:h-96 md:h-[28rem] lg:h-[32rem] object-cover"
+                className="w-full h-full object-cover object-center"
               />
             </div>
             <div>
@@ -210,7 +240,7 @@ export default function AboutPage() {
 
       {/* Our Team */}
       <section className="w-full py-12 sm:py-14 md:py-18 lg:py-20">
-        <div className="max-w-[1200px] mx-auto px-4 md:px-0 lg:px-0">
+        <div className="min-w-[80%] lg:max-w-[80%] mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-8 sm:mb-10">
             <h2 className="text-xl sm:text-2xl md:text-3xl font-serif font-bold text-[#2D2A2E]">Our Team</h2>
             <p className="text-[#3D3846] text-sm sm:text-base max-w-3xl mx-auto mt-3">
@@ -223,12 +253,12 @@ export default function AboutPage() {
               { name: "Bipul Singh", role: "Director", desc: "Strategy & partnerships", img: "/brands/about-bipul.jpeg" },
               { name: "Seema Yadav", role: "Design Manager", desc: "Creative direction & design ops", img: "/brands/about-seema.jpeg" },
               { name: "Sonu Kumar", role: "Sourcing and Operations", desc: "Vendors, materials & timelines", img: "/brands/about-sonu.jpeg" },
-              { name: "Rohit Goswami", role: "Sr. Fashion Designer", desc: "Apparel design & fits", img: "/brands/about-rohit.jpeg" },
-              { name: "Subhakshi Goswami", role: "Fashion Designer", desc: "Prints, trims & details", img: "/brands/about-subhakshi.jpeg" },
+              { name: "Rohit Goswami", role: "Sr. Fashion Designer", desc: "Apparel design & fits", img: "/brands/about-rohit.jpg" },
+              { name: "Ayushi Singh", role: "Fashion Designer", desc: "Fashion designer", img: "/brands/about-ayushi.jpg" },
               { name: "Vinod Srivastva", role: "Quality Control", desc: "AQL & production audits", img: "/brands/about-vinod.jpeg" },
             ].map((m) => (
               <div key={m.name} className="bg-white rounded-xl overflow-hidden shadow-sm border border-[#ECE9E2]">
-                <img src={m.img} alt={`${m.name} – ${m.role}`} className="w-full h-64 sm:h-72 md:h-80 object-cover" />
+                <img src={m.img} alt={`${m.name} – ${m.role}`} className="w-full h-80 sm:h-96 md:h-[28rem] lg:h-[32rem] object-cover" />
                 <div className="p-4 sm:p-5">
                   <p className="text-[#2D2A2E] text-base font-semibold">{m.name}</p>
                   <p className="text-[#3D3846] text-sm">{m.role}</p>
@@ -241,7 +271,7 @@ export default function AboutPage() {
 
       {/* CTA */}
       <section className="w-full bg-[#F8F7F4] py-14 sm:py-16 md:py-20">
-        <div className="max-w-[1200px] mx-auto px-4 md:px-0 lg:px-0 text-center">
+        <div className="min-w-[80%] lg:max-w-[80%] mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <h2 className="text-xl sm:text-2xl md:text-3xl font-serif font-bold text-[#2D2A2E] mb-3">
             Ready to Start Your Fashion Brand?
           </h2>

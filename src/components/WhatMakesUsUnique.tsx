@@ -57,7 +57,7 @@ const uniqueFeatures = [
 export default function WhatMakesUsUnique() {
   return (
     <section className="w-full bg-gradient-to-br from-[#F8F7F4] to-[#F0EDE8] py-12 sm:py-16 md:py-20 lg:py-24">
-      <div className="max-w-[1200px] mx-auto px-4 md:px-0 lg:px-0">
+      <div className="min-w-[80%] xl:max-w-[75%] 2xl:max-w-[70%] mx-auto px-4 sm:px-6 lg:px-12 xl:px-16">
         {/* Section Title */}
         <div className="text-center mb-12 sm:mb-14 md:mb-16">
           <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold font-sans text-[#2D2A2E] mb-3 sm:mb-4 relative">
