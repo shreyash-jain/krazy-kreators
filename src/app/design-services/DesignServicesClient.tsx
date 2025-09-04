@@ -1,7 +1,6 @@
 "use client";
 
 import Footer from "@/components/Footer";
-import { Button } from "@/components/ui/button";
 import Image from "next/image";
 import dynamic from "next/dynamic";
 import { useState } from "react";
@@ -13,34 +12,15 @@ import {
   Scissors,
   FlaskConical,
   LineChart,
-  Shirt,
   CheckCircle2,
   Lightbulb,
   ShieldCheck,
-  ArrowRight,
 } from "lucide-react";
 const ContactDialog = dynamic(() => import("@/components/ContactDialog"), { ssr: false });
 
 export default function DesignServicesClient() {
   const [contactOpen, setContactOpen] = useState(false);
-
-  const services = [
-    {
-      icon: PenTool,
-      title: "New Collection Development",
-      desc:
-        "Craft distinctive and trendsetting collections that resonate with your brand identity through innovative design processes.",
-      img: "https://images.unsplash.com/photo-1520975943310-dc46f0f94a54?q=80&w=1400&auto=format&fit=crop",
-      alt: "Designer pinning fabric on moodboard for collection development",
-    },
-    { icon: Ruler, title: "Size and Fit Development", desc: "Meticulously designed garments for the perfect fit — balancing comfort and style.", img: "https://images.unsplash.com/photo-1519741497674-611481863552?q=80&w=1400&auto=format&fit=crop", alt: "Tailor measuring garment size and fit" },
-    { icon: Palette, title: "New Print and Pattern Design", desc: "From bold prints to intricate patterns, we create unique designs that set your brand apart.", img: "https://images.unsplash.com/photo-1582582429416-0f0e6b5e88ca?q=80&w=1400&auto=format&fit=crop", alt: "Print and pattern sketches on table" },
-    { icon: FileText, title: "Printable Files for Garment Placement", desc: "Receive precise, print-ready files ensuring flawless garment production.", img: "https://images.unsplash.com/photo-1542060748-10c28b62716c?q=80&w=1400&auto=format&fit=crop", alt: "Designer exporting print-ready files on laptop" },
-    { icon: Scissors, title: "In‑House Sampling", desc: "Efficient in-house sampling to bring your concepts to life before full production.", img: "https://images.unsplash.com/photo-1520974735194-8d95f1bde2f2?q=80&w=1400&auto=format&fit=crop", alt: "Sample garment being stitched in studio" },
-    { icon: FlaskConical, title: "Research and Development", desc: "Comprehensive R&D for products that meet the highest standards of style and functionality.", img: "https://images.unsplash.com/photo-1511285560929-80b456fea0bc?q=80&w=1400&auto=format&fit=crop", alt: "Designer researching fabrics and trims" },
-    { icon: LineChart, title: "Forecast Research for Upcoming Seasons", desc: "Stay ahead with insights on upcoming trends and market demands.", img: "https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?q=80&w=1400&auto=format&fit=crop", alt: "Trend forecasting board with colors and swatches" },
-    { icon: Shirt, title: "Seasonal Designs for Men and Women", desc: "Curated seasonal designs inspired by the latest trends.", img: "https://images.unsplash.com/photo-1520975619016-62923f04b4b8?q=80&w=1400&auto=format&fit=crop", alt: "Seasonal apparel line on rack" },
-  ];
+  const [openIndex, setOpenIndex] = useState<number | null>(null);
 
   const why = [
     { icon: CheckCircle2, title: "Comprehensive Solutions", desc: "All your design and research needs under one roof." },
@@ -69,7 +49,7 @@ export default function DesignServicesClient() {
           <Image src="/brands/design-why-choose-us.jpg" alt="Krazy Kreators design studio background" fill priority sizes="100vw" className="object-cover" />
           <div className="absolute inset-0 bg-black/50" />
         </div>
-        <div className="relative max-w-[1200px] mx-auto px-4 md:px-0 lg:px-0 py-24 sm:py-28 md:py-32 text-center">
+        <div className="relative min-w-[80%] xl:max-w-[75%] 2xl:max-w-[70%] mx-auto px-4 sm:px-6 lg:px-12 xl:px-16 py-24 sm:py-28 md:py-32 text-center">
           <h1 className="text-3xl sm:text-4xl md:text-5xl font-serif font-bold text-white">Design. Develop. Deliver.</h1>
           <h2 className="mt-4 text-base sm:text-lg md:text-xl text-white/90 font-normal">Trend forecasting, garment sampling, and production-ready designs for fast-moving fashion brands.</h2>
           <div className="mt-8 flex flex-col sm:flex-row items-center justify-center gap-3">
@@ -86,7 +66,7 @@ export default function DesignServicesClient() {
         {/* subtle accent shapes */}
         <div className="pointer-events-none absolute -left-24 -top-24 h-72 w-72 rounded-full bg-[#F5F0E8] blur-2xl opacity-60" />
         <div className="pointer-events-none absolute -right-24 bottom-0 h-72 w-72 rounded-full bg-[#F8F7F4] blur-2xl opacity-60" />
-        <div className="max-w-[1200px] mx-auto px-4 md:px-0 lg:px-0 relative">
+        <div className="min-w-[80%] xl:max-w-[75%] 2xl:max-w-[70%] mx-auto px-4 sm:px-6 lg:px-12 xl:px-16 relative">
           <header className="text-center">
             <h2 className="text-2xl sm:text-3xl md:text-4xl font-serif font-bold text-[#2D2A2E]">Our Fashion Design Expertise</h2>
             <p className="mt-3 sm:mt-4 text-sm sm:text-base md:text-lg text-[#5C5C5C] max-w-[700px] mx-auto">
@@ -130,7 +110,7 @@ export default function DesignServicesClient() {
 
       {/* WHY CHOOSE US SECTION */}
       <section className="py-16 sm:py-20 md:py-24 bg-[#FAF9F3]">
-        <div className="max-w-[1200px] mx-auto px-4 md:px-0 lg:px-0">
+        <div className="min-w-[80%] xl:max-w-[75%] 2xl:max-w-[70%] mx-auto px-4 sm:px-6 lg:px-12 xl:px-16">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 items-stretch">
             <div className="rounded-2xl overflow-hidden border border-[#ECE9E2] shadow-sm h-full">
               <div className="relative w-full h-full min-h-[22rem]">
@@ -162,7 +142,7 @@ export default function DesignServicesClient() {
 
       {/* CASE STUDIES – GRID (below Why Choose section) */}
       <section id="client-case-studies" className="relative bg-white py-12 sm:py-16 md:py-20">
-        <div className="max-w-[1200px] mx-auto px-4 md:px-0 lg:px-0">
+        <div className="min-w-[80%] xl:max-w-[75%] 2xl:max-w-[70%] mx-auto px-4 sm:px-6 lg:px-12 xl:px-16">
           <div className="text-center">
             <h2 className="text-2xl sm:text-3xl md:text-4xl font-serif font-bold text-[#2D2A2E]">Creative Journeys We’ve Brought to Life</h2>
             <p className="mt-2 text-sm sm:text-base text-[#5C5C5C]">From concept to collection — explore the brands we’ve helped shine in the fashion world.</p>
@@ -172,11 +152,11 @@ export default function DesignServicesClient() {
           <div className="mt-8">
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
               {[
-                { brand: "Drover Cowboy Threads", location: "London, UK", logo: "/brands/drover.png", href: "/case-studies/drover", desc: "Western-inspired apparel brought from concept to production-ready with refined fits.", image: "/brands/drover-coverimage.png" },
-                { brand: "Tilted Lotus", location: "New York, USA", logo: "/brands/titled-lotus.png", href: "#", desc: "Print and pattern design with seasonal capsule planning to accelerate rollouts.", image: "/brands/titled-lotus-coverimage.png" },
-                { brand: "Las Loungewear", location: "Los Angeles, USA", logo: "/brands/las-loungewear.png", href: "#", desc: "Comfort-first loungewear line with size and fit development for D2C scale.", image: "/brands/las-loungewear- coverimage.png" },
-                { brand: "HY Official", location: "Seoul, South Korea", logo: "/brands/hy-official.png", href: "#", desc: "Trend forecasting and garment sampling to validate silhouettes prior to launch.", image: "/brands/hy-official-coverimage.png" },
-                { brand: "Badri Al Shihhi", location: "Dubai, UAE", logo: "/brands/badri-al-shihhi.png", href: "#", desc: "End‑to‑end fashion design from concept through to production for retail launch.", image: "/brands/badriaalshihhi-coverimage.png" },
+                		            { brand: "Drover Cowboy Threads", location: "Oklahoma, USA", logo: "/brands/drover.png", href: "/case-studies/drover", desc: "Western-inspired apparel brought from concept to production-ready with refined fits.", image: "/brands/drover-coverimage.jpg" },
+                { brand: "Tilted Lotus", location: "Texas, USA", logo: "/brands/titled-lotus.png", href: "/case-studies/tilted-lotus", desc: "Print and pattern design with seasonal capsule planning to accelerate rollouts.", image: "/brands/titled-lotus-coverimage.png" },
+                { brand: "Las Loungewear", location: "Miami, USA", logo: "/brands/las-loungewear.png", href: "#", desc: "Comfort-first loungewear line with size and fit development for D2C scale.", image: "/brands/las-loungewear- coverimage.png" },
+                { brand: "HY Official", location: "Texas, USA", logo: "/brands/hy-official.png", href: "#", desc: "Trend forecasting and garment sampling to validate silhouettes prior to launch.", image: "/brands/hy-official-coverimage.png" },
+                { brand: "Badria Al Shihhi", location: "Seeb, Oman", logo: "/brands/badri-al-shihhi.png", href: "/case-studies/badri-al-shihhi", desc: "End‑to‑end fashion design from concept through to production for retail launch.", image: "/brands/badriaalshihhi-coverimage.jpg" },
               ].map((c) => (
                 <article key={c.brand} className="rounded-2xl border border-[#ECE9E2] bg-white shadow-[0_6px_20px_rgba(0,0,0,0.04)] overflow-hidden">
                   <div className="relative w-full h-44 sm:h-48">
@@ -197,11 +177,90 @@ export default function DesignServicesClient() {
         </div>
       </section>
 
+      {/* FAQ Section */}
+      <section className="w-full bg-white py-12 sm:py-16 md:py-20 lg:py-24">
+        <div className="min-w-[80%] xl:max-w-[75%] 2xl:max-w-[70%] mx-auto px-4 sm:px-6 lg:px-12 xl:px-16">
+          {/* Section Header */}
+          <div className="text-center mb-12 sm:mb-14 md:mb-16">
+            <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold font-sans text-[#2D2A2E] mb-3 sm:mb-4">
+              Frequently Asked Questions
+            </h2>
+            <p className="text-sm sm:text-base md:text-lg text-[#3D3846] max-w-2xl mx-auto px-4">
+              Everything you need to know about our design services. Can&apos;t find what you&apos;re looking for? 
+              <a href="#" onClick={(e) => { e.preventDefault(); setContactOpen(true); }} className="text-[#CBB49A] hover:text-[#b7a078] transition-colors duration-200 ml-1 underline underline-offset-2">
+                Get in touch
+              </a>
+            </p>
+          </div>
+
+          {/* FAQ Accordion */}
+          <div className="space-y-0">
+            {[
+              {
+                question: "What design services do we offer?",
+                answer: "We provide end-to-end fashion design services including trend research, concept boards, color palettes, print and embroidery development, CAD flats, 3D mockups (on request), measurement specifications, BOMs, graded size charts, and production-ready tech packs."
+              },
+              {
+                question: "What's included in our tech pack?",
+                answer: "Our tech packs include a cover page, detailed sketches/flats, measurements with tolerances, size grading, BOM with material codes, construction notes, stitch types, embellishment placements, care/content label specifications, packaging details, and QC checkpoints."
+              },
+              {
+                question: "Which files and tools do we use?",
+                answer: "We work with industry-standard tools such as Adobe Illustrator (AI/PDF), layered PSDs, JPGs/PNGs for visuals, XLSX/CSV spec sheets, and DXF/PLT files for patterns (on request). We can also adapt to client-provided file templates."
+              },
+              {
+                question: "How many revisions do we include?",
+                answer: "For each style, we usually include two design revisions and one specification refinement (fair-use policy). Any additional iterations can be delivered at transparent, pre-agreed costs."
+              },
+              {
+                question: "Can we translate mood boards into vendor-ready packs?",
+                answer: "Yes. When clients share mood boards or references, we transform them into complete, vendor-ready packs with exact measurements, trims, Pantone codes, and construction details."
+              },
+              {
+                question: "Do we retain the IP for the designs we create?",
+                answer: "No. Upon full payment, all intellectual property (IP) is transferred to the client. We ensure complete ownership transfer of all designs, concepts, and technical specifications."
+              }
+            ].map((faq, index) => (
+              <div key={index} className="border-b border-[#ECE9E2] last:border-b-0">
+                <button
+                  onClick={() => setOpenIndex(openIndex === index ? null : index)}
+                  className="w-full py-4 sm:py-6 md:py-8 text-left flex items-center justify-between group hover:bg-[#F8F7F4]/50 transition-colors duration-200"
+                >
+                  <h3 className="text-base sm:text-lg md:text-xl font-medium text-[#2D2A2E] pr-4 sm:pr-8 leading-relaxed">
+                    {faq.question}
+                  </h3>
+                  <div className="flex-shrink-0">
+                    <div className="w-5 h-5 sm:w-6 sm:h-6 flex items-center justify-center relative">
+                      <div className={`w-3 h-0.5 sm:w-4 sm:h-0.5 bg-[#CBB49A] transition-all duration-300 ${
+                        openIndex === index ? 'rotate-90' : ''
+                      }`}></div>
+                      <div className={`w-3 h-0.5 sm:w-4 sm:h-0.5 bg-[#CBB49A] transition-all duration-300 absolute ${
+                        openIndex === index ? 'opacity-0' : 'opacity-100'
+                      }`}></div>
+                    </div>
+                  </div>
+                </button>
+                
+                <div className={`overflow-hidden transition-all duration-300 ease-in-out ${
+                  openIndex === index ? 'max-h-96 opacity-100' : 'max-h-0 opacity-0'
+                }`}>
+                  <div className="pb-4 sm:pb-6 md:pb-8 pr-4 sm:pr-8">
+                    <p className="text-sm sm:text-base md:text-lg text-[#3D3846] leading-relaxed">
+                      {faq.answer}
+                    </p>
+                  </div>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
       {/* CLIENT CASE STUDIES – Bento Grid (removed in favor of horizontal scroller) */}
 
       {/* FINAL CTA SECTION */}
       <section className="py-16 sm:py-20 md:py-24 bg-[#FAF9F3]">
-        <div className="max-w-[1200px] mx-auto px-4 md:px-0 lg:px-0">
+        <div className="min-w-[80%] xl:max-w-[75%] 2xl:max-w-[70%] mx-auto px-4 sm:px-6 lg:px-12 xl:px-16">
           <div className="max-w-2xl mx-auto text-center">
             <h2 className="text-2xl sm:text-3xl md:text-4xl font-serif font-bold text-[#2D2A2E]">Transform Your Vision Into Reality</h2>
             <p className="mt-4 text-sm sm:text-base md:text-lg text-[#3D3846]">Partner with Krazy Kreators to bring your fashion concepts to life — from initial sketches to market‑ready collections.</p>

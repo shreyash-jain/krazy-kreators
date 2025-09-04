@@ -47,9 +47,9 @@ const benefits = [
 export default function WhatWeDo() {
   return (
     <section className="w-full bg-[#FAF9F7] py-12 sm:py-16">
-      <div className="max-w-[1200px] mx-auto px-4 md:px-0 lg:px-0">
+      <div className="min-w-[80%] xl:max-w-[75%] 2xl:max-w-[70%] mx-auto px-4 sm:px-6 lg:px-12 xl:px-16">
         <h2 className="text-center text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold font-sans text-[#2D2A2E] mb-12 sm:mb-16 relative">
-          What We Do
+          From Sketch to Store: What We Offer
           <div className="absolute -bottom-2 left-1/2 transform -translate-x-1/2 w-16 h-0.5 bg-[#6BA292] rounded-full"></div>
         </h2>
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 sm:gap-12 auto-rows-fr">

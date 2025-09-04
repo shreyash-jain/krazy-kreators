@@ -34,10 +34,10 @@ const megaContent: Record<TopTab, { title: string; desc: string; href: string; i
 	],
 	Portfolio: [
 		{ title: "Drover Cowboy Threads", desc: "Modern westernwear case study", href: "/case-studies/drover", icon: FolderKanban },
-		{ title: "Tilted Lotus", desc: "Premium apparel brand", href: "#", icon: FolderKanban },
-		{ title: "Las Loungewear", desc: "Comfort-first everyday wear", href: "#", icon: FolderKanban },
-		{ title: "HY Official", desc: "Lifestyle essentials", href: "#", icon: FolderKanban },
-		{ title: "Badri Al Shihhi", desc: "Label development & rollout", href: "#", icon: FolderKanban },
+		{ title: "Tilted Lotus", desc: "Premium apparel brand", href: "/case-studies/tilted-lotus", icon: FolderKanban },
+		{ title: "Las Loungewear", desc: "Comfort-first everyday wear", href: "/case-studies/las", icon: FolderKanban },
+		{ title: "HY Official", desc: "Lifestyle essentials", href: "/case-studies/hy-official", icon: FolderKanban },
+		{ title: "Badria Al Shihhi", desc: "Label development & rollout", href: "/case-studies/badri-al-shihhi", icon: FolderKanban },
 	],
 	Blogs: [
 		{ title: "All Blogs", desc: "Insights on building a fashion brand", href: "#", icon: Newspaper },
@@ -59,8 +59,49 @@ export default function Navbar() {
 	const [activeTab, setActiveTab] = useState<TopTab | null>(null);
 	const [heroInView, setHeroInView] = useState(false);
 	const [contactOpen, setContactOpen] = useState(false);
+	const [isHoveringMegaMenu, setIsHoveringMegaMenu] = useState(false);
 	const pathname = usePathname();
 	const isDroverPage = pathname === "/case-studies/drover";
+	const isTiltedLotusPage = pathname === "/case-studies/tilted-lotus";
+	const isLasPage = pathname === "/case-studies/las";
+	const isHYOfficialPage = pathname === "/case-studies/hy-official";
+	const isBadriAlShihhiPage = pathname === "/case-studies/badri-al-shihhi";
+
+	// Add timeout for hiding mega menu
+	const [hideTimeout, setHideTimeout] = useState<NodeJS.Timeout | null>(null);
+
+	const handleTabEnter = (tab: TopTab) => {
+		if (hideTimeout) {
+			clearTimeout(hideTimeout);
+			setHideTimeout(null);
+		}
+		setActiveTab(tab);
+	};
+
+	const handleTabLeave = () => {
+		const timeout = setTimeout(() => {
+			if (!isHoveringMegaMenu) {
+				setActiveTab(null);
+			}
+		}, 150); // 150ms delay
+		setHideTimeout(timeout);
+	};
+
+	const handleMegaMenuEnter = () => {
+		if (hideTimeout) {
+			clearTimeout(hideTimeout);
+			setHideTimeout(null);
+		}
+		setIsHoveringMegaMenu(true);
+	};
+
+	const handleMegaMenuLeave = () => {
+		setIsHoveringMegaMenu(false);
+		const timeout = setTimeout(() => {
+			setActiveTab(null);
+		}, 150); // 150ms delay
+		setHideTimeout(timeout);
+	};
 
 	useEffect(() => {
 		const onScroll = () => {
@@ -69,6 +110,15 @@ export default function Navbar() {
 		window.addEventListener("scroll", onScroll);
 		return () => window.removeEventListener("scroll", onScroll);
 	}, []);
+
+	// Cleanup timeout on unmount
+	useEffect(() => {
+		return () => {
+			if (hideTimeout) {
+				clearTimeout(hideTimeout);
+			}
+		};
+	}, [hideTimeout]);
 
 	// Detect dark hero sections to invert tab colors when at top
 	useEffect(() => {
@@ -85,7 +135,7 @@ export default function Navbar() {
 		return () => io.disconnect();
 	}, []);
 
-	const invertTabs = (isDroverPage && !scrolled) || (heroInView && !scrolled);
+	const invertTabs = (isDroverPage && !scrolled) || (isTiltedLotusPage && !scrolled) || (isLasPage && !scrolled) || (isHYOfficialPage && !scrolled) || (isBadriAlShihhiPage && !scrolled) || (heroInView && !scrolled);
 
 	return (
 		<>
@@ -93,18 +143,17 @@ export default function Navbar() {
 			className={`w-full fixed top-0 left-0 z-30 transition-all duration-300 ${
 				scrolled
 					? "bg-white border-b border-[#e2d6f0] shadow-md"
-					: isDroverPage
+					: isDroverPage || isTiltedLotusPage || isLasPage || isHYOfficialPage || isBadriAlShihhiPage
 						? "bg-transparent border-none shadow-none"
 						: "bg-transparent border-none shadow-none"
 			}`}
-			onMouseLeave={() => setActiveTab(null)}
 		>
-			<div className="max-w-[1200px] mx-auto flex items-center justify-between py-4 px-4 md:px-0 lg:px-0">
+			<div className="min-w-[80%] lg:max-w-[80%] mx-auto flex items-center justify-between py-4 px-4 md:px-0 lg:px-0">
 				{/* Logo and Company Name */}
 				<div className="flex items-center gap-3">
 					<Link href="/" className="block">
 						<img
-							src="/brands/logo.svg"
+							src="/brands/Logo.svg"
 							alt="Krazy Kreators"
 							className="h-10 w-auto opacity-90 hover:opacity-100 transition-opacity duration-300"
 						/>
@@ -125,7 +174,8 @@ export default function Navbar() {
 							<li key={tab} className="relative">
 								{hasDropdown ? (
 									<button
-										onMouseEnter={() => setActiveTab(tab)}
+										onMouseEnter={() => handleTabEnter(tab)}
+										onMouseLeave={handleTabLeave}
 										className={`flex items-center gap-1 ${baseCls}`}
 									>
 										<span style={{ color: "inherit" }}>{tab}</span>
@@ -162,13 +212,19 @@ export default function Navbar() {
 
 			{/* Desktop Mega Menu */}
 			{activeTab && megaContent[activeTab].length > 1 && (
-				<div className="hidden md:block absolute left-1/2 -translate-x-1/2 top-full mt-2 w-[min(92vw,1100px)]">
+				<div 
+					className="hidden md:block absolute left-1/2 -translate-x-1/2 top-full mt-2 w-[min(92vw,1100px)]"
+					onMouseEnter={handleMegaMenuEnter}
+					onMouseLeave={handleMegaMenuLeave}
+				>
+					{/* Invisible bridge to prevent gap issues */}
+					<div className="absolute -top-2 left-0 right-0 h-2 bg-transparent"></div>
 					<div className="rounded-2xl border border-[#EEE8F6] bg-white/95 backdrop-blur shadow-xl p-5 sm:p-6">
 						<div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-3 md:gap-4">
 							{megaContent[activeTab].map((it) => {
 								const Icon = it.icon;
 								return (
-									<a key={it.title} href={it.href} className="group flex items-start gap-4 rounded-lg px-4 py-3 hover:bg-[#F8F7F4] transition-colors">
+									<a key={it.title} href={it.href} className="group flex items-start gap-4 rounded-lg px-4 py-3 hover:bg-[#F8F7F4] transition-colors" onClick={() => console.log('Clicked:', it.title, it.href)}>
 										<span className="mt-0.5 inline-flex h-10 w-10 items-center justify-center rounded-lg bg-[#6BA292]/10 text-[#6BA292]">
 											<Icon className="w-4 h-4" />
 										</span>
@@ -207,7 +263,7 @@ export default function Navbar() {
 												const Icon = it.icon;
 												return (
 													<li key={it.title}>
-														<a href={it.href} className="flex items-start gap-4 rounded-lg p-4 hover:bg-white/60 text-[#2D2A2E]" onClick={() => setOpen(false)}>
+														<a href={it.href} className="flex items-start gap-4 rounded-lg p-4 hover:bg-white/60 text-[#2D2A2E]" onClick={() => { setOpen(false); console.log('Mobile clicked:', it.title, it.href); }}>
 															<span className="mt-0.5 inline-flex h-9 w-9 items-center justify-center rounded-md bg-[#6BA292]/10 text-[#6BA292]">
 																<Icon className="w-4 h-4" />
 															</span>

@@ -34,14 +34,14 @@ export default function Hero() {
   };
 
   return (
-    <section className="w-full bg-[#F5EFE6] min-h-screen flex flex-col items-center justify-center relative">
-      <div className="w-full text-center flex flex-col items-center justify-center pt-20 sm:pt-24 md:pt-32 lg:pt-48 xl:pt-56 pb-12 sm:pb-16 md:pb-20 px-4 md:px-8 lg:px-16">
+    <section className="w-full mx-auto bg-[#F5EFE6] min-h-screen flex flex-col items-center justify-center relative">
+      <div className="min-w-[80%] xl:max-w-[75%] 2xl:max-w-[70%] mx-auto text-center flex flex-col items-center justify-center pt-20 sm:pt-24 md:pt-32 lg:pt-48 xl:pt-56 pb-12 sm:pb-16 md:pb-20 px-4 sm:px-6 lg:px-12 xl:px-16">
         <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-extrabold text-[#2D2A2E] mb-4 sm:mb-6 leading-tight font-sans">
           Not Just Threads<br className="hidden sm:inline" />
           We Weave <span className="bg-gradient-to-r from-[#CBB49A] via-[#b7a078] to-[#2D2A2E] bg-clip-text text-transparent">Possibilities</span>
         </h1>
         <p className="text-base sm:text-lg md:text-xl lg:text-2xl text-[#3D3846] font-light max-w-2xl mx-auto mb-6 sm:mb-8 md:mb-10 px-4">
-          Empowering new-age fashion brands with expert design and end-to-end fabric manufacturing support.
+                          Empowering new-age fashion brands with expert designs and creative solutions.
         </p>
         <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center mb-8 sm:mb-10">
           <Button className="rounded-full bg-[#CBB49A] text-white px-4 sm:px-6 py-2 text-base sm:text-lg font-semibold shadow-md hover:bg-[#b7a078] transition-all duration-300 transform hover:scale-105">
