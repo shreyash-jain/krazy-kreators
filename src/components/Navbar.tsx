@@ -21,8 +21,9 @@ import { usePathname } from "next/navigation";
 import Link from "next/link";
 import dynamic from "next/dynamic";
 const ContactDialog = dynamic(() => import("./ContactDialog"), { ssr: false });
-
-const menuItems = ["Solutions", "Portfolio", "Blogs", "Resources", "Company"] as const;
+// Blogs and Resources are not in the menu items as i want to reuse it on our next build
+// const menuItems = ["Solutions", "Portfolio", "Blogs", "Resources", "Company"] as const;
+const menuItems = ["Solutions", "Portfolio", "Company"] as const;
 type TopTab = typeof menuItems[number];
 
 const megaContent: Record<TopTab, { title: string; desc: string; href: string; icon: React.ComponentType<{ className?: string }> }[]> = {
@@ -30,7 +31,8 @@ const megaContent: Record<TopTab, { title: string; desc: string; href: string; i
 		{ title: "Design Services", desc: "Concepts, prints, and garment design", href: "/design-services", icon: Palette },
 		{ title: "Manufacturing Services", desc: "Sampling to bulk production", href: "/manufacturing-services", icon: Factory },
 		{ title: "End‑to‑End Services", desc: "From tech packs to delivery", href: "/end-to-end-services", icon: Infinity },
-		{ title: "Product Categories", desc: "Tops, shirts, dresses, kidswear", href: "/#explore-designs", icon: Grid3X3 },
+		// Product Categories are not in the menu items as i want to reuse it on our next build
+		// { title: "Product Categories", desc: "Tops, shirts, dresses, kidswear", href: "/#explore-designs", icon: Grid3X3 },
 	],
 	Portfolio: [
 		{ title: "Drover Cowboy Threads", desc: "Modern westernwear case study", href: "/case-studies/drover", icon: FolderKanban },
@@ -39,13 +41,13 @@ const megaContent: Record<TopTab, { title: string; desc: string; href: string; i
 		{ title: "HY Official", desc: "Lifestyle essentials", href: "/case-studies/hy-official", icon: FolderKanban },
 		{ title: "Badria Al Shihhi", desc: "Label development & rollout", href: "/case-studies/badri-al-shihhi", icon: FolderKanban },
 	],
-	Blogs: [
-		{ title: "All Blogs", desc: "Insights on building a fashion brand", href: "#", icon: Newspaper },
-	],
-	Resources: [
-		{ title: "Tech Packs", desc: "Download sample tech packs", href: "/#blog-and-tech-packs", icon: FileText },
-		{ title: "Educational Videos", desc: "Short videos on process & quality", href: "#", icon: Video },
-	],
+	// Blogs: [
+	// 	{ title: "All Blogs", desc: "Insights on building a fashion brand", href: "#", icon: Newspaper },
+	// ],
+	// Resources: [
+	// 	{ title: "Tech Packs", desc: "Download sample tech packs", href: "/#blog-and-tech-packs", icon: FileText },
+	// 	{ title: "Educational Videos", desc: "Short videos on process & quality", href: "#", icon: Video },
+	// ],
 	Company: [
 		{ title: "About Us", desc: "Story, vision, and team", href: "/about", icon: Building2 },
 		{ title: "Pricing", desc: "Transparent retainers & custom packs", href: "/pricing", icon: BadgeDollarSign },
@@ -244,7 +246,7 @@ export default function Navbar() {
 			{open && (
 				<div className="fixed inset-0 z-40 flex justify-end">
 					<div className="absolute inset-0 bg-black/30" onClick={() => setOpen(false)} />
-					<div className="relative w-64 bg-[#EDE6F5] h-full shadow-lg flex flex-col animate-slide-in">
+					<div className="relative w-64 bg-[#F5F0E8] h-full shadow-lg flex flex-col animate-slide-in">
 						{/* Header with close button */}
 						<div className="flex-shrink-0 p-6 pb-4">
 							<button className="self-end" onClick={() => setOpen(false)}>

@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useRef } from "react";
+import { useState, useRef, useEffect } from "react";
 import { Button } from "@/components/ui/button";
 import { ArrowRight, MessageSquare } from "lucide-react";
 import ContactDialog from "@/components/ContactDialog";
@@ -9,19 +9,60 @@ import Footer from "@/components/Footer";
 export default function LasClient() {
 	const [contactOpen, setContactOpen] = useState(false);
 	const videoRef = useRef<HTMLVideoElement>(null);
+	const testimonialRef = useRef<HTMLDivElement>(null);
 	const [playing, setPlaying] = useState(false);
+	const [wasManuallyPaused, setWasManuallyPaused] = useState(false);
 
 	const handleVideoClick = () => {
 		if (!playing) {
 			setPlaying(true);
+			setWasManuallyPaused(false); // User manually resumed
 			setTimeout(() => {
 				videoRef.current?.play();
 			}, 100);
 		} else {
 			setPlaying(false);
+			setWasManuallyPaused(true); // User manually paused
 			videoRef.current?.pause();
 		}
 	};
+
+	// Intersection Observer to pause/resume video based on visibility
+	useEffect(() => {
+		const observer = new IntersectionObserver(
+			(entries) => {
+				entries.forEach((entry) => {
+					const video = videoRef.current;
+					
+					if (!entry.isIntersecting && video && !video.paused) {
+						// Video is not visible and is playing, pause it (preserves current time)
+						video.pause();
+						setPlaying(false);
+						// Don't set wasManuallyPaused - this is automatic pause due to scrolling
+					} else if (entry.isIntersecting && video && video.paused && !wasManuallyPaused) {
+						// Video is visible, paused, and was NOT manually paused - resume it
+						video.play().then(() => {
+							setPlaying(true);
+						}).catch((error) => {
+							console.log('Resume play failed:', error);
+						});
+					}
+				});
+			},
+			{
+				threshold: 0.1, // Trigger when 10% of the video is visible
+				rootMargin: '0px 0px -10% 0px' // Add some margin to trigger earlier
+			}
+		);
+
+		if (testimonialRef.current) {
+			observer.observe(testimonialRef.current);
+		}
+
+		return () => {
+			observer.disconnect();
+		};
+	}, [wasManuallyPaused]);
 
 
 	return (
@@ -898,7 +939,7 @@ export default function LasClient() {
 				</section>
 
 								{/* Video Testimonial */}
-				<section className="relative py-20 sm:py-24 lg:py-32 bg-white overflow-hidden">
+				<section ref={testimonialRef} className="relative py-20 sm:py-24 lg:py-32 bg-white overflow-hidden">
 					<div className="relative min-w-[80%] lg:max-w-[80%] mx-auto px-4 sm:px-6 lg:px-8">
 						{/* Mobile Layout */}
 						<div className="lg:hidden">
@@ -960,7 +1001,7 @@ export default function LasClient() {
 							<div className="pt-6 border-t border-gray-200 mt-8">
 								<h3 className="text-xl font-semibold text-black mb-2">Anika McKelvey</h3>
 								<p className="text-[#CBB49A] font-medium">Founder, Las Loungewear</p>
-								<p className="text-gray-600 text-sm">Dubai, UAE</p>
+								<p className="text-gray-600 text-sm">Miami, USA</p>
 							</div>
 							</div>
 
@@ -1022,7 +1063,7 @@ export default function LasClient() {
 								<div className="pt-6 border-t border-gray-200">
 									<h3 className="text-xl font-semibold text-black mb-2">Anika McKelvey</h3>
 									<p className="text-[#CBB49A] font-medium">Founder, Las Loungewear</p>
-									<p className="text-gray-600 text-sm">Dubai, UAE</p>
+									<p className="text-gray-600 text-sm">Miami, USA</p>
 								</div>
 							</div>
 						</div>

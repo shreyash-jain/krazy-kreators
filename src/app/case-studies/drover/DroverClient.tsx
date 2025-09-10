@@ -374,15 +374,17 @@ export default function DroverClient() {
           </div>
 
           {/* Enhanced Two Column Layout */}
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-20 items-center">
             {/* Left Side - Enhanced Image */}
-            <div className="relative group">
-              <div className="absolute inset-0 bg-gradient-to-br from-[#CBB49A]/20 to-[#6BA292]/20 rounded-2xl transform rotate-1 group-hover:rotate-0 transition-transform duration-300"></div>
-              <img
-                src="/brands/drover-kk-role.jpeg"
-                alt="Krazy Kreators role in Drover project"
-                className="w-full h-[500px] object-cover rounded-2xl relative z-10 shadow-xl"
-              />
+            <div className="relative group -mx-4 sm:-mx-6 lg:-mx-8">
+              <div className="aspect-[3/2] relative overflow-hidden rounded-none lg:rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 group-hover:scale-105 max-w-md mx-auto lg:max-w-none">
+                <img
+                  src="/brands/drover-kk-role.jpg"
+                  alt="Krazy Kreators role in Drover project"
+                  className="w-full h-full object-cover"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/20 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+              </div>
             </div>
 
             {/* Right Side - Enhanced Three Pointers */}
@@ -440,7 +442,7 @@ export default function DroverClient() {
           {/* Content with Images */}
           <div className="space-y-12 sm:space-y-16">
             {/* What We Did Section */}
-            <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 sm:gap-12 items-center">
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-20 items-center">
               {/* Left - Content */}
               <div className="space-y-6 sm:space-y-8">
                 <h3 className="text-xl sm:text-2xl font-bold text-[#2D2A2E] mb-4 sm:mb-6">What We Did</h3>
@@ -473,24 +475,30 @@ export default function DroverClient() {
               </div>
 
               {/* Right - Design Process Image */}
-              <div className="relative mt-8 lg:mt-0">
-                <img
-                   src="/brands/drover-brand-dna-1.jpeg"
-                   alt="Drover Brand DNA - Design Process"
-                  className="w-full h-[250px] sm:h-[300px] md:h-[400px] object-cover rounded-xl sm:rounded-2xl shadow-lg"
-                />
+              <div className="relative mt-8 lg:mt-0 group -mx-4 sm:-mx-6 lg:-mx-8">
+                <div className="aspect-[3/2] relative overflow-hidden rounded-none lg:rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 group-hover:scale-105 max-w-md mx-auto lg:max-w-none">
+                  <img
+                    src="/brands/drover-brand-dna-1.jpg"
+                    alt="Drover Brand DNA - Design Process"
+                    className="w-full h-full object-cover"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/20 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                </div>
               </div>
             </div>
 
             {/* Fabric & Trim Sourcing Section */}
-            <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 sm:gap-12 items-center">
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-20 items-center">
               {/* Left - Fabric Selection Image */}
-              <div className="relative order-2 lg:order-1 mt-8 lg:mt-0">
-                <img
-                   src="/brands/drover-brand-dna-2.jpeg"
-                   alt="Drover Brand DNA - Fabric & Trim Details"
-                  className="w-full h-[250px] sm:h-[300px] md:h-[400px] object-cover rounded-xl sm:rounded-2xl shadow-lg"
-                />
+              <div className="relative order-2 lg:order-1 mt-8 lg:mt-0 group -mx-4 sm:-mx-6 lg:-mx-8">
+                <div className="aspect-[3/2] relative overflow-hidden rounded-none lg:rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 group-hover:scale-105 max-w-md mx-auto lg:max-w-none">
+                  <img
+                    src="/brands/drover-brand-dna-2.jpg"
+                    alt="Drover Brand DNA - Fabric & Trim Details"
+                    className="w-full h-full object-cover"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/20 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                </div>
               </div>
 
               {/* Right - Content */}
@@ -537,7 +545,7 @@ export default function DroverClient() {
           {/* Z-Format Layout */}
           <div className="space-y-20 sm:space-y-24 md:space-y-32">
             {/* Row 1: Content Left, Image Right */}
-            <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 sm:gap-16 items-center">
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-20 items-center">
               {/* Left - Tech Pack Content */}
               <div className="space-y-8">
                 <div className="space-y-4">
@@ -560,14 +568,12 @@ export default function DroverClient() {
             </div>
 
               {/* Right - Design Image 1 */}
-              <div className="relative group">
-                <div className="aspect-[4/3] relative overflow-hidden rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 group-hover:scale-105">
-                  <Image
-                    src="/brands/drover-design-1.jpeg"
+              <div className="relative group -mx-4 sm:-mx-6 lg:-mx-8">
+                <div className="aspect-[3/2] relative overflow-hidden rounded-none lg:rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 group-hover:scale-105">
+                  <img
+                    src="/brands/drover-design-1.jpg"
                     alt="Drover design process - tech pack creation"
-                    fill
-                    className="object-cover object-center"
-                    sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 600px"
+                    className="w-full h-full object-contain"
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-black/20 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
                 </div>
@@ -575,16 +581,14 @@ export default function DroverClient() {
             </div>
 
             {/* Row 2: Image Left, Content Right */}
-            <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 sm:gap-16 items-center">
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-20 items-center">
               {/* Left - Design Image 2 */}
-              <div className="relative group order-2 lg:order-1">
-                <div className="aspect-[4/3] relative overflow-hidden rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 group-hover:scale-105">
-                  <Image
-                    src="/brands/drover-design-2.jpeg"
+              <div className="relative group order-2 lg:order-1 -mx-4 sm:-mx-6 lg:-mx-8">
+                <div className="aspect-[3/2] relative overflow-hidden rounded-none lg:rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 group-hover:scale-105">
+                  <img
+                    src="/brands/drover-design-2.jpg"
                     alt="Drover design process - custom elements"
-                    fill
-                    className="object-cover object-center"
-                    sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 600px"
+                    className="w-full h-full object-contain"
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-black/20 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
                 </div>
@@ -615,7 +619,7 @@ export default function DroverClient() {
             </div>
 
             {/* Row 3: Content Left, Image Right */}
-            <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 sm:gap-16 items-center">
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-20 items-center">
               {/* Left - Sampling Content */}
               <div className="space-y-8">
                 <div className="space-y-4">
@@ -640,14 +644,12 @@ export default function DroverClient() {
               </div>
 
               {/* Right - Design Image 3 */}
-              <div className="relative group">
-                <div className="aspect-[4/3] relative overflow-hidden rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 group-hover:scale-105">
-                  <Image
-                    src="/brands/drover-design-3.jpeg"
+              <div className="relative group -mx-4 sm:-mx-6 lg:-mx-8">
+                <div className="aspect-[3/2] relative overflow-hidden rounded-none lg:rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 group-hover:scale-105 bg-[#e9edf0]">
+                  <img
+                    src="/brands/drover-design-3.png"
                     alt="Drover design process - sampling and quality assurance"
-                    fill
-                    className="object-cover object-center"
-                    sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 600px"
+                    className="w-full h-full object-contain"
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-black/20 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
                 </div>

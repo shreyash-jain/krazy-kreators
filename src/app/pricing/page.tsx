@@ -1,21 +1,37 @@
+"use client";
+
 import Footer from "@/components/Footer";
 import { Check, Star, Sparkles, Scissors, Shirt, Palette } from "lucide-react";
+import dynamic from "next/dynamic";
+import { useState } from "react";
 
-export const metadata = {
-  title: "Pricing | Fashion Brand Retainer Plans & Custom Services",
-  description:
-    "Transparent pricing for fashion brand manufacturing. Explore monthly retainers and custom services for design, sampling, and clothing production.",
-  alternates: { canonical: "/pricing" },
-  keywords: [
-    "fashion brand manufacturing pricing",
-    "clothing manufacturing services",
-    "start a clothing brand",
-    "custom clothing production",
-    "fashion brand retainer plans",
-  ],
-};
+const ContactDialog = dynamic(() => import("@/components/ContactDialog"), { ssr: false });
+
+interface Plan {
+  name: string;
+  price: string;
+  features?: string[];
+}
 
 export default function PricingPage() {
+  const [contactOpen, setContactOpen] = useState(false);
+  const [selectedPlan, setSelectedPlan] = useState<{
+    name: string;
+    price: string;
+    type: 'retainer' | 'custom';
+    features?: string[];
+  } | null>(null);
+
+  const handlePlanSelect = (plan: Plan, type: 'retainer' | 'custom') => {
+    setSelectedPlan({
+      name: plan.name,
+      price: plan.price,
+      type,
+      features: plan.features
+    });
+    setContactOpen(true);
+  };
+
   const breadcrumbJsonLd = {
     "@context": "https://schema.org",
     "@type": "BreadcrumbList",
@@ -28,34 +44,60 @@ export default function PricingPage() {
   const retainerPlans = [
     {
       name: "Starter",
-      price: "$990/mo",
+      price: "$1990/mo",
+      tagline: "Starter pack to help you to get started",
       features: [
-        "2 design drops per month",
-        "Basic tech pack support",
-        "Sampling liaison",
-        "Email support",
+        "Forecast and trend research",
+        "Up to 40 Garment Design and Techpack",
+        "Dedicated Design Project Manager",
+        "Up to 20,000 pcs production handling per year",
+        "Quality check and 100% inspection",
+        "No MOQ (Minimum Order Quantity)",
+        "24/7 support",
+        "80% cost discount in sampling",
+        "Packaging and Shipping World-wide",
+        "Live project tracking (Tech enabled Dash board)",
+        "Smart inventory management (Raw materials)",
       ],
       highlight: false,
     },
     {
       name: "Growth",
-      price: "$1,990/mo",
+      price: "$3490/mo",
+      tagline: "More power for small teams create project plans with confidence",
       features: [
-        "4 design drops per month",
-        "Detailed tech packs + revisions",
-        "Sampling coordination & QC",
-        "Priority support",
+        "Forecast and trend research",
+        "Up to 90 Garment Design and Techpack",
+        "Dedicated Design Project Manager (Solely for you)",
+        "Unlimited production handling per year",
+        "Quality check and 100% inspection",
+        "Open costing",
+        "No MOQ",
+        "24/7 support",
+        "Free sampling (up to 20 per quarter)",
+        "Free shipping World-wide (24 per year)",
+        "Live project tracking (Tech enabled Dash board)",
+        "Smart inventory management (Raw materials)",
       ],
       highlight: true,
     },
     {
       name: "Enterprise",
       price: "Custom",
+      tagline: "Empowering large teams with seamless design-to-delivery support",
       features: [
-        "Unlimited design cycles",
-        "Dedicated production manager",
-        "Vendor sourcing & audits",
-        "Weekly check-ins",
+        "Forecast and trend research",
+        "Unlimited Garment Design and Techpack",
+        "Dedicated Design Team (Solely for you)",
+        "Unlimited production handling per year",
+        "Quality check and 100% inspection",
+        "Open costing",
+        "No MOQ",
+        "24/7 support",
+        "Free sampling",
+        "Free shipping World-wide",
+        "Live project tracking (Tech enabled Dash board)",
+        "Smart inventory management (Raw materials)",
       ],
       highlight: false,
     },
@@ -64,21 +106,50 @@ export default function PricingPage() {
   const customPlans = [
     {
       name: "Sample Development",
-      price: "$490",
+      price: "$390",
       icon: Scissors,
-      features: ["Pattern + proto sample", "Fit feedback loop", "Basic QC checklist"],
+      features: [
+        "Pattern development",
+        "Material sourcing",
+        "Pattern fit development",
+        "Print and embroidery",
+        "Brand label and washcare",
+        "Fit sample development",
+        "Final sample development",
+        "Size chart and pattern grading",
+        "Packaging and shipping",
+      ],
     },
     {
       name: "Garment Design",
       price: "$290",
       icon: Shirt,
-      features: ["Silhouette + details", "Bill of materials", "Trim placement"],
+      features: [
+        "Trend and Forecast Research",
+        "Mood board",
+        "Design illustrations (3 options / design)",
+        "Colour options of selected design",
+        "Print or embroidery editable file",
+        "Branding trims design",
+        "Detailed Tech-pack",
+        "Size chart",
+        "Editable digital Assets",
+      ],
     },
     {
       name: "Fabric Print Design",
       price: "$190",
       icon: Palette,
-      features: ["Two colorways", "Repeat-ready file", "Production handoff"],
+      features: [
+        "Trend and Forecast Research",
+        "Mood board",
+        "Design illustrations",
+        "Colour options of selected design",
+        "Print or embroidery editable file",
+        "Pantone and print specifications",
+        "Ready to print file (Tiff)",
+        "Editable file (.Ai or .Psd)",
+      ],
     },
   ];
 
@@ -169,6 +240,9 @@ export default function PricingPage() {
                   </h3>
                   <div className="text-lg sm:text-xl font-semibold text-[#2D2A2E]">{plan.price}</div>
                 </div>
+                {plan.tagline && (
+                  <p className="mt-2 text-sm text-[#666666] italic">{plan.tagline}</p>
+                )}
 
                 <ul className="mt-4 space-y-3 text-[#333333] text-sm sm:text-base flex-1">
                   {plan.features.map((f) => (
@@ -180,7 +254,10 @@ export default function PricingPage() {
                 </ul>
 
                 <div className="pt-5">
-                  <button className="w-full inline-flex items-center justify-center rounded-full bg-[#CBB49A] hover:bg-[#b7a078] text-white px-5 py-3 font-semibold text-sm sm:text-base shadow-sm hover:shadow-md transition hover:translate-y-[-1px]">
+                  <button 
+                    onClick={() => handlePlanSelect(plan, 'retainer')}
+                    className="w-full inline-flex items-center justify-center rounded-full bg-[#CBB49A] hover:bg-[#b7a078] text-white px-5 py-3 font-semibold text-sm sm:text-base shadow-sm hover:shadow-md transition hover:translate-y-[-1px]"
+                  >
                     Get Started
                   </button>
                 </div>
@@ -227,7 +304,10 @@ export default function PricingPage() {
                     ))}
                   </ul>
                   <div className="pt-5">
-                    <button className="inline-flex items-center gap-2 rounded-full bg-[#CBB49A] hover:bg-[#b7a078] text-white px-5 py-3 font-semibold text-sm sm:text-base shadow-sm hover:shadow-md transition hover:translate-y-[-1px]">
+                    <button 
+                      onClick={() => handlePlanSelect(p, 'custom')}
+                      className="inline-flex items-center gap-2 rounded-full bg-[#CBB49A] hover:bg-[#b7a078] text-white px-5 py-3 font-semibold text-sm sm:text-base shadow-sm hover:shadow-md transition hover:translate-y-[-1px]"
+                    >
                       <Sparkles className="w-4 h-4" />
                       Get Started
                     </button>
@@ -240,6 +320,13 @@ export default function PricingPage() {
       </section>
 
       <Footer />
+      
+      {/* Contact Dialog */}
+      <ContactDialog 
+        open={contactOpen} 
+        onClose={() => setContactOpen(false)}
+        selectedPlan={selectedPlan}
+      />
     </main>
   );
 }

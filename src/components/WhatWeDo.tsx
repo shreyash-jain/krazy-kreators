@@ -1,4 +1,5 @@
 import Image from "next/image";
+import Link from "next/link";
 import { Gift, Workflow, Rocket, BadgePercent, Palette, Smile, TrendingUp, Truck } from "lucide-react";
 
 const benefits = [
@@ -54,38 +55,38 @@ export default function WhatWeDo() {
         </h2>
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 sm:gap-12 auto-rows-fr">
           {/* Design Services Card (top-left) */}
-          <div className="bg-white rounded-xl sm:rounded-2xl shadow-sm border flex flex-col overflow-hidden" style={{fontFamily: 'Inter, Graphik, sans-serif'}}>
+          <Link href="/design-services" className="group bg-white rounded-xl sm:rounded-2xl shadow-sm border flex flex-col overflow-hidden hover:shadow-lg hover:scale-[1.02] transition-all duration-300 cursor-pointer" style={{fontFamily: 'Inter, Graphik, sans-serif'}}>
             <div className="w-full h-40 sm:h-48 md:h-56 relative">
               <Image src="/brands/design.jpg" alt="Design Services" fill className="object-cover object-center" />
             </div>
             <div className="flex flex-col justify-between p-4 sm:p-6 md:p-8 flex-1">
-              <h3 className="text-lg sm:text-xl md:text-2xl font-bold mb-2 text-[#2D2A2E]">Design Services</h3>
+              <h3 className="text-lg sm:text-xl md:text-2xl font-bold mb-2 text-[#2D2A2E] group-hover:text-[#CBB49A] transition-colors duration-200">Design Services</h3>
               <p className="text-sm sm:text-base text-[#3D3846] mb-4">Transform your ideas into fashion-forward designs with our expert team.</p>
-              <a href="#" className="text-[#6BA292] font-semibold underline underline-offset-2 hover:text-[#5A8A7A] transition-colors duration-200 w-fit text-sm sm:text-base">Read more &rarr;</a>
+              <span className="text-[#6BA292] font-semibold underline underline-offset-2 group-hover:text-[#CBB49A] transition-colors duration-200 w-fit text-sm sm:text-base">Read more &rarr;</span>
             </div>
-          </div>
+          </Link>
           {/* End-to-End Service Card (right, spanning both rows) */}
-          <div className="bg-white rounded-xl sm:rounded-2xl shadow-lg border-2 border-[#F6F1EB] flex flex-col overflow-hidden lg:row-span-2" style={{fontFamily: 'Inter, Graphik, sans-serif'}}>
+          <Link href="/end-to-end-services" className="group bg-white rounded-xl sm:rounded-2xl shadow-lg border-2 border-[#F6F1EB] flex flex-col overflow-hidden lg:row-span-2 hover:shadow-xl hover:scale-[1.02] transition-all duration-300 cursor-pointer" style={{fontFamily: 'Inter, Graphik, sans-serif'}}>
             <div className="w-full h-48 sm:h-56 md:h-full relative min-h-[200px]">
               <Image src="/brands/end-to-end.jpg" alt="End-to-End Service" fill className="object-cover object-center" />
             </div>
             <div className="flex flex-col justify-between p-4 sm:p-6 md:p-8 flex-1">
-              <h3 className="text-xl sm:text-2xl md:text-3xl font-bold mb-2 text-[#2D2A2E]">End-to-End Service</h3>
+              <h3 className="text-xl sm:text-2xl md:text-3xl font-bold mb-2 text-[#2D2A2E] group-hover:text-[#CBB49A] transition-colors duration-200">End-to-End Service</h3>
               <p className="text-sm sm:text-base md:text-lg text-[#3D3846] mb-4">Complete production support from concept to delivery — all under one roof.</p>
-              <a href="#" className="text-[#6BA292] font-semibold underline underline-offset-2 hover:text-[#5A8A7A] transition-colors duration-200 w-fit text-sm sm:text-base">Read more &rarr;</a>
+              <span className="text-[#6BA292] font-semibold underline underline-offset-2 group-hover:text-[#CBB49A] transition-colors duration-200 w-fit text-sm sm:text-base">Read more &rarr;</span>
             </div>
-          </div>
+          </Link>
           {/* Manufacturing Card (bottom-left, above supportive text) */}
-          <div className="bg-white rounded-xl sm:rounded-2xl shadow-sm border flex flex-col overflow-hidden" style={{fontFamily: 'Inter, Graphik, sans-serif'}}>
+          <Link href="/manufacturing-services" className="group bg-white rounded-xl sm:rounded-2xl shadow-sm border flex flex-col overflow-hidden hover:shadow-lg hover:scale-[1.02] transition-all duration-300 cursor-pointer" style={{fontFamily: 'Inter, Graphik, sans-serif'}}>
             <div className="w-full h-40 sm:h-48 md:h-56 relative">
               <Image src="/brands/manufacturing.jpg" alt="Manufacturing" fill className="object-cover object-center" />
             </div>
             <div className="flex flex-col justify-between p-4 sm:p-6 md:p-8 flex-1">
-              <h3 className="text-lg sm:text-xl md:text-2xl font-bold mb-2 text-[#2D2A2E]">Manufacturing</h3>
+              <h3 className="text-lg sm:text-xl md:text-2xl font-bold mb-2 text-[#2D2A2E] group-hover:text-[#CBB49A] transition-colors duration-200">Manufacturing</h3>
               <p className="text-sm sm:text-base text-[#3D3846] mb-4">Seamless manufacturing from samples to full-scale production.</p>
-              <a href="#" className="text-[#6BA292] font-semibold underline underline-offset-2 hover:text-[#5A8A7A] transition-colors duration-200 w-fit text-sm sm:text-base">Read more &rarr;</a>
+              <span className="text-[#6BA292] font-semibold underline underline-offset-2 group-hover:text-[#CBB49A] transition-colors duration-200 w-fit text-sm sm:text-base">Read more &rarr;</span>
             </div>
-          </div>
+          </Link>
         </div>
 
         {/* --- New Elegant Subsection: Why Our End-to-End Services Work --- */}

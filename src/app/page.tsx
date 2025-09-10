@@ -1,3 +1,6 @@
+"use client";
+
+import { useState } from "react";
 import Hero from "@/components/Hero";
 import AboutUs from "@/components/AboutUs";
 import WhatWeDo from "@/components/WhatWeDo";
@@ -12,27 +15,37 @@ import BlogAndTechPacks from "@/components/BlogAndTechPacks";
 import FAQ from "@/components/FAQ";
 import StartProject from "@/components/StartProject";
 import Footer from "@/components/Footer";
+import ContactDialog from "@/components/ContactDialog";
 
 export default function Home() {
+  const [contactOpen, setContactOpen] = useState(false);
+
+  const handleContactOpen = () => {
+    setContactOpen(true);
+  };
+
   return (
     <>
       {/* SEO H1 for primary keywords */}
       <h1 className="sr-only">Start a clothing brand with Krazy Kreators — custom clothing production and fashion brand manufacturing</h1>
-      <Hero />
+      <Hero onGetStartedClick={handleContactOpen} onStartDemoClick={handleContactOpen} />
       <AboutUs />
       <WhatWeDo />
       <FromDesignToShelf />
       <ExploreDesigns />
-      <HowWeAreDifferent />
+      <HowWeAreDifferent onStartProjectClick={handleContactOpen} />
       <WhatMakesUsUnique />
       <DedicatedTeam />
       <CaseStudies />
       <TestimonialsSection />
-      <BlogAndTechPacks />
+      {/* Blogs and Tech Packs are not in the home page as i want to reuse it on our next build */}
+      {/* <BlogAndTechPacks /> */}
       <FAQ />
       <StartProject />
       <Footer />
-      {/* Add other sections here as components */}
+      
+      {/* Contact Dialog */}
+      <ContactDialog open={contactOpen} onClose={() => setContactOpen(false)} />
     </>
   );
 }
