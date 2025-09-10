@@ -2,7 +2,7 @@ import Link from "next/link";
 import { Mail, Instagram, Linkedin, Facebook } from "lucide-react";
 
 const quickLinks = [
-  { name: "Product Categories", href: "/product-categories" },
+  // { name: "Product Categories", href: "/product-categories" },
   { name: "About us", href: "/about" },
   { name: "Pricing", href: "/pricing" },
   { name: "Contact", href: "/contact" },
@@ -39,7 +39,7 @@ export default function Footer() {
             <div className="mb-4 sm:mb-6">
               <Link href="/" className="inline-block">
                 <img
-                  src="/brands/logo.svg"
+                  src="/brands/Logo.svg"
                   alt="Krazy Kreators"
                   className="h-10 sm:h-12 w-auto"
                 />
