@@ -41,7 +41,7 @@ export default function FromDesignToShelf() {
         </p>
         <div className="relative flex flex-col gap-10 sm:gap-12 md:gap-16 lg:gap-20">
           {/* Vertical line connector - hidden on mobile, visible on larger screens */}
-          <div className="hidden md:block absolute left-12 top-0 bottom-0 w-0.5 bg-gradient-to-b from-[#CBB49A]/30 to-[#CBB49A] z-0" />
+{/*           <div className="hidden md:block absolute left-12 top-0 bottom-0 w-0.5 bg-gradient-to-b from-[#CBB49A]/30 to-[#CBB49A] z-0" /> */}
           
           {steps.map((step, i) => {
             const Icon = step.icon;
