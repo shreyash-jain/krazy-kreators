@@ -2,6 +2,7 @@
 
 import Footer from "@/components/Footer";
 import Image from "next/image";
+import Link from "next/link";
 import dynamic from "next/dynamic";
 import { useState } from "react";
 import { MessageSquare, Package, ShieldCheck, Video, ClipboardList, CalendarDays } from "lucide-react";
@@ -56,7 +57,7 @@ export default function ManufacturingServicesClient() {
           <h2 className="mt-4 text-base sm:text-lg md:text-xl text-white/90 font-normal">Seamless production management for overseas brands — quality, clarity, and on‑time delivery.</h2>
           <div className="mt-8 flex flex-col sm:flex-row items-center justify-center gap-3">
             <a href="#" onClick={(e) => { e.preventDefault(); setContactOpen(true); }} className="inline-flex w-full sm:w-auto h-12 items-center justify-center rounded-full bg-[#CBB49A] hover:bg-[#b7a078] text-white px-7 text-sm sm:text-base font-semibold shadow-sm hover:shadow-md transition-transform hover:-translate-y-0.5">Start Your Project</a>
-            <a href="/contact" className="inline-flex w-full sm:w-auto h-12 items-center justify-center rounded-full border border-white/70 text-white px-7 text-sm sm:text-base font-semibold hover:text-[#6BA292] hover:border-[#6BA292] transition-colors">Talk to Us</a>
+            <Link href="/#case-studies" className="inline-flex w-full sm:w-auto h-12 items-center justify-center rounded-full border border-white/70 text-white px-7 text-sm sm:text-base font-semibold hover:text-[#6BA292] hover:border-[#6BA292] transition-colors">View Portfolio</Link>
           </div>
         </div>
       </section>
@@ -139,24 +140,27 @@ export default function ManufacturingServicesClient() {
           <div className="mt-8">
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
               {[
-                		            { brand: "Drover Cowboy Threads", location: "Oklahoma, USA", image: "/brands/drover-coverimage.jpg", href: "/case-studies/drover" },
-                { brand: "Tilted Lotus", location: "Texas, USA", image: "/brands/titled-lotus-coverimage.png", href: "/case-studies/tilted-lotus" },
-                { brand: "Las Loungewear", location: "Miami, USA", image: "/brands/las-loungewear- coverimage.png", href: "#" },
-                { brand: "HY Official", location: "Texas, USA", image: "/brands/hy-official-coverimage.png", href: "#" },
-                { brand: "Badria Al Shihhi", location: "Seeb, Oman", image: "/brands/badriaalshihhi-coverimage.jpg", href: "/case-studies/badri-al-shihhi" },
+                		            { brand: "Drover Cowboy Threads", location: "Oklahoma, USA", image: "/brands/drover-coverimage.jpg", href: "/case-studies/drover", desc: "Western-inspired apparel brought from concept to production-ready with refined fits." },
+                { brand: "Tilted Lotus", location: "Texas, USA", image: "/brands/titled-lotus-coverimage.png", href: "/case-studies/tilted-lotus", desc: "Print and pattern design with seasonal capsule planning to accelerate rollouts." },
+                { brand: "Las Loungewear", location: "Miami, USA", image: "/brands/las-loungewear- coverimage.png", href: "/case-studies/las", desc: "Comfort-first loungewear line with size and fit development for D2C scale." },
+                { brand: "HY Official", location: "Texas, USA", image: "/brands/hy-official-coverimage.png", href: "/case-studies/hy-official", desc: "Trend forecasting and garment sampling to validate silhouettes prior to launch." },
+                { brand: "Badria Al Shihhi", location: "Seeb, Oman", image: "/brands/badriaalshihhi-coverimage.jpg", href: "/case-studies/badri-al-shihhi", desc: "End‑to‑end fashion design from concept through to production for retail launch." },
               ].map((c) => (
-                <article key={c.brand} className="rounded-2xl border border-[#ECE9E2] bg-white shadow-[0_6px_20px_rgba(0,0,0,0.04)] overflow-hidden">
-                  <div className="relative w-full h-44 sm:h-48">
-                    <Image src={c.image} alt={`${c.brand} production case study cover`} fill className="object-cover" />
-                  </div>
-                  <div className="p-5 sm:p-6 flex flex-col">
-                    <h3 className="text-lg sm:text-xl font-semibold text-[#2D2A2E]">{c.brand}</h3>
-                    <p className="text-sm text-[#777] mt-0.5">{c.location}</p>
-                    <div className="mt-4 flex justify-end">
-                      <a href={c.href} className="text-[#6BA292] hover:underline text-sm font-medium">Learn More</a>
+                <a key={c.brand} href={c.href} className="group block">
+                  <article className="rounded-2xl border border-[#ECE9E2] bg-white shadow-[0_6px_20px_rgba(0,0,0,0.04)] overflow-hidden hover:shadow-[0_10px_28px_rgba(0,0,0,0.06)] transition-all duration-300 hover:-translate-y-0.5">
+                    <div className="relative w-full h-44 sm:h-48">
+                      <Image src={c.image} alt={`${c.brand} production case study cover`} fill className="object-cover group-hover:scale-105 transition-transform duration-300" />
                     </div>
-                  </div>
-                </article>
+                    <div className="p-5 sm:p-6 flex flex-col">
+                      <h3 className="text-lg sm:text-xl font-semibold text-[#2D2A2E] group-hover:text-[#6BA292] transition-colors duration-200">{c.brand}</h3>
+                      <p className="text-sm text-[#777] mt-0.5">{c.location}</p>
+                      <p className="mt-2 text-sm text-[#4B4652] line-clamp-3">{c.desc}</p>
+                      <div className="mt-4 flex justify-end">
+                        <span className="text-[#6BA292] group-hover:text-[#2D2A2E] transition-colors duration-200 text-sm font-medium">Learn More</span>
+                      </div>
+                    </div>
+                  </article>
+                </a>
               ))}
             </div>
           </div>

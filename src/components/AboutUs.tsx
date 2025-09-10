@@ -54,7 +54,7 @@ export default function AboutUs() {
         </div>
         {/* CTA below stat cards */}
         <Link
-          href="#"
+          href="/about"
           className="mt-12 sm:mt-16 md:mt-20 inline-flex items-center gap-3 px-8 py-4 bg-[#CBB49A] text-white font-semibold rounded-full shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105 hover:bg-[#b7a078] group"
         >
           <span className="text-lg text-white">More About Us</span>

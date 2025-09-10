@@ -158,8 +158,12 @@ export default function HYOfficialClient() {
         </section>
 
         {/* Challenges and Shortcomings Section */}
-        <section className="py-20 sm:py-24 lg:py-32 bg-[#1a1a2e] text-white">
-          <div className="min-w-[80%] lg:max-w-[80%] mx-auto px-4 sm:px-6 lg:px-8">
+        <section className="relative py-20 sm:py-24 lg:py-32 bg-[#1a1a2e] text-white overflow-hidden">
+          {/* Dotted pattern overlay */}
+          <div className="absolute inset-0 opacity-10">
+            <div className="absolute inset-0 bg-[radial-gradient(circle_at_30%_30%,white_1px,transparent_1px)] [background-size:20px_20px]"></div>
+          </div>
+          <div className="relative min-w-[80%] lg:max-w-[80%] mx-auto px-4 sm:px-6 lg:px-8">
                          <div className="text-center mb-16">
                <h2 className="text-3xl sm:text-4xl lg:text-5xl font-serif font-bold mb-6">
                  <span className="text-white">Challenges and </span>

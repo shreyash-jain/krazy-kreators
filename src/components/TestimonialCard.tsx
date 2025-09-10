@@ -1,37 +1,42 @@
 "use client"
 import { motion } from "framer-motion";
-import React, { useRef, useState } from "react";
+import React, { useRef } from "react";
 
 interface TestimonialCardProps {
+  index: number;
   videoSrc: string;
   clientName: string;
   brandName: string;
   location: string;
+  isPlaying: boolean;
+  onVideoPlay: (index: number) => void;
+  setVideoRef: (index: number, ref: HTMLVideoElement | null) => void;
+  setCardRef: (index: number, ref: HTMLDivElement | null) => void;
 }
 
 const TestimonialCard: React.FC<TestimonialCardProps> = ({
+  index,
   videoSrc,
   clientName,
   brandName,
   location,
+  isPlaying,
+  onVideoPlay,
+  setVideoRef,
+  setCardRef,
 }) => {
   const videoRef = useRef<HTMLVideoElement>(null);
-  const [playing, setPlaying] = useState(false);
 
   const handleCardClick = () => {
-    if (!playing) {
-      setPlaying(true);
-      setTimeout(() => {
-        videoRef.current?.play();
-      }, 100);
-    } else {
-      setPlaying(false);
-      videoRef.current?.pause();
-    }
+    onVideoPlay(index);
   };
 
   return (
     <motion.div
+      ref={(ref) => {
+        setCardRef(index, ref);
+      }}
+      data-index={index}
       initial={{ opacity: 0, y: 40 }}
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true, margin: "-100px" }}
@@ -42,17 +47,20 @@ const TestimonialCard: React.FC<TestimonialCardProps> = ({
       {/* Video Container - reduced height */}
       <div className="relative w-full h-[70vh]" style={{ aspectRatio: '4/5' }}>
         <video
-          ref={videoRef}
+          ref={(ref) => {
+            videoRef.current = ref;
+            setVideoRef(index, ref);
+          }}
           src={videoSrc}
           className="w-full h-full object-cover"
           controls={false}
           playsInline
           preload="metadata"
-          onEnded={() => setPlaying(false)}
+          onEnded={() => onVideoPlay(-1)}
           tabIndex={-1}
         />
         {/* Play button overlay when not playing */}
-        {!playing && (
+        {!isPlaying && (
           <div className="absolute inset-0 flex items-center justify-center bg-black/10">
             <div className="bg-white/80 backdrop-blur-sm rounded-full p-4 flex items-center justify-center shadow-lg">
               <svg className="w-8 h-8 text-gray-900" fill="currentColor" viewBox="0 0 24 24">

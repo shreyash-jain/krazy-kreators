@@ -1,21 +1,14 @@
-import Link from "next/link";
-import Footer from "@/components/Footer";
+"use client";
 
-export const metadata = {
-  title: "About Krazy Kreators | Fashion Brand Manufacturing",
-  description:
-    "We help you create your own clothing line with end‑to‑end fashion brand manufacturing and custom clothing production — from design to sustainable delivery.",
-  alternates: { canonical: "/about" },
-  keywords: [
-    "fashion brand manufacturing",
-    "custom clothing production",
-    "fashion design to delivery",
-    "create your own clothing line",
-    "sustainable clothing manufacturing",
-  ],
-};
+import Footer from "@/components/Footer";
+import dynamic from "next/dynamic";
+import { useState } from "react";
+
+const ContactDialog = dynamic(() => import("@/components/ContactDialog"), { ssr: false });
 
 export default function AboutPage() {
+  const [contactOpen, setContactOpen] = useState(false);
+
   const breadcrumbJsonLd = {
     "@context": "https://schema.org",
     "@type": "BreadcrumbList",
@@ -42,9 +35,7 @@ export default function AboutPage() {
                 About Krazy Kreators
               </h1>
               <p className="text-sm sm:text-base md:text-lg text-[#3D3846] leading-relaxed max-w-2xl">
-                We’re your go‑to <strong>fashion brand manufacturing</strong> and clothing production experts, bringing your
-                clothing brand ideas to life. From creative design to seamless production, we deliver quality, speed, and
-                sustainability across every stage.
+                Krazy Kreators is your trusted partner in <strong>fashion brand manufacturing</strong> and clothing production. We specialize in turning ideas into reality — from innovative design development and detailed tech packs to sampling, bulk production, and global delivery. With a focus on quality, speed, and sustainability, we support fashion startups and established brands alike, ensuring every collection is market-ready. Our dedicated team bridges the gap between creativity and execution, making the entire process simple, transparent, and reliable. At Krazy Kreators, we don&apos;t just produce garments — we create fashion journeys that inspire growth worldwide.
               </p>
             </div>
             {/* Right image */}
@@ -133,11 +124,10 @@ export default function AboutPage() {
                     <div className="w-8 h-8 rounded-full bg-[#6BA292]/10 flex items-center justify-center">
                       <span className="w-2 h-2 rounded-full bg-[#6BA292] inline-block" />
                     </div>
-                    <h3 className="text-lg font-semibold text-[#2D2A2E]">Past</h3>
+                    <h3 className="text-lg font-semibold text-[#2D2A2E]">Past – Humble Beginnings with a Vision</h3>
                   </div>
                   <p className="text-sm sm:text-base text-[#3D3846] leading-relaxed">
-                    Our humble beginnings were rooted in hands‑on fashion design support — building tech packs, fittings, and
-                    sample runs that helped founders <strong>create their own clothing line</strong> with clarity and confidence.
+                    Krazy Kreators started with a clear purpose: to simplify the complex journey of fashion brand creation. In our early days, we worked closely with founders and aspiring entrepreneurs who had the passion but needed structured support to bring their clothing ideas to life. Our focus was on building accurate tech packs, assisting with fittings, and managing small sample runs, ensuring that every design could move confidently into production. This hands-on approach gave startups clarity, reduced costly mistakes, and allowed them to test their ideas in the real market. Those beginnings shaped our ethos of partnership, precision, and creativity, which continue to guide us today.
                   </p>
                 </div>
                 {/* Image right on desktop */}
@@ -168,12 +158,10 @@ export default function AboutPage() {
                     <div className="w-8 h-8 rounded-full bg-[#6BA292]/10 flex items-center justify-center">
                       <span className="w-2 h-2 rounded-full bg-[#6BA292] inline-block" />
                     </div>
-                    <h3 className="text-lg font-semibold text-[#2D2A2E]">Present</h3>
+                    <h3 className="text-lg font-semibold text-[#2D2A2E]">Present – End-to-End Fashion Manufacturing Excellence</h3>
                   </div>
                   <p className="text-sm sm:text-base text-[#3D3846] leading-relaxed">
-                    Today we lead sustainable, end‑to‑end <strong>fashion brand manufacturing</strong> — from design and sampling
-                    to <strong>custom clothing production</strong> — with transparent timelines, fit control, and finish quality.
-                    Explore our <Link href="/#what-we-do" className="text-[#6BA292] hover:text-[#5A8A7A] underline underline-offset-4">services</Link>.
+                    Today, Krazy Kreators stands as a complete fashion manufacturing and supply chain partner trusted by both startups and established global brands. Our services span the entire journey — from trend research, design development, and digital sampling to custom clothing production, quality control, and international shipping. With in-house capacity and an extended vendor network, we deliver speed without compromising on finish quality. Every project is managed with transparent timelines, clear costing, and strict fit checks, giving our clients confidence at every stage. Sustainability remains at the heart of our operations, with a strong emphasis on responsible sourcing, reduced waste, and smarter production practices. By combining creative design with seamless execution, we empower brands to focus on growth while we manage the complexity of production.
                   </p>
                 </div>
               </div>
@@ -188,11 +176,10 @@ export default function AboutPage() {
                     <div className="w-8 h-8 rounded-full bg-[#6BA292]/10 flex items-center justify-center">
                       <span className="w-2 h-2 rounded-full bg-[#6BA292] inline-block" />
                     </div>
-                    <h3 className="text-lg font-semibold text-[#2D2A2E]">Future</h3>
+                    <h3 className="text-lg font-semibold text-[#2D2A2E]">Future – Innovating Fashion for a Smarter Tomorrow</h3>
                   </div>
                   <p className="text-sm sm:text-base text-[#3D3846] leading-relaxed">
-                    We continue to innovate in materials, digital sampling, and global partnerships to accelerate <strong>clothing
-                    brand creation</strong> with lower waste and better predictability.
+                    Looking ahead, Krazy Kreators is committed to reshaping how fashion brands are built and scaled globally. The future of fashion lies in innovation, sustainability, and predictability, and we are investing heavily in these areas. From exploring next-generation fabrics and eco-friendly materials to adopting 3D digital sampling and virtual prototyping, we aim to help brands launch faster with fewer risks. Our vision also includes expanding global partnerships that give our clients access to diverse manufacturing hubs and supply chain advantages across geographies. By blending technology, sustainability, and collaboration, Krazy Kreators seeks to create a future where fashion production is faster, smarter, and better for the planet. We don&apos;t just keep up with industry change — we strive to lead it.
                   </p>
                 </div>
                 {/* Image right on desktop */}
@@ -227,12 +214,22 @@ export default function AboutPage() {
             </div>
             <div>
               <p className="text-[#3D3846] text-sm sm:text-base md:text-lg leading-relaxed">
-                “Every label we build blends creativity with engineering. Our role is to translate your vision into
-                garments that look beautiful and perform in the real world — with <strong>custom clothing production</strong>
-                workflows that are transparent, repeatable, and sustainable.” For collaborations and enquiries,{" "}
-                <Link href="/#start-project" className="text-[#6BA292] hover:text-[#5A8A7A] underline underline-offset-4">contact our team</Link>.
+                When I founded Krazy Kreators, the vision was simple yet bold: to bridge the gap between fashion dreams and manufacturing realities. I have always believed that great design deserves great execution, and that belief continues to guide everything we do.
               </p>
-              <p className="text-[#2D2A2E] font-semibold mt-6 font-serif italic">— Prashant Singh</p>
+              <p className="text-[#3D3846] text-sm sm:text-base md:text-lg leading-relaxed mt-4">
+                What started as a small initiative to support fashion startups with tech packs, sampling, and production clarity has grown into a full-fledged fashion manufacturing partner serving clients across the globe. Our journey has been shaped by an unwavering commitment to creativity, precision, and trust.
+              </p>
+              <p className="text-[#3D3846] text-sm sm:text-base md:text-lg leading-relaxed mt-4">
+                At Krazy Kreators, we see ourselves not just as manufacturers, but as collaborators in your brand&apos;s story. Every stitch, seam, and silhouette reflects our promise to deliver with integrity and excellence. We take pride in offering solutions that are transparent, sustainable, and scalable, helping both startups and established brands move forward with confidence.
+              </p>
+              <p className="text-[#3D3846] text-sm sm:text-base md:text-lg leading-relaxed mt-4">
+                As the founder, I am grateful for the incredible team that stands behind this vision. Together, we are building more than garments — we are crafting opportunities, nurturing ideas, and creating collections that leave a mark in the world of fashion.
+              </p>
+              <p className="text-[#3D3846] text-sm sm:text-base md:text-lg leading-relaxed mt-4">
+                Thank you for trusting Krazy Kreators with your journey. I look forward to walking this path with you, turning visions into reality and ideas into iconic collections.
+              </p>
+              <p className="text-[#2D2A2E] font-semibold mt-6 font-serif italic">— Prashant Kumar</p>
+              <p className="text-[#3D3846] text-sm font-medium mt-2">Founder & MD, Krazy Kreators (India) Pvt Ltd</p>
             </div>
           </div>
         </div>
@@ -243,7 +240,7 @@ export default function AboutPage() {
         <div className="min-w-[80%] lg:max-w-[80%] mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-8 sm:mb-10">
             <h2 className="text-xl sm:text-2xl md:text-3xl font-serif font-bold text-[#2D2A2E]">Our Team</h2>
-            <p className="text-[#3D3846] text-sm sm:text-base max-w-3xl mx-auto mt-3">
+            <p className="text-[#3D3846] text-sm sm:text-base md:text-lg max-w-3xl mx-auto mt-3">
               Our expert fashion manufacturing team blends creativity, technical skill, and global sourcing expertise — the
               end‑to‑end clothing production specialists behind every collection.
             </p>
@@ -279,15 +276,18 @@ export default function AboutPage() {
             From sketches to store shelves, Krazy Kreators is your trusted partner in <strong>fashion brand manufacturing</strong> &
             <strong> clothing brand creation</strong>.
           </p>
-                      <Link
-              href="/#start-project"
+                      <button
+              onClick={() => setContactOpen(true)}
               className="inline-flex items-center justify-center px-6 sm:px-8 py-3 rounded-full bg-[#CBB49A] text-white text-sm sm:text-base font-semibold hover:bg-[#b7a078] transition-colors"
             >
-            Let’s Create Together
-          </Link>
+            Let&apos;s Create Together
+          </button>
         </div>
       </section>
       <Footer />
+      
+      {/* Contact Dialog */}
+      <ContactDialog open={contactOpen} onClose={() => setContactOpen(false)} />
     </main>
   );
 } 

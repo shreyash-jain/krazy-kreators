@@ -47,7 +47,11 @@ const comparisonData = [
   },
 ];
 
-export default function HowWeAreDifferent() {
+interface HowWeAreDifferentProps {
+  onStartProjectClick?: () => void;
+}
+
+export default function HowWeAreDifferent({ onStartProjectClick }: HowWeAreDifferentProps) {
   return (
     <section className="w-full bg-white py-12 sm:py-16 md:py-20 lg:py-24">
       <div className="min-w-[80%] xl:max-w-[75%] 2xl:max-w-[70%] mx-auto px-4 sm:px-6 lg:px-12 xl:px-16">
@@ -161,7 +165,10 @@ export default function HowWeAreDifferent() {
           <p className="text-base sm:text-lg text-white/80 mb-6 sm:mb-8 max-w-2xl mx-auto px-4">
             Let&apos;s bring your fashion vision to life.
           </p>
-          <button className="inline-flex items-center gap-2 bg-[#CBB49A] hover:bg-[#B8A189] text-[#2D2A2E] font-bold px-6 sm:px-8 py-3 sm:py-4 rounded-lg sm:rounded-xl transition-all duration-300 group text-sm sm:text-base transform hover:scale-105">
+          <button 
+            onClick={onStartProjectClick}
+            className="inline-flex items-center gap-2 bg-[#CBB49A] hover:bg-[#B8A189] text-white font-bold px-6 sm:px-8 py-3 sm:py-4 rounded-full transition-all duration-300 group text-sm sm:text-base transform hover:scale-105"
+          >
             START YOUR PROJECT
             <ArrowRight className="w-4 h-4 sm:w-5 sm:h-5 group-hover:translate-x-1 transition-transform duration-200" />
           </button>

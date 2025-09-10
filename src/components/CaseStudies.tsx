@@ -60,7 +60,7 @@ const caseStudies = [
 
 export default function CaseStudies() {
   return (
-    <section className="w-full bg-gradient-to-br from-[#F8F7F4] to-[#F0EDE8] py-12 sm:py-16 md:py-20 lg:py-24">
+    <section id="case-studies" className="w-full bg-gradient-to-br from-[#F8F7F4] to-[#F0EDE8] py-12 sm:py-16 md:py-20 lg:py-24">
       <div className="min-w-[80%] xl:max-w-[75%] 2xl:max-w-[70%] mx-auto px-4 sm:px-6 lg:px-12 xl:px-16">
         {/* Section Header */}
         <div className="text-center mb-12 sm:mb-14 md:mb-16">

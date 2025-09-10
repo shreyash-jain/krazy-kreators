@@ -1,17 +1,57 @@
 "use client";
 
+import { useState, useEffect } from "react";
 import { User, Mail, Phone, Building2, MapPin, Globe, FileText, MessageSquare } from "lucide-react";
-
-const services = [
-  "Design Services",
-  "Tech Pack Development",
-  "Sample Development",
-  "Production",
-  "Full Package Service",
-  "Consulting",
-];
+import CountrySelect from "@/components/CountrySelect";
+import ServicesSelect from "@/components/ServicesSelect";
+import PhoneNumberInput from "@/components/PhoneNumberInput";
 
 export default function StartProject() {
+  const [formData, setFormData] = useState({
+    fullName: '',
+    email: '',
+    phone: '',
+    company: '',
+    address: '',
+    country: '',
+    services: '',
+    message: ''
+  });
+
+  const [isFormValid, setIsFormValid] = useState(false);
+
+  // Check if all required fields are filled
+  useEffect(() => {
+    const requiredFields = ['fullName', 'email', 'phone', 'company', 'country', 'services'];
+    const allRequiredFilled = requiredFields.every(field => 
+      formData[field as keyof typeof formData].trim() !== ''
+    );
+    setIsFormValid(allRequiredFilled);
+  }, [formData]);
+
+  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
+    const { name, value } = e.target;
+    setFormData(prev => ({
+      ...prev,
+      [name]: value
+    }));
+  };
+
+  const handlePhoneChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setFormData(prev => ({
+      ...prev,
+      phone: e.target.value
+    }));
+  };
+
+  const handleSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+    if (isFormValid) {
+      // Handle form submission here
+      console.log('Form submitted:', formData);
+      // You can add your form submission logic here
+    }
+  };
   return (
     <section className="w-full bg-gradient-to-br from-white to-[#F8F7F4] py-12 sm:py-16 md:py-20 lg:py-24">
       <div className="min-w-[80%] xl:max-w-[75%] 2xl:max-w-[70%] mx-auto px-4 sm:px-6 lg:px-12 xl:px-16">
@@ -27,13 +67,13 @@ export default function StartProject() {
 
         {/* Form Card */}
         <div className="bg-white rounded-xl sm:rounded-2xl shadow-[0_4px_40px_-12px_rgba(0,0,0,0.08)] p-6 sm:p-8 md:p-12">
-          <form onSubmit={(e) => e.preventDefault()} className="space-y-4 sm:space-y-6">
+          <form onSubmit={handleSubmit} className="space-y-4 sm:space-y-6">
             {/* Two Column Grid */}
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4 sm:gap-6">
               {/* Full Name */}
               <div className="relative">
                 <label htmlFor="fullName" className="block text-xs sm:text-sm font-medium text-[#2D2A2E] mb-1 sm:mb-2">
-                  Your full name
+                  Full name <span className="!text-[#CBB49A] !font-bold">*</span>
                 </label>
                 <div className="relative">
                   <div className="absolute inset-y-0 left-0 pl-3 sm:pl-4 flex items-center pointer-events-none">
@@ -42,6 +82,10 @@ export default function StartProject() {
                   <input
                     type="text"
                     id="fullName"
+                    name="fullName"
+                    required
+                    value={formData.fullName}
+                    onChange={handleInputChange}
                     className="block w-full pl-10 sm:pl-12 pr-3 sm:pr-4 py-2.5 sm:py-3 border border-[#ECE9E2] rounded-lg sm:rounded-xl bg-white placeholder-[#A9A29D] text-[#2D2A2E] focus:ring-2 focus:ring-[#CBB49A]/20 focus:border-[#CBB49A] transition-colors duration-200 text-sm sm:text-base"
                     placeholder="Enter your full name"
                   />
@@ -51,7 +95,7 @@ export default function StartProject() {
               {/* Email */}
               <div className="relative">
                 <label htmlFor="email" className="block text-xs sm:text-sm font-medium text-[#2D2A2E] mb-1 sm:mb-2">
-                  Email address
+                  Email address <span className="!text-[#CBB49A] !font-bold">*</span>
                 </label>
                 <div className="relative">
                   <div className="absolute inset-y-0 left-0 pl-3 sm:pl-4 flex items-center pointer-events-none">
@@ -60,6 +104,10 @@ export default function StartProject() {
                   <input
                     type="email"
                     id="email"
+                    name="email"
+                    required
+                    value={formData.email}
+                    onChange={handleInputChange}
                     className="block w-full pl-10 sm:pl-12 pr-3 sm:pr-4 py-2.5 sm:py-3 border border-[#ECE9E2] rounded-lg sm:rounded-xl bg-white placeholder-[#A9A29D] text-[#2D2A2E] focus:ring-2 focus:ring-[#CBB49A]/20 focus:border-[#CBB49A] transition-colors duration-200 text-sm sm:text-base"
                     placeholder="your@email.com"
                   />
@@ -69,25 +117,23 @@ export default function StartProject() {
               {/* Phone */}
               <div className="relative">
                 <label htmlFor="phone" className="block text-xs sm:text-sm font-medium text-[#2D2A2E] mb-1 sm:mb-2">
-                  Phone number
+                  Phone number <span className="!text-[#CBB49A] !font-bold">*</span>
                 </label>
-                <div className="relative">
-                  <div className="absolute inset-y-0 left-0 pl-3 sm:pl-4 flex items-center pointer-events-none">
-                    <Phone className="h-4 w-4 sm:h-5 sm:w-5 text-[#CBB49A]" />
-                  </div>
-                  <input
-                    type="tel"
-                    id="phone"
-                    className="block w-full pl-10 sm:pl-12 pr-3 sm:pr-4 py-2.5 sm:py-3 border border-[#ECE9E2] rounded-lg sm:rounded-xl bg-white placeholder-[#A9A29D] text-[#2D2A2E] focus:ring-2 focus:ring-[#CBB49A]/20 focus:border-[#CBB49A] transition-colors duration-200 text-sm sm:text-base"
-                    placeholder="+1 (555) 123-4567"
-                  />
-                </div>
+                <PhoneNumberInput
+                  id="phone"
+                  name="phone"
+                  required
+                  value={formData.phone}
+                  onChange={handlePhoneChange}
+                  className="block w-full py-2.5 sm:py-3 border border-[#ECE9E2] rounded-lg sm:rounded-xl bg-white placeholder-[#A9A29D] text-[#2D2A2E] focus:ring-2 focus:ring-[#CBB49A]/20 focus:border-[#CBB49A] transition-colors duration-200 text-sm sm:text-base"
+                  placeholder="Enter phone number"
+                />
               </div>
 
               {/* Company/Brand */}
               <div className="relative">
                 <label htmlFor="company" className="block text-xs sm:text-sm font-medium text-[#2D2A2E] mb-1 sm:mb-2">
-                  Company/Brand name
+                  Company/Brand name <span className="!text-[#CBB49A] !font-bold">*</span>
                 </label>
                 <div className="relative">
                   <div className="absolute inset-y-0 left-0 pl-3 sm:pl-4 flex items-center pointer-events-none">
@@ -96,6 +142,10 @@ export default function StartProject() {
                   <input
                     type="text"
                     id="company"
+                    name="company"
+                    required
+                    value={formData.company}
+                    onChange={handleInputChange}
                     className="block w-full pl-10 sm:pl-12 pr-3 sm:pr-4 py-2.5 sm:py-3 border border-[#ECE9E2] rounded-lg sm:rounded-xl bg-white placeholder-[#A9A29D] text-[#2D2A2E] focus:ring-2 focus:ring-[#CBB49A]/20 focus:border-[#CBB49A] transition-colors duration-200 text-sm sm:text-base"
                     placeholder="Your company or brand name"
                   />
@@ -117,6 +167,9 @@ export default function StartProject() {
                   <input
                     type="text"
                     id="address"
+                    name="address"
+                    value={formData.address}
+                    onChange={handleInputChange}
                     className="block w-full pl-12 pr-4 py-3 border border-[#ECE9E2] rounded-xl bg-white placeholder-[#A9A29D] text-[#2D2A2E] focus:ring-2 focus:ring-[#CBB49A]/20 focus:border-[#CBB49A] transition-colors duration-200"
                     placeholder="Enter your address"
                   />
@@ -126,23 +179,19 @@ export default function StartProject() {
               {/* Country */}
               <div className="relative">
                 <label htmlFor="country" className="block text-sm font-medium text-[#2D2A2E] mb-2">
-                  Country
+                  Country <span className="!text-[#CBB49A] !font-bold">*</span>
                 </label>
                 <div className="relative">
                   <div className="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none">
                     <Globe className="h-5 w-5 text-[#CBB49A]" />
                   </div>
-                  <select
+                  <CountrySelect
                     id="country"
+                    name="country"
+                    value={formData.country}
+                    onChange={handleInputChange}
                     className="block w-full pl-12 pr-4 py-3 border border-[#ECE9E2] rounded-xl bg-white placeholder-[#A9A29D] text-[#2D2A2E] focus:ring-2 focus:ring-[#CBB49A]/20 focus:border-[#CBB49A] transition-colors duration-200 appearance-none"
-                  >
-                    <option value="">Select your country</option>
-                    <option value="US">United States</option>
-                    <option value="UK">United Kingdom</option>
-                    <option value="CA">Canada</option>
-                    <option value="AU">Australia</option>
-                    {/* Add more countries as needed */}
-                  </select>
+                  />
                   <div className="absolute inset-y-0 right-0 pr-4 flex items-center pointer-events-none">
                     <svg className="h-4 w-4 text-[#CBB49A]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
@@ -154,23 +203,19 @@ export default function StartProject() {
               {/* Services Needed */}
               <div className="relative">
                 <label htmlFor="services" className="block text-sm font-medium text-[#2D2A2E] mb-2">
-                  Services Needed
+                  Services Needed <span className="!text-[#CBB49A] !font-bold">*</span>
                 </label>
                 <div className="relative">
                   <div className="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none">
                     <FileText className="h-5 w-5 text-[#CBB49A]" />
                   </div>
-                  <select
+                  <ServicesSelect
                     id="services"
+                    name="services"
+                    value={formData.services}
+                    onChange={handleInputChange}
                     className="block w-full pl-12 pr-4 py-3 border border-[#ECE9E2] rounded-xl bg-white placeholder-[#A9A29D] text-[#2D2A2E] focus:ring-2 focus:ring-[#CBB49A]/20 focus:border-[#CBB49A] transition-colors duration-200 appearance-none"
-                  >
-                    <option value="">Select services you need</option>
-                    {services.map((service) => (
-                      <option key={service} value={service}>
-                        {service}
-                      </option>
-                    ))}
-                  </select>
+                  />
                   <div className="absolute inset-y-0 right-0 pr-4 flex items-center pointer-events-none">
                     <svg className="h-4 w-4 text-[#CBB49A]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
@@ -182,7 +227,7 @@ export default function StartProject() {
               {/* Message */}
               <div className="relative">
                 <label htmlFor="message" className="block text-sm font-medium text-[#2D2A2E] mb-2">
-                  Message
+                  Short Message <span className="text-[#A9A29D]">(Optional)</span>
                 </label>
                 <div className="relative">
                   <div className="absolute top-3 left-0 pl-4 flex items-start pointer-events-none">
@@ -190,7 +235,10 @@ export default function StartProject() {
                   </div>
                   <textarea
                     id="message"
+                    name="message"
                     rows={4}
+                    value={formData.message}
+                    onChange={handleInputChange}
                     className="block w-full pl-12 pr-4 py-3 border border-[#ECE9E2] rounded-xl bg-white placeholder-[#A9A29D] text-[#2D2A2E] focus:ring-2 focus:ring-[#CBB49A]/20 focus:border-[#CBB49A] transition-colors duration-200 resize-none"
                     placeholder="Tell us about your project or any specific requirements..."
                   ></textarea>
@@ -202,7 +250,12 @@ export default function StartProject() {
             <div className="pt-3 sm:pt-4">
               <button
                 type="submit"
-                className="w-full bg-gradient-to-r from-[#CBB49A] to-[#b7a078] text-white py-3 sm:py-4 px-6 sm:px-8 rounded-full font-medium text-base sm:text-lg hover:from-[#b7a078] hover:to-[#a69072] transition-all duration-300 shadow-sm hover:shadow-md"
+                disabled={!isFormValid}
+                className={`w-full py-3 sm:py-4 px-6 sm:px-8 rounded-full font-medium text-base sm:text-lg transition-all duration-300 shadow-sm ${
+                  isFormValid 
+                    ? 'bg-gradient-to-r from-[#CBB49A] to-[#b7a078] text-white hover:from-[#b7a078] hover:to-[#a69072] hover:shadow-md cursor-pointer' 
+                    : 'bg-gradient-to-r from-[#CBB49A]/30 to-[#b7a078]/30 text-white/70 cursor-not-allowed'
+                }`}
               >
                 Get Started
               </button>

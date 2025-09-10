@@ -68,7 +68,7 @@ export default function DedicatedTeam() {
           <div className="relative mt-8 lg:mt-0">
             <div className="bg-gradient-to-br from-[#F8F7F4] to-[#F0EDE8] rounded-xl sm:rounded-2xl p-6 sm:p-8 md:p-12 h-[400px] sm:h-[480px] md:h-[520px] flex items-center justify-center">
               <img 
-                src="/brands/pm-illustration.png" 
+                src="/brands/client-pm.png" 
                 alt="Project Manager and Design Team collaboration illustration" 
                 className="w-full h-full object-contain"
               />
