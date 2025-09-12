@@ -75,23 +75,11 @@ export async function POST(request: Request) {
       );
     }
 
-    const recipients = [
-      process.env.CONTACT_RECIPIENT1,
-      process.env.CONTACT_RECIPIENT2,
-      process.env.CONTACT_RECIPIENT3,
-    ].filter((v): v is string => !!v && v.trim().length > 0);
-
-    // Backward compatibility: allow single CONTACT_RECIPIENT if 1..3 are not set
-    if (recipients.length === 0 && process.env.CONTACT_RECIPIENT) {
-      recipients.push(process.env.CONTACT_RECIPIENT);
-    }
-
-    if (recipients.length === 0) {
-      return NextResponse.json(
-        { error: "No recipients configured. Set CONTACT_RECIPIENT1/2/3 or CONTACT_RECIPIENT." },
-        { status: 500 }
-      );
-    }
+    const recipients: string[] = [
+      "info@krazykreators.com",
+      "shreyash@vidyayatan.com",
+      "prathamesh@vidyayatan.com",
+    ];
 
     const resend = new Resend(apiKey);
 
