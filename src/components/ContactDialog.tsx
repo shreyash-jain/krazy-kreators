@@ -32,6 +32,9 @@ export default function ContactDialog({ open, onClose, selectedPlan }: ContactDi
   });
 
   const [isFormValid, setIsFormValid] = useState(false);
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [submitStatus, setSubmitStatus] = useState<'idle' | 'success' | 'error'>('idle');
+  const [submitError, setSubmitError] = useState<string | null>(null);
 
   useEffect(() => {
     const onEsc = (e: KeyboardEvent) => {
@@ -65,20 +68,58 @@ export default function ContactDialog({ open, onClose, selectedPlan }: ContactDi
     }));
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    if (isFormValid) {
-      // Handle form submission here
-      const submissionData = {
-        ...formData,
-        selectedPlan: selectedPlan ? {
-          name: selectedPlan.name,
-          price: selectedPlan.price,
-          type: selectedPlan.type
-        } : null
-      };
-      console.log('Form submitted:', submissionData);
-      // You can add your form submission logic here
+    if (!isFormValid || isSubmitting) return;
+    setIsSubmitting(true);
+    setSubmitStatus('idle');
+    setSubmitError(null);
+
+    const submissionData = {
+      ...formData,
+      selectedPlan: selectedPlan ? {
+        name: selectedPlan.name,
+        price: selectedPlan.price,
+        type: selectedPlan.type
+      } : null
+    };
+
+    try {
+      const res = await fetch('/api/contact', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(submissionData)
+      });
+
+      if (!res.ok) {
+        const data = await res.json().catch(() => ({}));
+        throw new Error(data?.error || 'Failed to send message');
+      }
+
+      setSubmitStatus('success');
+      // Optional: reset form
+      setFormData({
+        fullName: '',
+        email: '',
+        phone: '',
+        company: '',
+        address: '',
+        country: '',
+        services: '',
+        message: ''
+      });
+
+      // Auto-close after a short delay
+      setTimeout(() => {
+        onClose();
+        setSubmitStatus('idle');
+      }, 1200);
+    } catch (err) {
+      const message = err instanceof Error ? err.message : 'Unknown error';
+      setSubmitError(message);
+      setSubmitStatus('error');
+    } finally {
+      setIsSubmitting(false);
     }
   };
 
@@ -244,15 +285,21 @@ export default function ContactDialog({ open, onClose, selectedPlan }: ContactDi
             <button 
               type="submit" 
               form="contact-form"
-              disabled={!isFormValid}
+              disabled={!isFormValid || isSubmitting}
               className={`w-full inline-flex items-center justify-center rounded-full px-6 py-3 font-semibold shadow-sm transition-all duration-200 ${
-                isFormValid 
+                isFormValid && !isSubmitting
                   ? 'bg-gradient-to-r from-[#CBB49A] to-[#b7a078] text-white hover:shadow-md cursor-pointer' 
                   : 'bg-gradient-to-r from-[#CBB49A]/30 to-[#b7a078]/30 text-white/70 cursor-not-allowed'
               }`}
             >
-              Get Started
+              {isSubmitting ? 'Sending...' : 'Get Started'}
             </button>
+            {submitStatus === 'success' && (
+              <p className="text-center text-xs text-green-600 mt-3">Message sent. We\'ll get back within 24 hours.</p>
+            )}
+            {submitStatus === 'error' && (
+              <p className="text-center text-xs text-red-600 mt-3">{submitError || 'Something went wrong. Please try again.'}</p>
+            )}
             <p className="text-center text-xs text-[#A9A29D] mt-3">Once submitted, our team will reach out within 24 hours.</p>
           </div>
         </div>
