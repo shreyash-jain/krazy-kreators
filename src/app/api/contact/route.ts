@@ -98,14 +98,20 @@ export async function POST(request: Request) {
     });
 
     if (error) {
+      type ResendSendError = {
+        name?: string;
+        message?: string;
+        response?: { data?: unknown };
+      };
+      const resendError = error as ResendSendError | null;
       console.error('[contact] Resend send error', {
-        name: (error as any)?.name,
-        message: (error as any)?.message,
+        name: resendError?.name,
+        message: resendError?.message,
         recipients,
       });
-      const name = (error as any)?.name;
-      const message = (error as any)?.message ?? "Failed to send email";
-      const details = (error as any)?.response?.data ?? undefined;
+      const name = resendError?.name;
+      const message = resendError?.message ?? "Failed to send email";
+      const details = resendError?.response?.data ?? undefined;
       return NextResponse.json({ error: message, code: name, details }, { status: 500 });
     }
 
