@@ -9,15 +9,20 @@ const geistSans = Geist({
 });
 
 export const metadata: Metadata = {
-  title: "Start a Clothing Brand | Custom Clothing Production",
+  title: "Krazy Kreators | Start a Clothing Brand | Custom Clothing Production",
   description:
     "Create your own fashion brand with Krazy Kreators. End-to-end clothing manufacturing services — design, sampling, and custom clothing production. Start today.",
   metadataBase: new URL("https://www.krazykreators.com"),
   alternates: {
     canonical: "/",
   },
+  icons: {
+    icon: "/Logo.ico",
+    shortcut: "/Logo.ico",
+    apple: "/Logo.ico",
+  },
   openGraph: {
-    title: "Start a Clothing Brand | Custom Clothing Production",
+    title: "Krazy Kreators | Start a Clothing Brand | Custom Clothing Production",
     description:
       "Create your own fashion brand with Krazy Kreators. End-to-end clothing manufacturing services — design, sampling, and custom clothing production.",
     url: "/",
@@ -63,8 +68,8 @@ export default function RootLayout({
       "Clothing manufacturing services for founders to create their own fashion brand — design, sampling, and custom clothing production.",
     areaServed: "Worldwide",
     sameAs: [
-      "https://www.instagram.com/",
-      "https://www.linkedin.com/",
+      "https://www.instagram.com/krazy_kreators/",
+      "https://www.linkedin.com/company/krazy-kreators/",
       "https://www.pinterest.com/",
     ],
     logo: "https://www.krazykreators.com/brands/logo.svg",
