@@ -295,7 +295,7 @@ export default function ContactDialog({ open, onClose, selectedPlan }: ContactDi
               {isSubmitting ? 'Sending...' : 'Get Started'}
             </button>
             {submitStatus === 'success' && (
-              <p className="text-center text-xs text-green-600 mt-3">Message sent. We\'ll get back within 24 hours.</p>
+              <p className="text-center text-xs text-green-600 mt-3">Message sent. We&#39;ll get back within 24 hours.</p>
             )}
             {submitStatus === 'error' && (
               <p className="text-center text-xs text-red-600 mt-3">{submitError || 'Something went wrong. Please try again.'}</p>
