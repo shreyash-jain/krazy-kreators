@@ -1,3 +1,6 @@
+export const runtime = 'nodejs';
+export const dynamic = 'force-dynamic';
+
 import { NextResponse } from "next/server";
 import { Resend } from "resend";
 
@@ -84,9 +87,10 @@ export async function POST(request: Request) {
     const resend = new Resend(apiKey);
 
     const html = createEmailHtml(body);
+    const fromAddress = process.env.RESEND_FROM || "Krazy Kreators <noreply@internal.vidyayatan.com>";
 
     const { error } = await resend.emails.send({
-      from: "Krazy Kreators <onboarding@resend.dev>",
+      from: fromAddress,
       to: recipients,
       replyTo: body.email,
       subject: `New inquiry from ${body.fullName} (${body.company})`,
@@ -94,10 +98,15 @@ export async function POST(request: Request) {
     });
 
     if (error) {
-      return NextResponse.json(
-        { error: error.message ?? "Failed to send email" },
-        { status: 500 }
-      );
+      console.error('[contact] Resend send error', {
+        name: (error as any)?.name,
+        message: (error as any)?.message,
+        recipients,
+      });
+      const name = (error as any)?.name;
+      const message = (error as any)?.message ?? "Failed to send email";
+      const details = (error as any)?.response?.data ?? undefined;
+      return NextResponse.json({ error: message, code: name, details }, { status: 500 });
     }
 
     return NextResponse.json({ ok: true });
