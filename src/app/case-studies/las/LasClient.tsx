@@ -166,7 +166,7 @@ export default function LasClient() {
 					</div>
 				</section>
 
-				{/* THE VISION: Where It All Began */}
+				{/* THE VISION: Las Loungewear Vision */}
 				<section className="relative py-20 sm:py-24 lg:py-32 bg-[#E5E5E5] overflow-hidden">
 					{/* subtle matte texture */}
 					<div className="absolute inset-0 pointer-events-none opacity-[0.03] bg-[radial-gradient(circle_at_25%_20%,black_1px,transparent_1px)] [background-size:14px_14px]"></div>
@@ -176,7 +176,7 @@ export default function LasClient() {
 							{/* Title and Subtext */}
 							<div className="text-center mb-8">
 								<h2 className="text-3xl sm:text-4xl lg:text-5xl font-serif font-bold text-black mb-6">THE VISION</h2>
-								<h3 className="text-xl sm:text-2xl lg:text-3xl font-semibold text-[#CBB49A] mb-8">Where It All Began</h3>
+								<h3 className="text-xl sm:text-2xl lg:text-3xl font-semibold text-[#CBB49A] mb-8">Las Loungewear Vision</h3>
 							</div>
 							
 							{/* Vision Image */}
@@ -199,7 +199,7 @@ export default function LasClient() {
 								<div className="absolute inset-0 pointer-events-none opacity-[0.03] bg-[radial-gradient(circle_at_70%_40%,black_1px,transparent_1px)] [background-size:12px_12px]"></div>
 								<div className="relative max-w-2xl">
 									<h2 className="text-3xl sm:text-4xl lg:text-5xl font-serif font-bold text-black mb-6">THE VISION</h2>
-									<h3 className="text-xl sm:text-2xl lg:text-3xl font-semibold text-[#CBB49A] mb-8">Where It All Began</h3>
+									<h3 className="text-xl sm:text-2xl lg:text-3xl font-semibold text-[#CBB49A] mb-8">Las Loungewear Vision</h3>
 									<div className="space-y-6 text-lg leading-relaxed">
 										<p className="text-black">The client envisioned creating comfortable yet stylish travelwear — garments that felt as good as they looked. She wanted pieces that supported the body during long hours of travel, ideally using compression fabrics to reduce body pain and discomfort. While she didn&apos;t have exact clarity on fabrics or silhouettes, she knew she wanted a blend of chic aesthetics and functional comfort — something modern women could wear while traveling and still feel confident, relaxed, and put together.</p>
 									</div>
@@ -945,7 +945,7 @@ export default function LasClient() {
 						<div className="lg:hidden">
 							{/* Title */}
 							<div className="text-center mb-8">
-								<h2 className="text-3xl sm:text-4xl lg:text-5xl font-serif font-bold text-black mb-6">Client Testimonial</h2>
+								<h2 className="text-3xl sm:text-4xl lg:text-5xl font-serif font-bold text-black mb-6">Las Loungewear Client Testimonial</h2>
 								<div className="w-16 h-0.5 bg-[#CBB49A] mx-auto mb-8"></div>
 						</div>
 
@@ -1041,7 +1041,7 @@ export default function LasClient() {
 							{/* Right: Testimonial Summary */}
 							<div className="space-y-8">
 								<div>
-									<h2 className="text-3xl sm:text-4xl lg:text-5xl font-serif font-bold text-black mb-6">Client Testimonial</h2>
+									<h2 className="text-3xl sm:text-4xl lg:text-5xl font-serif font-bold text-black mb-6">Las Loungewear Client Testimonial</h2>
 									<div className="w-16 h-0.5 bg-[#CBB49A] mb-8"></div>
 								</div>
 								
@@ -1078,7 +1078,7 @@ export default function LasClient() {
 						<div className="text-center">
 							{/* Main Content */}
 							<div className="max-w-4xl mx-auto">
-								<h2 className="text-3xl sm:text-4xl lg:text-5xl font-serif font-bold text-white mb-8">The Brand Goes Live</h2>
+								<h2 className="text-3xl sm:text-4xl lg:text-5xl font-serif font-bold text-white mb-8">Las Loungewear Brand Launch</h2>
 								
 								<div className="space-y-8">
 									<div className="text-xl sm:text-2xl text-white/90 leading-relaxed">

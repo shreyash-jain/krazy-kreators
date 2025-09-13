@@ -7,6 +7,21 @@ const nextConfig: NextConfig = {
       { protocol: "https", hostname: "plus.unsplash.com" },
     ],
   },
+  async redirects() {
+    return [
+      {
+        source: '/(.*)',
+        has: [
+          {
+            type: 'host',
+            value: 'www.krazykreators.com',
+          },
+        ],
+        destination: 'https://krazykreators.com/:path*',
+        permanent: true,
+      },
+    ];
+  },
 };
 
 export default nextConfig;

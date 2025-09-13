@@ -611,14 +611,14 @@ export default function TiltedLotusClient() {
 					</div>
 				</section>
 
-				{/* Client Testimonial Section */}
+				{/* Tilted Lotus Client Testimonial Section */}
 				<section ref={testimonialRef} className="relative py-20 sm:py-24 lg:py-32 bg-white overflow-hidden">
 					<div className="relative min-w-[80%] lg:max-w-[80%] mx-auto px-4 sm:px-6 lg:px-8">
 						{/* Mobile Layout */}
 						<div className="lg:hidden">
 							{/* Title */}
 							<div className="text-center mb-8">
-								<h2 className="text-3xl sm:text-4xl lg:text-5xl font-serif font-bold text-black mb-6">Client Testimonial</h2>
+								<h2 className="text-3xl sm:text-4xl lg:text-5xl font-serif font-bold text-black mb-6">Tilted Lotus Client Testimonial</h2>
 								<div className="w-16 h-0.5 bg-[#CBB49A] mx-auto mb-8"></div>
 							</div>
 
@@ -714,7 +714,7 @@ export default function TiltedLotusClient() {
 							{/* Right: Testimonial Summary */}
 							<div className="space-y-8">
 								<div>
-									<h2 className="text-3xl sm:text-4xl lg:text-5xl font-serif font-bold text-black mb-6">Client Testimonial</h2>
+									<h2 className="text-3xl sm:text-4xl lg:text-5xl font-serif font-bold text-black mb-6">Tilted Lotus Client Testimonial</h2>
 									<div className="w-16 h-0.5 bg-[#CBB49A] mb-8"></div>
 								</div>
 								
@@ -743,7 +743,7 @@ export default function TiltedLotusClient() {
 					</div>
 				</section>
 
-				{/* The Brand Goes Live Section */}
+				{/* Tilted Lotus Brand Launch Section */}
 				<section className="relative py-20 sm:py-24 lg:py-32 bg-black text-white overflow-hidden">
 					{/* subtle texture */}
 					<div className="absolute inset-0 pointer-events-none opacity-[0.06] bg-[radial-gradient(circle_at_30%_30%,white_1px,transparent_1px)] [background-size:14px_14px]"></div>
@@ -751,7 +751,7 @@ export default function TiltedLotusClient() {
 						<div className="text-center">
 							{/* Main Content */}
 							<div className="max-w-4xl mx-auto">
-								<h2 className="text-3xl sm:text-4xl lg:text-5xl font-serif font-bold text-white mb-8">The Brand Goes Live</h2>
+								<h2 className="text-3xl sm:text-4xl lg:text-5xl font-serif font-bold text-white mb-8">Tilted Lotus Brand Launch</h2>
 								
 								<div className="space-y-8">
 									<div className="text-xl sm:text-2xl text-white/90 leading-relaxed">

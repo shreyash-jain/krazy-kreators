@@ -163,7 +163,7 @@ export default function BadriAlShihhiClient() {
         </div>
       </section>
 
-      {/* THE VISION: Where It All Began */}
+      {/* THE VISION: Badria Al Shihhi Vision */}
       <section className="relative py-20 sm:py-24 lg:py-32 bg-white overflow-hidden">
         {/* subtle matte texture */}
         <div className="absolute inset-0 pointer-events-none opacity-[0.03] bg-[radial-gradient(circle_at_25%_20%,black_1px,transparent_1px)] [background-size:14px_14px]"></div>
@@ -173,7 +173,7 @@ export default function BadriAlShihhiClient() {
             {/* Title and Subtext */}
             <div className="text-center mb-8">
               <h2 className="text-3xl sm:text-4xl lg:text-5xl font-serif font-bold text-black mb-6">THE VISION</h2>
-              <h3 className="text-xl sm:text-2xl lg:text-3xl font-semibold text-[#CBB49A] mb-8">Where It All Began</h3>
+              <h3 className="text-xl sm:text-2xl lg:text-3xl font-semibold text-[#CBB49A] mb-8">Badria Al Shihhi Vision</h3>
             </div>
             
             {/* Vision Image */}
@@ -198,7 +198,7 @@ export default function BadriAlShihhiClient() {
               <div className="absolute inset-0 pointer-events-none opacity-[0.03] bg-[radial-gradient(circle_at_70%_40%,black_1px,transparent_1px)] [background-size:12px_12px]"></div>
               <div className="relative max-w-2xl">
                 <h2 className="text-3xl sm:text-4xl lg:text-5xl font-serif font-bold text-black mb-6">THE VISION</h2>
-                <h3 className="text-xl sm:text-2xl lg:text-3xl font-semibold text-[#CBB49A] mb-8">Where It All Began</h3>
+                <h3 className="text-xl sm:text-2xl lg:text-3xl font-semibold text-[#CBB49A] mb-8">Badria Al Shihhi Vision</h3>
                 <div className="space-y-6 text-lg leading-relaxed">
                   <p className="text-black">When Badria Al Shihhi came to us, she had a clear vision — to build a brand with variety, affordable pricing, low quantity per style, and high fashion value. She didn&apos;t just want to sell clothes — she wanted to create an experience.</p>
                   <p className="text-black italic text-lg leading-relaxed">&ldquo;I want to give women something exclusive, beautiful, and accessible — not fast fashion, but fast elegance.&rdquo;</p>
@@ -776,14 +776,14 @@ export default function BadriAlShihhiClient() {
               </div>
       </section>
 
-      {/* Client Testimonial */}
+      {/* Badria Al Shihhi Client Testimonial */}
       <section ref={testimonialRef} className="relative py-20 sm:py-24 lg:py-32 bg-white overflow-hidden">
         <div className="relative min-w-[80%] lg:max-w-[80%] mx-auto px-4 sm:px-6 lg:px-8">
           {/* Mobile Layout */}
           <div className="lg:hidden">
             {/* Title */}
             <div className="text-center mb-8">
-              <h2 className="text-3xl sm:text-4xl lg:text-5xl font-serif font-bold text-black mb-6">Client Testimonial</h2>
+              <h2 className="text-3xl sm:text-4xl lg:text-5xl font-serif font-bold text-black mb-6">Badria Al Shihhi Client Testimonial</h2>
               <div className="w-16 h-0.5 bg-[#CBB49A] mx-auto mb-8"></div>
             </div>
 
@@ -879,7 +879,7 @@ export default function BadriAlShihhiClient() {
             {/* Right: Testimonial Summary */}
             <div className="space-y-8">
               <div>
-                <h2 className="text-3xl sm:text-4xl lg:text-5xl font-serif font-bold text-black mb-6">Client Testimonial</h2>
+                <h2 className="text-3xl sm:text-4xl lg:text-5xl font-serif font-bold text-black mb-6">Badria Al Shihhi Client Testimonial</h2>
                 <div className="w-16 h-0.5 bg-[#CBB49A] mb-8"></div>
               </div>
               
@@ -908,7 +908,7 @@ export default function BadriAlShihhiClient() {
         </div>
       </section>
 
-            {/* The Brand Goes Live Section */}
+            {/* Badria Al Shihhi Brand Launch Section */}
       <section className="relative py-20 sm:py-24 lg:py-32 bg-[#F5F2ED] text-black overflow-hidden">
         {/* subtle texture */}
         <div className="absolute inset-0 pointer-events-none opacity-[0.06] bg-[radial-gradient(circle_at_30%_30%,black_1px,transparent_1px)] [background-size:14px_14px]"></div>
@@ -916,7 +916,7 @@ export default function BadriAlShihhiClient() {
           <div className="text-center">
             {/* Main Content */}
             <div className="max-w-4xl mx-auto">
-              <h2 className="text-3xl sm:text-4xl lg:text-5xl font-serif font-bold text-black mb-8">The Brand Goes Live</h2>
+              <h2 className="text-3xl sm:text-4xl lg:text-5xl font-serif font-bold text-black mb-8">Badria Al Shihhi Brand Launch</h2>
             
             <div className="space-y-8">
                 <div className="text-xl sm:text-2xl text-black/90 leading-relaxed">
