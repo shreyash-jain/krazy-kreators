@@ -755,7 +755,7 @@ export default function DroverClient() {
         </div>
       </section>
 
-      {/* The Brand Goes Live Section */}
+      {/* Drover Brand Launch Section */}
       <section className="relative py-20 sm:py-24 lg:py-32 bg-black text-white overflow-hidden">
         {/* subtle texture */}
         <div className="absolute inset-0 pointer-events-none opacity-[0.06] bg-[radial-gradient(circle_at_30%_30%,white_1px,transparent_1px)] [background-size:14px_14px]"></div>
@@ -763,7 +763,7 @@ export default function DroverClient() {
           <div className="text-center">
             {/* Main Content */}
             <div className="max-w-4xl mx-auto">
-              <h2 className="text-3xl sm:text-4xl lg:text-5xl font-serif font-bold text-white mb-8">The Brand Goes Live</h2>
+              <h2 className="text-3xl sm:text-4xl lg:text-5xl font-serif font-bold text-white mb-8">Drover Brand Launch</h2>
               
               <div className="space-y-8">
                 <div className="text-xl sm:text-2xl text-white/90 leading-relaxed">
