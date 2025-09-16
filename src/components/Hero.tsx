@@ -195,12 +195,13 @@ export default function Hero({ onGetStartedClick, onStartDemoClick }: HeroProps)
             <video
               ref={videoRef}
               src="/hero-video.mp4"
-              poster="https://via.placeholder.com/1280x720.png?text=Video+Placeholder"
+              poster="/brands/design.jpg"
               className="w-full h-full object-cover aspect-video"
               autoPlay
               loop
               muted={isMuted}
               playsInline
+              preload="metadata"
             >
               Sorry, your browser does not support embedded videos.
             </video>
