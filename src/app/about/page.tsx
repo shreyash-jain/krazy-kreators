@@ -1,6 +1,14 @@
 "use client";
 
+export const metadata = {
+  title: "About Krazy Kreators | Fashion Brand Manufacturing Partner",
+  description:
+    "Learn about Krazy Kreators — end-to-end partner for fashion brand manufacturing: design, tech packs, sampling, production, and global delivery.",
+  alternates: { canonical: "/about" },
+};
+
 import Footer from "@/components/Footer";
+import Image from "next/image";
 import dynamic from "next/dynamic";
 import { useState } from "react";
 
@@ -39,11 +47,14 @@ export default function AboutPage() {
               </p>
             </div>
             {/* Right image */}
-            <div className="rounded-2xl overflow-hidden border border-[#ECE9E2] shadow-sm">
-              <img
+            <div className="rounded-2xl overflow-hidden border border-[#ECE9E2] shadow-sm relative h-64 sm:h-72 md:h-80 lg:h-96">
+              <Image
                 src="/brands/contact.jpg"
                 alt="Krazy Kreators team – fashion design and manufacturing"
-                className="w-full h-64 sm:h-72 md:h-80 lg:h-96 object-cover"
+                fill
+                priority
+                sizes="(min-width: 1024px) 40vw, 100vw"
+                className="object-cover"
               />
             </div>
           </div>

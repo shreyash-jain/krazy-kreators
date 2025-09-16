@@ -1,4 +1,5 @@
 import Link from "next/link";
+import Image from "next/image";
 import { Mail, Instagram, Linkedin, Facebook } from "lucide-react";
 
 const quickLinks = [
@@ -37,11 +38,13 @@ export default function Footer() {
           {/* Column 1: Logo + Tagline */}
           <div className="text-center sm:text-left">
             <div className="mb-4 sm:mb-6">
-              <Link href="/" className="inline-block">
-                <img
+              <Link href="/" className="inline-block" aria-label="Krazy Kreators home">
+                <Image
                   src="/brands/Logo.svg"
                   alt="Krazy Kreators"
-                  className="h-10 sm:h-12 w-auto"
+                  width={160}
+                  height={48}
+                  priority
                 />
               </Link>
             </div>
