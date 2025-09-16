@@ -130,6 +130,8 @@ export default function CountrySelect({
             <ReactCountryFlag 
               countryCode={selectedCountry.code} 
               svg 
+              aria-label={`${selectedCountry.name} flag`}
+              title={`${selectedCountry.name} flag`}
               style={{
                 width: '1.2em',
                 height: '1.2em',
@@ -170,6 +172,8 @@ export default function CountrySelect({
                   <ReactCountryFlag 
                     countryCode={country.code} 
                     svg 
+                    aria-label={`${country.name} flag`}
+                    title={`${country.name} flag`}
                     style={{
                       width: '1.2em',
                       height: '1.2em',

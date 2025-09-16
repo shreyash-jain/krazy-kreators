@@ -15,9 +15,9 @@ const services = [
 ];
 
 const socialLinks = [
-  { name: "Instagram", icon: Instagram, href: "#" },
-  { name: "LinkedIn", icon: Linkedin, href: "#" },
-  { name: "Facebook", icon: Facebook, href: "#" },
+  { name: "Instagram", icon: Instagram, href: "https://www.instagram.com/krazy_kreators/" },
+  { name: "LinkedIn", icon: Linkedin, href: "https://www.linkedin.com/company/krazy-kreators/" },
+  { name: "Facebook", icon: Facebook, href: "https://www.facebook.com/" },
 ];
 
 const caseStudies = [
@@ -48,6 +48,14 @@ export default function Footer() {
             <p className="text-sm sm:text-base leading-relaxed text-[#F2F2F2]">
               Design. Sample. Produce.<br />Zero MOQ.
             </p>
+            {/* Address & Phone for SEO/site-wide visibility */}
+            <div className="mt-4 space-y-1 text-[#F2F2F2]/90 text-sm">
+              <p className="font-semibold">Krazy Kreators</p>
+              <p>B-71, 4TH FLOOR</p>
+              <p>SECTOR - 67</p>
+              <p>NOIDA, DELHI NCR, INDIA — 201301</p>
+              <a href="tel:+919990440803" className="underline underline-offset-4">+91 9990440803</a>
+            </div>
           </div>
 
           {/* Column 2: Quick Links */}
