@@ -1,5 +1,12 @@
 "use client";
 
+export const metadata = {
+  title: "Pricing | Krazy Kreators Fashion Design & Manufacturing",
+  description:
+    "Transparent plans and custom services for fashion design, tech packs, sampling, and garment manufacturing.",
+  alternates: { canonical: "/pricing" },
+};
+
 import Footer from "@/components/Footer";
 import { Check, Star, Sparkles, Scissors, Shirt, Palette } from "lucide-react";
 import dynamic from "next/dynamic";

@@ -5,6 +5,7 @@ import { ArrowRight, MessageSquare } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import ContactDialog from '@/components/ContactDialog';
 import Footer from '@/components/Footer';
+import Image from 'next/image';
 
 export default function HYOfficialClient() {
   const [contactOpen, setContactOpen] = useState(false);
@@ -17,10 +18,13 @@ export default function HYOfficialClient() {
         <section className="relative min-h-screen flex items-center justify-center text-white overflow-hidden">
           {/* Background Image */}
           <div className="absolute inset-0">
-            <img 
+            <Image 
               src="/brands/hy_hero.jpg" 
               alt="HY Official hero background" 
-              className="w-full h-full object-cover"
+              fill
+              priority
+              sizes="100vw"
+              className="object-cover"
             />
             <div className="absolute inset-0 bg-black/60" />
           </div>
