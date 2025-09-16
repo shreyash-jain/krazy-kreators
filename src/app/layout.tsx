@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { Geist } from "next/font/google";
+import Script from "next/script";
 import "./globals.css";
 import Navbar from "@/components/Navbar";
 
@@ -9,12 +10,12 @@ const geistSans = Geist({
 });
 
 export const metadata: Metadata = {
-  title: "Krazy Kreators | Start a Clothing Brand | Custom Clothing Production",
+  title: "Krazy Kreators | Start Your Clothing Brand With Us",
   description:
     "Create your own fashion brand with Krazy Kreators. End-to-end clothing manufacturing services — design, sampling, and custom clothing production. Start today.",
-  metadataBase: new URL("https://www.krazykreators.com"),
+  metadataBase: new URL("https://krazykreators.com"),
   alternates: {
-    canonical: "/",
+    canonical: "https://krazykreators.com/",
   },
   icons: {
     icon: "/Logo.ico",
@@ -22,7 +23,7 @@ export const metadata: Metadata = {
     apple: "/Logo.ico",
   },
   openGraph: {
-    title: "Krazy Kreators | Start a Clothing Brand | Custom Clothing Production",
+    title: "Krazy Kreators | Start Your Clothing Brand With Us",
     description:
       "Create your own fashion brand with Krazy Kreators. End-to-end clothing manufacturing services — design, sampling, and custom clothing production.",
     url: "/",
@@ -40,7 +41,7 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "Start a Clothing Brand | Custom Clothing Production",
+    title: "Start Your Clothing Brand With Us",
     description:
       "Create your own fashion brand with end-to-end clothing manufacturing services by Krazy Kreators.",
     images: ["/brands/hy-official-coverimage.png"],
@@ -80,6 +81,19 @@ export default function RootLayout({
       <body
         className={`${geistSans.variable} antialiased bg-white min-h-screen`}
       >
+        <Script
+          src="https://www.googletagmanager.com/gtag/js?id=G-HDYK2HYHWZ"
+          strategy="afterInteractive"
+        />
+        <Script id="gtag-init" strategy="afterInteractive">
+          {`
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+
+            gtag('config', 'G-HDYK2HYHWZ');
+          `}
+        </Script>
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(localBusinessJsonLd) }}

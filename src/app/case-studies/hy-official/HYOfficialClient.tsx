@@ -667,7 +667,7 @@ export default function HYOfficialClient() {
           </div>
         </section>
 
-                {/* The Brand Goes Live Section */}
+                {/* HY Official Brand Launch Section */}
         <section className="relative py-20 sm:py-24 lg:py-32 bg-[#1a1a2e] text-white overflow-hidden">
           {/* Subtle texture overlay for entire section */}
           <div className="absolute inset-0 opacity-10">
@@ -677,7 +677,7 @@ export default function HYOfficialClient() {
             <div className="text-center">
               {/* Main Content */}
               <div className="max-w-4xl mx-auto">
-                <h2 className="text-3xl sm:text-4xl lg:text-5xl font-serif font-bold text-white mb-8">The Brand Goes Live</h2>
+                <h2 className="text-3xl sm:text-4xl lg:text-5xl font-serif font-bold text-white mb-8">HY Official Brand Launch</h2>
                 
                 <div className="space-y-8">
                   <div className="text-xl sm:text-2xl text-white leading-relaxed">
