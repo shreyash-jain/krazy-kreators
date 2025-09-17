@@ -73,37 +73,6 @@ const TestimonialsSection = () => {
     cardRefs.current[index] = ref;
   }, []);
 
-  // Intersection Observer to auto-play first visible and pause others
-  useEffect(() => {
-    const observer = new IntersectionObserver(
-      (entries) => {
-        let firstVisibleIndex: number | null = null;
-        entries.forEach((entry) => {
-          const index = parseInt(entry.target.getAttribute('data-index') || '0');
-          const video = videoRefs.current[index];
-          if (entry.isIntersecting) {
-            if (firstVisibleIndex === null) firstVisibleIndex = index;
-          } else if (video && !video.paused) {
-            video.pause();
-          }
-        });
-        if (firstVisibleIndex !== null) {
-          const video = videoRefs.current[firstVisibleIndex];
-          if (video) {
-            video.play().catch(() => {});
-            setPlayingVideoIndex(firstVisibleIndex);
-          }
-        }
-      },
-      { threshold: 0.6 }
-    );
-
-    cardRefs.current.forEach((card) => {
-      if (card) observer.observe(card);
-    });
-
-    return () => observer.disconnect();
-  }, []);
 
   return (
     <section className="py-24 bg-gradient-to-br from-[#FAFAFA] to-white">
