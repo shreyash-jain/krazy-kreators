@@ -56,6 +56,13 @@ const TestimonialCard: React.FC<TestimonialCardProps> = ({
           controls={false}
           playsInline
           preload="metadata"
+          poster=""
+          onLoadedMetadata={() => {
+            // Force Safari to load the first frame as thumbnail
+            if (videoRef.current) {
+              videoRef.current.currentTime = 0.1;
+            }
+          }}
           onEnded={() => onVideoPlay(-1)}
           tabIndex={-1}
         />

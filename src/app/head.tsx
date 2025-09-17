@@ -11,8 +11,8 @@ export default function Head() {
       <link rel="dns-prefetch" href="https://krazykreators.com" />
       
       {/* Additional favicon support for Safari */}
-      <link rel="icon" type="image/x-icon" href="/favicon.ico" />
-      <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
+      <link rel="icon" type="image/x-icon" href="/Logo.ico" />
+      <link rel="shortcut icon" type="image/x-icon" href="/Logo.ico" />
       <link rel="apple-touch-icon" href="/Logo.ico" />
       <link rel="apple-touch-icon" sizes="180x180" href="/Logo.ico" />
       <meta name="msapplication-TileImage" content="/Logo.ico" />
