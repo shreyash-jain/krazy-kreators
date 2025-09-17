@@ -14,6 +14,7 @@ interface PhoneNumberInputProps {
   value?: string;
   onChange?: (e: React.ChangeEvent<HTMLInputElement>) => void;
   required?: boolean;
+  defaultCountryCode?: string; // e.g., "US"
 }
 
 
@@ -212,15 +213,38 @@ export default function PhoneNumberInput({
   value,
   onChange,
   required,
+  defaultCountryCode = 'US',
 }: PhoneNumberInputProps) {
   const [isOpen, setIsOpen] = useState(false);
-  const [selectedCountry, setSelectedCountry] = useState<CountryCode>(countryCodes[0]); // Default to US
+  const [selectedCountry, setSelectedCountry] = useState<CountryCode>(() => {
+    const found = countryCodes.find(c => c.code === defaultCountryCode);
+    return found || countryCodes[0];
+  }); // Default to provided or US
   const [phoneNumber, setPhoneNumber] = useState("");
   const [displayValue, setDisplayValue] = useState("");
   const [searchTerm, setSearchTerm] = useState("");
   const [highlightedIndex, setHighlightedIndex] = useState(-1);
   const dropdownRef = useRef<HTMLDivElement>(null);
   const searchRef = useRef<HTMLInputElement>(null);
+
+  // Initialize displayValue based on the value prop
+  useEffect(() => {
+    if (value) {
+      // If value contains a country code, extract the phone number part
+      if (value.startsWith('+')) {
+        const dialCode = selectedCountry?.dialCode || '+1';
+        if (value.startsWith(dialCode)) {
+          setDisplayValue(value.substring(dialCode.length).trim());
+        } else {
+          setDisplayValue(value);
+        }
+      } else {
+        setDisplayValue(value);
+      }
+    } else {
+      setDisplayValue("");
+    }
+  }, [value, selectedCountry]);
 
   const handleCountrySelect = (country: CountryCode) => {
     setSelectedCountry(country);
@@ -389,7 +413,7 @@ export default function PhoneNumberInput({
     if (onChange) {
       const syntheticEvent = {
         target: { 
-          value: `${selectedCountry.dialCode} ${newValue}`, 
+          value: `${selectedCountry?.dialCode || '+1'} ${newValue}`, 
           name: name || "" 
         }
       } as React.ChangeEvent<HTMLInputElement>;
@@ -434,7 +458,7 @@ export default function PhoneNumberInput({
           onClick={handleToggle}
         >
           <ReactCountryFlag 
-            countryCode={selectedCountry.flag} 
+            countryCode={selectedCountry?.flag || 'US'} 
             svg 
             style={{
               width: '1.2em',
@@ -442,7 +466,7 @@ export default function PhoneNumberInput({
               marginRight: '0.5rem'
             }}
           />
-          <span className="text-sm text-[#2D2A2E] font-medium">{selectedCountry.dialCode}</span>
+          <span className="text-sm text-[#2D2A2E] font-medium">{selectedCountry?.dialCode || '+1'}</span>
           <ChevronDown className={`h-4 w-4 text-[#CBB49A] ml-1 transition-transform ${isOpen ? 'rotate-180' : ''}`} />
         </div>
         

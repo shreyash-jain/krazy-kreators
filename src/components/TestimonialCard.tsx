@@ -45,7 +45,7 @@ const TestimonialCard: React.FC<TestimonialCardProps> = ({
       onClick={handleCardClick}
     >
       {/* Video Container - reduced height */}
-      <div className="relative w-full h-[70vh]" style={{ aspectRatio: '4/5' }}>
+      <div className="relative w-full h-[70vh] sm:h-[60vh] lg:h-[60vh]">
         <video
           ref={(ref) => {
             videoRef.current = ref;
@@ -54,6 +54,7 @@ const TestimonialCard: React.FC<TestimonialCardProps> = ({
           src={videoSrc}
           className="w-full h-full object-cover"
           controls={false}
+          muted
           playsInline
           preload="metadata"
           onEnded={() => onVideoPlay(-1)}
@@ -62,7 +63,7 @@ const TestimonialCard: React.FC<TestimonialCardProps> = ({
         {/* Play button overlay when not playing */}
         {!isPlaying && (
           <div className="absolute inset-0 flex items-center justify-center bg-black/10">
-            <div className="bg-white/80 backdrop-blur-sm rounded-full p-4 flex items-center justify-center shadow-lg">
+            <div className="bg-white/80 backdrop-blur-sm rounded-full p-2 flex items-center justify-center shadow-lg">
               <svg className="w-8 h-8 text-gray-900" fill="currentColor" viewBox="0 0 24 24">
                 <polygon points="9.5,7.5 16.5,12 9.5,16.5" />
               </svg>

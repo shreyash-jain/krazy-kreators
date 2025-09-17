@@ -855,6 +855,7 @@ export default function BadriAlShihhiClient() {
                   <video
                     ref={videoRef}
                     src="/testimonial/badria-testimonial.mp4"
+                    poster="/brands/badriaalshihhi-coverimage.jpg"
                     className="w-full h-full object-cover"
                     controls={false}
                     playsInline

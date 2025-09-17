@@ -19,11 +19,14 @@ export const metadata: Metadata = {
   },
   icons: {
     icon: [
+      { url: "/favicon.ico", sizes: "16x16", type: "image/x-icon" },
       { url: "/Logo.ico", sizes: "32x32", type: "image/x-icon" },
       { url: "/Logo.svg", sizes: "any", type: "image/svg+xml" },
     ],
-    shortcut: "/Logo.ico",
-    apple: "/Logo.ico",
+    shortcut: "/favicon.ico",
+    apple: [
+      { url: "/Logo.ico", sizes: "180x180", type: "image/x-icon" },
+    ],
   },
   openGraph: {
     title: "Krazy Kreators | Start Your Clothing Brand With Us",

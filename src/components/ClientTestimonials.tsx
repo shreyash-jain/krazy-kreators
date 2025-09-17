@@ -73,44 +73,41 @@ const TestimonialsSection = () => {
     cardRefs.current[index] = ref;
   }, []);
 
-  // Intersection Observer to pause videos when not visible
+  // Intersection Observer to auto-play first visible and pause others
   useEffect(() => {
     const observer = new IntersectionObserver(
       (entries) => {
+        let firstVisibleIndex: number | null = null;
         entries.forEach((entry) => {
           const index = parseInt(entry.target.getAttribute('data-index') || '0');
           const video = videoRefs.current[index];
-          
-          if (!entry.isIntersecting && video && !video.paused) {
-            // Video is not visible and is playing, pause it
+          if (entry.isIntersecting) {
+            if (firstVisibleIndex === null) firstVisibleIndex = index;
+          } else if (video && !video.paused) {
             video.pause();
-            if (playingVideoIndex === index) {
-              setPlayingVideoIndex(null);
-            }
           }
         });
+        if (firstVisibleIndex !== null) {
+          const video = videoRefs.current[firstVisibleIndex];
+          if (video) {
+            video.play().catch(() => {});
+            setPlayingVideoIndex(firstVisibleIndex);
+          }
+        }
       },
-      {
-        threshold: 0.1, // Trigger when 10% of the video is visible
-        rootMargin: '0px 0px -10% 0px' // Add some margin to trigger earlier
-      }
+      { threshold: 0.6 }
     );
 
-    // Observe all card elements
     cardRefs.current.forEach((card) => {
-      if (card) {
-        observer.observe(card);
-      }
+      if (card) observer.observe(card);
     });
 
-    return () => {
-      observer.disconnect();
-    };
-  }, [playingVideoIndex]);
+    return () => observer.disconnect();
+  }, []);
 
   return (
     <section className="py-24 bg-gradient-to-br from-[#FAFAFA] to-white">
-      <div className="min-w-[90%] xl:max-w-[85%] 2xl:max-w-[80%] mx-auto px-4 sm:px-6 lg:px-8">
+      <div className="min-w-[80%] xl:max-w-[85%] 2xl:max-w-[80%] mx-auto px-4 sm:px-6">
         {/* Section Header */}
         <div
          
@@ -125,7 +122,7 @@ const TestimonialsSection = () => {
         </div>
 
         {/* Testimonial Cards Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl mx-auto">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 max-w-7xl mx-auto">
           {testimonials.map((t, i) => (
             <TestimonialCard
               key={i}

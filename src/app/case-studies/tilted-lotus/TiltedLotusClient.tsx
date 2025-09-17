@@ -18,9 +18,7 @@ export default function TiltedLotusClient() {
 		if (!playing) {
 			setPlaying(true);
 			setWasManuallyPaused(false); // User manually resumed
-			setTimeout(() => {
-				videoRef.current?.play();
-			}, 100);
+			videoRef.current?.play();
 		} else {
 			setPlaying(false);
 			setWasManuallyPaused(true); // User manually paused
@@ -28,31 +26,34 @@ export default function TiltedLotusClient() {
 		}
 	};
 
-	// Intersection Observer to pause/resume video based on visibility
+	// Intersection Observer to autoplay when visible and pause when not visible
 	useEffect(() => {
 		const observer = new IntersectionObserver(
 			(entries) => {
 				entries.forEach((entry) => {
 					const video = videoRef.current;
 					
-					if (!entry.isIntersecting && video && !video.paused) {
-						// Video is not visible and is playing, pause it (preserves current time)
-						video.pause();
-						setPlaying(false);
-						// Don't set wasManuallyPaused - this is automatic pause due to scrolling
-					} else if (entry.isIntersecting && video && video.paused && !wasManuallyPaused) {
-						// Video is visible, paused, and was NOT manually paused - resume it
-						video.play().then(() => {
-							setPlaying(true);
-						}).catch((error) => {
-							console.log('Resume play failed:', error);
-						});
+					if (entry.isIntersecting) {
+						// Video is visible - start playing with sound
+						if (video && video.paused) {
+							video.play().then(() => {
+								setPlaying(true);
+							}).catch((error) => {
+								console.log('Autoplay failed:', error);
+							});
+						}
+					} else {
+						// Video is not visible - pause it
+						if (video && !video.paused) {
+							video.pause();
+							setPlaying(false);
+						}
 					}
 				});
 			},
 			{
-				threshold: 0.1, // Trigger when 10% of the video is visible
-				rootMargin: '0px 0px -10% 0px' // Add some margin to trigger earlier
+				threshold: 0.5, // Trigger when 50% of the video is visible
+				rootMargin: '0px'
 			}
 		);
 
@@ -63,7 +64,7 @@ export default function TiltedLotusClient() {
 		return () => {
 			observer.disconnect();
 		};
-	}, [wasManuallyPaused]);
+	}, []);
 
 	const barriersMobile: string[] = [
 		"Traditional manufacturers rejected small batches with many styles.",
@@ -630,7 +631,7 @@ export default function TiltedLotusClient() {
 										onClick={handleVideoClick}
 									>
 										<div className="relative w-full" style={{ aspectRatio: '4/5' }}>
-											<video
+                                        <video
 												ref={videoRef}
 												src="/testimonial/testimonial-1.mp4"
 												className="w-full h-full object-cover"
