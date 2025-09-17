@@ -957,7 +957,7 @@ export default function LasClient() {
 										onClick={handleVideoClick}
 									>
 										<div className="relative w-full" style={{ aspectRatio: '4/5' }}>
-											<video
+                                        <video
 												ref={videoRef}
 												src="/testimonial/las-testimonial.mp4"
 												className="w-full h-full object-cover"
@@ -1017,6 +1017,7 @@ export default function LasClient() {
 										<video
 											ref={videoRef}
 											src="/testimonial/las-testimonial.mp4"
+                                            poster="/brands/las-loungewear.png"
 											className="w-full h-full object-cover"
 											controls={false}
 											playsInline

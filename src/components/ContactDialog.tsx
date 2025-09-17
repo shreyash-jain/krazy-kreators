@@ -26,7 +26,7 @@ export default function ContactDialog({ open, onClose, selectedPlan }: ContactDi
     phone: '',
     company: '',
     address: '',
-    country: '',
+    country: 'US', // Default to US to match phone number default
     services: '',
     message: ''
   });
@@ -61,11 +61,69 @@ export default function ContactDialog({ open, onClose, selectedPlan }: ContactDi
     }));
   };
 
+  // Helper function to get country code from phone number
+  const getCountryFromPhoneNumber = (phoneValue: string): string => {
+    if (!phoneValue.startsWith('+')) return 'US';
+    
+    // Common dial codes mapped to country codes (ordered by length for longest match first)
+    const dialCodeMap: { [key: string]: string } = {
+      '+1': 'US', // Default to US for +1
+      '+44': 'GB', '+91': 'IN', '+49': 'DE', '+33': 'FR', '+39': 'IT', '+34': 'ES',
+      '+31': 'NL', '+32': 'BE', '+41': 'CH', '+43': 'AT', '+46': 'SE', '+47': 'NO',
+      '+45': 'DK', '+48': 'PL', '+36': 'HU', '+40': 'RO', '+30': 'GR', '+81': 'JP',
+      '+82': 'KR', '+86': 'CN', '+65': 'SG', '+60': 'MY', '+66': 'TH', '+62': 'ID',
+      '+63': 'PH', '+84': 'VN', '+64': 'NZ', '+27': 'ZA', '+20': 'EG', '+90': 'TR',
+      '+7': 'RU', '+93': 'AF', '+92': 'PK', '+94': 'LK', '+95': 'MM', '+98': 'IR',
+      '+55': 'BR', '+54': 'AR', '+56': 'CL', '+57': 'CO', '+51': 'PE', '+58': 'VE',
+      '+52': 'MX', '+53': 'CU', '+61': 'AU', '+358': 'FI', '+420': 'CZ', '+359': 'BG',
+      '+385': 'HR', '+386': 'SI', '+421': 'SK', '+370': 'LT', '+371': 'LV', '+372': 'EE',
+      '+353': 'IE', '+351': 'PT', '+357': 'CY', '+356': 'MT', '+352': 'LU', '+354': 'IS',
+      '+423': 'LI', '+377': 'MC', '+378': 'SM', '+379': 'VA', '+376': 'AD', '+852': 'HK',
+      '+886': 'TW', '+234': 'NG', '+254': 'KE', '+233': 'GH', '+212': 'MA', '+216': 'TN',
+      '+213': 'DZ', '+218': 'LY', '+249': 'SD', '+251': 'ET', '+256': 'UG', '+255': 'TZ',
+      '+250': 'RW', '+257': 'BI', '+265': 'MW', '+260': 'ZM', '+263': 'ZW', '+267': 'BW',
+      '+264': 'NA', '+268': 'SZ', '+266': 'LS', '+261': 'MG', '+230': 'MU', '+248': 'SC',
+      '+269': 'KM', '+253': 'DJ', '+252': 'SO', '+291': 'ER', '+211': 'SS', '+236': 'CF',
+      '+235': 'TD', '+227': 'NE', '+223': 'ML', '+226': 'BF', '+225': 'CI', '+231': 'LR',
+      '+232': 'SL', '+224': 'GN', '+245': 'GW', '+220': 'GM', '+221': 'SN', '+222': 'MR',
+      '+238': 'CV', '+239': 'ST', '+240': 'GQ', '+241': 'GA', '+242': 'CG', '+243': 'CD',
+      '+244': 'AO', '+593': 'EC', '+591': 'BO', '+595': 'PY', '+598': 'UY', '+592': 'GY',
+      '+597': 'SR', '+594': 'GF', '+500': 'FK', '+502': 'GT', '+501': 'BZ', '+503': 'SV',
+      '+504': 'HN', '+505': 'NI', '+506': 'CR', '+507': 'PA', '+509': 'HT', '+299': 'GL',
+      '+996': 'KG', '+992': 'TJ', '+993': 'TM', '+998': 'UZ', '+880': 'BD', '+960': 'MV',
+      '+975': 'BT', '+977': 'NP', '+856': 'LA', '+855': 'KH', '+673': 'BN', '+670': 'TL',
+      '+976': 'MN', '+850': 'KP', '+853': 'MO', '+972': 'IL', '+970': 'PS', '+962': 'JO',
+      '+961': 'LB', '+963': 'SY', '+964': 'IQ', '+965': 'KW', '+966': 'SA', '+974': 'QA',
+      '+973': 'BH', '+971': 'AE', '+968': 'OM', '+967': 'YE'
+    };
+
+    // Sort dial codes by length (longest first) to match the most specific code
+    const sortedDialCodes = Object.keys(dialCodeMap).sort((a, b) => b.length - a.length);
+    
+    for (const dialCode of sortedDialCodes) {
+      if (phoneValue.startsWith(dialCode)) {
+        return dialCodeMap[dialCode];
+      }
+    }
+    
+    return 'US'; // Default fallback
+  };
+
   const handlePhoneChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const phoneValue = e.target.value;
     setFormData(prev => ({
       ...prev,
-      phone: e.target.value
+      phone: phoneValue
     }));
+
+    // Update country dropdown based on phone number country code
+    if (phoneValue.startsWith('+')) {
+      const matchedCountry = getCountryFromPhoneNumber(phoneValue);
+      setFormData(prev => ({
+        ...prev,
+        country: matchedCountry
+      }));
+    }
   };
 
   const handleSubmit = async (e: React.FormEvent) => {
@@ -104,7 +162,7 @@ export default function ContactDialog({ open, onClose, selectedPlan }: ContactDi
         phone: '',
         company: '',
         address: '',
-        country: '',
+        country: 'US', // Reset to US default
         services: '',
         message: ''
       });
@@ -215,6 +273,7 @@ export default function ContactDialog({ open, onClose, selectedPlan }: ContactDi
                   id="cd-phone"
                   name="phone"
                   required
+                  defaultCountryCode="US"
                   value={formData.phone}
                   onChange={handlePhoneChange}
                   className="w-full rounded-xl border border-[#ECE9E2] bg-white px-4 py-3 text-[#2D2A2E] placeholder-[#A9A29D] focus:outline-none focus:ring-2 focus:ring-[#CBB49A]/20 focus:border-[#CBB49A]"

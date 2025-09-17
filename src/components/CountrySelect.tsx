@@ -77,6 +77,16 @@ export default function CountrySelect({
     }
   }, [value, countries]);
 
+  // Set initial selected country when countries are loaded and we have a value
+  useEffect(() => {
+    if (value && countries.length > 0 && !selectedCountry) {
+      const country = countries.find(c => c.code === value);
+      if (country) {
+        setSelectedCountry(country);
+      }
+    }
+  }, [countries, value, selectedCountry]);
+
   const filteredCountries = useMemo(() => {
     if (!searchTerm) return countries;
     return countries.filter(country => 
