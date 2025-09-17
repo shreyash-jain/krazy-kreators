@@ -54,7 +54,6 @@ const TestimonialCard: React.FC<TestimonialCardProps> = ({
           src={videoSrc}
           className="w-full h-full object-cover"
           controls={false}
-          muted
           playsInline
           preload="metadata"
           onEnded={() => onVideoPlay(-1)}
