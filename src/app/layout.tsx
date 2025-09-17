@@ -3,6 +3,7 @@ import { Geist } from "next/font/google";
 import Script from "next/script";
 import "./globals.css";
 import Navbar from "@/components/Navbar";
+import Head from "./head";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -84,6 +85,7 @@ export default function RootLayout({
 
   return (
     <html lang="en" suppressHydrationWarning>
+      <Head />
       <body
         className={`${geistSans.variable} antialiased bg-white min-h-screen`}
       >
