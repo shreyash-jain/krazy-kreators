@@ -31,9 +31,16 @@ const megaContent: Record<TopTab, { title: string; desc: string; href: string; i
 		{ title: "Design Services", desc: "Concepts, prints, and garment design", href: "/design-services", icon: Palette },
 		{ title: "Manufacturing Services", desc: "Sampling to bulk production", href: "/manufacturing-services", icon: Factory },
 		{ title: "End‑to‑End Services", desc: "From tech packs to delivery", href: "/end-to-end-services", icon: Infinity },
-		// Product Categories are not in the menu items as i want to reuse it on our next build
-		// { title: "Product Categories", desc: "Tops, shirts, dresses, kidswear", href: "/#explore-designs", icon: Grid3X3 },
+
 	],
+	// Portfolio: [
+	// 	{ title: "Luxury Wear", desc: "Premium high-end fashion pieces", href: "/portfolio/luxury-wear", icon: FolderKanban },
+	// 	{ title: "Resort Wear", desc: "Vacation and leisure clothing", href: "/portfolio/resort-wear", icon: FolderKanban },
+	// 	{ title: "Mens Wear", desc: "Classic menswear and formal attire", href: "/portfolio/mens-wear", icon: FolderKanban },
+	// 	{ title: "Men's Streetwear", desc: "Urban and casual menswear", href: "/portfolio/mens-streetwear", icon: FolderKanban },
+	// 	{ title: "Loungewear", desc: "Comfortable home and casual wear", href: "/portfolio/loungewear", icon: FolderKanban },
+	// 	{ title: "Accessories", desc: "Fashion accessories and add-ons", href: "/portfolio/accessories", icon: FolderKanban },
+	// ],
 	"Case Studies": [
 		{ title: "Drover Cowboy Threads", desc: "Modern westernwear case study", href: "/case-studies/drover", icon: FolderKanban },
 		{ title: "Tilted Lotus", desc: "Premium apparel brand", href: "/case-studies/tilted-lotus", icon: FolderKanban },

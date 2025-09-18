@@ -89,20 +89,20 @@ export default function AboutClient() {
           {/* Brand Logos Row */}
           <div className="mt-8 sm:mt-12 md:mt-16 w-full px-4">
             <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-6 sm:gap-8 md:gap-10 items-center">
-              <div className="flex items-center justify-center h-16 sm:h-20 md:h-24 w-full bg-white rounded-lg border border-[#ECE9E2] p-4">
-                <img src="/brands/drover.png" alt="Drover fashion brand logo - custom clothing production" className="max-h-full max-w-full w-auto h-auto object-contain opacity-90 hover:opacity-100 transition" />
+              <div className="flex items-center justify-center h-16 sm:h-20 md:h-24 w-full bg-white rounded-lg border border-[#ECE9E2] p-4 overflow-hidden">
+                <img src="/brands/drover.png" alt="Drover fashion brand logo - custom clothing production" className="max-h-[80%] max-w-[80%] w-auto h-auto object-contain opacity-90 hover:opacity-100 transition" />
               </div>
-              <div className="flex items-center justify-center h-16 sm:h-20 md:h-24 w-full bg-white rounded-lg border border-[#ECE9E2] p-4">
-                <img src="/brands/titled-lotus.png" alt="Tilted Lotus logo - create your own fashion brand" className="max-h-full max-w-full w-auto h-auto object-contain opacity-90 hover:opacity-100 transition" />
+              <div className="flex items-center justify-center h-16 sm:h-20 md:h-24 w-full bg-white rounded-lg border border-[#ECE9E2] p-4 overflow-hidden">
+                <img src="/brands/titled-lotus.png" alt="Tilted Lotus logo - create your own fashion brand" className="max-h-[80%] max-w-[80%] w-auto h-auto object-contain opacity-90 hover:opacity-100 transition" />
               </div>
-              <div className="flex items-center justify-center h-16 sm:h-20 md:h-24 w-full bg-white rounded-lg border border-[#ECE9E2] p-4">
-                <img src="/brands/las-loungewear.png" alt="Las Loungewear logo - fashion brand manufacturing" className="max-h-full max-w-full w-auto h-auto object-contain opacity-90 hover:opacity-100 transition" />
+              <div className="flex items-center justify-center h-16 sm:h-20 md:h-24 w-full bg-white rounded-lg border border-[#ECE9E2] p-4 overflow-hidden">
+                <img src="/brands/las-loungewear.png" alt="Las Loungewear logo - fashion brand manufacturing" className="max-h-[80%] max-w-[80%] w-auto h-auto object-contain opacity-90 hover:opacity-100 transition" />
               </div>
-              <div className="flex items-center justify-center h-16 sm:h-20 md:h-24 w-full bg-white rounded-lg border border-[#ECE9E2] p-4">
-                <img src="/brands/hy-official.png" alt="HY Official logo - clothing manufacturing services" className="max-h-full max-w-full w-auto h-auto object-contain opacity-90 hover:opacity-100 transition" />
+              <div className="flex items-center justify-center h-16 sm:h-20 md:h-24 w-full bg-white rounded-lg border border-[#ECE9E2] p-4 overflow-hidden">
+                <img src="/brands/hy-official.png" alt="HY Official logo - clothing manufacturing services" className="max-h-[80%] max-w-[80%] w-auto h-auto object-contain opacity-90 hover:opacity-100 transition" />
               </div>
-              <div className="flex items-center justify-center h-16 sm:h-20 md:h-24 w-full bg-white rounded-lg border border-[#ECE9E2] p-4">
-                <img src="/brands/badri-al-shihhi.png" alt="Badria Al Shihhi logo - custom clothing production" className="max-h-full max-w-full w-auto h-auto object-contain opacity-90 hover:opacity-100 transition" />
+              <div className="flex items-center justify-center h-16 sm:h-20 md:h-24 w-full bg-white rounded-lg border border-[#ECE9E2] p-4 overflow-hidden">
+                <img src="/brands/badri-al-shihhi.png" alt="Badria Al Shihhi logo - custom clothing production" className="max-h-[80%] max-w-[80%] w-auto h-auto object-contain opacity-90 hover:opacity-100 transition" />
               </div>
             </div>
           </div>
