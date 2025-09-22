@@ -165,7 +165,7 @@ export default function PricingClient() {
       />
 
       {/* Hero - Clean white */}
-      <section className="min-h-screen flex items-center bg-white py-20 sm:py-24 md:py-28">
+      <section className="h-[70vh] flex items-center bg-white py-12 sm:py-16 md:py-20">
         <div className="max-w-[80%] mx-auto px-4 md:px-0 lg:px-0 text-center w-full">
           <h1 className="text-3xl sm:text-4xl md:text-5xl font-serif font-bold text-[#111111]">
             Simple Pricing. Big Value.
@@ -186,7 +186,7 @@ export default function PricingClient() {
       </section>
 
       {/* Retainership model explainer (cards) */}
-      <section className="py-14 sm:py-16 md:py-20 bg-[#FAF9F7]">
+      <section className="py-8 sm:py-10 md:py-12 bg-[#FAF9F7]">
         <div className="max-w-[80%] mx-auto px-4 md:px-0 lg:px-0">
           <div className="grid grid-cols-1 lg:grid-cols-2 auto-rows-fr items-stretch gap-6 md:gap-8">
             {/* Card 1 */}

@@ -31,6 +31,23 @@ const TestimonialCard: React.FC<TestimonialCardProps> = ({
     onVideoPlay(index);
   };
 
+  // Safari-specific video handling
+  React.useEffect(() => {
+    if (videoRef.current) {
+      if (isPlaying) {
+        // When playing, ensure video is unmuted and plays
+        videoRef.current.muted = false;
+        videoRef.current.play().catch(console.error);
+      } else {
+        // When not playing, ensure video is paused and muted
+        videoRef.current.pause();
+        videoRef.current.muted = true;
+        // Reset to first frame for thumbnail
+        videoRef.current.currentTime = 0.1;
+      }
+    }
+  }, [isPlaying]);
+
   return (
     <motion.div
       ref={(ref) => {
@@ -42,10 +59,24 @@ const TestimonialCard: React.FC<TestimonialCardProps> = ({
       viewport={{ once: true, margin: "-100px" }}
       transition={{ duration: 0.6, ease: "easeOut" }}
       className="bg-white rounded-3xl shadow-lg hover:shadow-2xl transition-all duration-300 hover:scale-105 cursor-pointer overflow-hidden"
+      style={{
+        WebkitTransform: 'translateZ(0)',
+        transform: 'translateZ(0)',
+        WebkitBackfaceVisibility: 'hidden',
+        backfaceVisibility: 'hidden'
+      }}
       onClick={handleCardClick}
     >
       {/* Video Container - reduced height */}
-      <div className="relative w-full h-[70vh] sm:h-[60vh] lg:h-[60vh]">
+      <div 
+        className="relative w-full h-[70vh] sm:h-[60vh] lg:h-[60vh]"
+        style={{
+          WebkitTransform: 'translateZ(0)',
+          transform: 'translateZ(0)',
+          WebkitBackfaceVisibility: 'hidden',
+          backfaceVisibility: 'hidden'
+        }}
+      >
         <video
           ref={(ref) => {
             videoRef.current = ref;
@@ -53,14 +84,30 @@ const TestimonialCard: React.FC<TestimonialCardProps> = ({
           }}
           src={videoSrc}
           className="w-full h-full object-cover"
+          style={{
+            WebkitTransform: 'translateZ(0)',
+            transform: 'translateZ(0)',
+            WebkitBackfaceVisibility: 'hidden',
+            backfaceVisibility: 'hidden'
+          }}
           controls={false}
           playsInline
           preload="metadata"
           poster=""
+          muted
           onLoadedMetadata={() => {
             // Force Safari to load the first frame as thumbnail
             if (videoRef.current) {
               videoRef.current.currentTime = 0.1;
+              // Ensure the first frame is visible
+              videoRef.current.pause();
+            }
+          }}
+          onCanPlay={() => {
+            // Additional Safari optimization - ensure first frame is loaded
+            if (videoRef.current && !isPlaying) {
+              videoRef.current.currentTime = 0.1;
+              videoRef.current.pause();
             }
           }}
           onEnded={() => onVideoPlay(-1)}

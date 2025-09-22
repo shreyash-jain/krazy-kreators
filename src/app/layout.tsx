@@ -87,7 +87,7 @@ export default function RootLayout({
     <html lang="en" suppressHydrationWarning>
       <Head />
       <body
-        className={`${geistSans.variable} antialiased bg-white min-h-screen`}
+        className={`${geistSans.variable} antialiased bg-white min-h-screen safari-fix`}
       >
         <Script
           src="https://www.googletagmanager.com/gtag/js?id=G-HDYK2HYHWZ"

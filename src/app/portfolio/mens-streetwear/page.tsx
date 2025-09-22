@@ -1,8 +1,11 @@
 import React from 'react'
+import MensStreetwearClient from './MensStreetwearClient'
 
 const page = () => {
   return (
-    <div>page</div>
+    <div>
+      <MensStreetwearClient />
+    </div>
   )
 }
 

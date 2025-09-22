@@ -10,6 +10,44 @@ export default function Head() {
       <link rel="preconnect" href="https://krazykreators.com" />
       <link rel="dns-prefetch" href="https://krazykreators.com" />
 
+      {/* Safari-specific optimizations */}
+      <meta name="format-detection" content="telephone=no" />
+      <meta name="apple-mobile-web-app-capable" content="yes" />
+      <meta name="apple-mobile-web-app-status-bar-style" content="default" />
+      <meta name="apple-mobile-web-app-title" content="Krazy Kreators" />
+      <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, viewport-fit=cover" />
+      
+      {/* Safari-specific CSS optimizations */}
+      <style 
+        precedence="default" 
+        href="safari-optimizations"
+        dangerouslySetInnerHTML={{
+          __html: `
+            /* Safari-specific optimizations */
+            @supports (-webkit-touch-callout: none) {
+              * {
+                -webkit-transform: translateZ(0);
+                transform: translateZ(0);
+                -webkit-backface-visibility: hidden;
+                backface-visibility: hidden;
+              }
+              
+              img, video {
+                -webkit-transform: translateZ(0);
+                transform: translateZ(0);
+                -webkit-backface-visibility: hidden;
+                backface-visibility: hidden;
+              }
+              
+              .group:hover {
+                -webkit-transform: translateZ(0);
+                transform: translateZ(0);
+              }
+            }
+          `
+        }} 
+      />
+
       {/* Comprehensive favicon support for all browsers including Safari */}
       <link rel="icon" type="image/x-icon" href="/Logo.ico" />
       <link rel="shortcut icon" type="image/x-icon" href="/Logo.ico" />

@@ -43,10 +43,12 @@ const TestimonialsSection = () => {
   const cardRefs = useRef<(HTMLDivElement | null)[]>([]);
 
   const handleVideoPlay = useCallback((index: number) => {
-    // Pause all other videos
+    // Pause all other videos and reset them to first frame
     videoRefs.current.forEach((ref, i) => {
       if (ref && i !== index) {
         ref.pause();
+        ref.muted = true;
+        ref.currentTime = 0.1; // Reset to first frame for thumbnail
       }
     });
 
@@ -55,12 +57,15 @@ const TestimonialsSection = () => {
       setPlayingVideoIndex(null);
       if (videoRefs.current[index]) {
         videoRefs.current[index]?.pause();
+        videoRefs.current[index]!.muted = true;
+        videoRefs.current[index]!.currentTime = 0.1; // Reset to first frame
       }
     } else {
       // Play the clicked video
       setPlayingVideoIndex(index);
       if (videoRefs.current[index]) {
-        videoRefs.current[index]?.play();
+        videoRefs.current[index]!.muted = false;
+        videoRefs.current[index]?.play().catch(console.error);
       }
     }
   }, [playingVideoIndex]);
@@ -71,6 +76,23 @@ const TestimonialsSection = () => {
 
   const setCardRef = useCallback((index: number, ref: HTMLDivElement | null) => {
     cardRefs.current[index] = ref;
+  }, []);
+
+  // Initialize all videos to show first frame as thumbnail
+  useEffect(() => {
+    const initializeVideos = () => {
+      videoRefs.current.forEach((ref) => {
+        if (ref) {
+          ref.muted = true;
+          ref.currentTime = 0.1;
+          ref.pause();
+        }
+      });
+    };
+
+    // Initialize after a short delay to ensure videos are loaded
+    const timer = setTimeout(initializeVideos, 100);
+    return () => clearTimeout(timer);
   }, []);
 
 

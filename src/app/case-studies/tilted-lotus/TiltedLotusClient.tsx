@@ -18,11 +18,29 @@ export default function TiltedLotusClient() {
 		if (!playing) {
 			setPlaying(true);
 			setWasManuallyPaused(false); // User manually resumed
-			videoRef.current?.play();
+			if (videoRef.current) {
+				videoRef.current.muted = false;
+				videoRef.current.play().catch((error) => {
+					console.log('Manual play failed:', error);
+					// Safari fallback: try muted first
+					videoRef.current!.muted = true;
+					videoRef.current!.play().then(() => {
+						// Try to unmute after playing starts
+						setTimeout(() => {
+							videoRef.current!.muted = false;
+						}, 100);
+					}).catch(() => {
+						console.log('Muted manual play also failed');
+					});
+				});
+			}
 		} else {
 			setPlaying(false);
 			setWasManuallyPaused(true); // User manually paused
-			videoRef.current?.pause();
+			if (videoRef.current) {
+				videoRef.current.pause();
+				videoRef.current.currentTime = 0.1; // Reset to first frame for thumbnail
+			}
 		}
 	};
 
@@ -35,17 +53,31 @@ export default function TiltedLotusClient() {
 					
 					if (entry.isIntersecting) {
 						// Video is visible - start playing with sound
-						if (video && video.paused) {
+						if (video && video.paused && !wasManuallyPaused) {
+							// Safari-specific: ensure video is ready and unmuted
+							video.muted = false;
 							video.play().then(() => {
 								setPlaying(true);
 							}).catch((error) => {
 								console.log('Autoplay failed:', error);
+								// Fallback: try with muted first, then unmute
+								video.muted = true;
+								video.play().then(() => {
+									setPlaying(true);
+									// Try to unmute after a short delay
+									setTimeout(() => {
+										video.muted = false;
+									}, 100);
+								}).catch(() => {
+									console.log('Muted autoplay also failed');
+								});
 							});
 						}
 					} else {
-						// Video is not visible - pause it
+						// Video is not visible - pause it and reset to first frame
 						if (video && !video.paused) {
 							video.pause();
+							video.currentTime = 0.1; // Reset to first frame for thumbnail
 							setPlaying(false);
 						}
 					}
@@ -64,6 +96,21 @@ export default function TiltedLotusClient() {
 		return () => {
 			observer.disconnect();
 		};
+	}, [wasManuallyPaused]);
+
+	// Initialize video to show first frame as thumbnail
+	useEffect(() => {
+		const initializeVideo = () => {
+			if (videoRef.current) {
+				videoRef.current.muted = true;
+				videoRef.current.currentTime = 0.1;
+				videoRef.current.pause();
+			}
+		};
+
+		// Initialize after a short delay to ensure video is loaded
+		const timer = setTimeout(initializeVideo, 100);
+		return () => clearTimeout(timer);
 	}, []);
 
 	const barriersMobile: string[] = [
@@ -692,9 +739,30 @@ export default function TiltedLotusClient() {
 											ref={videoRef}
 											src="/testimonial/testimonial-1.mp4"
 											className="w-full h-full object-cover"
+											style={{
+												WebkitTransform: 'translateZ(0)',
+												transform: 'translateZ(0)',
+												WebkitBackfaceVisibility: 'hidden',
+												backfaceVisibility: 'hidden'
+											}}
 											controls={false}
 											playsInline
 											preload="metadata"
+											muted={false}
+											onLoadedMetadata={() => {
+												// Safari-specific: ensure first frame is loaded as thumbnail
+												if (videoRef.current) {
+													videoRef.current.currentTime = 0.1;
+													videoRef.current.pause();
+												}
+											}}
+											onCanPlay={() => {
+												// Additional Safari optimization
+												if (videoRef.current && !playing) {
+													videoRef.current.currentTime = 0.1;
+													videoRef.current.pause();
+												}
+											}}
 											onEnded={() => setPlaying(false)}
 											tabIndex={-1}
 										/>

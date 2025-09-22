@@ -1,7 +1,7 @@
 "use client";
 
 import { useState, useEffect } from "react";
-import { User, Mail, Phone, Building2, MapPin, Globe, FileText, MessageSquare } from "lucide-react";
+import { User, Mail, Building2, MapPin, Globe, FileText, MessageSquare } from "lucide-react";
 import CountrySelect from "@/components/CountrySelect";
 import ServicesSelect from "@/components/ServicesSelect";
 import PhoneNumberInput from "@/components/PhoneNumberInput";

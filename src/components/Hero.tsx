@@ -120,7 +120,7 @@ export default function Hero({ onGetStartedClick, onStartDemoClick }: HeroProps)
     return () => {
       observer.disconnect();
     };
-  }, [wasManuallyPaused]); // Include wasManuallyPaused in dependencies
+  }, [wasManuallyPaused, isMuted]); // Include wasManuallyPaused and isMuted in dependencies
 
   // Auto-play video muted by default when component mounts
   useEffect(() => {

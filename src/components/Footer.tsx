@@ -33,7 +33,7 @@ export default function Footer() {
   return (
     <footer className="bg-[#121212] text-[#F2F2F2]">
       {/* Main Footer Content */}
-      <div className="min-w-[80%] xl:max-w-[75%] 2xl:max-w-[70%] mx-auto px-4 sm:px-6 lg:px-12 xl:px-16 py-12 sm:py-16 md:py-20 lg:py-24">
+      <div className="min-w-[80%] lg:max-w-[80%] mx-auto px-4 sm:px-6 lg:px-8 py-12 sm:py-16 md:py-20 lg:py-24">
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-8 sm:gap-10 md:gap-8">
           {/* Column 1: Logo + Tagline */}
           <div className="text-center sm:text-left">
@@ -156,7 +156,7 @@ export default function Footer() {
 
       {/* Bottom Footer Strip */}
       <div className="border-t border-[#F2F2F2]/10">
-        <div className="min-w-[80%] xl:max-w-[75%] 2xl:max-w-[70%] mx-auto px-4 sm:px-6 lg:px-12 xl:px-16 py-4 sm:py-6">
+        <div className="min-w-[80%] lg:max-w-[80%] mx-auto px-4 sm:px-6 lg:px-8 py-4 sm:py-6">
           <div className="flex flex-col sm:flex-row justify-between items-center gap-3 sm:gap-4 text-xs sm:text-sm text-[#F2F2F2]/80">
             <div>
               © 2025 Krazy Kreators. All rights reserved.

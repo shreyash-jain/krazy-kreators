@@ -24,7 +24,7 @@ const services: Service[] = [
 ];
 
 export default function ServicesSelect({
-  id,
+  // id,
   name,
   className,
   placeholder = "Select services you need",
