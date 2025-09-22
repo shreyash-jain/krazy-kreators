@@ -209,7 +209,7 @@ export default function PhoneNumberInput({
   id,
   name,
   className,
-  placeholder = "Enter phone number",
+  // placeholder = "Enter phone number",
   value,
   onChange,
   required,

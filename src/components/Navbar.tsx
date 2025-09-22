@@ -6,11 +6,8 @@ import {
 	Palette,
 	Factory,
 	Infinity,
-	Grid3X3,
 	FolderKanban,
-	Newspaper,
-	FileText,
-	Video,
+	// Newspaper,
 	Building2,
 	BadgeDollarSign,
 	Phone,
@@ -33,14 +30,6 @@ const megaContent: Record<TopTab, { title: string; desc: string; href: string; i
 		{ title: "End‑to‑End Services", desc: "From tech packs to delivery", href: "/end-to-end-services", icon: Infinity },
 
 	],
-	// Portfolio: [
-	// 	{ title: "Luxury Wear", desc: "Premium high-end fashion pieces", href: "/portfolio/luxury-wear", icon: FolderKanban },
-	// 	{ title: "Resort Wear", desc: "Vacation and leisure clothing", href: "/portfolio/resort-wear", icon: FolderKanban },
-	// 	{ title: "Mens Wear", desc: "Classic menswear and formal attire", href: "/portfolio/mens-wear", icon: FolderKanban },
-	// 	{ title: "Men's Streetwear", desc: "Urban and casual menswear", href: "/portfolio/mens-streetwear", icon: FolderKanban },
-	// 	{ title: "Loungewear", desc: "Comfortable home and casual wear", href: "/portfolio/loungewear", icon: FolderKanban },
-	// 	{ title: "Accessories", desc: "Fashion accessories and add-ons", href: "/portfolio/accessories", icon: FolderKanban },
-	// ],
 	"Case Studies": [
 		{ title: "Drover Cowboy Threads", desc: "Modern westernwear case study", href: "/case-studies/drover", icon: FolderKanban },
 		{ title: "Tilted Lotus", desc: "Premium apparel brand", href: "/case-studies/tilted-lotus", icon: FolderKanban },
@@ -48,13 +37,6 @@ const megaContent: Record<TopTab, { title: string; desc: string; href: string; i
 		{ title: "HY Official", desc: "Lifestyle essentials", href: "/case-studies/hy-official", icon: FolderKanban },
 		{ title: "Badria Al Shihhi", desc: "Label development & rollout", href: "/case-studies/badri-al-shihhi", icon: FolderKanban },
 	],
-	// Blogs: [
-	// 	{ title: "All Blogs", desc: "Insights on building a fashion brand", href: "#", icon: Newspaper },
-	// ],
-	// Resources: [
-	// 	{ title: "Tech Packs", desc: "Download sample tech packs", href: "/#blog-and-tech-packs", icon: FileText },
-	// 	{ title: "Educational Videos", desc: "Short videos on process & quality", href: "#", icon: Video },
-	// ],
 	Company: [
 		{ title: "About Us", desc: "Story, vision, and team", href: "/about", icon: Building2 },
 		{ title: "Pricing", desc: "Transparent retainers & custom packs", href: "/pricing", icon: BadgeDollarSign },
@@ -62,7 +44,11 @@ const megaContent: Record<TopTab, { title: string; desc: string; href: string; i
 	],
 };
 
-export default function Navbar() {
+interface NavbarProps {
+	invertTabs?: boolean;
+}
+
+export default function Navbar({ invertTabs: forceInvertTabs }: NavbarProps = {}) {
 	const [open, setOpen] = useState(false);
 	const [scrolled, setScrolled] = useState(false);
 	const [activeTab, setActiveTab] = useState<TopTab | null>(null);
@@ -144,7 +130,7 @@ export default function Navbar() {
 		return () => io.disconnect();
 	}, []);
 
-	const invertTabs = (isDroverPage && !scrolled) || (isTiltedLotusPage && !scrolled) || (isLasPage && !scrolled) || (isHYOfficialPage && !scrolled) || (isBadriAlShihhiPage && !scrolled) || (heroInView && !scrolled);
+	const invertTabs = forceInvertTabs || (isDroverPage && !scrolled) || (isTiltedLotusPage && !scrolled) || (isLasPage && !scrolled) || (isHYOfficialPage && !scrolled) || (isBadriAlShihhiPage && !scrolled) || (heroInView && !scrolled);
 
 	return (
 		<>

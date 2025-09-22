@@ -17,41 +17,74 @@ export default function LasClient() {
 		if (!playing) {
 			setPlaying(true);
 			setWasManuallyPaused(false); // User manually resumed
-			setTimeout(() => {
-				videoRef.current?.play();
-			}, 100);
+			if (videoRef.current) {
+				videoRef.current.muted = false;
+				videoRef.current.play().catch((error) => {
+					console.log('Manual play failed:', error);
+					// Safari fallback: try muted first
+					videoRef.current!.muted = true;
+					videoRef.current!.play().then(() => {
+						// Try to unmute after playing starts
+						setTimeout(() => {
+							videoRef.current!.muted = false;
+						}, 100);
+					}).catch(() => {
+						console.log('Muted manual play also failed');
+					});
+				});
+			}
 		} else {
 			setPlaying(false);
 			setWasManuallyPaused(true); // User manually paused
-			videoRef.current?.pause();
+			if (videoRef.current) {
+				videoRef.current.pause();
+				videoRef.current.currentTime = 0.1; // Reset to first frame for thumbnail
+			}
 		}
 	};
 
-	// Intersection Observer to pause/resume video based on visibility
+	// Intersection Observer to autoplay when visible and pause when not visible
 	useEffect(() => {
 		const observer = new IntersectionObserver(
 			(entries) => {
 				entries.forEach((entry) => {
 					const video = videoRef.current;
 					
-					if (!entry.isIntersecting && video && !video.paused) {
-						// Video is not visible and is playing, pause it (preserves current time)
-						video.pause();
-						setPlaying(false);
-						// Don't set wasManuallyPaused - this is automatic pause due to scrolling
-					} else if (entry.isIntersecting && video && video.paused && !wasManuallyPaused) {
-						// Video is visible, paused, and was NOT manually paused - resume it
-						video.play().then(() => {
-							setPlaying(true);
-						}).catch((error) => {
-							console.log('Resume play failed:', error);
-						});
+					if (entry.isIntersecting) {
+						// Video is visible - start playing with sound
+						if (video && video.paused && !wasManuallyPaused) {
+							// Safari-specific: ensure video is ready and unmuted
+							video.muted = false;
+							video.play().then(() => {
+								setPlaying(true);
+							}).catch((error) => {
+								console.log('Autoplay failed:', error);
+								// Fallback: try with muted first, then unmute
+								video.muted = true;
+								video.play().then(() => {
+									setPlaying(true);
+									// Try to unmute after a short delay
+									setTimeout(() => {
+										video.muted = false;
+									}, 100);
+								}).catch(() => {
+									console.log('Muted autoplay also failed');
+								});
+							});
+						}
+					} else {
+						// Video is not visible - pause it and reset to first frame
+						if (video && !video.paused) {
+							video.pause();
+							video.currentTime = 0.1; // Reset to first frame for thumbnail
+							setPlaying(false);
+						}
 					}
 				});
 			},
 			{
-				threshold: 0.1, // Trigger when 10% of the video is visible
-				rootMargin: '0px 0px -10% 0px' // Add some margin to trigger earlier
+				threshold: 0.5, // Trigger when 50% of the video is visible
+				rootMargin: '0px'
 			}
 		);
 
@@ -63,6 +96,21 @@ export default function LasClient() {
 			observer.disconnect();
 		};
 	}, [wasManuallyPaused]);
+
+	// Initialize video to show first frame as thumbnail
+	useEffect(() => {
+		const initializeVideo = () => {
+			if (videoRef.current) {
+				videoRef.current.muted = true;
+				videoRef.current.currentTime = 0.1;
+				videoRef.current.pause();
+			}
+		};
+
+		// Initialize after a short delay to ensure video is loaded
+		const timer = setTimeout(initializeVideo, 100);
+		return () => clearTimeout(timer);
+	}, []);
 
 
 	return (
@@ -957,13 +1005,34 @@ export default function LasClient() {
 										onClick={handleVideoClick}
 									>
 										<div className="relative w-full" style={{ aspectRatio: '4/5' }}>
-                                        <video
+											<video
 												ref={videoRef}
 												src="/testimonial/las-testimonial.mp4"
 												className="w-full h-full object-cover"
+												style={{
+													WebkitTransform: 'translateZ(0)',
+													transform: 'translateZ(0)',
+													WebkitBackfaceVisibility: 'hidden',
+													backfaceVisibility: 'hidden'
+												}}
 												controls={false}
 												playsInline
 												preload="metadata"
+												muted={false}
+												onLoadedMetadata={() => {
+													// Safari-specific: ensure first frame is loaded as thumbnail
+													if (videoRef.current) {
+														videoRef.current.currentTime = 0.1;
+														videoRef.current.pause();
+													}
+												}}
+												onCanPlay={() => {
+													// Additional Safari optimization
+													if (videoRef.current && !playing) {
+														videoRef.current.currentTime = 0.1;
+														videoRef.current.pause();
+													}
+												}}
 												onEnded={() => setPlaying(false)}
 												tabIndex={-1}
 											/>
@@ -1017,11 +1086,31 @@ export default function LasClient() {
 										<video
 											ref={videoRef}
 											src="/testimonial/las-testimonial.mp4"
-                                            poster="/brands/las-loungewear.png"
 											className="w-full h-full object-cover"
+											style={{
+												WebkitTransform: 'translateZ(0)',
+												transform: 'translateZ(0)',
+												WebkitBackfaceVisibility: 'hidden',
+												backfaceVisibility: 'hidden'
+											}}
 											controls={false}
 											playsInline
 											preload="metadata"
+											muted={false}
+											onLoadedMetadata={() => {
+												// Safari-specific: ensure first frame is loaded as thumbnail
+												if (videoRef.current) {
+													videoRef.current.currentTime = 0.1;
+													videoRef.current.pause();
+												}
+											}}
+											onCanPlay={() => {
+												// Additional Safari optimization
+												if (videoRef.current && !playing) {
+													videoRef.current.currentTime = 0.1;
+													videoRef.current.pause();
+												}
+											}}
 											onEnded={() => setPlaying(false)}
 											tabIndex={-1}
 										/>

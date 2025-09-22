@@ -25,7 +25,7 @@ const fallbackCountries: Country[] = [
 ];
 
 export default function CountrySelect({
-  id,
+  // id,
   name,
   className,
   placeholder = "Select your country",
@@ -58,7 +58,7 @@ export default function CountrySelect({
           .filter((c) => c.code && c.name)
           .sort((a, b) => a.name.localeCompare(b.name));
         if (isMounted && parsed.length) setCountries(parsed);
-      } catch (_e) {
+      } catch {
         // keep fallback
       }
     })();
