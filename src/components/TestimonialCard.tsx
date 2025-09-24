@@ -1,6 +1,7 @@
 "use client"
 import { motion } from "framer-motion";
 import React, { useRef } from "react";
+import { cn } from "@/lib/utils";
 
 interface TestimonialCardProps {
   index: number;
@@ -12,6 +13,10 @@ interface TestimonialCardProps {
   onVideoPlay: (index: number) => void;
   setVideoRef: (index: number, ref: HTMLVideoElement | null) => void;
   setCardRef: (index: number, ref: HTMLDivElement | null) => void;
+  variant?: "default" | "minimal";
+  className?: string;
+  videoContainerClassName?: string;
+  videoClassName?: string;
 }
 
 const TestimonialCard: React.FC<TestimonialCardProps> = ({
@@ -24,6 +29,10 @@ const TestimonialCard: React.FC<TestimonialCardProps> = ({
   onVideoPlay,
   setVideoRef,
   setCardRef,
+  variant = "default",
+  className,
+  videoContainerClassName,
+  videoClassName,
 }) => {
   const videoRef = useRef<HTMLVideoElement>(null);
 
@@ -48,6 +57,32 @@ const TestimonialCard: React.FC<TestimonialCardProps> = ({
     }
   }, [isPlaying]);
 
+  const wrapperClasses = cn(
+    "transition-all duration-300 overflow-hidden",
+    variant === "minimal"
+      ? "rounded-3xl bg-transparent shadow-none"
+      : "rounded-3xl bg-white shadow-lg hover:shadow-xl",
+    variant === "default" ? "flex flex-col cursor-pointer" : "cursor-pointer",
+    className
+  );
+
+  const videoContainerClasses = cn(
+    videoContainerClassName
+      ? videoContainerClassName
+      : variant === "default"
+        ? "relative w-full aspect-[3/4] overflow-hidden"
+        : "relative w-full h-[90vh] sm:h-[85vh] lg:h-[80vh]",
+  );
+
+  const computedVideoClassName = cn(
+    videoClassName
+      ? videoClassName
+      : variant === "default"
+        ? "w-full h-full object-cover"
+        : "w-full h-full object-contain",
+    videoClassName
+  );
+
   return (
     <motion.div
       ref={(ref) => {
@@ -58,7 +93,7 @@ const TestimonialCard: React.FC<TestimonialCardProps> = ({
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true, margin: "-100px" }}
       transition={{ duration: 0.6, ease: "easeOut" }}
-      className="bg-white rounded-3xl shadow-lg hover:shadow-2xl transition-all duration-300 hover:scale-105 cursor-pointer overflow-hidden"
+      className={wrapperClasses}
       style={{
         WebkitTransform: 'translateZ(0)',
         transform: 'translateZ(0)',
@@ -67,23 +102,23 @@ const TestimonialCard: React.FC<TestimonialCardProps> = ({
       }}
       onClick={handleCardClick}
     >
-      {/* Video Container - reduced height */}
-      <div 
-        className="relative w-full h-[70vh] sm:h-[60vh] lg:h-[60vh]"
-        style={{
-          WebkitTransform: 'translateZ(0)',
-          transform: 'translateZ(0)',
-          WebkitBackfaceVisibility: 'hidden',
-          backfaceVisibility: 'hidden'
-        }}
-      >
+       {/* Video Container - much taller height */}
+       <div 
+        className={videoContainerClasses}
+         style={{
+           WebkitTransform: 'translateZ(0)',
+           transform: 'translateZ(0)',
+           WebkitBackfaceVisibility: 'hidden',
+           backfaceVisibility: 'hidden'
+         }}
+       >
         <video
           ref={(ref) => {
             videoRef.current = ref;
             setVideoRef(index, ref);
           }}
           src={videoSrc}
-          className="w-full h-full object-cover"
+           className={computedVideoClassName}
           style={{
             WebkitTransform: 'translateZ(0)',
             transform: 'translateZ(0)',
@@ -115,27 +150,25 @@ const TestimonialCard: React.FC<TestimonialCardProps> = ({
         />
         {/* Play button overlay when not playing */}
         {!isPlaying && (
-          <div className="absolute inset-0 flex items-center justify-center bg-black/10">
-            <div className="bg-white/80 backdrop-blur-sm rounded-full p-2 flex items-center justify-center shadow-lg">
-              <svg className="w-8 h-8 text-gray-900" fill="currentColor" viewBox="0 0 24 24">
+          <div className="absolute inset-0 flex items-center justify-center bg-black/15">
+            <div className="bg-white rounded-full p-3 md:p-4 flex items-center justify-center shadow-md">
+              <svg className="w-6 h-6 md:w-7 md:h-7 text-gray-900" fill="currentColor" viewBox="0 0 24 24">
                 <polygon points="9.5,7.5 16.5,12 9.5,16.5" />
               </svg>
             </div>
           </div>
         )}
       </div>
-      
-      {/* Client Details Section - without avatar */}
-      <div className="p-4">
-        <div className="flex flex-col">
-          <h3 className="font-bold text-gray-900 text-base leading-tight mb-1">
-            {clientName}
-          </h3>
-          <p className="text-sm text-gray-600 leading-tight">
-            {brandName}{location ? `, ${location}` : ''}
+      {variant === "default" && (
+        <div className="flex flex-col gap-1 px-6 py-5">
+          <h3 className="text-lg font-semibold text-gray-900 leading-tight">{clientName}</h3>
+          <p className="text-sm text-gray-500 leading-snug">
+            {brandName}
+            {brandName && location ? ", " : ""}
+            {location}
           </p>
         </div>
-      </div>
+      )}
     </motion.div>
   );
 };

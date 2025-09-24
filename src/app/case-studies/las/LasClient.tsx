@@ -1,117 +1,82 @@
 "use client";
 
-import { useState, useRef, useEffect } from "react";
+import { useState, useRef, useEffect, useCallback } from "react";
 import { Button } from "@/components/ui/button";
 import { ArrowRight, MessageSquare } from "lucide-react";
 import ContactDialog from "@/components/ContactDialog";
 import Footer from "@/components/Footer";
+import TestimonialCard from "@/components/TestimonialCard";
 
 export default function LasClient() {
 	const [contactOpen, setContactOpen] = useState(false);
-	const videoRef = useRef<HTMLVideoElement>(null);
 	const testimonialRef = useRef<HTMLDivElement>(null);
-	const [playing, setPlaying] = useState(false);
-	const [wasManuallyPaused, setWasManuallyPaused] = useState(false);
+	const [playingVideoIndex, setPlayingVideoIndex] = useState<number | null>(null);
+	const videoRefs = useRef<(HTMLVideoElement | null)[]>([]);
+	const cardRefs = useRef<(HTMLDivElement | null)[]>([]);
 
-	const handleVideoClick = () => {
-		if (!playing) {
-			setPlaying(true);
-			setWasManuallyPaused(false); // User manually resumed
-			if (videoRef.current) {
-				videoRef.current.muted = false;
-				videoRef.current.play().catch((error) => {
-					console.log('Manual play failed:', error);
-					// Safari fallback: try muted first
-					videoRef.current!.muted = true;
-					videoRef.current!.play().then(() => {
-						// Try to unmute after playing starts
-						setTimeout(() => {
-							videoRef.current!.muted = false;
-						}, 100);
-					}).catch(() => {
-						console.log('Muted manual play also failed');
-					});
-				});
+	const handleVideoPlay = useCallback((index: number) => {
+		if (index === -1) {
+			if (playingVideoIndex !== null && videoRefs.current[playingVideoIndex]) {
+				const activeVideo = videoRefs.current[playingVideoIndex];
+				if (activeVideo) {
+					activeVideo.pause();
+					activeVideo.muted = true;
+					activeVideo.currentTime = 0.1;
+				}
 			}
+			setPlayingVideoIndex(null);
+			return;
+		}
+
+		videoRefs.current.forEach((ref, i) => {
+			if (ref && i !== index) {
+				ref.pause();
+				ref.muted = true;
+				ref.currentTime = 0.1;
+			}
+		});
+
+		if (playingVideoIndex === index) {
+			if (videoRefs.current[index]) {
+				videoRefs.current[index]!.pause();
+				videoRefs.current[index]!.muted = true;
+				videoRefs.current[index]!.currentTime = 0.1;
+			}
+			setPlayingVideoIndex(null);
 		} else {
-			setPlaying(false);
-			setWasManuallyPaused(true); // User manually paused
-			if (videoRef.current) {
-				videoRef.current.pause();
-				videoRef.current.currentTime = 0.1; // Reset to first frame for thumbnail
+			if (videoRefs.current[index]) {
+				videoRefs.current[index]!.muted = false;
+				videoRefs.current[index]!.play().catch(console.error);
 			}
+			setPlayingVideoIndex(index);
 		}
-	};
+	}, [playingVideoIndex]);
 
-	// Intersection Observer to autoplay when visible and pause when not visible
+	const setVideoRef = useCallback((index: number, ref: HTMLVideoElement | null) => {
+		videoRefs.current[index] = ref;
+	}, []);
+
+	const setCardRef = useCallback((index: number, ref: HTMLDivElement | null) => {
+		cardRefs.current[index] = ref;
+	}, []);
+
 	useEffect(() => {
-		const observer = new IntersectionObserver(
-			(entries) => {
-				entries.forEach((entry) => {
-					const video = videoRef.current;
-					
-					if (entry.isIntersecting) {
-						// Video is visible - start playing with sound
-						if (video && video.paused && !wasManuallyPaused) {
-							// Safari-specific: ensure video is ready and unmuted
-							video.muted = false;
-							video.play().then(() => {
-								setPlaying(true);
-							}).catch((error) => {
-								console.log('Autoplay failed:', error);
-								// Fallback: try with muted first, then unmute
-								video.muted = true;
-								video.play().then(() => {
-									setPlaying(true);
-									// Try to unmute after a short delay
-									setTimeout(() => {
-										video.muted = false;
-									}, 100);
-								}).catch(() => {
-									console.log('Muted autoplay also failed');
-								});
-							});
-						}
-					} else {
-						// Video is not visible - pause it and reset to first frame
-						if (video && !video.paused) {
-							video.pause();
-							video.currentTime = 0.1; // Reset to first frame for thumbnail
-							setPlaying(false);
-						}
-					}
-				});
-			},
-			{
-				threshold: 0.5, // Trigger when 50% of the video is visible
-				rootMargin: '0px'
-			}
-		);
-
-		if (testimonialRef.current) {
-			observer.observe(testimonialRef.current);
-		}
-
-		return () => {
-			observer.disconnect();
-		};
-	}, [wasManuallyPaused]);
-
-	// Initialize video to show first frame as thumbnail
-	useEffect(() => {
-		const initializeVideo = () => {
-			if (videoRef.current) {
-				videoRef.current.muted = true;
-				videoRef.current.currentTime = 0.1;
-				videoRef.current.pause();
-			}
+		const initializeVideos = () => {
+			videoRefs.current.forEach((ref) => {
+				if (ref) {
+					ref.muted = true;
+					ref.currentTime = 0.1;
+					ref.pause();
+				}
+			});
 		};
 
-		// Initialize after a short delay to ensure video is loaded
-		const timer = setTimeout(initializeVideo, 100);
+		const timer = setTimeout(initializeVideos, 100);
 		return () => clearTimeout(timer);
 	}, []);
 
+	// Intersection Observer to autoplay when visible and pause when not visible
+// Removed obsolete intersection observer effect tied to legacy state
 
 	return (
 		<div className="min-h-screen bg-white">
@@ -989,167 +954,41 @@ export default function LasClient() {
 								{/* Video Testimonial */}
 				<section ref={testimonialRef} className="relative py-20 sm:py-24 lg:py-32 bg-white overflow-hidden">
 					<div className="relative min-w-[80%] lg:max-w-[80%] mx-auto px-4 sm:px-6 lg:px-8">
-						{/* Mobile Layout */}
-						<div className="lg:hidden">
-							{/* Title */}
-							<div className="text-center mb-8">
+						<div className="text-center mb-12">
 								<h2 className="text-3xl sm:text-4xl lg:text-5xl font-serif font-bold text-black mb-6">Las Loungewear Client Testimonial</h2>
-								<div className="w-16 h-0.5 bg-[#CBB49A] mx-auto mb-8"></div>
+							<div className="w-16 h-0.5 bg-[#CBB49A] mx-auto"></div>
 						</div>
 
-							{/* Video Testimonial */}
-							<div className="mb-8">
-								<div className="relative max-w-md mx-auto">
-									<div 
-										className="bg-white rounded-3xl shadow-lg hover:shadow-2xl transition-all duration-300 overflow-hidden cursor-pointer"
-										onClick={handleVideoClick}
-									>
-										<div className="relative w-full" style={{ aspectRatio: '4/5' }}>
-											<video
-												ref={videoRef}
-												src="/testimonial/las-testimonial.mp4"
-												className="w-full h-full object-cover"
-												style={{
-													WebkitTransform: 'translateZ(0)',
-													transform: 'translateZ(0)',
-													WebkitBackfaceVisibility: 'hidden',
-													backfaceVisibility: 'hidden'
-												}}
-												controls={false}
-												playsInline
-												preload="metadata"
-												muted={false}
-												onLoadedMetadata={() => {
-													// Safari-specific: ensure first frame is loaded as thumbnail
-													if (videoRef.current) {
-														videoRef.current.currentTime = 0.1;
-														videoRef.current.pause();
-													}
-												}}
-												onCanPlay={() => {
-													// Additional Safari optimization
-													if (videoRef.current && !playing) {
-														videoRef.current.currentTime = 0.1;
-														videoRef.current.pause();
-													}
-												}}
-												onEnded={() => setPlaying(false)}
-												tabIndex={-1}
-											/>
-											{/* Play button overlay when not playing */}
-											{!playing && (
-												<div className="absolute inset-0 flex items-center justify-center bg-black/10">
-													<div className="bg-white/80 backdrop-blur-sm rounded-full p-4 flex items-center justify-center shadow-lg">
-														<svg className="w-8 h-8 text-gray-900" fill="currentColor" viewBox="0 0 24 24">
-															<polygon points="9.5,7.5 16.5,12 9.5,16.5" />
-														</svg>
-													</div>
-												</div>
-											)}
-										</div>
-									</div>
-								</div>
-							</div>
+						<div className="grid gap-12 lg:grid-cols-[minmax(0,1fr)_minmax(0,1.05fr)] items-center">
+							<TestimonialCard
+								index={0}
+								videoSrc="/testimonial/las-testimonial.mp4"
+								clientName="Anika McKelvey"
+								brandName="Las Loungewear"
+								location="Miami, USA"
+								isPlaying={playingVideoIndex === 0}
+								onVideoPlay={handleVideoPlay}
+								setVideoRef={setVideoRef}
+								setCardRef={setCardRef}
+								variant="minimal"
+								className="max-w-md w-full mx-auto"
+								videoContainerClassName="relative w-full aspect-[4/5]"
+								videoClassName="w-full h-full object-cover"
+							/>
 
-							{/* Text Content */}
-							<div className="space-y-6 text-lg leading-relaxed text-black">
-								<p>
-									&quot;Working with Krazy Kreators was a game-changer for Las Loungewear. They didn&apos;t just understand my vision — they elevated it. From the initial concept to the final product, every step was executed with precision and creativity.&quot;
-								</p>
-								
-								<p>
-									&quot;The attention to detail in fabric selection, the innovative compression technology, and the sophisticated design elements exceeded my expectations. They truly became a partner in building my brand, not just a vendor.&quot;
-								</p>
-								
-								<p>
-									&quot;The end result is exactly what I envisioned: premium travelwear that feels luxurious and performs perfectly. Our customers love the quality and comfort, and I couldn&apos;t be happier with the partnership.&quot;
-								</p>
-								</div>
+						<div className="space-y-6 text-lg leading-relaxed text-black">
+							<p>
+								&ldquo;Working with Krazy Kreators was a game-changer for Las Loungewear. They didn&apos;t just understand my vision — they elevated it. From the initial concept to the final product, every step was executed with precision and creativity.&rdquo;
+							</p>
 
-							{/* Client Details */}
-							<div className="pt-6 border-t border-gray-200 mt-8">
-								<h3 className="text-xl font-semibold text-black mb-2">Anika McKelvey</h3>
-								<p className="text-[#CBB49A] font-medium">Founder, Las Loungewear</p>
-								<p className="text-gray-600 text-sm">Miami, USA</p>
-							</div>
-							</div>
+							<p>
+								&ldquo;The attention to detail in fabric selection, the innovative compression technology, and the sophisticated design elements exceeded my expectations. They truly became a partner in building my brand, not just a vendor.&rdquo;
+							</p>
 
-						{/* Desktop Layout */}
-						<div className="hidden lg:grid lg:grid-cols-2 gap-12 items-center">
-							{/* Left: Video Testimonial */}
-							<div className="relative max-w-md mx-auto">
-								<div 
-									className="bg-white rounded-3xl shadow-lg hover:shadow-2xl transition-all duration-300 overflow-hidden cursor-pointer"
-									onClick={handleVideoClick}
-								>
-									<div className="relative w-full" style={{ aspectRatio: '4/5' }}>
-										<video
-											ref={videoRef}
-											src="/testimonial/las-testimonial.mp4"
-											className="w-full h-full object-cover"
-											style={{
-												WebkitTransform: 'translateZ(0)',
-												transform: 'translateZ(0)',
-												WebkitBackfaceVisibility: 'hidden',
-												backfaceVisibility: 'hidden'
-											}}
-											controls={false}
-											playsInline
-											preload="metadata"
-											muted={false}
-											onLoadedMetadata={() => {
-												// Safari-specific: ensure first frame is loaded as thumbnail
-												if (videoRef.current) {
-													videoRef.current.currentTime = 0.1;
-													videoRef.current.pause();
-												}
-											}}
-											onCanPlay={() => {
-												// Additional Safari optimization
-												if (videoRef.current && !playing) {
-													videoRef.current.currentTime = 0.1;
-													videoRef.current.pause();
-												}
-											}}
-											onEnded={() => setPlaying(false)}
-											tabIndex={-1}
-										/>
-										{/* Play button overlay when not playing */}
-										{!playing && (
-											<div className="absolute inset-0 flex items-center justify-center bg-black/10">
-												<div className="bg-white/80 backdrop-blur-sm rounded-full p-4 flex items-center justify-center shadow-lg">
-													<svg className="w-8 h-8 text-gray-900" fill="currentColor" viewBox="0 0 24 24">
-														<polygon points="9.5,7.5 16.5,12 9.5,16.5" />
-													</svg>
-												</div>
-											</div>
-										)}
-									</div>
-								</div>
-							</div>
+							<p>
+								&ldquo;The end result is exactly what I envisioned: premium travelwear that feels luxurious and performs perfectly. Our customers love the quality and comfort, and I couldn&apos;t be happier with the partnership.&rdquo;
+							</p>
 
-							{/* Right: Testimonial Summary */}
-							<div className="space-y-8">
-								<div>
-									<h2 className="text-3xl sm:text-4xl lg:text-5xl font-serif font-bold text-black mb-6">Las Loungewear Client Testimonial</h2>
-									<div className="w-16 h-0.5 bg-[#CBB49A] mb-8"></div>
-								</div>
-								
-								<div className="space-y-6 text-lg leading-relaxed text-gray-700">
-									<p className="text-black">
-										&quot;Working with Krazy Kreators was a game-changer for Las Loungewear. They didn&apos;t just understand my vision — they elevated it. From the initial concept to the final product, every step was executed with precision and creativity.&quot;
-									</p>
-									
-									<p className="text-black">
-										&quot;The attention to detail in fabric selection, the innovative compression technology, and the sophisticated design elements exceeded my expectations. They truly became a partner in building my brand, not just a vendor.&quot;
-									</p>
-									
-									<p className="text-black">
-										&quot;The end result is exactly what I envisioned: premium travelwear that feels luxurious and performs perfectly. Our customers love the quality and comfort, and I couldn&apos;t be happier with the partnership.&quot;
-									</p>
-								</div>
-
-								{/* Client Details */}
 								<div className="pt-6 border-t border-gray-200">
 									<h3 className="text-xl font-semibold text-black mb-2">Anika McKelvey</h3>
 									<p className="text-[#CBB49A] font-medium">Founder, Las Loungewear</p>
