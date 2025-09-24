@@ -15,19 +15,20 @@ export default function MensStreetwearClient() {
 
   const filterCategories = [
     { id: "all", name: "All Products", count: 0 },
-    { id: "casual-shirt", name: "Casual Shirts", count: 0 },
+    { id: "casual-shirt", name: "Camp Shirts", count: 0 },
     { id: "embriodered-shirts", name: "Embroidered Shirts", count: 0 },
     { id: "sweat-shirts", name: "Sweat Shirts", count: 0 },
   ];
 
   // Portfolio products with grouped images (2 images per product)
   const portfolioProducts = [
-    // Casual Shirts - 8 products (16 images grouped in pairs)
+    // Camp Shirts - 7 products (14 images grouped in pairs)
     {
       id: 1,
       category: "casual-shirt",
-      name: "Classic Casual Shirt",
+      name: "Classic Camp Shirt",
       brandName: "HY Official",
+      brandLogo: "/brands/hy-official.png",
       images: [
         "/portfolio/mens-streetwear/casual-shirt/1.webp",
         "/portfolio/mens-streetwear/casual-shirt/2.webp"
@@ -36,8 +37,9 @@ export default function MensStreetwearClient() {
     {
       id: 2,
       category: "casual-shirt",
-      name: "Modern Casual Shirt",
+      name: "Modern Camp Shirt",
       brandName: "HY Official",
+      brandLogo: "/brands/hy-official.png",
       images: [
         "/portfolio/mens-streetwear/casual-shirt/3.webp",
         "/portfolio/mens-streetwear/casual-shirt/4.webp"
@@ -46,8 +48,9 @@ export default function MensStreetwearClient() {
     {
       id: 3,
       category: "casual-shirt",
-      name: "Premium Casual Shirt",
+      name: "Premium Camp Shirt",
       brandName: "HY Official",
+      brandLogo: "/brands/hy-official.png",
       images: [
         "/portfolio/mens-streetwear/casual-shirt/5.webp",
         "/portfolio/mens-streetwear/casual-shirt/6.webp"
@@ -56,8 +59,9 @@ export default function MensStreetwearClient() {
     {
       id: 4,
       category: "casual-shirt",
-      name: "Designer Casual Shirt",
+      name: "Designer Camp Shirt",
       brandName: "HY Official",
+      brandLogo: "/brands/hy-official.png",
       images: [
         "/portfolio/mens-streetwear/casual-shirt/7.webp",
         "/portfolio/mens-streetwear/casual-shirt/8.webp"
@@ -66,8 +70,9 @@ export default function MensStreetwearClient() {
     {
       id: 5,
       category: "casual-shirt",
-      name: "Trendy Casual Shirt",
+      name: "Trendy Camp Shirt",
       brandName: "HY Official",
+      brandLogo: "/brands/hy-official.png",
       images: [
         "/portfolio/mens-streetwear/casual-shirt/9.webp",
         "/portfolio/mens-streetwear/casual-shirt/10.webp"
@@ -76,8 +81,9 @@ export default function MensStreetwearClient() {
     {
       id: 6,
       category: "casual-shirt",
-      name: "Vintage Casual Shirt",
+      name: "Vintage Camp Shirt",
       brandName: "HY Official",
+      brandLogo: "/brands/hy-official.png",
       images: [
         "/portfolio/mens-streetwear/casual-shirt/11.webp",
         "/portfolio/mens-streetwear/casual-shirt/12.webp"
@@ -86,8 +92,9 @@ export default function MensStreetwearClient() {
     {
       id: 7,
       category: "casual-shirt",
-      name: "Contemporary Casual Shirt",
+      name: "Contemporary Camp Shirt",
       brandName: "HY Official",
+      brandLogo: "/brands/hy-official.png",
       images: [
         "/portfolio/mens-streetwear/casual-shirt/13.webp",
         "/portfolio/mens-streetwear/casual-shirt/14.webp"
@@ -96,49 +103,55 @@ export default function MensStreetwearClient() {
     {
       id: 8,
       category: "casual-shirt",
-      name: "Elite Casual Shirt",
+      name: "Elite Camp Shirt",
       brandName: "HY Official",
+      brandLogo: "/brands/hy-official.png",
       images: [
         "/portfolio/mens-streetwear/casual-shirt/15.webp",
         "/portfolio/mens-streetwear/casual-shirt/16.webp"
       ]
     },
-    // Embroidered Shirts - 4 products (8 images grouped in pairs)
+    // Camp Shirts - 1 additional product (2 images) - Off-white camp shirt with black embroidery
     {
       id: 9,
-      category: "embriodered-shirts",
-      name: "Artisan Embroidered Shirt",
+      category: "casual-shirt",
+      name: "Off-White Camp Shirt",
       brandName: "HY Official",
+      brandLogo: "/brands/hy-official.png",
       images: [
         "/portfolio/mens-streetwear/embriodered-shirts/1.webp",
         "/portfolio/mens-streetwear/embriodered-shirts/2.webp"
       ]
     },
     {
-      id: 10,
+      id: 16,
       category: "embriodered-shirts",
-      name: "Luxury Embroidered Shirt",
+      name: "Floral Embroidered Shirt",
       brandName: "HY Official",
+      brandLogo: "/brands/hy-official.png",
       images: [
         "/portfolio/mens-streetwear/embriodered-shirts/3.webp",
         "/portfolio/mens-streetwear/embriodered-shirts/4.webp"
       ]
     },
+    // Additional Camp Shirts - 2 products (4 images grouped in pairs)
     {
-      id: 11,
-      category: "embriodered-shirts",
-      name: "Heritage Embroidered Shirt",
+      id: 10,
+      category: "casual-shirt",
+      name: "Luxury Camp Shirt",
       brandName: "HY Official",
+      brandLogo: "/brands/hy-official.png",
       images: [
         "/portfolio/mens-streetwear/embriodered-shirts/5.webp",
         "/portfolio/mens-streetwear/embriodered-shirts/6.webp"
       ]
     },
     {
-      id: 12,
-      category: "embriodered-shirts",
-      name: "Modern Embroidered Shirt",
+      id: 11,
+      category: "casual-shirt",
+      name: "Heritage Camp Shirt",
       brandName: "HY Official",
+      brandLogo: "/brands/hy-official.png",
       images: [
         "/portfolio/mens-streetwear/embriodered-shirts/7.webp",
         "/portfolio/mens-streetwear/embriodered-shirts/8.webp"
@@ -150,6 +163,7 @@ export default function MensStreetwearClient() {
       category: "sweat-shirts",
       name: "Comfort Sweat Shirt",
       brandName: "HY Official",
+      brandLogo: "/brands/hy-official.png",
       images: [
         "/portfolio/mens-streetwear/sweat-shirts/1.webp",
         "/portfolio/mens-streetwear/sweat-shirts/2.webp"
@@ -160,6 +174,7 @@ export default function MensStreetwearClient() {
       category: "sweat-shirts",
       name: "Athletic Sweat Shirt",
       brandName: "HY Official",
+      brandLogo: "/brands/hy-official.png",
       images: [
         "/portfolio/mens-streetwear/sweat-shirts/3.webp",
         "/portfolio/mens-streetwear/sweat-shirts/4.webp"
@@ -170,6 +185,7 @@ export default function MensStreetwearClient() {
       category: "sweat-shirts",
       name: "Urban Sweat Shirt",
       brandName: "HY Official",
+      brandLogo: "/brands/hy-official.png",
       images: [
         "/portfolio/mens-streetwear/sweat-shirts/5.webp",
         "/portfolio/mens-streetwear/sweat-shirts/6.webp"
@@ -213,7 +229,7 @@ export default function MensStreetwearClient() {
   // };
 
   // Product Card Component with internal carousel
-  const ProductCard = ({ product }: { product: { images: string[]; brandName: string; category: string } }) => {
+  const ProductCard = ({ product }: { product: { images: string[]; brandName: string; category: string; brandLogo?: string } }) => {
     const [currentImageIndex, setCurrentImageIndex] = useState(0);
 
     // Auto-advance internal carousel every 4 seconds
@@ -244,7 +260,7 @@ export default function MensStreetwearClient() {
 
     return (
       <div className="group bg-white rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-300 overflow-hidden hover:scale-105">
-        <div className="relative h-80 overflow-hidden">
+        <div className="relative h-96 sm:h-[28rem] lg:h-[32rem] overflow-hidden">
           {/* Image Carousel */}
           <div className="relative w-full h-full">
             <div 
@@ -287,6 +303,7 @@ export default function MensStreetwearClient() {
                 {filterCategories.find(cat => cat.id === product.category)?.name}
               </span>
             </div>
+
 
             {/* Navigation Arrows */}
             {product.images.length > 1 && (
@@ -331,9 +348,26 @@ export default function MensStreetwearClient() {
         
         {/* Product Info */}
         <div className="p-6">
-          <h3 className="text-xl font-bold text-[#2D2A2E] group-hover:text-[#CBB49A] transition-colors">
-            {product.brandName}
-          </h3>
+          <div className="flex items-center gap-3">
+            {product.brandLogo && (
+              <Image
+                src={product.brandLogo}
+                alt={`${product.brandName} Logo`}
+                width={24}
+                height={24}
+                className="object-contain"
+                style={{
+                  WebkitTransform: 'translateZ(0)',
+                  transform: 'translateZ(0)',
+                  WebkitBackfaceVisibility: 'hidden',
+                  backfaceVisibility: 'hidden'
+                }}
+              />
+            )}
+            <h3 className="text-xl font-bold text-[#2D2A2E] group-hover:text-[#CBB49A] transition-colors">
+              {product.brandName}
+            </h3>
+          </div>
         </div>
       </div>
     );

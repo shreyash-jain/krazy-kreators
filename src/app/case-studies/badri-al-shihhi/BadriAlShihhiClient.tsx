@@ -53,7 +53,7 @@ export default function BadriAlShihhiClient() {
         videoRefs.current[index]!.currentTime = 0.1;
       }
       setPlayingVideoIndex(null);
-    } else {
+          } else {
       if (videoRefs.current[index]) {
         videoRefs.current[index]!.muted = false;
         videoRefs.current[index]!.play().catch(console.error);
@@ -1519,11 +1519,11 @@ export default function BadriAlShihhiClient() {
 
           <div className="text-center mb-12">
 
-            <h2 className="text-3xl sm:text-4xl lg:text-5xl font-serif font-bold text-black mb-6">Badria Al Shihhi Client Testimonial</h2>
+              <h2 className="text-3xl sm:text-4xl lg:text-5xl font-serif font-bold text-black mb-6">Badria Al Shihhi Client Testimonial</h2>
 
             <div className="w-16 h-0.5 bg-[#CBB49A] mx-auto"></div>
 
-          </div>
+            </div>
 
 
 
@@ -1567,13 +1567,13 @@ export default function BadriAlShihhiClient() {
                 &ldquo;Krazy Kreators didn&apos;t just help me build a brand — they helped me tell my story. As a woman from Oman with a vision for modest, elegant fashion, I needed a partner who truly understood both my cultural values and my creative aspirations.&rdquo;
               </p>
 
-
+              
 
               <p>
                 &ldquo;What impressed me most was their ability to translate my personal style into a cohesive brand identity. They took my love for cultural sophistication and created something that feels both timeless and contemporary. Every piece reflects the elegance I envisioned.&rdquo;
               </p>
 
-
+              
 
               <p>
                 &ldquo;The journey from concept to launch was seamless. They handled everything — from fabric sourcing to production — with such care and attention to detail. My brand now stands as a testament to what&apos;s possible when you have the right creative partner.&rdquo;
