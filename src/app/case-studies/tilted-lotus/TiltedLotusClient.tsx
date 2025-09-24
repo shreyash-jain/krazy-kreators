@@ -647,16 +647,16 @@ export default function TiltedLotusClient() {
 								videoClassName="w-full h-full object-cover"
 							/>
 
-						<div className="space-y-6 text-lg leading-relaxed text-black">
-							<p>
+							<div className="space-y-6 text-lg leading-relaxed text-black">
+								<p>
 								&ldquo;Working with Krazy Kreators was transformative for Tilted Lotus. They didn&apos;t just understand my cultural vision — they elevated it to new heights. From the initial concept to the NYFW runway, every step was executed with precision and cultural sensitivity.&rdquo;
-							</p>
-							
-							<p>
+								</p>
+								
+								<p>
 								&ldquo;The attention to detail in preserving South Asian artistic traditions while creating contemporary silhouettes exceeded my expectations. They truly became partners in bringing my cultural heritage to life in modern fashion.&rdquo;
-							</p>
-							
-							<p>
+								</p>
+								
+								<p>
 								&ldquo;The end result is exactly what I envisioned: a brand that celebrates cultural diversity while maintaining contemporary appeal. Our customers love the authenticity and quality, and I couldn&apos;t be happier with the partnership.&rdquo;
 							</p>
 

@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
-import { ArrowRight, MessageSquare, ChevronLeft, ChevronRight } from "lucide-react";
+import { ArrowRight, MessageSquare, ChevronLeft, ChevronRight, Share2, Heart, Eye } from "lucide-react";
 import ContactDialog from "@/components/ContactDialog";
 import Footer from "@/components/Footer";
 import Image from "next/image";
@@ -12,6 +12,7 @@ export default function BlogsClient() {
   const [contactOpen, setContactOpen] = useState(false);
   const [currentPage, setCurrentPage] = useState(1);
   const [activeFilter, setActiveFilter] = useState("all");
+  const [likedPosts, setLikedPosts] = useState<Set<number>>(new Set());
   const postsPerPage = 6;
 
   const blogPosts = [
@@ -24,7 +25,9 @@ export default function BlogsClient() {
       date: "March 15, 2025",
       readTime: "8 min read",
       image: "/brands/design.jpg",
-      slug: "mood-boards-to-manufacturable-garments"
+      slug: "mood-boards-to-manufacturable-garments",
+      readers: 1247,
+      likes: 89
     },
     {
       id: 2,
@@ -35,7 +38,9 @@ export default function BlogsClient() {
       date: "March 10, 2025",
       readTime: "6 min read",
       image: "/brands/manufacturing.jpg",
-      slug: "print-pattern-prototyping-matters"
+      slug: "print-pattern-prototyping-matters",
+      readers: 892,
+      likes: 67
     },
     {
       id: 3,
@@ -46,7 +51,9 @@ export default function BlogsClient() {
       date: "March 5, 2025",
       readTime: "10 min read",
       image: "/brands/end-to-end.jpg",
-      slug: "sustainable-fashion-future"
+      slug: "sustainable-fashion-future",
+      readers: 1563,
+      likes: 124
     },
     {
       id: 4,
@@ -57,7 +64,9 @@ export default function BlogsClient() {
       date: "February 28, 2025",
       readTime: "12 min read",
       image: "/brands/about-hero.jpg",
-      slug: "building-fashion-brand-guide"
+      slug: "building-fashion-brand-guide",
+      readers: 2103,
+      likes: 178
     },
     {
       id: 5,
@@ -68,7 +77,9 @@ export default function BlogsClient() {
       date: "February 20, 2025",
       readTime: "7 min read",
       image: "/brands/design-hero.jpg",
-      slug: "art-of-tech-pack-creation"
+      slug: "art-of-tech-pack-creation",
+      readers: 743,
+      likes: 56
     },
     {
       id: 6,
@@ -79,7 +90,9 @@ export default function BlogsClient() {
       date: "February 15, 2025",
       readTime: "9 min read",
       image: "/brands/manufacturing-plan.jpg",
-      slug: "quality-control-fashion-manufacturing"
+      slug: "quality-control-fashion-manufacturing",
+      readers: 1124,
+      likes: 89
     },
     {
       id: 7,
@@ -90,7 +103,9 @@ export default function BlogsClient() {
       date: "February 10, 2025",
       readTime: "11 min read",
       image: "/brands/design.jpg",
-      slug: "fashion-tech-innovation"
+      slug: "fashion-tech-innovation",
+      readers: 1897,
+      likes: 145
     },
     {
       id: 8,
@@ -101,7 +116,9 @@ export default function BlogsClient() {
       date: "February 5, 2025",
       readTime: "9 min read",
       image: "/brands/end-to-end.jpg",
-      slug: "sustainable-materials-fashion"
+      slug: "sustainable-materials-fashion",
+      readers: 1345,
+      likes: 98
     },
     {
       id: 9,
@@ -112,7 +129,9 @@ export default function BlogsClient() {
       date: "January 30, 2025",
       readTime: "8 min read",
       image: "/brands/design-hero.jpg",
-      slug: "digital-pattern-making-guide"
+      slug: "digital-pattern-making-guide",
+      readers: 967,
+      likes: 73
     },
     {
       id: 10,
@@ -123,7 +142,9 @@ export default function BlogsClient() {
       date: "January 25, 2025",
       readTime: "13 min read",
       image: "/brands/about-hero.jpg",
-      slug: "fashion-ecommerce-trends"
+      slug: "fashion-ecommerce-trends",
+      readers: 2234,
+      likes: 189
     },
     {
       id: 11,
@@ -134,7 +155,9 @@ export default function BlogsClient() {
       date: "January 20, 2025",
       readTime: "10 min read",
       image: "/brands/manufacturing-plan.jpg",
-      slug: "textile-innovation-smart-fabrics"
+      slug: "textile-innovation-smart-fabrics",
+      readers: 1456,
+      likes: 112
     },
     {
       id: 12,
@@ -145,7 +168,9 @@ export default function BlogsClient() {
       date: "January 15, 2025",
       readTime: "7 min read",
       image: "/brands/design.jpg",
-      slug: "fashion-brand-storytelling"
+      slug: "fashion-brand-storytelling",
+      readers: 1089,
+      likes: 87
     }
   ];
 
@@ -180,6 +205,36 @@ export default function BlogsClient() {
   const handleFilterChange = (filter: string) => {
     setActiveFilter(filter);
     setCurrentPage(1); // Reset to first page when filter changes
+  };
+
+  const handleLike = (postId: number, e: React.MouseEvent) => {
+    e.preventDefault();
+    e.stopPropagation();
+    setLikedPosts(prev => {
+      const newSet = new Set(prev);
+      if (newSet.has(postId)) {
+        newSet.delete(postId);
+      } else {
+        newSet.add(postId);
+      }
+      return newSet;
+    });
+  };
+
+  const handleShare = (post: { title: string; excerpt: string; slug: string }, e: React.MouseEvent) => {
+    e.preventDefault();
+    e.stopPropagation();
+    if (navigator.share) {
+      navigator.share({
+        title: post.title,
+        text: post.excerpt,
+        url: `${window.location.origin}/blogs/${post.slug}`
+      });
+    } else {
+      // Fallback for browsers that don't support Web Share API
+      navigator.clipboard.writeText(`${window.location.origin}/blogs/${post.slug}`);
+      // You could show a toast notification here
+    }
   };
 
   return (
@@ -313,13 +368,41 @@ export default function BlogsClient() {
                           <h3 className="text-xl font-bold text-[#2D2A2E] mb-3 group-hover:text-[#CBB49A] transition-colors line-clamp-2 leading-tight">
                             {post.title}
                           </h3>
-                          <p className="text-[#666666] text-sm leading-relaxed mb-6 line-clamp-3 flex-grow">
+                          <p className="text-[#666666] text-sm leading-relaxed mb-4 line-clamp-3 flex-grow">
                             {post.excerpt}
                           </p>
                           
-                          <div className="flex items-center text-[#CBB49A] hover:text-[#b7a078] font-medium text-sm transition-colors duration-300 group-hover:translate-x-1 mt-auto">
-                            Learn More
-                            <ArrowRight className="ml-2 h-4 w-4" />
+                          {/* Blog Stats and Actions - Single Row */}
+                          <div className="flex items-center justify-between text-xs text-[#999999]">
+                            <div className="flex items-center gap-4">
+                              <span className="flex items-center gap-1">
+                                <Eye className="w-3 h-3" />
+                                {post.readers.toLocaleString()}
+                              </span>
+                              <span>{post.readTime}</span>
+                            </div>
+                            
+                            <div className="flex items-center gap-2">
+                              <button
+                                onClick={(e) => handleLike(post.id, e)}
+                                className={`flex items-center gap-1 px-3 py-1.5 rounded-full text-xs font-medium transition-all duration-300 ${
+                                  likedPosts.has(post.id)
+                                    ? "bg-red-100 text-red-600 hover:bg-red-200"
+                                    : "bg-gray-100 text-gray-600 hover:bg-gray-200"
+                                }`}
+                              >
+                                <Heart className={`w-3 h-3 ${likedPosts.has(post.id) ? 'fill-current' : ''}`} />
+                                {likedPosts.has(post.id) ? post.likes + 1 : post.likes}
+                              </button>
+                              
+                              <button
+                                onClick={(e) => handleShare(post, e)}
+                                className="flex items-center gap-1 px-3 py-1.5 rounded-full bg-gray-100 text-gray-600 hover:bg-gray-200 text-xs font-medium transition-all duration-300"
+                              >
+                                <Share2 className="w-3 h-3" />
+                                Share
+                              </button>
+                            </div>
                           </div>
                         </div>
                       </article>

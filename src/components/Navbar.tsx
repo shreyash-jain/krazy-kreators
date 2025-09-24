@@ -20,7 +20,7 @@ import dynamic from "next/dynamic";
 const ContactDialog = dynamic(() => import("./ContactDialog"), { ssr: false });
 // Blogs and Resources are not in the menu items as i want to reuse it on our next build
 // const menuItems = ["Solutions", "Portfolio", "Blogs", "Resources", "Company"] as const;
-const menuItems = ["Solutions", "Case Studies", "Company"] as const;
+const menuItems = ["Solutions", "Portfolio", "Case Studies", "Blogs", "Company"] as const;
 type TopTab = typeof menuItems[number];
 
 const megaContent: Record<TopTab, { title: string; desc: string; href: string; icon: React.ComponentType<{ className?: string }> }[]> = {
@@ -30,12 +30,23 @@ const megaContent: Record<TopTab, { title: string; desc: string; href: string; i
 		{ title: "End‑to‑End Services", desc: "From tech packs to delivery", href: "/end-to-end-services", icon: Infinity },
 
 	],
+	Portfolio: [
+		{ title: "Mens Streetwear", desc: "Casual and embroidered shirts", href: "/portfolio/mens-streetwear", icon: FolderKanban },
+		{ title: "Mens Wear", desc: "Premium menswear collection", href: "/portfolio/mens-wear", icon: FolderKanban },
+		{ title: "Luxury Wear", desc: "High-end fashion pieces", href: "/portfolio/luxury-wear", icon: FolderKanban },
+		{ title: "Resort Wear", desc: "Vacation and resort fashion", href: "/portfolio/resort-wear", icon: FolderKanban },
+		{ title: "Loungewear", desc: "Comfortable everyday wear", href: "/portfolio/loungewear", icon: FolderKanban },
+		{ title: "Accessories", desc: "Fashion accessories and details", href: "/portfolio/accessories", icon: FolderKanban },
+	],
 	"Case Studies": [
 		{ title: "Drover Cowboy Threads", desc: "Modern westernwear case study", href: "/case-studies/drover", icon: FolderKanban },
 		{ title: "Tilted Lotus", desc: "Premium apparel brand", href: "/case-studies/tilted-lotus", icon: FolderKanban },
 		{ title: "Las Loungewear", desc: "Comfort-first everyday wear", href: "/case-studies/las", icon: FolderKanban },
 		{ title: "HY Official", desc: "Lifestyle essentials", href: "/case-studies/hy-official", icon: FolderKanban },
 		{ title: "Badria Al Shihhi", desc: "Label development & rollout", href: "/case-studies/badri-al-shihhi", icon: FolderKanban },
+	],
+	Blogs: [
+		{ title: "All Blogs", desc: "Latest insights and updates", href: "/blogs", icon: FolderKanban },
 	],
 	Company: [
 		{ title: "About Us", desc: "Story, vision, and team", href: "/about", icon: Building2 },
