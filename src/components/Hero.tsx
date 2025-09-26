@@ -164,30 +164,30 @@ export default function Hero({ onGetStartedClick, onStartDemoClick }: HeroProps)
       ref={heroRef}
       className="w-full mx-auto bg-[#F5EFE6] min-h-screen flex flex-col items-center justify-center relative"
     >
-      <div className="min-w-[80%] xl:max-w-[75%] 2xl:max-w-[70%] mx-auto text-center flex flex-col items-center justify-center pt-20 sm:pt-24 md:pt-32 lg:pt-48 xl:pt-56 pb-12 sm:pb-16 md:pb-20 px-4 sm:px-6 lg:px-12 xl:px-16">
-        <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-extrabold text-[#2D2A2E] mb-4 sm:mb-6 leading-tight font-sans">
+      <div className="min-w-[80%] xl:max-w-[75%] 2xl:max-w-[70%] mx-auto text-center flex flex-col items-center justify-center pt-20 sm:pt-24 md:pt-28 lg:pt-48 xl:pt-56 pb-12 sm:pb-16 md:pb-20 px-4 sm:px-6 md:px-8 lg:px-12 xl:px-16">
+        <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-extrabold text-[#2D2A2E] mb-4 sm:mb-6 md:mb-8 leading-tight font-sans">
           Not Just Threads<br className="hidden sm:inline" />
           We Weave <span className="bg-gradient-to-r from-[#CBB49A] via-[#b7a078] to-[#2D2A2E] bg-clip-text text-transparent">Possibilities</span>
         </h2>
-        <p className="text-base sm:text-lg md:text-xl lg:text-2xl text-[#3D3846] font-light max-w-2xl mx-auto mb-6 sm:mb-8 md:mb-10 px-4">
+        <p className="text-base sm:text-lg md:text-xl lg:text-2xl text-[#3D3846] font-light max-w-2xl mx-auto mb-6 sm:mb-8 md:mb-10 px-4 md:px-6">
                           Empowering new-age fashion brands with expert designs and creative solutions.
         </p>
-        <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center mb-8 sm:mb-10">
+        <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 md:gap-6 justify-center mb-8 sm:mb-10 md:mb-12">
           <Button 
             onClick={onGetStartedClick}
-            className="rounded-full bg-[#CBB49A] text-white px-4 sm:px-6 py-2 text-base sm:text-lg font-semibold shadow-md hover:bg-[#b7a078] transition-all duration-300 transform hover:scale-105"
+            className="rounded-full bg-[#CBB49A] text-white px-4 sm:px-6 md:px-8 py-2 md:py-3 text-base sm:text-lg md:text-xl font-semibold shadow-md hover:bg-[#b7a078] transition-all duration-300 transform hover:scale-105"
           >
             Get Started
           </Button>
           <Button 
             onClick={onStartDemoClick}
             variant="outline" 
-            className="rounded-full border-[#CBB49A] text-[#2D2A2E] px-4 sm:px-6 py-2 text-base sm:text-lg font-semibold hover:bg-[#CBB49A]/10 hover:border-[#b7a078] transition-all duration-300"
+            className="rounded-full border-[#CBB49A] text-[#2D2A2E] px-4 sm:px-6 md:px-8 py-2 md:py-3 text-base sm:text-lg md:text-xl font-semibold hover:bg-[#CBB49A]/10 hover:border-[#b7a078] transition-all duration-300"
           >
             Start a Demo
           </Button>
         </div>
-        <div className="w-full flex justify-center px-4 sm:px-6">
+        <div className="w-full flex justify-center px-4 sm:px-6 md:px-8">
           <div
             className="relative w-full max-w-7xl rounded-xl sm:rounded-2xl overflow-hidden shadow-[0_12px_48px_0_rgba(203,180,154,0.55)] aspect-video bg-black cursor-pointer"
             onClick={handleCardClick}

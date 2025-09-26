@@ -1,8 +1,11 @@
 import React from 'react'
+import LoungewearClient from './LoungewearClient'
 
 const page = () => {
   return (
-    <div>page</div>
+    <div>
+      <LoungewearClient />
+    </div>
   )
 }
 

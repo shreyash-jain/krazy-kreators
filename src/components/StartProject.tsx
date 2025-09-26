@@ -54,13 +54,13 @@ export default function StartProject() {
   };
   return (
     <section className="w-full bg-gradient-to-br from-white to-[#F8F7F4] py-12 sm:py-16 md:py-20 lg:py-24">
-      <div className="min-w-[80%] xl:max-w-[75%] 2xl:max-w-[70%] mx-auto px-4 sm:px-6 lg:px-12 xl:px-16">
+      <div className="min-w-[80%] xl:max-w-[75%] 2xl:max-w-[70%] mx-auto px-4 sm:px-6 md:px-8 lg:px-12 xl:px-16">
         {/* Section Header */}
-        <div className="text-center mb-8 sm:mb-10 md:mb-12">
+        <div className="text-center mb-8 sm:mb-10 md:mb-12 lg:mb-16">
           <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold font-sans text-[#2D2A2E] mb-3 sm:mb-4">
             Start Your Project
           </h2>
-          <p className="text-sm sm:text-base md:text-lg text-[#3D3846] max-w-2xl mx-auto px-4">
+          <p className="text-sm sm:text-base md:text-lg text-[#3D3846] max-w-2xl mx-auto px-4 md:px-6">
             Ready to bring your fashion vision to life? Let&apos;s get started on your journey with Krazy Kreators.
           </p>
         </div>

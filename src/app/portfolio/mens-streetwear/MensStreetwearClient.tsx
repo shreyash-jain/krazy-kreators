@@ -260,7 +260,7 @@ export default function MensStreetwearClient() {
 
     return (
       <div className="group bg-white rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-300 overflow-hidden hover:scale-105">
-        <div className="relative h-96 sm:h-[28rem] lg:h-[32rem] overflow-hidden">
+        <div className="relative h-96 sm:h-[28rem] md:h-[30rem] lg:h-[26rem] overflow-hidden transform -skew-y-1">
           {/* Image Carousel */}
           <div className="relative w-full h-full">
             <div 
@@ -268,7 +268,7 @@ export default function MensStreetwearClient() {
               style={{ transform: `translateX(-${currentImageIndex * 100}%)` }}
             >
               {product.images.map((image: string, index: number) => (
-                <div key={index} className="w-full flex-shrink-0 relative">
+                <div key={index} className="w-full flex-shrink-0 relative transform skew-y-1">
                   <Image
                     src={image}
                     alt={`Product Image ${index + 1}`}
@@ -310,7 +310,7 @@ export default function MensStreetwearClient() {
               <>
                 <button
                   onClick={prevImage}
-                  className="absolute left-2 top-1/2 -translate-y-1/2 bg-white/80 hover:bg-white text-[#2D2A2E] p-2 rounded-full shadow-lg transition-all duration-300 hover:scale-110 backdrop-blur-sm opacity-0 group-hover:opacity-100"
+                    className="absolute left-2 top-1/2 -translate-y-1/2 bg-white/80 hover:bg-white text-[#2D2A2E] p-2 rounded-full shadow-lg transition-all duration-300 hover:scale-110 backdrop-blur-sm"
                   aria-label="Previous image"
                 >
                   <ChevronLeft className="w-4 h-4" />
@@ -318,7 +318,7 @@ export default function MensStreetwearClient() {
                 
                 <button
                   onClick={nextImage}
-                  className="absolute right-2 top-1/2 -translate-y-1/2 bg-white/80 hover:bg-white text-[#2D2A2E] p-2 rounded-full shadow-lg transition-all duration-300 hover:scale-110 backdrop-blur-sm opacity-0 group-hover:opacity-100"
+                    className="absolute right-2 top-1/2 -translate-y-1/2 bg-white/80 hover:bg-white text-[#2D2A2E] p-2 rounded-full shadow-lg transition-all duration-300 hover:scale-110 backdrop-blur-sm"
                   aria-label="Next image"
                 >
                   <ChevronRight className="w-4 h-4" />
@@ -348,13 +348,16 @@ export default function MensStreetwearClient() {
         
         {/* Product Info */}
         <div className="p-6">
-          <div className="flex items-center gap-3">
+          <div className="flex items-center justify-between">
+            <h3 className="text-xl font-bold text-[#2D2A2E] group-hover:text-[#CBB49A] transition-colors">
+              {product.brandName}
+            </h3>
             {product.brandLogo && (
               <Image
                 src={product.brandLogo}
                 alt={`${product.brandName} Logo`}
-                width={24}
-                height={24}
+                width={32}
+                height={32}
                 className="object-contain"
                 style={{
                   WebkitTransform: 'translateZ(0)',
@@ -364,9 +367,6 @@ export default function MensStreetwearClient() {
                 }}
               />
             )}
-            <h3 className="text-xl font-bold text-[#2D2A2E] group-hover:text-[#CBB49A] transition-colors">
-              {product.brandName}
-            </h3>
           </div>
         </div>
       </div>
@@ -377,6 +377,7 @@ export default function MensStreetwearClient() {
     <div className="min-h-screen bg-white">
       {/* Hero Section */}
       <section className="relative pt-32 pb-20 sm:pt-36 sm:pb-24 lg:pt-40 lg:pb-32 bg-gradient-to-br from-[#F8F7F4] to-white overflow-hidden">
+        <div className="absolute inset-0 bg-[url('/brands/mens_streetwear.jpg')] bg-cover bg-center opacity-10"></div>
         <div className="relative min-w-[80%] lg:max-w-[80%] mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center">
             <h1 className="text-4xl sm:text-5xl lg:text-6xl font-serif font-bold text-[#2D2A2E] mb-6">

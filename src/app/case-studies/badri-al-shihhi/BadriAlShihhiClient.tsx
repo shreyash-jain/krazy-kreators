@@ -1191,7 +1191,7 @@ export default function BadriAlShihhiClient() {
 
           
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 sm:gap-8">
+          <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 sm:gap-8">
 
             <article className="rounded-2xl border border-white/10 bg-black/40 text-white backdrop-blur-sm p-6 sm:p-8">
 
