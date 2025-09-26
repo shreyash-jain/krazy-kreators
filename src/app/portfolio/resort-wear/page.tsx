@@ -1,8 +1,11 @@
 import React from 'react'
+import ResortWearClient from './ResortWearClient'
 
 const page = () => {
   return (
-    <div>page</div>
+    <div>
+      <ResortWearClient />
+    </div>
   )
 }
 

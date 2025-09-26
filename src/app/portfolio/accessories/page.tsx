@@ -1,8 +1,11 @@
 import React from 'react'
+import AccessoriesClient from './AccessoriesClient'
 
 const page = () => {
   return (
-    <div>page</div>
+    <div>
+      <AccessoriesClient />
+    </div>
   )
 }
 

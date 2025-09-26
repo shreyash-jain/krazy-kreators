@@ -61,19 +61,19 @@ const caseStudies = [
 export default function CaseStudies() {
   return (
     <section id="case-studies" className="w-full bg-gradient-to-br from-[#F8F7F4] to-[#F0EDE8] py-12 sm:py-16 md:py-20 lg:py-24">
-      <div className="min-w-[80%] xl:max-w-[75%] 2xl:max-w-[70%] mx-auto px-4 sm:px-6 lg:px-12 xl:px-16">
+      <div className="min-w-[80%] xl:max-w-[75%] 2xl:max-w-[70%] mx-auto px-4 sm:px-6 md:px-8 lg:px-12 xl:px-16">
         {/* Section Header */}
-        <div className="text-center mb-12 sm:mb-14 md:mb-16">
+        <div className="text-center mb-12 sm:mb-14 md:mb-16 lg:mb-20">
           <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold font-sans text-[#2D2A2E] mb-4 sm:mb-6">
             Real Stories. Real Impact.
           </h2>
-          <p className="text-base sm:text-lg md:text-xl text-[#3D3846]/70 max-w-3xl mx-auto leading-relaxed px-4">
+          <p className="text-base sm:text-lg md:text-xl text-[#3D3846]/70 max-w-3xl mx-auto leading-relaxed px-4 md:px-6">
             See how our clients turned ideas into extraordinary outcomes with Krazy Kreators.
           </p>
         </div>
 
         {/* Case Study Cards - Vertical Stack */}
-        <div className="space-y-6 sm:space-y-8">
+        <div className="space-y-6 sm:space-y-8 md:space-y-10">
           {caseStudies.map((study) => (
             <Link
               key={study.id}

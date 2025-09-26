@@ -340,7 +340,7 @@ export default function TiltedLotusClient() {
 						</div>
 
 						{/* Challenge Cards */}
-						<div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+						<div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
 							<div className="bg-white border-2 border-[#E8E4DD] rounded-2xl p-8 shadow-lg hover:shadow-xl transition-all duration-300">
 								<div className="w-16 h-16 bg-[#6BA292]/10 rounded-xl flex items-center justify-center mb-6">
 									<Factory className="w-8 h-8 text-[#6BA292]" />

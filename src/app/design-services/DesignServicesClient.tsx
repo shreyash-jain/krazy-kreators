@@ -50,9 +50,9 @@ export default function DesignServicesClient() {
           <Image src="/brands/design-why-choose-us.jpg" alt="Krazy Kreators design studio background" fill priority sizes="100vw" className="object-cover" />
           <div className="absolute inset-0 bg-black/50" />
         </div>
-        <div className="relative min-w-[80%] xl:max-w-[75%] 2xl:max-w-[70%] mx-auto px-4 sm:px-6 lg:px-12 xl:px-16 py-24 sm:py-28 md:py-32 text-center">
-          <h1 className="text-3xl sm:text-4xl md:text-5xl font-serif font-bold text-white">Design. Develop. Deliver.</h1>
-          <h2 className="mt-4 text-base sm:text-lg md:text-xl text-white/90 font-normal">Trend forecasting, garment sampling, and production-ready designs for fast-moving fashion brands.</h2>
+        <div className="relative min-w-[80%] xl:max-w-[75%] 2xl:max-w-[70%] mx-auto px-4 sm:px-6 md:px-8 lg:px-12 xl:px-16 py-24 sm:py-28 md:py-32 text-center">
+          <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-serif font-bold text-white">Design. Develop. Deliver.</h1>
+          <h2 className="mt-4 text-base sm:text-lg md:text-xl lg:text-2xl text-white/90 font-normal">Trend forecasting, garment sampling, and production-ready designs for fast-moving fashion brands.</h2>
           <div className="mt-8 flex flex-col sm:flex-row items-center justify-center gap-3">
             <a href="#" onClick={(e) => { e.preventDefault(); setContactOpen(true); }} className="inline-flex w-full sm:w-auto h-12 items-center justify-center rounded-full bg-[#CBB49A] hover:bg-[#b7a078] text-white px-7 text-sm sm:text-base font-semibold shadow-sm hover:shadow-md transition-transform hover:-translate-y-0.5">Start Your Design Journey</a>
             <Link href="/#case-studies" className="inline-flex w-full sm:w-auto h-12 items-center justify-center rounded-full border border-white/70 text-white px-7 text-sm sm:text-base font-semibold hover:text-[#6BA292] hover:border-[#6BA292] transition-colors">View Portfolio</Link>
@@ -67,7 +67,7 @@ export default function DesignServicesClient() {
         {/* subtle accent shapes */}
         <div className="pointer-events-none absolute -left-24 -top-24 h-72 w-72 rounded-full bg-[#F5F0E8] blur-2xl opacity-60" />
         <div className="pointer-events-none absolute -right-24 bottom-0 h-72 w-72 rounded-full bg-[#F8F7F4] blur-2xl opacity-60" />
-        <div className="min-w-[80%] xl:max-w-[75%] 2xl:max-w-[70%] mx-auto px-4 sm:px-6 lg:px-12 xl:px-16 relative">
+        <div className="min-w-[80%] xl:max-w-[75%] 2xl:max-w-[70%] mx-auto px-4 sm:px-6 md:px-8 lg:px-12 xl:px-16 relative">
           <header className="text-center">
             <h2 className="text-2xl sm:text-3xl md:text-4xl font-serif font-bold text-[#2D2A2E]">Our Fashion Design Expertise</h2>
             <p className="mt-3 sm:mt-4 text-sm sm:text-base md:text-lg text-[#5C5C5C] max-w-[700px] mx-auto">
@@ -76,7 +76,7 @@ export default function DesignServicesClient() {
           </header>
 
           {/* 3-column grid */}
-          <div className="mt-10 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
+          <div className="mt-10 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
             {[
               { icon: PenTool, title: "New Collection Development", desc: "Trendsetting collections tailored to your brand identity.", alt: "fashion design services – collection development" },
               { icon: Ruler, title: "Size and Fit Development", desc: "Precision fit for comfort, style, and quality.", alt: "fashion design services – size and fit" },
@@ -111,7 +111,7 @@ export default function DesignServicesClient() {
 
       {/* WHY CHOOSE US SECTION */}
       <section className="py-16 sm:py-20 md:py-24 bg-[#FAF9F3]">
-        <div className="min-w-[80%] xl:max-w-[75%] 2xl:max-w-[70%] mx-auto px-4 sm:px-6 lg:px-12 xl:px-16">
+        <div className="min-w-[80%] xl:max-w-[75%] 2xl:max-w-[70%] mx-auto px-4 sm:px-6 md:px-8 lg:px-12 xl:px-16">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 items-stretch">
             <div className="rounded-2xl overflow-hidden border border-[#ECE9E2] shadow-sm h-full">
               <div className="relative w-full h-full min-h-[22rem]">
@@ -143,7 +143,7 @@ export default function DesignServicesClient() {
 
       {/* CASE STUDIES – GRID (below Why Choose section) */}
       <section id="client-case-studies" className="relative bg-white py-12 sm:py-16 md:py-20">
-        <div className="min-w-[80%] xl:max-w-[75%] 2xl:max-w-[70%] mx-auto px-4 sm:px-6 lg:px-12 xl:px-16">
+        <div className="min-w-[80%] xl:max-w-[75%] 2xl:max-w-[70%] mx-auto px-4 sm:px-6 md:px-8 lg:px-12 xl:px-16">
           <div className="text-center">
             <h2 className="text-2xl sm:text-3xl md:text-4xl font-serif font-bold text-[#2D2A2E]">Creative Journeys We’ve Brought to Life</h2>
             <p className="mt-2 text-sm sm:text-base text-[#5C5C5C]">From concept to collection — explore the brands we’ve helped shine in the fashion world.</p>
@@ -182,7 +182,7 @@ export default function DesignServicesClient() {
 
       {/* FAQ Section */}
       <section className="w-full bg-white py-12 sm:py-16 md:py-20 lg:py-24">
-        <div className="min-w-[80%] xl:max-w-[75%] 2xl:max-w-[70%] mx-auto px-4 sm:px-6 lg:px-12 xl:px-16">
+        <div className="min-w-[80%] xl:max-w-[75%] 2xl:max-w-[70%] mx-auto px-4 sm:px-6 md:px-8 lg:px-12 xl:px-16">
           {/* Section Header */}
           <div className="text-center mb-12 sm:mb-14 md:mb-16">
             <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold font-sans text-[#2D2A2E] mb-3 sm:mb-4">
@@ -263,7 +263,7 @@ export default function DesignServicesClient() {
 
       {/* FINAL CTA SECTION */}
       <section className="py-16 sm:py-20 md:py-24 bg-[#FAF9F3]">
-        <div className="min-w-[80%] xl:max-w-[75%] 2xl:max-w-[70%] mx-auto px-4 sm:px-6 lg:px-12 xl:px-16">
+        <div className="min-w-[80%] xl:max-w-[75%] 2xl:max-w-[70%] mx-auto px-4 sm:px-6 md:px-8 lg:px-12 xl:px-16">
           <div className="max-w-2xl mx-auto text-center">
             <h2 className="text-2xl sm:text-3xl md:text-4xl font-serif font-bold text-[#2D2A2E]">Transform Your Vision Into Reality</h2>
             <p className="mt-4 text-sm sm:text-base md:text-lg text-[#3D3846]">Partner with Krazy Kreators to bring your fashion concepts to life — from initial sketches to market‑ready collections.</p>
