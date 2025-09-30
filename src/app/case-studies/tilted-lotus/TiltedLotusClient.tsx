@@ -340,7 +340,7 @@ export default function TiltedLotusClient() {
 						</div>
 
 						{/* Challenge Cards */}
-						<div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+						<div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
 							<div className="bg-white border-2 border-[#E8E4DD] rounded-2xl p-8 shadow-lg hover:shadow-xl transition-all duration-300">
 								<div className="w-16 h-16 bg-[#6BA292]/10 rounded-xl flex items-center justify-center mb-6">
 									<Factory className="w-8 h-8 text-[#6BA292]" />
@@ -647,16 +647,16 @@ export default function TiltedLotusClient() {
 								videoClassName="w-full h-full object-cover"
 							/>
 
-						<div className="space-y-6 text-lg leading-relaxed text-black">
-							<p>
+							<div className="space-y-6 text-lg leading-relaxed text-black">
+								<p>
 								&ldquo;Working with Krazy Kreators was transformative for Tilted Lotus. They didn&apos;t just understand my cultural vision — they elevated it to new heights. From the initial concept to the NYFW runway, every step was executed with precision and cultural sensitivity.&rdquo;
-							</p>
-							
-							<p>
+								</p>
+								
+								<p>
 								&ldquo;The attention to detail in preserving South Asian artistic traditions while creating contemporary silhouettes exceeded my expectations. They truly became partners in bringing my cultural heritage to life in modern fashion.&rdquo;
-							</p>
-							
-							<p>
+								</p>
+								
+								<p>
 								&ldquo;The end result is exactly what I envisioned: a brand that celebrates cultural diversity while maintaining contemporary appeal. Our customers love the authenticity and quality, and I couldn&apos;t be happier with the partnership.&rdquo;
 							</p>
 

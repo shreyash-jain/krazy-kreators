@@ -1,9 +1,5 @@
-import React from 'react'
+import LuxuryWearClient from './LuxuryWearClient';
 
-const page = () => {
-  return (
-    <div>page</div>
-  )
+export default function LuxuryWearPage() {
+  return <LuxuryWearClient />;
 }
-
-export default page

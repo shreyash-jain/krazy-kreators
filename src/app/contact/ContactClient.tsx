@@ -102,7 +102,7 @@ export default function ContactClient() {
 
       {/* Hero Intro */}
       <section className="py-28 sm:py-32 md:py-36">
-        <div className="max-w-[80%] mx-auto px-6 md:px-20">
+        <div className="max-w-[95%] sm:max-w-[95%] md:max-w-[95%] lg:max-w-[80%] mx-auto px-6 md:px-20">
           <div className="text-center">
             <h2 className="text-4xl sm:text-5xl md:text-6xl font-sans font-bold text-[#111111] mt-6 sm:mt-8 md:mt-10">Talk to the Kreators</h2>
             <p className="mt-4 text-base sm:text-lg md:text-xl text-[#666666] max-w-3xl mx-auto">
@@ -114,10 +114,10 @@ export default function ContactClient() {
 
       {/* StartProject-style Form first */}
       <section className="pb-16 sm:pb-20 md:pb-24">
-        <div className="max-w-[80%] mx-auto px-6 md:px-20">
+        <div className="max-w-[95%] sm:max-w-[95%] md:max-w-[95%] lg:max-w-[80%] mx-auto px-6 md:px-20">
           <div className="bg-white rounded-xl sm:rounded-2xl shadow-[0_4px_40px_-12px_rgba(0,0,0,0.08)] p-6 sm:p-8 md:p-12">
             <form onSubmit={handleSubmit} className="space-y-4 sm:space-y-6">
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-4 sm:gap-6">
+              <div className="grid grid-cols-1 lg:grid-cols-2 gap-4 sm:gap-6">
                 <div className="relative">
                   <label htmlFor="fullName" className="block text-xs sm:text-sm font-medium text-[#2D2A2E] mb-1 sm:mb-2">Full name <span className="!text-[#CBB49A] !font-bold">*</span></label>
                   <div className="relative">
@@ -328,7 +328,7 @@ export default function ContactClient() {
 
       {/* Full-width Map */}
       <section className="pb-24">
-        <div className="max-w-[80%] mx-auto px-6 md:px-20">
+        <div className="max-w-[95%] sm:max-w-[95%] md:max-w-[95%] lg:max-w-[80%] mx-auto px-6 md:px-20">
           <div className="relative rounded-2xl overflow-hidden shadow-[0_8px_24px_rgba(0,0,0,0.06)] border border-[#E0E0E0]">
             <iframe
               title="Krazy Kreators location on Google Maps"

@@ -159,7 +159,7 @@ export default function AboutClient() {
               </div>
               <div className="flex items-center justify-center h-16 sm:h-20 md:h-24 w-full bg-white rounded-lg border border-[#ECE9E2] p-4 overflow-hidden">
                 <Image 
-                  src="/brands/badri-al-shihhi.png" 
+                  src="/brands/badria-al-shihhi-logo.png" 
                   alt="Badria Al Shihhi logo - custom clothing production" 
                   width={120}
                   height={80}
@@ -191,9 +191,9 @@ export default function AboutClient() {
           <div className="space-y-10 sm:space-y-12 lg:space-y-16">
             {/* Past */}
             <div className="py-2">
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-8 sm:gap-10 lg:gap-14 items-center">
+              <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 sm:gap-10 lg:gap-14 items-center">
                 {/* Text */}
-                <div className="order-2 md:order-1">
+                <div className="order-2 lg:order-1">
                   <div className="mb-4 flex items-center gap-3">
                     <div className="w-8 h-8 rounded-full bg-[#6BA292]/10 flex items-center justify-center">
                       <span className="w-2 h-2 rounded-full bg-[#6BA292] inline-block" />
@@ -205,7 +205,7 @@ export default function AboutClient() {
                   </p>
                 </div>
                 {/* Image right on desktop */}
-                <div className="order-1 md:order-2">
+                <div className="order-1 lg:order-2">
                   <img
                     src="/brands/about-past.jpg"
                     alt="Past – early fashion design to delivery support"
@@ -217,9 +217,9 @@ export default function AboutClient() {
 
             {/* Present */}
             <div className="py-2">
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-8 sm:gap-10 lg:gap-14 items-center">
+              <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 sm:gap-10 lg:gap-14 items-center">
                 {/* Image left on desktop */}
-                <div className="order-1 md:order-1">
+                <div className="order-1 lg:order-1">
                   <img
                     src="/brands/about-present.jpg"
                     alt="Present – sustainable clothing manufacturing at Krazy Kreators"
@@ -227,7 +227,7 @@ export default function AboutClient() {
                   />
                 </div>
                 {/* Text */}
-                <div className="order-2 md:order-2">
+                <div className="order-2 lg:order-2">
                   <div className="mb-4 flex items-center gap-3">
                     <div className="w-8 h-8 rounded-full bg-[#6BA292]/10 flex items-center justify-center">
                       <span className="w-2 h-2 rounded-full bg-[#6BA292] inline-block" />
@@ -243,9 +243,9 @@ export default function AboutClient() {
 
             {/* Future */}
             <div className="py-2">
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-8 sm:gap-10 lg:gap-14 items-center">
+              <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 sm:gap-10 lg:gap-14 items-center">
                 {/* Text */}
-                <div className="order-2 md:order-1">
+                <div className="order-2 lg:order-1">
                   <div className="mb-4 flex items-center gap-3">
                     <div className="w-8 h-8 rounded-full bg-[#6BA292]/10 flex items-center justify-center">
                       <span className="w-2 h-2 rounded-full bg-[#6BA292] inline-block" />
@@ -257,7 +257,7 @@ export default function AboutClient() {
                   </p>
                 </div>
                 {/* Image right on desktop */}
-                <div className="order-1 md:order-2">
+                <div className="order-1 lg:order-2">
                   <img
                     src="/brands/about-future.jpg"
                     alt="Future – innovation in custom clothing production at Krazy Kreators"

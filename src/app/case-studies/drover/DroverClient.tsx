@@ -682,7 +682,7 @@ export default function DroverClient() {
           </div>
 
           {/* Modern Content Layout */}
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 sm:gap-10 md:gap-12">
+          <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 sm:gap-10 md:gap-12">
             {/* Manufacturing */}
             <div className="bg-white/10 backdrop-blur-sm rounded-2xl p-8 sm:p-10 border border-white/20 hover:bg-white/15 transition-all duration-300">
               <div className="flex items-center gap-4 mb-6">
