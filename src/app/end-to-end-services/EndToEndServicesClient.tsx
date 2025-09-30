@@ -65,7 +65,7 @@ export default function EndToEndServicesClient() {
       {/* HERO */}
       <section className="kk-hero-dark relative w-full bg-white min-h-screen flex items-center">
         <div className="absolute inset-0">
-          <Image src="/brands/end-to-end-hero.jpg" alt="Krazy Kreators end-to-end fashion solution" fill priority sizes="100vw" className="object-cover" />
+          <Image src="/brands/end-to-end-hero.webp" alt="Krazy Kreators end-to-end fashion solution" fill priority sizes="100vw" className="object-cover" />
           <div className="absolute inset-0 bg-black/50" />
         </div>
         <div className="relative min-w-[80%] xl:max-w-[75%] 2xl:max-w-[70%] mx-auto px-4 sm:px-6 lg:px-12 xl:px-16 py-24 sm:py-28 md:py-32 text-center">

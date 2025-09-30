@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect, useRef } from "react";
+import { useState, useEffect } from "react";
 import { Button } from "@/components/ui/button";
 import { ArrowRight, MessageSquare, User, Share2, Heart, MessageCircle, Eye } from "lucide-react";
 import ContactDialog from "@/components/ContactDialog";
@@ -17,7 +17,7 @@ const MOCK_COMMENTS = [
       name: "Sarah Chen",
       email: "sarah@example.com",
     comment:
-      "This is incredibly insightful! I've always wondered about the technical process behind mood boards. The step-by-step breakdown really helps understand how creativity meets manufacturing.",
+      "This is incredibly insightful! I've always wondered about the technical process behind print placement and pattern accuracy. The step-by-step breakdown really helps understand how creativity meets manufacturing.",
       date: "2 days ago",
     avatar: "S",
     likes: 34
@@ -37,18 +37,18 @@ const MOCK_COMMENTS = [
       name: "Alex Thompson",
       email: "alex@example.com",
     comment:
-      "As someone new to fashion design, this article was a goldmine of information. The tech pack section especially helped me understand the importance of clear documentation.",
+      "As someone new to fashion design, this article was a goldmine of information. The pattern section especially helped me understand the importance of proper fit and foundation.",
       date: "2 weeks ago",
     avatar: "A",
     likes: 28
   }
 ];
 
-export default function MoodBoardsBlogClient() {
+export default function PrintPatternBlogClient() {
   const [contactOpen, setContactOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
   const [isLiked, setIsLiked] = useState(false);
-  const [likeCount, setLikeCount] = useState(() => MOCK_COMMENTS.reduce((acc, comment) => acc + (comment.likes ?? 0), 0) || 89);
+  const [likeCount, setLikeCount] = useState(() => MOCK_COMMENTS.reduce((acc, comment) => acc + (comment.likes ?? 0), 0) || 67);
   const [commentCount, setCommentCount] = useState(MOCK_COMMENTS.length);
   const [comments, setComments] = useState(MOCK_COMMENTS);
   const [newComment, setNewComment] = useState({
@@ -60,8 +60,6 @@ export default function MoodBoardsBlogClient() {
   const [showSuccessMessage, setShowSuccessMessage] = useState(false);
   const [showAllComments, setShowAllComments] = useState(false);
   const [likedComments, setLikedComments] = useState<Set<number>>(new Set());
-  const endOfArticleRef = useRef<HTMLDivElement | null>(null);
-  const hasAutoOpenedComments = useRef(false);
   const { showToast, ToastContainer } = useToast();
 
   useEffect(() => {
@@ -75,34 +73,39 @@ export default function MoodBoardsBlogClient() {
     // Set initial scroll state
     handleScroll();
 
-    window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
+    window.addEventListener('scroll', handleScroll, { passive: true });
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+    };
   }, []);
 
-  useEffect(() => {
-    if (!endOfArticleRef.current || hasAutoOpenedComments.current) return;
+  // Disabled auto-scroll to prevent scroll conflicts
+  // useEffect(() => {
+  //   if (!endOfArticleRef.current || hasAutoOpenedComments.current) return;
 
-    const observer = new IntersectionObserver((entries) => {
-      const [entry] = entries;
-      if (entry?.isIntersecting) {
-        hasAutoOpenedComments.current = true;
-        // Scroll to comment form when user reaches end of article
-        const commentForm = document.querySelector('[data-comment-form]');
-        if (commentForm) {
-          commentForm.scrollIntoView({ behavior: 'smooth', block: 'center' });
-        }
-      }
-    }, {
-      root: null,
-      threshold: 0.2
-    });
+  //   const observer = new IntersectionObserver((entries) => {
+  //     const [entry] = entries;
+  //     if (entry?.isIntersecting && !hasAutoOpenedComments.current) {
+  //       hasAutoOpenedComments.current = true;
+  //       const commentForm = document.querySelector('[data-comment-form]');
+  //       if (commentForm) {
+  //         setTimeout(() => {
+  //           commentForm.scrollIntoView({ behavior: 'smooth', block: 'start' });
+  //         }, 100);
+  //       }
+  //     }
+  //   }, {
+  //     root: null,
+  //     threshold: 0.1,
+  //     rootMargin: '0px 0px -100px 0px'
+  //   });
 
-    observer.observe(endOfArticleRef.current);
+  //   observer.observe(endOfArticleRef.current);
 
-    return () => {
-      observer.disconnect();
-    };
-  }, [endOfArticleRef]);
+  //   return () => {
+  //     observer.disconnect();
+  //   };
+  // }, [endOfArticleRef]);
 
   const handleLike = () => {
     setIsLiked(!isLiked);
@@ -201,8 +204,8 @@ export default function MoodBoardsBlogClient() {
       {/* Hero Section */}
       <section className="relative h-[60vh] min-h-[500px] overflow-hidden">
         <Image
-          src="/blog/blog 1.png"
-          alt="Mood Boards to Manufacturable Garments Process"
+          src="/blog/blog -2 image.png"
+          alt="Print, Pattern & Prototyping Process"
           fill
           className="object-cover"
           style={{
@@ -223,15 +226,15 @@ export default function MoodBoardsBlogClient() {
             {/* Article Title and Category */}
             <div className="mb-8">
               <h1 className="text-4xl sm:text-5xl font-bold text-[#2D2A2E] mb-4">
-                How We Translate Mood Boards Into Manufacturable Garments
+                Why Print, Pattern & Prototyping Matters
               </h1>
               <div className="flex items-center gap-4 mb-6">
                 <span className="px-3 py-1 bg-[#CBB49A] text-white text-sm font-semibold rounded-full">
-                  Design
+                  Manufacturing
                 </span>
-                <span className="text-sm text-[#666666]">8 min read</span>
+                <span className="text-sm text-[#666666]">6 min read</span>
                 <span className="text-sm text-[#666666]">•</span>
-                <span className="text-sm text-[#666666]">Posted on March 15, 2025</span>
+                <span className="text-sm text-[#666666]">Posted on March 10, 2025</span>
               </div>
 
               {/* Social Interaction Section */}
@@ -307,18 +310,15 @@ export default function MoodBoardsBlogClient() {
             {/* Introduction */}
             <div className="mb-12">
               <p className="text-lg text-[#666666] leading-relaxed mb-6">
-                Every garment begins with a story — and often, that story is captured on a mood board. A mood board is not just a collage of images, colors, and textures. It&apos;s the foundation of a collection, the emotional DNA that guides the design process. But how do we move from this abstract world of inspiration to a garment that is manufacturable, wearable, and ready to reach the customer?
-              </p>
-              <p className="text-lg text-[#666666] leading-relaxed">
-                Here&apos;s the journey step by step:
+                When we see a beautiful outfit in a store or online, we usually notice the color, design, or style. But what we don&apos;t see is the hard work that goes into making that piece look and feel perfect. Behind every successful garment, there are three important steps: Print, Pattern, and Prototyping.
               </p>
             </div>
 
             {/* Featured Image */}
             <div className="mb-12 rounded-2xl overflow-hidden shadow-lg">
               <Image
-                src="/blog/blog 1.png"
-                alt="Mood Boards to Manufacturable Garments Process"
+                src="/blog/blog -2 image.png"
+                alt="Print, Pattern & Prototyping Process"
                 width={800}
                 height={600}
                 className="w-full h-auto object-contain"
@@ -330,7 +330,7 @@ export default function MoodBoardsBlogClient() {
                 }}
                 onLoad={() => {
                   if (typeof window !== 'undefined') {
-                    const img = document.querySelector('img[src="/blog/blog 1.png"]') as HTMLImageElement;
+                    const img = document.querySelector('img[src="/blog/blog -2 image.png"]') as HTMLImageElement;
                     if (img) {
                       img.style.opacity = '1';
                     }
@@ -347,7 +347,7 @@ export default function MoodBoardsBlogClient() {
                   <User className="w-4 h-4 text-white" />
                 </div>
                 <div>
-                  <p className="text-sm text-[#666666]">Hosted by March 15, 2025</p>
+                  <p className="text-sm text-[#666666]">Hosted by March 10, 2025</p>
                   <p className="text-sm font-medium text-[#2D2A2E]">Krazy Kreators Team</p>
                 </div>
               </div>
@@ -356,71 +356,86 @@ export default function MoodBoardsBlogClient() {
             {/* Blog Content */}
             <div className="prose prose-lg max-w-none">
               <p className="text-lg text-[#666666] leading-relaxed mb-8">
-                Every garment begins with a story — and often, that story is captured on a mood board. A mood board is not just a collage of images, colors, and textures. It&apos;s the foundation of a collection, the emotional DNA that guides the design process. But how do we move from this abstract world of inspiration to a garment that is manufacturable, wearable, and ready to reach the customer?
+                When we see a beautiful outfit in a store or online, we usually notice the color, design, or style. But what we don&apos;t see is the hard work that goes into making that piece look and feel perfect. Behind every successful garment, there are three important steps: Print, Pattern, and Prototyping.
               </p>
 
-              <p className="text-lg text-[#666666] leading-relaxed mb-12">
-                Here&apos;s the journey step by step:
-              </p>
-
-              {/* Step 1 */}
+              {/* Prints Section */}
               <div className="mb-12">
-                <h2 className="text-2xl font-bold text-[#2D2A2E] mb-6">1. Reading the Mood Board</h2>
+                <h2 className="text-2xl font-bold text-[#2D2A2E] mb-6">Prints - The First Detail That Catches the Eye</h2>
                 <p className="text-lg text-[#666666] leading-relaxed mb-6">
-                  The first step is interpretation. A mood board holds hidden clues — a certain shade of pink, a fluid drape in a photo, a bold geometric silhouette, or a cultural motif.
+                  Prints are the first detail that catches the eye. They tell a story, connect with emotions, and help a brand build its own voice.
                 </p>
+                
+                {/* Strategic Image 1: Prints */}
+                <div className="mb-8 rounded-xl overflow-hidden shadow-lg">
+                  <Image
+                    src="/blog/blog 2_1.png"
+                    alt="Fashion prints and patterns"
+                    width={800}
+                    height={600}
+                    className="w-full h-auto object-contain"
+                    style={{
+                      WebkitTransform: 'translateZ(0)',
+                      transform: 'translateZ(0)',
+                      WebkitBackfaceVisibility: 'hidden',
+                      backfaceVisibility: 'hidden'
+                    }}
+                  />
+                </div>
+
                 <ul className="list-disc list-inside text-lg text-[#666666] leading-relaxed space-y-2 mb-6">
-                  <li>Colors become Pantone references.</li>
-                  <li>Textures hint at fabrics — silk, denim, knits, or organza.</li>
-                  <li>Imagery sparks silhouettes and details — oversized sleeves, cinched waists, or minimalist cuts.</li>
+                  <li><strong>Creates Identity:</strong> Prints can give a brand its own style. When people see a certain print, they connect it with that brand.</li>
+                  <li><strong>Adds Emotion:</strong> Prints can express feelings. Some look calm and soft, others look bold and energetic. They help the garment speak without words.</li>
+                  <li><strong>Makes You Stand Out:</strong> In a market full of simple, plain clothes, a unique print can grab attention and make the collection different.</li>
                 </ul>
               </div>
 
-              {/* Step 2 */}
+              {/* Pattern Section */}
               <div className="mb-12">
-                <h2 className="text-2xl font-bold text-[#2D2A2E] mb-6">2. From Inspiration to Initial Sketches</h2>
+                <h2 className="text-2xl font-bold text-[#2D2A2E] mb-6">Pattern – The Fit & Foundation</h2>
                 <p className="text-lg text-[#666666] leading-relaxed mb-6">
-                  Once the mood board direction is clear, designers begin sketching. These sketches translate abstract emotions into wearable shapes. Each detail — neckline, hemline, fit — begins to align with the board&apos;s story.
+                  Patterns are like the blueprint of a garment. They decide how the fabric will be cut and stitched, and how the final piece will fit the body.
                 </p>
-              </div>
+                
+                {/* Strategic Image 2: Pattern Making */}
+                <div className="mb-8 rounded-xl overflow-hidden shadow-lg">
+                  <Image
+                    src="/blog/blog 2_2.png"
+                    alt="Pattern making and garment construction"
+                    width={800}
+                    height={600}
+                    className="w-full h-auto object-contain"
+                    style={{
+                      WebkitTransform: 'translateZ(0)',
+                      transform: 'translateZ(0)',
+                      WebkitBackfaceVisibility: 'hidden',
+                      backfaceVisibility: 'hidden'
+                    }}
+                  />
+                </div>
 
-              {/* Step 3 */}
-              <div className="mb-12">
-                <h2 className="text-2xl font-bold text-[#2D2A2E] mb-6">3. Fabric & Material Selection</h2>
-                <p className="text-lg text-[#666666] leading-relaxed mb-6">
-                  A mood board&apos;s colors and textures are matched with real-world fabrics. This step answers: What fabric will best express the drape, comfort, and mood intended? Along with base fabric, trims and accessories — zippers, buttons, embroidery, laces — are chosen to reinforce the design language.
-                </p>
-              </div>
-
-              {/* Step 4 */}
-              <div className="mb-12">
-                <h2 className="text-2xl font-bold text-[#2D2A2E] mb-6">4. Creating the Tech Pack</h2>
-                <p className="text-lg text-[#666666] leading-relaxed mb-6">
-                  Here the idea starts becoming technical. The tech pack is the designer&apos;s language for manufacturers, including:
-                </p>
                 <ul className="list-disc list-inside text-lg text-[#666666] leading-relaxed space-y-2 mb-6">
-                  <li>Flat sketches</li>
-                  <li>Measurements and grading</li>
-                  <li>Stitching details</li>
-                  <li>Fabric and trim specifications</li>
+                  <li><strong>A good pattern</strong> = clothes that fit well, look stylish, and feel comfortable.</li>
+                  <li><strong>A poor pattern</strong> = clothes that feel awkward, don&apos;t sit right, and lose value.</li>
                 </ul>
-                <p className="text-lg text-[#666666] leading-relaxed mb-6">
-                  This is where creativity meets precision. Without this, a design can&apos;t be accurately reproduced.
+
+                <p className="text-lg text-[#666666] leading-relaxed">
+                  Even the best fabric won&apos;t work if the pattern isn&apos;t right. For example, the same cotton fabric can look completely different as an oversized streetwear tee versus a slim-fit formal shirt – and that&apos;s all because of the pattern.
                 </p>
               </div>
 
-              {/* Step 5 */}
+              {/* Prototyping Section */}
               <div className="mb-12">
-                <h2 className="text-2xl font-bold text-[#2D2A2E] mb-6">5. Prototyping</h2>
+                <h2 className="text-2xl font-bold text-[#2D2A2E] mb-6">Prototyping – The First Real Test</h2>
                 <p className="text-lg text-[#666666] leading-relaxed mb-6">
-                  The first tangible form of the garment is created. A prototype or test fit (made from test fabric) helps check silhouette, fit, and construction. Adjustments are made until the garment feels true to the original vision.
+                  Prototyping is simply making the first sample of your design. It&apos;s the stage where ideas meet reality.
                 </p>
                 
-                {/* Strategic Image 1: Design Process */}
+                {/* Strategic Image 3: Prototyping */}
                 <div className="mb-8 rounded-xl overflow-hidden shadow-lg">
                   <Image
-                    src="/blog/blog 1_1.png"
-                    alt="Design process from mood board to sketches"
+                    src="/blog/blog 2_3.png"
+                    alt="Prototyping and sample making process"
                     width={800}
                     height={600}
                     className="w-full h-auto object-contain"
@@ -432,152 +447,111 @@ export default function MoodBoardsBlogClient() {
                     }}
                   />
                 </div>
-              </div>
 
-              {/* Step 6 */}
-              <div className="mb-12">
-                <h2 className="text-2xl font-bold text-[#2D2A2E] mb-6">6. Sampling in Main Fabric (Designer & Client Approval)</h2>
-                <p className="text-lg text-[#666666] leading-relaxed mb-6">
-                  Once the prototype is approved, the garment is made in the actual fabric and trims chosen for production. This is the most important checkpoint — because only in the main fabric can one judge the real drape, shine, and finish. Both designers and clients review and approve this sample before moving forward.
-                </p>
-              </div>
+                <ul className="list-disc list-inside text-lg text-[#666666] leading-relaxed space-y-2 mb-6">
+                  <li>It shows if the print looks good on fabric.</li>
+                  <li>It tests whether the pattern gives the right fit.</li>
+                  <li>It helps find small mistakes before bulk production.</li>
+                </ul>
 
-              {/* Step 7 */}
-              <div className="mb-12">
-                <h2 className="text-2xl font-bold text-[#2D2A2E] mb-6">7. Pre-Production & Scaling</h2>
-                <p className="text-lg text-[#666666] leading-relaxed mb-6">
-                  Once samples are approved, the garment goes into pre-production. At this stage, patterns are finalized, fabric orders placed, and manufacturing timelines locked.
+                <p className="text-lg text-[#2D2A2E] leading-relaxed font-medium">
+                  For designers and brands, prototyping is like a safety net. It saves money, time, and ensures the final product matches the vision.
                 </p>
-                
-                {/* Strategic Image 2: Manufacturing Process */}
-                <div className="mb-8 rounded-xl overflow-hidden shadow-lg">
-                  <Image
-                    src="/blog/blog 1_2.png"
-                    alt="Manufacturing and production process"
-                    width={800}
-                    height={600}
-                    className="w-full h-auto object-contain"
-                    style={{
-                      WebkitTransform: 'translateZ(0)',
-                      transform: 'translateZ(0)',
-                      WebkitBackfaceVisibility: 'hidden',
-                      backfaceVisibility: 'hidden'
-                    }}
-                  />
-                </div>
-              </div>
-
-              {/* Step 8 */}
-              <div className="mb-12">
-                <h2 className="text-2xl font-bold text-[#2D2A2E] mb-6">8. Production & Quality Checks</h2>
-                <p className="text-lg text-[#666666] leading-relaxed mb-6">
-                  The garment is finally manufactured in bulk. Quality checks ensure every piece matches the sample — in fit, stitching, and finish.
-                </p>
-                
-                {/* Strategic Image 3: Final Product */}
-                <div className="mb-8 rounded-xl overflow-hidden shadow-lg">
-                  <Image
-                    src="/blog/blog 1_3.png"
-                    alt="Final manufactured garments and quality control"
-                    width={800}
-                    height={600}
-                    className="w-full h-auto object-contain"
-                    style={{
-                      WebkitTransform: 'translateZ(0)',
-                      transform: 'translateZ(0)',
-                      WebkitBackfaceVisibility: 'hidden',
-                      backfaceVisibility: 'hidden'
-                    }}
-                  />
-                </div>
               </div>
 
               {/* Conclusion */}
               <div className="mb-12">
                 <p className="text-lg text-[#2D2A2E] leading-relaxed font-medium">
-                  Each step ensures the original inspiration doesn&apos;t get lost in the process but instead evolves into something both beautiful and manufacturable.
+                  Print, Pattern, and Prototyping are the three pillars that transform a design concept into a successful garment. Each step builds upon the previous one, creating a foundation for fashion that not only looks great but feels right and functions perfectly.
                 </p>
               </div>
+            </div>
 
-              {/* Post-Content Social Interaction with Integrated Comments */}
-              <div className="border-t border-gray-200 pt-8 mb-12">
-                <div className="p-6 bg-[#F8F7F4] rounded-xl">
-                  {/* Social Interaction Buttons */}
-                  <div className="mb-8">
-                    {/* Desktop Layout */}
-                    <div className="hidden sm:flex items-center justify-between">
-                      <div className="flex items-center gap-6">
-                        <button
-                          onClick={handleLike}
-                          className={`flex items-center gap-2 px-6 py-3 rounded-full text-sm font-medium transition-all duration-300 ${
-                            isLiked
-                                ? "bg-white text-gray-600 hover:bg-[#CBB49A] hover:text-white border border-gray-200"
-                                : "bg-white text-gray-600 hover:bg-[#CBB49A] hover:text-white border border-gray-200"
-                          }`}
-                        >
-                            <Heart className={`w-5 h-5 ${isLiked ? 'fill-[#CBB49A]' : ''}`} />
-                          {likeCount} {likeCount === 1 ? 'Like' : 'Likes'}
-                        </button>
-                        
-                        <button
-                          onClick={handleComment}
-                          className="flex items-center gap-2 px-6 py-3 rounded-full bg-white text-gray-600 hover:bg-gray-50 border border-gray-200 text-sm font-medium transition-all duration-300"
-                        >
-                          <MessageCircle className="w-5 h-5" />
-                          {commentCount} {commentCount === 1 ? 'Comment' : 'Comments'}
-                        </button>
-                      </div>
+            {/* End of Article Marker */}
+            <div className="h-4"></div>
+
+            {/* Post-Content Social Interaction with Integrated Comments */}
+            <div className="border-t border-gray-200 pt-8 mb-12">
+              <div className="p-6 bg-[#F8F7F4] rounded-xl">
+                {/* Social Interaction Buttons */}
+                <div className="mb-8">
+                  {/* Desktop Layout */}
+                  <div className="hidden sm:flex items-center justify-between">
+                    <div className="flex items-center gap-6">
+                      <button
+                        onClick={handleLike}
+                        className={`flex items-center gap-2 px-6 py-3 rounded-full text-sm font-medium transition-all duration-300 ${
+                          isLiked
+                              ? "bg-white text-gray-600 hover:bg-[#CBB49A] hover:text-white border border-gray-200"
+                              : "bg-white text-gray-600 hover:bg-[#CBB49A] hover:text-white border border-gray-200"
+                        }`}
+                      >
+                          <Heart className={`w-5 h-5 ${isLiked ? 'fill-[#CBB49A]' : ''}`} />
+                        {likeCount} {likeCount === 1 ? 'Like' : 'Likes'}
+                      </button>
                       
                       <button
-                        onClick={handleShare}
-                        className="flex items-center gap-2 px-6 py-3 rounded-full bg-[#CBB49A] text-white hover:bg-[#b7a078] text-sm font-medium transition-all duration-300"
+                        onClick={handleComment}
+                        className="flex items-center gap-2 px-6 py-3 rounded-full bg-white text-gray-600 hover:bg-gray-50 border border-gray-200 text-sm font-medium transition-all duration-300"
                       >
-                        <Share2 className="w-5 h-5" />
-                        Share Article
+                        <MessageCircle className="w-5 h-5" />
+                        {commentCount} {commentCount === 1 ? 'Comment' : 'Comments'}
                       </button>
                     </div>
-
-                    {/* Mobile Layout */}
-                    <div className="flex flex-col gap-3 sm:hidden">
-                      <div className="flex items-center justify-between">
-                        <button
-                          onClick={handleLike}
-                          className={`flex items-center gap-2 px-4 py-2 rounded-full text-sm font-medium transition-all duration-300 flex-1 mr-2 ${
-                            isLiked
-                                ? "bg-white text-gray-600 hover:bg-[#CBB49A] hover:text-white border border-gray-200"
-                                : "bg-white text-gray-600 hover:bg-[#CBB49A] hover:text-white border border-gray-200"
-                          }`}
-                        >
-                            <Heart className={`w-4 h-4 ${isLiked ? 'fill-[#CBB49A]' : ''}`} />
-                          {likeCount} {likeCount === 1 ? 'Like' : 'Likes'}
-                        </button>
-                        
-                        <button
-                          onClick={handleComment}
-                          className="flex items-center gap-2 px-4 py-2 rounded-full bg-white text-gray-600 hover:bg-gray-50 border border-gray-200 text-sm font-medium transition-all duration-300 flex-1 ml-2"
-                        >
-                          <MessageCircle className="w-4 h-4" />
-                          {commentCount} {commentCount === 1 ? 'Comment' : 'Comments'}
-                        </button>
-                      </div>
-                      
-                      <button
-                        onClick={handleShare}
-                        className="flex items-center justify-center gap-2 px-4 py-2 rounded-full bg-[#CBB49A] text-white hover:bg-[#b7a078] text-sm font-medium transition-all duration-300 w-full"
-                      >
-                        <Share2 className="w-4 h-4" />
-                        Share Article
-                      </button>
-                    </div>
+                    
+                    <button
+                      onClick={handleShare}
+                      className="flex items-center gap-2 px-6 py-3 rounded-full bg-[#CBB49A] text-white hover:bg-[#b7a078] text-sm font-medium transition-all duration-300"
+                    >
+                      <Share2 className="w-5 h-5" />
+                      Share Article
+                    </button>
                   </div>
 
-                  {/* Comments Display */}
-                  <div className="space-y-6" data-comments-section>
-                    {/* Existing Comments */}
-                    {comments.length > 0 ? (
-                      <>
+                  {/* Mobile Layout */}
+                  <div className="flex flex-col gap-4 sm:hidden">
+                    <div className="flex items-center justify-between">
+                      <button
+                        onClick={handleLike}
+                        className={`flex items-center gap-2 px-4 py-2 rounded-full text-sm font-medium transition-all duration-300 flex-1 mr-2 ${
+                          isLiked
+                              ? "bg-white text-gray-600 border border-gray-200"
+                              : "bg-white text-gray-600 border border-gray-200"
+                        }`}
+                      >
+                        <Heart className={`w-4 h-4 ${isLiked ? 'fill-[#CBB49A]' : ''}`} />
+                        {likeCount} {likeCount === 1 ? 'Like' : 'Likes'}
+                      </button>
+                      
+                      <button
+                        onClick={handleComment}
+                        className="flex items-center gap-2 px-4 py-2 rounded-full bg-white text-gray-600 border border-gray-200 text-sm font-medium transition-all duration-300 flex-1 ml-2"
+                      >
+                        <MessageCircle className="w-4 h-4" />
+                        {commentCount} {commentCount === 1 ? 'Comment' : 'Comments'}
+                      </button>
+                    </div>
+                    
+                    <button
+                      onClick={handleShare}
+                      className="flex items-center justify-center gap-2 px-4 py-2 rounded-full bg-[#CBB49A] text-white hover:bg-[#b7a078] text-sm font-medium transition-all duration-300 w-full"
+                    >
+                      <Share2 className="w-4 h-4" />
+                      Share Article
+                    </button>
+                  </div>
+                </div>
+
+                {/* Comments Section */}
+                <div className="space-y-6" data-comments-section>
+                  <h4 className="text-lg font-semibold text-[#2D2A2E] mb-4">Comments ({commentCount})</h4>
+                  
+                  {comments.length > 0 ? (
+                    <>
+                      {/* Comments List */}
+                      <div className="space-y-6">
                         {(showAllComments ? comments : comments.slice(0, 3)).map((comment) => (
-                          <div key={comment.id} id={`comment-${comment.id}`} className="bg-white rounded-2xl p-4 sm:p-6 shadow-lg border border-gray-100 hover:shadow-xl transition-all duration-300">
+                          <div key={comment.id} id={`comment-${comment.id}`} className="bg-white rounded-xl p-4 sm:p-6 shadow-sm">
                             <div className="flex items-start gap-3 sm:gap-4">
                               <div className="w-10 h-10 sm:w-12 sm:h-12 bg-[#CBB49A] rounded-full flex items-center justify-center text-white font-semibold text-base sm:text-lg flex-shrink-0">
                                 {comment.avatar}
@@ -620,163 +594,124 @@ export default function MoodBoardsBlogClient() {
                             </div>
                           </div>
                         ))}
-                        
-                        {/* See More Button */}
-                        {comments.length > 3 && !showAllComments && (
-                          <div className="text-center py-4">
-                            <button
-                              onClick={() => setShowAllComments(true)}
-                              className="text-[#CBB49A] hover:text-[#b7a078] font-medium transition-colors duration-300"
-                            >
-                              See More ({comments.length - 3} more comment{comments.length - 3 !== 1 ? 's' : ''})
-                            </button>
-                          </div>
-                        )}
-                        
-                        {/* See Less Button */}
-                        {comments.length > 3 && showAllComments && (
-                          <div className="text-center py-4">
-                <button
-                              onClick={() => setShowAllComments(false)}
-                              className="text-[#CBB49A] hover:text-[#b7a078] font-medium transition-colors duration-300"
-                >
-                              See Less
-                </button>
-                          </div>
-                        )}
-                      </>
-                    ) : (
-                      <div className="text-center py-12">
-                        <div className="w-20 h-20 bg-gray-100 rounded-full flex items-center justify-center mx-auto mb-6">
-                          <MessageCircle className="w-10 h-10 text-gray-400" />
-                        </div>
-                        <h5 className="text-xl font-semibold text-[#2D2A2E] mb-3">No comments yet</h5>
-                        <p className="text-[#666666] text-lg">Be the first to share your thoughts on this article!</p>
-                        <p className="text-sm text-[#999999] mt-2">Your comment will help others learn and engage with the content.</p>
                       </div>
-                    )}
+                      
+                      {/* See More Button */}
+                      {comments.length > 3 && !showAllComments && (
+                        <div className="text-center py-4">
+                          <button
+                            onClick={() => setShowAllComments(true)}
+                            className="text-[#CBB49A] hover:text-[#b7a078] font-medium transition-colors duration-300"
+                          >
+                            See More ({comments.length - 3} more comment{comments.length - 3 !== 1 ? 's' : ''})
+                          </button>
+                        </div>
+                      )}
+                      
+                      {/* See Less Button */}
+                      {comments.length > 3 && showAllComments && (
+                        <div className="text-center py-4">
+              <button
+                            onClick={() => setShowAllComments(false)}
+                            className="text-[#CBB49A] hover:text-[#b7a078] font-medium transition-colors duration-300"
+              >
+                            See Less
+              </button>
+                        </div>
+                      )}
+                    </>
+                  ) : (
+                    <div className="text-center py-12">
+                      <div className="w-20 h-20 bg-gray-100 rounded-full flex items-center justify-center mx-auto mb-6">
+                        <MessageCircle className="w-10 h-10 text-gray-400" />
+                      </div>
+                      <h5 className="text-xl font-semibold text-[#2D2A2E] mb-3">No comments yet</h5>
+                      <p className="text-[#666666] text-lg">Be the first to share your thoughts on this article!</p>
+                      <p className="text-sm text-[#999999] mt-2">Your comment will help others learn and engage with the content.</p>
+                    </div>
+                  )}
+            </div>
+            
+                {/* Comment Form - Always Visible (Below Comments) */}
+                <div className="bg-white rounded-2xl p-8 mt-8 shadow-lg border border-gray-100" data-comment-form>
+              <div className="flex items-center gap-3 mb-6">
+                <div className="w-10 h-10 bg-[#CBB49A] rounded-full flex items-center justify-center">
+                  <MessageCircle className="w-5 h-5 text-white" />
+                </div>
+                <h4 className="text-xl font-semibold text-[#2D2A2E]">Share Your Thoughts</h4>
               </div>
               
-                  {/* Comment Form - Always Visible (Below Comments) */}
-                  <div className="bg-white rounded-2xl p-8 mt-8 shadow-lg border border-gray-100" data-comment-form>
-                <div className="flex items-center gap-3 mb-6">
-                  <div className="w-10 h-10 bg-[#CBB49A] rounded-full flex items-center justify-center">
-                    <MessageCircle className="w-5 h-5 text-white" />
-                  </div>
-                  <h4 className="text-xl font-semibold text-[#2D2A2E]">Share Your Thoughts</h4>
+              {/* Success Message */}
+              {showSuccessMessage && (
+                <div className="mb-6 p-4 bg-green-100 border border-green-400 text-green-700 rounded-lg flex items-center gap-2">
+                  <span className="text-lg">✅</span>
+                  <span>Thank you! Your comment has been posted successfully.</span>
                 </div>
-                
-                {/* Success Message */}
-                {showSuccessMessage && (
-                  <div className="mb-6 p-4 bg-green-100 border border-green-400 text-green-700 rounded-lg flex items-center gap-2">
-                    <span className="text-lg">✅</span>
-                    <span>Thank you! Your comment has been posted successfully.</span>
-                  </div>
-                )}
-                
-                <form onSubmit={handleSubmitComment} className="space-y-6">
-                  <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                    <div>
-                      <label htmlFor="name" className="block text-sm font-medium text-[#2D2A2E] mb-3">Your Name *</label>
-                      <input
-                        type="text"
-                        id="name"
-                        name="name"
-                        value={newComment.name}
-                        onChange={handleInputChange}
-                        className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#CBB49A] focus:border-transparent transition-all duration-300"
-                        placeholder="Enter your full name"
-                        required
-                      />
-                    </div>
-                    <div>
-                      <label htmlFor="email" className="block text-sm font-medium text-[#2D2A2E] mb-3">Email Address *</label>
-                      <input
-                        type="email"
-                        id="email"
-                        name="email"
-                        value={newComment.email}
-                        onChange={handleInputChange}
-                        className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#CBB49A] focus:border-transparent transition-all duration-300"
-                        placeholder="your.email@example.com"
-                        required
-                      />
-                    </div>
-                  </div>
-                  
+              )}
+              
+              <form onSubmit={handleSubmitComment} className="space-y-6">
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                   <div>
-                    <label htmlFor="comment" className="block text-sm font-medium text-[#2D2A2E] mb-3">Your Comment *</label>
-                    <textarea
-                      id="comment"
-                      name="comment"
-                      value={newComment.comment}
+                    <label htmlFor="name" className="block text-sm font-medium text-[#2D2A2E] mb-3">Your Name *</label>
+                    <input
+                      type="text"
+                      id="name"
+                      name="name"
+                      value={newComment.name}
                       onChange={handleInputChange}
-                      rows={5}
-                      className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#CBB49A] focus:border-transparent transition-all duration-300 resize-none"
-                      placeholder="Share your thoughts, questions, or feedback about this article..."
+                      className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#CBB49A] focus:border-transparent transition-all duration-300"
+                      placeholder="Enter your full name"
                       required
-                    ></textarea>
-                    <p className="text-xs text-[#666666] mt-2">
-                      Your email will be visible to other readers. Please be respectful in your comments.
-                    </p>
+                    />
                   </div>
-                  
-                      {/* Desktop Layout */}
-                      <div className="hidden sm:flex items-center justify-between pt-4">
-                        <div className="text-sm text-[#666666]">
-                          <span className="font-medium">{commentCount}</span> comment{commentCount !== 1 ? 's' : ''} so far
-                        </div>
-                        <Button
-                          type="submit"
-                          disabled={isSubmitting || !newComment.name.trim() || !newComment.email.trim() || !newComment.comment.trim()}
-                          className="bg-[#CBB49A] text-white hover:bg-[#b7a078] px-8 py-3 rounded-lg font-medium transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed flex items-center gap-2"
-                        >
-                          {isSubmitting ? (
-                            <>
-                              <div className="w-4 h-4 border-2 border-white border-t-transparent rounded-full animate-spin"></div>
-                              Posting...
-                            </>
-                          ) : (
-                            <>
-                              <MessageCircle className="w-4 h-4" />
-                              Post Comment
-                            </>
-                          )}
-                        </Button>
-                      </div>
-
-                      {/* Mobile Layout */}
-                      <div className="flex flex-col gap-4 sm:hidden pt-4">
-                        <div className="text-sm text-[#666666] text-center">
-                          <span className="font-medium">{commentCount}</span> comment{commentCount !== 1 ? 's' : ''} so far
-                        </div>
-                        <Button
-                          type="submit"
-                          disabled={isSubmitting || !newComment.name.trim() || !newComment.email.trim() || !newComment.comment.trim()}
-                          className="bg-[#CBB49A] text-white hover:bg-[#b7a078] px-8 py-3 rounded-full font-medium transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center gap-2 w-full"
-                        >
-                          {isSubmitting ? (
-                            <>
-                              <div className="w-4 h-4 border-2 border-white border-t-transparent rounded-full animate-spin"></div>
-                              Posting...
-                            </>
-                          ) : (
-                            <>
-                              <MessageCircle className="w-4 h-4" />
-                              Post Comment
-                            </>
-                          )}
-                        </Button>
-                      </div>
-                </form>
-              </div>
+                  <div>
+                    <label htmlFor="email" className="block text-sm font-medium text-[#2D2A2E] mb-3">Email Address *</label>
+                    <input
+                      type="email"
+                      id="email"
+                      name="email"
+                      value={newComment.email}
+                      onChange={handleInputChange}
+                      className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#CBB49A] focus:border-transparent transition-all duration-300"
+                      placeholder="your.email@example.com"
+                      required
+                    />
+                  </div>
                 </div>
-              </div>
+                
+                <div>
+                  <label htmlFor="comment" className="block text-sm font-medium text-[#2D2A2E] mb-3">Your Comment *</label>
+                  <textarea
+                    id="comment"
+                    name="comment"
+                    value={newComment.comment}
+                    onChange={handleInputChange}
+                    rows={4}
+                    className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#CBB49A] focus:border-transparent transition-all duration-300 resize-none"
+                    placeholder="Share your thoughts on this article..."
+                    required
+                  />
+                </div>
+                
+                <div className="flex items-center justify-between">
+                  <p className="text-sm text-[#999999]">
+                    Your email will not be published. Required fields are marked *.
+                  </p>
+                  <Button
+                    type="submit"
+                    disabled={isSubmitting || !newComment.name.trim() || !newComment.email.trim() || !newComment.comment.trim()}
+                    className="bg-[#CBB49A] text-white hover:bg-[#b7a078] px-8 py-3 rounded-full font-semibold transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed"
+                  >
+                    {isSubmitting ? 'Posting...' : 'Post Comment'}
+                  </Button>
+                </div>
+              </form>
+            </div>
               </div>
             </div>
           </div>
-        </section>
-
+        </div>
+      </section>
 
       {/* Other Blogs Section */}
       <section className="py-16 sm:py-20 lg:py-24 bg-[#F8F7F4]">
@@ -791,7 +726,7 @@ export default function MoodBoardsBlogClient() {
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {getRandomBlogs(1).map((blog) => (
+            {getRandomBlogs(2).map((blog) => (
               <Link key={blog.id} href={`/blogs/${blog.slug}`} className="group">
                 <article className="bg-white rounded-2xl shadow-lg overflow-hidden hover:shadow-xl transition-all duration-300 group-hover:-translate-y-1">
                   <div className="aspect-video relative overflow-hidden">

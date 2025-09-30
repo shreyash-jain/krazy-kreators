@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect, useRef } from "react";
+import { useState, useEffect } from "react";
 import { Button } from "@/components/ui/button";
 import { ArrowRight, MessageSquare, User, Share2, Heart, MessageCircle, Eye } from "lucide-react";
 import ContactDialog from "@/components/ContactDialog";
@@ -17,7 +17,7 @@ const MOCK_COMMENTS = [
       name: "Sarah Chen",
       email: "sarah@example.com",
     comment:
-      "This is incredibly insightful! I've always wondered about the technical process behind mood boards. The step-by-step breakdown really helps understand how creativity meets manufacturing.",
+      "This is incredibly insightful! I've always wondered about the technical process behind supply chain partnerships. The step-by-step breakdown really helps understand how creativity meets manufacturing.",
       date: "2 days ago",
     avatar: "S",
     likes: 34
@@ -27,7 +27,7 @@ const MOCK_COMMENTS = [
       name: "Marcus Rodriguez",
       email: "marcus@example.com",
     comment:
-      "The prototyping section really resonated with me. It's amazing how much iteration goes into getting the perfect fit and feel. Thanks for sharing this behind-the-scenes look!",
+      "The partnership section really resonated with me. It's amazing how much collaboration goes into getting the perfect supply chain. Thanks for sharing this behind-the-scenes look!",
       date: "1 week ago",
     avatar: "M",
     likes: 27
@@ -37,14 +37,14 @@ const MOCK_COMMENTS = [
       name: "Alex Thompson",
       email: "alex@example.com",
     comment:
-      "As someone new to fashion design, this article was a goldmine of information. The tech pack section especially helped me understand the importance of clear documentation.",
+      "As someone new to fashion supply chain, this article was a goldmine of information. The partnership section especially helped me understand the importance of dedicated partners.",
       date: "2 weeks ago",
     avatar: "A",
     likes: 28
   }
 ];
 
-export default function MoodBoardsBlogClient() {
+export default function SupplyChainBlogClient() {
   const [contactOpen, setContactOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
   const [isLiked, setIsLiked] = useState(false);
@@ -60,8 +60,6 @@ export default function MoodBoardsBlogClient() {
   const [showSuccessMessage, setShowSuccessMessage] = useState(false);
   const [showAllComments, setShowAllComments] = useState(false);
   const [likedComments, setLikedComments] = useState<Set<number>>(new Set());
-  const endOfArticleRef = useRef<HTMLDivElement | null>(null);
-  const hasAutoOpenedComments = useRef(false);
   const { showToast, ToastContainer } = useToast();
 
   useEffect(() => {
@@ -78,31 +76,6 @@ export default function MoodBoardsBlogClient() {
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
-
-  useEffect(() => {
-    if (!endOfArticleRef.current || hasAutoOpenedComments.current) return;
-
-    const observer = new IntersectionObserver((entries) => {
-      const [entry] = entries;
-      if (entry?.isIntersecting) {
-        hasAutoOpenedComments.current = true;
-        // Scroll to comment form when user reaches end of article
-        const commentForm = document.querySelector('[data-comment-form]');
-        if (commentForm) {
-          commentForm.scrollIntoView({ behavior: 'smooth', block: 'center' });
-        }
-      }
-    }, {
-      root: null,
-      threshold: 0.2
-    });
-
-    observer.observe(endOfArticleRef.current);
-
-    return () => {
-      observer.disconnect();
-    };
-  }, [endOfArticleRef]);
 
   const handleLike = () => {
     setIsLiked(!isLiked);
@@ -201,8 +174,8 @@ export default function MoodBoardsBlogClient() {
       {/* Hero Section */}
       <section className="relative h-[60vh] min-h-[500px] overflow-hidden">
         <Image
-          src="/blog/blog 1.png"
-          alt="Mood Boards to Manufacturable Garments Process"
+          src="/blog/blog 4.png"
+          alt="Why the Best Fashion Brands Work With Dedicated Supply Chain Partners"
           fill
           className="object-cover"
           style={{
@@ -215,7 +188,6 @@ export default function MoodBoardsBlogClient() {
         <div className="absolute inset-0 bg-black/40"></div>
       </section>
 
-
       {/* Main Content */}
       <section className="py-16 sm:py-20 lg:py-24 bg-white">
         <div className="min-w-[80%] lg:max-w-[80%] mx-auto px-4 sm:px-6 lg:px-8">
@@ -223,15 +195,15 @@ export default function MoodBoardsBlogClient() {
             {/* Article Title and Category */}
             <div className="mb-8">
               <h1 className="text-4xl sm:text-5xl font-bold text-[#2D2A2E] mb-4">
-                How We Translate Mood Boards Into Manufacturable Garments
+                Why the Best Fashion Brands Work With Dedicated Supply Chain Partners
               </h1>
               <div className="flex items-center gap-4 mb-6">
                 <span className="px-3 py-1 bg-[#CBB49A] text-white text-sm font-semibold rounded-full">
-                  Design
+                  Supply Chain
                 </span>
-                <span className="text-sm text-[#666666]">8 min read</span>
+                <span className="text-sm text-[#666666]">7 min read</span>
                 <span className="text-sm text-[#666666]">•</span>
-                <span className="text-sm text-[#666666]">Posted on March 15, 2025</span>
+                <span className="text-sm text-[#666666]">Posted on December 15, 2024</span>
               </div>
 
               {/* Social Interaction Section */}
@@ -239,17 +211,17 @@ export default function MoodBoardsBlogClient() {
                 {/* Desktop Layout */}
                 <div className="hidden sm:flex items-center justify-between">
                   <div className="flex items-center gap-6">
-                    <button
-                      onClick={handleLike}
-                      className={`flex items-center gap-2 px-4 py-2 rounded-full text-sm font-medium transition-all duration-300 ${
-                        isLiked
+                <button
+                  onClick={handleLike}
+                  className={`flex items-center gap-2 px-4 py-2 rounded-full text-sm font-medium transition-all duration-300 ${
+                    isLiked
                           ? "bg-white text-gray-600 hover:bg-[#CBB49A] hover:text-white border border-gray-200"
                           : "bg-white text-gray-600 hover:bg-[#CBB49A] hover:text-white border border-gray-200"
-                      }`}
-                    >
-                      <Heart className={`w-4 h-4 ${isLiked ? 'fill-[#CBB49A]' : ''}`} />
+                  }`}
+                >
+                  <Heart className={`w-4 h-4 ${isLiked ? 'fill-[#CBB49A]' : ''}`} />
                       {likeCount} {likeCount === 1 ? 'Like' : 'Likes'}
-                    </button>
+                </button>
                     
                     <button
                       onClick={handleComment}
@@ -259,15 +231,15 @@ export default function MoodBoardsBlogClient() {
                       {commentCount} {commentCount === 1 ? 'Comment' : 'Comments'}
                     </button>
                   </div>
-                  
-                  <button
-                    onClick={handleShare}
+                
+                <button
+                  onClick={handleShare}
                     className="flex items-center gap-2 px-4 py-2 rounded-full bg-[#CBB49A] text-white hover:bg-[#b7a078] text-sm font-medium transition-all duration-300"
                   >
-                    <Share2 className="w-4 h-4" />
-                    Share
-                  </button>
-                </div>
+                      <Share2 className="w-4 h-4" />
+                      Share
+                </button>
+      </div>
 
                 {/* Mobile Layout */}
                 <div className="flex flex-col gap-3 sm:hidden">
@@ -291,8 +263,8 @@ export default function MoodBoardsBlogClient() {
                       <MessageCircle className="w-4 h-4" />
                       {commentCount} {commentCount === 1 ? 'Comment' : 'Comments'}
                     </button>
-                  </div>
-                  
+            </div>
+            
                   <button
                     onClick={handleShare}
                     className="flex items-center justify-center gap-2 px-4 py-2 rounded-full bg-[#CBB49A] text-white hover:bg-[#b7a078] text-sm font-medium transition-all duration-300 w-full"
@@ -307,18 +279,15 @@ export default function MoodBoardsBlogClient() {
             {/* Introduction */}
             <div className="mb-12">
               <p className="text-lg text-[#666666] leading-relaxed mb-6">
-                Every garment begins with a story — and often, that story is captured on a mood board. A mood board is not just a collage of images, colors, and textures. It&apos;s the foundation of a collection, the emotional DNA that guides the design process. But how do we move from this abstract world of inspiration to a garment that is manufacturable, wearable, and ready to reach the customer?
-              </p>
-              <p className="text-lg text-[#666666] leading-relaxed">
-                Here&apos;s the journey step by step:
+                In the fast-paced world of fashion, the difference between a successful brand and a struggling one often comes down to one critical factor: supply chain partnerships. The world&apos;s most successful fashion houses don&apos;t just design great clothes—they build strong, dedicated relationships with their supply chain partners.
               </p>
             </div>
 
             {/* Featured Image */}
             <div className="mb-12 rounded-2xl overflow-hidden shadow-lg">
               <Image
-                src="/blog/blog 1.png"
-                alt="Mood Boards to Manufacturable Garments Process"
+                src="/blog/blog 4.png"
+                alt="Why the Best Fashion Brands Work With Dedicated Supply Chain Partners"
                 width={800}
                 height={600}
                 className="w-full h-auto object-contain"
@@ -330,7 +299,7 @@ export default function MoodBoardsBlogClient() {
                 }}
                 onLoad={() => {
                   if (typeof window !== 'undefined') {
-                    const img = document.querySelector('img[src="/blog/blog 1.png"]') as HTMLImageElement;
+                    const img = document.querySelector('img[src="/blog/blog 4.png"]') as HTMLImageElement;
                     if (img) {
                       img.style.opacity = '1';
                     }
@@ -347,7 +316,7 @@ export default function MoodBoardsBlogClient() {
                   <User className="w-4 h-4 text-white" />
                 </div>
                 <div>
-                  <p className="text-sm text-[#666666]">Hosted by March 15, 2025</p>
+                  <p className="text-sm text-[#666666]">Hosted by December 15, 2024</p>
                   <p className="text-sm font-medium text-[#2D2A2E]">Krazy Kreators Team</p>
                 </div>
               </div>
@@ -356,71 +325,35 @@ export default function MoodBoardsBlogClient() {
             {/* Blog Content */}
             <div className="prose prose-lg max-w-none">
               <p className="text-lg text-[#666666] leading-relaxed mb-8">
-                Every garment begins with a story — and often, that story is captured on a mood board. A mood board is not just a collage of images, colors, and textures. It&apos;s the foundation of a collection, the emotional DNA that guides the design process. But how do we move from this abstract world of inspiration to a garment that is manufacturable, wearable, and ready to reach the customer?
+                In the fast-paced world of fashion, the difference between a successful brand and a struggling one often comes down to one critical factor: supply chain partnerships. The world&apos;s most successful fashion houses don&apos;t just design great clothes—they build strong, dedicated relationships with their supply chain partners.
               </p>
 
-              <p className="text-lg text-[#666666] leading-relaxed mb-12">
-                Here&apos;s the journey step by step:
-              </p>
-
-              {/* Step 1 */}
+              {/* Why Supply Chain Partnerships Matter */}
               <div className="mb-12">
-                <h2 className="text-2xl font-bold text-[#2D2A2E] mb-6">1. Reading the Mood Board</h2>
+                <h2 className="text-2xl font-bold text-[#2D2A2E] mb-6">Why Supply Chain Partnerships Matter</h2>
                 <p className="text-lg text-[#666666] leading-relaxed mb-6">
-                  The first step is interpretation. A mood board holds hidden clues — a certain shade of pink, a fluid drape in a photo, a bold geometric silhouette, or a cultural motif.
-                </p>
-                <ul className="list-disc list-inside text-lg text-[#666666] leading-relaxed space-y-2 mb-6">
-                  <li>Colors become Pantone references.</li>
-                  <li>Textures hint at fabrics — silk, denim, knits, or organza.</li>
-                  <li>Imagery sparks silhouettes and details — oversized sleeves, cinched waists, or minimalist cuts.</li>
-                </ul>
-              </div>
-
-              {/* Step 2 */}
-              <div className="mb-12">
-                <h2 className="text-2xl font-bold text-[#2D2A2E] mb-6">2. From Inspiration to Initial Sketches</h2>
-                <p className="text-lg text-[#666666] leading-relaxed mb-6">
-                  Once the mood board direction is clear, designers begin sketching. These sketches translate abstract emotions into wearable shapes. Each detail — neckline, hemline, fit — begins to align with the board&apos;s story.
-                </p>
-              </div>
-
-              {/* Step 3 */}
-              <div className="mb-12">
-                <h2 className="text-2xl font-bold text-[#2D2A2E] mb-6">3. Fabric & Material Selection</h2>
-                <p className="text-lg text-[#666666] leading-relaxed mb-6">
-                  A mood board&apos;s colors and textures are matched with real-world fabrics. This step answers: What fabric will best express the drape, comfort, and mood intended? Along with base fabric, trims and accessories — zippers, buttons, embroidery, laces — are chosen to reinforce the design language.
-                </p>
-              </div>
-
-              {/* Step 4 */}
-              <div className="mb-12">
-                <h2 className="text-2xl font-bold text-[#2D2A2E] mb-6">4. Creating the Tech Pack</h2>
-                <p className="text-lg text-[#666666] leading-relaxed mb-6">
-                  Here the idea starts becoming technical. The tech pack is the designer&apos;s language for manufacturers, including:
-                </p>
-                <ul className="list-disc list-inside text-lg text-[#666666] leading-relaxed space-y-2 mb-6">
-                  <li>Flat sketches</li>
-                  <li>Measurements and grading</li>
-                  <li>Stitching details</li>
-                  <li>Fabric and trim specifications</li>
-                </ul>
-                <p className="text-lg text-[#666666] leading-relaxed mb-6">
-                  This is where creativity meets precision. Without this, a design can&apos;t be accurately reproduced.
-                </p>
-              </div>
-
-              {/* Step 5 */}
-              <div className="mb-12">
-                <h2 className="text-2xl font-bold text-[#2D2A2E] mb-6">5. Prototyping</h2>
-                <p className="text-lg text-[#666666] leading-relaxed mb-6">
-                  The first tangible form of the garment is created. A prototype or test fit (made from test fabric) helps check silhouette, fit, and construction. Adjustments are made until the garment feels true to the original vision.
+                  A dedicated supply chain partner is more than just a vendor—they&apos;re an extension of your brand. They understand your vision, share your values, and are committed to your success.
                 </p>
                 
-                {/* Strategic Image 1: Design Process */}
+                <ul className="list-disc list-inside text-lg text-[#666666] leading-relaxed space-y-2 mb-6">
+                  <li><strong>Consistent Quality:</strong> Dedicated partners understand your quality standards and maintain them across all orders.</li>
+                  <li><strong>Reliable Timelines:</strong> They prioritize your deadlines and work to meet your production schedules.</li>
+                  <li><strong>Innovation Support:</strong> They invest in new technologies and processes that benefit your brand.</li>
+                </ul>
+              </div>
+
+              {/* The Partnership Advantage */}
+              <div className="mb-12">
+                <h2 className="text-2xl font-bold text-[#2D2A2E] mb-6">The Partnership Advantage</h2>
+                <p className="text-lg text-[#666666] leading-relaxed mb-6">
+                  When you work with dedicated supply chain partners, you get more than just manufacturing—you get a strategic ally who understands your business goals and helps you achieve them.
+                </p>
+                
+                {/* Strategic Image 1: Partnership Benefits */}
                 <div className="mb-8 rounded-xl overflow-hidden shadow-lg">
                   <Image
-                    src="/blog/blog 1_1.png"
-                    alt="Design process from mood board to sketches"
+                    src="/blog/blog 4_1.png"
+                    alt="Supply chain partnership benefits"
                     width={800}
                     height={600}
                     className="w-full h-auto object-contain"
@@ -434,51 +367,18 @@ export default function MoodBoardsBlogClient() {
                 </div>
               </div>
 
-              {/* Step 6 */}
+              {/* Building Long-Term Relationships */}
               <div className="mb-12">
-                <h2 className="text-2xl font-bold text-[#2D2A2E] mb-6">6. Sampling in Main Fabric (Designer & Client Approval)</h2>
+                <h2 className="text-2xl font-bold text-[#2D2A2E] mb-6">Building Long-Term Relationships</h2>
                 <p className="text-lg text-[#666666] leading-relaxed mb-6">
-                  Once the prototype is approved, the garment is made in the actual fabric and trims chosen for production. This is the most important checkpoint — because only in the main fabric can one judge the real drape, shine, and finish. Both designers and clients review and approve this sample before moving forward.
-                </p>
-              </div>
-
-              {/* Step 7 */}
-              <div className="mb-12">
-                <h2 className="text-2xl font-bold text-[#2D2A2E] mb-6">7. Pre-Production & Scaling</h2>
-                <p className="text-lg text-[#666666] leading-relaxed mb-6">
-                  Once samples are approved, the garment goes into pre-production. At this stage, patterns are finalized, fabric orders placed, and manufacturing timelines locked.
+                  The best fashion brands invest in long-term relationships with their supply chain partners. This isn&apos;t just about getting better prices—it&apos;s about building a network of trusted allies who can help you navigate the complexities of the fashion industry.
                 </p>
                 
-                {/* Strategic Image 2: Manufacturing Process */}
+                {/* Strategic Image 2: Long-term Relationships */}
                 <div className="mb-8 rounded-xl overflow-hidden shadow-lg">
                   <Image
-                    src="/blog/blog 1_2.png"
-                    alt="Manufacturing and production process"
-                    width={800}
-                    height={600}
-                    className="w-full h-auto object-contain"
-                    style={{
-                      WebkitTransform: 'translateZ(0)',
-                      transform: 'translateZ(0)',
-                      WebkitBackfaceVisibility: 'hidden',
-                      backfaceVisibility: 'hidden'
-                    }}
-                  />
-                </div>
-              </div>
-
-              {/* Step 8 */}
-              <div className="mb-12">
-                <h2 className="text-2xl font-bold text-[#2D2A2E] mb-6">8. Production & Quality Checks</h2>
-                <p className="text-lg text-[#666666] leading-relaxed mb-6">
-                  The garment is finally manufactured in bulk. Quality checks ensure every piece matches the sample — in fit, stitching, and finish.
-                </p>
-                
-                {/* Strategic Image 3: Final Product */}
-                <div className="mb-8 rounded-xl overflow-hidden shadow-lg">
-                  <Image
-                    src="/blog/blog 1_3.png"
-                    alt="Final manufactured garments and quality control"
+                    src="/blog/blog 4_2.png"
+                    alt="Building long-term supply chain relationships"
                     width={800}
                     height={600}
                     className="w-full h-auto object-contain"
@@ -494,8 +394,9 @@ export default function MoodBoardsBlogClient() {
 
               {/* Conclusion */}
               <div className="mb-12">
-                <p className="text-lg text-[#2D2A2E] leading-relaxed font-medium">
-                  Each step ensures the original inspiration doesn&apos;t get lost in the process but instead evolves into something both beautiful and manufacturable.
+                <h2 className="text-2xl font-bold text-[#2D2A2E] mb-6">Final Thread: Partnership is the New Power</h2>
+                <p className="text-lg text-[#666666] leading-relaxed mb-6">
+                  The world&apos;s leading fashion houses understand this simple truth: a strong supply chain partnership is as important as a strong design team. It&apos;s not just about who stitches the clothes—it&apos;s about who helps the brand stay relevant, reliable, and responsible in a rapidly changing market.
                 </p>
               </div>
 
@@ -511,11 +412,11 @@ export default function MoodBoardsBlogClient() {
                           onClick={handleLike}
                           className={`flex items-center gap-2 px-6 py-3 rounded-full text-sm font-medium transition-all duration-300 ${
                             isLiked
-                                ? "bg-white text-gray-600 hover:bg-[#CBB49A] hover:text-white border border-gray-200"
-                                : "bg-white text-gray-600 hover:bg-[#CBB49A] hover:text-white border border-gray-200"
+                              ? "bg-white text-gray-600 hover:bg-[#CBB49A] hover:text-white border border-gray-200"
+                              : "bg-white text-gray-600 hover:bg-[#CBB49A] hover:text-white border border-gray-200"
                           }`}
                         >
-                            <Heart className={`w-5 h-5 ${isLiked ? 'fill-[#CBB49A]' : ''}`} />
+                          <Heart className={`w-5 h-5 ${isLiked ? 'fill-[#CBB49A]' : ''}`} />
                           {likeCount} {likeCount === 1 ? 'Like' : 'Likes'}
                         </button>
                         
@@ -538,23 +439,23 @@ export default function MoodBoardsBlogClient() {
                     </div>
 
                     {/* Mobile Layout */}
-                    <div className="flex flex-col gap-3 sm:hidden">
+                    <div className="flex flex-col gap-4 sm:hidden">
                       <div className="flex items-center justify-between">
                         <button
                           onClick={handleLike}
                           className={`flex items-center gap-2 px-4 py-2 rounded-full text-sm font-medium transition-all duration-300 flex-1 mr-2 ${
                             isLiked
-                                ? "bg-white text-gray-600 hover:bg-[#CBB49A] hover:text-white border border-gray-200"
-                                : "bg-white text-gray-600 hover:bg-[#CBB49A] hover:text-white border border-gray-200"
+                              ? "bg-white text-gray-600 border border-gray-200"
+                              : "bg-white text-gray-600 border border-gray-200"
                           }`}
                         >
-                            <Heart className={`w-4 h-4 ${isLiked ? 'fill-[#CBB49A]' : ''}`} />
+                          <Heart className={`w-4 h-4 ${isLiked ? 'fill-[#CBB49A]' : ''}`} />
                           {likeCount} {likeCount === 1 ? 'Like' : 'Likes'}
                         </button>
                         
                         <button
                           onClick={handleComment}
-                          className="flex items-center gap-2 px-4 py-2 rounded-full bg-white text-gray-600 hover:bg-gray-50 border border-gray-200 text-sm font-medium transition-all duration-300 flex-1 ml-2"
+                          className="flex items-center gap-2 px-4 py-2 rounded-full bg-white text-gray-600 border border-gray-200 text-sm font-medium transition-all duration-300 flex-1 ml-2"
                         >
                           <MessageCircle className="w-4 h-4" />
                           {commentCount} {commentCount === 1 ? 'Comment' : 'Comments'}
@@ -636,12 +537,12 @@ export default function MoodBoardsBlogClient() {
                         {/* See Less Button */}
                         {comments.length > 3 && showAllComments && (
                           <div className="text-center py-4">
-                <button
+                            <button
                               onClick={() => setShowAllComments(false)}
                               className="text-[#CBB49A] hover:text-[#b7a078] font-medium transition-colors duration-300"
-                >
+                            >
                               See Less
-                </button>
+                            </button>
                           </div>
                         )}
                       </>
@@ -655,72 +556,72 @@ export default function MoodBoardsBlogClient() {
                         <p className="text-sm text-[#999999] mt-2">Your comment will help others learn and engage with the content.</p>
                       </div>
                     )}
-              </div>
-              
+                  </div>
+                  
                   {/* Comment Form - Always Visible (Below Comments) */}
                   <div className="bg-white rounded-2xl p-8 mt-8 shadow-lg border border-gray-100" data-comment-form>
-                <div className="flex items-center gap-3 mb-6">
-                  <div className="w-10 h-10 bg-[#CBB49A] rounded-full flex items-center justify-center">
-                    <MessageCircle className="w-5 h-5 text-white" />
-                  </div>
-                  <h4 className="text-xl font-semibold text-[#2D2A2E]">Share Your Thoughts</h4>
-                </div>
-                
-                {/* Success Message */}
-                {showSuccessMessage && (
-                  <div className="mb-6 p-4 bg-green-100 border border-green-400 text-green-700 rounded-lg flex items-center gap-2">
-                    <span className="text-lg">✅</span>
-                    <span>Thank you! Your comment has been posted successfully.</span>
-                  </div>
-                )}
-                
-                <form onSubmit={handleSubmitComment} className="space-y-6">
-                  <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                    <div>
-                      <label htmlFor="name" className="block text-sm font-medium text-[#2D2A2E] mb-3">Your Name *</label>
-                      <input
-                        type="text"
-                        id="name"
-                        name="name"
-                        value={newComment.name}
-                        onChange={handleInputChange}
-                        className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#CBB49A] focus:border-transparent transition-all duration-300"
-                        placeholder="Enter your full name"
-                        required
-                      />
+                    <div className="flex items-center gap-3 mb-6">
+                      <div className="w-10 h-10 bg-[#CBB49A] rounded-full flex items-center justify-center">
+                        <MessageCircle className="w-5 h-5 text-white" />
+                      </div>
+                      <h4 className="text-xl font-semibold text-[#2D2A2E]">Share Your Thoughts</h4>
                     </div>
-                    <div>
-                      <label htmlFor="email" className="block text-sm font-medium text-[#2D2A2E] mb-3">Email Address *</label>
-                      <input
-                        type="email"
-                        id="email"
-                        name="email"
-                        value={newComment.email}
-                        onChange={handleInputChange}
-                        className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#CBB49A] focus:border-transparent transition-all duration-300"
-                        placeholder="your.email@example.com"
-                        required
-                      />
-                    </div>
-                  </div>
-                  
-                  <div>
-                    <label htmlFor="comment" className="block text-sm font-medium text-[#2D2A2E] mb-3">Your Comment *</label>
-                    <textarea
-                      id="comment"
-                      name="comment"
-                      value={newComment.comment}
-                      onChange={handleInputChange}
-                      rows={5}
-                      className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#CBB49A] focus:border-transparent transition-all duration-300 resize-none"
-                      placeholder="Share your thoughts, questions, or feedback about this article..."
-                      required
-                    ></textarea>
-                    <p className="text-xs text-[#666666] mt-2">
-                      Your email will be visible to other readers. Please be respectful in your comments.
-                    </p>
-                  </div>
-                  
+
+                    {/* Success Message */}
+                    {showSuccessMessage && (
+                      <div className="mb-6 p-4 bg-green-100 border border-green-400 text-green-700 rounded-lg flex items-center gap-2">
+                        <span className="text-lg">✅</span>
+                        <span>Thank you! Your comment has been posted successfully.</span>
+                      </div>
+                    )}
+                    
+                    <form onSubmit={handleSubmitComment} className="space-y-6">
+                      <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                        <div>
+                          <label htmlFor="name" className="block text-sm font-medium text-[#2D2A2E] mb-3">Your Name *</label>
+                          <input
+                            type="text"
+                            id="name"
+                            name="name"
+                            value={newComment.name}
+                            onChange={handleInputChange}
+                            className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#CBB49A] focus:border-transparent transition-all duration-300"
+                            placeholder="Enter your full name"
+                            required
+                          />
+                        </div>
+                        <div>
+                          <label htmlFor="email" className="block text-sm font-medium text-[#2D2A2E] mb-3">Email Address *</label>
+                          <input
+                            type="email"
+                            id="email"
+                            name="email"
+                            value={newComment.email}
+                            onChange={handleInputChange}
+                            className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#CBB49A] focus:border-transparent transition-all duration-300"
+                            placeholder="your.email@example.com"
+                            required
+                          />
+                        </div>
+                      </div>
+                      
+                      <div>
+                        <label htmlFor="comment" className="block text-sm font-medium text-[#2D2A2E] mb-3">Your Comment *</label>
+                        <textarea
+                          id="comment"
+                          name="comment"
+                          value={newComment.comment}
+                          onChange={handleInputChange}
+                          rows={5}
+                          className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#CBB49A] focus:border-transparent transition-all duration-300 resize-none"
+                          placeholder="Share your thoughts, questions, or feedback about this article..."
+                          required
+                        ></textarea>
+                        <p className="text-xs text-[#666666] mt-2">
+                          Your email will be visible to other readers. Please be respectful in your comments.
+                        </p>
+                      </div>
+                      
                       {/* Desktop Layout */}
                       <div className="hidden sm:flex items-center justify-between pt-4">
                         <div className="text-sm text-[#666666]">
@@ -768,15 +669,14 @@ export default function MoodBoardsBlogClient() {
                           )}
                         </Button>
                       </div>
-                </form>
-              </div>
+                    </form>
+                  </div>
                 </div>
-              </div>
               </div>
             </div>
           </div>
-        </section>
-
+        </div>
+      </section>
 
       {/* Other Blogs Section */}
       <section className="py-16 sm:py-20 lg:py-24 bg-[#F8F7F4]">
@@ -791,7 +691,7 @@ export default function MoodBoardsBlogClient() {
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {getRandomBlogs(1).map((blog) => (
+            {getRandomBlogs(4).map((blog) => (
               <Link key={blog.id} href={`/blogs/${blog.slug}`} className="group">
                 <article className="bg-white rounded-2xl shadow-lg overflow-hidden hover:shadow-xl transition-all duration-300 group-hover:-translate-y-1">
                   <div className="aspect-video relative overflow-hidden">

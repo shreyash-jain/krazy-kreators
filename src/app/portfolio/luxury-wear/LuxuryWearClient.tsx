@@ -28,7 +28,7 @@ export default function LuxuryWearClient() {
       category: "top-bottoms",
       name: "Luxury Silk Collection",
       brandName: "Badria Al Shihhi",
-      brandLogo: "/brands/badri-al-shihhi.png",
+      brandLogo: "/brands/badria-al-shihhi-logo.png",
       images: [
         "/portfolio/luxury-wear/top-bottoms/1_1.webp",
         "/portfolio/luxury-wear/top-bottoms/1_2.webp",
@@ -40,7 +40,7 @@ export default function LuxuryWearClient() {
       category: "top-bottoms",
       name: "Premium Cashmere Set",
       brandName: "Badria Al Shihhi",
-      brandLogo: "/brands/badri-al-shihhi.png",
+      brandLogo: "/brands/badria-al-shihhi-logo.png",
       images: [
         "/portfolio/luxury-wear/top-bottoms/2_1.webp",
         "/portfolio/luxury-wear/top-bottoms/2_2.webp",
@@ -52,7 +52,7 @@ export default function LuxuryWearClient() {
       category: "top-bottoms",
       name: "Designer Embroidered Collection",
       brandName: "Badria Al Shihhi",
-      brandLogo: "/brands/badri-al-shihhi.png",
+      brandLogo: "/brands/badria-al-shihhi-logo.png",
       images: [
         "/portfolio/luxury-wear/top-bottoms/3_1.webp",
         "/portfolio/luxury-wear/top-bottoms/3_2.webp",
@@ -64,7 +64,7 @@ export default function LuxuryWearClient() {
       category: "top-bottoms",
       name: "Luxury Silk Ensemble",
       brandName: "Badria Al Shihhi",
-      brandLogo: "/brands/badri-al-shihhi.png",
+      brandLogo: "/brands/badria-al-shihhi-logo.png",
       images: [
         "/portfolio/luxury-wear/top-bottoms/4_1.webp",
         "/portfolio/luxury-wear/top-bottoms/4_2.webp",
@@ -76,7 +76,7 @@ export default function LuxuryWearClient() {
       category: "top-bottoms",
       name: "Premium Wool Collection",
       brandName: "Badria Al Shihhi",
-      brandLogo: "/brands/badri-al-shihhi.png",
+      brandLogo: "/brands/badria-al-shihhi-logo.png",
       images: [
         "/portfolio/luxury-wear/top-bottoms/5_1.webp",
         "/portfolio/luxury-wear/top-bottoms/5_2.webp",
@@ -88,7 +88,7 @@ export default function LuxuryWearClient() {
       category: "top-bottoms",
       name: "Elegant Formal Wear",
       brandName: "Badria Al Shihhi",
-      brandLogo: "/brands/badri-al-shihhi.png",
+      brandLogo: "/brands/badria-al-shihhi-logo.png",
       images: [
         "/portfolio/luxury-wear/top-bottoms/6_1.webp",
         "/portfolio/luxury-wear/top-bottoms/6_2.webp",
@@ -100,7 +100,7 @@ export default function LuxuryWearClient() {
       category: "top-bottoms",
       name: "Designer Casual Set",
       brandName: "Badria Al Shihhi",
-      brandLogo: "/brands/badri-al-shihhi.png",
+      brandLogo: "/brands/badria-al-shihhi-logo.png",
       images: [
         "/portfolio/luxury-wear/top-bottoms/7_1.webp",
         "/portfolio/luxury-wear/top-bottoms/7_2.webp",
@@ -112,7 +112,7 @@ export default function LuxuryWearClient() {
       category: "top-bottoms",
       name: "Luxury Business Attire",
       brandName: "Badria Al Shihhi",
-      brandLogo: "/brands/badri-al-shihhi.png",
+      brandLogo: "/brands/badria-al-shihhi-logo.png",
       images: [
         "/portfolio/luxury-wear/top-bottoms/8_1.webp",
         "/portfolio/luxury-wear/top-bottoms/8_2.webp",
@@ -124,7 +124,7 @@ export default function LuxuryWearClient() {
       category: "top-bottoms",
       name: "Premium Evening Wear",
       brandName: "Badria Al Shihhi",
-      brandLogo: "/brands/badri-al-shihhi.png",
+      brandLogo: "/brands/badria-al-shihhi-logo.png",
       images: [
         "/portfolio/luxury-wear/top-bottoms/9_1.webp",
         "/portfolio/luxury-wear/top-bottoms/9_2.webp",
@@ -138,7 +138,7 @@ export default function LuxuryWearClient() {
       category: "dresses",
       name: "Elegant Evening Gown",
       brandName: "Badria Al Shihhi",
-      brandLogo: "/brands/badri-al-shihhi.png",
+      brandLogo: "/brands/badria-al-shihhi-logo.png",
       images: [
         "/portfolio/luxury-wear/dresses/1_1.webp",
         "/portfolio/luxury-wear/dresses/1_2.webp",
@@ -150,7 +150,7 @@ export default function LuxuryWearClient() {
       category: "dresses",
       name: "Designer Cocktail Dress",
       brandName: "Badria Al Shihhi",
-      brandLogo: "/brands/badri-al-shihhi.png",
+      brandLogo: "/brands/badria-al-shihhi-logo.png",
       images: [
         "/portfolio/luxury-wear/dresses/2_1.webp",
         "/portfolio/luxury-wear/dresses/2_2.webp",
@@ -162,7 +162,7 @@ export default function LuxuryWearClient() {
       category: "dresses",
       name: "Luxury Formal Dress",
       brandName: "Badria Al Shihhi",
-      brandLogo: "/brands/badri-al-shihhi.png",
+      brandLogo: "/brands/badria-al-shihhi-logo.png",
       images: [
         "/portfolio/luxury-wear/dresses/3_1.webp",
         "/portfolio/luxury-wear/dresses/3_2.webp",
@@ -174,7 +174,7 @@ export default function LuxuryWearClient() {
       category: "dresses",
       name: "Premium Silk Dress",
       brandName: "Badria Al Shihhi",
-      brandLogo: "/brands/badri-al-shihhi.png",
+      brandLogo: "/brands/badria-al-shihhi-logo.png",
       images: [
         "/portfolio/luxury-wear/dresses/4_1.webp",
         "/portfolio/luxury-wear/dresses/4_2.webp",
@@ -186,7 +186,7 @@ export default function LuxuryWearClient() {
       category: "dresses",
       name: "Elegant Ball Gown",
       brandName: "Badria Al Shihhi",
-      brandLogo: "/brands/badri-al-shihhi.png",
+      brandLogo: "/brands/badria-al-shihhi-logo.png",
       images: [
         "/portfolio/luxury-wear/dresses/5_1.webp",
         "/portfolio/luxury-wear/dresses/5_2.webp",
@@ -198,7 +198,7 @@ export default function LuxuryWearClient() {
       category: "dresses",
       name: "Designer Party Dress",
       brandName: "Badria Al Shihhi",
-      brandLogo: "/brands/badri-al-shihhi.png",
+      brandLogo: "/brands/badria-al-shihhi-logo.png",
       images: [
         "/portfolio/luxury-wear/dresses/6_1.webp",
         "/portfolio/luxury-wear/dresses/6_2.webp",
@@ -210,7 +210,7 @@ export default function LuxuryWearClient() {
       category: "dresses",
       name: "Luxury Midi Dress",
       brandName: "Badria Al Shihhi",
-      brandLogo: "/brands/badri-al-shihhi.png",
+      brandLogo: "/brands/badria-al-shihhi-logo.png",
       images: [
         "/portfolio/luxury-wear/dresses/7_1.webp",
         "/portfolio/luxury-wear/dresses/7_2.webp",
@@ -222,7 +222,7 @@ export default function LuxuryWearClient() {
       category: "dresses",
       name: "Premium Maxi Dress",
       brandName: "Badria Al Shihhi",
-      brandLogo: "/brands/badri-al-shihhi.png",
+      brandLogo: "/brands/badria-al-shihhi-logo.png",
       images: [
         "/portfolio/luxury-wear/dresses/8_1.webp",
         "/portfolio/luxury-wear/dresses/8_2.webp",
@@ -234,7 +234,7 @@ export default function LuxuryWearClient() {
       category: "dresses",
       name: "Elegant A-Line Dress",
       brandName: "Badria Al Shihhi",
-      brandLogo: "/brands/badri-al-shihhi.png",
+      brandLogo: "/brands/badria-al-shihhi-logo.png",
       images: [
         "/portfolio/luxury-wear/dresses/9_1.webp",
         "/portfolio/luxury-wear/dresses/9_2.webp",
@@ -248,7 +248,7 @@ export default function LuxuryWearClient() {
       category: "abaya",
       name: "Luxury Embroidered Abaya",
       brandName: "Badria Al Shihhi",
-      brandLogo: "/brands/badri-al-shihhi.png",
+      brandLogo: "/brands/badria-al-shihhi-logo.png",
       images: [
         "/portfolio/luxury-wear/abaya/1_1.webp",
         "/portfolio/luxury-wear/abaya/1_2.webp",

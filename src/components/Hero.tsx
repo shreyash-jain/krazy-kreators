@@ -170,7 +170,7 @@ export default function Hero({ onGetStartedClick, onStartDemoClick }: HeroProps)
           We Weave <span className="bg-gradient-to-r from-[#CBB49A] via-[#b7a078] to-[#2D2A2E] bg-clip-text text-transparent">Possibilities</span>
         </h2>
         <p className="text-base sm:text-lg md:text-xl lg:text-2xl text-[#3D3846] font-light max-w-2xl mx-auto mb-6 sm:mb-8 md:mb-10 px-4 md:px-6">
-                          Empowering new-age fashion brands with expert designs and creative solutions.
+                          Empowering new-age fashion brands with expert designs and end to end manufacturing solutions.
         </p>
         <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 md:gap-6 justify-center mb-8 sm:mb-10 md:mb-12">
           <Button 
