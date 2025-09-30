@@ -97,7 +97,7 @@ export default function WhatWeDo() {
               We simplify your production journey — with one integrated process from design to delivery. Here&apos;s what you gain by partnering with us.
             </p>
           </div>
-          <div className="mt-10 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-4 gap-6 md:gap-8">
+          <div className="mt-10 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-2 gap-6 md:gap-8">
             {benefits.map((benefit) => {
               const Icon = benefit.icon;
               return (

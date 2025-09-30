@@ -44,7 +44,7 @@ export default function AccessoriesClient() {
       category: "scarfs",
       name: "Elegant Silk Scarf",
       brandName: "Badria Al Shihhi",
-      brandLogo: "/brands/badri-al-shihhi.png",
+      brandLogo: "/brands/badria-al-shihhi-logo.png",
       images: [
         "/portfolio/accessories/scarfs/1.webp"
       ]
@@ -54,7 +54,7 @@ export default function AccessoriesClient() {
       category: "scarfs",
       name: "Classic Pattern Scarf",
       brandName: "Badria Al Shihhi",
-      brandLogo: "/brands/badri-al-shihhi.png",
+      brandLogo: "/brands/badria-al-shihhi-logo.png",
       images: [
         "/portfolio/accessories/scarfs/12.webp"
       ]
@@ -104,7 +104,7 @@ export default function AccessoriesClient() {
       category: "scarfs",
       name: "Contemporary Style Scarf",
       brandName: "Badria Al Shihhi",
-      brandLogo: "/brands/badri-al-shihhi.png",
+      brandLogo: "/brands/badria-al-shihhi-logo.png",
       images: [
         "/portfolio/accessories/scarfs/22.webp"
       ]
@@ -116,7 +116,7 @@ export default function AccessoriesClient() {
       category: "scarfs",
       name: "Luxury Pattern Scarf Set",
       brandName: "Badria Al Shihhi",
-      brandLogo: "/brands/badri-al-shihhi.png",
+      brandLogo: "/brands/badria-al-shihhi-logo.png",
       images: [
         "/portfolio/accessories/scarfs/2_1.webp",
         "/portfolio/accessories/scarfs/2_2.webp"
@@ -127,7 +127,7 @@ export default function AccessoriesClient() {
       category: "scarfs",
       name: "Designer Collection Scarf",
       brandName: "Badria Al Shihhi",
-      brandLogo: "/brands/badri-al-shihhi.png",
+      brandLogo: "/brands/badria-al-shihhi-logo.png",
       images: [
         "/portfolio/accessories/scarfs/3_1.webp",
         "/portfolio/accessories/scarfs/3_2.webp"
@@ -138,7 +138,7 @@ export default function AccessoriesClient() {
       category: "scarfs",
       name: "Premium Silk Scarf Set",
       brandName: "Badria Al Shihhi",
-      brandLogo: "/brands/badri-al-shihhi.png",
+      brandLogo: "/brands/badria-al-shihhi-logo.png",
       images: [
         "/portfolio/accessories/scarfs/4_1.webp",
         "/portfolio/accessories/scarfs/4_2.webp"
@@ -149,7 +149,7 @@ export default function AccessoriesClient() {
       category: "scarfs",
       name: "Elegant Cashmere Scarf Set",
       brandName: "Badria Al Shihhi",
-      brandLogo: "/brands/badri-al-shihhi.png",
+      brandLogo: "/brands/badria-al-shihhi-logo.png",
       images: [
         "/portfolio/accessories/scarfs/5_1.webp",
         "/portfolio/accessories/scarfs/5_2.webp"
@@ -160,7 +160,7 @@ export default function AccessoriesClient() {
       category: "scarfs",
       name: "Luxury Wool Scarf Collection",
       brandName: "Badria Al Shihhi",
-      brandLogo: "/brands/badri-al-shihhi.png",
+      brandLogo: "/brands/badria-al-shihhi-logo.png",
       images: [
         "/portfolio/accessories/scarfs/6_1.webp",
         "/portfolio/accessories/scarfs/6_2.webp"
@@ -171,7 +171,7 @@ export default function AccessoriesClient() {
       category: "scarfs",
       name: "Designer Pattern Scarf Set",
       brandName: "Badria Al Shihhi",
-      brandLogo: "/brands/badri-al-shihhi.png",
+      brandLogo: "/brands/badria-al-shihhi-logo.png",
       images: [
         "/portfolio/accessories/scarfs/7_1.webp",
         "/portfolio/accessories/scarfs/7_2.webp"
@@ -182,7 +182,7 @@ export default function AccessoriesClient() {
       category: "scarfs",
       name: "Premium Linen Scarf Set",
       brandName: "Badria Al Shihhi",
-      brandLogo: "/brands/badri-al-shihhi.png",
+      brandLogo: "/brands/badria-al-shihhi-logo.png",
       images: [
         "/portfolio/accessories/scarfs/8_1.webp",
         "/portfolio/accessories/scarfs/8_2.webp"
@@ -193,7 +193,7 @@ export default function AccessoriesClient() {
       category: "scarfs",
       name: "Luxury Embroidered Scarf Set",
       brandName: "Badria Al Shihhi",
-      brandLogo: "/brands/badri-al-shihhi.png",
+      brandLogo: "/brands/badria-al-shihhi-logo.png",
       images: [
         "/portfolio/accessories/scarfs/9_1.webp",
         "/portfolio/accessories/scarfs/9_2.webp"
@@ -204,7 +204,7 @@ export default function AccessoriesClient() {
       category: "scarfs",
       name: "Designer Formal Scarf Set",
       brandName: "Badria Al Shihhi",
-      brandLogo: "/brands/badri-al-shihhi.png",
+      brandLogo: "/brands/badria-al-shihhi-logo.png",
       images: [
         "/portfolio/accessories/scarfs/10_1.webp",
         "/portfolio/accessories/scarfs/10_2.webp"
@@ -215,7 +215,7 @@ export default function AccessoriesClient() {
       category: "scarfs",
       name: "Premium Collection Scarf Set",
       brandName: "Badria Al Shihhi",
-      brandLogo: "/brands/badri-al-shihhi.png",
+      brandLogo: "/brands/badria-al-shihhi-logo.png",
       images: [
         "/portfolio/accessories/scarfs/11_1.webp",
         "/portfolio/accessories/scarfs/11_2.webp"
@@ -226,7 +226,7 @@ export default function AccessoriesClient() {
       category: "scarfs",
       name: "Luxury Contemporary Scarf Set",
       brandName: "Badria Al Shihhi",
-      brandLogo: "/brands/badri-al-shihhi.png",
+      brandLogo: "/brands/badria-al-shihhi-logo.png",
       images: [
         "/portfolio/accessories/scarfs/13_1.webp",
         "/portfolio/accessories/scarfs/13_2.webp"
@@ -237,7 +237,7 @@ export default function AccessoriesClient() {
       category: "scarfs",
       name: "Designer Modern Scarf Set",
       brandName: "Badria Al Shihhi",
-      brandLogo: "/brands/badri-al-shihhi.png",
+      brandLogo: "/brands/badria-al-shihhi-logo.png",
       images: [
         "/portfolio/accessories/scarfs/18_1.webp",
         "/portfolio/accessories/scarfs/18_2.webp"
@@ -248,7 +248,7 @@ export default function AccessoriesClient() {
       category: "scarfs",
       name: "Premium Style Scarf Set",
       brandName: "Badria Al Shihhi",
-      brandLogo: "/brands/badri-al-shihhi.png",
+      brandLogo: "/brands/badria-al-shihhi-logo.png",
       images: [
         "/portfolio/accessories/scarfs/19_1.webp",
         "/portfolio/accessories/scarfs/19_2.webp"
@@ -259,7 +259,7 @@ export default function AccessoriesClient() {
       category: "scarfs",
       name: "Luxury Fashion Scarf Set",
       brandName: "Badria Al Shihhi",
-      brandLogo: "/brands/badri-al-shihhi.png",
+      brandLogo: "/brands/badria-al-shihhi-logo.png",
       images: [
         "/portfolio/accessories/scarfs/20_1.webp",
         "/portfolio/accessories/scarfs/20_2.webp"

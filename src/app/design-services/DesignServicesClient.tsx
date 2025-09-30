@@ -157,7 +157,7 @@ export default function DesignServicesClient() {
                 { brand: "Tilted Lotus", location: "Texas, USA", logo: "/brands/titled-lotus.png", href: "/case-studies/tilted-lotus", desc: "Print and pattern design with seasonal capsule planning to accelerate rollouts.", image: "/brands/titled-lotus-coverimage.png" },
                 { brand: "Las Loungewear", location: "Miami, USA", logo: "/brands/las-loungewear.png", href: "/case-studies/las", desc: "Comfort-first loungewear line with size and fit development for D2C scale.", image: "/brands/las-loungewear- coverimage.png" },
                 { brand: "HY Official", location: "Texas, USA", logo: "/brands/hy-official.png", href: "/case-studies/hy-official", desc: "Trend forecasting and garment sampling to validate silhouettes prior to launch.", image: "/brands/hy-official-coverimage.png" },
-                { brand: "Badria Al Shihhi", location: "Seeb, Oman", logo: "/brands/badri-al-shihhi.png", href: "/case-studies/badri-al-shihhi", desc: "End‑to‑end fashion design from concept through to production for retail launch.", image: "/brands/badriaalshihhi-coverimage.jpg" },
+                { brand: "Badria Al Shihhi", location: "Seeb, Oman", logo: "/brands/badria-al-shihhi-logo.png", href: "/case-studies/badri-al-shihhi", desc: "End‑to‑end fashion design from concept through to production for retail launch.", image: "/brands/badriaalshihhi-coverimage.jpg" },
               ].map((c) => (
                 <a key={c.brand} href={c.href} className="group block">
                   <article className="rounded-2xl border border-[#ECE9E2] bg-white shadow-[0_6px_20px_rgba(0,0,0,0.04)] overflow-hidden hover:shadow-[0_10px_28px_rgba(0,0,0,0.06)] transition-all duration-300 hover:-translate-y-0.5">

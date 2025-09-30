@@ -106,7 +106,7 @@ export default function AboutUs() {
             </div>
             <div className="flex items-center justify-center h-16 sm:h-20 md:h-24 w-full bg-white rounded-lg border border-[#ECE9E2] p-4 overflow-hidden">
               <Image 
-                src="/brands/badri-al-shihhi.png" 
+                src="/brands/badria-al-shihhi-logo.png" 
                 alt="Badria Al Shihhi logo - custom clothing production" 
                 width={120}
                 height={80}

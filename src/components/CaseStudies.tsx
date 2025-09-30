@@ -22,7 +22,7 @@ const caseStudies = [
     title: "Tilted Lotus",
     subtitle: "Texas, USA",
     description: "Krazy Kreators helped Tilted Lotus evolve from Indian ethnicwear to a culture-conscious Western collection — redefining silhouettes and storytelling to resonate with today's urban woman. From initial comfort trials to a globally relevant design language, we aligned vision, identity, and versatility into retail-ready styles.",
-    backgroundImage: "/brands/titled-lotus-coverimage.png",
+    backgroundImage: "/brands/tilted-lotus-hero.jpg",
     logo: "/brands/titled-lotus.png",
     logoPosition: "top-right" as const,
   },
@@ -53,7 +53,7 @@ const caseStudies = [
     subtitle: "Seeb, Oman",
     description: "Krazy Kreators collaborated with Badria Al Shihhi to bring her modern take on Omani heritage to life — weaving cultural storytelling into contemporary silhouettes. From moodboarding to final production, we ensured every detail resonated with regional elegance and craftsmanship for a thoughtfully executed launch.",
     backgroundImage: "/brands/badriaalshihhi-coverimage.jpg",
-    logo: "/brands/badri-al-shihhi.png",
+    logo: "/brands/badria-al-shihhi-logo.png",
     logoPosition: "top-right" as const,
   },
 ];
@@ -107,8 +107,8 @@ export default function CaseStudies() {
                     <Image
                       src={study.logo}
                       alt={`${study.title} logo`}
-                      width={study.title.toLowerCase() === "badria al shihhi" ? 160 : 80}
-                      height={study.title.toLowerCase() === "badria al shihhi" ? 96 : 48}
+                      width={80}
+                      height={48}
                       className="object-contain"
                     />
                   </div>
