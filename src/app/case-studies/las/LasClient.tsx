@@ -43,7 +43,7 @@ export default function LasClient() {
 				videoRefs.current[index]!.currentTime = 0.1;
 			}
 			setPlayingVideoIndex(null);
-		} else {
+					} else {
 			if (videoRefs.current[index]) {
 				videoRefs.current[index]!.muted = false;
 				videoRefs.current[index]!.play().catch(console.error);
@@ -976,16 +976,16 @@ export default function LasClient() {
 								videoClassName="w-full h-full object-cover"
 							/>
 
-						<div className="space-y-6 text-lg leading-relaxed text-black">
-							<p>
+							<div className="space-y-6 text-lg leading-relaxed text-black">
+								<p>
 								&ldquo;Working with Krazy Kreators was a game-changer for Las Loungewear. They didn&apos;t just understand my vision — they elevated it. From the initial concept to the final product, every step was executed with precision and creativity.&rdquo;
-							</p>
-
-							<p>
+								</p>
+								
+								<p>
 								&ldquo;The attention to detail in fabric selection, the innovative compression technology, and the sophisticated design elements exceeded my expectations. They truly became a partner in building my brand, not just a vendor.&rdquo;
-							</p>
-
-							<p>
+								</p>
+								
+								<p>
 								&ldquo;The end result is exactly what I envisioned: premium travelwear that feels luxurious and performs perfectly. Our customers love the quality and comfort, and I couldn&apos;t be happier with the partnership.&rdquo;
 							</p>
 

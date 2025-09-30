@@ -166,7 +166,7 @@ export default function PricingClient() {
 
       {/* Hero - Clean white */}
       <section className="h-[70vh] flex items-center bg-white py-12 sm:py-16 md:py-20">
-        <div className="max-w-[80%] mx-auto px-4 md:px-0 lg:px-0 text-center w-full">
+        <div className="max-w-[95%] sm:max-w-[90%] md:max-w-[85%] lg:max-w-[80%] mx-auto px-4 md:px-0 lg:px-0 text-center w-full">
           <h1 className="text-3xl sm:text-4xl md:text-5xl font-serif font-bold text-[#111111]">
             Simple Pricing. Big Value.
           </h1>
@@ -187,7 +187,7 @@ export default function PricingClient() {
 
       {/* Retainership model explainer (cards) */}
       <section className="py-8 sm:py-10 md:py-12 bg-[#FAF9F7]">
-        <div className="max-w-[80%] mx-auto px-4 md:px-0 lg:px-0">
+        <div className="max-w-[95%] sm:max-w-[90%] md:max-w-[85%] lg:max-w-[80%] mx-auto px-4 md:px-0 lg:px-0">
           <div className="grid grid-cols-1 lg:grid-cols-2 auto-rows-fr items-stretch gap-6 md:gap-8">
             {/* Card 1 */}
             <article className="rounded-2xl border border-[#E0E0E0] bg-white shadow-[0_6px_24px_rgba(0,0,0,0.06)] p-6 sm:p-7 md:p-8 h-full">
@@ -221,7 +221,7 @@ export default function PricingClient() {
 
       {/* Monthly Retainer Plans */}
       <section id="retainer-plans" className="pb-16 sm:pb-20 md:pb-24">
-        <div className="max-w-[80%] mx-auto px-4 md:px-0 lg:px-0">
+        <div className="max-w-[95%] sm:max-w-[90%] md:max-w-[85%] lg:max-w-[80%] mx-auto px-4 md:px-0 lg:px-0">
           <h2 className="text-xl sm:text-2xl md:text-3xl font-serif font-bold text-[#2D2A2E] text-center">
             Fashion Brand Retainer Plans
           </h2>
@@ -229,7 +229,7 @@ export default function PricingClient() {
             Choose a monthly partnership geared to design, sampling, and production momentum.
           </p>
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-8">
+          <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 md:gap-8">
             {retainerPlans.map((plan) => (
               <article
                 key={plan.name}
@@ -273,7 +273,7 @@ export default function PricingClient() {
 
       {/* Custom Plans */}
       <section className="pb-20 sm:pb-24 md:pb-28">
-        <div className="max-w-[80%] mx-auto px-4 md:px-0 lg:px-0">
+        <div className="max-w-[95%] sm:max-w-[90%] md:max-w-[85%] lg:max-w-[80%] mx-auto px-4 md:px-0 lg:px-0">
           {/* Title + subtext above */}
           <div className="text-center max-w-3xl mx-auto mb-8 sm:mb-10 md:mb-12">
             <h2 className="text-2xl sm:text-3xl md:text-4xl font-serif font-bold text-[#2D2A2E]">
@@ -287,7 +287,7 @@ export default function PricingClient() {
           </div>
 
           {/* Horizontal cards */}
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
+          <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 md:gap-8">
             {customPlans.map((p) => {
               const Icon = p.icon;
               return (

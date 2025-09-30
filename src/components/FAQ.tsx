@@ -54,13 +54,13 @@ export default function FAQ() {
 
   return (
     <section className="w-full bg-white py-12 sm:py-16 md:py-20 lg:py-24">
-      <div className="min-w-[80%] xl:max-w-[75%] 2xl:max-w-[70%] mx-auto px-4 sm:px-6 lg:px-12 xl:px-16">
+      <div className="min-w-[80%] xl:max-w-[75%] 2xl:max-w-[70%] mx-auto px-4 sm:px-6 md:px-8 lg:px-12 xl:px-16">
         {/* Section Header */}
-        <div className="text-center mb-12 sm:mb-14 md:mb-16">
+        <div className="text-center mb-12 sm:mb-14 md:mb-16 lg:mb-20">
           <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold font-sans text-[#2D2A2E] mb-3 sm:mb-4">
             Frequently Asked Questions
           </h2>
-          <p className="text-sm sm:text-base md:text-lg text-[#3D3846] max-w-2xl mx-auto px-4">
+          <p className="text-sm sm:text-base md:text-lg text-[#3D3846] max-w-2xl mx-auto px-4 md:px-6">
             Everything you need to know about working with us. Can&apos;t find what you&apos;re looking for? 
             <a href="#" className="text-[#CBB49A] hover:text-[#b7a078] transition-colors duration-200 ml-1 underline underline-offset-2">
               Get in touch
