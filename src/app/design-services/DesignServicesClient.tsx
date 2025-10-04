@@ -141,6 +141,60 @@ export default function DesignServicesClient() {
         </div>
       </section>
 
+      {/* CONCEPT AND ILLUSTRATIONS SECTION */}
+      <section className="py-16 sm:py-20 md:py-24 bg-white">
+        <div className="min-w-[80%] xl:max-w-[75%] 2xl:max-w-[70%] mx-auto px-4 sm:px-6 md:px-8 lg:px-12 xl:px-16">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 items-center">
+            {/* Left: Content */}
+            <div className="flex flex-col justify-center">
+              <h2 className="text-2xl sm:text-3xl md:text-4xl font-serif font-bold text-[#2D2A2E]">Concept and Illustrations</h2>
+              <p className="mt-4 text-sm sm:text-base md:text-lg text-[#5C5C5C] leading-relaxed">
+                Every collection begins with a concept — a story that defines the mood, inspiration, and creative direction. Illustrations bring this vision to life, transforming abstract ideas into expressive visuals that guide design development. They serve as a bridge between imagination and execution, capturing silhouettes, textures, colors, and emotions before garments take form. Together, concept and illustrations establish the foundation of a fashion collection, ensuring each design is not only aesthetically compelling but also connected to a deeper narrative.
+              </p>
+            </div>
+            
+            {/* Right: Image */}
+            <div className="rounded-2xl overflow-hidden border border-[#ECE9E2] shadow-sm">
+              <div className="relative w-full h-full min-h-[22rem]">
+                <Image 
+                  src="/services/design/design-1.png" 
+                  alt="Fashion design concept and illustration process - designer's workspace with sketches and digital tools" 
+                  fill 
+                  className="object-cover" 
+                />
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* TREND AND FORECAST RESEARCH SECTION */}
+      <section className="py-16 sm:py-20 md:py-24 bg-[#FAF9F3]">
+        <div className="min-w-[80%] xl:max-w-[75%] 2xl:max-w-[70%] mx-auto px-4 sm:px-6 md:px-8 lg:px-12 xl:px-16">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 items-center">
+            {/* Left: Image */}
+            <div className="rounded-2xl overflow-hidden border border-[#ECE9E2] shadow-sm">
+              <div className="relative w-full h-full min-h-[22rem]">
+                <Image 
+                  src="/services/design/design-2.png" 
+                  alt="Trend and forecast research in fashion - analyzing market trends and consumer preferences" 
+                  fill 
+                  className="object-cover" 
+                />
+              </div>
+            </div>
+            
+            {/* Right: Content */}
+            <div className="flex flex-col justify-center">
+              <h2 className="text-2xl sm:text-3xl md:text-4xl font-serif font-bold text-[#2D2A2E]">Trend and Forecast Research</h2>
+              <p className="mt-4 text-sm sm:text-base md:text-lg text-[#5C5C5C] leading-relaxed">
+                Trend and forecast research is a vital part of the fashion industry because it bridges creativity with market relevance. Fashion moves quickly, and consumer preferences shift with culture, technology, lifestyle, and global events. By studying runways, street style, social media, retail analytics, and forecasting agencies, designers and brands can anticipate what colors, fabrics, prints, and silhouettes will be in demand for upcoming seasons. This research reduces the risk of creating products that won&apos;t sell, ensures collections reflect consumer lifestyles, and helps brands stay one step ahead of competitors. Beyond guiding design, it also shapes marketing strategies, storytelling, and retail planning. In short, trend and forecast research gives fashion brands the ability to innovate confidently while remaining commercially successful and culturally relevant in a fast-changing industry.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
       {/* CASE STUDIES – GRID (below Why Choose section) */}
       <section id="client-case-studies" className="relative bg-white py-12 sm:py-16 md:py-20">
         <div className="min-w-[80%] xl:max-w-[75%] 2xl:max-w-[70%] mx-auto px-4 sm:px-6 md:px-8 lg:px-12 xl:px-16">

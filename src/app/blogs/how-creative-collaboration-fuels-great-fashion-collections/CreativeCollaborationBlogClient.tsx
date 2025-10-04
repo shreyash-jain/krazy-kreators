@@ -2,7 +2,7 @@
 
 import { useState, useEffect } from "react";
 import { Button } from "@/components/ui/button";
-import { ArrowRight, MessageSquare, User, Share2, Heart, MessageCircle, Eye } from "lucide-react";
+import { ArrowRight, MessageSquare, Share2, Heart, MessageCircle, Eye } from "lucide-react";
 import ContactDialog from "@/components/ContactDialog";
 import Footer from "@/components/Footer";
 import Navbar from "@/components/Navbar";
@@ -87,7 +87,11 @@ export default function CreativeCollaborationBlogClient() {
   const handleCommentLike = (id: number) => {
     setLikedComments((prev) => {
       const set = new Set(prev);
-      set.has(id) ? set.delete(id) : set.add(id);
+      if (set.has(id)) {
+        set.delete(id);
+      } else {
+        set.add(id);
+      }
       return set;
     });
   };
