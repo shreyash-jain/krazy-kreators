@@ -2,7 +2,7 @@
 
 import { useState, useEffect } from "react";
 import { Button } from "@/components/ui/button";
-import { ArrowRight, MessageSquare, User, Share2, Heart, MessageCircle, Eye } from "lucide-react";
+import { ArrowRight, MessageSquare, Share2, Heart, MessageCircle, Eye } from "lucide-react";
 import ContactDialog from "@/components/ContactDialog";
 import Footer from "@/components/Footer";
 import Navbar from "@/components/Navbar";
@@ -92,7 +92,11 @@ export default function ExportingIndiaBlogClient() {
   const handleCommentLike = (id: number) => {
     setLikedComments((prev) => {
       const s = new Set(prev);
-      s.has(id) ? s.delete(id) : s.add(id);
+      if (s.has(id)) {
+        s.delete(id);
+      } else {
+        s.add(id);
+      }
       return s;
     });
   };

@@ -2,7 +2,7 @@
 
 import { useState, useEffect } from "react";
 import { Button } from "@/components/ui/button";
-import { ArrowRight, MessageSquare, User, Share2, Heart, MessageCircle, Eye } from "lucide-react";
+import { ArrowRight, MessageSquare, Share2, Heart, MessageCircle, Eye } from "lucide-react";
 import ContactDialog from "@/components/ContactDialog";
 import Footer from "@/components/Footer";
 import Navbar from "@/components/Navbar";
@@ -42,7 +42,7 @@ export default function MOQBlogClient() {
   const handleLike = () => { setIsLiked((p) => !p); setLikeCount((p) => (isLiked ? p - 1 : p + 1)); };
   const handleShare = async () => { const url = window.location.href; try { await navigator.clipboard.writeText(url); showToast("Link copied to clipboard!", "success"); } catch { showToast("Failed to copy link", "error"); } };
   const handleComment = () => { const el = document.querySelector("[data-comments-section]"); if (el) el.scrollIntoView({ behavior: "smooth", block: "start" }); };
-  const handleCommentLike = (id: number) => { setLikedComments((prev) => { const s = new Set(prev); s.has(id) ? s.delete(id) : s.add(id); return s; }); };
+  const handleCommentLike = (id: number) => { setLikedComments((prev) => { const s = new Set(prev); if (s.has(id)) { s.delete(id); } else { s.add(id); } return s; }); };
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => { const { name, value } = e.target; setNewComment((prev) => ({ ...prev, [name]: value })); };
   const handleSubmitComment = async (e: React.FormEvent) => {
     e.preventDefault();
