@@ -10,47 +10,33 @@ import Image from "next/image";
 import Link from "next/link";
 import { getRandomBlogs } from "@/lib/blogUtils";
 import { useToast } from "@/components/Toast";
+import { likeBlog, addComment, likeComment, type PublicComment } from "@/lib/blogApi";
+import { recordBlogLikeUpdate } from "@/lib/blogLikeSync";
 
-const MOCK_COMMENTS = [
-    {
-      id: 1,
-      name: "Sarah Chen",
-      email: "sarah@example.com",
-    comment:
-      "This is incredibly insightful! I've always wondered about the technical process behind mood boards. The step-by-step breakdown really helps understand how creativity meets manufacturing.",
-      date: "2 days ago",
-    avatar: "S",
-    likes: 34
-    },
-    {
-      id: 2,
-      name: "Marcus Rodriguez",
-      email: "marcus@example.com",
-    comment:
-      "The prototyping section really resonated with me. It's amazing how much iteration goes into getting the perfect fit and feel. Thanks for sharing this behind-the-scenes look!",
-      date: "1 week ago",
-    avatar: "M",
-    likes: 27
-    },
-    {
-      id: 3,
-      name: "Alex Thompson",
-      email: "alex@example.com",
-    comment:
-      "As someone new to fashion design, this article was a goldmine of information. The tech pack section especially helped me understand the importance of clear documentation.",
-      date: "2 weeks ago",
-    avatar: "A",
-    likes: 28
-  }
-];
+const BLOG_ID = 'mood-boards-to-manufacturable-garments';
 
-export default function MoodBoardsBlogClient() {
+type MoodBoardsBlogClientProps = {
+  initialLikeCount: number;
+  initialComments: PublicComment[];
+};
+
+export default function MoodBoardsBlogClient({ initialLikeCount, initialComments }: MoodBoardsBlogClientProps) {
   const [contactOpen, setContactOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
   const [isLiked, setIsLiked] = useState(false);
-  const [likeCount, setLikeCount] = useState(() => MOCK_COMMENTS.reduce((acc, comment) => acc + (comment.likes ?? 0), 0) || 89);
-  const [commentCount, setCommentCount] = useState(MOCK_COMMENTS.length);
-  const [comments, setComments] = useState(MOCK_COMMENTS);
+  const [likeCount, setLikeCount] = useState(initialLikeCount);
+  const [commentCount, setCommentCount] = useState(initialComments.length);
+  const [comments, setComments] = useState<Array<{ id: string; name: string; email: string; comment: string; date: string; avatar: string; likes: number }>>(() =>
+    initialComments.map((c) => ({
+      id: c.id,
+      name: c.name,
+      email: c.email,
+      comment: c.comment,
+      date: new Date(c.created_at).toLocaleString(),
+      avatar: (c.name || '?').charAt(0).toUpperCase(),
+      likes: c.likes ?? 0,
+    }))
+  );
   const [newComment, setNewComment] = useState({
     name: "",
     email: "",
@@ -59,10 +45,11 @@ export default function MoodBoardsBlogClient() {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [showSuccessMessage, setShowSuccessMessage] = useState(false);
   const [showAllComments, setShowAllComments] = useState(false);
-  const [likedComments, setLikedComments] = useState<Set<number>>(new Set());
+  const [likedComments, setLikedComments] = useState<Set<string>>(new Set());
   const endOfArticleRef = useRef<HTMLDivElement | null>(null);
   const hasAutoOpenedComments = useRef(false);
   const { showToast, ToastContainer } = useToast();
+  const [relatedBlogs] = useState(() => getRandomBlogs(1));
 
   useEffect(() => {
     if (typeof window === 'undefined') return;
@@ -104,9 +91,14 @@ export default function MoodBoardsBlogClient() {
     };
   }, [endOfArticleRef]);
 
-  const handleLike = () => {
-    setIsLiked(!isLiked);
-    setLikeCount(prev => isLiked ? prev - 1 : prev + 1);
+  const handleLike = async () => {
+    try {
+      const action = isLiked ? 'unlike' : 'like';
+      const newCount = await likeBlog(BLOG_ID, action);
+      recordBlogLikeUpdate(BLOG_ID, newCount);
+      setIsLiked(!isLiked);
+      setLikeCount(newCount);
+    } catch (_) {}
   };
 
   const handleShare = async () => {
@@ -129,16 +121,26 @@ export default function MoodBoardsBlogClient() {
     }
   };
 
-  const handleCommentLike = (commentId: number) => {
-    setLikedComments(prev => {
-      const newSet = new Set(prev);
-      if (newSet.has(commentId)) {
-        newSet.delete(commentId);
-      } else {
-        newSet.add(commentId);
-      }
-      return newSet;
-    });
+  const handleCommentLike = async (commentId: string) => {
+    try {
+      const action = likedComments.has(commentId) ? 'unlike' : 'like';
+      const newCount = await likeComment(commentId, action);
+      setComments((prev) => prev.map((c) => c.id === commentId ? { ...c, likes: newCount } : c));
+      
+      // Toggle the liked state only if API call succeeds
+      setLikedComments(prev => {
+        const newSet = new Set(prev);
+        if (newSet.has(commentId)) {
+          newSet.delete(commentId);
+        } else {
+          newSet.add(commentId);
+        }
+        return newSet;
+      });
+    } catch (_) {
+      // If API call fails, don't change the liked state
+      console.error('Failed to toggle like for comment:', commentId);
+    }
   };
 
 
@@ -152,45 +154,36 @@ export default function MoodBoardsBlogClient() {
 
   const handleSubmitComment = async (e: React.FormEvent) => {
     e.preventDefault();
-    
     if (!newComment.name.trim() || !newComment.email.trim() || !newComment.comment.trim()) {
       alert('Please fill in all fields');
       return;
     }
-
     setIsSubmitting(true);
-
-    // Simulate API call
-    setTimeout(() => {
+    try {
+      const created = await addComment({ blogId: BLOG_ID, name: newComment.name.trim(), email: newComment.email.trim(), comment: newComment.comment.trim() });
       const newCommentData = {
-        id: comments.length + 1,
-        name: newComment.name.trim(),
-        email: newComment.email.trim(),
-        comment: newComment.comment.trim(),
-        date: "Just now",
-        avatar: newComment.name.charAt(0).toUpperCase(),
-        likes: 0
+        id: created.id,
+        name: created.name,
+        email: created.email,
+        comment: created.comment,
+        date: new Date(created.created_at).toLocaleString(),
+        avatar: (created.name || '?').charAt(0).toUpperCase(),
+        likes: 0,
       };
-
       setComments(prev => [newCommentData, ...prev]);
       setCommentCount(prev => prev + 1);
       setNewComment({ name: "", email: "", comment: "" });
-      setIsSubmitting(false);
       setShowSuccessMessage(true);
-      
-      // Hide success message after 3 seconds
+      setTimeout(() => setShowSuccessMessage(false), 3000);
       setTimeout(() => {
-        setShowSuccessMessage(false);
-      }, 3000);
-      
-      // Scroll to the new comment
-      setTimeout(() => {
-        const commentElement = document.getElementById(`comment-${newCommentData.id}`);
-        if (commentElement) {
-          commentElement.scrollIntoView({ behavior: 'smooth', block: 'center' });
-        }
+        const el = document.getElementById(`comment-${newCommentData.id}`);
+        if (el) el.scrollIntoView({ behavior: 'smooth', block: 'center' });
       }, 100);
-    }, 1000);
+    } catch (err) {
+      console.error(err);
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   return (
@@ -218,8 +211,8 @@ export default function MoodBoardsBlogClient() {
 
       {/* Main Content */}
       <section className="py-16 sm:py-20 lg:py-24 bg-white">
-        <div className="min-w-[80%] lg:max-w-[80%] mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="max-w-4xl mx-auto">
+        <div className="min-w-[80%] lg:max-w-[80%] mx-auto px-4 md:px-6 lg:px-0">
+          <div className="w-full">
             {/* Article Title and Category */}
             <div className="mb-8">
               <h1 className="text-4xl sm:text-5xl font-bold text-[#2D2A2E] mb-4">
@@ -363,74 +356,92 @@ export default function MoodBoardsBlogClient() {
                 Here&apos;s the journey step by step:
               </p>
 
-              {/* Step 1 */}
-              <div className="mb-12">
-                <h2 className="text-2xl font-bold text-[#2D2A2E] mb-6">1. Reading the Mood Board</h2>
-                <p className="text-lg text-[#666666] leading-relaxed mb-6">
-                  The first step is interpretation. A mood board holds hidden clues — a certain shade of pink, a fluid drape in a photo, a bold geometric silhouette, or a cultural motif.
-                </p>
-                <ul className="list-disc list-inside text-lg text-[#666666] leading-relaxed space-y-2 mb-6">
-                  <li>Colors become Pantone references.</li>
-                  <li>Textures hint at fabrics — silk, denim, knits, or organza.</li>
-                  <li>Imagery sparks silhouettes and details — oversized sleeves, cinched waists, or minimalist cuts.</li>
-                </ul>
-              </div>
-
-              {/* Step 2 */}
-              <div className="mb-12">
-                <h2 className="text-2xl font-bold text-[#2D2A2E] mb-6">2. From Inspiration to Initial Sketches</h2>
-                <p className="text-lg text-[#666666] leading-relaxed mb-6">
-                  Once the mood board direction is clear, designers begin sketching. These sketches translate abstract emotions into wearable shapes. Each detail — neckline, hemline, fit — begins to align with the board&apos;s story.
-                </p>
+              {/* Steps 1 & 2 with image on the right */}
+              <div className="mb-12 grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
+                <div>
+                  {/* Step 1 */}
+                  <h2 className="text-2xl font-bold text-[#2D2A2E] mb-6">1. Reading the Mood Board</h2>
+                  <p className="text-lg text-[#666666] leading-relaxed mb-6">
+                    The first step is interpretation. A mood board holds hidden clues — a certain shade of pink, a fluid drape in a photo, a bold geometric silhouette, or a cultural motif.
+                  </p>
+                  <ul className="list-disc list-inside text-lg text-[#666666] leading-relaxed space-y-2 mb-8">
+                    <li>Colors become Pantone references.</li>
+                    <li>Textures hint at fabrics — silk, denim, knits, or organza.</li>
+                    <li>Imagery sparks silhouettes and details — oversized sleeves, cinched waists, or minimalist cuts.</li>
+                  </ul>
+                  {/* Step 2 */}
+                  <h2 className="text-2xl font-bold text-[#2D2A2E] mb-6">2. From Inspiration to Initial Sketches</h2>
+                  <p className="text-lg text-[#666666] leading-relaxed">
+                    Once the mood board direction is clear, designers begin sketching. These sketches translate abstract emotions into wearable shapes. Each detail — neckline, hemline, fit — begins to align with the board&apos;s story.
+                  </p>
+                </div>
+                <div>
+                  <div className="rounded-xl overflow-hidden shadow-lg">
+                    <Image
+                      src="/blog/blog 1_1.png"
+                      alt="Design process from mood board to sketches"
+                      width={800}
+                      height={600}
+                      className="w-full h-auto object-contain"
+                      style={{
+                        WebkitTransform: 'translateZ(0)',
+                        transform: 'translateZ(0)',
+                        WebkitBackfaceVisibility: 'hidden',
+                        backfaceVisibility: 'hidden'
+                      }}
+                    />
+                  </div>
+                </div>
               </div>
 
               {/* Step 3 */}
               <div className="mb-12">
                 <h2 className="text-2xl font-bold text-[#2D2A2E] mb-6">3. Fabric & Material Selection</h2>
-                <p className="text-lg text-[#666666] leading-relaxed mb-6">
+                <p className="text-lg text-[#666666] leading-relaxed">
                   A mood board&apos;s colors and textures are matched with real-world fabrics. This step answers: What fabric will best express the drape, comfort, and mood intended? Along with base fabric, trims and accessories — zippers, buttons, embroidery, laces — are chosen to reinforce the design language.
                 </p>
               </div>
 
-              {/* Step 4 */}
-              <div className="mb-12">
-                <h2 className="text-2xl font-bold text-[#2D2A2E] mb-6">4. Creating the Tech Pack</h2>
-                <p className="text-lg text-[#666666] leading-relaxed mb-6">
-                  Here the idea starts becoming technical. The tech pack is the designer&apos;s language for manufacturers, including:
-                </p>
-                <ul className="list-disc list-inside text-lg text-[#666666] leading-relaxed space-y-2 mb-6">
-                  <li>Flat sketches</li>
-                  <li>Measurements and grading</li>
-                  <li>Stitching details</li>
-                  <li>Fabric and trim specifications</li>
-                </ul>
-                <p className="text-lg text-[#666666] leading-relaxed mb-6">
-                  This is where creativity meets precision. Without this, a design can&apos;t be accurately reproduced.
-                </p>
-              </div>
+              {/* Steps 4 & 5 with image on the left */}
+              <div className="mb-12 grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
+                <div>
+                  <div className="rounded-xl overflow-hidden shadow-lg">
+                    <Image
+                      src="/blog/blog 1_2.png"
+                      alt="Technical details and prototyping visuals"
+                      width={800}
+                      height={600}
+                      className="w-full h-auto object-contain"
+                      style={{
+                        WebkitTransform: 'translateZ(0)',
+                        transform: 'translateZ(0)',
+                        WebkitBackfaceVisibility: 'hidden',
+                        backfaceVisibility: 'hidden'
+                      }}
+                    />
+                  </div>
+                </div>
+                <div>
+                  {/* Step 4 */}
+                  <h2 className="text-2xl font-bold text-[#2D2A2E] mb-6">4. Creating the Tech Pack</h2>
+                  <p className="text-lg text-[#666666] leading-relaxed mb-6">
+                    Here the idea starts becoming technical. The tech pack is the designer&apos;s language for manufacturers, including:
+                  </p>
+                  <ul className="list-disc list-inside text-lg text-[#666666] leading-relaxed space-y-2 mb-6">
+                    <li>Flat sketches</li>
+                    <li>Measurements and grading</li>
+                    <li>Stitching details</li>
+                    <li>Fabric and trim specifications</li>
+                  </ul>
+                  <p className="text-lg text-[#666666] leading-relaxed mb-8">
+                    This is where creativity meets precision. Without this, a design can&apos;t be accurately reproduced.
+                  </p>
 
-              {/* Step 5 */}
-              <div className="mb-12">
-                <h2 className="text-2xl font-bold text-[#2D2A2E] mb-6">5. Prototyping</h2>
-                <p className="text-lg text-[#666666] leading-relaxed mb-6">
-                  The first tangible form of the garment is created. A prototype or test fit (made from test fabric) helps check silhouette, fit, and construction. Adjustments are made until the garment feels true to the original vision.
-                </p>
-                
-                {/* Strategic Image 1: Design Process */}
-                <div className="mb-8 rounded-xl overflow-hidden shadow-lg">
-                  <Image
-                    src="/blog/blog 1_1.png"
-                    alt="Design process from mood board to sketches"
-                    width={800}
-                    height={600}
-                    className="w-full h-auto object-contain"
-                    style={{
-                      WebkitTransform: 'translateZ(0)',
-                      transform: 'translateZ(0)',
-                      WebkitBackfaceVisibility: 'hidden',
-                      backfaceVisibility: 'hidden'
-                    }}
-                  />
+                  {/* Step 5 */}
+                  <h2 className="text-2xl font-bold text-[#2D2A2E] mb-6">5. Prototyping</h2>
+                  <p className="text-lg text-[#666666] leading-relaxed">
+                    The first tangible form of the garment is created. A prototype or test fit (made from test fabric) helps check silhouette, fit, and construction. Adjustments are made until the garment feels true to the original vision.
+                  </p>
                 </div>
               </div>
 
@@ -442,53 +453,37 @@ export default function MoodBoardsBlogClient() {
                 </p>
               </div>
 
-              {/* Step 7 */}
-              <div className="mb-12">
-                <h2 className="text-2xl font-bold text-[#2D2A2E] mb-6">7. Pre-Production & Scaling</h2>
-                <p className="text-lg text-[#666666] leading-relaxed mb-6">
-                  Once samples are approved, the garment goes into pre-production. At this stage, patterns are finalized, fabric orders placed, and manufacturing timelines locked.
-                </p>
-                
-                {/* Strategic Image 2: Manufacturing Process */}
-                <div className="mb-8 rounded-xl overflow-hidden shadow-lg">
-                  <Image
-                    src="/blog/blog 1_2.png"
-                    alt="Manufacturing and production process"
-                    width={800}
-                    height={600}
-                    className="w-full h-auto object-contain"
-                    style={{
-                      WebkitTransform: 'translateZ(0)',
-                      transform: 'translateZ(0)',
-                      WebkitBackfaceVisibility: 'hidden',
-                      backfaceVisibility: 'hidden'
-                    }}
-                  />
+              {/* Steps 7 & 8 with image on the right */}
+              <div className="mb-12 grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
+                <div>
+                  {/* Step 7 */}
+                  <h2 className="text-2xl font-bold text-[#2D2A2E] mb-6">7. Pre-Production & Scaling</h2>
+                  <p className="text-lg text-[#666666] leading-relaxed mb-8">
+                    Once samples are approved, the garment goes into pre-production. At this stage, patterns are finalized, fabric orders placed, and manufacturing timelines locked.
+                  </p>
+                  {/* Step 8 */}
+                  <h2 className="text-2xl font-bold text-[#2D2A2E] mb-6">8. Production & Quality Checks</h2>
+                  <p className="text-lg text-[#666666] leading-relaxed">
+                    The garment is finally manufactured in bulk. Quality checks ensure every piece matches the sample — in fit, stitching, and finish.
+                  </p>
                 </div>
-              </div>
-
-              {/* Step 8 */}
-              <div className="mb-12">
-                <h2 className="text-2xl font-bold text-[#2D2A2E] mb-6">8. Production & Quality Checks</h2>
-                <p className="text-lg text-[#666666] leading-relaxed mb-6">
-                  The garment is finally manufactured in bulk. Quality checks ensure every piece matches the sample — in fit, stitching, and finish.
-                </p>
-                
-                {/* Strategic Image 3: Final Product */}
-                <div className="mb-8 rounded-xl overflow-hidden shadow-lg">
-                  <Image
-                    src="/blog/blog 1_3.png"
-                    alt="Final manufactured garments and quality control"
-                    width={800}
-                    height={600}
-                    className="w-full h-auto object-contain"
-                    style={{
-                      WebkitTransform: 'translateZ(0)',
-                      transform: 'translateZ(0)',
-                      WebkitBackfaceVisibility: 'hidden',
-                      backfaceVisibility: 'hidden'
-                    }}
-                  />
+                <div>
+                  {/* Strategic Image 3: Final Product */}
+                  <div className="rounded-xl overflow-hidden shadow-lg">
+                    <Image
+                      src="/blog/blog 1_3.png"
+                      alt="Final manufactured garments and quality control"
+                      width={800}
+                      height={600}
+                      className="w-full h-auto object-contain"
+                      style={{
+                        WebkitTransform: 'translateZ(0)',
+                        transform: 'translateZ(0)',
+                        WebkitBackfaceVisibility: 'hidden',
+                        backfaceVisibility: 'hidden'
+                      }}
+                    />
+                  </div>
                 </div>
               </div>
 
@@ -612,7 +607,7 @@ export default function MoodBoardsBlogClient() {
                                       }`}
                                     >
                                       <Heart className={`w-3 h-3 ${likedComments.has(comment.id) ? 'fill-[#CBB49A]' : ''}`} />
-                                      {likedComments.has(comment.id) ? comment.likes + 1 : comment.likes} {comment.likes === 0 && !likedComments.has(comment.id) ? '' : 'likes'}
+                                      {comment.likes} {comment.likes === 1 ? 'like' : 'likes'}
                                     </button>
                                   </div>
                                 </div>
@@ -780,7 +775,7 @@ export default function MoodBoardsBlogClient() {
 
       {/* Other Blogs Section */}
       <section className="py-16 sm:py-20 lg:py-24 bg-[#F8F7F4]">
-        <div className="min-w-[80%] lg:max-w-[80%] mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="min-w-[80%] lg:max-w-[80%] mx-auto px-4 md:px-6 lg:px-0">
           <div className="text-center mb-12">
             <h2 className="text-3xl sm:text-4xl font-serif font-bold text-[#2D2A2E] mb-4">
               Explore More Insights
@@ -791,7 +786,7 @@ export default function MoodBoardsBlogClient() {
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {getRandomBlogs(1).map((blog) => (
+            {relatedBlogs.map((blog) => (
               <Link key={blog.id} href={`/blogs/${blog.slug}`} className="group">
                 <article className="bg-white rounded-2xl shadow-lg overflow-hidden hover:shadow-xl transition-all duration-300 group-hover:-translate-y-1">
                   <div className="aspect-video relative overflow-hidden">
@@ -849,7 +844,7 @@ export default function MoodBoardsBlogClient() {
 
       {/* CTA Section */}
       <section className="py-16 sm:py-20 lg:py-24 bg-gradient-to-br from-[#F8F7F4] to-white">
-        <div className="min-w-[80%] lg:max-w-[80%] mx-auto px-4 sm:px-6 lg:px-8 text-center">
+        <div className="min-w-[80%] lg:max-w-[80%] mx-auto px-4 md:px-6 lg:px-0 text-center">
           <h2 className="text-3xl sm:text-4xl font-serif font-bold text-[#2D2A2E] mb-6">
             Ready to Transform Your Vision Into Reality?
           </h2>
