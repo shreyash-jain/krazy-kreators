@@ -8,49 +8,35 @@ import Footer from "@/components/Footer";
 import Navbar from "@/components/Navbar";
 import Image from "next/image";
 import Link from "next/link";
-import { getRandomBlogs } from "@/lib/blogUtils";
+import { blogPosts } from "@/data/blogPosts";
 import { useToast } from "@/components/Toast";
+import { likeBlog, addComment, likeComment, type PublicComment } from "@/lib/blogApi";
+import { recordBlogLikeUpdate } from "@/lib/blogLikeSync";
 
-const MOCK_COMMENTS = [
-    {
-      id: 1,
-      name: "Sarah Chen",
-      email: "sarah@example.com",
-    comment:
-      "This is incredibly insightful! I've always wondered about the technical process behind supply chain partnerships. The step-by-step breakdown really helps understand how creativity meets manufacturing.",
-      date: "2 days ago",
-    avatar: "S",
-    likes: 34
-    },
-    {
-      id: 2,
-      name: "Marcus Rodriguez",
-      email: "marcus@example.com",
-    comment:
-      "The partnership section really resonated with me. It's amazing how much collaboration goes into getting the perfect supply chain. Thanks for sharing this behind-the-scenes look!",
-      date: "1 week ago",
-    avatar: "M",
-    likes: 27
-    },
-    {
-      id: 3,
-      name: "Alex Thompson",
-      email: "alex@example.com",
-    comment:
-      "As someone new to fashion supply chain, this article was a goldmine of information. The partnership section especially helped me understand the importance of dedicated partners.",
-      date: "2 weeks ago",
-    avatar: "A",
-    likes: 28
-  }
-];
+const BLOG_ID = 'why-best-fashion-brands-work-with-dedicated-supply-chain-partners';
 
-export default function SupplyChainBlogClient() {
+type SupplyChainBlogClientProps = {
+  initialLikeCount: number;
+  initialComments: PublicComment[];
+};
+
+export default function SupplyChainBlogClient({ initialLikeCount, initialComments }: SupplyChainBlogClientProps) {
   const [contactOpen, setContactOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
   const [isLiked, setIsLiked] = useState(false);
-  const [likeCount, setLikeCount] = useState(() => MOCK_COMMENTS.reduce((acc, comment) => acc + (comment.likes ?? 0), 0) || 89);
-  const [commentCount, setCommentCount] = useState(MOCK_COMMENTS.length);
-  const [comments, setComments] = useState(MOCK_COMMENTS);
+  const [likeCount, setLikeCount] = useState(initialLikeCount);
+  const [commentCount, setCommentCount] = useState(initialComments.length);
+  const [comments, setComments] = useState(() =>
+    (initialComments || []).map((c) => ({
+      id: c.id,
+      name: c.name,
+      email: c.email,
+      comment: c.comment,
+      date: new Date(c.created_at).toLocaleString(),
+      avatar: (c.name || '?').charAt(0).toUpperCase(),
+      likes: c.likes ?? 0,
+    }))
+  );
   const [newComment, setNewComment] = useState({
     name: "",
     email: "",
@@ -59,8 +45,13 @@ export default function SupplyChainBlogClient() {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [showSuccessMessage, setShowSuccessMessage] = useState(false);
   const [showAllComments, setShowAllComments] = useState(false);
-  const [likedComments, setLikedComments] = useState<Set<number>>(new Set());
+  const [likedComments, setLikedComments] = useState<Set<string>>(new Set());
   const { showToast, ToastContainer } = useToast();
+  const [relatedBlogs] = useState(() =>
+    blogPosts
+      .filter((blog) => blog.slug !== BLOG_ID)
+      .slice(0, 3)
+  );
 
   useEffect(() => {
     if (typeof window === 'undefined') return;
@@ -77,9 +68,16 @@ export default function SupplyChainBlogClient() {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
-  const handleLike = () => {
-    setIsLiked(!isLiked);
-    setLikeCount(prev => isLiked ? prev - 1 : prev + 1);
+  const handleLike = async () => {
+    try {
+      const action = isLiked ? 'unlike' : 'like';
+      const newCount = await likeBlog(BLOG_ID, action);
+      recordBlogLikeUpdate(BLOG_ID, newCount);
+      setIsLiked(!isLiked);
+      setLikeCount(newCount);
+    } catch {
+      // Ignore like toggle failures to keep UI responsive
+    }
   };
 
   const handleShare = async () => {
@@ -102,16 +100,26 @@ export default function SupplyChainBlogClient() {
     }
   };
 
-  const handleCommentLike = (commentId: number) => {
-    setLikedComments(prev => {
-      const newSet = new Set(prev);
-      if (newSet.has(commentId)) {
-        newSet.delete(commentId);
-      } else {
-        newSet.add(commentId);
-      }
-      return newSet;
-    });
+  const handleCommentLike = async (commentId: string) => {
+    try {
+      const action = likedComments.has(commentId) ? 'unlike' : 'like';
+      const newCount = await likeComment(commentId, action);
+      setComments((prev) => prev.map((c) => c.id === commentId ? { ...c, likes: newCount } : c));
+      
+      // Toggle the liked state only if API call succeeds
+      setLikedComments(prev => {
+        const newSet = new Set(prev);
+        if (newSet.has(commentId)) {
+          newSet.delete(commentId);
+        } else {
+          newSet.add(commentId);
+        }
+        return newSet;
+      });
+    } catch {
+      // If API call fails, don't change the liked state
+      console.error('Failed to toggle like for comment:', commentId);
+    }
   };
 
 
@@ -125,45 +133,36 @@ export default function SupplyChainBlogClient() {
 
   const handleSubmitComment = async (e: React.FormEvent) => {
     e.preventDefault();
-    
     if (!newComment.name.trim() || !newComment.email.trim() || !newComment.comment.trim()) {
       alert('Please fill in all fields');
       return;
     }
-
     setIsSubmitting(true);
-
-    // Simulate API call
-    setTimeout(() => {
+    try {
+      const created = await addComment({ blogId: BLOG_ID, name: newComment.name.trim(), email: newComment.email.trim(), comment: newComment.comment.trim() });
       const newCommentData = {
-        id: comments.length + 1,
-        name: newComment.name.trim(),
-        email: newComment.email.trim(),
-        comment: newComment.comment.trim(),
-        date: "Just now",
-        avatar: newComment.name.charAt(0).toUpperCase(),
-        likes: 0
+        id: created.id,
+        name: created.name,
+        email: created.email,
+        comment: created.comment,
+        date: new Date(created.created_at).toLocaleString(),
+        avatar: (created.name || '?').charAt(0).toUpperCase(),
+        likes: 0,
       };
-
       setComments(prev => [newCommentData, ...prev]);
       setCommentCount(prev => prev + 1);
       setNewComment({ name: "", email: "", comment: "" });
-      setIsSubmitting(false);
       setShowSuccessMessage(true);
-      
-      // Hide success message after 3 seconds
+      setTimeout(() => setShowSuccessMessage(false), 3000);
       setTimeout(() => {
-        setShowSuccessMessage(false);
-      }, 3000);
-      
-      // Scroll to the new comment
-      setTimeout(() => {
-        const commentElement = document.getElementById(`comment-${newCommentData.id}`);
-        if (commentElement) {
-          commentElement.scrollIntoView({ behavior: 'smooth', block: 'center' });
-        }
+        const el = document.getElementById(`comment-${newCommentData.id}`);
+        if (el) el.scrollIntoView({ behavior: 'smooth', block: 'center' });
       }, 100);
-    }, 1000);
+    } catch (err) {
+      console.error(err);
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   return (
@@ -190,8 +189,8 @@ export default function SupplyChainBlogClient() {
 
       {/* Main Content */}
       <section className="py-16 sm:py-20 lg:py-24 bg-white">
-        <div className="min-w-[80%] lg:max-w-[80%] mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="max-w-4xl mx-auto">
+        <div className="min-w-[80%] lg:max-w-[80%] mx-auto px-4 md:px-6 lg:px-0">
+          <div className="w-full">
             {/* Article Title and Category */}
             <div className="mb-8">
               <h1 className="text-4xl sm:text-5xl font-bold text-[#2D2A2E] mb-4">
@@ -324,79 +323,100 @@ export default function SupplyChainBlogClient() {
 
             {/* Blog Content */}
             <div className="prose prose-lg max-w-none">
-              <p className="text-lg text-[#666666] leading-relaxed mb-8">
-                In the fast-paced world of fashion, the difference between a successful brand and a struggling one often comes down to one critical factor: supply chain partnerships. The world&apos;s most successful fashion houses don&apos;t just design great clothes—they build strong, dedicated relationships with their supply chain partners.
-              </p>
-
-              {/* Why Supply Chain Partnerships Matter */}
               <div className="mb-12">
-                <h2 className="text-2xl font-bold text-[#2D2A2E] mb-6">Why Supply Chain Partnerships Matter</h2>
+                <h2 className="text-2xl font-bold text-[#2D2A2E] mb-6">Why the Best Fashion Brands Work with Dedicated Supply Chain Partners</h2>
                 <p className="text-lg text-[#666666] leading-relaxed mb-6">
-                  A dedicated supply chain partner is more than just a vendor—they&apos;re an extension of your brand. They understand your vision, share your values, and are committed to your success.
+                  When we admire a stunning runway look or grab the latest streetwear drop, we rarely think about the silent engine behind it all—the supply chain. For fashion brands, success depends not only on great design but also on how quickly, consistently, and responsibly those designs come to life. That’s why the best brands in the world choose to work with dedicated supply chain partners instead of juggling multiple one-off vendors.
                 </p>
-                
-                <ul className="list-disc list-inside text-lg text-[#666666] leading-relaxed space-y-2 mb-6">
-                  <li><strong>Consistent Quality:</strong> Dedicated partners understand your quality standards and maintain them across all orders.</li>
-                  <li><strong>Reliable Timelines:</strong> They prioritize your deadlines and work to meet your production schedules.</li>
-                  <li><strong>Innovation Support:</strong> They invest in new technologies and processes that benefit your brand.</li>
-                </ul>
+                <p className="text-lg text-[#666666] leading-relaxed">
+                  A true partnership turns suppliers into teammates. At Krazy Kreators, we act as that extension of the brand—aligning creative ambition with operational excellence.
+                </p>
               </div>
 
-              {/* The Partnership Advantage */}
-              <div className="mb-12">
-                <h2 className="text-2xl font-bold text-[#2D2A2E] mb-6">The Partnership Advantage</h2>
-                <p className="text-lg text-[#666666] leading-relaxed mb-6">
-                  When you work with dedicated supply chain partners, you get more than just manufacturing—you get a strategic ally who understands your business goals and helps you achieve them.
-                </p>
-                
-                {/* Strategic Image 1: Partnership Benefits */}
-                <div className="mb-8 rounded-xl overflow-hidden shadow-lg">
-                  <Image
-                    src="/blog/blog 4_1.png"
-                    alt="Supply chain partnership benefits"
-                    width={800}
-                    height={600}
-                    className="w-full h-auto object-contain"
-                    style={{
-                      WebkitTransform: 'translateZ(0)',
-                      transform: 'translateZ(0)',
-                      WebkitBackfaceVisibility: 'hidden',
-                      backfaceVisibility: 'hidden'
-                    }}
-                  />
+              <div className="mb-12 grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
+                <div>
+                  <h2 className="text-2xl font-bold text-[#2D2A2E] mb-6">Here’s Why Partnership Matters</h2>
+                  <h3 className="text-xl font-semibold text-[#2D2A2E] mb-3">1. Speed is the New Luxury</h3>
+                  <p className="text-lg text-[#666666] leading-relaxed mb-6">
+                    Trends move faster than ever. Dedicated partners know a brand’s processes inside out, enabling collections to move from concept to store shelves in weeks, not months.
+                  </p>
+                  <h3 className="text-xl font-semibold text-[#2D2A2E] mb-3">2. Consistency Builds Trust</h3>
+                  <p className="text-lg text-[#666666] leading-relaxed">
+                    One poorly stitched seam can damage a reputation. Long-term partners uphold quality on every garment, ensuring customers come back because they trust the fit, feel, and finish.
+                  </p>
+                </div>
+                <div>
+                  <div className="rounded-xl overflow-hidden shadow-lg">
+                    <Image
+                      src="/blog/blog 4_1.png"
+                      alt="Speed and consistency in fashion supply chains"
+                      width={800}
+                      height={600}
+                      className="w-full h-auto object-contain"
+                    />
+                  </div>
                 </div>
               </div>
 
-              {/* Building Long-Term Relationships */}
-              <div className="mb-12">
-                <h2 className="text-2xl font-bold text-[#2D2A2E] mb-6">Building Long-Term Relationships</h2>
-                <p className="text-lg text-[#666666] leading-relaxed mb-6">
-                  The best fashion brands invest in long-term relationships with their supply chain partners. This isn&apos;t just about getting better prices—it&apos;s about building a network of trusted allies who can help you navigate the complexities of the fashion industry.
-                </p>
-                
-                {/* Strategic Image 2: Long-term Relationships */}
-                <div className="mb-8 rounded-xl overflow-hidden shadow-lg">
-                  <Image
-                    src="/blog/blog 4_2.png"
-                    alt="Building long-term supply chain relationships"
-                    width={800}
-                    height={600}
-                    className="w-full h-auto object-contain"
-                    style={{
-                      WebkitTransform: 'translateZ(0)',
-                      transform: 'translateZ(0)',
-                      WebkitBackfaceVisibility: 'hidden',
-                      backfaceVisibility: 'hidden'
-                    }}
-                  />
+              <div className="mb-12 grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
+                <div>
+                  <div className="rounded-xl overflow-hidden shadow-lg">
+                    <Image
+                      src="/blog/blog 4_2.png"
+                      alt="Confidential collaboration with supply chain partners"
+                      width={800}
+                      height={600}
+                      className="w-full h-auto object-contain"
+                    />
+                  </div>
+                </div>
+                <div>
+                  <h3 className="text-xl font-semibold text-[#2D2A2E] mb-3">3. Confidentiality Protects Creativity</h3>
+                  <p className="text-lg text-[#666666] leading-relaxed mb-6">
+                    Original ideas deserve protection. Dedicated partners behave like in-house teams, safeguarding collections from leaks so designers can innovate freely.
+                  </p>
+                  <h3 className="text-xl font-semibold text-[#2D2A2E] mb-3">4. Cost Efficiency Without Cutting Corners</h3>
+                  <p className="text-lg text-[#666666] leading-relaxed">
+                    Long-term collaboration uncovers smarter logistics, better material buys, and less wastage—lowering costs without compromising craftsmanship. That efficiency is priceless for fast-growing labels.
+                  </p>
                 </div>
               </div>
 
-              {/* Conclusion */}
+              <div className="mb-12 grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
+                <div>
+                  <h3 className="text-xl font-semibold text-[#2D2A2E] mb-3">5. Sustainability Through Shared Values</h3>
+                  <p className="text-lg text-[#666666] leading-relaxed mb-6">
+                    Today’s customers expect responsibility. Dedicated partners help brands ensure ethical sourcing, fair wages, and eco-conscious materials that align with brand values.
+                  </p>
+                  <h3 className="text-xl font-semibold text-[#2D2A2E] mb-3">6. Innovation Through Collaboration</h3>
+                  <p className="text-lg text-[#666666] leading-relaxed">
+                    When partners know the brand DNA, they can recommend new textiles, performance fabrics, or circular production models. Co-creation sparks bolder collections.
+                  </p>
+                </div>
+                <div>
+                  <div className="rounded-xl overflow-hidden shadow-lg">
+                    <Image
+                      src="/blog/blog 4_5.png"
+                      alt="Innovation through collaborative partnerships"
+                      width={800}
+                      height={600}
+                      className="w-full h-auto object-contain"
+                    />
+                  </div>
+                </div>
+              </div>
+
+              <div className="mb-12">
+                <h3 className="text-xl font-semibold text-[#2D2A2E] mb-3">7. Risk Reduction in a Global Industry</h3>
+                <p className="text-lg text-[#666666] leading-relaxed">
+                  From factory delays to compliance violations, fashion supply chains can be messy. A dedicated partner brings stability, oversight, and dependable delivery—protecting both margins and brand integrity.
+                </p>
+              </div>
+
               <div className="mb-12">
                 <h2 className="text-2xl font-bold text-[#2D2A2E] mb-6">Final Thread: Partnership is the New Power</h2>
-                <p className="text-lg text-[#666666] leading-relaxed mb-6">
-                  The world&apos;s leading fashion houses understand this simple truth: a strong supply chain partnership is as important as a strong design team. It&apos;s not just about who stitches the clothes—it&apos;s about who helps the brand stay relevant, reliable, and responsible in a rapidly changing market.
+                <p className="text-lg text-[#666666] leading-relaxed">
+                  The world’s leading fashion houses understand a simple truth: a strong supply chain partnership is as important as a strong design team. It’s not just about who stitches the clothes—it’s about who keeps the brand relevant, reliable, and responsible in a rapidly changing market. At Krazy Kreators, we’re proud to bridge designers, makers, and managers into one cohesive ecosystem so visionary collections can thrive.
                 </p>
               </div>
 
@@ -513,7 +533,7 @@ export default function SupplyChainBlogClient() {
                                       }`}
                                     >
                                       <Heart className={`w-3 h-3 ${likedComments.has(comment.id) ? 'fill-[#CBB49A]' : ''}`} />
-                                      {likedComments.has(comment.id) ? comment.likes + 1 : comment.likes} {comment.likes === 0 && !likedComments.has(comment.id) ? '' : 'likes'}
+                                      {comment.likes} {comment.likes === 1 ? 'like' : 'likes'}
                                     </button>
                                   </div>
                                 </div>
@@ -680,7 +700,7 @@ export default function SupplyChainBlogClient() {
 
       {/* Other Blogs Section */}
       <section className="py-16 sm:py-20 lg:py-24 bg-[#F8F7F4]">
-        <div className="min-w-[80%] lg:max-w-[80%] mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="min-w-[80%] lg:max-w-[80%] mx-auto px-4 md:px-6 lg:px-0">
           <div className="text-center mb-12">
             <h2 className="text-3xl sm:text-4xl font-serif font-bold text-[#2D2A2E] mb-4">
               Explore More Insights
@@ -691,7 +711,7 @@ export default function SupplyChainBlogClient() {
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {getRandomBlogs(4).map((blog) => (
+            {relatedBlogs.map((blog) => (
               <Link key={blog.id} href={`/blogs/${blog.slug}`} className="group">
                 <article className="bg-white rounded-2xl shadow-lg overflow-hidden hover:shadow-xl transition-all duration-300 group-hover:-translate-y-1">
                   <div className="aspect-video relative overflow-hidden">
@@ -749,7 +769,7 @@ export default function SupplyChainBlogClient() {
 
       {/* CTA Section */}
       <section className="py-16 sm:py-20 lg:py-24 bg-gradient-to-br from-[#F8F7F4] to-white">
-        <div className="min-w-[80%] lg:max-w-[80%] mx-auto px-4 sm:px-6 lg:px-8 text-center">
+        <div className="min-w-[80%] lg:max-w-[80%] mx-auto px-4 md:px-6 lg:px-0 text-center">
           <h2 className="text-3xl sm:text-4xl font-serif font-bold text-[#2D2A2E] mb-6">
             Ready to Transform Your Vision Into Reality?
           </h2>

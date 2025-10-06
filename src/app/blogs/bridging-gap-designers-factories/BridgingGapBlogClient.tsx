@@ -10,44 +10,33 @@ import Footer from '@/components/Footer';
 import ContactDialog from '@/components/ContactDialog';
 import { getRandomBlogs } from '@/lib/blogUtils';
 import { useToast } from '@/components/Toast';
+import { likeBlog, addComment, likeComment, type PublicComment } from '@/lib/blogApi';
+import { recordBlogLikeUpdate } from '@/lib/blogLikeSync';
 
-const MOCK_COMMENTS = [
-  {
-    id: 1,
-    name: "Sarah Chen",
-    email: "sarah@example.com",
-    comment: "This is exactly what the industry needs! The disconnect between designers and factories has been a major pain point.",
-    date: "2 hours ago",
-    avatar: "S",
-    likes: 34
-  },
-  {
-    id: 2,
-    name: "Michael Rodriguez",
-    email: "michael@example.com",
-    comment: "The dedicated PM approach is brilliant. Having someone who speaks both languages is crucial.",
-    date: "4 hours ago",
-    avatar: "M",
-    likes: 27
-  },
-  {
-    id: 3,
-    name: "Emma Thompson",
-    email: "emma@example.com",
-    comment: "Quality control at every step - this is what separates good manufacturers from great ones.",
-    date: "6 hours ago",
-    avatar: "E",
-    likes: 28
-  }
-];
+const BLOG_ID = 'bridging-gap-designers-factories';
 
-export default function BridgingGapBlogClient() {
+type BridgingGapBlogClientProps = {
+  initialLikeCount: number;
+  initialComments: PublicComment[];
+};
+
+export default function BridgingGapBlogClient({ initialLikeCount, initialComments }: BridgingGapBlogClientProps) {
   const [contactOpen, setContactOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
   const [isLiked, setIsLiked] = useState(false);
-  const [likeCount, setLikeCount] = useState(() => MOCK_COMMENTS.reduce((acc, comment) => acc + (comment.likes ?? 0), 0) || 112);
-  const [commentCount, setCommentCount] = useState(MOCK_COMMENTS.length);
-  const [comments, setComments] = useState(MOCK_COMMENTS);
+  const [likeCount, setLikeCount] = useState(initialLikeCount);
+  const [commentCount, setCommentCount] = useState(initialComments.length);
+  const [comments, setComments] = useState<Array<{ id: string; name: string; email: string; comment: string; date: string; avatar: string; likes: number }>>(() =>
+    (initialComments || []).map((c) => ({
+      id: c.id,
+      name: c.name,
+      email: c.email,
+      comment: c.comment,
+      date: new Date(c.created_at).toLocaleString(),
+      avatar: (c.name || '?').charAt(0).toUpperCase(),
+      likes: c.likes ?? 0,
+    }))
+  );
   const [newComment, setNewComment] = useState({
     name: "",
     email: "",
@@ -56,8 +45,9 @@ export default function BridgingGapBlogClient() {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [showSuccessMessage, setShowSuccessMessage] = useState(false);
   const [showAllComments, setShowAllComments] = useState(false);
-  const [likedComments, setLikedComments] = useState<Set<number>>(new Set());
+  const [likedComments, setLikedComments] = useState<Set<string>>(new Set());
   const { showToast, ToastContainer } = useToast();
+  const [relatedBlogs] = useState(() => getRandomBlogs(4));
 
   useEffect(() => {
     if (typeof window === 'undefined') return;
@@ -100,9 +90,14 @@ export default function BridgingGapBlogClient() {
   //   };
   // }, [endOfArticleRef]);
 
-  const handleLike = () => {
-    setIsLiked(!isLiked);
-    setLikeCount(prev => isLiked ? prev - 1 : prev + 1);
+  const handleLike = async () => {
+    try {
+      const action = isLiked ? 'unlike' : 'like';
+      const newCount = await likeBlog(BLOG_ID, action);
+      recordBlogLikeUpdate(BLOG_ID, newCount);
+      setIsLiked(!isLiked);
+      setLikeCount(newCount);
+    } catch (_) {}
   };
 
   const handleShare = async () => {
@@ -128,16 +123,26 @@ export default function BridgingGapBlogClient() {
     }
   };
 
-  const handleCommentLike = (commentId: number) => {
-    setLikedComments(prev => {
-      const newSet = new Set(prev);
-      if (newSet.has(commentId)) {
-        newSet.delete(commentId);
-      } else {
-        newSet.add(commentId);
-      }
-      return newSet;
-    });
+  const handleCommentLike = async (commentId: string) => {
+    try {
+      const action = likedComments.has(commentId) ? 'unlike' : 'like';
+      const newCount = await likeComment(commentId, action);
+      setComments((prev) => prev.map((c) => c.id === commentId ? { ...c, likes: newCount } : c));
+      
+      // Toggle the liked state only if API call succeeds
+      setLikedComments(prev => {
+        const newSet = new Set(prev);
+        if (newSet.has(commentId)) {
+          newSet.delete(commentId);
+        } else {
+          newSet.add(commentId);
+        }
+        return newSet;
+      });
+    } catch (_) {
+      // If API call fails, don't change the liked state
+      console.error('Failed to toggle like for comment:', commentId);
+    }
   };
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
@@ -150,45 +155,36 @@ export default function BridgingGapBlogClient() {
 
   const handleSubmitComment = async (e: React.FormEvent) => {
     e.preventDefault();
-    
     if (!newComment.name.trim() || !newComment.email.trim() || !newComment.comment.trim()) {
       alert('Please fill in all fields');
       return;
     }
-
     setIsSubmitting(true);
-    
-    // Simulate API call
-    setTimeout(() => {
+    try {
+      const created = await addComment({ blogId: BLOG_ID, name: newComment.name.trim(), email: newComment.email.trim(), comment: newComment.comment.trim() });
       const newCommentData = {
-        id: comments.length + 1,
-        name: newComment.name.trim(),
-        email: newComment.email.trim(),
-        comment: newComment.comment.trim(),
-        date: "Just now",
-        avatar: newComment.name.charAt(0).toUpperCase(),
-        likes: 0
+        id: created.id,
+        name: created.name,
+        email: created.email,
+        comment: created.comment,
+        date: new Date(created.created_at).toLocaleString(),
+        avatar: (created.name || '?').charAt(0).toUpperCase(),
+        likes: 0,
       };
-      
       setComments(prev => [newCommentData, ...prev]);
       setCommentCount(prev => prev + 1);
       setNewComment({ name: "", email: "", comment: "" });
-      setIsSubmitting(false);
       setShowSuccessMessage(true);
-      
-      // Hide success message after 3 seconds
+      setTimeout(() => setShowSuccessMessage(false), 3000);
       setTimeout(() => {
-        setShowSuccessMessage(false);
-      }, 3000);
-      
-      // Scroll to the new comment
-      setTimeout(() => {
-        const commentElement = document.getElementById(`comment-${newCommentData.id}`);
-        if (commentElement) {
-          commentElement.scrollIntoView({ behavior: 'smooth', block: 'center' });
-        }
+        const el = document.getElementById(`comment-${newCommentData.id}`);
+        if (el) el.scrollIntoView({ behavior: 'smooth', block: 'center' });
       }, 100);
-    }, 1000);
+    } catch (err) {
+      console.error(err);
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
 
@@ -216,8 +212,8 @@ export default function BridgingGapBlogClient() {
 
       {/* Main Content */}
       <section className="py-16 sm:py-20 lg:py-24 bg-white">
-        <div className="min-w-[80%] lg:max-w-[80%] mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="max-w-4xl mx-auto">
+        <div className="min-w-[80%] lg:max-w-[80%] mx-auto px-4 md:px-6 lg:px-0">
+          <div className="w-full">
             {/* Article Title and Category */}
             <div className="mb-8">
               <h1 className="text-4xl sm:text-5xl font-bold text-[#2D2A2E] mb-4">
@@ -340,131 +336,143 @@ export default function BridgingGapBlogClient() {
               </div>
 
           {/* Step 1 */}
-          <div className="mb-12">
-            <h2 className="text-2xl font-bold text-[#2D2A2E] mb-6">1. Translating Creativity Into Clarity</h2>
-            <p className="text-lg text-[#666666] leading-relaxed mb-6">
-              Designers work in sketches, mood boards, and inspiration, while factories operate in technical specifications, stitch counts, and cost breakdowns. Our role is to translate creativity into clarity.
-            </p>
-            <p className="text-lg text-[#666666] leading-relaxed mb-6">
-              Every idea begins with a tech pack: detailed drawings, BOM (bill of materials), stitching details, measurement charts, and finishing notes.
-            </p>
-            <p className="text-lg text-[#666666] leading-relaxed mb-6">
-              This ensures that factories don&apos;t just &quot;interpret&quot; designs—they execute them exactly as intended.
-            </p>
-            <p className="text-lg text-[#666666] leading-relaxed mb-6">
-              Think of us as interpreters, turning creative language into manufacturing instructions factories can act on with zero guesswork.
-            </p>
-            
-            {/* Strategic Image 1: Translating Creativity */}
-            <div className="mb-8 rounded-xl overflow-hidden shadow-lg">
-              <Image
-                src="/blog/blog 3_1.png"
-                alt="Translating creativity into technical specifications"
-                width={800}
-                height={600}
-                className="w-full h-auto object-contain"
-                style={{
-                  WebkitTransform: 'translateZ(0)',
-                  transform: 'translateZ(0)',
-                  WebkitBackfaceVisibility: 'hidden',
-                  backfaceVisibility: 'hidden'
-                }}
-              />
+          <div className="mb-12 grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
+            <div>
+              <h2 className="text-2xl font-bold text-[#2D2A2E] mb-6">1. Translating Creativity Into Clarity</h2>
+              <p className="text-lg text-[#666666] leading-relaxed mb-6">
+                Designers work in sketches, mood boards, and inspiration, while factories operate in technical specifications, stitch counts, and cost breakdowns. Our role is to translate creativity into clarity.
+              </p>
+              <p className="text-lg text-[#666666] leading-relaxed mb-6">
+                Every idea begins with a tech pack: detailed drawings, BOM (bill of materials), stitching details, measurement charts, and finishing notes.
+              </p>
+              <p className="text-lg text-[#666666] leading-relaxed mb-6">
+                This ensures that factories don&apos;t just &quot;interpret&quot; designs—they execute them exactly as intended.
+              </p>
+              <p className="text-lg text-[#666666] leading-relaxed">
+                Think of us as interpreters, turning creative language into manufacturing instructions factories can act on with zero guesswork.
+              </p>
+            </div>
+            <div>
+              {/* Strategic Image 1: Translating Creativity */}
+              <div className="rounded-xl overflow-hidden shadow-lg">
+                <Image
+                  src="/blog/blog 3_1.png"
+                  alt="Translating creativity into technical specifications"
+                  width={800}
+                  height={600}
+                  className="w-full h-auto object-contain"
+                  style={{
+                    WebkitTransform: 'translateZ(0)',
+                    transform: 'translateZ(0)',
+                    WebkitBackfaceVisibility: 'hidden',
+                    backfaceVisibility: 'hidden'
+                  }}
+                />
+              </div>
             </div>
           </div>
 
           {/* Step 2 */}
-          <div className="mb-12">
-            <h2 className="text-2xl font-bold text-[#2D2A2E] mb-6">2. Dedicated Project Managers as Connectors</h2>
-            <p className="text-lg text-[#666666] leading-relaxed mb-6">
-              One of our key differentiators is assigning a dedicated Project Manager (PM) to every client.
-            </p>
-            <ul className="list-disc list-inside text-lg text-[#666666] leading-relaxed space-y-2 mb-6">
-              <li>PMs are fluent in both design and production.</li>
-              <li>They manage timelines, approvals, vendor communication, and troubleshooting.</li>
-              <li>Clients get real-time updates through dashboards and messaging tools—so no detail is ever lost in translation.</li>
-            </ul>
-            
-            {/* Strategic Image 2: Project Management */}
-            <div className="mb-8 rounded-xl overflow-hidden shadow-lg">
-              <Image
-                src="/blog/blog 3_2.png"
-                alt="Dedicated project management and communication"
-                width={800}
-                height={600}
-                className="w-full h-auto object-contain"
-                style={{
-                  WebkitTransform: 'translateZ(0)',
-                  transform: 'translateZ(0)',
-                  WebkitBackfaceVisibility: 'hidden',
-                  backfaceVisibility: 'hidden'
-                }}
-              />
+          <div className="mb-12 grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
+            <div>
+              {/* Strategic Image 2: Project Management */}
+              <div className="rounded-xl overflow-hidden shadow-lg">
+                <Image
+                  src="/blog/blog 3_2.png"
+                  alt="Dedicated project management and communication"
+                  width={800}
+                  height={600}
+                  className="w-full h-auto object-contain"
+                  style={{
+                    WebkitTransform: 'translateZ(0)',
+                    transform: 'translateZ(0)',
+                    WebkitBackfaceVisibility: 'hidden',
+                    backfaceVisibility: 'hidden'
+                  }}
+                />
+              </div>
+            </div>
+            <div>
+              <h2 className="text-2xl font-bold text-[#2D2A2E] mb-6">2. Dedicated Project Managers as Connectors</h2>
+              <p className="text-lg text-[#666666] leading-relaxed mb-6">
+                One of our key differentiators is assigning a dedicated Project Manager (PM) to every client.
+              </p>
+              <ul className="list-disc list-inside text-lg text-[#666666] leading-relaxed space-y-2 mb-6">
+                <li>PMs are fluent in both design and production.</li>
+                <li>They manage timelines, approvals, vendor communication, and troubleshooting.</li>
+                <li>Clients get real-time updates through dashboards and messaging tools—so no detail is ever lost in translation.</li>
+              </ul>
             </div>
           </div>
 
           {/* Step 3 */}
-          <div className="mb-12">
-            <h2 className="text-2xl font-bold text-[#2D2A2E] mb-6">3. Smart Sourcing & Factory Partnerships</h2>
-            <p className="text-lg text-[#666666] leading-relaxed mb-6">
-              Factories often push for the easiest or cheapest route, while designers push for the most experimental one. Our sourcing team finds the balance.
-            </p>
-            <ul className="list-disc list-inside text-lg text-[#666666] leading-relaxed space-y-2 mb-6">
-              <li>Vendor audits guarantee ethical standards.</li>
-              <li>We pre-test fabrics for shrinkage, pilling, and colorfastness before they reach the production line.</li>
-            </ul>
-            
-            {/* Strategic Image 3: Smart Sourcing */}
-            <div className="mb-8 rounded-xl overflow-hidden shadow-lg">
-              <Image
-                src="/blog/blog 3_3.png"
-                alt="Smart sourcing and factory partnerships"
-                width={800}
-                height={600}
-                className="w-full h-auto object-contain"
-                style={{
-                  WebkitTransform: 'translateZ(0)',
-                  transform: 'translateZ(0)',
-                  WebkitBackfaceVisibility: 'hidden',
-                  backfaceVisibility: 'hidden'
-                }}
-              />
+          <div className="mb-12 grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
+            <div>
+              <h2 className="text-2xl font-bold text-[#2D2A2E] mb-6">3. Smart Sourcing & Factory Partnerships</h2>
+              <p className="text-lg text-[#666666] leading-relaxed mb-6">
+                Factories often push for the easiest or cheapest route, while designers push for the most experimental one. Our sourcing team finds the balance.
+              </p>
+              <ul className="list-disc list-inside text-lg text-[#666666] leading-relaxed space-y-2 mb-6">
+                <li>Vendor audits guarantee ethical standards.</li>
+                <li>We pre-test fabrics for shrinkage, pilling, and colorfastness before they reach the production line.</li>
+              </ul>
+            </div>
+            <div>
+              {/* Strategic Image 3: Smart Sourcing */}
+              <div className="rounded-xl overflow-hidden shadow-lg">
+                <Image
+                  src="/blog/blog 3_3.png"
+                  alt="Smart sourcing and factory partnerships"
+                  width={800}
+                  height={600}
+                  className="w-full h-auto object-contain"
+                  style={{
+                    WebkitTransform: 'translateZ(0)',
+                    transform: 'translateZ(0)',
+                    WebkitBackfaceVisibility: 'hidden',
+                    backfaceVisibility: 'hidden'
+                  }}
+                />
+              </div>
             </div>
           </div>
 
           {/* Step 4 */}
-          <div className="mb-12">
-            <h2 className="text-2xl font-bold text-[#2D2A2E] mb-6">4. Inline & Final Quality Control</h2>
-            <p className="text-lg text-[#666666] leading-relaxed mb-6">
-              Designers expect perfection, factories aim for speed. Quality is where those goals often collide.
-            </p>
-            <p className="text-lg text-[#666666] leading-relaxed mb-6">
-              At Krazy Kreators, we run multi-level QC checkpoints:
-            </p>
-            <ul className="list-disc list-inside text-lg text-[#666666] leading-relaxed space-y-2 mb-6">
-              <li>Fabric inspection before cutting</li>
-              <li>Inline quality checks during stitching</li>
-              <li>100% inspection before packing</li>
-            </ul>
-            <p className="text-lg text-[#666666] leading-relaxed mb-6">
-              Factories are incentivized for quality consistency, not just delivery speed. This protects brand integrity and ensures what ships matches the creative vision.
-            </p>
-            
-            {/* Strategic Image 4: Quality Control */}
-            <div className="mb-8 rounded-xl overflow-hidden shadow-lg">
-              <Image
-                src="/blog/blog 3_4.png"
-                alt="Quality control and inspection processes"
-                width={800}
-                height={600}
-                className="w-full h-auto object-contain"
-                style={{
-                  WebkitTransform: 'translateZ(0)',
-                  transform: 'translateZ(0)',
-                  WebkitBackfaceVisibility: 'hidden',
-                  backfaceVisibility: 'hidden'
-                }}
-              />
+          <div className="mb-12 grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
+            <div>
+              {/* Strategic Image 4: Quality Control */}
+              <div className="rounded-xl overflow-hidden shadow-lg">
+                <Image
+                  src="/blog/blog 3_4.png"
+                  alt="Quality control and inspection processes"
+                  width={800}
+                  height={600}
+                  className="w-full h-auto object-contain"
+                  style={{
+                    WebkitTransform: 'translateZ(0)',
+                    transform: 'translateZ(0)',
+                    WebkitBackfaceVisibility: 'hidden',
+                    backfaceVisibility: 'hidden'
+                  }}
+                />
+              </div>
+            </div>
+            <div>
+              <h2 className="text-2xl font-bold text-[#2D2A2E] mb-6">4. Inline & Final Quality Control</h2>
+              <p className="text-lg text-[#666666] leading-relaxed mb-6">
+                Designers expect perfection, factories aim for speed. Quality is where those goals often collide.
+              </p>
+              <p className="text-lg text-[#666666] leading-relaxed mb-6">
+                At Krazy Kreators, we run multi-level QC checkpoints:
+              </p>
+              <ul className="list-disc list-inside text-lg text-[#666666] leading-relaxed space-y-2 mb-6">
+                <li>Fabric inspection before cutting</li>
+                <li>Inline quality checks during stitching</li>
+                <li>100% inspection before packing</li>
+              </ul>
+              <p className="text-lg text-[#666666] leading-relaxed">
+                Factories are incentivized for quality consistency, not just delivery speed. This protects brand integrity and ensures what ships matches the creative vision.
+              </p>
             </div>
           </div>
         </div>
@@ -583,7 +591,7 @@ export default function BridgingGapBlogClient() {
                                     }`}
                                   >
                                     <Heart className={`w-3 h-3 ${likedComments.has(comment.id) ? 'fill-[#CBB49A]' : ''}`} />
-                                    {likedComments.has(comment.id) ? comment.likes + 1 : comment.likes} {comment.likes === 0 && !likedComments.has(comment.id) ? '' : 'likes'}
+                                    {comment.likes} {comment.likes === 1 ? 'like' : 'likes'}
                                   </button>
                                 </div>
                               </div>
@@ -749,7 +757,7 @@ export default function BridgingGapBlogClient() {
 
       {/* Explore More Insights */}
       <section className="py-16 sm:py-20 lg:py-24 bg-[#F8F7F4]">
-        <div className="min-w-[80%] lg:max-w-[80%] mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="min-w-[80%] lg:max-w-[80%] mx-auto px-4 md:px-6 lg:px-0">
           <div className="text-center mb-12">
             <h2 className="text-3xl sm:text-4xl font-serif font-bold text-[#2D2A2E] mb-4">
               Explore More Insights
@@ -760,7 +768,7 @@ export default function BridgingGapBlogClient() {
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {getRandomBlogs(3).map((blog) => (
+            {relatedBlogs.map((blog) => (
               <Link key={blog.id} href={`/blogs/${blog.slug}`} className="group">
                 <article className="bg-white rounded-2xl shadow-lg overflow-hidden hover:shadow-xl transition-all duration-300 group-hover:-translate-y-1">
                   <div className="aspect-video relative overflow-hidden">
@@ -818,7 +826,7 @@ export default function BridgingGapBlogClient() {
 
       {/* CTA Section */}
       <section className="py-16 sm:py-20 lg:py-24 bg-gradient-to-br from-[#F8F7F4] to-white">
-        <div className="min-w-[80%] lg:max-w-[80%] mx-auto px-4 sm:px-6 lg:px-8 text-center">
+        <div className="min-w-[80%] lg:max-w-[80%] mx-auto px-4 md:px-6 lg:px-0 text-center">
           <h2 className="text-3xl sm:text-4xl font-serif font-bold text-[#2D2A2E] mb-6">
             Ready to Transform Your Vision Into Reality?
           </h2>

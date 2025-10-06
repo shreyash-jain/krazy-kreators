@@ -10,47 +10,33 @@ import Image from "next/image";
 import Link from "next/link";
 import { getRandomBlogs } from "@/lib/blogUtils";
 import { useToast } from "@/components/Toast";
+import { likeBlog, addComment, likeComment, type PublicComment } from "@/lib/blogApi";
+import { recordBlogLikeUpdate } from "@/lib/blogLikeSync";
 
-const MOCK_COMMENTS = [
-    {
-      id: 1,
-      name: "Sarah Chen",
-      email: "sarah@example.com",
-    comment:
-      "This is incredibly insightful! I've always wondered about the technical process behind print placement and pattern accuracy. The step-by-step breakdown really helps understand how creativity meets manufacturing.",
-      date: "2 days ago",
-    avatar: "S",
-    likes: 34
-    },
-    {
-      id: 2,
-      name: "Marcus Rodriguez",
-      email: "marcus@example.com",
-    comment:
-      "The prototyping section really resonated with me. It's amazing how much iteration goes into getting the perfect fit and feel. Thanks for sharing this behind-the-scenes look!",
-      date: "1 week ago",
-    avatar: "M",
-    likes: 27
-    },
-    {
-      id: 3,
-      name: "Alex Thompson",
-      email: "alex@example.com",
-    comment:
-      "As someone new to fashion design, this article was a goldmine of information. The pattern section especially helped me understand the importance of proper fit and foundation.",
-      date: "2 weeks ago",
-    avatar: "A",
-    likes: 28
-  }
-];
+const BLOG_ID = 'print-pattern-prototyping-matters';
 
-export default function PrintPatternBlogClient() {
+type PrintPatternBlogClientProps = {
+  initialLikeCount: number;
+  initialComments: PublicComment[];
+};
+
+export default function PrintPatternBlogClient({ initialLikeCount, initialComments }: PrintPatternBlogClientProps) {
   const [contactOpen, setContactOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
   const [isLiked, setIsLiked] = useState(false);
-  const [likeCount, setLikeCount] = useState(() => MOCK_COMMENTS.reduce((acc, comment) => acc + (comment.likes ?? 0), 0) || 67);
-  const [commentCount, setCommentCount] = useState(MOCK_COMMENTS.length);
-  const [comments, setComments] = useState(MOCK_COMMENTS);
+  const [likeCount, setLikeCount] = useState(initialLikeCount);
+  const [commentCount, setCommentCount] = useState(initialComments.length);
+  const [comments, setComments] = useState(() =>
+    (initialComments || []).map((c) => ({
+      id: c.id,
+      name: c.name,
+      email: c.email,
+      comment: c.comment,
+      date: new Date(c.created_at).toLocaleString(),
+      avatar: (c.name || '?').charAt(0).toUpperCase(),
+      likes: c.likes ?? 0,
+    }))
+  );
   const [newComment, setNewComment] = useState({
     name: "",
     email: "",
@@ -59,8 +45,9 @@ export default function PrintPatternBlogClient() {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [showSuccessMessage, setShowSuccessMessage] = useState(false);
   const [showAllComments, setShowAllComments] = useState(false);
-  const [likedComments, setLikedComments] = useState<Set<number>>(new Set());
+  const [likedComments, setLikedComments] = useState<Set<string>>(new Set());
   const { showToast, ToastContainer } = useToast();
+  const [relatedBlogs] = useState(() => getRandomBlogs(2));
 
   useEffect(() => {
     if (typeof window === 'undefined') return;
@@ -107,9 +94,14 @@ export default function PrintPatternBlogClient() {
   //   };
   // }, [endOfArticleRef]);
 
-  const handleLike = () => {
-    setIsLiked(!isLiked);
-    setLikeCount(prev => isLiked ? prev - 1 : prev + 1);
+  const handleLike = async () => {
+    try {
+      const action = isLiked ? 'unlike' : 'like';
+      const newCount = await likeBlog(BLOG_ID, action);
+      recordBlogLikeUpdate(BLOG_ID, newCount);
+      setIsLiked(!isLiked);
+      setLikeCount(newCount);
+    } catch (_) {}
   };
 
   const handleShare = async () => {
@@ -132,16 +124,26 @@ export default function PrintPatternBlogClient() {
     }
   };
 
-  const handleCommentLike = (commentId: number) => {
-    setLikedComments(prev => {
-      const newSet = new Set(prev);
-      if (newSet.has(commentId)) {
-        newSet.delete(commentId);
-      } else {
-        newSet.add(commentId);
-      }
-      return newSet;
-    });
+  const handleCommentLike = async (commentId: string) => {
+    try {
+      const action = likedComments.has(commentId) ? 'unlike' : 'like';
+      const newCount = await likeComment(commentId, action);
+      setComments((prev) => prev.map((c) => c.id === commentId ? { ...c, likes: newCount } : c));
+      
+      // Toggle the liked state only if API call succeeds
+      setLikedComments(prev => {
+        const newSet = new Set(prev);
+        if (newSet.has(commentId)) {
+          newSet.delete(commentId);
+        } else {
+          newSet.add(commentId);
+        }
+        return newSet;
+      });
+    } catch (_) {
+      // If API call fails, don't change the liked state
+      console.error('Failed to toggle like for comment:', commentId);
+    }
   };
 
 
@@ -155,45 +157,36 @@ export default function PrintPatternBlogClient() {
 
   const handleSubmitComment = async (e: React.FormEvent) => {
     e.preventDefault();
-    
     if (!newComment.name.trim() || !newComment.email.trim() || !newComment.comment.trim()) {
       alert('Please fill in all fields');
       return;
     }
-
     setIsSubmitting(true);
-
-    // Simulate API call
-    setTimeout(() => {
+    try {
+      const created = await addComment({ blogId: BLOG_ID, name: newComment.name.trim(), email: newComment.email.trim(), comment: newComment.comment.trim() });
       const newCommentData = {
-        id: comments.length + 1,
-        name: newComment.name.trim(),
-        email: newComment.email.trim(),
-        comment: newComment.comment.trim(),
-        date: "Just now",
-        avatar: newComment.name.charAt(0).toUpperCase(),
-        likes: 0
+        id: created.id,
+        name: created.name,
+        email: created.email,
+        comment: created.comment,
+        date: new Date(created.created_at).toLocaleString(),
+        avatar: (created.name || '?').charAt(0).toUpperCase(),
+        likes: 0,
       };
-
       setComments(prev => [newCommentData, ...prev]);
       setCommentCount(prev => prev + 1);
       setNewComment({ name: "", email: "", comment: "" });
-      setIsSubmitting(false);
       setShowSuccessMessage(true);
-      
-      // Hide success message after 3 seconds
+      setTimeout(() => setShowSuccessMessage(false), 3000);
       setTimeout(() => {
-        setShowSuccessMessage(false);
-      }, 3000);
-      
-      // Scroll to the new comment
-      setTimeout(() => {
-        const commentElement = document.getElementById(`comment-${newCommentData.id}`);
-        if (commentElement) {
-          commentElement.scrollIntoView({ behavior: 'smooth', block: 'center' });
-        }
+        const el = document.getElementById(`comment-${newCommentData.id}`);
+        if (el) el.scrollIntoView({ behavior: 'smooth', block: 'center' });
       }, 100);
-    }, 1000);
+    } catch (err) {
+      console.error(err);
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   return (
@@ -221,8 +214,8 @@ export default function PrintPatternBlogClient() {
 
       {/* Main Content */}
       <section className="py-16 sm:py-20 lg:py-24 bg-white">
-        <div className="min-w-[80%] lg:max-w-[80%] mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="max-w-4xl mx-auto">
+        <div className="min-w-[80%] lg:max-w-[80%] mx-auto px-4 md:px-6 lg:px-0">
+          <div className="w-full">
             {/* Article Title and Category */}
             <div className="mb-8">
               <h1 className="text-4xl sm:text-5xl font-bold text-[#2D2A2E] mb-4">
@@ -360,103 +353,106 @@ export default function PrintPatternBlogClient() {
               </p>
 
               {/* Prints Section */}
-              <div className="mb-12">
-                <h2 className="text-2xl font-bold text-[#2D2A2E] mb-6">Prints - The First Detail That Catches the Eye</h2>
-                <p className="text-lg text-[#666666] leading-relaxed mb-6">
-                  Prints are the first detail that catches the eye. They tell a story, connect with emotions, and help a brand build its own voice.
-                </p>
-                
-                {/* Strategic Image 1: Prints */}
-                <div className="mb-8 rounded-xl overflow-hidden shadow-lg">
-                  <Image
-                    src="/blog/blog 2_1.png"
-                    alt="Fashion prints and patterns"
-                    width={800}
-                    height={600}
-                    className="w-full h-auto object-contain"
-                    style={{
-                      WebkitTransform: 'translateZ(0)',
-                      transform: 'translateZ(0)',
-                      WebkitBackfaceVisibility: 'hidden',
-                      backfaceVisibility: 'hidden'
-                    }}
-                  />
+              <div className="mb-12 grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
+                <div>
+                  <h2 className="text-2xl font-bold text-[#2D2A2E] mb-6">Prints - The First Detail That Catches the Eye</h2>
+                  <p className="text-lg text-[#666666] leading-relaxed mb-6">
+                    Prints are the first detail that catches the eye. They tell a story, connect with emotions, and help a brand build its own voice.
+                  </p>
+                  <ul className="list-disc list-inside text-lg text-[#666666] leading-relaxed space-y-2">
+                    <li><strong>Creates Identity:</strong> Prints can give a brand its own style. When people see a certain print, they connect it with that brand.</li>
+                    <li><strong>Adds Emotion:</strong> Prints can express feelings. Some look calm and soft, others look bold and energetic. They help the garment speak without words.</li>
+                    <li><strong>Makes You Stand Out:</strong> In a market full of simple, plain clothes, a unique print can grab attention and make the collection different.</li>
+                  </ul>
                 </div>
-
-                <ul className="list-disc list-inside text-lg text-[#666666] leading-relaxed space-y-2 mb-6">
-                  <li><strong>Creates Identity:</strong> Prints can give a brand its own style. When people see a certain print, they connect it with that brand.</li>
-                  <li><strong>Adds Emotion:</strong> Prints can express feelings. Some look calm and soft, others look bold and energetic. They help the garment speak without words.</li>
-                  <li><strong>Makes You Stand Out:</strong> In a market full of simple, plain clothes, a unique print can grab attention and make the collection different.</li>
-                </ul>
+                <div>
+                  {/* Strategic Image 1: Prints */}
+                  <div className="rounded-xl overflow-hidden shadow-lg">
+                    <Image
+                      src="/blog/blog 2_1.png"
+                      alt="Fashion prints and patterns"
+                      width={800}
+                      height={600}
+                      className="w-full h-auto object-contain"
+                      style={{
+                        WebkitTransform: 'translateZ(0)',
+                        transform: 'translateZ(0)',
+                        WebkitBackfaceVisibility: 'hidden',
+                        backfaceVisibility: 'hidden'
+                      }}
+                    />
+                  </div>
+                </div>
               </div>
 
               {/* Pattern Section */}
-              <div className="mb-12">
-                <h2 className="text-2xl font-bold text-[#2D2A2E] mb-6">Pattern – The Fit & Foundation</h2>
-                <p className="text-lg text-[#666666] leading-relaxed mb-6">
-                  Patterns are like the blueprint of a garment. They decide how the fabric will be cut and stitched, and how the final piece will fit the body.
-                </p>
-                
-                {/* Strategic Image 2: Pattern Making */}
-                <div className="mb-8 rounded-xl overflow-hidden shadow-lg">
-                  <Image
-                    src="/blog/blog 2_2.png"
-                    alt="Pattern making and garment construction"
-                    width={800}
-                    height={600}
-                    className="w-full h-auto object-contain"
-                    style={{
-                      WebkitTransform: 'translateZ(0)',
-                      transform: 'translateZ(0)',
-                      WebkitBackfaceVisibility: 'hidden',
-                      backfaceVisibility: 'hidden'
-                    }}
-                  />
+              <div className="mb-12 grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
+                <div>
+                  <div className="rounded-xl overflow-hidden shadow-lg">
+                    <Image
+                      src="/blog/blog 2_2.png"
+                      alt="Pattern making and garment construction"
+                      width={800}
+                      height={600}
+                      className="w-full h-auto object-contain"
+                      style={{
+                        WebkitTransform: 'translateZ(0)',
+                        transform: 'translateZ(0)',
+                        WebkitBackfaceVisibility: 'hidden',
+                        backfaceVisibility: 'hidden'
+                      }}
+                    />
+                  </div>
                 </div>
-
-                <ul className="list-disc list-inside text-lg text-[#666666] leading-relaxed space-y-2 mb-6">
-                  <li><strong>A good pattern</strong> = clothes that fit well, look stylish, and feel comfortable.</li>
-                  <li><strong>A poor pattern</strong> = clothes that feel awkward, don&apos;t sit right, and lose value.</li>
-                </ul>
-
-                <p className="text-lg text-[#666666] leading-relaxed">
-                  Even the best fabric won&apos;t work if the pattern isn&apos;t right. For example, the same cotton fabric can look completely different as an oversized streetwear tee versus a slim-fit formal shirt – and that&apos;s all because of the pattern.
-                </p>
+                <div>
+                  <h2 className="text-2xl font-bold text-[#2D2A2E] mb-6">Pattern – The Fit & Foundation</h2>
+                  <p className="text-lg text-[#666666] leading-relaxed mb-6">
+                    Patterns are like the blueprint of a garment. They decide how the fabric will be cut and stitched, and how the final piece will fit the body.
+                  </p>
+                  <ul className="list-disc list-inside text-lg text-[#666666] leading-relaxed space-y-2 mb-6">
+                    <li><strong>A good pattern</strong> = clothes that fit well, look stylish, and feel comfortable.</li>
+                    <li><strong>A poor pattern</strong> = clothes that feel awkward, don&apos;t sit right, and lose value.</li>
+                  </ul>
+                  <p className="text-lg text-[#666666] leading-relaxed">
+                    Even the best fabric won&apos;t work if the pattern isn&apos;t right. For example, the same cotton fabric can look completely different as an oversized streetwear tee versus a slim-fit formal shirt – and that&apos;s all because of the pattern.
+                  </p>
+                </div>
               </div>
 
               {/* Prototyping Section */}
-              <div className="mb-12">
-                <h2 className="text-2xl font-bold text-[#2D2A2E] mb-6">Prototyping – The First Real Test</h2>
-                <p className="text-lg text-[#666666] leading-relaxed mb-6">
-                  Prototyping is simply making the first sample of your design. It&apos;s the stage where ideas meet reality.
-                </p>
-                
-                {/* Strategic Image 3: Prototyping */}
-                <div className="mb-8 rounded-xl overflow-hidden shadow-lg">
-                  <Image
-                    src="/blog/blog 2_3.png"
-                    alt="Prototyping and sample making process"
-                    width={800}
-                    height={600}
-                    className="w-full h-auto object-contain"
-                    style={{
-                      WebkitTransform: 'translateZ(0)',
-                      transform: 'translateZ(0)',
-                      WebkitBackfaceVisibility: 'hidden',
-                      backfaceVisibility: 'hidden'
-                    }}
-                  />
+              <div className="mb-12 grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
+                <div>
+                  <h2 className="text-2xl font-bold text-[#2D2A2E] mb-6">Prototyping – The First Real Test</h2>
+                  <p className="text-lg text-[#666666] leading-relaxed mb-6">
+                    Prototyping is simply making the first sample of your design. It&apos;s the stage where ideas meet reality.
+                  </p>
+                  <ul className="list-disc list-inside text-lg text-[#666666] leading-relaxed space-y-2 mb-6">
+                    <li>It shows if the print looks good on fabric.</li>
+                    <li>It tests whether the pattern gives the right fit.</li>
+                    <li>It helps find small mistakes before bulk production.</li>
+                  </ul>
+                  <p className="text-lg text-[#2D2A2E] leading-relaxed font-medium">
+                    For designers and brands, prototyping is like a safety net. It saves money, time, and ensures the final product matches the vision.
+                  </p>
                 </div>
-
-                <ul className="list-disc list-inside text-lg text-[#666666] leading-relaxed space-y-2 mb-6">
-                  <li>It shows if the print looks good on fabric.</li>
-                  <li>It tests whether the pattern gives the right fit.</li>
-                  <li>It helps find small mistakes before bulk production.</li>
-                </ul>
-
-                <p className="text-lg text-[#2D2A2E] leading-relaxed font-medium">
-                  For designers and brands, prototyping is like a safety net. It saves money, time, and ensures the final product matches the vision.
-                </p>
+                <div>
+                  {/* Strategic Image 3: Prototyping */}
+                  <div className="rounded-xl overflow-hidden shadow-lg">
+                    <Image
+                      src="/blog/blog 2_3.png"
+                      alt="Prototyping and sample making process"
+                      width={800}
+                      height={600}
+                      className="w-full h-auto object-contain"
+                      style={{
+                        WebkitTransform: 'translateZ(0)',
+                        transform: 'translateZ(0)',
+                        WebkitBackfaceVisibility: 'hidden',
+                        backfaceVisibility: 'hidden'
+                      }}
+                    />
+                  </div>
+                </div>
               </div>
 
               {/* Conclusion */}
@@ -586,7 +582,7 @@ export default function PrintPatternBlogClient() {
                                       }`}
                                     >
                                       <Heart className={`w-3 h-3 ${likedComments.has(comment.id) ? 'fill-[#CBB49A]' : ''}`} />
-                                      {likedComments.has(comment.id) ? comment.likes + 1 : comment.likes} {comment.likes === 0 && !likedComments.has(comment.id) ? '' : 'likes'}
+                                      {comment.likes} {comment.likes === 1 ? 'like' : 'likes'}
                                     </button>
                                   </div>
                                 </div>
@@ -715,7 +711,7 @@ export default function PrintPatternBlogClient() {
 
       {/* Other Blogs Section */}
       <section className="py-16 sm:py-20 lg:py-24 bg-[#F8F7F4]">
-        <div className="min-w-[80%] lg:max-w-[80%] mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="min-w-[80%] lg:max-w-[80%] mx-auto px-4 md:px-6 lg:px-0">
           <div className="text-center mb-12">
             <h2 className="text-3xl sm:text-4xl font-serif font-bold text-[#2D2A2E] mb-4">
               Explore More Insights
@@ -726,7 +722,7 @@ export default function PrintPatternBlogClient() {
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {getRandomBlogs(2).map((blog) => (
+            {relatedBlogs.map((blog) => (
               <Link key={blog.id} href={`/blogs/${blog.slug}`} className="group">
                 <article className="bg-white rounded-2xl shadow-lg overflow-hidden hover:shadow-xl transition-all duration-300 group-hover:-translate-y-1">
                   <div className="aspect-video relative overflow-hidden">
@@ -784,7 +780,7 @@ export default function PrintPatternBlogClient() {
 
       {/* CTA Section */}
       <section className="py-16 sm:py-20 lg:py-24 bg-gradient-to-br from-[#F8F7F4] to-white">
-        <div className="min-w-[80%] lg:max-w-[80%] mx-auto px-4 sm:px-6 lg:px-8 text-center">
+        <div className="min-w-[80%] lg-max-w-[80%] mx-auto px-4 md:px-6 lg:px-0 text-center">
           <h2 className="text-3xl sm:text-4xl font-serif font-bold text-[#2D2A2E] mb-6">
             Ready to Transform Your Vision Into Reality?
           </h2>

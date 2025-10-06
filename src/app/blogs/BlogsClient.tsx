@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Button } from "@/components/ui/button";
 import { ArrowRight, ChevronLeft, ChevronRight, Share2, Heart, Eye } from "lucide-react";
 import ContactDialog from "@/components/ContactDialog";
@@ -8,136 +8,54 @@ import Footer from "@/components/Footer";
 import Image from "next/image";
 import Link from "next/link";
 import { useToast } from "@/components/Toast";
+import { likeBlog } from "@/lib/blogApi";
+import { blogPosts } from "@/data/blogPosts";
+import { readBlogLikeSyncState } from "@/lib/blogLikeSync";
+type BlogsClientProps = {
+  initialLikeCounts: Record<string, number>;
+};
 
-export default function BlogsClient() {
+export default function BlogsClient({ initialLikeCounts }: BlogsClientProps) {
   const [contactOpen, setContactOpen] = useState(false);
   const [currentPage, setCurrentPage] = useState(1);
   const [activeFilter, setActiveFilter] = useState("all");
-  const [likedPosts, setLikedPosts] = useState<Set<number>>(new Set());
+  const [likedPosts, setLikedPosts] = useState<Set<string>>(new Set());
   const [sharedPosts, setSharedPosts] = useState<Set<number>>(new Set());
+  const [likeCounts, setLikeCounts] = useState<Record<string, number>>(() => ({ ...initialLikeCounts }));
   const postsPerPage = 6;
   const { showToast, ToastContainer } = useToast();
 
-  const blogPosts = [
-    {
-      id: 1,
-      title: "How We Translate Mood Boards Into Manufacturable Garments",
-      excerpt: "Discover the intricate process of transforming creative mood boards into production-ready garments that maintain design integrity while meeting manufacturing standards.",
-      category: "design",
-      author: "Krazy Kreators Team",
-      date: "December 20, 2024",
-      readTime: "8 min read",
-      image: "/blog/blog 1.png",
-      slug: "mood-boards-to-manufacturable-garments",
-      readers: 1247,
-      likes: 89
-    },
-    {
-      id: 2,
-      title: "Why Print, Pattern & Prototyping Matters",
-      excerpt: "Understanding the critical role of print placement, pattern accuracy, and prototyping in creating garments that not only look great but fit perfectly and function as intended.",
-      category: "manufacturing",
-      author: "Krazy Kreators Team",
-      date: "December 18, 2024",
-      readTime: "6 min read",
-      image: "/blog/blog -2 image.png",
-      slug: "print-pattern-prototyping-matters",
-      readers: 892,
-      likes: 67
-    },
-    {
-      id: 3,
-      title: "Bridging the Gap Between Designers & Factories: The Krazy Kreators Way",
-      excerpt: "How we solve the biggest disconnect in fashion: making design intent and factory execution speak the same language through dedicated project management and quality control.",
-      category: "manufacturing",
-      author: "Krazy Kreators Team",
-      date: "December 15, 2024",
-      readTime: "7 min read",
-      image: "/blog/blog 3.png",
-      slug: "bridging-gap-designers-factories",
-      readers: 1456,
-      likes: 112
-    },
-    {
-      id: 4,
-      title: "Why the Best Fashion Brands Work With Dedicated Supply Chain Partners",
-      excerpt: "Discover why top fashion brands choose dedicated supply chain partners over traditional manufacturing approaches for better quality, reliability, and growth.",
-      category: "business",
-      author: "Krazy Kreators Team",
-      date: "December 12, 2024",
-      readTime: "9 min read",
-      image: "/blog/blog 4_banner.png",
-      slug: "why-best-fashion-brands-work-with-dedicated-supply-chain-partners",
-      readers: 1123,
-      likes: 78
-    },
-    {
-      id: 5,
-      title: "Exporting Apparel from India: A Checklist for First-Time Buyers",
-      excerpt: "A comprehensive guide for international buyers looking to source apparel from India, covering everything from vendor selection to quality control and logistics.",
-      category: "business",
-      author: "Krazy Kreators Team",
-      date: "December 10, 2024",
-      readTime: "11 min read",
-      image: "/blog/blog 5_3.png",
-      slug: "exporting-apparel-from-india-checklist-first-time-buyers",
-      readers: 987,
-      likes: 65
-    },
-    {
-      id: 6,
-      title: "MOQ Worries? How Krazy Kreators Supports Small Brands with Flexible Quantities",
-      excerpt: "Learn how we help emerging fashion brands overcome minimum order quantity challenges with flexible production solutions tailored to small-scale operations.",
-      category: "manufacturing",
-      author: "Krazy Kreators Team",
-      date: "December 8, 2024",
-      readTime: "8 min read",
-      image: "/blog/blog 6_5.png",
-      slug: "moq-worries-krazy-kreators-supports-small-brands-flexible-quantities",
-      readers: 1345,
-      likes: 92
-    },
-    {
-      id: 7,
-      title: "How Creative Collaboration Fuels Great Fashion Collections",
-      excerpt: "Explore the power of collaborative design processes and how working with experienced partners can elevate your fashion collections to new heights.",
-      category: "design",
-      author: "Krazy Kreators Team",
-      date: "December 5, 2024",
-      readTime: "10 min read",
-      image: "/blog/blog 7_3.png",
-      slug: "how-creative-collaboration-fuels-great-fashion-collections",
-      readers: 1567,
-      likes: 118
-    }
-  ];
+  const allPosts = blogPosts;
 
   const categories = [
-    { id: "all", label: "All Posts", count: blogPosts.length },
-    { id: "design", label: "Design", count: blogPosts.filter(post => post.category === "design").length },
-    { id: "manufacturing", label: "Manufacturing", count: blogPosts.filter(post => post.category === "manufacturing").length },
-    { id: "business", label: "Business", count: blogPosts.filter(post => post.category === "business").length }
+    { id: "all", label: "All Posts", count: allPosts.length },
+    { id: "design", label: "Design", count: allPosts.filter(post => post.category === "design").length },
+    { id: "manufacturing", label: "Manufacturing", count: allPosts.filter(post => post.category === "manufacturing").length },
+    { id: "business", label: "Business", count: allPosts.filter(post => post.category === "business").length }
   ];
 
   const filteredPosts = activeFilter === "all" 
-    ? blogPosts 
-    : blogPosts.filter(post => post.category === activeFilter);
+    ? allPosts 
+    : allPosts.filter(post => post.category === activeFilter);
 
   const totalPages = Math.ceil(filteredPosts.length / postsPerPage);
   const startIndex = (currentPage - 1) * postsPerPage;
   const endIndex = startIndex + postsPerPage;
   const currentPosts = filteredPosts.slice(startIndex, endIndex);
 
-  const handleLike = (postId: number) => {
-    setLikedPosts(prev => {
-      const newSet = new Set(prev);
-      if (newSet.has(postId)) {
-        newSet.delete(postId);
-      } else {
-        newSet.add(postId);
-      }
-      return newSet;
-    });
+  const handleLike = async (slug: string) => {
+    try {
+      const action = likedPosts.has(slug) ? 'unlike' : 'like';
+      const newCount = await likeBlog(slug, action);
+      setLikeCounts(prev => ({ ...prev, [slug]: newCount }));
+      setLikedPosts(prev => {
+        const next = new Set(prev);
+        if (next.has(slug)) next.delete(slug); else next.add(slug);
+        return next;
+      });
+    } catch {
+      // Ignore like toggle errors to keep UI responsive
+    }
   };
 
   const handleShare = async (post: { id: number; title: string; excerpt: string; slug: string }, e: React.MouseEvent) => {
@@ -187,6 +105,24 @@ export default function BlogsClient() {
     }
   };
 
+  useEffect(() => {
+    if (typeof window === 'undefined') return;
+
+    const state = readBlogLikeSyncState();
+    if (Object.keys(state).length) {
+      setLikeCounts(prev => ({ ...prev, ...state }));
+    }
+
+    const handler = (event: Event) => {
+      const detail = (event as CustomEvent<{ slug: string; count: number }>).detail;
+      if (!detail) return;
+      setLikeCounts(prev => ({ ...prev, [detail.slug]: detail.count }));
+    };
+
+    window.addEventListener('blog-like-updated', handler as EventListener);
+    return () => window.removeEventListener('blog-like-updated', handler as EventListener);
+  }, []);
+
   return (
     <div className="min-h-screen bg-white">
       {/* Hero Section */}
@@ -227,8 +163,11 @@ export default function BlogsClient() {
       {/* Blog Posts Grid */}
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {currentPosts.map((post) => (
-            <Link key={post.id} href={`/blogs/${post.slug}`} className="group">
+          {currentPosts.map((post) => {
+            const likeCount = likeCounts[post.slug] ?? post.likes;
+            const isLiked = likedPosts.has(post.slug);
+            return (
+              <Link key={post.id} href={`/blogs/${post.slug}`} className="group">
               <article className="bg-white rounded-2xl shadow-lg overflow-hidden hover:shadow-xl transition-all duration-300 group-hover:-translate-y-1">
                 <div className="aspect-video relative overflow-hidden">
                   <Image
@@ -265,10 +204,6 @@ export default function BlogsClient() {
                         <Eye className="w-4 h-4" />
                         <span>{post.readers.toLocaleString()}</span>
                       </div>
-                      <div className="flex items-center gap-1">
-                        <Heart className={`w-4 h-4 ${likedPosts.has(post.id) ? 'fill-[#CBB49A] text-[#CBB49A]' : ''}`} />
-                        <span>{post.likes}</span>
-                      </div>
                     </div>
                     
                     <div className="flex items-center gap-2">
@@ -276,16 +211,16 @@ export default function BlogsClient() {
                         onClick={(e) => {
                           e.preventDefault();
                           e.stopPropagation();
-                          handleLike(post.id);
+                          handleLike(post.slug);
                         }}
-                        className={`flex items-center gap-1 px-3 py-1.5 rounded-full text-xs font-medium transition-all duration-300 ${
-                          likedPosts.has(post.id)
+                        className={`flex items-center gap-2 px-3 py-1.5 rounded-full text-xs font-medium transition-all duration-300 ${
+                          isLiked
                             ? "bg-[#CBB49A]/10 text-[#CBB49A]"
                             : "bg-gray-100 text-gray-600 hover:bg-[#CBB49A]/10 hover:text-[#CBB49A]"
                         }`}
                       >
-                        <Heart className={`w-3 h-3 ${likedPosts.has(post.id) ? 'fill-[#CBB49A]' : ''}`} />
-                        {likedPosts.has(post.id) ? 'Liked' : 'Like'}
+                        <Heart className={`w-3 h-3 ${isLiked ? 'fill-[#CBB49A]' : ''}`} />
+                        {likeCount} {likeCount === 1 ? 'Like' : 'Likes'}
                       </button>
                       
                       <button
@@ -313,7 +248,8 @@ export default function BlogsClient() {
                 </div>
               </article>
             </Link>
-          ))}
+          );
+          })}
         </div>
 
         {/* Pagination */}

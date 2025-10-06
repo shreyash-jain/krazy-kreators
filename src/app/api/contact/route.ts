@@ -2,6 +2,7 @@ export const runtime = 'edge';
 export const dynamic = 'force-dynamic';
 
 import { NextResponse } from "next/server";
+import { getSupabaseClient } from "@/lib/supabaseClient";
 import { Resend } from "resend";
 
 type ContactPayload = {
@@ -68,6 +69,62 @@ export async function POST(request: Request) {
         { error: `Missing required fields: ${missing.join(", ")}` },
         { status: 400 }
       );
+    }
+
+    // Store submission (best-effort) before sending email
+    try {
+      const supabase = getSupabaseClient();
+      if (supabase) {
+        const { error: insertError } = await supabase
+          .from("contact_submissions")
+          .insert({
+            full_name: body.fullName,
+            email: body.email,
+            phone: body.phone,
+            company: body.company,
+            address: body.address ?? null,
+            country: body.country,
+            services: body.services,
+            message: body.message ?? null,
+            selected_plan: body.selectedPlan
+              ? {
+                  name: body.selectedPlan.name,
+                  price: body.selectedPlan.price,
+                  type: body.selectedPlan.type,
+                }
+              : null,
+          });
+        if (insertError) {
+          console.warn("[contact] Failed to persist submission to Supabase", insertError);
+        }
+
+        // Also store as a lead
+        const { error: leadError } = await supabase
+          .from("leads")
+          .insert({
+            full_name: body.fullName,
+            email: body.email,
+            phone: body.phone,
+            company: body.company,
+            address: body.address ?? null,
+            country: body.country,
+            services: body.services,
+            message: body.message ?? null,
+            selected_plan: body.selectedPlan
+              ? {
+                  name: body.selectedPlan.name,
+                  price: body.selectedPlan.price,
+                  type: body.selectedPlan.type,
+                }
+              : null,
+            source: "contact_form",
+          });
+        if (leadError) {
+          console.warn("[contact] Failed to persist lead to Supabase", leadError);
+        }
+      }
+    } catch (persistErr) {
+      console.warn("[contact] Unexpected error persisting to Supabase", persistErr);
     }
 
     const apiKey = process.env.RESEND_TOKEN;

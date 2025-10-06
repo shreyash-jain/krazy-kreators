@@ -10,50 +10,40 @@ import Image from "next/image";
 import Link from "next/link";
 import { getRandomBlogs } from "@/lib/blogUtils";
 import { useToast } from "@/components/Toast";
+import { likeBlog, addComment, likeComment, type PublicComment } from "@/lib/blogApi";
+import { recordBlogLikeUpdate } from "@/lib/blogLikeSync";
 
-const MOCK_COMMENTS = [
-  {
-    id: 1,
-    name: "Sarah Chen",
-    email: "sarah@example.com",
-    comment: "Collaborations are the future — love the practical examples here!",
-    date: "2 days ago",
-    avatar: "S",
-    likes: 34,
-  },
-  {
-    id: 2,
-    name: "Marcus Rodriguez",
-    email: "marcus@example.com",
-    comment: "The creative sprint framework was super helpful. Going to try this with my team.",
-    date: "1 week ago",
-    avatar: "M",
-    likes: 27,
-  },
-  {
-    id: 3,
-    name: "Alex Thompson",
-    email: "alex@example.com",
-    comment: "Finally a breakdown that connects design + production without the fluff.",
-    date: "2 weeks ago",
-    avatar: "A",
-    likes: 28,
-  },
-];
+const BLOG_ID = 'how-creative-collaboration-fuels-great-fashion-collections';
 
-export default function CreativeCollaborationBlogClient() {
+type CreativeCollaborationBlogClientProps = {
+  initialLikeCount: number;
+  initialComments: PublicComment[];
+};
+
+export default function CreativeCollaborationBlogClient({ initialLikeCount, initialComments }: CreativeCollaborationBlogClientProps) {
   const [contactOpen, setContactOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
   const [isLiked, setIsLiked] = useState(false);
-  const [likeCount, setLikeCount] = useState(() => MOCK_COMMENTS.reduce((acc, c) => acc + (c.likes ?? 0), 0) || 89);
-  const [commentCount, setCommentCount] = useState(MOCK_COMMENTS.length);
-  const [comments, setComments] = useState(MOCK_COMMENTS);
+  const [likeCount, setLikeCount] = useState(initialLikeCount);
+  const [commentCount, setCommentCount] = useState(initialComments.length);
+  const [comments, setComments] = useState(() =>
+    (initialComments || []).map((c) => ({
+      id: c.id,
+      name: c.name,
+      email: c.email,
+      comment: c.comment,
+      date: new Date(c.created_at).toLocaleString(),
+      avatar: (c.name || '?').charAt(0).toUpperCase(),
+      likes: c.likes ?? 0,
+    }))
+  );
   const [newComment, setNewComment] = useState({ name: "", email: "", comment: "" });
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [showSuccessMessage, setShowSuccessMessage] = useState(false);
   const [showAllComments, setShowAllComments] = useState(false);
-  const [likedComments, setLikedComments] = useState<Set<number>>(new Set());
+  const [likedComments, setLikedComments] = useState<Set<string>>(new Set());
   const { showToast, ToastContainer } = useToast();
+  const [relatedBlogs] = useState(() => getRandomBlogs(7));
 
   useEffect(() => {
     if (typeof window === "undefined") return;
@@ -63,9 +53,14 @@ export default function CreativeCollaborationBlogClient() {
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
-  const handleLike = () => {
-    setIsLiked((prev) => !prev);
-    setLikeCount((prev) => (isLiked ? prev - 1 : prev + 1));
+  const handleLike = async () => {
+    try {
+      const action = isLiked ? 'unlike' : 'like';
+      const newCount = await likeBlog(BLOG_ID, action);
+      recordBlogLikeUpdate(BLOG_ID, newCount);
+      setIsLiked(!isLiked);
+      setLikeCount(newCount);
+    } catch (_) {}
   };
 
   const handleShare = async () => {
@@ -84,16 +79,26 @@ export default function CreativeCollaborationBlogClient() {
     if (section) section.scrollIntoView({ behavior: "smooth", block: "start" });
   };
 
-  const handleCommentLike = (id: number) => {
-    setLikedComments((prev) => {
-      const set = new Set(prev);
-      if (set.has(id)) {
-        set.delete(id);
-      } else {
-        set.add(id);
-      }
-      return set;
-    });
+  const handleCommentLike = async (id: string) => {
+    try {
+      const action = likedComments.has(id) ? 'unlike' : 'like';
+      const newCount = await likeComment(id, action);
+      setComments((prev) => prev.map((c) => c.id === id ? { ...c, likes: newCount } : c));
+      
+      // Toggle the liked state only if API call succeeds
+      setLikedComments(prev => {
+        const newSet = new Set(prev);
+        if (newSet.has(id)) {
+          newSet.delete(id);
+        } else {
+          newSet.add(id);
+        }
+        return newSet;
+      });
+    } catch (_) {
+      // If API call fails, don't change the liked state
+      console.error('Failed to toggle like for comment:', id);
+    }
   };
 
   const handleInputChange = (
@@ -110,27 +115,31 @@ export default function CreativeCollaborationBlogClient() {
       return;
     }
     setIsSubmitting(true);
-    setTimeout(() => {
+    try {
+      const created = await addComment({ blogId: BLOG_ID, name: newComment.name.trim(), email: newComment.email.trim(), comment: newComment.comment.trim() });
       const data = {
-        id: comments.length + 1,
-        name: newComment.name.trim(),
-        email: newComment.email.trim(),
-        comment: newComment.comment.trim(),
-        date: "Just now",
-        avatar: newComment.name.charAt(0).toUpperCase(),
+        id: created.id,
+        name: created.name,
+        email: created.email,
+        comment: created.comment,
+        date: new Date(created.created_at).toLocaleString(),
+        avatar: (created.name || '?').charAt(0).toUpperCase(),
         likes: 0,
       };
       setComments((prev) => [data, ...prev]);
       setCommentCount((prev) => prev + 1);
       setNewComment({ name: "", email: "", comment: "" });
-      setIsSubmitting(false);
       setShowSuccessMessage(true);
       setTimeout(() => setShowSuccessMessage(false), 3000);
       setTimeout(() => {
         const el = document.getElementById(`comment-${data.id}`);
         if (el) el.scrollIntoView({ behavior: "smooth", block: "center" });
       }, 100);
-    }, 800);
+    } catch (err) {
+      console.error(err);
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   return (
@@ -139,7 +148,7 @@ export default function CreativeCollaborationBlogClient() {
 
       <section className="relative h-[60vh] min-h-[500px] overflow-hidden">
         <Image
-          src="/blog/blog 1.png"
+          src="/blog/blog 7.png"
           alt="Collaborative fashion design"
           fill
           className="object-cover"
@@ -154,8 +163,8 @@ export default function CreativeCollaborationBlogClient() {
       </section>
 
       <section className="py-16 sm:py-20 lg:py-24 bg-white">
-        <div className="min-w-[80%] lg:max-w-[80%] mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="max-w-4xl mx-auto">
+        <div className="min-w-[80%] lg:max-w-[80%] mx-auto px-4 md:px-6 lg:px-0">
+          <div className="w-full">
             <div className="mb-8">
               <h1 className="text-4xl sm:text-5xl font-bold text-[#2D2A2E] mb-4">
                 How Creative Collaboration Fuels Great Fashion Collections
@@ -234,47 +243,90 @@ export default function CreativeCollaborationBlogClient() {
 
             <div className="prose prose-lg max-w-none">
               <div className="mb-12">
-                <p className="text-lg text-[#666666] leading-relaxed mb-6">
-                  Great collections happen when designers, merchandisers, and makers co-create — here’s how collaborative workflows spark better fashion.
-                </p>
-              </div>
-
-              <div className="mb-12">
-                <h2 className="text-2xl font-bold text-[#2D2A2E] mb-6">Shared Vision from Day One</h2>
-                <p className="text-lg text-[#666666] leading-relaxed mb-6">
-                  Mood boards become actionable when pattern makers and sourcing teams contribute early.
-                </p>
-                <div className="mb-8 rounded-xl overflow-hidden shadow-lg">
-                  <Image
-                    src="/blog/blog 1_1.png"
-                    alt="Creative kickoff"
-                    width={800}
-                    height={600}
-                    className="w-full h-auto object-contain"
-                  />
-                </div>
-              </div>
-
-              <div className="mb-12">
-                <h2 className="text-2xl font-bold text-[#2D2A2E] mb-6">Prototype Together, Iterate Faster</h2>
-                <p className="text-lg text-[#666666] leading-relaxed mb-6">
-                  Cross-functional fit sessions reduce redo cycles and keep timelines realistic.
-                </p>
-                <div className="mb-8 rounded-xl overflow-hidden shadow-lg">
-                  <Image
-                    src="/blog/blog 1_2.png"
-                    alt="Prototype collaboration"
-                    width={800}
-                    height={600}
-                    className="w-full h-auto object-contain"
-                  />
-                </div>
-              </div>
-
-              <div className="mb-12">
-                <h2 className="text-2xl font-bold text-[#2D2A2E] mb-6">Scale the Story Across Channels</h2>
+                <h2 className="text-2xl font-bold text-[#2D2A2E] mb-6">The Power of Working Together in Fashion</h2>
                 <p className="text-lg text-[#666666] leading-relaxed">
-                  Aligned teams repurpose assets, lock specs faster, and deliver consistent brand stories.
+                  In the fashion industry, creativity alone isn’t enough. Every collection that reaches the runway or retail shelves is the result of collaboration — between designers, fabric experts, pattern masters, production teams, and quality controllers. At Krazy Kreators, we believe that the magic happens when creativity meets coordination.
+                </p>
+              </div>
+
+              <div className="mb-12 grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
+                <div>
+                  <h2 className="text-2xl font-bold text-[#2D2A2E] mb-6">From Ideas to Outfits</h2>
+                  <p className="text-lg text-[#666666] leading-relaxed mb-6">
+                    A designer’s sketch is the spark, but it takes a village to transform that spark into a finished garment. Creative collaboration brings together every expert the collection needs.
+                  </p>
+                  <ul className="list-disc list-inside text-lg text-[#666666] leading-relaxed space-y-2">
+                    <li>Designers who set the vision.</li>
+                    <li>Textile experts who ensure the right fabric choice.</li>
+                    <li>Pattern makers and tailors who bring form to function.</li>
+                    <li>Production managers who balance quality with efficiency.</li>
+                    <li>QC teams who ensure every detail aligns with expectations.</li>
+                  </ul>
+                  <p className="text-lg text-[#666666] leading-relaxed mt-6">
+                    By merging these diverse perspectives, brands move from idea to impactful collection faster and more effectively.
+                  </p>
+                </div>
+                <div>
+                  <div className="rounded-xl overflow-hidden shadow-lg">
+                    <Image src="/blog/blog 7_1.png" alt="Collaborative fashion workflow" width={800} height={600} className="w-full h-auto object-contain" />
+                  </div>
+                </div>
+              </div>
+
+              <div className="mb-12 grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
+                <div>
+                  <div className="rounded-xl overflow-hidden shadow-lg">
+                    <Image src="/blog/blog 7_2.png" alt="Design project manager facilitating collaboration" width={800} height={600} className="w-full h-auto object-contain" />
+                  </div>
+                </div>
+                <div>
+                  <h2 className="text-2xl font-bold text-[#2D2A2E] mb-6">The Role of Dedicated Supply Chain Partners</h2>
+                  <p className="text-lg text-[#666666] leading-relaxed">
+                    Managing collaboration across continents can be overwhelming. Krazy Kreators bridges that gap with Design Project Managers who act as a single point of contact between creative and technical teams. This eliminates miscommunication, reduces delays, and frees brands to focus on innovation.
+                  </p>
+                </div>
+              </div>
+
+              <div className="mb-12 grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
+                <div>
+                  <h2 className="text-2xl font-bold text-[#2D2A2E] mb-6">Innovation Through Collaboration</h2>
+                  <p className="text-lg text-[#666666] leading-relaxed mb-6">
+                    Some of the best fashion innovations come from unexpected inputs:
+                  </p>
+                  <ul className="list-disc list-inside text-lg text-[#666666] leading-relaxed space-y-2 mb-6">
+                    <li>A fabric mill suggesting a sustainable alternative that transforms a collection.</li>
+                    <li>A pattern master refining cuts to improve fit.</li>
+                    <li>A production expert optimizing stitching techniques for durability.</li>
+                  </ul>
+                  <p className="text-lg text-[#666666] leading-relaxed">
+                    We encourage idea-sharing across our network—often leading to smarter, more market-ready fashion lines.
+                  </p>
+                </div>
+                <div>
+                  <div className="rounded-xl overflow-hidden shadow-lg">
+                    <Image src="/blog/blog 7_3.png" alt="Innovation through collaboration" width={800} height={600} className="w-full h-auto object-contain" />
+                  </div>
+                </div>
+              </div>
+
+              <div className="mb-12 grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
+                <div>
+                  <div className="rounded-xl overflow-hidden shadow-lg">
+                    <Image src="/blog/blog 7.png" alt="Team alignment building brand identity" width={800} height={600} className="w-full h-auto object-contain" />
+                  </div>
+                </div>
+                <div>
+                  <h2 className="text-2xl font-bold text-[#2D2A2E] mb-6">Building Stronger Brand Identities</h2>
+                  <p className="text-lg text-[#666666] leading-relaxed">
+                    When creative teams and supply chain experts collaborate, brands don’t just create clothes—they build identity. Each collection becomes a story that reflects brand values and promises quality to customers. Our role is to nurture this collaboration so every seam supports the bigger picture.
+                  </p>
+                </div>
+              </div>
+
+              <div className="mb-12">
+                <h2 className="text-2xl font-bold text-[#2D2A2E] mb-6">Conclusion: Collaboration is the New Competitive Edge</h2>
+                <p className="text-lg text-[#666666] leading-relaxed">
+                  In a fast-changing fashion market, collaboration isn’t optional—it’s essential. The brands that win integrate creativity with strong supply chain partnerships. Krazy Kreators fuels that process by uniting designers, makers, and managers into one cohesive ecosystem. Because when creative minds work together, great fashion collections aren’t just made—they’re born.
                 </p>
               </div>
 
@@ -357,7 +409,7 @@ export default function CreativeCollaborationBlogClient() {
                                   <div className="flex items-center justify-between">
                                     <button onClick={() => handleCommentLike(comment.id)} className={`flex items-center gap-1 px-3 py-1.5 rounded-full text-xs font-medium transition-all duration-300 ${likedComments.has(comment.id) ? "bg-[#CBB49A]/10 text-[#CBB49A]" : "bg-gray-100 text-gray-600 hover:bg-[#CBB49A]/10 hover:text-[#CBB49A]"}`}>
                                       <Heart className={`w-3 h-3 ${likedComments.has(comment.id) ? "fill-[#CBB49A]" : ""}`} />
-                                      {likedComments.has(comment.id) ? comment.likes + 1 : comment.likes} {comment.likes === 0 && !likedComments.has(comment.id) ? "" : "likes"}
+                                      {comment.likes} {comment.likes === 1 ? 'like' : 'likes'}
                                     </button>
                                   </div>
                                 </div>
@@ -399,10 +451,10 @@ export default function CreativeCollaborationBlogClient() {
       </section>
 
       <section className="py-16 sm:py-20 lg:py-24 bg-[#F8F7F4]">
-        <div className="min-w-[80%] lg:max-w-[80%] mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="min-w-[80%] lg:max-w-[80%] mx-auto px-4 md:px-6 lg:px-0">
           <div className="text-center mb-12"><h2 className="text-3xl sm:text-4xl font-serif font-bold text-[#2D2A2E] mb-4">Explore More Insights</h2><p className="text-lg text-[#666666] max-w-2xl mx-auto">Discover more articles about fashion design, manufacturing, and industry insights.</p></div>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {getRandomBlogs(1).map((blog) => (
+            {relatedBlogs.map((blog) => (
               <Link key={blog.id} href={`/blogs/${blog.slug}`} className="group">
                 <article className="bg-white rounded-2xl shadow-lg overflow-hidden hover:shadow-xl transition-all duration-300 group-hover:-translate-y-1">
                   <div className="aspect-video relative overflow-hidden">
@@ -423,7 +475,7 @@ export default function CreativeCollaborationBlogClient() {
       </section>
 
       <section className="py-16 sm:py-20 lg:py-24 bg-gradient-to-br from-[#F8F7F4] to-white">
-        <div className="min-w-[80%] lg:max-w-[80%] mx-auto px-4 sm:px-6 lg:px-8 text-center">
+        <div className="min-w-[80%] lg:max-w-[80%] mx-auto px-4 md:px-6 lg:px-0 text-center">
           <h2 className="text-3xl sm:text-4xl font-serif font-bold text-[#2D2A2E] mb-6">Ready to Transform Your Vision Into Reality?</h2>
           <p className="text-lg text-[#666666] max-w-2xl mx-auto mb-8">Let&apos;s work together to bring your fashion vision to life with our comprehensive design and manufacturing services.</p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
