@@ -283,6 +283,13 @@ export default function ManufacturingServicesClient() {
                       isLeft ? 'lg:flex-row' : 'lg:flex-row-reverse'
                     } flex-col lg:flex-row`}
                   >
+                    {/* Mobile Step Number (above card on mobile/tablet) */}
+                    <div className="lg:hidden flex items-center justify-center mb-4">
+                      <div className="w-12 h-12 bg-gradient-to-br from-[#CBB49A] to-[#D4C4A8] rounded-full flex items-center justify-center shadow-lg">
+                        <span className="text-white font-bold">{step.number}</span>
+                      </div>
+                    </div>
+
                     {/* Step Content */}
                     <div className={`w-full lg:w-5/12 ${
                       isLeft ? 'lg:pr-8' : 'lg:pl-8'
@@ -321,13 +328,6 @@ export default function ManufacturingServicesClient() {
                     <div className="hidden lg:flex items-center justify-center w-2/12">
                       <div className="w-16 h-16 bg-gradient-to-br from-[#CBB49A] to-[#D4C4A8] rounded-full flex items-center justify-center shadow-lg border-4 border-[#F8F6F2] z-10">
                         <span className="text-white font-bold text-lg">{step.number}</span>
-                      </div>
-                    </div>
-
-                    {/* Mobile Step Number */}
-                    <div className="lg:hidden flex items-center justify-center my-4">
-                      <div className="w-12 h-12 bg-gradient-to-br from-[#CBB49A] to-[#D4C4A8] rounded-full flex items-center justify-center shadow-lg">
-                        <span className="text-white font-bold">{step.number}</span>
                       </div>
                     </div>
 

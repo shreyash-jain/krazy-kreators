@@ -172,8 +172,8 @@ export default function DesignServicesClient() {
       <section className="py-16 sm:py-20 md:py-24 bg-[#FAF9F3]">
         <div className="min-w-[80%] xl:max-w-[75%] 2xl:max-w-[70%] mx-auto px-4 sm:px-6 md:px-8 lg:px-12 xl:px-16">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 items-center">
-            {/* Left: Image */}
-            <div className="rounded-2xl overflow-hidden border border-[#ECE9E2] shadow-sm">
+            {/* Left: Image (shown after content on mobile/tablet) */}
+            <div className="rounded-2xl overflow-hidden border border-[#ECE9E2] shadow-sm order-2 lg:order-1">
               <div className="relative w-full h-full min-h-[22rem]">
                 <Image 
                   src="/services/design/design-2.png" 
@@ -184,8 +184,8 @@ export default function DesignServicesClient() {
               </div>
             </div>
             
-            {/* Right: Content */}
-            <div className="flex flex-col justify-center">
+            {/* Right: Content (shown first on mobile/tablet) */}
+            <div className="flex flex-col justify-center order-1 lg:order-2">
               <h2 className="text-2xl sm:text-3xl md:text-4xl font-serif font-bold text-[#2D2A2E]">Trend and Forecast Research</h2>
               <p className="mt-4 text-sm sm:text-base md:text-lg text-[#5C5C5C] leading-relaxed">
                 Trend and forecast research is a vital part of the fashion industry because it bridges creativity with market relevance. Fashion moves quickly, and consumer preferences shift with culture, technology, lifestyle, and global events. By studying runways, street style, social media, retail analytics, and forecasting agencies, designers and brands can anticipate what colors, fabrics, prints, and silhouettes will be in demand for upcoming seasons. This research reduces the risk of creating products that won&apos;t sell, ensures collections reflect consumer lifestyles, and helps brands stay one step ahead of competitors. Beyond guiding design, it also shapes marketing strategies, storytelling, and retail planning. In short, trend and forecast research gives fashion brands the ability to innovate confidently while remaining commercially successful and culturally relevant in a fast-changing industry.
@@ -229,8 +229,8 @@ export default function DesignServicesClient() {
       <section className="py-16 sm:py-20 md:py-24 bg-[#FAF9F3]">
         <div className="min-w-[80%] xl:max-w-[75%] 2xl:max-w-[70%] mx-auto px-4 sm:px-6 md:px-8 lg:px-12 xl:px-16">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 items-center">
-            {/* Left: Image */}
-            <div className="rounded-2xl overflow-hidden border border-[#ECE9E2] shadow-sm">
+            {/* Left: Image (shown after content on mobile/tablet) */}
+            <div className="rounded-2xl overflow-hidden border border-[#ECE9E2] shadow-sm order-2 lg:order-1">
               <div className="relative w-full h-full min-h-[22rem]">
                 <Image 
                   src="/services/design/design-4.png" 
@@ -241,8 +241,8 @@ export default function DesignServicesClient() {
               </div>
             </div>
 
-            {/* Right: Content */}
-            <div className="flex flex-col justify-center">
+            {/* Right: Content (shown first on mobile/tablet) */}
+            <div className="flex flex-col justify-center order-1 lg:order-2">
               <h2 className="text-2xl sm:text-3xl md:text-4xl font-serif font-bold text-[#2D2A2E]">Print & Pattern Design</h2>
               <p className="mt-4 text-sm sm:text-base md:text-lg text-[#5C5C5C] leading-relaxed">
                 Print and pattern design plays a vital role in shaping the identity of a fashion collection. Beyond fabric and form, prints tell stories, evoke emotions, and add a distinctive signature to garments. From intricate motifs to bold graphics, patterns transform simple silhouettes into statement pieces, reflecting cultural influences, seasonal moods, and artistic innovation. As a core element of fashion design, print and pattern work elevates creativity, giving depth, texture, and personality to every collection.
