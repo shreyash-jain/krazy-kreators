@@ -195,6 +195,90 @@ export default function DesignServicesClient() {
         </div>
       </section>
 
+      {/* TECH PACK SECTION */}
+      <section className="py-16 sm:py-20 md:py-24 bg-white">
+        <div className="min-w-[80%] xl:max-w-[75%] 2xl:max-w-[70%] mx-auto px-4 sm:px-6 md:px-8 lg:px-12 xl:px-16">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 items-center">
+            {/* Left: Content */}
+            <div className="flex flex-col justify-center">
+              <h2 className="text-2xl sm:text-3xl md:text-4xl font-serif font-bold text-[#2D2A2E]">Tech Pack</h2>
+              <p className="mt-4 text-sm sm:text-base md:text-lg text-[#5C5C5C] leading-relaxed">
+                A Tech Pack, short for Technical Package, is the blueprint of a garment. It serves as the essential communication tool between designers, product developers, and manufacturers, ensuring that every detail of a design is accurately translated into production. Containing specifications such as measurements, materials, trims, construction methods, colorways, and finishing details, the tech pack minimizes errors, reduces sampling costs, and streamlines the development process.
+              </p>
+              <p className="mt-4 text-sm sm:text-base md:text-lg text-[#5C5C5C] leading-relaxed">
+                In the fashion industry, a well-prepared tech pack is not only a guide but also a contract of clarity — it defines expectations, maintains quality standards, and supports efficient collaboration across global supply chains. By bridging creativity with technical precision, tech packs transform design concepts into production-ready garments that align with both creative vision and commercial goals.
+              </p>
+            </div>
+
+            {/* Right: Image */}
+            <div className="rounded-2xl overflow-hidden border border-[#ECE9E2] shadow-sm">
+              <div className="relative w-full h-full min-h-[22rem]">
+                <Image 
+                  src="/services/design/design-3.png" 
+                  alt="Tech pack for fashion production displayed on a designer's screen" 
+                  fill 
+                  className="object-cover" 
+                />
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* PRINT & PATTERN DESIGN SECTION */}
+      <section className="py-16 sm:py-20 md:py-24 bg-[#FAF9F3]">
+        <div className="min-w-[80%] xl:max-w-[75%] 2xl:max-w-[70%] mx-auto px-4 sm:px-6 md:px-8 lg:px-12 xl:px-16">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 items-center">
+            {/* Left: Image */}
+            <div className="rounded-2xl overflow-hidden border border-[#ECE9E2] shadow-sm">
+              <div className="relative w-full h-full min-h-[22rem]">
+                <Image 
+                  src="/services/design/design-4.png" 
+                  alt="Print and pattern design collage showcasing motifs and garment applications" 
+                  fill 
+                  className="object-cover" 
+                />
+              </div>
+            </div>
+
+            {/* Right: Content */}
+            <div className="flex flex-col justify-center">
+              <h2 className="text-2xl sm:text-3xl md:text-4xl font-serif font-bold text-[#2D2A2E]">Print & Pattern Design</h2>
+              <p className="mt-4 text-sm sm:text-base md:text-lg text-[#5C5C5C] leading-relaxed">
+                Print and pattern design plays a vital role in shaping the identity of a fashion collection. Beyond fabric and form, prints tell stories, evoke emotions, and add a distinctive signature to garments. From intricate motifs to bold graphics, patterns transform simple silhouettes into statement pieces, reflecting cultural influences, seasonal moods, and artistic innovation. As a core element of fashion design, print and pattern work elevates creativity, giving depth, texture, and personality to every collection.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* BILL OF MATERIAL (BOM) SECTION */}
+      <section className="py-16 sm:py-20 md:py-24 bg-white">
+        <div className="min-w-[80%] xl:max-w-[75%] 2xl:max-w-[70%] mx-auto px-4 sm:px-6 md:px-8 lg:px-12 xl:px-16">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 items-center">
+            {/* Left: Content */}
+            <div className="flex flex-col justify-center">
+              <h2 className="text-2xl sm:text-3xl md:text-4xl font-serif font-bold text-[#2D2A2E]">Bill of Material ( BOM )</h2>
+              <p className="mt-4 text-sm sm:text-base md:text-lg text-[#5C5C5C] leading-relaxed">
+                A Bill of Materials (BOM) of a garment is a detailed list of all the raw materials, components, and trims required to produce a specific garment style. It serves as a blueprint for manufacturers, ensuring that every element needed for production is identified in the correct quantity and specification. The BOM helps in costing, sourcing, inventory planning, and production accuracy. By clearly documenting all components, it reduces errors, ensures quality, and makes the garment manufacturing process efficient and transparent.
+              </p>
+            </div>
+
+            {/* Right: Image */}
+            <div className="rounded-2xl overflow-hidden border border-[#ECE9E2] shadow-sm">
+              <div className="relative w-full h-full min-h-[22rem]">
+                <Image 
+                  src="/services/design/design-5.png" 
+                  alt="Bill of Materials for garments showing trims, labels, and fabric components" 
+                  fill 
+                  className="object-cover" 
+                />
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
       {/* CASE STUDIES – GRID (below Why Choose section) */}
       <section id="client-case-studies" className="relative bg-white py-12 sm:py-16 md:py-20">
         <div className="min-w-[80%] xl:max-w-[75%] 2xl:max-w-[70%] mx-auto px-4 sm:px-6 md:px-8 lg:px-12 xl:px-16">
