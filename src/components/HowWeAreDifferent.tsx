@@ -54,23 +54,23 @@ interface HowWeAreDifferentProps {
 export default function HowWeAreDifferent({ onStartProjectClick }: HowWeAreDifferentProps) {
   return (
     <section className="w-full bg-white py-12 sm:py-16 md:py-20 lg:py-24">
-      <div className="min-w-[80%] xl:max-w-[75%] 2xl:max-w-[70%] mx-auto px-4 sm:px-6 lg:px-12 xl:px-16">
+      <div className="min-w-[80%] xl:max-w-[75%] 2xl:max-w-[70%] mx-auto px-4 sm:px-6 md:px-8 lg:px-12 xl:px-16">
         {/* Title Block */}
-        <div className="text-center mb-12 sm:mb-14 md:mb-16">
+        <div className="text-center mb-12 sm:mb-14 md:mb-16 lg:mb-20">
           <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold font-sans text-[#2D2A2E] mb-3 sm:mb-4 relative">
             How Krazy Kreators is Different
             <div className="absolute -bottom-2 left-1/2 transform -translate-x-1/2 w-16 h-0.5 bg-[#6BA292] rounded-full"></div>
           </h2>
-          <p className="text-sm sm:text-base md:text-lg text-[#3D3846] max-w-2xl mx-auto px-4">
+          <p className="text-sm sm:text-base md:text-lg text-[#3D3846] max-w-2xl mx-auto px-4 md:px-6">
             See why emerging and established brands choose us over traditional manufacturing vendors.
           </p>
         </div>
 
         {/* Comparison Table */}
         <div className="bg-white rounded-xl sm:rounded-2xl border border-[#E8E4DD] overflow-hidden mb-12 sm:mb-14 md:mb-16">
-          {/* Table Header - Hidden on mobile */}
+          {/* Table Header - Hidden on mobile and tablet */}
           <div className="hidden lg:block bg-gradient-to-r from-[#F8F7F4] to-[#F0EDE8] p-6 sm:p-8 border-b border-[#E8E4DD]">
-            <div className="grid grid-cols-1 lg:grid-cols-3 gap-4 sm:gap-6">
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-4 sm:gap-6">
               <div className="text-center lg:text-left">
                 <h3 className="text-lg sm:text-xl font-bold text-[#2D2A2E] mb-2">Feature</h3>
               </div>
@@ -89,7 +89,7 @@ export default function HowWeAreDifferent({ onStartProjectClick }: HowWeAreDiffe
           <div className="divide-y divide-[#E8E4DD]">
             {comparisonData.map((item, index) => (
               <div key={index} className="p-4 sm:p-6 md:p-8 hover:bg-[#F8F7F4]/50 transition-colors">
-                {/* Mobile Layout - Stacked with inline headers */}
+                {/* Mobile and Tablet Layout - Stacked with inline headers */}
                 <div className="lg:hidden space-y-4">
                   {/* Feature Name */}
                   <div className="text-center">

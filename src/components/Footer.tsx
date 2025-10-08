@@ -33,8 +33,8 @@ export default function Footer() {
   return (
     <footer className="bg-[#121212] text-[#F2F2F2]">
       {/* Main Footer Content */}
-      <div className="min-w-[80%] xl:max-w-[75%] 2xl:max-w-[70%] mx-auto px-4 sm:px-6 lg:px-12 xl:px-16 py-12 sm:py-16 md:py-20 lg:py-24">
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-8 sm:gap-10 md:gap-8">
+      <div className="min-w-[80%] lg:max-w-[80%] mx-auto px-4 sm:px-6 md:px-8 lg:px-8 py-12 sm:py-16 md:py-20 lg:py-24">
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-8 sm:gap-10 md:gap-8">
           {/* Column 1: Logo + Tagline */}
           <div className="text-center sm:text-left">
             <div className="mb-4 sm:mb-6">
@@ -42,7 +42,7 @@ export default function Footer() {
                 <Image
                   src="/brands/Logo.svg"
                   alt="Krazy Kreators"
-                  width={160}
+                  width={48}
                   height={48}
                   priority
                 />
@@ -52,12 +52,12 @@ export default function Footer() {
               Design. Sample. Produce.<br />Zero MOQ.
             </p>
             {/* Address & Phone for SEO/site-wide visibility */}
-            <div className="mt-4 space-y-1 text-[#F2F2F2]/90 text-sm">
-              <p className="font-semibold">Krazy Kreators</p>
-              <p>B-71, 4TH FLOOR</p>
-              <p>SECTOR - 67</p>
-              <p>NOIDA, DELHI NCR, INDIA — 201301</p>
-              <a href="tel:+919990440803" className="underline underline-offset-4">+91 9990440803</a>
+            <div className="mt-4 space-y-1 text-sm">
+              <p className="font-semibold text-white">Krazy Kreators</p>
+              <p className="text-white">B-71, 4TH FLOOR</p>
+              <p className="text-white">SECTOR - 67</p>
+              <p className="text-white">NOIDA, DELHI NCR, INDIA — 201301</p>
+              <a href="tel:+919990440803" className="text-white underline underline-offset-4">+91 9990440803</a>
             </div>
           </div>
 
@@ -156,7 +156,7 @@ export default function Footer() {
 
       {/* Bottom Footer Strip */}
       <div className="border-t border-[#F2F2F2]/10">
-        <div className="min-w-[80%] xl:max-w-[75%] 2xl:max-w-[70%] mx-auto px-4 sm:px-6 lg:px-12 xl:px-16 py-4 sm:py-6">
+        <div className="min-w-[80%] lg:max-w-[80%] mx-auto px-4 sm:px-6 md:px-8 lg:px-8 py-4 sm:py-6">
           <div className="flex flex-col sm:flex-row justify-between items-center gap-3 sm:gap-4 text-xs sm:text-sm text-[#F2F2F2]/80">
             <div>
               © 2025 Krazy Kreators. All rights reserved.

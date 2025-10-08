@@ -8,6 +8,26 @@ const nextConfig: NextConfig = {
       { protocol: "https", hostname: "plus.unsplash.com" },
     ],
   },
+  async rewrites() {
+    return [
+      {
+        source: "/favicon.ico",
+        destination: "/Logo.ico",
+      },
+      {
+        source: "/favicon.svg",
+        destination: "/Logo.svg",
+      },
+      {
+        source: "/apple-touch-icon.png",
+        destination: "/Logo.ico",
+      },
+      {
+        source: "/apple-touch-icon-precomposed.png",
+        destination: "/Logo.ico",
+      },
+    ];
+  },
   async redirects() {
     return [
       {

@@ -32,11 +32,11 @@ const steps = [
 export default function FromDesignToShelf() {
   return (
     <section className="w-full bg-[#F8F7F4] py-12 sm:py-16 md:py-20 lg:py-24">
-      <div className="min-w-[80%] xl:max-w-[75%] 2xl:max-w-[70%] mx-auto px-4 sm:px-6 lg:px-12 xl:px-16">
+      <div className="min-w-[80%] xl:max-w-[75%] 2xl:max-w-[70%] mx-auto px-4 sm:px-6 md:px-8 lg:px-12 xl:px-16">
         <h2 className="text-center text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold font-sans text-[#2D2A2E] mb-3 sm:mb-4">
           From Design to Shelf in 4 Months
         </h2>
-        <p className="text-center text-sm sm:text-base md:text-lg text-[#3D3846] max-w-2xl mx-auto mb-12 sm:mb-14 md:mb-16 px-4">
+        <p className="text-center text-sm sm:text-base md:text-lg text-[#3D3846] max-w-2xl mx-auto mb-12 sm:mb-14 md:mb-16 px-4 md:px-6">
           Experience the complete journey of your fashion collection, from initial concept to final delivery, with transparent tracking at every step.
         </p>
         <div className="relative flex flex-col gap-10 sm:gap-12 md:gap-16 lg:gap-20">
@@ -71,7 +71,7 @@ export default function FromDesignToShelf() {
                 </div>
 
                 {/* Desktop Layout - Horizontal */}
-                <div className="hidden md:flex items-start lg:items-center gap-10">
+                <div className="hidden md:flex items-start lg:items-center gap-8 lg:gap-10">
                   {/* Number badge and connector */}
                   <div className="flex flex-col items-center z-10">
                     <span className="flex items-center justify-center w-12 h-12 rounded-full bg-white border-2 border-[#CBB49A] text-[#CBB49A] font-bold text-lg lg:text-xl shadow-sm mb-2">

@@ -48,12 +48,12 @@ const benefits = [
 export default function WhatWeDo() {
   return (
     <section className="w-full bg-[#FAF9F7] py-12 sm:py-16">
-      <div className="min-w-[80%] xl:max-w-[75%] 2xl:max-w-[70%] mx-auto px-4 sm:px-6 lg:px-12 xl:px-16">
-        <h2 className="text-center text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold font-sans text-[#2D2A2E] mb-12 sm:mb-16 relative">
+      <div className="min-w-[80%] xl:max-w-[75%] 2xl:max-w-[70%] mx-auto px-4 sm:px-6 md:px-8 lg:px-12 xl:px-16">
+        <h2 className="text-center text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold font-sans text-[#2D2A2E] mb-12 sm:mb-16 md:mb-20 relative">
           From Sketch to Store: What We Offer
           <div className="absolute -bottom-2 left-1/2 transform -translate-x-1/2 w-16 h-0.5 bg-[#6BA292] rounded-full"></div>
         </h2>
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 sm:gap-12 auto-rows-fr">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 sm:gap-12 md:gap-8 auto-rows-fr">
           {/* Design Services Card (top-left) */}
           <Link href="/design-services" className="group bg-white rounded-xl sm:rounded-2xl shadow-sm border flex flex-col overflow-hidden hover:shadow-lg hover:scale-[1.02] transition-all duration-300 cursor-pointer" style={{fontFamily: 'Inter, Graphik, sans-serif'}}>
             <div className="w-full h-40 sm:h-48 md:h-56 relative">
@@ -65,25 +65,25 @@ export default function WhatWeDo() {
               <span className="text-[#6BA292] font-semibold underline underline-offset-2 group-hover:text-[#CBB49A] transition-colors duration-200 w-fit text-sm sm:text-base">Read more &rarr;</span>
             </div>
           </Link>
-          {/* End-to-End Service Card (right, spanning both rows) */}
-          <Link href="/end-to-end-services" className="group bg-white rounded-xl sm:rounded-2xl shadow-lg border-2 border-[#F6F1EB] flex flex-col overflow-hidden lg:row-span-2 hover:shadow-xl hover:scale-[1.02] transition-all duration-300 cursor-pointer" style={{fontFamily: 'Inter, Graphik, sans-serif'}}>
-            <div className="w-full h-48 sm:h-56 md:h-full relative min-h-[200px]">
-              <Image src="/brands/end-to-end.jpg" alt="End-to-End Service" fill className="object-cover object-center" />
-            </div>
-            <div className="flex flex-col justify-between p-4 sm:p-6 md:p-8 flex-1">
-              <h3 className="text-xl sm:text-2xl md:text-3xl font-bold mb-2 text-[#2D2A2E] group-hover:text-[#CBB49A] transition-colors duration-200">End-to-End Service</h3>
-              <p className="text-sm sm:text-base md:text-lg text-[#3D3846] mb-4">Complete production support from concept to delivery — all under one roof.</p>
-              <span className="text-[#6BA292] font-semibold underline underline-offset-2 group-hover:text-[#CBB49A] transition-colors duration-200 w-fit text-sm sm:text-base">Read more &rarr;</span>
-            </div>
-          </Link>
           {/* Manufacturing Card (bottom-left, above supportive text) */}
-          <Link href="/manufacturing-services" className="group bg-white rounded-xl sm:rounded-2xl shadow-sm border flex flex-col overflow-hidden hover:shadow-lg hover:scale-[1.02] transition-all duration-300 cursor-pointer" style={{fontFamily: 'Inter, Graphik, sans-serif'}}>
+          <Link href="/manufacturing-services" className="group bg-white rounded-xl sm:rounded-2xl shadow-sm border flex flex-col overflow-hidden hover:shadow-lg hover:scale-[1.02] transition-all duration-300 cursor-pointer md:order-3" style={{fontFamily: 'Inter, Graphik, sans-serif'}}>
             <div className="w-full h-40 sm:h-48 md:h-56 relative">
               <Image src="/brands/manufacturing.jpg" alt="Manufacturing" fill className="object-cover object-center" />
             </div>
             <div className="flex flex-col justify-between p-4 sm:p-6 md:p-8 flex-1">
               <h3 className="text-lg sm:text-xl md:text-2xl font-bold mb-2 text-[#2D2A2E] group-hover:text-[#CBB49A] transition-colors duration-200">Manufacturing</h3>
               <p className="text-sm sm:text-base text-[#3D3846] mb-4">Seamless manufacturing from samples to full-scale production.</p>
+              <span className="text-[#6BA292] font-semibold underline underline-offset-2 group-hover:text-[#CBB49A] transition-colors duration-200 w-fit text-sm sm:text-base">Read more &rarr;</span>
+            </div>
+          </Link>
+          {/* End-to-End Service Card (right, spanning both rows) */}
+          <Link href="/end-to-end-services" className="group bg-white rounded-xl sm:rounded-2xl shadow-lg border-2 border-[#F6F1EB] flex flex-col overflow-hidden md:row-span-2 hover:shadow-xl hover:scale-[1.02] transition-all duration-300 cursor-pointer md:order-2" style={{fontFamily: 'Inter, Graphik, sans-serif'}}>
+            <div className="w-full h-48 sm:h-56 md:h-full relative min-h-[200px]">
+              <Image src="/brands/end-to-end.jpg" alt="End-to-End Service" fill className="object-cover object-center" />
+            </div>
+            <div className="flex flex-col justify-between p-4 sm:p-6 md:p-8 flex-1">
+              <h3 className="text-xl sm:text-2xl md:text-3xl font-bold mb-2 text-[#2D2A2E] group-hover:text-[#CBB49A] transition-colors duration-200">End-to-End Service</h3>
+              <p className="text-sm sm:text-base md:text-lg text-[#3D3846] mb-4">Complete production support from concept to delivery — all under one roof.</p>
               <span className="text-[#6BA292] font-semibold underline underline-offset-2 group-hover:text-[#CBB49A] transition-colors duration-200 w-fit text-sm sm:text-base">Read more &rarr;</span>
             </div>
           </Link>
@@ -97,7 +97,7 @@ export default function WhatWeDo() {
               We simplify your production journey — with one integrated process from design to delivery. Here&apos;s what you gain by partnering with us.
             </p>
           </div>
-          <div className="mt-10 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-2 gap-6 md:gap-8">
+          <div className="mt-10 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-2 gap-6 md:gap-8">
             {benefits.map((benefit) => {
               const Icon = benefit.icon;
               return (
