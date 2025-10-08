@@ -44,6 +44,131 @@ export default function ManufacturingServicesClient() {
     { icon: Package, title: "Brand‑Aligned Packaging & Shipping", desc: "Packaging that reflects your identity and reliable global logistics." },
   ];
 
+  const manufacturingSteps = [
+    {
+      number: 1,
+      title: "Product Development & Design",
+      image: "/services/manufacturing/m1.png",
+      points: [
+        "Concept creation (theme, mood board, sketches, CADs)",
+        "Fabric and trims selection",
+        "Styling, silhouette, and colorway finalization",
+        "Costing & feasibility analysis"
+      ]
+    },
+    {
+      number: 2,
+      title: "Pattern Making",
+      image: "/services/manufacturing/m2.png",
+      points: [
+        "Creation of base pattern (manual or CAD)",
+        "Development of garment shapes, sizes, and design details",
+        "Approval of prototype pattern"
+      ]
+    },
+    {
+      number: 3,
+      title: "Sample Development",
+      image: "/services/manufacturing/m3.png",
+      points: [
+        "First prototype sample (to check fit, design, and look)",
+        "Fit sample (for corrections and adjustments)",
+        "Pre-production sample (final sample for approval)"
+      ]
+    },
+    {
+      number: 4,
+      title: "Fabric and Trim Sourcing",
+      image: "/services/manufacturing/m4.png",
+      points: [
+        "Bulk fabric ordering (as per approved swatch)",
+        "Sourcing of trims, labels, threads, buttons, zippers, etc.",
+        "Quality inspection of received materials"
+      ]
+    },
+    {
+      number: 5,
+      title: "Fabric Testing and Approval",
+      image: "/services/manufacturing/m5.png",
+      points: [
+        "GSM, shrinkage, colorfastness, pilling, tear strength tests",
+        "Approvals before bulk cutting"
+      ]
+    },
+    {
+      number: 6,
+      title: "Fabric Spreading and Cutting",
+      image: "/services/manufacturing/m6.png",
+      points: [
+        "Fabric laying on cutting table (manual or automated)",
+        "Marker making (efficient fabric utilization)",
+        "Cutting into garment components (using cutting machines)",
+        "Bundling and numbering for tracking"
+      ]
+    },
+    {
+      number: 7,
+      title: "Embellishment (if required)",
+      image: "/services/manufacturing/m7.png",
+      points: [
+        "Printing (screen, sublimation, digital)",
+        "Embroidery, appliqué, or washes (stone wash, enzyme wash, etc.)"
+      ]
+    },
+    {
+      number: 8,
+      title: "Sewing / Assembly",
+      image: "/services/manufacturing/m8.png",
+      points: [
+        "Operation breakdown (OB) preparation",
+        "Sewing line set-up with machines",
+        "Step-by-step stitching of garment parts",
+        "In-line quality control during sewing"
+      ]
+    },
+    {
+      number: 9,
+      title: "Finishing",
+      image: "/services/manufacturing/m9.png",
+      points: [
+        "Trimming loose threads",
+        "Pressing / ironing",
+        "Adding accessories (drawcords, badges, etc.)",
+        "Attaching hang tags, labels, and packaging materials"
+      ]
+    },
+    {
+      number: 10,
+      title: "Quality Control",
+      image: "/services/manufacturing/m10.png",
+      points: [
+        "Measurement check (against tech pack)",
+        "Visual inspection for defects",
+        "Final AQL (Acceptable Quality Level) inspection"
+      ]
+    },
+    {
+      number: 11,
+      title: "Packing",
+      image: "/services/manufacturing/m11.png",
+      points: [
+        "Folding as per buyer requirement",
+        "Polybag packing",
+        "Carton packing with barcodes and shipping marks",
+        "Costing & feasibility analysis"
+      ]
+    },
+    {
+      number: 12,
+      title: "Dispatch and Logistics",
+      image: "/services/manufacturing/m12.png",
+      points: [
+        "Documentation (invoice, packing list, shipping details)",
+        "Transportation to buyer or distribution center"
+      ]
+    }
+  ];
+
   return (
     <main className="w-full bg-white">
       {/* HERO */}
@@ -125,6 +250,92 @@ export default function ManufacturingServicesClient() {
                   </article>
                 );})}
               </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* MANUFACTURING PROCESS TIMELINE */}
+      <section className="py-16 sm:py-20 md:py-24 bg-[#FAF9F3]">
+        <div className="min-w-[80%] xl:max-w-[75%] 2xl:max-w-[70%] mx-auto px-4 sm:px-6 lg:px-12 xl:px-16">
+          {/* Section Header */}
+          <div className="text-center mb-12 sm:mb-16 md:mb-20">
+            <h2 className="text-2xl sm:text-3xl md:text-4xl font-serif font-bold text-[#2D2A2E]">Our Manufacturing Process</h2>
+            <p className="mt-3 sm:mt-4 text-sm sm:text-base md:text-lg text-[#5C5C5C] max-w-[760px] mx-auto">
+              From concept to completion — a 12-step journey of precision and creativity.
+            </p>
+          </div>
+
+          {/* Timeline */}
+          <div className="relative">
+            {/* Central Timeline Line */}
+            <div className="absolute left-1/2 transform -translate-x-1/2 w-0.5 bg-gradient-to-b from-[#CBB49A] to-[#D4C4A8] h-full hidden lg:block"></div>
+            
+            {/* Timeline Steps */}
+            <div className="space-y-8 lg:space-y-12">
+              {manufacturingSteps.map((step, index) => {
+                const isLeft = index % 2 === 0;
+                
+                return (
+                  <div
+                    key={step.number}
+                    className={`relative flex items-center ${
+                      isLeft ? 'lg:flex-row' : 'lg:flex-row-reverse'
+                    } flex-col lg:flex-row`}
+                  >
+                    {/* Mobile Step Number (above card on mobile/tablet) */}
+                    <div className="lg:hidden flex items-center justify-center mb-4">
+                      <div className="w-12 h-12 bg-gradient-to-br from-[#CBB49A] to-[#D4C4A8] rounded-full flex items-center justify-center shadow-lg">
+                        <span className="text-white font-bold">{step.number}</span>
+                      </div>
+                    </div>
+
+                    {/* Step Content */}
+                    <div className={`w-full lg:w-5/12 ${
+                      isLeft ? 'lg:pr-8' : 'lg:pl-8'
+                    }`}>
+                      <div className="bg-[#F8F6F2] rounded-2xl border border-[#E8E0D6] p-6 sm:p-8 shadow-[0_8px_25px_rgba(0,0,0,0.06)] hover:shadow-[0_12px_35px_rgba(0,0,0,0.08)] transition-all duration-300 hover:-translate-y-1">
+                        <div className="flex items-start gap-4">
+                          <div className="flex-shrink-0">
+                            <div className="w-24 h-24 rounded-full overflow-hidden shadow-sm">
+                              <Image 
+                                src={step.image} 
+                                alt={`${step.title} icon`}
+                                width={96}
+                                height={96}
+                                className="w-full h-full object-cover"
+                              />
+                            </div>
+                          </div>
+                          <div className="flex-1">
+                            <h3 className="text-lg sm:text-xl font-semibold text-[#2D2A2E] mb-3">
+                              {step.title}
+                            </h3>
+                            <ul className="space-y-2">
+                              {step.points.map((point, pointIndex) => (
+                                <li key={pointIndex} className="flex items-start gap-2 text-sm text-[#5C5C5C]">
+                                  <div className="w-1.5 h-1.5 bg-[#CBB49A] rounded-full mt-2 flex-shrink-0"></div>
+                                  <span>{point}</span>
+                                </li>
+                              ))}
+                            </ul>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+
+                    {/* Central Step Number */}
+                    <div className="hidden lg:flex items-center justify-center w-2/12">
+                      <div className="w-16 h-16 bg-gradient-to-br from-[#CBB49A] to-[#D4C4A8] rounded-full flex items-center justify-center shadow-lg border-4 border-[#F8F6F2] z-10">
+                        <span className="text-white font-bold text-lg">{step.number}</span>
+                      </div>
+                    </div>
+
+                    {/* Spacer for right-aligned items */}
+                    <div className={`hidden lg:block w-5/12 ${isLeft ? 'lg:pl-8' : 'lg:pr-8'}`}></div>
+                  </div>
+                );
+              })}
             </div>
           </div>
         </div>

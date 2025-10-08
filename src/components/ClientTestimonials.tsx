@@ -43,10 +43,12 @@ const TestimonialsSection = () => {
   const cardRefs = useRef<(HTMLDivElement | null)[]>([]);
 
   const handleVideoPlay = useCallback((index: number) => {
-    // Pause all other videos
+    // Pause all other videos and reset them to first frame
     videoRefs.current.forEach((ref, i) => {
       if (ref && i !== index) {
         ref.pause();
+        ref.muted = true;
+        ref.currentTime = 0.1; // Reset to first frame for thumbnail
       }
     });
 
@@ -55,12 +57,15 @@ const TestimonialsSection = () => {
       setPlayingVideoIndex(null);
       if (videoRefs.current[index]) {
         videoRefs.current[index]?.pause();
+        videoRefs.current[index]!.muted = true;
+        videoRefs.current[index]!.currentTime = 0.1; // Reset to first frame
       }
     } else {
       // Play the clicked video
       setPlayingVideoIndex(index);
       if (videoRefs.current[index]) {
-        videoRefs.current[index]?.play();
+        videoRefs.current[index]!.muted = false;
+        videoRefs.current[index]?.play().catch(console.error);
       }
     }
   }, [playingVideoIndex]);
@@ -73,44 +78,27 @@ const TestimonialsSection = () => {
     cardRefs.current[index] = ref;
   }, []);
 
-  // Intersection Observer to pause videos when not visible
+  // Initialize all videos to show first frame as thumbnail
   useEffect(() => {
-    const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          const index = parseInt(entry.target.getAttribute('data-index') || '0');
-          const video = videoRefs.current[index];
-          
-          if (!entry.isIntersecting && video && !video.paused) {
-            // Video is not visible and is playing, pause it
-            video.pause();
-            if (playingVideoIndex === index) {
-              setPlayingVideoIndex(null);
-            }
-          }
-        });
-      },
-      {
-        threshold: 0.1, // Trigger when 10% of the video is visible
-        rootMargin: '0px 0px -10% 0px' // Add some margin to trigger earlier
-      }
-    );
-
-    // Observe all card elements
-    cardRefs.current.forEach((card) => {
-      if (card) {
-        observer.observe(card);
-      }
-    });
-
-    return () => {
-      observer.disconnect();
+    const initializeVideos = () => {
+      videoRefs.current.forEach((ref) => {
+        if (ref) {
+          ref.muted = true;
+          ref.currentTime = 0.1;
+          ref.pause();
+        }
+      });
     };
-  }, [playingVideoIndex]);
+
+    // Initialize after a short delay to ensure videos are loaded
+    const timer = setTimeout(initializeVideos, 100);
+    return () => clearTimeout(timer);
+  }, []);
+
 
   return (
     <section className="py-24 bg-gradient-to-br from-[#FAFAFA] to-white">
-      <div className="min-w-[90%] xl:max-w-[85%] 2xl:max-w-[80%] mx-auto px-4 sm:px-6 lg:px-8">
+      <div className="min-w-[80%] xl:max-w-[85%] 2xl:max-w-[80%] mx-auto px-4 sm:px-6">
         {/* Section Header */}
         <div
          
@@ -125,7 +113,7 @@ const TestimonialsSection = () => {
         </div>
 
         {/* Testimonial Cards Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl mx-auto">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 max-w-7xl mx-auto">
           {testimonials.map((t, i) => (
             <TestimonialCard
               key={i}

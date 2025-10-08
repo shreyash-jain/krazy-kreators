@@ -57,9 +57,9 @@ const uniqueFeatures = [
 export default function WhatMakesUsUnique() {
   return (
     <section className="w-full bg-gradient-to-br from-[#F8F7F4] to-[#F0EDE8] py-12 sm:py-16 md:py-20 lg:py-24">
-      <div className="min-w-[80%] xl:max-w-[75%] 2xl:max-w-[70%] mx-auto px-4 sm:px-6 lg:px-12 xl:px-16">
+      <div className="min-w-[80%] xl:max-w-[75%] 2xl:max-w-[70%] mx-auto px-4 sm:px-6 md:px-8 lg:px-12 xl:px-16">
         {/* Section Title */}
-        <div className="text-center mb-12 sm:mb-14 md:mb-16">
+        <div className="text-center mb-12 sm:mb-14 md:mb-16 lg:mb-20">
           <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold font-sans text-[#2D2A2E] mb-3 sm:mb-4 relative">
             What Makes Krazy Kreators Unique
             <div className="absolute -bottom-2 left-1/2 transform -translate-x-1/2 w-16 h-0.5 bg-[#6BA292] rounded-full"></div>
@@ -67,7 +67,7 @@ export default function WhatMakesUsUnique() {
         </div>
 
         {/* Bento Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 md:gap-8">
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 md:gap-8">
           {uniqueFeatures.map((feature, index) => {
             const Icon = feature.icon;
             return (
