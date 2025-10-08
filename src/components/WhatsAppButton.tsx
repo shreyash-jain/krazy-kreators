@@ -20,7 +20,7 @@ const WhatsAppButton: React.FC = () => {
   return (
     <button
       onClick={handleWhatsAppClick}
-      className="fixed bottom-4 right-4 z-50 w-12 h-12 sm:w-14 sm:h-14 bg-green-500 hover:bg-green-600 rounded-full shadow-lg transition-colors duration-300 flex items-center justify-center group sm:bottom-6 sm:right-6"
+      className="whatsapp-button w-12 h-12 sm:w-14 sm:h-14 bg-green-500 hover:bg-green-600 active:bg-green-700 rounded-full shadow-lg transition-colors duration-300 flex items-center justify-center group touch-manipulation"
       aria-label="Contact us on WhatsApp"
       title="Chat with us on WhatsApp"
     >
