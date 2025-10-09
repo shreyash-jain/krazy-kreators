@@ -1,8 +1,34 @@
 "use client";
 
-import React from "react";
+import React, { useEffect, useState } from "react";
 
 const WhatsAppButton: React.FC = () => {
+  const [isVisible, setIsVisible] = useState(false);
+
+  useEffect(() => {
+    // Force visibility on iPhone Safari
+    const timer = setTimeout(() => {
+      setIsVisible(true);
+    }, 100);
+
+    // Force re-render on iOS Safari
+    const forceRender = () => {
+      setIsVisible(true);
+    };
+
+    // Multiple triggers to ensure visibility on iOS
+    window.addEventListener('load', forceRender);
+    window.addEventListener('DOMContentLoaded', forceRender);
+    document.addEventListener('DOMContentLoaded', forceRender);
+
+    return () => {
+      clearTimeout(timer);
+      window.removeEventListener('load', forceRender);
+      window.removeEventListener('DOMContentLoaded', forceRender);
+      document.removeEventListener('DOMContentLoaded', forceRender);
+    };
+  }, []);
+
   const handleWhatsAppClick = () => {
     const message = "Hi there! I'd like to know more about your services.";
     const encodedMessage = encodeURIComponent(message);
@@ -17,10 +43,40 @@ const WhatsAppButton: React.FC = () => {
     window.open(whatsappUrl, "_blank", "noopener,noreferrer");
   };
 
+  if (!isVisible) {
+    return null;
+  }
+
   return (
     <button
       onClick={handleWhatsAppClick}
       className="whatsapp-button w-12 h-12 sm:w-14 sm:h-14 bg-green-500 hover:bg-green-600 active:bg-green-700 rounded-full shadow-lg transition-colors duration-300 flex items-center justify-center group touch-manipulation"
+      style={{
+        position: 'fixed',
+        bottom: '16px',
+        right: '16px',
+        zIndex: 9999,
+        WebkitTransform: 'translateZ(0)',
+        transform: 'translateZ(0)',
+        WebkitBackfaceVisibility: 'hidden',
+        backfaceVisibility: 'hidden',
+        WebkitPerspective: '1000px',
+        perspective: '1000px',
+        // iPhone safe area support
+        paddingBottom: 'env(safe-area-inset-bottom)',
+        paddingRight: 'env(safe-area-inset-right)',
+        // Force visibility on iOS
+        opacity: 1,
+        visibility: 'visible',
+        display: 'flex',
+        // Prevent iOS Safari from hiding the button
+        WebkitAppearance: 'none',
+        appearance: 'none',
+        // Force hardware acceleration
+        willChange: 'transform',
+        // Ensure it's above everything
+        isolation: 'isolate',
+      }}
       aria-label="Contact us on WhatsApp"
       title="Chat with us on WhatsApp"
     >
