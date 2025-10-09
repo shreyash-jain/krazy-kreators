@@ -1,10 +1,11 @@
-const resolveApiUrl = (path: string) => {
+const resolveApiUrl = (path: string, baseOverride?: string) => {
   const normalized = path.startsWith('/') ? path : `/${path}`;
   if (typeof window !== 'undefined') {
     return normalized;
   }
 
   const baseFromEnv =
+    baseOverride ||
     process.env.NEXT_PUBLIC_SITE_URL ||
     process.env.NEXTAUTH_URL ||
     (process.env.VERCEL_URL ? `https://${process.env.VERCEL_URL}` : undefined) ||
@@ -13,9 +14,15 @@ const resolveApiUrl = (path: string) => {
   return `${baseFromEnv.replace(/\/$/, '')}${normalized}`;
 };
 
-export async function getBlogLikeCount(blogId: string): Promise<number> {
+export async function getBlogLikeCount(
+  blogId: string,
+  opts?: { baseUrl?: string }
+): Promise<number> {
   try {
-    const url = resolveApiUrl(`/api/blog/likes?blogId=${encodeURIComponent(blogId)}`);
+    const url = resolveApiUrl(
+      `/api/blog/likes?blogId=${encodeURIComponent(blogId)}`,
+      opts?.baseUrl
+    );
     console.log(`BlogApi: Fetching likes for ${blogId} from ${url}`);
     
     const res = await fetch(url, {
@@ -71,10 +78,16 @@ export type PublicComment = {
   likes: number;
 };
 
-export async function getComments(blogId: string): Promise<PublicComment[]> {
-  const res = await fetch(resolveApiUrl(`/api/blog/comments?blogId=${encodeURIComponent(blogId)}`), {
+export async function getComments(
+  blogId: string,
+  opts?: { baseUrl?: string }
+): Promise<PublicComment[]> {
+  const res = await fetch(
+    resolveApiUrl(`/api/blog/comments?blogId=${encodeURIComponent(blogId)}` , opts?.baseUrl),
+    {
     cache: 'no-store',
-  });
+  }
+  );
   if (!res.ok) return [];
   const data = await res.json();
   return (data?.comments ?? []) as PublicComment[];
@@ -91,8 +104,11 @@ export async function addComment(params: { blogId: string; name: string; email: 
   return data?.comment as PublicComment;
 }
 
-export async function getCommentLikeCount(commentId: string): Promise<number> {
-  const res = await fetch(resolveApiUrl(`/api/blog/comments/like?commentId=${encodeURIComponent(commentId)}`), {
+export async function getCommentLikeCount(
+  commentId: string,
+  opts?: { baseUrl?: string }
+): Promise<number> {
+  const res = await fetch(resolveApiUrl(`/api/blog/comments/like?commentId=${encodeURIComponent(commentId)}`, opts?.baseUrl), {
     cache: 'no-store',
   });
   if (!res.ok) return 0;

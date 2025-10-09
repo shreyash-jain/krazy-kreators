@@ -350,17 +350,10 @@ img, video {
   perspective: 1000;
 }
 
-/* Safari-specific optimizations for animations */
-.animate-slide-in,
-.group:hover,
-.transition-all,
-.transition-transform {
-  -webkit-transform: translateZ(0);
-  transform: translateZ(0);
-  -webkit-backface-visibility: hidden;
-  backface-visibility: hidden;
-  -webkit-perspective: 1000;
-  perspective: 1000;
+/* Avoid forcing transforms globally; they can break position: fixed on iOS */
+/* Keep specific animation styles minimal */
+.animate-slide-in {
+  animation: slide-in 0.3s cubic-bezier(0.4,0,0.2,1);
 }
 
 /* Safari-specific optimizations for buttons and interactive elements */
@@ -381,14 +374,6 @@ html {
   scroll-behavior: smooth;
 }
 
-/* Safari-specific optimizations for flexbox */
-.flex, .grid {
-  -webkit-transform: translateZ(0);
-  transform: translateZ(0);
-}
+/* Do not apply transforms to all flex/grid elements globally */
 
-/* Safari-specific optimizations for shadows */
-.shadow-lg, .shadow-2xl {
-  -webkit-transform: translateZ(0);
-  transform: translateZ(0);
-}
+/* Do not force transforms on shadow utilities globally */
