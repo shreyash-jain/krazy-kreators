@@ -14,23 +14,51 @@ const resolveApiUrl = (path: string) => {
 };
 
 export async function getBlogLikeCount(blogId: string): Promise<number> {
-  const res = await fetch(resolveApiUrl(`/api/blog/likes?blogId=${encodeURIComponent(blogId)}`), {
-    cache: 'no-store',
-  });
-  if (!res.ok) return 0;
-  const data = await res.json();
-  return Number(data?.count ?? 0);
+  try {
+    const url = resolveApiUrl(`/api/blog/likes?blogId=${encodeURIComponent(blogId)}`);
+    console.log(`BlogApi: Fetching likes for ${blogId} from ${url}`);
+    
+    const res = await fetch(url, {
+      cache: 'no-store',
+    });
+    
+    if (!res.ok) {
+      console.error(`BlogApi: Failed to fetch likes for ${blogId}:`, res.status, res.statusText);
+      return 0;
+    }
+    
+    const data = await res.json();
+    console.log(`BlogApi: Received data for ${blogId}:`, data);
+    return Number(data?.count ?? 0);
+  } catch (error) {
+    console.error(`BlogApi: Error fetching likes for ${blogId}:`, error);
+    return 0;
+  }
 }
 
 export async function likeBlog(blogId: string, action: 'like' | 'unlike' = 'like'): Promise<number> {
-  const res = await fetch(resolveApiUrl(`/api/blog/likes`), {
-    method: 'POST',
-    headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify({ blogId, action }),
-  });
-  if (!res.ok) throw new Error('Failed to like blog');
-  const data = await res.json();
-  return Number(data?.count ?? 0);
+  try {
+    const url = resolveApiUrl(`/api/blog/likes`);
+    console.log(`BlogApi: ${action} for ${blogId} via ${url}`);
+    
+    const res = await fetch(url, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ blogId, action }),
+    });
+    
+    if (!res.ok) {
+      console.error(`BlogApi: Failed to ${action} for ${blogId}:`, res.status, res.statusText);
+      throw new Error('Failed to like blog');
+    }
+    
+    const data = await res.json();
+    console.log(`BlogApi: ${action} result for ${blogId}:`, data);
+    return Number(data?.count ?? 0);
+  } catch (error) {
+    console.error(`BlogApi: Error ${action} for ${blogId}:`, error);
+    throw error;
+  }
 }
 
 export type PublicComment = {

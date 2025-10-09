@@ -112,6 +112,25 @@
   --sidebar-ring: oklch(0.556 0 0);
 }
 
+/* Critical: Force WhatsApp button visibility on iPhone first fold */
+.whatsapp-button {
+  position: fixed !important;
+  bottom: 16px !important;
+  right: 16px !important;
+  z-index: 99999 !important;
+  opacity: 1 !important;
+  visibility: visible !important;
+  display: flex !important;
+  -webkit-transform: translate3d(0, 0, 0) !important;
+  transform: translate3d(0, 0, 0) !important;
+  -webkit-backface-visibility: visible !important;
+  backface-visibility: visible !important;
+  -webkit-appearance: none !important;
+  appearance: none !important;
+  will-change: transform !important;
+  isolation: isolate !important;
+}
+
 @layer base {
   * {
     @apply border-border outline-ring/50;
@@ -193,6 +212,15 @@ html, body {
   bottom: 16px !important;
   right: 16px !important;
   z-index: 9999 !important;
+  /* Force immediate visibility on iPhone */
+  opacity: 1 !important;
+  visibility: visible !important;
+  display: flex !important;
+  /* Prevent iOS Safari from hiding it */
+  -webkit-transform: translate3d(0, 0, 0) !important;
+  transform: translate3d(0, 0, 0) !important;
+  -webkit-backface-visibility: visible !important;
+  backface-visibility: visible !important;
 }
 
 /* Mobile-specific optimizations */
@@ -207,23 +235,102 @@ html, body {
 @supports (-webkit-touch-callout: none) {
   .whatsapp-button {
     position: fixed !important;
-    bottom: 16px !important;
-    right: 16px !important;
+    bottom: max(16px, env(safe-area-inset-bottom)) !important;
+    right: max(16px, env(safe-area-inset-right)) !important;
     z-index: 9999 !important;
     -webkit-transform: translateZ(0);
     transform: translateZ(0);
     -webkit-backface-visibility: hidden;
     backface-visibility: hidden;
+    -webkit-perspective: 1000px;
+    perspective: 1000px;
+    /* Ensure it's above everything */
+    will-change: transform;
+    /* Prevent iOS Safari from hiding the button */
+    -webkit-appearance: none;
+    appearance: none;
+    /* Force hardware acceleration */
+    -webkit-transform: translate3d(0, 0, 0);
+    transform: translate3d(0, 0, 0);
+    /* Force visibility on iPhone first fold */
+    opacity: 1 !important;
+    visibility: visible !important;
+    display: flex !important;
+    /* Prevent iOS Safari lazy loading issues */
+    content-visibility: visible;
+    contain: none;
+    /* Force immediate rendering */
+    -webkit-transform: translate3d(0, 0, 0) scale(1);
+    transform: translate3d(0, 0, 0) scale(1);
+    /* Ensure it's not clipped by viewport */
+    clip: auto;
+    clip-path: none;
+    /* Force layer creation */
+    isolation: isolate;
+    /* Prevent iOS Safari from optimizing it away */
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
   }
 }
 
 /* Additional mobile viewport fixes */
 @media (max-width: 480px) {
   .whatsapp-button {
-    bottom: 12px !important;
-    right: 12px !important;
+    bottom: max(12px, env(safe-area-inset-bottom)) !important;
+    right: max(12px, env(safe-area-inset-right)) !important;
     width: 48px !important;
     height: 48px !important;
+  }
+}
+
+/* iPhone X and newer safe area support */
+@supports (padding: max(0px)) {
+  .whatsapp-button {
+    bottom: max(16px, env(safe-area-inset-bottom)) !important;
+    right: max(16px, env(safe-area-inset-right)) !important;
+  }
+}
+
+/* iOS Safari specific fixes */
+@media screen and (-webkit-min-device-pixel-ratio: 2) {
+  .whatsapp-button {
+    -webkit-transform: translate3d(0, 0, 0);
+    transform: translate3d(0, 0, 0);
+    -webkit-backface-visibility: hidden;
+    backface-visibility: hidden;
+    will-change: transform;
+  }
+}
+
+/* Force WhatsApp button visibility on iPhone first fold */
+@media screen and (max-width: 768px) and (-webkit-min-device-pixel-ratio: 2) {
+  .whatsapp-button {
+    position: fixed !important;
+    bottom: max(16px, env(safe-area-inset-bottom)) !important;
+    right: max(16px, env(safe-area-inset-right)) !important;
+    z-index: 99999 !important;
+    opacity: 1 !important;
+    visibility: visible !important;
+    display: flex !important;
+    -webkit-transform: translate3d(0, 0, 0) scale(1) !important;
+    transform: translate3d(0, 0, 0) scale(1) !important;
+    -webkit-backface-visibility: visible !important;
+    backface-visibility: visible !important;
+    /* Force immediate rendering */
+    content-visibility: visible !important;
+    contain: none !important;
+    /* Prevent iOS Safari from hiding it */
+    -webkit-appearance: none !important;
+    appearance: none !important;
+    /* Force layer creation */
+    isolation: isolate !important;
+    will-change: transform !important;
+    /* Ensure it's not clipped */
+    clip: auto !important;
+    clip-path: none !important;
+    /* Force hardware acceleration */
+    -webkit-perspective: 1000px !important;
+    perspective: 1000px !important;
   }
 }
 
