@@ -1,7 +1,7 @@
 // Environment variable check utility for debugging
 export function checkSupabaseConfig() {
   const url = process.env.NEXT_PUBLIC_SUPABASE_URL;
-  const anonKey = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY;
+  const anonKey = process.env.SUPABASE_ANON_KEY;
   
   // console.log('Environment check:');
   // console.log('- NEXT_PUBLIC_SUPABASE_URL:', url ? 'Set' : 'Missing');
