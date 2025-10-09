@@ -1,6 +1,7 @@
 "use client";
 
 import React, { useEffect, useState } from "react";
+import { createPortal } from "react-dom";
 
 const WhatsAppButton: React.FC = () => {
   const [isVisible, setIsVisible] = useState(false);
@@ -36,9 +37,6 @@ const WhatsAppButton: React.FC = () => {
     // Try the wa.me format first (more reliable)
     const whatsappUrl = `https://wa.me/919990440803?text=${encodedMessage}`;
     
-    // Fallback to api.whatsapp.com if needed
-    const fallbackUrl = `https://api.whatsapp.com/send?phone=919990440803&text=${encodedMessage}`;
-    
     // Open WhatsApp with the message
     window.open(whatsappUrl, "_blank", "noopener,noreferrer");
   };
@@ -47,7 +45,7 @@ const WhatsAppButton: React.FC = () => {
     return null;
   }
 
-  return (
+  const button = (
     <button
       onClick={handleWhatsAppClick}
       className="whatsapp-button w-12 h-12 sm:w-14 sm:h-14 bg-green-500 hover:bg-green-600 active:bg-green-700 rounded-full shadow-lg transition-colors duration-300 flex items-center justify-center group touch-manipulation"
@@ -55,26 +53,17 @@ const WhatsAppButton: React.FC = () => {
         position: 'fixed',
         bottom: '16px',
         right: '16px',
-        zIndex: 9999,
-        WebkitTransform: 'translateZ(0)',
-        transform: 'translateZ(0)',
-        WebkitBackfaceVisibility: 'hidden',
-        backfaceVisibility: 'hidden',
-        WebkitPerspective: '1000px',
-        perspective: '1000px',
+        zIndex: 99999,
         // iPhone safe area support
         paddingBottom: 'env(safe-area-inset-bottom)',
         paddingRight: 'env(safe-area-inset-right)',
-        // Force visibility on iOS
+        // Ensure visibility
         opacity: 1,
         visibility: 'visible',
         display: 'flex',
         // Prevent iOS Safari from hiding the button
         WebkitAppearance: 'none',
         appearance: 'none',
-        // Force hardware acceleration
-        willChange: 'transform',
-        // Ensure it's above everything
         isolation: 'isolate',
       }}
       aria-label="Contact us on WhatsApp"
@@ -92,6 +81,8 @@ const WhatsAppButton: React.FC = () => {
       </svg>
     </button>
   );
+
+  return createPortal(button, document.body);
 };
 
 export default WhatsAppButton;
