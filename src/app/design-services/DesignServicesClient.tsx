@@ -4,7 +4,8 @@ import Footer from "@/components/Footer";
 import Image from "next/image";
 import Link from "next/link";
 import dynamic from "next/dynamic";
-import { useState } from "react";
+import { useState, useEffect } from "react";
+import { Download, DownloadCloud, Maximize2, Minimize2, ChevronLeft, ChevronRight } from "lucide-react";
 import {
   PenTool,
   Ruler,
@@ -22,6 +23,181 @@ const ContactDialog = dynamic(() => import("@/components/ContactDialog"), { ssr:
 export default function DesignServicesClient() {
   const [contactOpen, setContactOpen] = useState(false);
   const [openIndex, setOpenIndex] = useState<number | null>(null);
+  const [illustrationsOpen, setIllustrationsOpen] = useState(false);
+  const [illustrationIndex, setIllustrationIndex] = useState(0);
+  const [illustrationFullscreen, setIllustrationFullscreen] = useState(false);
+  const [zipLoading, setZipLoading] = useState(false);
+  // Prints modal state
+  const [printsOpen, setPrintsOpen] = useState(false);
+  const [printsIndex, setPrintsIndex] = useState(0);
+  const [printsFullscreen, setPrintsFullscreen] = useState(false);
+  const [printsZipLoading, setPrintsZipLoading] = useState(false);
+  // Tech pack modal state
+  const [techOpen, setTechOpen] = useState(false);
+  const [techFullscreen, setTechFullscreen] = useState(false);
+  // BOM modal state
+  const [bomOpen, setBomOpen] = useState(false);
+  const [bomFullscreen, setBomFullscreen] = useState(false);
+
+  const illustrations = [
+    { src: "/services/design/illustrations/hoodie-illustration.png", name: "hoodie-illustration.png" },
+    { src: "/services/design/illustrations/kid-garment.png", name: "kid-garment.png" },
+    { src: "/services/design/illustrations/polo-illustration.png", name: "polo-illustration.png" },
+    { src: "/services/design/illustrations/shirt-illustration.png", name: "shirt-illustration.png" },
+    { src: "/services/design/illustrations/trouser-illustration.png", name: "trouser-illustration.png" },
+    { src: "/services/design/illustrations/women-gown-illustration-black.png", name: "women-gown-illustration-black.png" },
+    { src: "/services/design/illustrations/women-gown-illustration-red.png", name: "women-gown-illustration-red.png" },
+  ];
+
+  const goPrev = () => setIllustrationIndex((i) => (i - 1 + illustrations.length) % illustrations.length);
+  const goNext = () => setIllustrationIndex((i) => (i + 1) % illustrations.length);
+  const downloadCurrent = () => {
+    const img = illustrations[illustrationIndex];
+    const a = document.createElement('a');
+    a.href = img.src;
+    a.download = img.name;
+    document.body.appendChild(a);
+    a.click();
+    a.remove();
+  };
+
+  // Minimal JSZip type to avoid any
+  interface JSZipLike { file: (name: string, data: Blob) => void; generateAsync: (opts: { type: 'blob' }) => Promise<Blob>; }
+  type JSZipCtor = new () => JSZipLike;
+
+  // Lazy-load JSZip from CDN and download all images as a single zip
+  const downloadAllAsZip = async () => {
+    try {
+      setZipLoading(true);
+      // Load JSZip if not already loaded
+      const w = window as unknown as { JSZip?: JSZipCtor };
+      if (!w.JSZip) {
+        await new Promise<void>((resolve, reject) => {
+          const script = document.createElement('script');
+          script.src = 'https://cdn.jsdelivr.net/npm/jszip@3.10.1/dist/jszip.min.js';
+          script.async = true;
+          script.onload = () => resolve();
+          script.onerror = () => reject(new Error('Failed to load JSZip'));
+          document.body.appendChild(script);
+        });
+      }
+      const w2 = window as unknown as { JSZip: JSZipCtor };
+      const zip = new w2.JSZip();
+      // Fetch each image as blob and add to the zip
+      await Promise.all(
+        illustrations.map(async (img) => {
+          const res = await fetch(img.src, { cache: 'no-cache' });
+          const blob = await res.blob();
+          zip.file(img.name, blob);
+        })
+      );
+      const blob = await zip.generateAsync({ type: 'blob' });
+      const a = document.createElement('a');
+      a.href = URL.createObjectURL(blob);
+      a.download = 'illustrations.zip';
+      document.body.appendChild(a);
+      a.click();
+      a.remove();
+      setTimeout(() => URL.revokeObjectURL(a.href), 2000);
+    } catch {
+      // Fallback: sequential downloads if zipping fails
+      illustrations.forEach((img, idx) => {
+        setTimeout(() => {
+          const a = document.createElement('a');
+          a.href = img.src;
+          a.download = img.name;
+          document.body.appendChild(a);
+          a.click();
+          a.remove();
+        }, idx * 150);
+      });
+    } finally {
+      setZipLoading(false);
+    }
+  };
+
+  // Lock page scroll when modal is open
+  useEffect(() => {
+    const original = document.body.style.overflow;
+    if (illustrationsOpen || printsOpen || techOpen || bomOpen) {
+      document.body.style.overflow = 'hidden';
+    } else {
+      document.body.style.overflow = original || '';
+    }
+    return () => {
+      document.body.style.overflow = original || '';
+    };
+  }, [illustrationsOpen, printsOpen, techOpen, bomOpen]);
+
+  // Prints images list
+  const prints = [
+    { src: "/services/design/prints/PLAID%201.png", name: "PLAID 1.png" },
+    { src: "/services/design/prints/PLAID%202.png", name: "PLAID 2.png" },
+    { src: "/services/design/prints/PRINT%201.png", name: "PRINT 1.png" },
+    { src: "/services/design/prints/PRINT%202.png", name: "PRINT 2.png" },
+    { src: "/services/design/prints/PRINT%203.png", name: "PRINT 3.png" },
+    { src: "/services/design/prints/PRINT%204.png", name: "PRINT 4.png" },
+    { src: "/services/design/prints/PRINT%206.png", name: "PRINT 6.png" },
+    { src: "/services/design/prints/PRINT%207.png", name: "PRINT 7.png" },
+    { src: "/services/design/prints/PRINT5.png", name: "PRINT5.png" },
+  ];
+  const goPrevPrint = () => setPrintsIndex((i) => (i - 1 + prints.length) % prints.length);
+  const goNextPrint = () => setPrintsIndex((i) => (i + 1) % prints.length);
+  const downloadCurrentPrint = () => {
+    const img = prints[printsIndex];
+    const a = document.createElement('a');
+    a.href = img.src;
+    a.download = img.name;
+    document.body.appendChild(a);
+    a.click();
+    a.remove();
+  };
+  const downloadAllPrintsAsZip = async () => {
+    try {
+      setPrintsZipLoading(true);
+      const w = window as unknown as { JSZip?: JSZipCtor };
+      if (!w.JSZip) {
+        await new Promise<void>((resolve, reject) => {
+          const script = document.createElement('script');
+          script.src = 'https://cdn.jsdelivr.net/npm/jszip@3.10.1/dist/jszip.min.js';
+          script.async = true;
+          script.onload = () => resolve();
+          script.onerror = () => reject(new Error('Failed to load JSZip'));
+          document.body.appendChild(script);
+        });
+      }
+      const w2 = window as unknown as { JSZip: JSZipCtor };
+      const zip = new w2.JSZip();
+      await Promise.all(
+        prints.map(async (img) => {
+          const res = await fetch(img.src, { cache: 'no-cache' });
+          const blob = await res.blob();
+          zip.file(img.name, blob);
+        })
+      );
+      const blob = await zip.generateAsync({ type: 'blob' });
+      const a = document.createElement('a');
+      a.href = URL.createObjectURL(blob);
+      a.download = 'prints.zip';
+      document.body.appendChild(a);
+      a.click();
+      a.remove();
+      setTimeout(() => URL.revokeObjectURL(a.href), 2000);
+    } catch {
+      prints.forEach((img, idx) => {
+        setTimeout(() => {
+          const a = document.createElement('a');
+          a.href = img.src;
+          a.download = img.name;
+          document.body.appendChild(a);
+          a.click();
+          a.remove();
+        }, idx * 150);
+      });
+    } finally {
+      setPrintsZipLoading(false);
+    }
+  };
 
   const why = [
     { icon: CheckCircle2, title: "Comprehensive Solutions", desc: "All your design and research needs under one roof." },
@@ -151,6 +327,14 @@ export default function DesignServicesClient() {
               <p className="mt-4 text-sm sm:text-base md:text-lg text-[#5C5C5C] leading-relaxed">
                 Every collection begins with a concept — a story that defines the mood, inspiration, and creative direction. Illustrations bring this vision to life, transforming abstract ideas into expressive visuals that guide design development. They serve as a bridge between imagination and execution, capturing silhouettes, textures, colors, and emotions before garments take form. Together, concept and illustrations establish the foundation of a fashion collection, ensuring each design is not only aesthetically compelling but also connected to a deeper narrative.
               </p>
+              <div className="mt-6">
+                <button
+                  onClick={() => { setIllustrationsOpen(true); document.body.style.overflow = 'hidden'; }}
+                  className="inline-flex items-center justify-center rounded-full border border-[#CBB49A] text-[#CBB49A] px-7 py-3.5 text-sm sm:text-base font-semibold transition-all duration-300 hover:-translate-y-0.5 hover:border-[#b7a078] hover:text-[#b7a078]"
+                >
+                  View Sample
+                </button>
+              </div>
             </div>
             
             {/* Right: Image */}
@@ -167,6 +351,142 @@ export default function DesignServicesClient() {
           </div>
         </div>
       </section>
+      {/* Illustrations Modal - Lightbox with navigation and fullscreen */}
+      {illustrationsOpen && (
+        <div className={`fixed inset-0 z-50 bg-black/60 flex items-center justify-center`}>
+          <div className="absolute inset-0" onClick={() => { setIllustrationsOpen(false); setIllustrationFullscreen(false); document.body.style.overflow = ''; }} />
+          <div className={`${illustrationFullscreen ? 'w-full h-full rounded-none' : 'w-[92%] max-w-6xl max-h-[90vh] rounded-2xl'} relative bg-white shadow-2xl overflow-hidden flex flex-col`}>
+            {/* Header simplified: title only and close icon */}
+            <div className={`flex items-center justify-between px-5 py-4 border-b border-[#EEE8F6]` }>
+              <h3 className="text-lg sm:text-xl font-semibold text-[#2D2A2E]">Concept & Illustrations – Samples</h3>
+              <button onClick={() => { setIllustrationsOpen(false); setIllustrationFullscreen(false); document.body.style.overflow = ''; }} className="text-[#2D2A2E] hover:text-[#CBB49A] text-xl leading-none">×</button>
+            </div>
+            <div className="relative flex-1 bg-white">
+              {/* Prev / Next icons */}
+              <button onClick={goPrev} className="absolute left-4 top-1/2 -translate-y-1/2 z-10 rounded-full bg-white text-[#2D2A2E] px-3 py-3 shadow">
+                <ChevronLeft className="w-5 h-5" />
+              </button>
+              <button onClick={goNext} className="absolute right-4 top-1/2 -translate-y-1/2 z-10 rounded-full bg-white text-[#2D2A2E] px-3 py-3 shadow">
+                <ChevronRight className="w-5 h-5" />
+              </button>
+              {/* Top-right action icons inside image area */}
+              <div className="absolute right-4 top-4 z-10 flex items-center gap-2">
+                <button onClick={downloadCurrent} className="rounded-full bg-white text-[#2D2A2E] p-2 shadow hover:bg-white/90" title="Download">
+                  <Download className="w-5 h-5" />
+                </button>
+                <button
+                  onClick={downloadAllAsZip}
+                  className="rounded-full bg-white text-[#2D2A2E] p-2 shadow hover:bg-white/90" title="Download all"
+                >
+                  {zipLoading ? (
+                    <span className="relative inline-flex w-5 h-5">
+                      <span className="absolute inline-flex w-5 h-5 rounded-full border-2 border-[#CBB49A] border-t-transparent animate-spin" />
+                    </span>
+                  ) : (
+                    <DownloadCloud className="w-5 h-5" />
+                  )}
+                </button>
+                <button onClick={() => setIllustrationFullscreen((v) => !v)} className="rounded-full bg-white text-[#2D2A2E] p-2 shadow hover:bg-white/90" title={illustrationFullscreen ? 'Exit full screen' : 'View full screen'}>
+                  {illustrationFullscreen ? <Minimize2 className="w-5 h-5" /> : <Maximize2 className="w-5 h-5" />}
+                </button>
+              </div>
+              <div className={`relative w-full ${illustrationFullscreen ? 'h-[calc(100vh-120px)]' : 'h-[75vh]'} bg-white`}>
+                <Image src={illustrations[illustrationIndex].src} alt={illustrations[illustrationIndex].name} fill className="object-contain" />
+              </div>
+            </div>
+            {/* Footer removed */}
+          </div>
+        </div>
+      )}
+
+      {/* Prints Modal - similar lightbox */}
+      {printsOpen && (
+        <div className={`fixed inset-0 z-50 bg-black/60 flex items-center justify-center`}>
+          <div className="absolute inset-0" onClick={() => { setPrintsOpen(false); setPrintsFullscreen(false); document.body.style.overflow = ''; }} />
+          <div className={`${printsFullscreen ? 'w-full h-full rounded-none' : 'w-[92%] max-w-6xl max-h-[90vh] rounded-2xl'} relative bg-white shadow-2xl overflow-hidden flex flex-col`}>
+            <div className={`flex items-center justify-between px-5 py-4 border-b border-[#EEE8F6]` }>
+              <h3 className="text-lg sm:text-xl font-semibold text-[#2D2A2E]">Print & Pattern – Samples</h3>
+              <button onClick={() => { setPrintsOpen(false); setPrintsFullscreen(false); document.body.style.overflow = ''; }} className="text-[#2D2A2E] hover:text-[#CBB49A] text-xl leading-none">×</button>
+            </div>
+            <div className="relative flex-1 bg-white">
+              <button onClick={goPrevPrint} className="absolute left-4 top-1/2 -translate-y-1/2 z-10 rounded-full bg-white text-[#2D2A2E] px-3 py-3 shadow">
+                <ChevronLeft className="w-5 h-5" />
+              </button>
+              <button onClick={goNextPrint} className="absolute right-4 top-1/2 -translate-y-1/2 z-10 rounded-full bg-white text-[#2D2A2E] px-3 py-3 shadow">
+                <ChevronRight className="w-5 h-5" />
+              </button>
+              <div className="absolute right-4 top-4 z-10 flex items-center gap-2">
+                <button onClick={downloadCurrentPrint} className="rounded-full bg-white text-[#2D2A2E] p-2 shadow hover:bg-white/90" title="Download">
+                  <Download className="w-5 h-5" />
+                </button>
+                <button onClick={downloadAllPrintsAsZip} className="rounded-full bg-white text-[#2D2A2E] p-2 shadow hover:bg-white/90" title="Download all">
+                  {printsZipLoading ? (
+                    <span className="relative inline-flex w-5 h-5">
+                      <span className="absolute inline-flex w-5 h-5 rounded-full border-2 border-[#CBB49A] border-t-transparent animate-spin" />
+                    </span>
+                  ) : (
+                    <DownloadCloud className="w-5 h-5" />
+                  )}
+                </button>
+                <button onClick={() => setPrintsFullscreen((v) => !v)} className="rounded-full bg-white text-[#2D2A2E] p-2 shadow hover:bg-white/90" title={printsFullscreen ? 'Exit full screen' : 'View full screen'}>
+                  {printsFullscreen ? <Minimize2 className="w-5 h-5" /> : <Maximize2 className="w-5 h-5" />}
+                </button>
+              </div>
+              <div className={`relative w-full ${printsFullscreen ? 'h-[calc(100vh-120px)]' : 'h-[75vh]'} bg-white`}>
+                <Image src={prints[printsIndex].src} alt={prints[printsIndex].name} fill className="object-contain" />
+              </div>
+            </div>
+          </div>
+        </div>
+      )}
+
+      {/* Tech Pack PDF Modal */}
+      {techOpen && (
+        <div className={`fixed inset-0 z-50 bg-black/60 flex items-center justify-center`}>
+          <div className="absolute inset-0" onClick={() => { setTechOpen(false); setTechFullscreen(false); document.body.style.overflow = ''; }} />
+          <div className={`${techFullscreen ? 'w-full h-full rounded-none' : 'w-[92%] max-w-5xl max-h-[90vh] rounded-2xl'} relative bg-white shadow-2xl overflow-hidden flex flex-col`}>
+            <div className="flex items-center justify-between px-5 py-4 border-b border-[#EEE8F6]">
+              <h3 className="text-lg sm:text-xl font-semibold text-[#2D2A2E]">Tech Pack – Preview</h3>
+              <div className="flex items-center gap-2">
+                <a href="/services/design/TECHPACK.pdf" download className="rounded-full bg-white text-[#2D2A2E] p-2 shadow hover:bg-white/90" title="Download PDF">
+                  <Download className="w-5 h-5" />
+                </a>
+                <button onClick={() => setTechFullscreen((v) => !v)} className="rounded-full bg-white text-[#2D2A2E] p-2 shadow hover:bg-white/90" title={techFullscreen ? 'Exit full screen' : 'View full screen'}>
+                  {techFullscreen ? <Minimize2 className="w-5 h-5" /> : <Maximize2 className="w-5 h-5" />}
+                </button>
+                <button onClick={() => { setTechOpen(false); setTechFullscreen(false); document.body.style.overflow = ''; }} className="text-[#2D2A2E] hover:text-[#CBB49A] text-xl leading-none">×</button>
+              </div>
+            </div>
+            <div className={`relative w-full ${techFullscreen ? 'h-[calc(100vh-120px)]' : 'h-[75vh]'} bg-white`}>
+              <iframe src="/services/design/TECHPACK.pdf#toolbar=0" title="Tech Pack PDF" className="w-full h-full" />
+            </div>
+          </div>
+        </div>
+      )}
+
+      {/* BOM PDF Modal */}
+      {bomOpen && (
+        <div className={`fixed inset-0 z-50 bg-black/60 flex items-center justify-center`}>
+          <div className="absolute inset-0" onClick={() => { setBomOpen(false); setBomFullscreen(false); document.body.style.overflow = ''; }} />
+          <div className={`${bomFullscreen ? 'w-full h-full rounded-none' : 'w-[92%] max-w-5xl max-h-[90vh] rounded-2xl'} relative bg-white shadow-2xl overflow-hidden flex flex-col`}>
+            <div className="flex items-center justify-between px-5 py-4 border-b border-[#EEE8F6]">
+              <h3 className="text-lg sm:text-xl font-semibold text-[#2D2A2E]">Bill of Materials – Preview</h3>
+              <div className="flex items-center gap-2">
+                <a href="/services/design/BOM%20template.pdf" download className="rounded-full bg-white text-[#2D2A2E] p-2 shadow hover:bg-white/90" title="Download PDF">
+                  <Download className="w-5 h-5" />
+                </a>
+                <button onClick={() => setBomFullscreen((v) => !v)} className="rounded-full bg-white text-[#2D2A2E] p-2 shadow hover:bg-white/90" title={bomFullscreen ? 'Exit full screen' : 'View full screen'}>
+                  {bomFullscreen ? <Minimize2 className="w-5 h-5" /> : <Maximize2 className="w-5 h-5" />}
+                </button>
+                <button onClick={() => { setBomOpen(false); setBomFullscreen(false); document.body.style.overflow = ''; }} className="text-[#2D2A2E] hover:text-[#CBB49A] text-xl leading-none">×</button>
+              </div>
+            </div>
+            <div className={`relative w-full ${bomFullscreen ? 'h-[calc(100vh-120px)]' : 'h-[75vh]'} bg-white`}>
+              <iframe src="/services/design/BOM%20template.pdf#toolbar=0" title="BOM Template PDF" className="w-full h-full" />
+            </div>
+          </div>
+        </div>
+      )}
 
       {/* TREND AND FORECAST RESEARCH SECTION */}
       <section className="py-16 sm:py-20 md:py-24 bg-[#FAF9F3]">
@@ -208,6 +528,15 @@ export default function DesignServicesClient() {
               <p className="mt-4 text-sm sm:text-base md:text-lg text-[#5C5C5C] leading-relaxed">
                 In the fashion industry, a well-prepared tech pack is not only a guide but also a contract of clarity — it defines expectations, maintains quality standards, and supports efficient collaboration across global supply chains. By bridging creativity with technical precision, tech packs transform design concepts into production-ready garments that align with both creative vision and commercial goals.
               </p>
+              <div className="mt-6">
+                <button
+                  onClick={() => { setTechOpen(true); document.body.style.overflow = 'hidden'; }}
+                  className="inline-flex items-center justify-center rounded-full border border-[#CBB49A] text-[#CBB49A] px-7 py-3.5 text-sm sm:text-base font-semibold transition-all duration-300 hover:-translate-y-0.5 hover:border-[#b7a078] hover:text-[#b7a078]"
+                  aria-label="View Sample Tech Pack PDF"
+                >
+                  View Sample
+                </button>
+              </div>
             </div>
 
             {/* Right: Image */}
@@ -247,6 +576,14 @@ export default function DesignServicesClient() {
               <p className="mt-4 text-sm sm:text-base md:text-lg text-[#5C5C5C] leading-relaxed">
                 Print and pattern design plays a vital role in shaping the identity of a fashion collection. Beyond fabric and form, prints tell stories, evoke emotions, and add a distinctive signature to garments. From intricate motifs to bold graphics, patterns transform simple silhouettes into statement pieces, reflecting cultural influences, seasonal moods, and artistic innovation. As a core element of fashion design, print and pattern work elevates creativity, giving depth, texture, and personality to every collection.
               </p>
+              <div className="mt-6">
+                <button
+                  onClick={() => { setPrintsOpen(true); document.body.style.overflow = 'hidden'; }}
+                  className="inline-flex items-center justify-center rounded-full border border-[#CBB49A] text-[#CBB49A] px-7 py-3.5 text-sm sm:text-base font-semibold transition-all duration-300 hover:-translate-y-0.5 hover:border-[#b7a078] hover:text-[#b7a078]"
+                >
+                  View Sample
+                </button>
+              </div>
             </div>
           </div>
         </div>
@@ -262,6 +599,15 @@ export default function DesignServicesClient() {
               <p className="mt-4 text-sm sm:text-base md:text-lg text-[#5C5C5C] leading-relaxed">
                 A Bill of Materials (BOM) of a garment is a detailed list of all the raw materials, components, and trims required to produce a specific garment style. It serves as a blueprint for manufacturers, ensuring that every element needed for production is identified in the correct quantity and specification. The BOM helps in costing, sourcing, inventory planning, and production accuracy. By clearly documenting all components, it reduces errors, ensures quality, and makes the garment manufacturing process efficient and transparent.
               </p>
+              <div className="mt-6">
+                <button
+                  onClick={() => { setBomOpen(true); document.body.style.overflow = 'hidden'; }}
+                  className="inline-flex items-center justify-center rounded-full border border-[#CBB49A] text-[#CBB49A] px-7 py-3.5 text-sm sm:text-base font-semibold transition-all duration-300 hover:-translate-y-0.5 hover:border-[#b7a078] hover:text-[#b7a078]"
+                  aria-label="View Sample Bill of Materials PDF"
+                >
+                  View Sample
+                </button>
+              </div>
             </div>
 
             {/* Right: Image */}
