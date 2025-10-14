@@ -231,7 +231,7 @@ export default function ManufacturingServicesClient() {
             {/* Right: heading + 2xN grid cards */}
             <div className="flex flex-col justify-center">
               <h2 className="text-2xl sm:text-3xl md:text-4xl font-serif font-bold text-[#2D2A2E]">Our Creative Game Plan</h2>
-              <p className="mt-3 sm:mt-4 text-sm sm:text-base md:text-lg text-[#5C5C5C] max-w-[760px]">A clear, step-by-step approach ensuring every project delivers excellence.</p>
+            <p className="mt-3 sm:mt-4 text-sm sm:text-base md:text-lg text-[#5C5C5C] max-w-[760px]">A clear, step-by-step approach ensuring every project delivers excellence.</p>
               <div className="mt-6 grid grid-cols-1 sm:grid-cols-2 gap-6">
                 {process.map((step) => {
                   const Icon = step.icon as React.ComponentType<{ className?: string }>;
@@ -283,6 +283,12 @@ export default function ManufacturingServicesClient() {
                       isLeft ? 'lg:flex-row' : 'lg:flex-row-reverse'
                     } flex-col lg:flex-row`}
                   >
+                    {/* Connecting line from circle center to card center (desktop only) */}
+                    <div className={`hidden lg:block absolute top-1/2 transform -translate-y-1/2 h-0.5 z-0 opacity-80 pointer-events-none ${
+                      isLeft 
+                        ? 'left-[20.833333%] right-1/2 bg-gradient-to-r from-[#CBB49A] to-[#D4C4A8]'
+                        : 'left-1/2 right-[20.833333%] bg-gradient-to-l from-[#CBB49A] to-[#D4C4A8]'
+                    }`}></div>
                     {/* Mobile Step Number (above card on mobile/tablet) */}
                     <div className="lg:hidden flex items-center justify-center mb-4">
                       <div className="w-12 h-12 bg-gradient-to-br from-[#CBB49A] to-[#D4C4A8] rounded-full flex items-center justify-center shadow-lg">
@@ -294,7 +300,8 @@ export default function ManufacturingServicesClient() {
                     <div className={`w-full lg:w-5/12 ${
                       isLeft ? 'lg:pr-8' : 'lg:pl-8'
                     }`}>
-                      <div className="bg-[#F8F6F2] rounded-2xl border border-[#E8E0D6] p-6 sm:p-8 shadow-[0_8px_25px_rgba(0,0,0,0.06)] hover:shadow-[0_12px_35px_rgba(0,0,0,0.08)] transition-all duration-300 hover:-translate-y-1">
+                      <div className="relative z-10 bg-[#F8F6F2] rounded-2xl border border-[#E8E0D6] p-6 sm:p-8 shadow-[0_8px_25px_rgba(0,0,0,0.06)] hover:shadow-[0_12px_35px_rgba(0,0,0,0.08)] transition-all duration-300 hover:-translate-y-1">
+                        
                         <div className="flex items-start gap-4">
                           <div className="flex-shrink-0">
                             <div className="w-24 h-24 rounded-full overflow-hidden shadow-sm">
@@ -326,7 +333,7 @@ export default function ManufacturingServicesClient() {
 
                     {/* Central Step Number */}
                     <div className="hidden lg:flex items-center justify-center w-2/12">
-                      <div className="w-16 h-16 bg-gradient-to-br from-[#CBB49A] to-[#D4C4A8] rounded-full flex items-center justify-center shadow-lg border-4 border-[#F8F6F2] z-10">
+                      <div className="w-16 h-16 bg-gradient-to-br from-[#CBB49A] to-[#D4C4A8] rounded-full flex items-center justify-center shadow-lg border-4 border-[#F8F6F2] z-20">
                         <span className="text-white font-bold text-lg">{step.number}</span>
                       </div>
                     </div>
@@ -345,8 +352,8 @@ export default function ManufacturingServicesClient() {
       <section className="relative bg-white py-12 sm:py-16 md:py-20">
         <div className="min-w-[80%] xl:max-w-[75%] 2xl:max-w-[70%] mx-auto px-4 sm:px-6 lg:px-12 xl:px-16">
           <div className="text-center">
-            <h2 className="text-2xl sm:text-3xl md:text-4xl font-serif font-bold text-[#2D2A2E]">Creative Journeys We’ve Brought to Life</h2>
-            <p className="mt-2 text-sm sm:text-base text-[#5C5C5C]">From concept to collection — explore the brands we’ve helped shine in the fashion world.</p>
+            <h2 className="text-2xl sm:text-3xl md:text-4xl font-serif font-bold text-[#2D2A2E]">Creative Journeys We&apos;ve Brought to Life</h2>
+            <p className="mt-2 text-sm sm:text-base text-[#5C5C5C]">From concept to collection — explore the brands we&apos;ve helped shine in the fashion world.</p>
           </div>
           <div className="mt-8">
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
@@ -499,4 +506,9 @@ export default function ManufacturingServicesClient() {
     </main>
   );
 }
+
+
+
+
+
 
