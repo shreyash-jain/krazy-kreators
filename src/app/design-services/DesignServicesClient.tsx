@@ -448,7 +448,7 @@ export default function DesignServicesClient() {
             <div className="flex items-center justify-between px-5 py-4 border-b border-[#EEE8F6]">
               <h3 className="text-lg sm:text-xl font-semibold text-[#2D2A2E]">Tech Pack – Preview</h3>
               <div className="flex items-center gap-2">
-                <a href="/services/design/TECHPACK.pdf" download className="rounded-full bg-white text-[#2D2A2E] p-2 shadow hover:bg-white/90" title="Download PDF">
+                <a href="/services/design/Techpack .pdf" download className="rounded-full bg-white text-[#2D2A2E] p-2 shadow hover:bg-white/90" title="Download PDF">
                   <Download className="w-5 h-5" />
                 </a>
                 <button onClick={() => setTechFullscreen((v) => !v)} className="rounded-full bg-white text-[#2D2A2E] p-2 shadow hover:bg-white/90" title={techFullscreen ? 'Exit full screen' : 'View full screen'}>
@@ -458,7 +458,7 @@ export default function DesignServicesClient() {
               </div>
             </div>
             <div className={`relative w-full ${techFullscreen ? 'h-[calc(100vh-120px)]' : 'h-[75vh]'} bg-white`}>
-              <iframe src="/services/design/TECHPACK.pdf#toolbar=0" title="Tech Pack PDF" className="w-full h-full" />
+              <iframe src="/services/design/Techpack .pdf#toolbar=0" title="Tech Pack PDF" className="w-full h-full" />
             </div>
           </div>
         </div>

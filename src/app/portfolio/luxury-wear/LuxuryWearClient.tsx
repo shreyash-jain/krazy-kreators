@@ -7,10 +7,17 @@ import ContactDialog from "@/components/ContactDialog";
 import Footer from "@/components/Footer";
 import Image from "next/image";
 import Link from "next/link";
+import { usePortfolioSync } from "@/lib/PortfolioSyncContext";
+import ImageModal from "@/components/ImageModal";
 
 export default function LuxuryWearClient() {
   const [activeFilter, setActiveFilter] = useState("all");
   const [contactOpen, setContactOpen] = useState(false);
+  const [imageModalOpen, setImageModalOpen] = useState(false);
+  const [modalImages, setModalImages] = useState<string[]>([]);
+  const [modalCurrentIndex, setModalCurrentIndex] = useState(0);
+  const [modalProductName, setModalProductName] = useState("");
+  const [modalCategoryName, setModalCategoryName] = useState("");
 
   // Filter categories
   const filterCategories = [
@@ -260,7 +267,7 @@ export default function LuxuryWearClient() {
       category: "abaya",
       name: "Premium Silk Abaya",
       brandName: "Badria Al Shihhi",
-      brandLogo: "/brands/badri-al-shihhi.png",
+      brandLogo: "/brands/badria-al-shihhi-logo.png",
       images: [
         "/portfolio/luxury-wear/abaya/2_1.webp",
         "/portfolio/luxury-wear/abaya/2_2.webp",
@@ -272,7 +279,7 @@ export default function LuxuryWearClient() {
       category: "abaya",
       name: "Designer Modern Abaya",
       brandName: "Badria Al Shihhi",
-      brandLogo: "/brands/badri-al-shihhi.png",
+      brandLogo: "/brands/badria-al-shihhi-logo.png",
       images: [
         "/portfolio/luxury-wear/abaya/3_1.webp",
         "/portfolio/luxury-wear/abaya/3_2.webp",
@@ -284,7 +291,7 @@ export default function LuxuryWearClient() {
       category: "abaya",
       name: "Elegant Traditional Abaya",
       brandName: "Badria Al Shihhi",
-      brandLogo: "/brands/badri-al-shihhi.png",
+      brandLogo: "/brands/badria-al-shihhi-logo.png",
       images: [
         "/portfolio/luxury-wear/abaya/4_1.webp",
         "/portfolio/luxury-wear/abaya/4_2.webp",
@@ -296,7 +303,7 @@ export default function LuxuryWearClient() {
       category: "abaya",
       name: "Luxury Evening Abaya",
       brandName: "Badria Al Shihhi",
-      brandLogo: "/brands/badri-al-shihhi.png",
+      brandLogo: "/brands/badria-al-shihhi-logo.png",
       images: [
         "/portfolio/luxury-wear/abaya/5_1.webp",
         "/portfolio/luxury-wear/abaya/5_2.webp",
@@ -308,7 +315,7 @@ export default function LuxuryWearClient() {
       category: "abaya",
       name: "Premium Casual Abaya",
       brandName: "Badria Al Shihhi",
-      brandLogo: "/brands/badri-al-shihhi.png",
+      brandLogo: "/brands/badria-al-shihhi-logo.png",
       images: [
         "/portfolio/luxury-wear/abaya/6_1.webp",
         "/portfolio/luxury-wear/abaya/6_2.webp",
@@ -320,7 +327,7 @@ export default function LuxuryWearClient() {
       category: "abaya",
       name: "Designer Formal Abaya",
       brandName: "Badria Al Shihhi",
-      brandLogo: "/brands/badri-al-shihhi.png",
+      brandLogo: "/brands/badria-al-shihhi-logo.png",
       images: [
         "/portfolio/luxury-wear/abaya/7_1.webp",
         "/portfolio/luxury-wear/abaya/7_2.webp",
@@ -332,7 +339,7 @@ export default function LuxuryWearClient() {
       category: "abaya",
       name: "Elegant Wedding Abaya",
       brandName: "Badria Al Shihhi",
-      brandLogo: "/brands/badri-al-shihhi.png",
+      brandLogo: "/brands/badria-al-shihhi-logo.png",
       images: [
         "/portfolio/luxury-wear/abaya/8_1.webp",
         "/portfolio/luxury-wear/abaya/8_2.webp",
@@ -344,7 +351,7 @@ export default function LuxuryWearClient() {
       category: "abaya",
       name: "Luxury Party Abaya",
       brandName: "Badria Al Shihhi",
-      brandLogo: "/brands/badri-al-shihhi.png",
+      brandLogo: "/brands/badria-al-shihhi-logo.png",
       images: [
         "/portfolio/luxury-wear/abaya/9_1.webp",
         "/portfolio/luxury-wear/abaya/9_2.webp",
@@ -356,7 +363,7 @@ export default function LuxuryWearClient() {
       category: "abaya",
       name: "Premium Business Abaya",
       brandName: "Badria Al Shihhi",
-      brandLogo: "/brands/badri-al-shihhi.png",
+      brandLogo: "/brands/badria-al-shihhi-logo.png",
       images: [
         "/portfolio/luxury-wear/abaya/10_1.webp",
         "/portfolio/luxury-wear/abaya/10_2.webp",
@@ -368,7 +375,7 @@ export default function LuxuryWearClient() {
       category: "abaya",
       name: "Designer Weekend Abaya",
       brandName: "Badria Al Shihhi",
-      brandLogo: "/brands/badri-al-shihhi.png",
+      brandLogo: "/brands/badria-al-shihhi-logo.png",
       images: [
         "/portfolio/luxury-wear/abaya/11_1.webp",
         "/portfolio/luxury-wear/abaya/11_2.webp",
@@ -380,7 +387,7 @@ export default function LuxuryWearClient() {
       category: "abaya",
       name: "Elegant Special Occasion Abaya",
       brandName: "Badria Al Shihhi",
-      brandLogo: "/brands/badri-al-shihhi.png",
+      brandLogo: "/brands/badria-al-shihhi-logo.png",
       images: [
         "/portfolio/luxury-wear/abaya/12_1.webp",
         "/portfolio/luxury-wear/abaya/12_2.webp",
@@ -392,7 +399,7 @@ export default function LuxuryWearClient() {
       category: "abaya",
       name: "Luxury Holiday Abaya",
       brandName: "Badria Al Shihhi",
-      brandLogo: "/brands/badri-al-shihhi.png",
+      brandLogo: "/brands/badria-al-shihhi-logo.png",
       images: [
         "/portfolio/luxury-wear/abaya/13_1.webp",
         "/portfolio/luxury-wear/abaya/13_2.webp",
@@ -404,7 +411,7 @@ export default function LuxuryWearClient() {
       category: "abaya",
       name: "Premium Evening Abaya",
       brandName: "Badria Al Shihhi",
-      brandLogo: "/brands/badri-al-shihhi.png",
+      brandLogo: "/brands/badria-al-shihhi-logo.png",
       images: [
         "/portfolio/luxury-wear/abaya/14_1.webp",
         "/portfolio/luxury-wear/abaya/14_2.webp",
@@ -416,7 +423,7 @@ export default function LuxuryWearClient() {
       category: "abaya",
       name: "Designer Classic Abaya",
       brandName: "Badria Al Shihhi",
-      brandLogo: "/brands/badri-al-shihhi.png",
+      brandLogo: "/brands/badria-al-shihhi-logo.png",
       images: [
         "/portfolio/luxury-wear/abaya/15_1.webp",
         "/portfolio/luxury-wear/abaya/15_2.webp",
@@ -428,7 +435,7 @@ export default function LuxuryWearClient() {
       category: "abaya",
       name: "Elegant Modern Abaya",
       brandName: "Badria Al Shihhi",
-      brandLogo: "/brands/badri-al-shihhi.png",
+      brandLogo: "/brands/badria-al-shihhi-logo.png",
       images: [
         "/portfolio/luxury-wear/abaya/16_1.webp",
         "/portfolio/luxury-wear/abaya/16_2.webp",
@@ -440,7 +447,7 @@ export default function LuxuryWearClient() {
       category: "abaya",
       name: "Luxury Contemporary Abaya",
       brandName: "Badria Al Shihhi",
-      brandLogo: "/brands/badri-al-shihhi.png",
+      brandLogo: "/brands/badria-al-shihhi-logo.png",
       images: [
         "/portfolio/luxury-wear/abaya/17_1.webp",
         "/portfolio/luxury-wear/abaya/17_2.webp",
@@ -452,7 +459,7 @@ export default function LuxuryWearClient() {
       category: "abaya",
       name: "Premium Traditional Abaya",
       brandName: "Badria Al Shihhi",
-      brandLogo: "/brands/badri-al-shihhi.png",
+      brandLogo: "/brands/badria-al-shihhi-logo.png",
       images: [
         "/portfolio/luxury-wear/abaya/18_1.webp",
         "/portfolio/luxury-wear/abaya/18_2.webp",
@@ -464,7 +471,7 @@ export default function LuxuryWearClient() {
       category: "abaya",
       name: "Designer Festive Abaya",
       brandName: "Badria Al Shihhi",
-      brandLogo: "/brands/badri-al-shihhi.png",
+      brandLogo: "/brands/badria-al-shihhi-logo.png",
       images: [
         "/portfolio/luxury-wear/abaya/19_1.webp",
         "/portfolio/luxury-wear/abaya/19_2.webp",
@@ -489,20 +496,27 @@ export default function LuxuryWearClient() {
     ? portfolioProducts 
     : portfolioProducts.filter(product => product.category === activeFilter);
 
+  // Function to open image modal
+  const openImageModal = (images: string[], currentIndex: number, productName: string, categoryName: string) => {
+    setModalImages(images);
+    setModalCurrentIndex(currentIndex);
+    setModalProductName(productName);
+    setModalCategoryName(categoryName);
+    setImageModalOpen(true);
+  };
+
   // ProductCard component
   const ProductCard = ({ product }: { product: { images: string[]; brandName: string; category: string; brandLogo?: string; name: string } }) => {
     const [currentImageIndex, setCurrentImageIndex] = useState(0);
+    const [isHovered, setIsHovered] = useState(false);
+    const { globalImageIndex } = usePortfolioSync();
 
-    // Auto-advance internal carousel every 4 seconds
+    // Sync with global index when not hovered
     useEffect(() => {
-      if (product.images.length <= 1) return;
-      
-      const interval = setInterval(() => {
-        setCurrentImageIndex(prev => (prev + 1) % product.images.length);
-      }, 4000);
-      
-      return () => clearInterval(interval);
-    }, [product.images.length]);
+      if (!isHovered && product.images.length > 1) {
+        setCurrentImageIndex(globalImageIndex % product.images.length);
+      }
+    }, [globalImageIndex, isHovered, product.images.length]);
 
     // Manual navigation for internal carousel
     const nextImage = () => {
@@ -520,8 +534,15 @@ export default function LuxuryWearClient() {
     };
 
     return (
-      <div className="group bg-white rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-300 overflow-hidden hover:scale-105">
-        <div className="relative h-96 sm:h-[28rem] md:h-[30rem] lg:h-[26rem] overflow-hidden transform -skew-y-1">
+      <div 
+        className="group bg-white rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-300 overflow-hidden hover:scale-105"
+        onMouseEnter={() => setIsHovered(true)}
+        onMouseLeave={() => setIsHovered(false)}
+      >
+        <div 
+          className="relative h-96 sm:h-[28rem] md:h-[30rem] lg:h-[26rem] overflow-hidden transform -skew-y-1 cursor-pointer"
+          onClick={() => openImageModal(product.images, currentImageIndex, product.name, filterCategories.find(cat => cat.id === product.category)?.name || product.name)}
+        >
           {/* Image Carousel */}
           <div className="relative w-full h-full">
             <div 
@@ -614,8 +635,8 @@ export default function LuxuryWearClient() {
               <Image
                 src={product.brandLogo}
                 alt={`${product.brandName} Logo`}
-                width={product.brandLogo === "/brands/badri-al-shihhi.png" ? 48 : 32}
-                height={product.brandLogo === "/brands/badri-al-shihhi.png" ? 48 : 32}
+                width={product.brandLogo === "/brands/badria-al-shihhi-logo.png" ? 48 : 32}
+                height={product.brandLogo === "/brands/badria-al-shihhi-logo.png" ? 48 : 32}
                 className="object-contain"
                 style={{
                   WebkitTransform: 'translateZ(0)',
@@ -887,6 +908,15 @@ export default function LuxuryWearClient() {
       </section>
 
       <ContactDialog open={contactOpen} onClose={() => setContactOpen(false)} />
+      <ImageModal
+        isOpen={imageModalOpen}
+        onClose={() => setImageModalOpen(false)}
+        images={modalImages}
+        currentIndex={modalCurrentIndex}
+        onIndexChange={setModalCurrentIndex}
+        productName={modalProductName}
+        categoryName={modalCategoryName}
+      />
       <Footer />
     </div>
   );

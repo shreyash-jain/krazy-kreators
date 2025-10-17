@@ -5,6 +5,7 @@ import "./globals.css";
 import Navbar from "@/components/Navbar";
 import WhatsAppButton from "@/components/WhatsAppButton";
 import Head from "./head";
+import { PortfolioSyncProvider } from "@/lib/PortfolioSyncContext";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -107,10 +108,12 @@ export default function RootLayout({
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(localBusinessJsonLd) }}
         />
-        <Navbar />
-        {children}
-        <WhatsAppButton />
-        {/* <BottomNav /> */}
+        <PortfolioSyncProvider>
+          <Navbar />
+          {children}
+          <WhatsAppButton />
+          {/* <BottomNav /> */}
+        </PortfolioSyncProvider>
       </body>
     </html>
   );
