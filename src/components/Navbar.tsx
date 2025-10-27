@@ -1,0 +1,350 @@
+"use client";
+
+import { Button } from "@/components/ui/button";
+import {
+    Menu,
+    Palette,
+    Factory,
+    Infinity,
+    FolderKanban,
+    // Newspaper,
+    Building2,
+    BadgeDollarSign,
+    Phone,
+    ChevronDown,
+} from "lucide-react";
+import { useState, useEffect } from "react";
+import { usePathname } from "next/navigation";
+import Link from "next/link";
+import dynamic from "next/dynamic";
+const ContactDialog = dynamic(() => import("./ContactDialog"), { ssr: false });
+// Blogs and Resources are not in the menu items as i want to reuse it on our next build
+// const menuItems = ["Solutions", "Portfolio", "Blogs", "Resources", "Company"] as const;
+const menuItems = ["Solutions", "Portfolio", "Case Studies", "Blogs", "Company"] as const;
+type TopTab = typeof menuItems[number];
+
+// Inline flower icon for embroidery tab
+const FlowerIcon: React.FC<{ className?: string }> = ({ className }) => (
+	<svg
+		className={className}
+		xmlns="http://www.w3.org/2000/svg"
+		viewBox="0 0 24 24"
+		fill="none"
+		stroke="currentColor"
+		strokeWidth="2"
+		strokeLinecap="round"
+		strokeLinejoin="round"
+	>
+		<circle cx="12" cy="12" r="3"/>
+		<path d="M12 16.5A4.5 4.5 0 1 1 7.5 12 4.5 4.5 0 1 1 12 7.5a4.5 4.5 0 1 1 4.5 4.5 4.5 4.5 0 1 1-4.5 4.5"/>
+		<path d="M12 7.5V9"/>
+		<path d="M7.5 12H9"/>
+		<path d="M16.5 12H15"/>
+		<path d="M12 16.5V15"/>
+		<path d="m8 8 1.88 1.88"/>
+		<path d="M14.12 9.88 16 8"/>
+		<path d="m8 16 1.88-1.88"/>
+		<path d="M14.12 14.12 16 16"/>
+	</svg>
+);
+
+const megaContent: Record<TopTab, { title: string; desc: string; href: string; icon: React.ComponentType<{ className?: string }> }[]> = {
+	Solutions: [
+		{ title: "Design Services", desc: "Concepts, prints, and garment design", href: "/design-services", icon: Palette },
+		{ title: "Manufacturing Services", desc: "Sampling to bulk production", href: "/manufacturing-services", icon: Factory },
+		{ title: "End‑to‑End Services", desc: "From tech packs to delivery", href: "/end-to-end-services", icon: Infinity },
+		{ title: "Embriodery", desc: "Hand embroidery craftsmanship & detailing", href: "/hand-embroidery", icon: FlowerIcon },
+		{ title: "Prints", desc: "Custom print designs and patterns", href: "/prints", icon: Palette },
+		{ title: "Enterprise", desc: "Large-scale business solutions", href: "/enterprise", icon: Building2 },
+
+	],
+	Portfolio: [
+		{ title: "Mens Streetwear", desc: "Casual and embroidered shirts", href: "/portfolio/mens-streetwear", icon: FolderKanban },
+		{ title: "Mens Wear", desc: "Premium menswear collection", href: "/portfolio/mens-wear", icon: FolderKanban },
+		{ title: "Luxury Wear", desc: "High-end fashion pieces", href: "/portfolio/luxury-wear", icon: FolderKanban },
+		{ title: "Resort Wear", desc: "Vacation and resort fashion", href: "/portfolio/resort-wear", icon: FolderKanban },
+		{ title: "Loungewear", desc: "Comfortable everyday wear", href: "/portfolio/loungewear", icon: FolderKanban },
+		{ title: "Accessories", desc: "Fashion accessories and details", href: "/portfolio/accessories", icon: FolderKanban },
+	],
+	"Case Studies": [
+		{ title: "Drover Cowboy Threads", desc: "Modern westernwear case study", href: "/case-studies/drover", icon: FolderKanban },
+		{ title: "Tilted Lotus", desc: "Premium apparel brand", href: "/case-studies/tilted-lotus", icon: FolderKanban },
+		{ title: "Las Loungewear", desc: "Comfort-first everyday wear", href: "/case-studies/las", icon: FolderKanban },
+		{ title: "HY Official", desc: "Lifestyle essentials", href: "/case-studies/hy-official", icon: FolderKanban },
+		{ title: "Badria Al Shihhi", desc: "Label development & rollout", href: "/case-studies/badri-al-shihhi", icon: FolderKanban },
+	],
+	Blogs: [
+		{ title: "All Blogs", desc: "Latest insights and updates", href: "/blogs", icon: FolderKanban },
+	],
+	Company: [
+		{ title: "About Us", desc: "Story, vision, and team", href: "/about", icon: Building2 },
+		{ title: "Pricing", desc: "Transparent retainers & custom packs", href: "/pricing", icon: BadgeDollarSign },
+		{ title: "Contact", desc: "Talk to the team", href: "/contact", icon: Phone },
+	],
+};
+
+interface NavbarProps {
+	invertTabs?: boolean;
+}
+
+export default function Navbar({ invertTabs: forceInvertTabs }: NavbarProps = {}) {
+	const [open, setOpen] = useState(false);
+	const [scrolled, setScrolled] = useState(false);
+	const [activeTab, setActiveTab] = useState<TopTab | null>(null);
+	const [heroInView, setHeroInView] = useState(false);
+	const [contactOpen, setContactOpen] = useState(false);
+	const [isHoveringMegaMenu, setIsHoveringMegaMenu] = useState(false);
+	const pathname = usePathname();
+	const isDroverPage = pathname === "/case-studies/drover";
+	const isTiltedLotusPage = pathname === "/case-studies/tilted-lotus";
+	const isLasPage = pathname === "/case-studies/las";
+	const isHYOfficialPage = pathname === "/case-studies/hy-official";
+	const isBadriAlShihhiPage = pathname === "/case-studies/badri-al-shihhi";
+
+	// Add timeout for hiding mega menu
+	const [hideTimeout, setHideTimeout] = useState<NodeJS.Timeout | null>(null);
+
+	const handleTabEnter = (tab: TopTab) => {
+		if (hideTimeout) {
+			clearTimeout(hideTimeout);
+			setHideTimeout(null);
+		}
+		setActiveTab(tab);
+	};
+
+	const handleTabLeave = () => {
+		const timeout = setTimeout(() => {
+			if (!isHoveringMegaMenu) {
+				setActiveTab(null);
+			}
+		}, 150); // 150ms delay
+		setHideTimeout(timeout);
+	};
+
+	const handleMegaMenuEnter = () => {
+		if (hideTimeout) {
+			clearTimeout(hideTimeout);
+			setHideTimeout(null);
+		}
+		setIsHoveringMegaMenu(true);
+	};
+
+	const handleMegaMenuLeave = () => {
+		setIsHoveringMegaMenu(false);
+		const timeout = setTimeout(() => {
+			setActiveTab(null);
+		}, 150); // 150ms delay
+		setHideTimeout(timeout);
+	};
+
+	useEffect(() => {
+		const onScroll = () => {
+			setScrolled(window.scrollY > 20);
+		};
+		window.addEventListener("scroll", onScroll);
+		return () => window.removeEventListener("scroll", onScroll);
+	}, []);
+
+	// Cleanup timeout on unmount
+	useEffect(() => {
+		return () => {
+			if (hideTimeout) {
+				clearTimeout(hideTimeout);
+			}
+		};
+	}, [hideTimeout]);
+
+	// Detect dark hero sections to invert tab colors when at top
+	useEffect(() => {
+		const el = document.querySelector<HTMLElement>(".kk-hero-dark");
+		if (!el) return;
+		const io = new IntersectionObserver(
+			(entries) => {
+				const [entry] = entries;
+				setHeroInView(entry.isIntersecting);
+			},
+			{ root: null, threshold: 0.1 }
+		);
+		io.observe(el);
+		return () => io.disconnect();
+	}, []);
+
+	const invertTabs = forceInvertTabs || (isDroverPage && !scrolled) || (isTiltedLotusPage && !scrolled) || (isLasPage && !scrolled) || (isHYOfficialPage && !scrolled) || (isBadriAlShihhiPage && !scrolled) || (heroInView && !scrolled);
+
+	return (
+		<>
+		<nav
+			className={`w-full fixed top-0 left-0 z-30 transition-all duration-300 ${
+				scrolled
+					? "bg-white border-b border-[#e2d6f0] shadow-md"
+					: isDroverPage || isTiltedLotusPage || isLasPage || isHYOfficialPage || isBadriAlShihhiPage
+						? "bg-transparent border-none shadow-none"
+						: "bg-transparent border-none shadow-none"
+			}`}
+		>
+			<div className="min-w-[80%] lg:max-w-[80%] mx-auto flex items-center justify-between py-4 px-4 md:px-6 lg:px-0">
+				{/* Logo and Company Name */}
+				<div className="flex items-center gap-3">
+					<Link href="/" className="block">
+						<img
+							src="/brands/Logo.svg"
+							alt="Krazy Kreators"
+							className="h-10 w-auto opacity-90 hover:opacity-100 transition-opacity duration-300"
+						/>
+					</Link>
+					<Link href="/" className="block">
+						<span
+							className={`font-serif font-bold text-xl transition-colors hover:opacity-80 ${invertTabs ? "text-white" : "text-[#2D2A2E]"}`}
+						>
+							Krazy Kreators
+						</span>
+					</Link>
+				</div>
+				{/* Desktop Menu */}
+				<ul className="hidden lg:flex gap-6 xl:gap-8 ml-8 lg:ml-12 text-sm lg:text-base font-medium">
+					{menuItems.map((tab) => {
+						const items = megaContent[tab];
+						const hasDropdown = items.length > 1;
+						const baseCls = invertTabs ? "text-white hover:text-white/80" : "text-[#2D2A2E] hover:text-[#CBB49A]";
+						return (
+							<li key={tab} className="relative">
+								{hasDropdown ? (
+									<button
+										onMouseEnter={() => handleTabEnter(tab)}
+										onMouseLeave={handleTabLeave}
+										className={`flex items-center gap-1 ${baseCls}`}
+									>
+										<span style={{ color: "inherit" }}>{tab}</span>
+										<ChevronDown className="w-4 h-4" />
+									</button>
+								) : (
+									<a href={items[0].href} className={baseCls}>{tab}</a>
+								)}
+							</li>
+						);
+					})}
+				</ul>
+				{/* Right Buttons */}
+				<div className="hidden lg:flex gap-3 items-center">
+					<Button
+						className={`rounded-full transition-all duration-300 ${
+							invertTabs
+								? "bg-white/20 backdrop-blur-sm text-white hover:bg-white/30 border border-white/50"
+								: "bg-[#CBB49A] text-white hover:bg-[#b7a078] transform hover:scale-105"
+						}`}
+						onClick={() => setContactOpen(true)}
+					>
+						Get In Touch
+					</Button>
+				</div>
+				{/* Tablet Menu - Show hamburger on tablets */}
+				<div className="hidden md:flex lg:hidden items-center gap-4">
+					<Button
+						className={`rounded-full transition-all duration-300 ${
+							invertTabs
+								? "bg-white/20 backdrop-blur-sm text-white hover:bg-white/30 border border-white/50"
+								: "bg-[#CBB49A] text-white hover:bg-[#b7a078] transform hover:scale-105"
+						}`}
+						onClick={() => setContactOpen(true)}
+					>
+						Get In Touch
+					</Button>
+					<Menu
+						className={`w-7 h-7 ${invertTabs ? "text-white" : "text-[#2D2A2E]"}`}
+						onClick={() => setOpen(true)}
+					/>
+				</div>
+
+				{/* Mobile Hamburger */}
+				<div className="md:hidden flex items-center">
+					<Menu
+						className={`w-7 h-7 ${invertTabs ? "text-white" : "text-[#2D2A2E]"}`}
+						onClick={() => setOpen(true)}
+					/>
+				</div>
+			</div>
+
+			{/* Desktop Mega Menu */}
+			{activeTab && megaContent[activeTab].length > 1 && (
+				<div 
+					className="hidden lg:block absolute left-1/2 -translate-x-1/2 top-full mt-2 w-[min(90vw,1000px)] xl:w-[min(92vw,1100px)]"
+					onMouseEnter={handleMegaMenuEnter}
+					onMouseLeave={handleMegaMenuLeave}
+				>
+					{/* Invisible bridge to prevent gap issues */}
+					<div className="absolute -top-2 left-0 right-0 h-2 bg-transparent"></div>
+					<div className="rounded-2xl border border-[#EEE8F6] bg-white/95 backdrop-blur shadow-xl p-4 lg:p-5 xl:p-6">
+						<div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3 lg:gap-4">
+							{megaContent[activeTab].map((it) => {
+								const Icon = it.icon;
+								return (
+									<a key={it.title} href={it.href} className="group flex items-start gap-4 rounded-lg px-4 py-3 hover:bg-[#F8F7F4] transition-colors" onClick={() => console.log('Clicked:', it.title, it.href)}>
+										<span className="mt-0.5 inline-flex h-10 w-10 items-center justify-center rounded-lg bg-[#6BA292]/10 text-[#6BA292]">
+											<Icon className="w-4 h-4" />
+										</span>
+										<span className="flex-1 space-y-1">
+											<span className="block font-semibold text-[#2D2A2E]">{it.title}</span>
+											<span className="block text-sm text-[#5C5C5C]">{it.desc}</span>
+										</span>
+									</a>
+								);
+							})}
+						</div>
+					</div>
+				</div>
+			)}
+
+			{/* Mobile Drawer */}
+			{open && (
+				<div className="fixed inset-0 z-40 flex justify-end">
+					<div className="absolute h-screen inset-0 bg-black/30" onClick={() => setOpen(false)} />
+					<div className="relative w-[80%] md:w-[60%] lg:w-[50%] bg-[#F5F0E8] h-screen shadow-lg flex flex-col animate-slide-in">
+						{/* Header with close button */}
+						<div className="flex-shrink-0 p-6 pb-4">
+							<button className="self-end" onClick={() => setOpen(false)}>
+								<span className="text-2xl">&times;</span>
+							</button>
+						</div>
+						
+						{/* Scrollable content */}
+						<div className="flex-1 overflow-y-auto px-6 pb-6">
+							<div className="space-y-6">
+								{menuItems.map((tab) => (
+									<div key={tab} className="mb-4">
+										<div className="text-sm font-semibold text-[#2D2A2E] mb-2">{tab}</div>
+										<ul className="flex flex-col gap-3">
+											{megaContent[tab].map((it) => {
+												const Icon = it.icon;
+												return (
+													<li key={it.title}>
+														<a href={it.href} className="flex items-start gap-4 rounded-lg p-4 hover:bg-white/60 text-[#2D2A2E]" onClick={() => { setOpen(false); console.log('Mobile clicked:', it.title, it.href); }}>
+															<span className="mt-0.5 inline-flex h-9 w-9 items-center justify-center rounded-md bg-[#6BA292]/10 text-[#6BA292]">
+																<Icon className="w-4 h-4" />
+															</span>
+															<span className="flex-1 space-y-0.5">
+																<span className="block text-sm font-medium">{it.title}</span>
+																<span className="block text-xs text-[#4B4652]">{it.desc}</span>
+															</span>
+														</a>
+													</li>
+												);
+											})}
+										</ul>
+									</div>
+								))}
+							</div>
+						</div>
+						
+						{/* Footer with CTA button */}
+						<div className="flex-shrink-0 p-6 pt-4 border-t border-[#D4CCE8]">
+							<Button className="w-full rounded-full bg-[#CBB49A] text-white px-5 py-2 hover:bg-[#b7a078] transition-all duration-300" onClick={() => setContactOpen(true)}>Get In Touch</Button>
+						</div>
+					</div>
+				</div>
+			)}
+		</nav>
+		{/* Contact dialog */}
+		<ContactDialog open={contactOpen} onClose={() => setContactOpen(false)} />
+		</>
+	);
+} 
