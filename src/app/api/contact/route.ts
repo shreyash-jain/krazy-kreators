@@ -1,0 +1,182 @@
+export const runtime = 'edge';
+export const dynamic = 'force-dynamic';
+
+import { NextResponse } from "next/server";
+import { getSupabaseClient } from "@/lib/supabaseClient";
+import { Resend } from "resend";
+
+type ContactPayload = {
+  fullName: string;
+  email: string;
+  phone: string;
+  company: string;
+  address?: string;
+  country: string;
+  services: string;
+  message?: string;
+  selectedPlan?: {
+    name: string;
+    price: string;
+    type: "retainer" | "custom";
+  } | null;
+};
+
+function createEmailHtml(data: ContactPayload): string {
+  const { fullName, email, phone, company, address, country, services, message, selectedPlan } = data;
+  const planSection = selectedPlan
+    ? `<tr><td style="padding:8px 0; font-weight:600;">Selected Plan</td><td style="padding:8px 0;">${selectedPlan.name} (${selectedPlan.type}) - ${selectedPlan.price}</td></tr>`
+    : "";
+  const addressRow = address ? `<tr><td style=\"padding:8px 0; font-weight:600;\">Address</td><td style=\"padding:8px 0;\">${address}</td></tr>` : "";
+  const messageBlock = message
+    ? `<tr><td colspan=\"2\" style=\"padding-top:16px;\"><div style=\"font-weight:600; margin-bottom:6px;\">Message</div><div style=\"white-space:pre-wrap;\">${message}</div></td></tr>`
+    : "";
+
+  return `
+  <div style="font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial,sans-serif;color:#1f2937;">
+    <h2 style="margin:0 0 12px;">New Contact Form Submission</h2>
+    <p style="margin:0 0 16px; color:#6b7280;">You received a new inquiry from your website contact form.</p>
+    <table style="width:100%; border-collapse:collapse;">
+      <tbody>
+        ${planSection}
+        <tr><td style="padding:8px 0; font-weight:600;">Full Name</td><td style="padding:8px 0;">${fullName}</td></tr>
+        <tr><td style="padding:8px 0; font-weight:600;">Email</td><td style="padding:8px 0;">${email}</td></tr>
+        <tr><td style="padding:8px 0; font-weight:600;">Phone</td><td style="padding:8px 0;">${phone}</td></tr>
+        <tr><td style="padding:8px 0; font-weight:600;">Company</td><td style="padding:8px 0;">${company}</td></tr>
+        ${addressRow}
+        <tr><td style="padding:8px 0; font-weight:600;">Country</td><td style="padding:8px 0;">${country}</td></tr>
+        <tr><td style="padding:8px 0; font-weight:600;">Services</td><td style="padding:8px 0;">${services}</td></tr>
+        ${messageBlock}
+      </tbody>
+    </table>
+  </div>`;
+}
+
+export async function POST(request: Request) {
+  try {
+    const body: ContactPayload = await request.json();
+
+    const required: Array<keyof ContactPayload> = [
+      "fullName",
+      "email",
+      "phone",
+      "company",
+      "country",
+      "services",
+    ];
+    const missing = required.filter((k) => !String(body[k] ?? "").trim());
+    if (missing.length > 0) {
+      return NextResponse.json(
+        { error: `Missing required fields: ${missing.join(", ")}` },
+        { status: 400 }
+      );
+    }
+
+    // Store submission (best-effort) before sending email
+    try {
+      const supabase = getSupabaseClient();
+      if (supabase) {
+        const { error: insertError } = await supabase
+          .from("contact_submissions")
+          .insert({
+            full_name: body.fullName,
+            email: body.email,
+            phone: body.phone,
+            company: body.company,
+            address: body.address ?? null,
+            country: body.country,
+            services: body.services,
+            message: body.message ?? null,
+            selected_plan: body.selectedPlan
+              ? {
+                  name: body.selectedPlan.name,
+                  price: body.selectedPlan.price,
+                  type: body.selectedPlan.type,
+                }
+              : null,
+          });
+        if (insertError) {
+          console.warn("[contact] Failed to persist submission to Supabase", insertError);
+        }
+
+        // Also store as a lead
+        const { error: leadError } = await supabase
+          .from("leads")
+          .insert({
+            full_name: body.fullName,
+            email: body.email,
+            phone: body.phone,
+            company: body.company,
+            address: body.address ?? null,
+            country: body.country,
+            services: body.services,
+            message: body.message ?? null,
+            selected_plan: body.selectedPlan
+              ? {
+                  name: body.selectedPlan.name,
+                  price: body.selectedPlan.price,
+                  type: body.selectedPlan.type,
+                }
+              : null,
+            source: "contact_form",
+          });
+        if (leadError) {
+          console.warn("[contact] Failed to persist lead to Supabase", leadError);
+        }
+      }
+    } catch (persistErr) {
+      console.warn("[contact] Unexpected error persisting to Supabase", persistErr);
+    }
+
+    const apiKey = process.env.RESEND_TOKEN;
+    if (!apiKey) {
+      return NextResponse.json(
+        { error: "RESEND_TOKEN is not configured on the server." },
+        { status: 500 }
+      );
+    }
+
+    const recipients: string[] = [
+      "info@krazykreators.com",
+      "shreyash@vidyayatan.com",
+      "prathamesh@vidyayatan.com",
+    ];
+
+    const resend = new Resend(apiKey);
+
+    const html = createEmailHtml(body);
+    const fromAddress = process.env.RESEND_FROM || "Krazy Kreators <noreply@internal.vidyayatan.com>";
+
+    const { error } = await resend.emails.send({
+      from: fromAddress,
+      to: recipients,
+      replyTo: body.email,
+      subject: `New inquiry from ${body.fullName} (${body.company})`,
+      html,
+    });
+
+    if (error) {
+      type ResendSendError = {
+        name?: string;
+        message?: string;
+        response?: { data?: unknown };
+      };
+      const resendError = error as ResendSendError | null;
+      console.error('[contact] Resend send error', {
+        name: resendError?.name,
+        message: resendError?.message,
+        recipients,
+      });
+      const name = resendError?.name;
+      const message = resendError?.message ?? "Failed to send email";
+      const details = resendError?.response?.data ?? undefined;
+      return NextResponse.json({ error: message, code: name, details }, { status: 500 });
+    }
+
+    return NextResponse.json({ ok: true });
+  } catch (err) {
+    const message = err instanceof Error ? err.message : "Unknown error";
+    return NextResponse.json({ error: message }, { status: 500 });
+  }
+}
+
+
