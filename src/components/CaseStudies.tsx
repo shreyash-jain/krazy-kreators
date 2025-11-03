@@ -81,6 +81,7 @@ export default function CaseStudies() {
                 study.title.toLowerCase() === "drover" ? "/case-studies/drover" : 
                 study.title.toLowerCase() === "tilted lotus" ? "/case-studies/tilted-lotus" : 
                 study.title.toLowerCase() === "las loungewear" ? "/case-studies/las" :
+                study.title.toLowerCase() === "hy official" ? "/case-studies/hy-official" :
                 study.title.toLowerCase() === "badria al shihhi" ? "/case-studies/badri-al-shihhi" : "#"
               }
               className="group relative overflow-hidden rounded-xl sm:rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-700 cursor-pointer border border-white/60 block"

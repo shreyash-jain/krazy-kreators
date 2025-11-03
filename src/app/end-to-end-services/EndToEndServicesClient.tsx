@@ -173,6 +173,37 @@ export default function EndToEndServicesClient() {
         </div>
       </section>
 
+      {/* RAW MATERIALS BANNER (below Why Our End‑to‑End Services Work) */}
+      <section className="relative w-full bg-white">
+        <div className="relative min-h-[360px] sm:min-h-[420px] md:min-h-[480px]">
+          <Image
+            src="/services/enterprise/Raw-materials-banner.webp"
+            alt="Raw materials management and storage"
+            fill
+            sizes="100vw"
+            className="object-cover"
+            priority
+          />
+          <div className="absolute inset-0 bg-black/40" />
+          <div className="relative min-w-[80%] xl:max-w-[75%] 2xl:max-w-[70%] mx-auto px-4 sm:px-6 lg:px-12 xl:px-16 py-16 sm:py-20 md:py-24 flex items-center">
+            <div className="max-w-2xl text-white">
+              <h2 className="text-2xl sm:text-3xl md:text-4xl font-serif font-bold">Raw Materials Management</h2>
+              <p className="mt-3 sm:mt-4 text-sm sm:text-base md:text-lg text-white/90">
+                Secure procurement, storage, and traceability for fabrics and trims — engineered to reduce wastage and cut costs on reorders.
+              </p>
+              <div className="mt-6">
+                <Link
+                  href="/end-to-end-services/raw-materials"
+                  className="inline-flex items-center justify-center rounded-full bg-[#CBB49A] hover:bg-[#b7a078] text-white px-7 py-3.5 text-sm sm:text-base font-semibold shadow-sm hover:shadow-md transition-transform hover:-translate-y-0.5"
+                >
+                  Learn More
+                </Link>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
       {/* CASE STUDIES GRID */}
       <section className="relative bg-white py-12 sm:py-16 md:py-20">
         <div className="min-w-[80%] xl:max-w-[75%] 2xl:max-w-[70%] mx-auto px-4 sm:px-6 lg:px-12 xl:px-16">
