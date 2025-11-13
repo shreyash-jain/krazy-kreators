@@ -12,7 +12,7 @@ import {
     BadgeDollarSign,
     Phone,
     ChevronDown,
-    
+    Leaf,
 } from "lucide-react";
 import { useState, useEffect } from "react";
 import { usePathname } from "next/navigation";
@@ -79,7 +79,7 @@ const megaContent: Record<TopTab, { title: string; desc: string; href: string; i
 	],
 	Company: [
 		{ title: "About Us", desc: "Story, vision, and team", href: "/about", icon: Building2 },
-		// { title: "Sustainability", desc: "Our responsibility and initiatives", href: "/sustainability", icon: Leaf },
+		{ title: "Sustainability", desc: "Our responsibility and initiatives", href: "/sustainability", icon: Leaf },
 		{ title: "Pricing", desc: "Transparent retainers & custom packs", href: "/pricing", icon: BadgeDollarSign },
 		{ title: "Contact", desc: "Talk to the team", href: "/contact", icon: Phone },
 	],

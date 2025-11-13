@@ -4,7 +4,7 @@ import { Mail, Instagram, Linkedin, Facebook } from "lucide-react";
 
 const companyLinks = [
   { name: "About Us", href: "/about" },
-  // { name: "Sustainability", href: "/sustainability" },
+  { name: "Sustainability", href: "/sustainability" },
   { name: "Pricing", href: "/pricing" },
   { name: "Contact", href: "/contact" },
 ];
