@@ -206,19 +206,19 @@ export default function EnterpriseClient() {
     {
       tier: "Design Team",
       icon: Palette,
-      roles: ["Designers", "Textile Researchers"],
+      roles: ["Fashion Designers", "Textile Designers", "Trend Researchers", "Illustrators"],
       description: "Creative vision and material expertise",
     },
     {
       tier: "Production Team",
       icon: Scissors,
-      roles: ["Sourcing Experts", "Fabric Managers", "Pattern Masters", "Tailors"],
+      roles: ["Sourcing Experts", "Fabric Managers", "Pattern Masters", "Tailors", "Textile Engineer"],
       description: "End-to-end manufacturing execution",
     },
     {
       tier: "Quality & Logistics",
       icon: Package,
-      roles: ["QC Managers", "Store Managers", "Shipping Managers"],
+      roles: ["QC Managers", "Store Managers", "Shipping Managers", "Checkers"],
       description: "Quality assurance and delivery excellence",
     },
   ];
