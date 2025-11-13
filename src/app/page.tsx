@@ -36,7 +36,7 @@ export default function Home() {
       <FromDesignToShelf />
       
       {/* Sustainability Banner */}
-      <section className="relative w-full h-[70vh] overflow-hidden flex items-center">
+      <section className="relative w-full h-[70vh] lg:h-[50vh] overflow-hidden flex items-center">
         <div className="absolute inset-0 z-0">
           <Image
             src="/sustainability/sustainability-banner-2.jpg"
@@ -69,7 +69,7 @@ export default function Home() {
       <DedicatedTeam />
       
       {/* Raw Materials Banner */}
-      <section className="relative w-full h-[70vh] overflow-hidden flex items-center">
+      <section className="relative w-full h-[70vh] lg:h-[50vh] overflow-hidden flex items-center">
         <div className="absolute inset-0 z-0">
           <Image
             src="/services/enterprise/raw-materials-banner-2.jpg"
@@ -88,7 +88,7 @@ export default function Home() {
             From procurement to reuse, we ensure efficiency, consistency, and sustainability in every batch.
           </p>
           <Link
-            href="/sustainability"
+            href="/end-to-end-services/raw-materials"
             className="inline-flex items-center justify-center px-6 sm:px-8 py-3 rounded-full bg-[#CBB49A] text-white text-sm sm:text-base font-semibold hover:bg-[#b7a078] transition-colors"
           >
             Explore Our Approach
