@@ -19,7 +19,7 @@ export async function GET(request: Request) {
     .order("created_at", { ascending: false });
   if (commentsError) return NextResponse.json({ error: commentsError.message }, { status: 500 });
 
-  const commentIds = (comments ?? []).map((c) => c.id);
+  const commentIds = (comments ?? []).map((c: any) => c.id);
   if (commentIds.length === 0) return NextResponse.json({ comments: [] });
 
   const { data: likeCounts, error: likesError } = await supabase
@@ -33,7 +33,7 @@ export async function GET(request: Request) {
     counts.set(row.comment_id as string, (counts.get(row.comment_id as string) ?? 0) + 1);
   }
 
-  const payload = (comments ?? []).map((c) => ({
+  const payload = (comments ?? []).map((c: any) => ({
     ...c,
     likes: counts.get(c.id) ?? 0,
   }));

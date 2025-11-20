@@ -11,7 +11,7 @@ export default function BlogRenderer({ blocks }: { blocks: Block[] }) {
       {blocks.map((block, idx) => {
         switch (block.type) {
           case "header": {
-            const level = Math.min(Math.max(Number(block.data?.level ?? 2), 1), 4);
+            const level = Math.min(Math.max(Number(block.data?.level ?? 2), 1), 6);
             const Tag = ("h" + level) as keyof JSX.IntrinsicElements;
             return <Tag key={idx} dangerouslySetInnerHTML={{ __html: block.data?.text || "" }} />;
           }
@@ -107,6 +107,22 @@ export default function BlogRenderer({ blocks }: { blocks: Block[] }) {
             return (
               <div key={idx} className="aspect-video">
                 <iframe src={url} className="w-full h-full rounded" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowFullScreen />
+              </div>
+            );
+          }
+          case "twoColumn": {
+            const leftContent = block.data?.leftContent || '';
+            const rightContent = block.data?.rightContent || '';
+            return (
+              <div key={idx} className="grid grid-cols-1 md:grid-cols-2 gap-8 my-8">
+                <div
+                  className="prose prose-sm max-w-none [&_img]:rounded-lg [&_img]:max-w-full [&_img]:h-auto [&_a]:text-blue-600 [&_a]:underline"
+                  dangerouslySetInnerHTML={{ __html: leftContent }}
+                />
+                <div
+                  className="prose prose-sm max-w-none [&_img]:rounded-lg [&_img]:max-w-full [&_img]:h-auto [&_a]:text-blue-600 [&_a]:underline"
+                  dangerouslySetInnerHTML={{ __html: rightContent }}
+                />
               </div>
             );
           }
