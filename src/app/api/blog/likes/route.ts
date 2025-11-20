@@ -1,4 +1,3 @@
-export const runtime = 'edge';
 export const dynamic = 'force-dynamic';
 
 import { NextResponse } from "next/server";
@@ -20,8 +19,8 @@ export async function GET(request: Request) {
     
     const supabase = getSupabaseClient();
     if (!supabase) {
-      console.error("Blog likes API: Supabase client not configured");
-      return NextResponse.json({ error: "Supabase not configured" }, { status: 500 });
+      console.warn("Blog likes API: Supabase client not configured, returning 0 likes");
+      return NextResponse.json({ count: 0 });
     }
 
     console.log(`Blog likes API: Fetching likes for blogId: ${blogId}`);
@@ -33,14 +32,16 @@ export async function GET(request: Request) {
 
     if (error) {
       console.error("Blog likes API: Database error:", error);
-      return NextResponse.json({ error: error.message }, { status: 500 });
+      // Return 0 instead of error to allow page to render
+      return NextResponse.json({ count: 0 });
     }
 
     console.log(`Blog likes API: Found ${count ?? 0} likes for blogId: ${blogId}`);
     return NextResponse.json({ count: count ?? 0 });
   } catch (err) {
     console.error("Blog likes API: Unexpected error:", err);
-    return NextResponse.json({ error: "Internal server error" }, { status: 500 });
+    // Return 0 instead of error to allow page to render
+    return NextResponse.json({ count: 0 });
   }
 }
 
