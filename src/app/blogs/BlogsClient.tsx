@@ -9,23 +9,25 @@ import Image from "next/image";
 import Link from "next/link";
 import { useToast } from "@/components/Toast";
 import { likeBlog } from "@/lib/blogApi";
-import { blogPosts } from "@/data/blogPosts";
+import { BlogPostMeta } from "@/data/blogPosts";
 import { readBlogLikeSyncState } from "@/lib/blogLikeSync";
+
 type BlogsClientProps = {
   initialLikeCounts: Record<string, number>;
+  posts: BlogPostMeta[];
 };
 
-export default function BlogsClient({ initialLikeCounts }: BlogsClientProps) {
+export default function BlogsClient({ initialLikeCounts, posts }: BlogsClientProps) {
   const [contactOpen, setContactOpen] = useState(false);
   const [currentPage, setCurrentPage] = useState(1);
   const [activeFilter, setActiveFilter] = useState("all");
   const [likedPosts, setLikedPosts] = useState<Set<string>>(new Set());
-  const [sharedPosts, setSharedPosts] = useState<Set<number>>(new Set());
+  const [sharedPosts, setSharedPosts] = useState<Set<string | number>>(new Set());
   const [likeCounts, setLikeCounts] = useState<Record<string, number>>(() => ({ ...initialLikeCounts }));
   const postsPerPage = 6;
   const { showToast, ToastContainer } = useToast();
 
-  const allPosts = blogPosts;
+  const allPosts = posts;
 
   const categories = [
     { id: "all", label: "All Posts", count: allPosts.length },
@@ -34,8 +36,8 @@ export default function BlogsClient({ initialLikeCounts }: BlogsClientProps) {
     { id: "business", label: "Business", count: allPosts.filter(post => post.category === "business").length }
   ];
 
-  const filteredPosts = activeFilter === "all" 
-    ? allPosts 
+  const filteredPosts = activeFilter === "all"
+    ? allPosts
     : allPosts.filter(post => post.category === activeFilter);
 
   const totalPages = Math.ceil(filteredPosts.length / postsPerPage);
@@ -58,10 +60,10 @@ export default function BlogsClient({ initialLikeCounts }: BlogsClientProps) {
     }
   };
 
-  const handleShare = async (post: { id: number; title: string; excerpt: string; slug: string }, e: React.MouseEvent) => {
+  const handleShare = async (post: { id: string | number; title: string; excerpt: string; slug: string }, e: React.MouseEvent) => {
     e.preventDefault();
     e.stopPropagation();
-    
+
     const shareUrl = `${window.location.origin}/blogs/${post.slug}`;
 
     try {
@@ -147,11 +149,10 @@ export default function BlogsClient({ initialLikeCounts }: BlogsClientProps) {
               <button
                 key={category.id}
                 onClick={() => handleFilterChange(category.id)}
-                className={`px-4 py-2 rounded-full text-sm font-medium transition-all duration-300 ${
-                  activeFilter === category.id
-                    ? 'bg-[#CBB49A] text-white'
-                    : 'bg-gray-100 text-gray-600 hover:bg-gray-200'
-                }`}
+                className={`px-4 py-2 rounded-full text-sm font-medium transition-all duration-300 ${activeFilter === category.id
+                  ? 'bg-[#CBB49A] text-white'
+                  : 'bg-gray-100 text-gray-600 hover:bg-gray-200'
+                  }`}
               >
                 {category.label} ({category.count})
               </button>
@@ -168,87 +169,85 @@ export default function BlogsClient({ initialLikeCounts }: BlogsClientProps) {
             const isLiked = likedPosts.has(post.slug);
             return (
               <Link key={post.id} href={`/blogs/${post.slug}`} className="group">
-              <article className="bg-white rounded-2xl shadow-lg overflow-hidden hover:shadow-xl transition-all duration-300 group-hover:-translate-y-1">
-                <div className="aspect-video relative overflow-hidden">
-                  <Image
-                    src={post.image}
-                    alt={post.title}
-                    fill
-                    className="object-cover group-hover:scale-105 transition-transform duration-300"
-                  />
-                </div>
-                <div className="p-6">
-                  <div className="flex items-center justify-between mb-3">
-                    <span className={`px-3 py-1 rounded-full text-xs font-medium ${getCategoryColor(post.category)}`}>
-                      {post.category.charAt(0).toUpperCase() + post.category.slice(1)}
-                    </span>
-                    <span className="text-sm text-[#666666]">{post.readTime}</span>
+                <article className="bg-white rounded-2xl shadow-lg overflow-hidden hover:shadow-xl transition-all duration-300 group-hover:-translate-y-1">
+                  <div className="aspect-video relative overflow-hidden">
+                    <Image
+                      src={post.image}
+                      alt={post.title}
+                      fill
+                      className="object-cover group-hover:scale-105 transition-transform duration-300"
+                    />
                   </div>
-                  
-                  <h2 className="text-xl font-bold text-[#2D2A2E] mb-3 group-hover:text-[#CBB49A] transition-colors line-clamp-2">
-                    {post.title}
-                  </h2>
-                  
-                  <p className="text-[#666666] text-sm leading-relaxed mb-4 line-clamp-3">
-                    {post.excerpt}
-                  </p>
-                  
-                  <div className="flex items-center justify-between text-sm text-[#666666] mb-4">
-                    <span>{post.author}</span>
-                    <span>{post.date}</span>
-                  </div>
-                  
-                  <div className="flex items-center justify-between">
-                    <div className="flex items-center gap-4 text-sm text-[#666666]">
-                      <div className="flex items-center gap-1">
-                        <Eye className="w-4 h-4" />
-                        <span>{post.readers.toLocaleString()}</span>
-                      </div>
+                  <div className="p-6">
+                    <div className="flex items-center justify-between mb-3">
+                      <span className={`px-3 py-1 rounded-full text-xs font-medium ${getCategoryColor(post.category)}`}>
+                        {post.category.charAt(0).toUpperCase() + post.category.slice(1)}
+                      </span>
+                      <span className="text-sm text-[#666666]">{post.readTime}</span>
                     </div>
-                    
-                    <div className="flex items-center gap-2">
-                      <button
-                        onClick={(e) => {
-                          e.preventDefault();
-                          e.stopPropagation();
-                          handleLike(post.slug);
-                        }}
-                        className={`flex items-center gap-2 px-3 py-1.5 rounded-full text-xs font-medium transition-all duration-300 ${
-                          isLiked
+
+                    <h2 className="text-xl font-bold text-[#2D2A2E] mb-3 group-hover:text-[#CBB49A] transition-colors line-clamp-2">
+                      {post.title}
+                    </h2>
+
+                    <p className="text-[#666666] text-sm leading-relaxed mb-4 line-clamp-3">
+                      {post.excerpt}
+                    </p>
+
+                    <div className="flex items-center justify-between text-sm text-[#666666] mb-4">
+                      <span>{post.author}</span>
+                      <span>{post.date}</span>
+                    </div>
+
+                    <div className="flex items-center justify-between">
+                      <div className="flex items-center gap-4 text-sm text-[#666666]">
+                        <div className="flex items-center gap-1">
+                          <Eye className="w-4 h-4" />
+                          <span>{post.readers.toLocaleString()}</span>
+                        </div>
+                      </div>
+
+                      <div className="flex items-center gap-2">
+                        <button
+                          onClick={(e) => {
+                            e.preventDefault();
+                            e.stopPropagation();
+                            handleLike(post.slug);
+                          }}
+                          className={`flex items-center gap-2 px-3 py-1.5 rounded-full text-xs font-medium transition-all duration-300 ${isLiked
                             ? "bg-[#CBB49A]/10 text-[#CBB49A]"
                             : "bg-gray-100 text-gray-600 hover:bg-[#CBB49A]/10 hover:text-[#CBB49A]"
-                        }`}
-                      >
-                        <Heart className={`w-3 h-3 ${isLiked ? 'fill-[#CBB49A]' : ''}`} />
-                        {likeCount} {likeCount === 1 ? 'Like' : 'Likes'}
-                      </button>
-                      
-                      <button
-                        onClick={(e) => handleShare(post, e)}
-                        className={`flex items-center gap-1 px-3 py-1.5 rounded-full text-xs font-medium transition-all duration-300 ${
-                          sharedPosts.has(post.id)
+                            }`}
+                        >
+                          <Heart className={`w-3 h-3 ${isLiked ? 'fill-[#CBB49A]' : ''}`} />
+                          {likeCount} {likeCount === 1 ? 'Like' : 'Likes'}
+                        </button>
+
+                        <button
+                          onClick={(e) => handleShare(post, e)}
+                          className={`flex items-center gap-1 px-3 py-1.5 rounded-full text-xs font-medium transition-all duration-300 ${sharedPosts.has(post.id)
                             ? "bg-green-100 text-green-600"
                             : "bg-gray-100 text-gray-600 hover:bg-gray-200"
-                        }`}
-                      >
-                        {sharedPosts.has(post.id) ? (
-                          <>
-                            <span className="text-green-600">✓</span>
-                            Copied!
-                          </>
-                        ) : (
-                          <>
-                            <Share2 className="w-3 h-3" />
-                            Share
-                          </>
-                        )}
-                      </button>
+                            }`}
+                        >
+                          {sharedPosts.has(post.id) ? (
+                            <>
+                              <span className="text-green-600">✓</span>
+                              Copied!
+                            </>
+                          ) : (
+                            <>
+                              <Share2 className="w-3 h-3" />
+                              Share
+                            </>
+                          )}
+                        </button>
+                      </div>
                     </div>
                   </div>
-                </div>
-              </article>
-            </Link>
-          );
+                </article>
+              </Link>
+            );
           })}
         </div>
 
@@ -263,23 +262,22 @@ export default function BlogsClient({ initialLikeCounts }: BlogsClientProps) {
               <ChevronLeft className="w-4 h-4" />
               Previous
             </button>
-            
+
             <div className="flex items-center gap-1">
               {Array.from({ length: totalPages }, (_, i) => i + 1).map((page) => (
                 <button
                   key={page}
                   onClick={() => handlePageChange(page)}
-                  className={`w-10 h-10 rounded-lg text-sm font-medium transition-colors ${
-                    currentPage === page
-                      ? 'bg-[#CBB49A] text-white'
-                      : 'text-[#666666] hover:bg-gray-100'
-                  }`}
+                  className={`w-10 h-10 rounded-lg text-sm font-medium transition-colors ${currentPage === page
+                    ? 'bg-[#CBB49A] text-white'
+                    : 'text-[#666666] hover:bg-gray-100'
+                    }`}
                 >
                   {page}
                 </button>
               ))}
             </div>
-            
+
             <button
               onClick={() => handlePageChange(currentPage + 1)}
               disabled={currentPage === totalPages}

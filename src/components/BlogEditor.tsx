@@ -11,6 +11,12 @@ export default function BlogEditor({ initialData, onChange, slug }: BlogEditorPr
   const editorRef = useRef<any | null>(null);
   const holderRef = useRef<HTMLDivElement | null>(null);
 
+  // Keep refs updated to avoid re-initializing editor when props change
+  const latestProps = useRef({ onChange, slug });
+  useEffect(() => {
+    latestProps.current = { onChange, slug };
+  }, [onChange, slug]);
+
   useEffect(() => {
     let isMounted = true;
     async function init() {
@@ -22,6 +28,7 @@ export default function BlogEditor({ initialData, onChange, slug }: BlogEditorPr
       const Delimiter = (await import("@editorjs/delimiter")).default as any;
       const Table = (await import("@editorjs/table")).default as any;
       const ImageTool = (await import("@editorjs/image")).default as any;
+      const TwoColumnTool = (await import("./TwoColumnTool")).default as any;
 
       const editor = new EditorJS({
         holder: holderRef.current,
@@ -29,10 +36,18 @@ export default function BlogEditor({ initialData, onChange, slug }: BlogEditorPr
         autofocus: false,
         onChange: async () => {
           const data = await editor.saver.save();
-          onChange(data);
+          latestProps.current.onChange(data);
         },
         tools: {
-          header: Header,
+          header: {
+            class: Header,
+            inlineToolbar: true,
+            config: {
+              levels: [1, 2, 3, 4, 5, 6],
+              defaultLevel: 2,
+              placeholder: 'Enter a heading',
+            },
+          },
           list: List,
           quote: Quote,
           delimiter: Delimiter,
@@ -44,7 +59,7 @@ export default function BlogEditor({ initialData, onChange, slug }: BlogEditorPr
                 uploadByFile: async (file: File) => {
                   const form = new FormData();
                   form.append("file", file);
-                  form.append("slug", slug);
+                  form.append("slug", latestProps.current.slug);
                   const res = await fetch("/api/admin/upload-image", { method: "POST", body: form });
                   const data = await res.json();
                   if (!res.ok) throw new Error(data?.error || "Upload failed");
@@ -56,21 +71,23 @@ export default function BlogEditor({ initialData, onChange, slug }: BlogEditorPr
               },
             },
           },
+          twoColumn: TwoColumnTool,
         },
       });
       if (!isMounted) {
-        try { editor.destroy(); } catch {}
+        try { editor.destroy(); } catch { }
         return;
       }
       editorRef.current = editor;
+      console.log('EditorJS initialized with header levels:', [1, 2, 3, 4, 5, 6]);
     }
     init();
     return () => {
       isMounted = false;
-      try { editorRef.current?.destroy?.(); } catch {}
+      try { editorRef.current?.destroy?.(); } catch { }
       editorRef.current = null;
     };
-  }, [slug, initialData, onChange]);
+  }, []); // Only run once on mount
 
   return <div ref={holderRef} />;
 }

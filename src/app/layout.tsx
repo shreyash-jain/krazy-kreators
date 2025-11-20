@@ -3,8 +3,7 @@ import { Geist } from "next/font/google";
 import Script from "next/script";
 import "./globals.css";
 import LayoutShell from "@/components/LayoutShell";
-import Navbar from "@/components/Navbar";
-import WhatsAppButton from "@/components/WhatsAppButton";
+
 import Head from "./head";
 import { PortfolioSyncProvider } from "@/lib/PortfolioSyncContext";
 
@@ -110,9 +109,7 @@ export default function RootLayout({
           dangerouslySetInnerHTML={{ __html: JSON.stringify(localBusinessJsonLd) }}
         />
         <PortfolioSyncProvider>
-          <Navbar />
-          {children}
-          <WhatsAppButton />
+          <LayoutShell>{children}</LayoutShell>
           {/* <BottomNav /> */}
         </PortfolioSyncProvider>
       </body>
