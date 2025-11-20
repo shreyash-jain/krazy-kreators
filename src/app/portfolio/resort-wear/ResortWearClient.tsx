@@ -7,10 +7,17 @@ import ContactDialog from "@/components/ContactDialog";
 import Footer from "@/components/Footer";
 import Image from "next/image";
 import Link from "next/link";
+import { usePortfolioSync } from "@/lib/PortfolioSyncContext";
+import ImageModal from "@/components/ImageModal";
 
 export default function ResortWearClient() {
   const [activeFilter, setActiveFilter] = useState("all");
   const [contactOpen, setContactOpen] = useState(false);
+  const [imageModalOpen, setImageModalOpen] = useState(false);
+  const [modalImages, setModalImages] = useState<string[]>([]);
+  const [modalCurrentIndex, setModalCurrentIndex] = useState(0);
+  const [modalProductName, setModalProductName] = useState("");
+  const [modalCategoryName, setModalCategoryName] = useState("");
 
   // Filter categories
   const filterCategories = [
@@ -291,20 +298,27 @@ export default function ResortWearClient() {
     ? portfolioProducts 
     : portfolioProducts.filter(product => product.category === activeFilter);
 
+  // Function to open image modal
+  const openImageModal = (images: string[], currentIndex: number, productName: string, categoryName: string) => {
+    setModalImages(images);
+    setModalCurrentIndex(currentIndex);
+    setModalProductName(productName);
+    setModalCategoryName(categoryName);
+    setImageModalOpen(true);
+  };
+
   // Product Card Component with internal carousel
   const ProductCard = ({ product }: { product: { images: string[]; brandName: string; category: string; brandLogo?: string; name: string } }) => {
     const [currentImageIndex, setCurrentImageIndex] = useState(0);
+    const [isHovered, setIsHovered] = useState(false);
+    const { globalImageIndex } = usePortfolioSync();
 
-    // Auto-advance internal carousel every 4 seconds
+    // Sync with global index when not hovered
     useEffect(() => {
-      if (product.images.length <= 1) return;
-      
-      const interval = setInterval(() => {
-        setCurrentImageIndex(prev => (prev + 1) % product.images.length);
-      }, 4000);
-      
-      return () => clearInterval(interval);
-    }, [product.images.length]);
+      if (!isHovered && product.images.length > 1) {
+        setCurrentImageIndex(globalImageIndex % product.images.length);
+      }
+    }, [globalImageIndex, isHovered, product.images.length]);
 
     // Manual navigation for internal carousel
     const nextImage = () => {
@@ -322,8 +336,15 @@ export default function ResortWearClient() {
     };
 
   return (
-      <div className="group bg-white rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-300 overflow-hidden hover:scale-105">
-        <div className="relative h-96 sm:h-[28rem] md:h-[30rem] lg:h-[26rem] overflow-hidden transform -skew-y-1">
+      <div 
+        className="group bg-white rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-300 overflow-hidden hover:scale-105"
+        onMouseEnter={() => setIsHovered(true)}
+        onMouseLeave={() => setIsHovered(false)}
+      >
+        <div 
+          className="relative h-96 sm:h-[28rem] md:h-[30rem] lg:h-[26rem] overflow-hidden transform -skew-y-1 cursor-pointer"
+          onClick={() => openImageModal(product.images, currentImageIndex, product.name, filterCategories.find(cat => cat.id === product.category)?.name || product.name)}
+        >
           {/* Image Carousel */}
           <div className="relative w-full h-full">
             <div 
@@ -689,6 +710,15 @@ export default function ResortWearClient() {
       </section>
 
       <ContactDialog open={contactOpen} onClose={() => setContactOpen(false)} />
+      <ImageModal
+        isOpen={imageModalOpen}
+        onClose={() => setImageModalOpen(false)}
+        images={modalImages}
+        currentIndex={modalCurrentIndex}
+        onIndexChange={setModalCurrentIndex}
+        productName={modalProductName}
+        categoryName={modalCategoryName}
+      />
       <Footer />
     </div>
   );

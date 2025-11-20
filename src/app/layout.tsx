@@ -3,7 +3,10 @@ import { Geist } from "next/font/google";
 import Script from "next/script";
 import "./globals.css";
 import LayoutShell from "@/components/LayoutShell";
+import Navbar from "@/components/Navbar";
+import WhatsAppButton from "@/components/WhatsAppButton";
 import Head from "./head";
+import { PortfolioSyncProvider } from "@/lib/PortfolioSyncContext";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -106,8 +109,12 @@ export default function RootLayout({
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(localBusinessJsonLd) }}
         />
-        <LayoutShell>{children}</LayoutShell>
-        {/* <BottomNav /> */}
+        <PortfolioSyncProvider>
+          <Navbar />
+          {children}
+          <WhatsAppButton />
+          {/* <BottomNav /> */}
+        </PortfolioSyncProvider>
       </body>
     </html>
   );
