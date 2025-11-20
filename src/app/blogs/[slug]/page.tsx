@@ -30,8 +30,24 @@ async function fetchBlog(slug: string) {
     }
   }
 
-  return data as any;
+  return data as Blog | null;
 }
+
+type Blog = {
+  id?: string | number;
+  title: string;
+  slug: string;
+  excerpt?: string;
+  author?: string;
+  image?: string;
+  category?: string;
+  published_at?: string;
+  content_json?: { blocks?: Array<{ type: string; data: Record<string, unknown> }> } | null;
+  date?: string;
+  readTime?: string;
+  readers?: number;
+  likes?: number;
+};
 
 type PageProps = {
   params: Promise<{ slug: string }>;

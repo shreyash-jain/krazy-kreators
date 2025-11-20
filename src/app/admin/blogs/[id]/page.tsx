@@ -7,6 +7,7 @@ import BlogSlugClient from "../../../blogs/[slug]/BlogSlugClient";
 import BlogRenderer from "@/components/BlogRenderer";
 import { Eye, X, Save, ArrowLeft, Columns2, Maximize2 } from "lucide-react";
 import Link from "next/link";
+import Image from "next/image";
 
 function parseJsonSafe<T>(text: string): T | null {
   try { return JSON.parse(text) as T; } catch { return null; }
@@ -36,7 +37,7 @@ export default function AdminBlogEditorPage() {
       const res = await fetch(`/api/admin/blogs`);
       const data = await res.json();
       if (!res.ok) throw new Error(data?.error || "Failed to load blog");
-      const blog = (data?.blogs ?? []).find((b: any) => b.id === id);
+      const blog = (data?.blogs ?? []).find((b: { id: string }) => b.id === id);
       if (!blog) return;
       setTitle(blog.title || "");
       setSlug(blog.slug || "");
@@ -54,7 +55,7 @@ export default function AdminBlogEditorPage() {
     }
   }
 
-  useEffect(() => { if (id) loadBlog(); }, [id]);
+  useEffect(() => { if (id) loadBlog(); }, [id, loadBlog]);
 
   async function save() {
     const contentJson = parseJsonSafe(content);
@@ -86,7 +87,7 @@ export default function AdminBlogEditorPage() {
       image,
       category,
       published_at: publishedAt ? new Date(publishedAt).toISOString() : new Date().toISOString(), // Preview as if published now or selected date
-      content_json: parseJsonSafe(content),
+      content_json: parseJsonSafe<{ blocks?: Array<{ type: string; data: Record<string, unknown> }> }>(content),
     };
 
     return (
@@ -275,12 +276,12 @@ export default function AdminBlogEditorPage() {
                   {title && <h1 className="text-4xl font-bold text-gray-900 mb-4">{title}</h1>}
                   {excerpt && <p className="text-lg text-gray-600 mb-6">{excerpt}</p>}
                   {image && (
-                    <div className="mb-6 rounded-lg overflow-hidden">
-                      <img src={image} alt={title} className="w-full h-auto" />
+                    <div className="mb-6 rounded-lg overflow-hidden relative w-full" style={{ aspectRatio: "16/9" }}>
+                      <Image src={image} alt={title} fill className="object-cover" />
                     </div>
                   )}
                   <div className="prose prose-lg max-w-none">
-                    <BlogRenderer blocks={(parseJsonSafe<{ blocks?: any[] }>(content)?.blocks) ?? []} />
+                    <BlogRenderer blocks={(parseJsonSafe<{ blocks?: Array<{ type: string; data: Record<string, unknown> }> }>(content)?.blocks) ?? []} />
                   </div>
                 </div>
               </div>

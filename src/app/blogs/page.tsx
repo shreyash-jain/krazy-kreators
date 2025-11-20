@@ -29,7 +29,18 @@ export default async function BlogsPage() {
     }
 
     if (data) {
-      dbBlogs = data.map((b: any) => ({
+      type SupabaseBlog = {
+        id: string;
+        title: string;
+        excerpt: string | null;
+        category: string | null;
+        author: string | null;
+        image: string | null;
+        published_at: string;
+        slug: string;
+      };
+
+      dbBlogs = data.map((b: SupabaseBlog) => ({
         id: b.id,
         title: b.title,
         excerpt: b.excerpt || '',

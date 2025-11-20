@@ -3,8 +3,23 @@
  * Allows creating side-by-side content with rich text editing in blog posts
  */
 
+interface EditorJSAPI {
+    styles?: Record<string, string>;
+}
+
+interface TwoColumnToolConfig {
+    data: { leftContent?: string; rightContent?: string };
+    api: EditorJSAPI;
+    readOnly: boolean;
+}
+
+interface TwoColumnToolData {
+    leftContent: string;
+    rightContent: string;
+}
+
 export default class TwoColumnTool {
-    private api: any;
+    private api: EditorJSAPI;
     private readOnly: boolean;
     private data: { leftContent: string; rightContent: string };
     private wrapper: HTMLElement | null;
@@ -22,7 +37,7 @@ export default class TwoColumnTool {
         return true;
     }
 
-    constructor({ data, api, readOnly }: any) {
+    constructor({ data, api, readOnly }: TwoColumnToolConfig) {
         this.api = api;
         this.readOnly = readOnly;
         this.data = {
@@ -188,7 +203,7 @@ export default class TwoColumnTool {
         };
     }
 
-    validate(savedData: any) {
+    validate(savedData: TwoColumnToolData) {
         return savedData.leftContent || savedData.rightContent;
     }
 }
