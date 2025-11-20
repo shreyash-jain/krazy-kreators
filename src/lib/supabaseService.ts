@@ -1,6 +1,8 @@
+import type { SupabaseClient } from '@supabase/supabase-js';
+
 type Json = string | number | boolean | null | { [key: string]: Json } | Json[];
 
-interface Database {
+export interface Database {
   public: {
     Tables: {
       contact_submissions: {
@@ -65,9 +67,9 @@ interface Database {
   };
 }
 
-let cachedServiceClient: any | null = null;
+let cachedServiceClient: SupabaseClient<Database> | null = null;
 
-export function getSupabaseServiceClient(): any {
+export async function getSupabaseServiceClient(): Promise<SupabaseClient<Database>> {
   if (cachedServiceClient) return cachedServiceClient;
 
   const url = process.env.NEXT_PUBLIC_SUPABASE_URL;
@@ -77,10 +79,9 @@ export function getSupabaseServiceClient(): any {
     throw new Error("Missing SUPABASE env for service client");
   }
 
-  // dynamic import to avoid type resolution at lint time
-  // eslint-disable-next-line @typescript-eslint/no-var-requires
-  const { createClient } = require("@supabase/supabase-js");
-  cachedServiceClient = createClient(url, serviceRoleKey, {
+  // Use dynamic import to avoid bundling in client-side code
+  const { createClient } = await import("@supabase/supabase-js");
+  cachedServiceClient = createClient<Database>(url, serviceRoleKey, {
     auth: { persistSession: false, autoRefreshToken: false },
   });
 

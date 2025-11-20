@@ -2,7 +2,7 @@ import Image from "next/image";
 
 type Block = {
   type: string;
-  data: any;
+  data: Record<string, unknown>;
 };
 
 export default function BlogRenderer({ blocks }: { blocks: Block[] }) {
@@ -13,13 +13,13 @@ export default function BlogRenderer({ blocks }: { blocks: Block[] }) {
           case "header": {
             const level = Math.min(Math.max(Number(block.data?.level ?? 2), 1), 6);
             const Tag = ("h" + level) as keyof JSX.IntrinsicElements;
-            return <Tag key={idx} dangerouslySetInnerHTML={{ __html: block.data?.text || "" }} />;
+            return <Tag key={idx} dangerouslySetInnerHTML={{ __html: String(block.data?.text || "") }} />;
           }
           case "paragraph": {
-            return <p key={idx} dangerouslySetInnerHTML={{ __html: block.data?.text || "" }} />;
+            return <p key={idx} dangerouslySetInnerHTML={{ __html: String(block.data?.text || "") }} />;
           }
           case "list": {
-            const items: string[] = block.data?.items ?? [];
+            const items: string[] = Array.isArray(block.data?.items) ? block.data.items : [];
             if (block.data?.style === "ordered") {
               return (
                 <ol key={idx} className="list-decimal pl-6">
@@ -38,10 +38,11 @@ export default function BlogRenderer({ blocks }: { blocks: Block[] }) {
             );
           }
           case "quote": {
+            const caption = block.data?.caption as string | undefined;
             return (
               <blockquote key={idx}>
-                <div dangerouslySetInnerHTML={{ __html: block.data?.text || "" }} />
-                {block.data?.caption && <cite className="block text-sm opacity-70">{block.data.caption}</cite>}
+                <div dangerouslySetInnerHTML={{ __html: String(block.data?.text || "") }} />
+                {caption && <cite className="block text-sm opacity-70">{caption}</cite>}
               </blockquote>
             );
           }
@@ -49,9 +50,10 @@ export default function BlogRenderer({ blocks }: { blocks: Block[] }) {
             return <hr key={idx} />;
           }
           case "image": {
-            const url: string | undefined = block.data?.file?.url || block.data?.url;
+            const fileData = block.data?.file as { url?: string } | undefined;
+            const url: string | undefined = fileData?.url || (block.data?.url as string | undefined);
             if (!url) return null;
-            const caption: string | undefined = block.data?.caption;
+            const caption: string | undefined = block.data?.caption as string | undefined;
             const stretched: boolean = Boolean(block.data?.stretched);
             return (
               <figure key={idx} className={stretched ? "-mx-4 md:-mx-8" : undefined}>
@@ -66,11 +68,11 @@ export default function BlogRenderer({ blocks }: { blocks: Block[] }) {
             const style = block.data?.style || "info";
             const className = style === "warning" ? "bg-yellow-50 border-yellow-300" : "bg-blue-50 border-blue-300";
             return (
-              <div key={idx} className={`border rounded p-4 ${className}`} dangerouslySetInnerHTML={{ __html: block.data?.text || "" }} />
+              <div key={idx} className={`border rounded p-4 ${className}`} dangerouslySetInnerHTML={{ __html: String(block.data?.text || "") }} />
             );
           }
           case "table": {
-            const rows: string[][] = block.data?.content || [];
+            const rows: string[][] = Array.isArray(block.data?.content) ? block.data.content as string[][] : [];
             return (
               <div key={idx} className="overflow-x-auto">
                 <table className="min-w-full">
@@ -90,7 +92,7 @@ export default function BlogRenderer({ blocks }: { blocks: Block[] }) {
           case "image-grid": {
             const cols = Math.min(Math.max(Number(block.data?.cols ?? 2), 2), 3);
             const items: Array<{ url: string; alt?: string }>
-              = block.data?.items ?? [];
+              = Array.isArray(block.data?.items) ? block.data.items as Array<{ url: string; alt?: string }> : [];
             return (
               <div key={idx} className={`grid gap-3 ${cols === 3 ? "md:grid-cols-3" : "md:grid-cols-2"}`}>
                 {items.map((it, i) => (
@@ -102,7 +104,7 @@ export default function BlogRenderer({ blocks }: { blocks: Block[] }) {
             );
           }
           case "embed": {
-            const url = block.data?.embed || block.data?.source;
+            const url = (block.data?.embed as string | undefined) || (block.data?.source as string | undefined);
             if (!url) return null;
             return (
               <div key={idx} className="aspect-video">
@@ -111,8 +113,8 @@ export default function BlogRenderer({ blocks }: { blocks: Block[] }) {
             );
           }
           case "twoColumn": {
-            const leftContent = block.data?.leftContent || '';
-            const rightContent = block.data?.rightContent || '';
+            const leftContent = (block.data?.leftContent as string | undefined) || '';
+            const rightContent = (block.data?.rightContent as string | undefined) || '';
             return (
               <div key={idx} className="grid grid-cols-1 md:grid-cols-2 gap-8 my-8">
                 <div

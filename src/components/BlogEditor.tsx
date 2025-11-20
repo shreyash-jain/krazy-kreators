@@ -1,14 +1,20 @@
 "use client";
 import { useEffect, useRef } from "react";
 
+type EditorData = {
+  time: number;
+  blocks: Array<{ type: string; data: Record<string, unknown> }>;
+  version: string;
+};
+
 type BlogEditorProps = {
-  initialData?: any;
-  onChange: (data: any) => void;
+  initialData?: EditorData;
+  onChange: (data: EditorData) => void;
   slug: string;
 };
 
 export default function BlogEditor({ initialData, onChange, slug }: BlogEditorProps) {
-  const editorRef = useRef<any | null>(null);
+  const editorRef = useRef<{ destroy?: () => void; saver?: { save: () => Promise<EditorData> } } | null>(null);
   const holderRef = useRef<HTMLDivElement | null>(null);
 
   // Keep refs updated to avoid re-initializing editor when props change
@@ -21,22 +27,22 @@ export default function BlogEditor({ initialData, onChange, slug }: BlogEditorPr
     let isMounted = true;
     async function init() {
       if (!holderRef.current) return;
-      const EditorJS = (await import("@editorjs/editorjs")).default as any;
-      const Header = (await import("@editorjs/header")).default as any;
-      const List = (await import("@editorjs/list")).default as any;
-      const Quote = (await import("@editorjs/quote")).default as any;
-      const Delimiter = (await import("@editorjs/delimiter")).default as any;
-      const Table = (await import("@editorjs/table")).default as any;
-      const ImageTool = (await import("@editorjs/image")).default as any;
-      const TwoColumnTool = (await import("./TwoColumnTool")).default as any;
+      const EditorJS = (await import("@editorjs/editorjs")).default as new (config: unknown) => { destroy?: () => void; saver?: { save: () => Promise<EditorData> } };
+      const Header = (await import("@editorjs/header")).default as unknown;
+      const List = (await import("@editorjs/list")).default as unknown;
+      const Quote = (await import("@editorjs/quote")).default as unknown;
+      const Delimiter = (await import("@editorjs/delimiter")).default as unknown;
+      const Table = (await import("@editorjs/table")).default as unknown;
+      const ImageTool = (await import("@editorjs/image")).default as unknown;
+      const TwoColumnTool = (await import("./TwoColumnTool")).default as unknown;
 
       const editor = new EditorJS({
         holder: holderRef.current,
         data: initialData ?? { time: Date.now(), blocks: [], version: "2.29.0" },
         autofocus: false,
         onChange: async () => {
-          const data = await editor.saver.save();
-          latestProps.current.onChange(data);
+          const data = await editor.saver?.save();
+          if (data) latestProps.current.onChange(data);
         },
         tools: {
           header: {
@@ -66,7 +72,7 @@ export default function BlogEditor({ initialData, onChange, slug }: BlogEditorPr
                   return {
                     success: 1,
                     file: { url: data.url },
-                  } as any;
+                  };
                 },
               },
             },
@@ -75,7 +81,7 @@ export default function BlogEditor({ initialData, onChange, slug }: BlogEditorPr
         },
       });
       if (!isMounted) {
-        try { editor.destroy(); } catch { }
+        try { editor.destroy?.(); } catch { }
         return;
       }
       editorRef.current = editor;

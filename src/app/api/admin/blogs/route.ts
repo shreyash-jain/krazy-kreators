@@ -8,7 +8,7 @@ export async function GET() {
   try {
     const supabase = getSupabaseClient();
     if (!supabase) return NextResponse.json({ blogs: [] });
-    let { data, error } = await supabase
+    const { data, error } = await supabase
       .from("blogs")
       .select("id, created_at, title, slug, category, excerpt, author, image, published_at, content_json")
       .order("created_at", { ascending: false })
@@ -24,7 +24,7 @@ export async function GET() {
         console.error('[admin/blogs] GET error', retry.error.message);
         return NextResponse.json({ blogs: [] });
       }
-      const withNullContent = (retry.data ?? []).map((b: any) => ({ ...b, content_json: null }));
+      const withNullContent = (retry.data ?? []).map((b: Record<string, unknown>) => ({ ...b, content_json: null }));
       return NextResponse.json({ blogs: withNullContent });
     }
     return NextResponse.json({ blogs: data ?? [] });
@@ -53,7 +53,7 @@ export async function POST(req: Request) {
       ? { ...baseInsert, content_json: payload.content_json }
       : baseInsert;
 
-    let { data, error } = await supabase
+    const { data, error } = await supabase
       .from("blogs")
       .insert(withContent)
       .select("id, created_at, title, slug, category, excerpt, author, image, published_at, content_json")
@@ -83,14 +83,14 @@ export async function PATCH(req: Request) {
     const supabase = getSupabaseClient();
     if (!supabase) return NextResponse.json({ error: 'Supabase not configured' }, { status: 500 });
     const baseUpdates: Record<string, unknown> = {};
-    for (const key of ["title","slug","category","excerpt","author","image","published_at"]) {
+    for (const key of ["title", "slug", "category", "excerpt", "author", "image", "published_at"]) {
       if (payload[key] !== undefined) baseUpdates[key] = payload[key];
     }
     const withContent = payload.content_json !== undefined
       ? { ...baseUpdates, content_json: payload.content_json }
       : baseUpdates;
 
-    let { data, error } = await supabase
+    const { data, error } = await supabase
       .from("blogs")
       .update(withContent)
       .eq("id", id)
