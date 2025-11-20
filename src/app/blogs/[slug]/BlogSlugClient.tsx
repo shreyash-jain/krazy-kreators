@@ -15,8 +15,20 @@ import { recordBlogLikeUpdate } from "@/lib/blogLikeSync";
 import BlogRenderer from "@/components/BlogRenderer";
 import { format } from "date-fns";
 
+type Blog = {
+    id?: string | number;
+    title: string;
+    slug: string;
+    excerpt?: string;
+    author?: string;
+    image?: string;
+    category?: string;
+    published_at?: string;
+    content_json?: { blocks?: Array<{ type: string; data: Record<string, unknown> }> } | null;
+};
+
 type BlogSlugClientProps = {
-    blog: any; // Using any for now as the Supabase type isn't strictly defined here, but we know the shape
+    blog: Blog;
     initialLikeCount: number;
     initialComments: PublicComment[];
 };
