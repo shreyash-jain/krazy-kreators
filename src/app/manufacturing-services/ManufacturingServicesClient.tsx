@@ -348,6 +348,34 @@ export default function ManufacturingServicesClient() {
         </div>
       </section>
 
+      {/* Sustainability Banner */}
+      <section className="relative w-full h-[70vh] overflow-hidden flex items-center">
+        <div className="absolute inset-0 z-0">
+          <Image
+            src="/sustainability/sustainability-banner-1.jpg"
+            alt="Sustainability banner background"
+            fill
+            className="object-cover"
+            priority
+          />
+          <div className="absolute inset-0 bg-black/40"></div>
+        </div>
+        <div className="relative z-10 min-w-[80%] lg:max-w-[80%] mx-auto px-4 sm:px-6 lg:px-8 text-center">
+          <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold font-sans text-white mb-4 sm:mb-6">
+            Designed for a Greener Tomorrow
+          </h2>
+          <p className="text-sm sm:text-base md:text-lg text-white max-w-3xl mx-auto mb-8 sm:mb-10 leading-relaxed">
+            Our production lines are powered by innovation and guided by sustainability — ensuring efficiency with care.
+          </p>
+          <Link
+            href="/sustainability"
+            className="inline-flex items-center justify-center px-6 sm:px-8 py-3 rounded-full bg-[#CBB49A] text-white text-sm sm:text-base font-semibold hover:bg-[#b7a078] transition-colors"
+          >
+            Explore Our Process
+          </Link>
+        </div>
+      </section>
+
       {/* CASE STUDIES GRID (reuse pattern) */}
       <section className="relative bg-white py-12 sm:py-16 md:py-20">
         <div className="min-w-[80%] xl:max-w-[75%] 2xl:max-w-[70%] mx-auto px-4 sm:px-6 lg:px-12 xl:px-16">

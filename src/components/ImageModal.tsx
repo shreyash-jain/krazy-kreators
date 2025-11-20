@@ -107,7 +107,8 @@ export default function ImageModal({
   if (!isOpen) return null;
 
   return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/90 backdrop-blur-sm">
+    <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/90 backdrop-blur-sm"
+         role="dialog" aria-modal="true">
       {/* Close button */}
       <button
         onClick={onClose}
@@ -147,7 +148,8 @@ export default function ImageModal({
         )}
 
         {/* Image */}
-        <div className="relative w-full h-full flex items-center justify-center p-16">
+        <div className="relative w-full h-full flex items-center justify-center p-16"
+             style={{ WebkitTransform: 'translateZ(0)', transform: 'translateZ(0)' }}>
           {isLoading && (
             <div className="absolute inset-0 flex items-center justify-center bg-black/20 rounded-lg">
               <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-white"></div>

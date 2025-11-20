@@ -444,7 +444,8 @@ export default function DesignServicesClient() {
       {techOpen && (
         <div className={`fixed inset-0 z-50 bg-black/60 flex items-center justify-center`}>
           <div className="absolute inset-0" onClick={() => { setTechOpen(false); setTechFullscreen(false); document.body.style.overflow = ''; }} />
-          <div className={`${techFullscreen ? 'w-full h-full rounded-none' : 'w-[92%] max-w-5xl max-h-[90vh] rounded-2xl'} relative bg-white shadow-2xl overflow-hidden flex flex-col`}>
+          <div className={`${techFullscreen ? 'w-full h-full rounded-none' : 'w-[92%] max-w-5xl max-h-[90vh] rounded-2xl'} relative bg-white shadow-2xl overflow-hidden flex flex-col`}
+               role="dialog" aria-modal="true">
             <div className="flex items-center justify-between px-5 py-4 border-b border-[#EEE8F6]">
               <h3 className="text-lg sm:text-xl font-semibold text-[#2D2A2E]">Tech Pack – Preview</h3>
               <div className="flex items-center gap-2">
@@ -458,7 +459,8 @@ export default function DesignServicesClient() {
               </div>
             </div>
             <div className={`relative w-full ${techFullscreen ? 'h-[calc(100vh-120px)]' : 'h-[75vh]'} bg-white`}>
-              <iframe src="/services/design/Techpack .pdf#toolbar=0" title="Tech Pack PDF" className="w-full h-full" />
+              <iframe src="/services/design/Techpack .pdf#toolbar=0" title="Tech Pack PDF" className="w-full h-full"
+                      style={{ WebkitTransform: 'translateZ(0)', transform: 'translateZ(0)' }} />
             </div>
           </div>
         </div>
@@ -468,7 +470,8 @@ export default function DesignServicesClient() {
       {bomOpen && (
         <div className={`fixed inset-0 z-50 bg-black/60 flex items-center justify-center`}>
           <div className="absolute inset-0" onClick={() => { setBomOpen(false); setBomFullscreen(false); document.body.style.overflow = ''; }} />
-          <div className={`${bomFullscreen ? 'w-full h-full rounded-none' : 'w-[92%] max-w-5xl max-h-[90vh] rounded-2xl'} relative bg-white shadow-2xl overflow-hidden flex flex-col`}>
+          <div className={`${bomFullscreen ? 'w-full h-full rounded-none' : 'w-[92%] max-w-5xl max-h-[90vh] rounded-2xl'} relative bg-white shadow-2xl overflow-hidden flex flex-col`}
+               role="dialog" aria-modal="true">
             <div className="flex items-center justify-between px-5 py-4 border-b border-[#EEE8F6]">
               <h3 className="text-lg sm:text-xl font-semibold text-[#2D2A2E]">Bill of Materials – Preview</h3>
               <div className="flex items-center gap-2">
@@ -482,7 +485,8 @@ export default function DesignServicesClient() {
               </div>
             </div>
             <div className={`relative w-full ${bomFullscreen ? 'h-[calc(100vh-120px)]' : 'h-[75vh]'} bg-white`}>
-              <iframe src="/services/design/BOM%20template.pdf#toolbar=0" title="BOM Template PDF" className="w-full h-full" />
+              <iframe src="/services/design/BOM%20template.pdf#toolbar=0" title="BOM Template PDF" className="w-full h-full"
+                      style={{ WebkitTransform: 'translateZ(0)', transform: 'translateZ(0)' }} />
             </div>
           </div>
         </div>

@@ -1,5 +1,5 @@
 export type BlogPostMeta = {
-  id: string | number;
+  id: number;
   title: string;
   excerpt: string;
   category: string;
@@ -13,6 +13,19 @@ export type BlogPostMeta = {
 };
 
 export const blogPosts: BlogPostMeta[] = [
+  {
+    id: 8,
+    title: "Costly Mistakes Fashion Startups Make (and How to Avoid Them)",
+    excerpt: "Learn about the common pitfalls that derail fashion startups and discover practical strategies to avoid costly mistakes in design, manufacturing, and business operations.",
+    category: "business",
+    author: "Krazy Kreators Team",
+    date: "December 22, 2024",
+    readTime: "10 min read",
+    image: "/blog/costly-mistakes-startup-make-thumbnail.jpg",
+    slug: "costly-mistakes-startup-make",
+    readers: 1890,
+    likes: 145,
+  },
   {
     id: 1,
     title: "How We Translate Mood Boards Into Manufacturable Garments",

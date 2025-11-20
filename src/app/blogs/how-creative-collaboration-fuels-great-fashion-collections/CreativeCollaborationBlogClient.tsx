@@ -60,7 +60,7 @@ export default function CreativeCollaborationBlogClient({ initialLikeCount, init
       recordBlogLikeUpdate(BLOG_ID, newCount);
       setIsLiked(!isLiked);
       setLikeCount(newCount);
-    } catch (_) {}
+    } catch {}
   };
 
   const handleShare = async () => {
@@ -95,7 +95,7 @@ export default function CreativeCollaborationBlogClient({ initialLikeCount, init
         }
         return newSet;
       });
-    } catch (_) {
+    } catch {
       // If API call fails, don't change the liked state
       console.error('Failed to toggle like for comment:', id);
     }

@@ -64,7 +64,7 @@ export default function MOQBlogClient({ initialLikeCount, initialComments }: MOQ
       recordBlogLikeUpdate(BLOG_ID, newCount);
       setIsLiked(!isLiked);
       setLikeCount(newCount);
-    } catch (_) {}
+    } catch {}
   };
   const handleShare = async () => { const url = window.location.href; try { await navigator.clipboard.writeText(url); showToast("Link copied to clipboard!", "success"); } catch { showToast("Failed to copy link", "error"); } };
   const handleComment = () => { const el = document.querySelector("[data-comments-section]"); if (el) el.scrollIntoView({ behavior: "smooth", block: "start" }); };
@@ -84,7 +84,7 @@ export default function MOQBlogClient({ initialLikeCount, initialComments }: MOQ
         }
         return newSet;
       });
-    } catch (_) {
+    } catch {
       // If API call fails, don't change the liked state
       console.error('Failed to toggle like for comment:', id);
     }
