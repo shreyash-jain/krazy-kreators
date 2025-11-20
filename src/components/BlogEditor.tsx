@@ -93,7 +93,7 @@ export default function BlogEditor({ initialData, onChange, slug }: BlogEditorPr
       try { editorRef.current?.destroy?.(); } catch { }
       editorRef.current = null;
     };
-  }, []); // Only run once on mount
+  }, [initialData]); // Re-initialize when initialData changes
 
   return <div ref={holderRef} />;
 }
