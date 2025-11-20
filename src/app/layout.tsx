@@ -2,8 +2,7 @@ import type { Metadata } from "next";
 import { Geist } from "next/font/google";
 import Script from "next/script";
 import "./globals.css";
-import Navbar from "@/components/Navbar";
-import WhatsAppButton from "@/components/WhatsAppButton";
+import LayoutShell from "@/components/LayoutShell";
 import Head from "./head";
 
 const geistSans = Geist({
@@ -107,9 +106,7 @@ export default function RootLayout({
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(localBusinessJsonLd) }}
         />
-        <Navbar />
-        {children}
-        <WhatsAppButton />
+        <LayoutShell>{children}</LayoutShell>
         {/* <BottomNav /> */}
       </body>
     </html>
