@@ -1,6 +1,4 @@
-// dynamic import at runtime to avoid lint/type resolution issues in some envs
-// eslint-disable-next-line @typescript-eslint/no-var-requires
-const { createClient } = require("@supabase/supabase-js");
+import { createClient, SupabaseClient } from "@supabase/supabase-js";
 
 type Json = string | number | boolean | null | { [key: string]: Json } | Json[];
 
@@ -111,68 +109,10 @@ type LeadInsert = {
   source?: string | null;
 };
 
-interface Database {
-  public: {
-    Tables: {
-      blog_comments: TableDef<BlogCommentRow, BlogCommentInsert>;
-      blog_comment_likes: TableDef<BlogCommentLikeRow, BlogCommentLikeInsert>;
-      blog_post_likes: TableDef<BlogPostLikeRow, BlogPostLikeInsert>;
-      contact_submissions: TableDef<
-        ContactSubmissionRow,
-        ContactSubmissionInsert
-      >;
-      leads: TableDef<LeadRow, LeadInsert>;
-      blogs: TableDef<
-        {
-          id: string;
-          created_at: string;
-          title: string;
-          slug: string;
-          category: string | null;
-          excerpt: string | null;
-          author: string | null;
-          image: string | null;
-          published_at: string | null;
-          content_md: string | null;
-          content_json: Json | null;
-        },
-        Partial<{
-          id: string;
-          created_at: string;
-          title: string;
-          slug: string;
-          category: string | null;
-          excerpt: string | null;
-          author: string | null;
-          image: string | null;
-          published_at: string | null;
-          content_md: string | null;
-          content_json: Json | null;
-        }>,
-        Partial<{
-          id: string;
-          created_at: string;
-          title: string;
-          slug: string;
-          category: string | null;
-          excerpt: string | null;
-          author: string | null;
-          image: string | null;
-          published_at: string | null;
-          content_md: string | null;
-          content_json: Json | null;
-        }>
-      >;
-    };
-    Views: Record<string, never>;
-    Functions: Record<string, never>;
-    Enums: Record<string, Json | Json[]>;
-  };
-}
 
-let cachedClient: any | null = null;
+let cachedClient: SupabaseClient | null = null;
 
-export function getSupabaseClient(): any | null {
+export function getSupabaseClient(): SupabaseClient | null {
   if (cachedClient) return cachedClient;
 
   const url = process.env.NEXT_PUBLIC_SUPABASE_URL;
