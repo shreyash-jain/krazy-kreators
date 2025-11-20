@@ -1,5 +1,5 @@
 export type BlogPostMeta = {
-  id: number;
+  id: string | number;
   title: string;
   excerpt: string;
   category: string;
