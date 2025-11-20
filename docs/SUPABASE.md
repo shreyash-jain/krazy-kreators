@@ -9,6 +9,8 @@ Create a `.env.local` file in the project root with:
 ```
 NEXT_PUBLIC_SUPABASE_URL=https://dlarskurdadrhzfdrlgz.supabase.co
 NEXT_PUBLIC_SUPABASE_ANON_KEY=YOUR_ANON_KEY
+# Optional server-only name; if set it will also be detected
+SUPABASE_ANON_KEY=YOUR_ANON_KEY
 ```
 
 Replace `YOUR_ANON_KEY` with your project anon key.

@@ -12,6 +12,7 @@ import {
     BadgeDollarSign,
     Phone,
     ChevronDown,
+    Leaf,
 } from "lucide-react";
 import { useState, useEffect } from "react";
 import { usePathname } from "next/navigation";
@@ -54,6 +55,8 @@ const megaContent: Record<TopTab, { title: string; desc: string; href: string; i
 		{ title: "Manufacturing Services", desc: "Sampling to bulk production", href: "/manufacturing-services", icon: Factory },
 		{ title: "End‑to‑End Services", desc: "From tech packs to delivery", href: "/end-to-end-services", icon: Infinity },
 		{ title: "Embriodery", desc: "Hand embroidery craftsmanship & detailing", href: "/hand-embroidery", icon: FlowerIcon },
+		{ title: "Prints", desc: "Custom print designs and patterns", href: "/prints", icon: Palette },
+		{ title: "Enterprise", desc: "Large-scale business solutions", href: "/enterprise", icon: Building2 },
 
 	],
 	Portfolio: [
@@ -76,6 +79,7 @@ const megaContent: Record<TopTab, { title: string; desc: string; href: string; i
 	],
 	Company: [
 		{ title: "About Us", desc: "Story, vision, and team", href: "/about", icon: Building2 },
+		{ title: "Sustainability", desc: "Our responsibility and initiatives", href: "/sustainability", icon: Leaf },
 		{ title: "Pricing", desc: "Transparent retainers & custom packs", href: "/pricing", icon: BadgeDollarSign },
 		{ title: "Contact", desc: "Talk to the team", href: "/contact", icon: Phone },
 	],
@@ -98,6 +102,7 @@ export default function Navbar({ invertTabs: forceInvertTabs }: NavbarProps = {}
 	const isLasPage = pathname === "/case-studies/las";
 	const isHYOfficialPage = pathname === "/case-studies/hy-official";
 	const isBadriAlShihhiPage = pathname === "/case-studies/badri-al-shihhi";
+	const isRawMaterialsPage = pathname === "/end-to-end-services/raw-materials";
 
 	// Add timeout for hiding mega menu
 	const [hideTimeout, setHideTimeout] = useState<NodeJS.Timeout | null>(null);
@@ -154,20 +159,45 @@ export default function Navbar({ invertTabs: forceInvertTabs }: NavbarProps = {}
 
 	// Detect dark hero sections to invert tab colors when at top
 	useEffect(() => {
-		const el = document.querySelector<HTMLElement>(".kk-hero-dark");
-		if (!el) return;
-		const io = new IntersectionObserver(
-			(entries) => {
-				const [entry] = entries;
-				setHeroInView(entry.isIntersecting);
-			},
-			{ root: null, threshold: 0.1 }
-		);
-		io.observe(el);
-		return () => io.disconnect();
-	}, []);
+		// Reset heroInView when pathname changes
+		setHeroInView(false);
+		
+		let io: IntersectionObserver | null = null;
+		let timeoutId: NodeJS.Timeout | null = null;
+		
+		// Use requestAnimationFrame to ensure DOM is ready after navigation
+		const checkHero = () => {
+			const el = document.querySelector<HTMLElement>(".kk-hero-dark");
+			if (!el) {
+				// If element not found immediately, try again after a short delay
+				timeoutId = setTimeout(checkHero, 50);
+				return;
+			}
+			
+			// Immediately compute visibility so colors are correct on first paint
+			const rect = el.getBoundingClientRect();
+			const inViewNow = rect.top < window.innerHeight * 0.9 && rect.bottom > 0;
+			if (inViewNow) setHeroInView(true);
 
-	const invertTabs = forceInvertTabs || (isDroverPage && !scrolled) || (isTiltedLotusPage && !scrolled) || (isLasPage && !scrolled) || (isHYOfficialPage && !scrolled) || (isBadriAlShihhiPage && !scrolled) || (heroInView && !scrolled);
+			io = new IntersectionObserver(
+				(entries) => {
+					const [entry] = entries;
+					setHeroInView(entry.isIntersecting);
+				},
+				{ root: null, threshold: 0.1 }
+			);
+			io.observe(el);
+		};
+
+		requestAnimationFrame(checkHero);
+		
+		return () => {
+			if (timeoutId) clearTimeout(timeoutId);
+			if (io) io.disconnect();
+		};
+	}, [pathname]);
+
+	const invertTabs = forceInvertTabs || (isDroverPage && !scrolled) || (isTiltedLotusPage && !scrolled) || (isLasPage && !scrolled) || (isHYOfficialPage && !scrolled) || (isBadriAlShihhiPage && !scrolled) || (isRawMaterialsPage && !scrolled) || (heroInView && !scrolled);
 
 	return (
 		<>
