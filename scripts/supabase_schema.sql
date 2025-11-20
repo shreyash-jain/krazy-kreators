@@ -38,6 +38,13 @@ create policy if not exists contact_submissions_insert_anon
   to anon
   with check (true);
 
+-- TEMP: Allow anonymous select for admin UI without auth (will restrict later)
+create policy if not exists contact_submissions_select_anon
+  on public.contact_submissions
+  for select
+  to anon
+  using (true);
+
 -- Optional: allow authenticated users to read their own entries if you add auth later
 -- For now, do NOT grant select to anon (service role bypasses RLS for admin access)
 
@@ -72,6 +79,13 @@ create policy if not exists leads_insert_anon
   for insert
   to anon
   with check (true);
+
+-- TEMP: Allow anonymous select for admin UI without auth (will restrict later)
+create policy if not exists leads_select_anon
+  on public.leads
+  for select
+  to anon
+  using (true);
 
 -- Blog interactions: likes per post and comments with likes on comments
 create table if not exists public.blog_post_likes (
@@ -137,5 +151,68 @@ create policy if not exists blog_comment_likes_select_anon
   to anon
   using (true);
 
+-- Blog content table (admin managed)
+create table if not exists public.blogs (
+  id uuid primary key default gen_random_uuid(),
+  created_at timestamptz not null default now(),
+  title text not null,
+  slug text not null unique,
+  category text null,
+  excerpt text null,
+  author text null,
+  image text null,
+  published_at timestamptz null,
+  content_md text null,
+  content_json jsonb null
+);
+
+comment on table public.blogs is 'Admin-managed blog posts.';
+create index if not exists blogs_created_at_idx on public.blogs (created_at desc);
+alter table public.blogs enable row level security;
+-- No anon write access; reads can be allowed later via API
+-- TEMP: Allow full anon CRUD for admin UI without auth (will restrict later)
+create policy if not exists blogs_select_anon
+  on public.blogs
+  for select
+  to anon
+  using (true);
+
+create policy if not exists blogs_insert_anon
+  on public.blogs
+  for insert
+  to anon
+  with check (true);
+
+create policy if not exists blogs_update_anon
+  on public.blogs
+  for update
+  to anon
+  using (true)
+  with check (true);
+
+create policy if not exists blogs_delete_anon
+  on public.blogs
+  for delete
+  to anon
+  using (true);
+
+-- STORAGE: Ensure public bucket exists and allow anon read/insert for kk-bucket
+insert into storage.buckets (id, name, public)
+  values ('kk-bucket', 'kk-bucket', true)
+  on conflict (id) do nothing;
+
+-- Allow public read of objects in kk-bucket
+create policy if not exists storage_kk_public_read
+  on storage.objects
+  for select
+  to anon
+  using (bucket_id = 'kk-bucket');
+
+-- Allow anonymous inserts to kk-bucket (temporary until admin auth is added)
+create policy if not exists storage_kk_insert_anon
+  on storage.objects
+  for insert
+  to anon
+  with check (bucket_id = 'kk-bucket');
 
 
