@@ -205,11 +205,12 @@ export default function AboutClient() {
                   </p>
                 </div>
                 {/* Image right on desktop */}
-                <div className="order-1 lg:order-2">
-                  <img
+                <div className="order-1 lg:order-2 relative h-64 sm:h-80 md:h-96 lg:h-[28rem] rounded-xl overflow-hidden border border-[#ECE9E2]">
+                  <Image
                     src="/brands/about-past.jpg"
                     alt="Past – early fashion design to delivery support"
-                    className="w-full h-64 sm:h-80 md:h-96 lg:h-[28rem] object-cover rounded-xl border border-[#ECE9E2]"
+                    fill
+                    className="object-cover"
                   />
                 </div>
               </div>
@@ -219,11 +220,12 @@ export default function AboutClient() {
             <div className="py-2">
               <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 sm:gap-10 lg:gap-14 items-center">
                 {/* Image left on desktop */}
-                <div className="order-1 lg:order-1">
-                  <img
+                <div className="order-1 lg:order-1 relative h-64 sm:h-80 md:h-96 lg:h-[28rem] rounded-xl overflow-hidden border border-[#ECE9E2]">
+                  <Image
                     src="/brands/about-present.jpg"
                     alt="Present – sustainable clothing manufacturing at Krazy Kreators"
-                    className="w-full h-64 sm:h-80 md:h-96 lg:h-[28rem] object-cover rounded-xl border border-[#ECE9E2]"
+                    fill
+                    className="object-cover"
                   />
                 </div>
                 {/* Text */}
@@ -257,11 +259,12 @@ export default function AboutClient() {
                   </p>
                 </div>
                 {/* Image right on desktop */}
-                <div className="order-1 lg:order-2">
-                  <img
+                <div className="order-1 lg:order-2 relative h-64 sm:h-80 md:h-96 lg:h-[28rem] rounded-xl overflow-hidden border border-[#ECE9E2]">
+                  <Image
                     src="/brands/about-future.jpg"
                     alt="Future – innovation in custom clothing production at Krazy Kreators"
-                    className="w-full h-64 sm:h-80 md:h-96 lg:h-[28rem] object-cover rounded-xl border border-[#ECE9E2]"
+                    fill
+                    className="object-cover"
                   />
                 </div>
               </div>
@@ -280,10 +283,11 @@ export default function AboutClient() {
           </div>
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 items-center">
             <div className="relative mx-auto w-full max-w-md h-[34rem] sm:h-[36rem] md:h-[40rem] lg:h-[44rem] rounded-3xl overflow-hidden border border-[#ECE9E2] shadow-sm">
-              <img
+              <Image
                 src="/brands/about-prashant.png"
                 alt="Prashant Singh — founder of Krazy Kreators, fashion brand manufacturing"
-                className="w-full h-full object-cover object-center"
+                fill
+                className="object-cover object-center"
               />
             </div>
             <div>
@@ -329,7 +333,9 @@ export default function AboutClient() {
               { name: "Vinod Srivastva", role: "Quality Control", desc: "AQL & production audits", img: "/brands/about-vinod.jpeg" },
             ].map((m) => (
               <div key={m.name} className="bg-white rounded-xl overflow-hidden shadow-sm border border-[#ECE9E2]">
-                <img src={m.img} alt={`${m.name} – ${m.role}`} className="w-full h-80 sm:h-96 md:h-[28rem] lg:h-[32rem] object-cover" />
+                <div className="relative w-full h-80 sm:h-96 md:h-[28rem] lg:h-[32rem]">
+                  <Image src={m.img} alt={`${m.name} – ${m.role}`} fill className="object-cover" />
+                </div>
                 <div className="p-4 sm:p-5">
                   <p className="text-[#2D2A2E] text-base font-semibold">{m.name}</p>
                   <p className="text-[#3D3846] text-sm">{m.role}</p>
