@@ -5,6 +5,7 @@ import BlogSlugClient from "./BlogSlugClient";
 import { blogPosts } from "@/data/blogPosts";
 
 export const dynamic = 'force-dynamic';
+export const runtime = 'edge';
 
 async function fetchBlog(slug: string) {
   const supabase = getSupabaseClient();

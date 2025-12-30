@@ -9,6 +9,7 @@ export const metadata = {
 };
 
 export const dynamic = "force-dynamic";
+export const runtime = 'edge';
 
 export default async function BlogsPage() {
   const supabase = getSupabaseClient();

@@ -3,6 +3,7 @@ import { getBlogLikeCount, getComments } from '@/lib/blogApi';
 import { headers } from 'next/headers';
 
 export const dynamic = 'force-dynamic';
+export const runtime = 'edge';
 
 export default async function SupplyChainBlogPage() {
   const headersList = await headers();
