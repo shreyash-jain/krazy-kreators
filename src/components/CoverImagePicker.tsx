@@ -1,7 +1,14 @@
 "use client";
 import { useRef, useState } from "react";
 
-export default function CoverImagePicker({ slug, value, onChange }: { slug: string; value: string; onChange: (url: string) => void }) {
+interface CoverImagePickerProps {
+  slug: string;
+  value: string;
+  onChange: (url: string) => void;
+  buttonText?: string;
+}
+
+export default function CoverImagePicker({ slug, value, onChange, buttonText = "Upload image" }: CoverImagePickerProps) {
   const inputRef = useRef<HTMLInputElement | null>(null);
   const [uploading, setUploading] = useState(false);
 
@@ -32,7 +39,7 @@ export default function CoverImagePicker({ slug, value, onChange }: { slug: stri
   return (
     <div className="space-y-2">
       <div className="flex items-center gap-2">
-        <button onClick={pick} className="px-3 py-2 rounded border" disabled={uploading}>{uploading ? "Uploading..." : "Upload Cover"}</button>
+        <button onClick={pick} className="px-4 py-2 rounded-lg border-2 border-[#CBB49A] text-[#CBB49A] hover:bg-[#CBB49A] hover:text-white transition-all duration-300 text-sm font-medium" disabled={uploading}>{uploading ? "Uploading..." : buttonText}</button>
         <input ref={inputRef} type="file" accept="image/*" className="hidden" onChange={onFile} />
       </div>
       {value && <div className="text-xs break-all">{value}</div>}

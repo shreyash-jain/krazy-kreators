@@ -29,11 +29,27 @@ export default function BlogsClient({ initialLikeCounts, posts }: BlogsClientPro
 
   const allPosts = posts;
 
+  // Dynamically generate categories from all published posts
+  const categoryMap = new Map<string, number>();
+  allPosts.forEach(post => {
+    if (post.category) {
+      const count = categoryMap.get(post.category) || 0;
+      categoryMap.set(post.category, count + 1);
+    }
+  });
+
+  // Sort categories alphabetically
+  const sortedCategories = Array.from(categoryMap.entries())
+    .sort((a, b) => a[0].localeCompare(b[0]))
+    .map(([category, count]) => ({
+      id: category,
+      label: category.charAt(0).toUpperCase() + category.slice(1),
+      count
+    }));
+
   const categories = [
     { id: "all", label: "All Posts", count: allPosts.length },
-    { id: "design", label: "Design", count: allPosts.filter(post => post.category === "design").length },
-    { id: "manufacturing", label: "Manufacturing", count: allPosts.filter(post => post.category === "manufacturing").length },
-    { id: "business", label: "Business", count: allPosts.filter(post => post.category === "business").length }
+    ...sortedCategories
   ];
 
   const filteredPosts = activeFilter === "all"
@@ -172,7 +188,7 @@ export default function BlogsClient({ initialLikeCounts, posts }: BlogsClientPro
                 <article className="bg-white rounded-2xl shadow-lg overflow-hidden hover:shadow-xl transition-all duration-300 group-hover:-translate-y-1">
                   <div className="aspect-video relative overflow-hidden">
                     <Image
-                      src={post.image}
+                      src={post.card_image || post.image}
                       alt={post.title}
                       fill
                       className="object-cover group-hover:scale-105 transition-transform duration-300"

@@ -40,4 +40,3 @@ export default function CoverImagePicker({ slug, value, onChange }: { slug: stri
   );
 }
 
-

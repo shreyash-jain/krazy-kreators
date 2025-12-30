@@ -7,10 +7,6 @@ import Link from "next/link";
 import dynamic from "next/dynamic";
 import { useState } from "react";
 import { 
-  Scissors, 
-  Sparkles, 
-  Palette, 
-  Layers,
   ChevronRight
 } from "lucide-react";
 

@@ -13,7 +13,7 @@ export default function BlogRenderer({ blocks }: { blocks: Block[] }) {
         switch (block.type) {
           case "header": {
             const level = Math.min(Math.max(Number(block.data?.level ?? 2), 1), 6);
-            const Tag = ("h" + level) as keyof JSX.IntrinsicElements;
+            const Tag = `h${level}` as 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6';
             return <Tag key={idx} dangerouslySetInnerHTML={{ __html: String(block.data?.text || "") }} />;
           }
           case "paragraph": {

@@ -19,7 +19,7 @@ export async function POST(req: Request) {
     const supabase = getSupabaseClient();
     if (!supabase) return NextResponse.json({ error: 'Supabase not configured' }, { status: 500 });
 
-    const { data, error } = await supabase.storage.from("kk-bucket").upload(path, bytes, {
+    const { error } = await supabase.storage.from("kk-bucket").upload(path, bytes, {
       contentType: file.type || "application/octet-stream",
       upsert: false,
     });
