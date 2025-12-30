@@ -23,14 +23,14 @@ const benefits = [
 export default function DedicatedTeam() {
   return (
     <section className="w-full bg-white py-12 sm:py-16 md:py-20 lg:py-24">
-      <div className="min-w-[80%] xl:max-w-[75%] 2xl:max-w-[70%] mx-auto px-4 sm:px-6 lg:px-12 xl:px-16">
+      <div className="min-w-[80%] xl:max-w-[75%] 2xl:max-w-[70%] mx-auto px-4 sm:px-6 md:px-8 lg:px-12 xl:px-16">
         {/* Section Header - Centered */}
-        <div className="text-center mb-12 sm:mb-16 md:mb-20">
+        <div className="text-center mb-12 sm:mb-16 md:mb-20 lg:mb-24">
               <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold font-sans text-[#2D2A2E] mb-4 sm:mb-6 leading-tight relative">
                 Your Own Project Manager & Design Team
             <div className="absolute -bottom-2 left-1/2 transform -translate-x-1/2 w-16 h-0.5 bg-[#6BA292] rounded-full"></div>
               </h2>
-          <p className="text-[#3D3846]/80 text-base sm:text-lg leading-relaxed max-w-3xl mx-auto">
+          <p className="text-[#3D3846]/80 text-base sm:text-lg leading-relaxed max-w-3xl mx-auto px-4 md:px-6">
                 At Krazy Kreators, you&apos;re never just handed off to a process. You&apos;re paired with a dedicated project manager and design team from day one — a team that becomes an extension of yours. From refining your vision to execution, we guide you every step of the way.
               </p>
             </div>

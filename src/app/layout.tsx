@@ -2,7 +2,10 @@ import type { Metadata } from "next";
 import { Geist } from "next/font/google";
 import Script from "next/script";
 import "./globals.css";
-import Navbar from "@/components/Navbar";
+import LayoutShell from "@/components/LayoutShell";
+
+import Head from "./head";
+import { PortfolioSyncProvider } from "@/lib/PortfolioSyncContext";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -18,9 +21,15 @@ export const metadata: Metadata = {
     canonical: "https://krazykreators.com/",
   },
   icons: {
-    icon: "/Logo.ico",
+    icon: [
+      { url: "/Logo.ico", sizes: "16x16", type: "image/x-icon" },
+      { url: "/Logo.ico", sizes: "32x32", type: "image/x-icon" },
+      { url: "/Logo.svg", sizes: "any", type: "image/svg+xml" },
+    ],
     shortcut: "/Logo.ico",
-    apple: "/Logo.ico",
+    apple: [
+      { url: "/Logo.ico", sizes: "180x180", type: "image/x-icon" },
+    ],
   },
   openGraph: {
     title: "Krazy Kreators | Start Your Clothing Brand With Us",
@@ -78,8 +87,9 @@ export default function RootLayout({
 
   return (
     <html lang="en" suppressHydrationWarning>
+      <Head />
       <body
-        className={`${geistSans.variable} antialiased bg-white min-h-screen`}
+        className={`${geistSans.variable} antialiased bg-white min-h-screen safari-fix`}
       >
         <Script
           src="https://www.googletagmanager.com/gtag/js?id=G-HDYK2HYHWZ"
@@ -98,9 +108,10 @@ export default function RootLayout({
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(localBusinessJsonLd) }}
         />
-        <Navbar />
-        {children}
-        {/* <BottomNav /> */}
+        <PortfolioSyncProvider>
+          <LayoutShell>{children}</LayoutShell>
+          {/* <BottomNav /> */}
+        </PortfolioSyncProvider>
       </body>
     </html>
   );

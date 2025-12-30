@@ -1,35 +1,42 @@
 import { Button } from "@/components/ui/button";
+import Link from "next/link";
 
 const categories = [
   {
     name: "Luxury Wear",
     image: "/brands/luxury_wear.jpg",
     size: "large",
+    href: "/portfolio/luxury-wear",
   },
   {
     name: "Resort Wear",
     image: "/brands/resort_wear.jpg",
     size: "medium",
+    href: "/portfolio/resort-wear",
   },
   {
     name: "Men's Wear",
     image: "/brands/mens_wear.jpg",
     size: "medium",
+    href: "/portfolio/mens-wear",
   },
   {
     name: "Men's Streetwear",
     image: "/brands/mens_streetwear.jpg",
     size: "large",
+    href: "/portfolio/mens-streetwear",
   },
   {
     name: "Lounge Wear",
     image: "/brands/lounge_wear.jpg",
     size: "medium",
+    href: "/portfolio/loungewear",
   },
   {
     name: "Accessories",
     image: "/brands/accessories.jpg",
     size: "medium",
+    href: "/portfolio/accessories",
   },
 ];
 
@@ -40,9 +47,9 @@ export default function ExploreDesigns() {
       <div className="absolute inset-0 opacity-50" style={{
         backgroundImage: `url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23CBB49A' fill-opacity='0.05'%3E%3Ccircle cx='30' cy='30' r='2'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E")`
       }}></div>
-      <div className="max-w-[80%] mx-auto relative z-10">
+      <div className="max-w-[80%] mx-auto relative z-10 px-4 md:px-6">
         {/* Two Column Layout */}
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 sm:gap-12 lg:gap-16 items-center">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 sm:gap-12 md:gap-16 lg:gap-16 items-center">
           {/* Left Column - Heading */}
           <div className="lg:sticky lg:top-8 text-center lg:text-left">
             <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-serif font-bold text-[#2D2A2E] leading-tight mb-4 sm:mb-6">
@@ -62,9 +69,9 @@ export default function ExploreDesigns() {
           </div>
 
           {/* Right Column - Product Grid */}
-          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-6 md:gap-8">
+          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 gap-4 sm:gap-6 md:gap-8">
             {categories.map((category, index) => (
-              <div key={index} className="group cursor-pointer">
+              <Link key={index} href={category.href} className="group cursor-pointer">
                 <div className="relative overflow-hidden rounded-lg sm:rounded-xl h-32 sm:h-40 md:h-48 lg:h-52 mb-2 sm:mb-3">
                   <img
                     src={category.image}
@@ -75,7 +82,7 @@ export default function ExploreDesigns() {
                 <h3 className="text-center text-xs sm:text-sm md:text-base font-medium text-[#2D2A2E] uppercase tracking-wide">
                   {category.name}
                 </h3>
-              </div>
+              </Link>
             ))}
           </div>
         </div>

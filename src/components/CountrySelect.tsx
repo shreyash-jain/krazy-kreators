@@ -25,7 +25,7 @@ const fallbackCountries: Country[] = [
 ];
 
 export default function CountrySelect({
-  id,
+  // id,
   name,
   className,
   placeholder = "Select your country",
@@ -58,7 +58,7 @@ export default function CountrySelect({
           .filter((c) => c.code && c.name)
           .sort((a, b) => a.name.localeCompare(b.name));
         if (isMounted && parsed.length) setCountries(parsed);
-      } catch (_e) {
+      } catch {
         // keep fallback
       }
     })();
@@ -76,6 +76,16 @@ export default function CountrySelect({
       setSelectedCountry(null);
     }
   }, [value, countries]);
+
+  // Set initial selected country when countries are loaded and we have a value
+  useEffect(() => {
+    if (value && countries.length > 0 && !selectedCountry) {
+      const country = countries.find(c => c.code === value);
+      if (country) {
+        setSelectedCountry(country);
+      }
+    }
+  }, [countries, value, selectedCountry]);
 
   const filteredCountries = useMemo(() => {
     if (!searchTerm) return countries;
