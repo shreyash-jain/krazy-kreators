@@ -38,7 +38,7 @@ export async function GET() {
     }
     
     // Map data to include standard fields
-    const mappedData = (data ?? []).map((b: any) => ({
+    const mappedData = (data ?? []).map((b: { created_at?: string } & Record<string, unknown>) => ({
       ...b,
       updated_at: b.created_at || null,
       draft_content_json: null // Since we didn't select it (it doesn't exist)

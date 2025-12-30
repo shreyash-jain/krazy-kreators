@@ -4,7 +4,7 @@ import { useEffect, useState } from "react";
 import Link from "next/link";
 import { usePathname, useRouter } from "next/navigation";
 import { LayoutDashboard, Users, FileText, LogOut, Loader2 } from "lucide-react";
-import Image from "next/image";
+
 
 export default function AdminLayout({ children }: { children: React.ReactNode }) {
   const router = useRouter();
