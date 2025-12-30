@@ -1,6 +1,8 @@
 "use client";
 
 import Footer from "@/components/Footer";
+import Image from "next/image";
+import Link from "next/link";
 import { Check, Star, Sparkles, Scissors, Shirt, Palette } from "lucide-react";
 import dynamic from "next/dynamic";
 import { useState } from "react";
@@ -165,8 +167,8 @@ export default function PricingClient() {
       />
 
       {/* Hero - Clean white */}
-      <section className="min-h-screen flex items-center bg-white py-20 sm:py-24 md:py-28">
-        <div className="max-w-[80%] mx-auto px-4 md:px-0 lg:px-0 text-center w-full">
+      <section className="h-[70vh] flex items-center bg-white py-12 sm:py-16 md:py-20">
+        <div className="max-w-[95%] sm:max-w-[90%] md:max-w-[85%] lg:max-w-[80%] mx-auto px-4 md:px-0 lg:px-0 text-center w-full">
           <h1 className="text-3xl sm:text-4xl md:text-5xl font-serif font-bold text-[#111111]">
             Simple Pricing. Big Value.
           </h1>
@@ -186,8 +188,8 @@ export default function PricingClient() {
       </section>
 
       {/* Retainership model explainer (cards) */}
-      <section className="py-14 sm:py-16 md:py-20 bg-[#FAF9F7]">
-        <div className="max-w-[80%] mx-auto px-4 md:px-0 lg:px-0">
+      <section className="py-8 sm:py-10 md:py-12 bg-[#FAF9F7]">
+        <div className="max-w-[95%] sm:max-w-[90%] md:max-w-[85%] lg:max-w-[80%] mx-auto px-4 md:px-0 lg:px-0">
           <div className="grid grid-cols-1 lg:grid-cols-2 auto-rows-fr items-stretch gap-6 md:gap-8">
             {/* Card 1 */}
             <article className="rounded-2xl border border-[#E0E0E0] bg-white shadow-[0_6px_24px_rgba(0,0,0,0.06)] p-6 sm:p-7 md:p-8 h-full">
@@ -221,7 +223,7 @@ export default function PricingClient() {
 
       {/* Monthly Retainer Plans */}
       <section id="retainer-plans" className="pb-16 sm:pb-20 md:pb-24">
-        <div className="max-w-[80%] mx-auto px-4 md:px-0 lg:px-0">
+        <div className="max-w-[95%] sm:max-w-[90%] md:max-w-[85%] lg:max-w-[80%] mx-auto px-4 md:px-0 lg:px-0">
           <h2 className="text-xl sm:text-2xl md:text-3xl font-serif font-bold text-[#2D2A2E] text-center">
             Fashion Brand Retainer Plans
           </h2>
@@ -229,7 +231,7 @@ export default function PricingClient() {
             Choose a monthly partnership geared to design, sampling, and production momentum.
           </p>
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-8">
+          <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 md:gap-8">
             {retainerPlans.map((plan) => (
               <article
                 key={plan.name}
@@ -271,9 +273,37 @@ export default function PricingClient() {
         </div>
       </section>
 
+      {/* Enterprise Services Banner */}
+      <section className="relative w-full h-[70vh] overflow-hidden flex items-center">
+        <div className="absolute inset-0 z-0">
+          <Image
+            src="/services/enterprise/enterprise-banner.jpg"
+            alt="Enterprise services banner background"
+            fill
+            className="object-cover"
+            priority
+          />
+          <div className="absolute inset-0 bg-black/40"></div>
+        </div>
+        <div className="relative z-10 min-w-[80%] lg:max-w-[80%] mx-auto px-4 sm:px-6 lg:px-8 text-center">
+          <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold font-sans text-white mb-4 sm:mb-6">
+            Enterprise Solutions, Tailored for Scale
+          </h2>
+          <p className="text-sm sm:text-base md:text-lg text-white max-w-3xl mx-auto mb-8 sm:mb-10 leading-relaxed">
+            From sourcing to delivery, we customize every process to match your brand&apos;s global goals and sustainability vision.
+          </p>
+          <Link
+            href="/enterprise"
+            className="inline-flex items-center justify-center px-6 sm:px-8 py-3 rounded-full bg-[#CBB49A] text-white text-sm sm:text-base font-semibold hover:bg-[#b7a078] transition-colors"
+          >
+            Explore Enterprise Services
+          </Link>
+        </div>
+      </section>
+
       {/* Custom Plans */}
-      <section className="pb-20 sm:pb-24 md:pb-28">
-        <div className="max-w-[80%] mx-auto px-4 md:px-0 lg:px-0">
+      <section className="pt-16 sm:pt-20 md:pt-24 pb-20 sm:pb-24 md:pb-28">
+        <div className="max-w-[95%] sm:max-w-[90%] md:max-w-[85%] lg:max-w-[80%] mx-auto px-4 md:px-0 lg:px-0">
           {/* Title + subtext above */}
           <div className="text-center max-w-3xl mx-auto mb-8 sm:mb-10 md:mb-12">
             <h2 className="text-2xl sm:text-3xl md:text-4xl font-serif font-bold text-[#2D2A2E]">
@@ -287,7 +317,7 @@ export default function PricingClient() {
           </div>
 
           {/* Horizontal cards */}
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
+          <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 md:gap-8">
             {customPlans.map((p) => {
               const Icon = p.icon;
               return (
@@ -320,6 +350,34 @@ export default function PricingClient() {
               );
             })}
           </div>
+        </div>
+      </section>
+
+      {/* Sustainability Banner */}
+      <section className="relative w-full h-[70vh] overflow-hidden flex items-center">
+        <div className="absolute inset-0 z-0">
+          <Image
+            src="/sustainability/sustainability-banner-3.jpg"
+            alt="Sustainability banner background"
+            fill
+            className="object-cover"
+            priority
+          />
+          <div className="absolute inset-0 bg-black/40"></div>
+        </div>
+        <div className="relative z-10 min-w-[80%] lg:max-w-[80%] mx-auto px-4 sm:px-6 lg:px-8 text-center">
+          <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold font-sans text-white mb-4 sm:mb-6">
+            Value That Respects the Planet
+          </h2>
+          <p className="text-sm sm:text-base md:text-lg text-white max-w-3xl mx-auto mb-8 sm:mb-10 leading-relaxed">
+            From cost to care, every pricing tier is designed to keep our environmental footprint light
+          </p>
+          <Link
+            href="/sustainability"
+            className="inline-flex items-center justify-center px-6 sm:px-8 py-3 rounded-full bg-[#CBB49A] text-white text-sm sm:text-base font-semibold hover:bg-[#b7a078] transition-colors"
+          >
+            See How
+          </Link>
         </div>
       </section>
 

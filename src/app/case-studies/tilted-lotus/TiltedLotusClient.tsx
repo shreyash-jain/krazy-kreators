@@ -1,69 +1,80 @@
 /* eslint-disable */
 "use client";
 
-import { useState, useRef, useEffect } from "react";
+import { useState, useRef, useEffect, useCallback } from "react";
 import { Button } from "@/components/ui/button";
 import { ArrowRight, MessageSquare, Factory, Users, TrendingUp } from "lucide-react";
 import ContactDialog from "@/components/ContactDialog";
 import Footer from "@/components/Footer";
+import TestimonialCard from "@/components/TestimonialCard";
 
 export default function TiltedLotusClient() {
 	const [contactOpen, setContactOpen] = useState(false);
-	const videoRef = useRef<HTMLVideoElement>(null);
 	const testimonialRef = useRef<HTMLDivElement>(null);
-	const [playing, setPlaying] = useState(false);
-	const [wasManuallyPaused, setWasManuallyPaused] = useState(false);
+	const [playingVideoIndex, setPlayingVideoIndex] = useState<number | null>(null);
+	const videoRefs = useRef<(HTMLVideoElement | null)[]>([]);
+	const cardRefs = useRef<(HTMLDivElement | null)[]>([]);
 
-	const handleVideoClick = () => {
-		if (!playing) {
-			setPlaying(true);
-			setWasManuallyPaused(false); // User manually resumed
-			setTimeout(() => {
-				videoRef.current?.play();
-			}, 100);
-		} else {
-			setPlaying(false);
-			setWasManuallyPaused(true); // User manually paused
-			videoRef.current?.pause();
-		}
-	};
-
-	// Intersection Observer to pause/resume video based on visibility
-	useEffect(() => {
-		const observer = new IntersectionObserver(
-			(entries) => {
-				entries.forEach((entry) => {
-					const video = videoRef.current;
-					
-					if (!entry.isIntersecting && video && !video.paused) {
-						// Video is not visible and is playing, pause it (preserves current time)
-						video.pause();
-						setPlaying(false);
-						// Don't set wasManuallyPaused - this is automatic pause due to scrolling
-					} else if (entry.isIntersecting && video && video.paused && !wasManuallyPaused) {
-						// Video is visible, paused, and was NOT manually paused - resume it
-						video.play().then(() => {
-							setPlaying(true);
-						}).catch((error) => {
-							console.log('Resume play failed:', error);
-						});
-					}
-				});
-			},
-			{
-				threshold: 0.1, // Trigger when 10% of the video is visible
-				rootMargin: '0px 0px -10% 0px' // Add some margin to trigger earlier
+	const handleVideoPlay = useCallback((index: number) => {
+		if (index === -1) {
+			if (playingVideoIndex !== null && videoRefs.current[playingVideoIndex]) {
+				const activeVideo = videoRefs.current[playingVideoIndex];
+				if (activeVideo) {
+					activeVideo.pause();
+					activeVideo.muted = true;
+					activeVideo.currentTime = 0.1;
+				}
 			}
-		);
-
-		if (testimonialRef.current) {
-			observer.observe(testimonialRef.current);
+			setPlayingVideoIndex(null);
+			return;
 		}
 
-		return () => {
-			observer.disconnect();
+		videoRefs.current.forEach((ref, i) => {
+			if (ref && i !== index) {
+				ref.pause();
+				ref.muted = true;
+				ref.currentTime = 0.1;
+			}
+		});
+
+		if (playingVideoIndex === index) {
+			if (videoRefs.current[index]) {
+				videoRefs.current[index]!.pause();
+				videoRefs.current[index]!.muted = true;
+				videoRefs.current[index]!.currentTime = 0.1;
+			}
+			setPlayingVideoIndex(null);
+					} else {
+			if (videoRefs.current[index]) {
+				videoRefs.current[index]!.muted = false;
+				videoRefs.current[index]!.play().catch(console.error);
+			}
+			setPlayingVideoIndex(index);
+		}
+	}, [playingVideoIndex]);
+
+	const setVideoRef = useCallback((index: number, ref: HTMLVideoElement | null) => {
+		videoRefs.current[index] = ref;
+	}, []);
+
+	const setCardRef = useCallback((index: number, ref: HTMLDivElement | null) => {
+		cardRefs.current[index] = ref;
+	}, []);
+
+	useEffect(() => {
+		const initializeVideos = () => {
+			videoRefs.current.forEach((ref) => {
+				if (ref) {
+					ref.muted = true;
+					ref.currentTime = 0.1;
+					ref.pause();
+				}
+			});
 		};
-	}, [wasManuallyPaused]);
+
+		const timer = setTimeout(initializeVideos, 100);
+		return () => clearTimeout(timer);
+	}, []);
 
 	const barriersMobile: string[] = [
 		"Traditional manufacturers rejected small batches with many styles.",
@@ -329,7 +340,7 @@ export default function TiltedLotusClient() {
 						</div>
 
 						{/* Challenge Cards */}
-						<div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+						<div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
 							<div className="bg-white border-2 border-[#E8E4DD] rounded-2xl p-8 shadow-lg hover:shadow-xl transition-all duration-300">
 								<div className="w-16 h-16 bg-[#6BA292]/10 rounded-xl flex items-center justify-center mb-6">
 									<Factory className="w-8 h-8 text-[#6BA292]" />
@@ -614,125 +625,41 @@ export default function TiltedLotusClient() {
 				{/* Tilted Lotus Client Testimonial Section */}
 				<section ref={testimonialRef} className="relative py-20 sm:py-24 lg:py-32 bg-white overflow-hidden">
 					<div className="relative min-w-[80%] lg:max-w-[80%] mx-auto px-4 sm:px-6 lg:px-8">
-						{/* Mobile Layout */}
-						<div className="lg:hidden">
-							{/* Title */}
-							<div className="text-center mb-8">
+						<div className="text-center mb-12">
 								<h2 className="text-3xl sm:text-4xl lg:text-5xl font-serif font-bold text-black mb-6">Tilted Lotus Client Testimonial</h2>
-								<div className="w-16 h-0.5 bg-[#CBB49A] mx-auto mb-8"></div>
+							<div className="w-16 h-0.5 bg-[#CBB49A] mx-auto"></div>
 							</div>
 
-							{/* Video Testimonial */}
-							<div className="mb-8">
-								<div className="relative max-w-md mx-auto">
-									<div 
-										className="bg-white rounded-3xl shadow-lg hover:shadow-2xl transition-all duration-300 overflow-hidden cursor-pointer"
-										onClick={handleVideoClick}
-									>
-										<div className="relative w-full" style={{ aspectRatio: '4/5' }}>
-											<video
-												ref={videoRef}
-												src="/testimonial/testimonial-1.mp4"
-												className="w-full h-full object-cover"
-												controls={false}
-												playsInline
-												preload="metadata"
-												onEnded={() => setPlaying(false)}
-												tabIndex={-1}
-											/>
-											{/* Play button overlay when not playing */}
-											{!playing && (
-												<div className="absolute inset-0 flex items-center justify-center bg-black/10">
-													<div className="bg-white/80 backdrop-blur-sm rounded-full p-4 flex items-center justify-center shadow-lg">
-														<svg className="w-8 h-8 text-gray-900" fill="currentColor" viewBox="0 0 24 24">
-															<polygon points="9.5,7.5 16.5,12 9.5,16.5" />
-														</svg>
-													</div>
-												</div>
-											)}
-										</div>
-									</div>
-								</div>
-							</div>
+						<div className="grid gap-12 lg:grid-cols-[minmax(0,1fr)_minmax(0,1.05fr)] items-center">
+							<TestimonialCard
+								index={0}
+								videoSrc="/testimonial/testimonial-1.mp4"
+								clientName="Preeti Gore"
+								brandName="Tilted Lotus"
+								location="Houston, Texas"
+								isPlaying={playingVideoIndex === 0}
+								onVideoPlay={handleVideoPlay}
+								setVideoRef={setVideoRef}
+								setCardRef={setCardRef}
+								variant="minimal"
+								className="max-w-md w-full mx-auto"
+								videoContainerClassName="relative w-full aspect-[4/5]"
+								videoClassName="w-full h-full object-cover"
+							/>
 
-							{/* Text Content */}
 							<div className="space-y-6 text-lg leading-relaxed text-black">
 								<p>
-									&quot;Working with Krazy Kreators was transformative for Tilted Lotus. They didn&apos;t just understand my cultural vision — they elevated it to new heights. From the initial concept to the NYFW runway, every step was executed with precision and cultural sensitivity.&quot;
+								&ldquo;Working with Krazy Kreators was transformative for Tilted Lotus. They didn&apos;t just understand my cultural vision — they elevated it to new heights. From the initial concept to the NYFW runway, every step was executed with precision and cultural sensitivity.&rdquo;
 								</p>
 								
 								<p>
-									&quot;The attention to detail in preserving South Asian artistic traditions while creating contemporary silhouettes exceeded my expectations. They truly became partners in bringing my cultural heritage to life in modern fashion.&quot;
+								&ldquo;The attention to detail in preserving South Asian artistic traditions while creating contemporary silhouettes exceeded my expectations. They truly became partners in bringing my cultural heritage to life in modern fashion.&rdquo;
 								</p>
 								
 								<p>
-									&quot;The end result is exactly what I envisioned: a brand that celebrates cultural diversity while maintaining contemporary appeal. Our customers love the authenticity and quality, and I couldn&apos;t be happier with the partnership.&quot;
-								</p>
-							</div>
+								&ldquo;The end result is exactly what I envisioned: a brand that celebrates cultural diversity while maintaining contemporary appeal. Our customers love the authenticity and quality, and I couldn&apos;t be happier with the partnership.&rdquo;
+							</p>
 
-							{/* Client Details */}
-							<div className="pt-6 border-t border-gray-200 mt-8">
-								<h3 className="text-xl font-semibold text-black mb-2">Preeti Gore</h3>
-								<p className="text-[#CBB49A] font-medium">Founder, Tilted Lotus</p>
-								<p className="text-gray-600 text-sm">Houston, Texas</p>
-							</div>
-						</div>
-
-						{/* Desktop Layout */}
-						<div className="hidden lg:grid lg:grid-cols-2 gap-12 items-center">
-							{/* Left: Video Testimonial */}
-							<div className="relative max-w-md mx-auto">
-								<div 
-									className="bg-white rounded-3xl shadow-lg hover:shadow-2xl transition-all duration-300 overflow-hidden cursor-pointer"
-									onClick={handleVideoClick}
-								>
-									<div className="relative w-full" style={{ aspectRatio: '4/5' }}>
-										<video
-											ref={videoRef}
-											src="/testimonial/testimonial-1.mp4"
-											className="w-full h-full object-cover"
-											controls={false}
-											playsInline
-											preload="metadata"
-											onEnded={() => setPlaying(false)}
-											tabIndex={-1}
-										/>
-										{/* Play button overlay when not playing */}
-										{!playing && (
-											<div className="absolute inset-0 flex items-center justify-center bg-black/10">
-												<div className="bg-white/80 backdrop-blur-sm rounded-full p-4 flex items-center justify-center shadow-lg">
-													<svg className="w-8 h-8 text-gray-900" fill="currentColor" viewBox="0 0 24 24">
-														<polygon points="9.5,7.5 16.5,12 9.5,16.5" />
-													</svg>
-												</div>
-											</div>
-										)}
-									</div>
-								</div>
-							</div>
-
-							{/* Right: Testimonial Summary */}
-							<div className="space-y-8">
-								<div>
-									<h2 className="text-3xl sm:text-4xl lg:text-5xl font-serif font-bold text-black mb-6">Tilted Lotus Client Testimonial</h2>
-									<div className="w-16 h-0.5 bg-[#CBB49A] mb-8"></div>
-								</div>
-								
-								<div className="space-y-6 text-lg leading-relaxed text-gray-700">
-									<p className="text-black">
-										&quot;Working with Krazy Kreators was transformative for Tilted Lotus. They didn&apos;t just understand my cultural vision — they elevated it to new heights. From the initial concept to the NYFW runway, every step was executed with precision and cultural sensitivity.&quot;
-									</p>
-									
-									<p className="text-black">
-										&quot;The attention to detail in preserving South Asian artistic traditions while creating contemporary silhouettes exceeded my expectations. They truly became partners in bringing my cultural heritage to life in modern fashion.&quot;
-									</p>
-									
-									<p className="text-black">
-										&quot;The end result is exactly what I envisioned: a brand that celebrates cultural diversity while maintaining contemporary appeal. Our customers love the authenticity and quality, and I couldn&apos;t be happier with the partnership.&quot;
-									</p>
-								</div>
-
-								{/* Client Details */}
 								<div className="pt-6 border-t border-gray-200">
 									<h3 className="text-xl font-semibold text-black mb-2">Preeti Gore</h3>
 									<p className="text-[#CBB49A] font-medium">Founder, Tilted Lotus</p>

@@ -2,19 +2,17 @@
 
 import { Button } from "@/components/ui/button";
 import {
-	Menu,
-	Palette,
-	Factory,
-	Infinity,
-	Grid3X3,
-	FolderKanban,
-	Newspaper,
-	FileText,
-	Video,
-	Building2,
-	BadgeDollarSign,
-	Phone,
-	ChevronDown,
+    Menu,
+    Palette,
+    Factory,
+    Infinity,
+    FolderKanban,
+    // Newspaper,
+    Building2,
+    BadgeDollarSign,
+    Phone,
+    ChevronDown,
+    Leaf,
 } from "lucide-react";
 import { useState, useEffect } from "react";
 import { usePathname } from "next/navigation";
@@ -23,39 +21,75 @@ import dynamic from "next/dynamic";
 const ContactDialog = dynamic(() => import("./ContactDialog"), { ssr: false });
 // Blogs and Resources are not in the menu items as i want to reuse it on our next build
 // const menuItems = ["Solutions", "Portfolio", "Blogs", "Resources", "Company"] as const;
-const menuItems = ["Solutions", "Portfolio", "Company"] as const;
+const menuItems = ["Solutions", "Portfolio", "Case Studies", "Blogs", "Company"] as const;
 type TopTab = typeof menuItems[number];
+
+// Inline flower icon for embroidery tab
+const FlowerIcon: React.FC<{ className?: string }> = ({ className }) => (
+	<svg
+		className={className}
+		xmlns="http://www.w3.org/2000/svg"
+		viewBox="0 0 24 24"
+		fill="none"
+		stroke="currentColor"
+		strokeWidth="2"
+		strokeLinecap="round"
+		strokeLinejoin="round"
+	>
+		<circle cx="12" cy="12" r="3"/>
+		<path d="M12 16.5A4.5 4.5 0 1 1 7.5 12 4.5 4.5 0 1 1 12 7.5a4.5 4.5 0 1 1 4.5 4.5 4.5 4.5 0 1 1-4.5 4.5"/>
+		<path d="M12 7.5V9"/>
+		<path d="M7.5 12H9"/>
+		<path d="M16.5 12H15"/>
+		<path d="M12 16.5V15"/>
+		<path d="m8 8 1.88 1.88"/>
+		<path d="M14.12 9.88 16 8"/>
+		<path d="m8 16 1.88-1.88"/>
+		<path d="M14.12 14.12 16 16"/>
+	</svg>
+);
 
 const megaContent: Record<TopTab, { title: string; desc: string; href: string; icon: React.ComponentType<{ className?: string }> }[]> = {
 	Solutions: [
 		{ title: "Design Services", desc: "Concepts, prints, and garment design", href: "/design-services", icon: Palette },
 		{ title: "Manufacturing Services", desc: "Sampling to bulk production", href: "/manufacturing-services", icon: Factory },
 		{ title: "End‑to‑End Services", desc: "From tech packs to delivery", href: "/end-to-end-services", icon: Infinity },
-		// Product Categories are not in the menu items as i want to reuse it on our next build
-		// { title: "Product Categories", desc: "Tops, shirts, dresses, kidswear", href: "/#explore-designs", icon: Grid3X3 },
+		{ title: "Embriodery", desc: "Hand embroidery craftsmanship & detailing", href: "/hand-embroidery", icon: FlowerIcon },
+		{ title: "Prints", desc: "Custom print designs and patterns", href: "/prints", icon: Palette },
+		{ title: "Enterprise", desc: "Large-scale business solutions", href: "/enterprise", icon: Building2 },
+
 	],
 	Portfolio: [
+		{ title: "Mens Streetwear", desc: "Casual and embroidered shirts", href: "/portfolio/mens-streetwear", icon: FolderKanban },
+		{ title: "Mens Wear", desc: "Premium menswear collection", href: "/portfolio/mens-wear", icon: FolderKanban },
+		{ title: "Luxury Wear", desc: "High-end fashion pieces", href: "/portfolio/luxury-wear", icon: FolderKanban },
+		{ title: "Resort Wear", desc: "Vacation and resort fashion", href: "/portfolio/resort-wear", icon: FolderKanban },
+		{ title: "Loungewear", desc: "Comfortable everyday wear", href: "/portfolio/loungewear", icon: FolderKanban },
+		{ title: "Accessories", desc: "Fashion accessories and details", href: "/portfolio/accessories", icon: FolderKanban },
+	],
+	"Case Studies": [
 		{ title: "Drover Cowboy Threads", desc: "Modern westernwear case study", href: "/case-studies/drover", icon: FolderKanban },
 		{ title: "Tilted Lotus", desc: "Premium apparel brand", href: "/case-studies/tilted-lotus", icon: FolderKanban },
 		{ title: "Las Loungewear", desc: "Comfort-first everyday wear", href: "/case-studies/las", icon: FolderKanban },
 		{ title: "HY Official", desc: "Lifestyle essentials", href: "/case-studies/hy-official", icon: FolderKanban },
 		{ title: "Badria Al Shihhi", desc: "Label development & rollout", href: "/case-studies/badri-al-shihhi", icon: FolderKanban },
 	],
-	// Blogs: [
-	// 	{ title: "All Blogs", desc: "Insights on building a fashion brand", href: "#", icon: Newspaper },
-	// ],
-	// Resources: [
-	// 	{ title: "Tech Packs", desc: "Download sample tech packs", href: "/#blog-and-tech-packs", icon: FileText },
-	// 	{ title: "Educational Videos", desc: "Short videos on process & quality", href: "#", icon: Video },
-	// ],
+	Blogs: [
+		{ title: "All Blogs", desc: "Latest insights and updates", href: "/blogs", icon: FolderKanban },
+	],
 	Company: [
 		{ title: "About Us", desc: "Story, vision, and team", href: "/about", icon: Building2 },
+		{ title: "Sustainability", desc: "Our responsibility and initiatives", href: "/sustainability", icon: Leaf },
 		{ title: "Pricing", desc: "Transparent retainers & custom packs", href: "/pricing", icon: BadgeDollarSign },
 		{ title: "Contact", desc: "Talk to the team", href: "/contact", icon: Phone },
 	],
 };
 
-export default function Navbar() {
+interface NavbarProps {
+	invertTabs?: boolean;
+}
+
+export default function Navbar({ invertTabs: forceInvertTabs }: NavbarProps = {}) {
 	const [open, setOpen] = useState(false);
 	const [scrolled, setScrolled] = useState(false);
 	const [activeTab, setActiveTab] = useState<TopTab | null>(null);
@@ -68,6 +102,7 @@ export default function Navbar() {
 	const isLasPage = pathname === "/case-studies/las";
 	const isHYOfficialPage = pathname === "/case-studies/hy-official";
 	const isBadriAlShihhiPage = pathname === "/case-studies/badri-al-shihhi";
+	const isRawMaterialsPage = pathname === "/end-to-end-services/raw-materials";
 
 	// Add timeout for hiding mega menu
 	const [hideTimeout, setHideTimeout] = useState<NodeJS.Timeout | null>(null);
@@ -124,20 +159,45 @@ export default function Navbar() {
 
 	// Detect dark hero sections to invert tab colors when at top
 	useEffect(() => {
-		const el = document.querySelector<HTMLElement>(".kk-hero-dark");
-		if (!el) return;
-		const io = new IntersectionObserver(
-			(entries) => {
-				const [entry] = entries;
-				setHeroInView(entry.isIntersecting);
-			},
-			{ root: null, threshold: 0.1 }
-		);
-		io.observe(el);
-		return () => io.disconnect();
-	}, []);
+		// Reset heroInView when pathname changes
+		setHeroInView(false);
+		
+		let io: IntersectionObserver | null = null;
+		let timeoutId: NodeJS.Timeout | null = null;
+		
+		// Use requestAnimationFrame to ensure DOM is ready after navigation
+		const checkHero = () => {
+			const el = document.querySelector<HTMLElement>(".kk-hero-dark");
+			if (!el) {
+				// If element not found immediately, try again after a short delay
+				timeoutId = setTimeout(checkHero, 50);
+				return;
+			}
+			
+			// Immediately compute visibility so colors are correct on first paint
+			const rect = el.getBoundingClientRect();
+			const inViewNow = rect.top < window.innerHeight * 0.9 && rect.bottom > 0;
+			if (inViewNow) setHeroInView(true);
 
-	const invertTabs = (isDroverPage && !scrolled) || (isTiltedLotusPage && !scrolled) || (isLasPage && !scrolled) || (isHYOfficialPage && !scrolled) || (isBadriAlShihhiPage && !scrolled) || (heroInView && !scrolled);
+			io = new IntersectionObserver(
+				(entries) => {
+					const [entry] = entries;
+					setHeroInView(entry.isIntersecting);
+				},
+				{ root: null, threshold: 0.1 }
+			);
+			io.observe(el);
+		};
+
+		requestAnimationFrame(checkHero);
+		
+		return () => {
+			if (timeoutId) clearTimeout(timeoutId);
+			if (io) io.disconnect();
+		};
+	}, [pathname]);
+
+	const invertTabs = forceInvertTabs || (isDroverPage && !scrolled) || (isTiltedLotusPage && !scrolled) || (isLasPage && !scrolled) || (isHYOfficialPage && !scrolled) || (isBadriAlShihhiPage && !scrolled) || (isRawMaterialsPage && !scrolled) || (heroInView && !scrolled);
 
 	return (
 		<>
@@ -150,7 +210,7 @@ export default function Navbar() {
 						: "bg-transparent border-none shadow-none"
 			}`}
 		>
-			<div className="min-w-[80%] lg:max-w-[80%] mx-auto flex items-center justify-between py-4 px-4 md:px-0 lg:px-0">
+			<div className="min-w-[80%] lg:max-w-[80%] mx-auto flex items-center justify-between py-4 px-4 md:px-6 lg:px-0">
 				{/* Logo and Company Name */}
 				<div className="flex items-center gap-3">
 					<Link href="/" className="block">
@@ -160,14 +220,16 @@ export default function Navbar() {
 							className="h-10 w-auto opacity-90 hover:opacity-100 transition-opacity duration-300"
 						/>
 					</Link>
-					<span
-						className={`font-serif font-bold text-xl transition-colors ${invertTabs ? "text-white" : "text-[#2D2A2E]"}`}
-					>
-						Krazy Kreators
-					</span>
+					<Link href="/" className="block">
+						<span
+							className={`font-serif font-bold text-xl transition-colors hover:opacity-80 ${invertTabs ? "text-white" : "text-[#2D2A2E]"}`}
+						>
+							Krazy Kreators
+						</span>
+					</Link>
 				</div>
 				{/* Desktop Menu */}
-				<ul className="hidden md:flex gap-8 ml-12 text-base font-medium">
+				<ul className="hidden lg:flex gap-6 xl:gap-8 ml-8 lg:ml-12 text-sm lg:text-base font-medium">
 					{menuItems.map((tab) => {
 						const items = megaContent[tab];
 						const hasDropdown = items.length > 1;
@@ -191,7 +253,7 @@ export default function Navbar() {
 					})}
 				</ul>
 				{/* Right Buttons */}
-				<div className="hidden md:flex gap-3 items-center">
+				<div className="hidden lg:flex gap-3 items-center">
 					<Button
 						className={`rounded-full transition-all duration-300 ${
 							invertTabs
@@ -203,6 +265,24 @@ export default function Navbar() {
 						Get In Touch
 					</Button>
 				</div>
+				{/* Tablet Menu - Show hamburger on tablets */}
+				<div className="hidden md:flex lg:hidden items-center gap-4">
+					<Button
+						className={`rounded-full transition-all duration-300 ${
+							invertTabs
+								? "bg-white/20 backdrop-blur-sm text-white hover:bg-white/30 border border-white/50"
+								: "bg-[#CBB49A] text-white hover:bg-[#b7a078] transform hover:scale-105"
+						}`}
+						onClick={() => setContactOpen(true)}
+					>
+						Get In Touch
+					</Button>
+					<Menu
+						className={`w-7 h-7 ${invertTabs ? "text-white" : "text-[#2D2A2E]"}`}
+						onClick={() => setOpen(true)}
+					/>
+				</div>
+
 				{/* Mobile Hamburger */}
 				<div className="md:hidden flex items-center">
 					<Menu
@@ -215,14 +295,14 @@ export default function Navbar() {
 			{/* Desktop Mega Menu */}
 			{activeTab && megaContent[activeTab].length > 1 && (
 				<div 
-					className="hidden md:block absolute left-1/2 -translate-x-1/2 top-full mt-2 w-[min(92vw,1100px)]"
+					className="hidden lg:block absolute left-1/2 -translate-x-1/2 top-full mt-2 w-[min(90vw,1000px)] xl:w-[min(92vw,1100px)]"
 					onMouseEnter={handleMegaMenuEnter}
 					onMouseLeave={handleMegaMenuLeave}
 				>
 					{/* Invisible bridge to prevent gap issues */}
 					<div className="absolute -top-2 left-0 right-0 h-2 bg-transparent"></div>
-					<div className="rounded-2xl border border-[#EEE8F6] bg-white/95 backdrop-blur shadow-xl p-5 sm:p-6">
-						<div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-3 md:gap-4">
+					<div className="rounded-2xl border border-[#EEE8F6] bg-white/95 backdrop-blur shadow-xl p-4 lg:p-5 xl:p-6">
+						<div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3 lg:gap-4">
 							{megaContent[activeTab].map((it) => {
 								const Icon = it.icon;
 								return (
@@ -245,8 +325,8 @@ export default function Navbar() {
 			{/* Mobile Drawer */}
 			{open && (
 				<div className="fixed inset-0 z-40 flex justify-end">
-					<div className="absolute inset-0 bg-black/30" onClick={() => setOpen(false)} />
-					<div className="relative w-64 bg-[#F5F0E8] h-full shadow-lg flex flex-col animate-slide-in">
+					<div className="absolute h-screen inset-0 bg-black/30" onClick={() => setOpen(false)} />
+					<div className="relative w-[80%] md:w-[60%] lg:w-[50%] bg-[#F5F0E8] h-screen shadow-lg flex flex-col animate-slide-in">
 						{/* Header with close button */}
 						<div className="flex-shrink-0 p-6 pb-4">
 							<button className="self-end" onClick={() => setOpen(false)}>
@@ -285,7 +365,7 @@ export default function Navbar() {
 						
 						{/* Footer with CTA button */}
 						<div className="flex-shrink-0 p-6 pt-4 border-t border-[#D4CCE8]">
-							<Button className="w-full rounded-full bg-[#CBB49A] text-white px-5 py-2 hover:bg-[#b7a078] transition-all duration-300">Get In Touch</Button>
+							<Button className="w-full rounded-full bg-[#CBB49A] text-white px-5 py-2 hover:bg-[#b7a078] transition-all duration-300" onClick={() => setContactOpen(true)}>Get In Touch</Button>
 						</div>
 					</div>
 				</div>
