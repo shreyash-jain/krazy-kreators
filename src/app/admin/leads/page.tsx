@@ -1,5 +1,7 @@
 "use client";
 import { useEffect, useState } from "react";
+import { Button } from "@/components/ui/button";
+import { Download } from "lucide-react";
 
 type Lead = {
   id: string;
@@ -36,6 +38,49 @@ export default function AdminLeadsPage() {
     }
   }
 
+  const downloadCsv = () => {
+    if (!leads || leads.length === 0) return;
+
+    const headers = [
+      "ID",
+      "Date",
+      "Name",
+      "Email",
+      "Phone",
+      "Company",
+      "Country",
+      "Services",
+      "Source",
+    ];
+
+    const csvContent = [
+      headers.join(","),
+      ...leads.map((lead) => {
+        const row = [
+          lead.id,
+          new Date(lead.created_at).toISOString(),
+          `"${(lead.full_name || "").replace(/"/g, '""')}"`,
+          `"${(lead.email || "").replace(/"/g, '""')}"`,
+          `"${(lead.phone || "").replace(/"/g, '""')}"`,
+          `"${(lead.company || "").replace(/"/g, '""')}"`,
+          `"${(lead.country || "").replace(/"/g, '""')}"`,
+          `"${(lead.services || "").replace(/"/g, '""')}"`,
+          `"${(lead.source || "").replace(/"/g, '""')}"`,
+        ];
+        return row.join(",");
+      }),
+    ].join("\n");
+
+    const blob = new Blob([csvContent], { type: "text/csv;charset=utf-8;" });
+    const url = URL.createObjectURL(blob);
+    const link = document.createElement("a");
+    link.href = url;
+    link.setAttribute("download", `leads_export_${new Date().toISOString().split('T')[0]}.csv`);
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
+  };
+
   useEffect(() => {
     loadLeads();
   }, []);
@@ -44,7 +89,13 @@ export default function AdminLeadsPage() {
     <div className="space-y-6">
       <div className="flex items-center justify-between">
         <h1 className="text-2xl font-bold">Leads</h1>
-        <button onClick={loadLeads} className="text-sm underline">Refresh</button>
+        <div className="flex gap-2">
+          <Button onClick={downloadCsv} variant="outline" size="sm" disabled={loading || leads.length === 0}>
+            <Download className="mr-2 h-4 w-4" />
+            Export CSV
+          </Button>
+          <button onClick={loadLeads} className="text-sm underline">Refresh</button>
+        </div>
       </div>
 
       {error && (

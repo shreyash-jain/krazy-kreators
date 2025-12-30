@@ -174,7 +174,6 @@ export default function BlogEditor({ initialData, onChange, slug, onReady }: Blo
       editorRef.current = null;
       initializedDataRef.current = null;
     };
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []); // Only initialize once on mount
 
   return <div ref={holderRef} />;

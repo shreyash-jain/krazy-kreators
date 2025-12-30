@@ -1,5 +1,6 @@
 import { Button } from "@/components/ui/button";
 import Link from "next/link";
+import Image from "next/image";
 
 const categories = [
   {
@@ -73,10 +74,11 @@ export default function ExploreDesigns() {
             {categories.map((category, index) => (
               <Link key={index} href={category.href} className="group cursor-pointer">
                 <div className="relative overflow-hidden rounded-lg sm:rounded-xl h-32 sm:h-40 md:h-48 lg:h-52 mb-2 sm:mb-3">
-                  <img
+                  <Image
                     src={category.image}
                     alt={category.name}
-                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+                    fill
+                    className="object-cover group-hover:scale-105 transition-transform duration-300"
                   />
                 </div>
                 <h3 className="text-center text-xs sm:text-sm md:text-base font-medium text-[#2D2A2E] uppercase tracking-wide">
@@ -89,4 +91,4 @@ export default function ExploreDesigns() {
       </div>
     </section>
   );
-} 
+}
