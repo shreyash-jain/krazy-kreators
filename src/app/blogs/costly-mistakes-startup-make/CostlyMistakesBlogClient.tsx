@@ -47,7 +47,6 @@ export default function CostlyMistakesBlogClient({ initialLikeCount, initialComm
   const [showAllComments, setShowAllComments] = useState(false);
   const [likedComments, setLikedComments] = useState<Set<string>>(new Set());
   const endOfArticleRef = useRef<HTMLDivElement | null>(null);
-  const hasAutoOpenedComments = useRef(false);
   const { showToast, ToastContainer } = useToast();
   const [relatedBlogs, setRelatedBlogs] = useState<typeof blogUtilsPosts>([]);
 

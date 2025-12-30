@@ -2,14 +2,14 @@ import { createClient, SupabaseClient } from "@supabase/supabase-js";
 
 type Json = string | number | boolean | null | { [key: string]: Json } | Json[];
 
-type TableDef<Row, Insert = Partial<Row>, Update = Partial<Row>> = {
+export type TableDef<Row, Insert = Partial<Row>, Update = Partial<Row>> = {
   Row: Row;
   Insert: Insert;
   Update: Update;
   Relationships: never[];
 };
 
-type BlogCommentRow = {
+export type BlogCommentRow = {
   id: string;
   blog_id: string;
   name: string;
@@ -18,7 +18,7 @@ type BlogCommentRow = {
   created_at: string;
 };
 
-type BlogCommentInsert = {
+export type BlogCommentInsert = {
   id?: string;
   blog_id: string;
   name: string;
@@ -27,31 +27,31 @@ type BlogCommentInsert = {
   created_at?: string;
 };
 
-type BlogCommentLikeRow = {
+export type BlogCommentLikeRow = {
   id: string;
   comment_id: string;
   created_at: string;
 };
 
-type BlogCommentLikeInsert = {
+export type BlogCommentLikeInsert = {
   id?: string;
   comment_id: string;
   created_at?: string;
 };
 
-type BlogPostLikeRow = {
+export type BlogPostLikeRow = {
   id: string;
   blog_id: string;
   created_at: string;
 };
 
-type BlogPostLikeInsert = {
+export type BlogPostLikeInsert = {
   id?: string;
   blog_id: string;
   created_at?: string;
 };
 
-type ContactSubmissionRow = {
+export type ContactSubmissionRow = {
   id: string;
   created_at: string;
   full_name: string;
@@ -65,7 +65,7 @@ type ContactSubmissionRow = {
   selected_plan: Json | null;
 };
 
-type ContactSubmissionInsert = {
+export type ContactSubmissionInsert = {
   id?: string;
   created_at?: string;
   full_name: string;
@@ -79,7 +79,7 @@ type ContactSubmissionInsert = {
   selected_plan?: Json | null;
 };
 
-type LeadRow = {
+export type LeadRow = {
   id: string;
   created_at: string;
   full_name: string;
@@ -94,7 +94,7 @@ type LeadRow = {
   source: string | null;
 };
 
-type LeadInsert = {
+export type LeadInsert = {
   id?: string;
   created_at?: string;
   full_name: string;
@@ -116,7 +116,8 @@ export function getSupabaseClient(): SupabaseClient | null {
   if (cachedClient) return cachedClient;
 
   const url = process.env.NEXT_PUBLIC_SUPABASE_URL;
-  const anonKey = process.env.SUPABASE_ANON_KEY;
+  // Check for both NEXT_PUBLIC_SUPABASE_ANON_KEY (for edge runtime) and SUPABASE_ANON_KEY
+  const anonKey = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY || process.env.SUPABASE_ANON_KEY;
 
   if (!url || !anonKey) {
     return null;

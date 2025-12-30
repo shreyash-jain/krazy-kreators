@@ -1,5 +1,5 @@
 "use client";
-import { useEffect, useMemo, useState } from "react";
+import { useEffect, useMemo, useState, useCallback } from "react";
 import { useParams } from "next/navigation";
 import BlogEditor from "@/components/BlogEditor";
 import CoverImagePicker from "./CoverImagePicker";
@@ -31,7 +31,7 @@ export default function AdminBlogEditorPage() {
 
   const canSave = useMemo(() => title.trim() && slug.trim(), [title, slug]);
 
-  async function loadBlog() {
+  const loadBlog = useCallback(async () => {
     try {
       setLoading(true);
       const res = await fetch(`/api/admin/blogs`);
@@ -53,7 +53,7 @@ export default function AdminBlogEditorPage() {
     } finally {
       setLoading(false);
     }
-  }
+  }, [id]);
 
   useEffect(() => { if (id) loadBlog(); }, [id, loadBlog]);
 
@@ -258,6 +258,7 @@ export default function AdminBlogEditorPage() {
               </div>
               <div className="p-6">
                 <BlogEditor
+                  key={id} // Force remount when blog ID changes
                   slug={slug || id}
                   initialData={parseJsonSafe(content) ?? { time: Date.now(), blocks: [], version: "2.29.0" }}
                   onChange={(data) => setContent(JSON.stringify(data))}
@@ -292,5 +293,4 @@ export default function AdminBlogEditorPage() {
     </div>
   );
 }
-
 

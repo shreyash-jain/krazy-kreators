@@ -2,8 +2,7 @@
 import { useEffect, useMemo, useState } from "react";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
-import CoverImagePicker from "@/components/CoverImagePicker";
-import { Plus, X, Search, Edit2, Trash2, FileText } from "lucide-react";
+import { Plus, X, Search, Edit2, Trash2, FileText, Link2 as LinkIcon } from "lucide-react";
 
 type Blog = {
   id?: string;
@@ -43,7 +42,7 @@ export default function AdminBlogsPage() {
       const res = await fetch("/api/admin/blogs", { cache: "no-store" });
       const data = await res.json();
       setBlogs(data?.blogs ?? []);
-    } catch (_) {
+    } catch {
       setBlogs([]);
     } finally {
       setLoading(false);
@@ -153,6 +152,16 @@ export default function AdminBlogsPage() {
                     </Link>
                   )}
                   <button
+                    onClick={() => {
+                      navigator.clipboard.writeText(`${window.location.origin}/blogs/${b.slug}`);
+                      alert("Copied to clipboard!");
+                    }}
+                    className="p-2 text-gray-600 hover:text-blue-600 hover:bg-blue-50 rounded-lg transition-colors border border-transparent hover:border-blue-100"
+                    title="Copy URL"
+                  >
+                    <LinkIcon className="w-4 h-4" />
+                  </button>
+                  <button
                     onClick={() => deleteBlog(b.id)}
                     className="p-2 text-red-600 hover:bg-red-50 rounded-lg transition-colors"
                     title="Delete"
@@ -237,5 +246,4 @@ export default function AdminBlogsPage() {
     </div>
   );
 }
-
 

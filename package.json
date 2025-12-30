@@ -16,6 +16,7 @@
     "@editorjs/list": "^2.0.8",
     "@editorjs/quote": "^2.7.6",
     "@editorjs/table": "^2.4.5",
+    "@google-analytics/data": "^5.2.1",
     "@radix-ui/react-navigation-menu": "^1.2.13",
     "@radix-ui/react-slot": "^1.2.3",
     "@supabase/supabase-js": "^2.58.0",

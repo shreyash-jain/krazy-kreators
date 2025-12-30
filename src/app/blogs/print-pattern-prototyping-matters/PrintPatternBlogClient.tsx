@@ -14,7 +14,6 @@ import { likeBlog, addComment, likeComment, type PublicComment } from "@/lib/blo
 import { recordBlogLikeUpdate } from "@/lib/blogLikeSync";
 
 const BLOG_ID = 'print-pattern-prototyping-matters';
-
 type PrintPatternBlogClientProps = {
   initialLikeCount: number;
   initialComments: PublicComment[];

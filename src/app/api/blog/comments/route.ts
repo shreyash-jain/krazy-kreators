@@ -63,4 +63,39 @@ export async function POST(request: Request) {
   }
 }
 
+export async function DELETE(request: Request) {
+  const supabase = getSupabaseClient();
+  if (!supabase) return NextResponse.json({ error: "Supabase not configured" }, { status: 500 });
+  try {
+    const { searchParams } = new URL(request.url);
+    const commentId = searchParams.get("commentId");
+    if (!commentId) {
+      return NextResponse.json({ error: "Missing commentId" }, { status: 400 });
+    }
+    
+    // First delete comment likes associated with this comment
+    const { error: likesError } = await supabase
+      .from("blog_comment_likes")
+      .delete()
+      .eq("comment_id", commentId);
+    
+    if (likesError) {
+      console.warn("Error deleting comment likes:", likesError);
+      // Continue with comment deletion even if likes deletion fails
+    }
+    
+    // Then delete the comment
+    const { error } = await supabase
+      .from("blog_comments")
+      .delete()
+      .eq("id", commentId);
+    
+    if (error) return NextResponse.json({ error: error.message }, { status: 500 });
+    return NextResponse.json({ success: true });
+  } catch (err) {
+    const message = err instanceof Error ? err.message : "Unknown error";
+    return NextResponse.json({ error: message }, { status: 500 });
+  }
+}
+
 

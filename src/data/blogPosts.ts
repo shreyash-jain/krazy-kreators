@@ -7,6 +7,7 @@ export type BlogPostMeta = {
   date: string;
   readTime: string;
   image: string;
+  card_image?: string; // Optional: if not provided, use image (cover image) as fallback
   slug: string;
   readers: number;
   likes: number;

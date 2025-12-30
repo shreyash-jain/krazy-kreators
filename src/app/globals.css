@@ -377,3 +377,118 @@ html {
 /* Do not apply transforms to all flex/grid elements globally */
 
 /* Do not force transforms on shadow utilities globally */
+
+/* Admin dropdown option styling - override browser defaults */
+select.admin-filter-select {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  border-radius: 9999px !important; /* Ensure rounded-full is applied */
+}
+
+/* Remove all default browser blue colors */
+select.admin-filter-select:hover {
+  background-color: #F5EFE6 !important;
+  border-color: #CBB49A !important;
+}
+
+select.admin-filter-select:focus {
+  background-color: white !important;
+  border-color: #CBB49A !important;
+  outline: none !important;
+  box-shadow: 0 0 0 2px rgba(203, 180, 154, 0.2) !important;
+}
+
+select.admin-filter-select:active {
+  background-color: #F5EFE6 !important;
+  border-color: #CBB49A !important;
+}
+
+/* Override browser default option styles */
+select.admin-filter-select option {
+  background-color: white !important;
+  color: #2D2A2E !important;
+  padding: 8px 12px !important;
+  border-radius: 8px !important;
+}
+
+select.admin-filter-select option:hover,
+select.admin-filter-select option:checked,
+select.admin-filter-select option:focus {
+  background: #F5EFE6 !important;
+  background-color: #F5EFE6 !important;
+  color: #2D2A2E !important;
+}
+
+/* Category dropdown styling - similar to admin-filter-select */
+select.category-select {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+}
+
+/* Remove all default browser blue colors for category select */
+select.category-select:hover {
+  background-color: #F5EFE6 !important;
+  border-color: #CBB49A !important;
+}
+
+select.category-select:focus {
+  background-color: white !important;
+  border-color: #CBB49A !important;
+  outline: none !important;
+  box-shadow: 0 0 0 2px rgba(203, 180, 154, 0.2) !important;
+}
+
+select.category-select:active {
+  background-color: #F5EFE6 !important;
+  border-color: #CBB49A !important;
+}
+
+/* Override browser default option styles for category select */
+select.category-select option {
+  background-color: white !important;
+  color: #2D2A2E !important;
+  padding: 8px 12px !important;
+}
+
+select.category-select option:hover,
+select.category-select option:checked,
+select.category-select option:focus {
+  background: #F5EFE6 !important;
+  background-color: #F5EFE6 !important;
+  color: #2D2A2E !important;
+}
+
+/* Remove blue highlight completely */
+select.admin-filter-select option::-moz-focus-inner {
+  border: 0;
+}
+
+/* For Firefox - remove default blue outline */
+select.admin-filter-select::-moz-focus-inner {
+  border: 0;
+  outline: none;
+}
+
+/* For Webkit browsers - remove default blue outline */
+select.admin-filter-select::-webkit-focus-ring-color {
+  outline: none;
+}
+
+/* Additional styling to ensure light beige on hover */
+select.admin-filter-select option:focus {
+  background: #F5EFE6 !important;
+  background-color: #F5EFE6 !important;
+  color: #2D2A2E !important;
+}
+
+/* For the dropdown menu itself when open */
+select.admin-filter-select:focus option {
+  background-color: white;
+}
+
+select.admin-filter-select:focus option:hover,
+select.admin-filter-select:focus option:checked {
+  background-color: #F5EFE6 !important;
+}

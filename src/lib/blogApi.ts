@@ -127,4 +127,14 @@ export async function likeComment(commentId: string, action: 'like' | 'unlike' =
   return Number(data?.count ?? 0);
 }
 
+export async function deleteComment(commentId: string): Promise<void> {
+  const res = await fetch(resolveApiUrl(`/api/blog/comments?commentId=${encodeURIComponent(commentId)}`), {
+    method: 'DELETE',
+  });
+  if (!res.ok) {
+    const error = await res.json().catch(() => ({}));
+    throw new Error(error?.error || 'Failed to delete comment');
+  }
+}
+
 
