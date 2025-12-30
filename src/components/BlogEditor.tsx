@@ -160,6 +160,7 @@ export default function BlogEditor({ initialData, onChange, slug, onReady }: Blo
       // Don't destroy editor in cleanup if we're just updating data
       // Only destroy on unmount
     };
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [initialDataKey]); // Reinitialize when initialData changes
 
   // Cleanup on unmount

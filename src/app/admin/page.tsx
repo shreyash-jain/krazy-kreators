@@ -158,7 +158,7 @@ export default function AdminDashboardPage() {
           </div>
 
           <div className="relative h-64 flex items-end gap-1 sm:gap-2">
-            {rows.map((row, i) => (
+            {rows.map((row) => (
               <div key={row.date} className="flex-1 flex flex-col items-center group relative h-full justify-end">
                 <div
                   className="w-full bg-gray-900/90 rounded-t-sm transition-all duration-300 hover:bg-black relative"
