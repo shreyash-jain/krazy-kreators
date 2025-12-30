@@ -3,6 +3,7 @@ import { getBlogLikeCount, getComments } from "@/lib/blogApi";
 import { headers } from 'next/headers';
 
 export const dynamic = 'force-dynamic';
+export const runtime = 'edge';
 
 export const metadata = {
   title: "How We Translate Mood Boards Into Manufacturable Garments | Krazy Kreators",

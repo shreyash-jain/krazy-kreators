@@ -9,6 +9,8 @@ import { Eye, X, Save, ArrowLeft, Columns2, Maximize2 } from "lucide-react";
 import Link from "next/link";
 import Image from "next/image";
 
+export const runtime = 'edge';
+
 function parseJsonSafe<T>(text: string): T | null {
   try { return JSON.parse(text) as T; } catch { return null; }
 }
