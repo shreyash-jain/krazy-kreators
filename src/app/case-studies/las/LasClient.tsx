@@ -87,7 +87,7 @@ export default function LasClient() {
 					{/* Background Image */}
 					<div className="absolute inset-0">
 						                        <img
-                            src="/brands/las-loungewear- coverimage.png"
+                            src="/brands/las-loungewear-coverimage.png"
                             alt="Las Loungewear hero background"
                             className="w-full h-full object-cover"
                         />

@@ -213,7 +213,7 @@ export default function EndToEndServicesClient() {
               {[
                 		            { brand: "Drover Cowboy Threads", location: "Oklahoma, USA", image: "/brands/drover-coverimage.jpg", href: "/case-studies/drover", desc: "Western-inspired apparel brought from concept to production-ready with refined fits." },
                 { brand: "Tilted Lotus", location: "Texas, USA", image: "/brands/titled-lotus-coverimage.png", href: "/case-studies/tilted-lotus", desc: "Print and pattern design with seasonal capsule planning to accelerate rollouts." },
-                { brand: "Las Loungewear", location: "Miami, USA", image: "/brands/las-loungewear- coverimage.png", href: "/case-studies/las", desc: "Comfort-first loungewear line with size and fit development for D2C scale." },
+                { brand: "Las Loungewear", location: "Miami, USA", image: "/brands/las-loungewear-coverimage.png", href: "/case-studies/las", desc: "Comfort-first loungewear line with size and fit development for D2C scale." },
                 { brand: "HY Official", location: "Texas, USA", image: "/brands/hy-official-coverimage.png", href: "/case-studies/hy-official", desc: "Trend forecasting and garment sampling to validate silhouettes prior to launch." },
                 { brand: "Badria Al Shihhi", location: "Seeb, Oman", image: "/brands/badriaalshihhi-coverimage.jpg", href: "/case-studies/badri-al-shihhi", desc: "End‑to‑end fashion design from concept through to production for retail launch." },
               ].map((c) => (

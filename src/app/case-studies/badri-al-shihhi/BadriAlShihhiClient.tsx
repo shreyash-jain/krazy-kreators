@@ -1786,7 +1786,7 @@ export default function BadriAlShihhiClient() {
 
                 <img
 
-                  src="/brands/las-loungewear- coverimage.png"
+                  src="/brands/las-loungewear-coverimage.png"
 
                   alt="Las Loungewear Case Study"
 
