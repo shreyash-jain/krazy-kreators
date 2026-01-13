@@ -825,7 +825,7 @@ export default function DroverClient() {
             <a href="/case-studies/las" className="group relative overflow-hidden rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-300 block">
               <div className="relative h-64 overflow-hidden">
                 <img
-                  src="/brands/las-loungewear- coverimage.png"
+                  src="/brands/las-loungewear-coverimage.png"
                   alt="Las Loungewear Case Study"
                   className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
                 />
