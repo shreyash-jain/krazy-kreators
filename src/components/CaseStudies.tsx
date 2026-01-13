@@ -32,7 +32,7 @@ const caseStudies = [
     title: "Las Loungewear",
     subtitle: "Miami, USA",
     description: "Krazy Kreators helped Las Loungewear shape its comfort-first vision into a refined lifestyle brand — offering end-to-end support across design, fabric sourcing, and scalable production. From moodboards to final packaging, we aligned the founder's creative intent with everyday functionality.",
-    backgroundImage: "/brands/las-loungewear- coverimage.png",
+    backgroundImage: "/brands/las-loungewear-coverimage.png",
     logo: "/brands/las-loungewear.png",
     logoPosition: "top-right" as const,
   },

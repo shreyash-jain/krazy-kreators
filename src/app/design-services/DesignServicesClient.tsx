@@ -643,7 +643,7 @@ export default function DesignServicesClient() {
               {[
                 		            { brand: "Drover Cowboy Threads", location: "Oklahoma, USA", logo: "/brands/drover.png", href: "/case-studies/drover", desc: "Western-inspired apparel brought from concept to production-ready with refined fits.", image: "/brands/drover-coverimage.jpg" },
                 { brand: "Tilted Lotus", location: "Texas, USA", logo: "/brands/titled-lotus.png", href: "/case-studies/tilted-lotus", desc: "Print and pattern design with seasonal capsule planning to accelerate rollouts.", image: "/brands/titled-lotus-coverimage.png" },
-                { brand: "Las Loungewear", location: "Miami, USA", logo: "/brands/las-loungewear.png", href: "/case-studies/las", desc: "Comfort-first loungewear line with size and fit development for D2C scale.", image: "/brands/las-loungewear- coverimage.png" },
+                { brand: "Las Loungewear", location: "Miami, USA", logo: "/brands/las-loungewear.png", href: "/case-studies/las", desc: "Comfort-first loungewear line with size and fit development for D2C scale.", image: "/brands/las-loungewear-coverimage.png" },
                 { brand: "HY Official", location: "Texas, USA", logo: "/brands/hy-official.png", href: "/case-studies/hy-official", desc: "Trend forecasting and garment sampling to validate silhouettes prior to launch.", image: "/brands/hy-official-coverimage.png" },
                 { brand: "Badria Al Shihhi", location: "Seeb, Oman", logo: "/brands/badria-al-shihhi-logo.png", href: "/case-studies/badri-al-shihhi", desc: "End‑to‑end fashion design from concept through to production for retail launch.", image: "/brands/badriaalshihhi-coverimage.jpg" },
               ].map((c) => (
