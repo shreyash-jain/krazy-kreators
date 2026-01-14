@@ -173,7 +173,7 @@ export default function SupplyChainBlogClient({ initialLikeCount, initialComment
       {/* Hero Section */}
       <section className="relative h-[60vh] min-h-[500px] overflow-hidden">
         <Image
-          src="/blog/blog 4.png"
+          src="/blog/blog_4.png"
           alt="Why the Best Fashion Brands Work With Dedicated Supply Chain Partners"
           fill
           className="object-cover"
@@ -285,7 +285,7 @@ export default function SupplyChainBlogClient({ initialLikeCount, initialComment
             {/* Featured Image */}
             <div className="mb-12 rounded-2xl overflow-hidden shadow-lg">
               <Image
-                src="/blog/blog 4.png"
+                src="/blog/blog_4.png"
                 alt="Why the Best Fashion Brands Work With Dedicated Supply Chain Partners"
                 width={800}
                 height={600}
@@ -298,7 +298,7 @@ export default function SupplyChainBlogClient({ initialLikeCount, initialComment
                 }}
                 onLoad={() => {
                   if (typeof window !== 'undefined') {
-                    const img = document.querySelector('img[src="/blog/blog 4.png"]') as HTMLImageElement;
+                    const img = document.querySelector('img[src="/blog/blog_4.png"]') as HTMLImageElement;
                     if (img) {
                       img.style.opacity = '1';
                     }
@@ -348,7 +348,7 @@ export default function SupplyChainBlogClient({ initialLikeCount, initialComment
                 <div>
                   <div className="rounded-xl overflow-hidden shadow-lg">
                     <Image
-                      src="/blog/blog 4_1.png"
+                      src="/blog/blog_4_1.png"
                       alt="Speed and consistency in fashion supply chains"
                       width={800}
                       height={600}
@@ -362,7 +362,7 @@ export default function SupplyChainBlogClient({ initialLikeCount, initialComment
                 <div>
                   <div className="rounded-xl overflow-hidden shadow-lg">
                     <Image
-                      src="/blog/blog 4_2.png"
+                      src="/blog/blog_4_2.png"
                       alt="Confidential collaboration with supply chain partners"
                       width={800}
                       height={600}
@@ -396,7 +396,7 @@ export default function SupplyChainBlogClient({ initialLikeCount, initialComment
                 <div>
                   <div className="rounded-xl overflow-hidden shadow-lg">
                     <Image
-                      src="/blog/blog 4_5.png"
+                      src="/blog/blog_4_5.png"
                       alt="Innovation through collaborative partnerships"
                       width={800}
                       height={600}

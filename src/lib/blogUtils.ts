@@ -8,7 +8,7 @@ export const blogPosts = [
     author: "Krazy Kreators Team",
     date: "December 20, 2024",
     readTime: "8 min read",
-    image: "/blog/blog 1.png",
+    image: "/blog/blog_1.png",
     slug: "mood-boards-to-manufacturable-garments",
     readers: 1247,
     likes: 89
@@ -21,7 +21,7 @@ export const blogPosts = [
     author: "Krazy Kreators Team",
     date: "December 18, 2024",
     readTime: "6 min read",
-    image: "/blog/blog -2 image.png",
+    image: "/blog/blog_2_image.png",
     slug: "print-pattern-prototyping-matters",
     readers: 892,
     likes: 67
@@ -34,7 +34,7 @@ export const blogPosts = [
     author: "Krazy Kreators Team",
     date: "December 15, 2024",
     readTime: "7 min read",
-    image: "/blog/blog 3.png",
+    image: "/blog/blog_3.png",
     slug: "bridging-gap-designers-factories",
     readers: 1456,
     likes: 112
@@ -47,7 +47,7 @@ export const blogPosts = [
     author: "Krazy Kreators Team",
     date: "December 12, 2024",
     readTime: "9 min read",
-    image: "/blog/blog 4_banner.png",
+    image: "/blog/blog_4_banner.png",
     slug: "why-best-fashion-brands-work-with-dedicated-supply-chain-partners",
     readers: 1123,
     likes: 78
@@ -60,7 +60,7 @@ export const blogPosts = [
     author: "Krazy Kreators Team",
     date: "December 10, 2024",
     readTime: "11 min read",
-    image: "/blog/blog 5_3.png",
+    image: "/blog/blog_5_3.png",
     slug: "exporting-apparel-from-india-checklist-first-time-buyers",
     readers: 987,
     likes: 65
@@ -73,7 +73,7 @@ export const blogPosts = [
     author: "Krazy Kreators Team",
     date: "December 8, 2024",
     readTime: "8 min read",
-    image: "/blog/blog 6_5.png",
+    image: "/blog/blog_6_5.png",
     slug: "moq-worries-krazy-kreators-supports-small-brands-flexible-quantities",
     readers: 1345,
     likes: 92
@@ -86,7 +86,7 @@ export const blogPosts = [
     author: "Krazy Kreators Team",
     date: "December 5, 2024",
     readTime: "10 min read",
-    image: "/blog/blog 7_3.png",
+    image: "/blog/blog_7_3.png",
     slug: "how-creative-collaboration-fuels-great-fashion-collections",
     readers: 1567,
     likes: 118
