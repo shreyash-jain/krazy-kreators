@@ -196,7 +196,7 @@ export default function BridgingGapBlogClient({ initialLikeCount, initialComment
       {/* Hero Section */}
       <section className="relative h-[60vh] min-h-[500px] overflow-hidden">
         <Image
-          src="/blog/blog 3.png"
+          src="/blog/blog_3.png"
           alt="Bridging the Gap Between Designers & Factories"
           fill
           className="object-cover"
@@ -313,7 +313,7 @@ export default function BridgingGapBlogClient({ initialLikeCount, initialComment
               {/* Featured Image */}
               <div className="mb-12 rounded-2xl overflow-hidden shadow-lg">
                 <Image
-                  src="/blog/blog 3.png"
+                  src="/blog/blog_3.png"
                   alt="Bridging the Gap Between Designers & Factories"
                   width={800}
                   height={600}
@@ -326,7 +326,7 @@ export default function BridgingGapBlogClient({ initialLikeCount, initialComment
                   }}
                   onLoad={() => {
                     if (typeof window !== 'undefined') {
-                      const img = document.querySelector('img[src="/blog/blog 3.png"]') as HTMLImageElement;
+                      const img = document.querySelector('img[src="/blog/blog_3.png"]') as HTMLImageElement;
                       if (img) {
                         img.style.opacity = '1';
                       }
@@ -356,7 +356,7 @@ export default function BridgingGapBlogClient({ initialLikeCount, initialComment
               {/* Strategic Image 1: Translating Creativity */}
               <div className="rounded-xl overflow-hidden shadow-lg">
                 <Image
-                  src="/blog/blog 3_1.png"
+                  src="/blog/blog_3_1.png"
                   alt="Translating creativity into technical specifications"
                   width={800}
                   height={600}
@@ -378,7 +378,7 @@ export default function BridgingGapBlogClient({ initialLikeCount, initialComment
               {/* Strategic Image 2: Project Management */}
               <div className="rounded-xl overflow-hidden shadow-lg">
                 <Image
-                  src="/blog/blog 3_2.png"
+                  src="/blog/blog_3_2.png"
                   alt="Dedicated project management and communication"
                   width={800}
                   height={600}
@@ -421,7 +421,7 @@ export default function BridgingGapBlogClient({ initialLikeCount, initialComment
               {/* Strategic Image 3: Smart Sourcing */}
               <div className="rounded-xl overflow-hidden shadow-lg">
                 <Image
-                  src="/blog/blog 3_3.png"
+                  src="/blog/blog_3_3.png"
                   alt="Smart sourcing and factory partnerships"
                   width={800}
                   height={600}
@@ -443,7 +443,7 @@ export default function BridgingGapBlogClient({ initialLikeCount, initialComment
               {/* Strategic Image 4: Quality Control */}
               <div className="rounded-xl overflow-hidden shadow-lg">
                 <Image
-                  src="/blog/blog 3_4.png"
+                  src="/blog/blog_3_4.png"
                   alt="Quality control and inspection processes"
                   width={800}
                   height={600}

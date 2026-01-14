@@ -148,7 +148,7 @@ export default function CreativeCollaborationBlogClient({ initialLikeCount, init
 
       <section className="relative h-[60vh] min-h-[500px] overflow-hidden">
         <Image
-          src="/blog/blog 7.png"
+          src="/blog/blog_7.png"
           alt="Collaborative fashion design"
           fill
           className="object-cover"
@@ -268,7 +268,7 @@ export default function CreativeCollaborationBlogClient({ initialLikeCount, init
                 </div>
                 <div>
                   <div className="rounded-xl overflow-hidden shadow-lg">
-                    <Image src="/blog/blog 7_1.png" alt="Collaborative fashion workflow" width={800} height={600} className="w-full h-auto object-contain" />
+                    <Image src="/blog/blog_7_1.png" alt="Collaborative fashion workflow" width={800} height={600} className="w-full h-auto object-contain" />
                   </div>
                 </div>
               </div>
@@ -276,7 +276,7 @@ export default function CreativeCollaborationBlogClient({ initialLikeCount, init
               <div className="mb-12 grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
                 <div>
                   <div className="rounded-xl overflow-hidden shadow-lg">
-                    <Image src="/blog/blog 7_2.png" alt="Design project manager facilitating collaboration" width={800} height={600} className="w-full h-auto object-contain" />
+                    <Image src="/blog/blog_7_2.png" alt="Design project manager facilitating collaboration" width={800} height={600} className="w-full h-auto object-contain" />
                   </div>
                 </div>
                 <div>
@@ -304,7 +304,7 @@ export default function CreativeCollaborationBlogClient({ initialLikeCount, init
                 </div>
                 <div>
                   <div className="rounded-xl overflow-hidden shadow-lg">
-                    <Image src="/blog/blog 7_3.png" alt="Innovation through collaboration" width={800} height={600} className="w-full h-auto object-contain" />
+                    <Image src="/blog/blog_7_3.png" alt="Innovation through collaboration" width={800} height={600} className="w-full h-auto object-contain" />
                   </div>
                 </div>
               </div>
@@ -312,7 +312,7 @@ export default function CreativeCollaborationBlogClient({ initialLikeCount, init
               <div className="mb-12 grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
                 <div>
                   <div className="rounded-xl overflow-hidden shadow-lg">
-                    <Image src="/blog/blog 7.png" alt="Team alignment building brand identity" width={800} height={600} className="w-full h-auto object-contain" />
+                    <Image src="/blog/blog_7.png" alt="Team alignment building brand identity" width={800} height={600} className="w-full h-auto object-contain" />
                   </div>
                 </div>
                 <div>

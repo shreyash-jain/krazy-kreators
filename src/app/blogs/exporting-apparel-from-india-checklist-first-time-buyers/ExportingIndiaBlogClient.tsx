@@ -165,7 +165,7 @@ export default function ExportingIndiaBlogClient({ initialLikeCount, initialComm
                 </div>
                 <div>
                   <div className="rounded-xl overflow-hidden shadow-lg">
-                    <Image src="/blog/blog 5_1.png" alt="Pre-export preparation" width={800} height={600} className="w-full h-auto object-contain" />
+                    <Image src="/blog/blog_5_1.png" alt="Pre-export preparation" width={800} height={600} className="w-full h-auto object-contain" />
                   </div>
                 </div>
               </div>
@@ -174,7 +174,7 @@ export default function ExportingIndiaBlogClient({ initialLikeCount, initialComm
               <div className="mb-12 grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
                 <div>
                   <div className="rounded-xl overflow-hidden shadow-lg">
-                    <Image src="/blog/blog 5_2.png" alt="Compliance and legal documentation" width={800} height={600} className="w-full h-auto object-contain" />
+                    <Image src="/blog/blog_5_2.png" alt="Compliance and legal documentation" width={800} height={600} className="w-full h-auto object-contain" />
                   </div>
                 </div>
                 <div>
@@ -228,7 +228,7 @@ export default function ExportingIndiaBlogClient({ initialLikeCount, initialComm
                 </div>
                 <div>
                   <div className="rounded-xl overflow-hidden shadow-lg">
-                    <Image src="/blog/blog 5_3.png" alt="Order and production process" width={800} height={600} className="w-full h-auto object-contain" />
+                    <Image src="/blog/blog_5_3.png" alt="Order and production process" width={800} height={600} className="w-full h-auto object-contain" />
                   </div>
                 </div>
               </div>
@@ -237,7 +237,7 @@ export default function ExportingIndiaBlogClient({ initialLikeCount, initialComm
               <div className="mb-12 grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
                 <div>
                   <div className="rounded-xl overflow-hidden shadow-lg">
-                    <Image src="/blog/blog 5_4.png" alt="Logistics and shipping" width={800} height={600} className="w-full h-auto object-contain" />
+                    <Image src="/blog/blog_5_4.png" alt="Logistics and shipping" width={800} height={600} className="w-full h-auto object-contain" />
                   </div>
                 </div>
                 <div>
@@ -299,7 +299,7 @@ export default function ExportingIndiaBlogClient({ initialLikeCount, initialComm
                 </div>
                 <div>
                   <div className="rounded-xl overflow-hidden shadow-lg">
-                    <Image src="/blog/blog 5_5.png" alt="Payment and risk management" width={800} height={600} className="w-full h-auto object-contain" />
+                    <Image src="/blog/blog_5_5.png" alt="Payment and risk management" width={800} height={600} className="w-full h-auto object-contain" />
                   </div>
                 </div>
               </div>
@@ -308,7 +308,7 @@ export default function ExportingIndiaBlogClient({ initialLikeCount, initialComm
               <div className="mb-12 grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
                 <div>
                   <div className="rounded-xl overflow-hidden shadow-lg">
-                    <Image src="/blog/blog 5_6.png" alt="After-sales relationship building" width={800} height={600} className="w-full h-auto object-contain" />
+                    <Image src="/blog/blog_5_6.png" alt="After-sales relationship building" width={800} height={600} className="w-full h-auto object-contain" />
                   </div>
                 </div>
                 <div>

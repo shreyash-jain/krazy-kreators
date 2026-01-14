@@ -368,7 +368,7 @@ export default function PrintPatternBlogClient({ initialLikeCount, initialCommen
                   {/* Strategic Image 1: Prints */}
                   <div className="rounded-xl overflow-hidden shadow-lg">
                     <Image
-                      src="/blog/blog 2_1.png"
+                      src="/blog/blog_2_1.png"
                       alt="Fashion prints and patterns"
                       width={800}
                       height={600}
@@ -389,7 +389,7 @@ export default function PrintPatternBlogClient({ initialLikeCount, initialCommen
                 <div>
                   <div className="rounded-xl overflow-hidden shadow-lg">
                     <Image
-                      src="/blog/blog 2_2.png"
+                      src="/blog/blog_2_2.png"
                       alt="Pattern making and garment construction"
                       width={800}
                       height={600}
@@ -438,7 +438,7 @@ export default function PrintPatternBlogClient({ initialLikeCount, initialCommen
                   {/* Strategic Image 3: Prototyping */}
                   <div className="rounded-xl overflow-hidden shadow-lg">
                     <Image
-                      src="/blog/blog 2_3.png"
+                      src="/blog/blog_2_3.png"
                       alt="Prototyping and sample making process"
                       width={800}
                       height={600}

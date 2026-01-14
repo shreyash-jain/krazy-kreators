@@ -194,7 +194,7 @@ export default function MoodBoardsBlogClient({ initialLikeCount, initialComments
       {/* Hero Section */}
       <section className="relative h-[60vh] min-h-[500px] overflow-hidden">
         <Image
-          src="/blog/blog 1.png"
+          src="/blog/blog_1.png"
           alt="Mood Boards to Manufacturable Garments Process"
           fill
           className="object-cover"
@@ -310,7 +310,7 @@ export default function MoodBoardsBlogClient({ initialLikeCount, initialComments
             {/* Featured Image */}
             <div className="mb-12 rounded-2xl overflow-hidden shadow-lg">
               <Image
-                src="/blog/blog 1.png"
+                src="/blog/blog_1.png"
                 alt="Mood Boards to Manufacturable Garments Process"
                 width={800}
                 height={600}
@@ -323,7 +323,7 @@ export default function MoodBoardsBlogClient({ initialLikeCount, initialComments
                 }}
                 onLoad={() => {
                   if (typeof window !== 'undefined') {
-                    const img = document.querySelector('img[src="/blog/blog 1.png"]') as HTMLImageElement;
+                    const img = document.querySelector('img[src="/blog/blog_1.png"]') as HTMLImageElement;
                     if (img) {
                       img.style.opacity = '1';
                     }
@@ -378,7 +378,7 @@ export default function MoodBoardsBlogClient({ initialLikeCount, initialComments
                 <div>
                   <div className="rounded-xl overflow-hidden shadow-lg">
                     <Image
-                      src="/blog/blog 1_1.png"
+                      src="/blog/blog_1_1.png"
                       alt="Design process from mood board to sketches"
                       width={800}
                       height={600}
@@ -407,7 +407,7 @@ export default function MoodBoardsBlogClient({ initialLikeCount, initialComments
                 <div>
                   <div className="rounded-xl overflow-hidden shadow-lg">
                     <Image
-                      src="/blog/blog 1_2.png"
+                      src="/blog/blog_1_2.png"
                       alt="Technical details and prototyping visuals"
                       width={800}
                       height={600}
@@ -471,7 +471,7 @@ export default function MoodBoardsBlogClient({ initialLikeCount, initialComments
                   {/* Strategic Image 3: Final Product */}
                   <div className="rounded-xl overflow-hidden shadow-lg">
                     <Image
-                      src="/blog/blog 1_3.png"
+                      src="/blog/blog_1_3.png"
                       alt="Final manufactured garments and quality control"
                       width={800}
                       height={600}

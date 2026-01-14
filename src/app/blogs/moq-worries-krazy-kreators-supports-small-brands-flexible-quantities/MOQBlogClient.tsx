@@ -108,7 +108,7 @@ export default function MOQBlogClient({ initialLikeCount, initialComments }: MOQ
       <Navbar invertTabs={!scrolled} />
 
       <section className="relative h-[60vh] min-h-[500px] overflow-hidden">
-        <Image src="/blog/blog 6.png" alt="MOQ flexibility for small brands" fill className="object-cover" style={{ WebkitTransform: "translateZ(0)", transform: "translateZ(0)", WebkitBackfaceVisibility: "hidden", backfaceVisibility: "hidden" }} />
+        <Image src="/blog/blog_6.png" alt="MOQ flexibility for small brands" fill className="object-cover" style={{ WebkitTransform: "translateZ(0)", transform: "translateZ(0)", WebkitBackfaceVisibility: "hidden", backfaceVisibility: "hidden" }} />
         <div className="absolute inset-0 bg-black/40" />
       </section>
 
@@ -185,7 +185,7 @@ export default function MOQBlogClient({ initialLikeCount, initialComments }: MOQ
                 </div>
                 <div>
                   <div className="rounded-xl overflow-hidden shadow-lg">
-                    <Image src="/blog/blog 6_1.png" alt="Flexible MOQ support" width={800} height={600} className="w-full h-auto object-contain" />
+                    <Image src="/blog/blog_6_1.png" alt="Flexible MOQ support" width={800} height={600} className="w-full h-auto object-contain" />
                   </div>
                 </div>
               </div>
@@ -193,7 +193,7 @@ export default function MOQBlogClient({ initialLikeCount, initialComments }: MOQ
               <div className="mb-12 grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
                 <div>
                   <div className="rounded-xl overflow-hidden shadow-lg">
-                    <Image src="/blog/blog 6_2.png" alt="Supporting emerging fashion brands" width={800} height={600} className="w-full h-auto object-contain" />
+                    <Image src="/blog/blog_6_2.png" alt="Supporting emerging fashion brands" width={800} height={600} className="w-full h-auto object-contain" />
                   </div>
                 </div>
                 <div>
@@ -227,7 +227,7 @@ export default function MOQBlogClient({ initialLikeCount, initialComments }: MOQ
                 </div>
                 <div>
                   <div className="rounded-xl overflow-hidden shadow-lg">
-                    <Image src="/blog/blog 6_3.png" alt="Quality control processes" width={800} height={600} className="w-full h-auto object-contain" />
+                    <Image src="/blog/blog_6_3.png" alt="Quality control processes" width={800} height={600} className="w-full h-auto object-contain" />
                   </div>
                 </div>
               </div>
@@ -235,7 +235,7 @@ export default function MOQBlogClient({ initialLikeCount, initialComments }: MOQ
               <div className="mb-12 grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
                 <div>
                   <div className="rounded-xl overflow-hidden shadow-lg">
-                    <Image src="/blog/blog 6_4.png" alt="Scaling production support" width={800} height={600} className="w-full h-auto object-contain" />
+                    <Image src="/blog/blog_6_4.png" alt="Scaling production support" width={800} height={600} className="w-full h-auto object-contain" />
                   </div>
                 </div>
                 <div>
@@ -264,7 +264,7 @@ export default function MOQBlogClient({ initialLikeCount, initialComments }: MOQ
                 </div>
                 <div>
                   <div className="rounded-xl overflow-hidden shadow-lg">
-                    <Image src="/blog/blog 6_5.png" alt="Hands-on production guidance" width={800} height={600} className="w-full h-auto object-contain" />
+                    <Image src="/blog/blog_6_5.png" alt="Hands-on production guidance" width={800} height={600} className="w-full h-auto object-contain" />
                   </div>
                 </div>
               </div>
