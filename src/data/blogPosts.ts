@@ -16,12 +16,12 @@ export type BlogPostMeta = {
 export const blogPosts: BlogPostMeta[] = [
   {
     id: 9,
-    title: "How to Start a Clothing Brand in 2026: Additional Steps for Success",
-    excerpt: "A comprehensive strategic blueprint for the modern fashion entrepreneur, covering AI design, supply chain resilience, and the Digital Product Passport.",
+    title: "Launching a Global Clothing Brand in 2026: The Strategic Playbook",
+    excerpt: "A comprehensive guide for modern fashion entrepreneurs on navigating global manufacturing, AI efficiencies, and compliance standards for scalable success.",
     category: "business",
     author: "Krazy Kreators Team",
     date: "January 19, 2026",
-    readTime: "10 min read",
+    readTime: "8 min read",
     image: "/blog/how-to-start-clothing-brand-2026-banner.jpg",
     slug: "how-to-start-clothing-brand-2026",
     readers: 156,
