@@ -7,7 +7,7 @@ import ContactDialog from "@/components/ContactDialog";
 import Footer from "@/components/Footer";
 import Navbar from "@/components/Navbar";
 import Image from "next/image";
-import { getRandomBlogs, blogPosts as blogUtilsPosts } from "@/lib/blogUtils";
+
 import { useToast } from "@/components/Toast";
 import { likeBlog, addComment, likeComment, type PublicComment } from "@/lib/blogApi";
 import { recordBlogLikeUpdate } from "@/lib/blogLikeSync";
@@ -315,7 +315,7 @@ export default function HowToStartBlogClient({ initialLikeCount, initialComments
                                     <div>
                                         <h3 className="text-2xl font-bold text-[#2D2A2E] mb-4">Beyond Demographics</h3>
                                         <p className="text-lg text-[#666666] leading-relaxed mb-6">
-                                            The most successful brands launching in 2026 aren't targeting "Women 25-40." They are targeting shared values and specific lifestyles. Whether you are building <strong>Loungewear for Remote Workers</strong> or <strong>Performance Wear for Desert Climates</strong>, your niche must be sharp and well-defined.
+                                            The most successful brands launching in 2026 aren&apos;t targeting &quot;Women 25-40.&quot; They are targeting shared values and specific lifestyles. Whether you are building <strong>Loungewear for Remote Workers</strong> or <strong>Performance Wear for Desert Climates</strong>, your niche must be sharp and well-defined.
                                         </p>
                                         <p className="text-lg text-[#666666] leading-relaxed">
                                             International buyers, particularly in competitive markets like the UK and UAE, respond to brands that solve specific problems (e.g., breathable fabrics for humidity, modest fashion with a modern twist).
@@ -406,10 +406,10 @@ export default function HowToStartBlogClient({ initialLikeCount, initialComments
                                 <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 mb-16">
                                     <div className="lg:col-span-2 text-lg text-[#666666] leading-relaxed space-y-4">
                                         <p>
-                                            For brands in the US or UK, the challenge is rarely just production—it is <strong>Shipping and Rules</strong>. An "All-in-One" partner handles the hard work: from sourcing organic cotton that meets EU standards to optimizing shipping routes for Dubai customs.
+                                            For brands in the US or UK, the challenge is rarely just production—it is <strong>Shipping and Rules</strong>. An &quot;All-in-One&quot; partner handles the hard work: from sourcing organic cotton that meets EU standards to optimizing shipping routes for Dubai customs.
                                         </p>
                                         <p>
-                                            This "Integrated Approach" mitigates the risk of fragmented supply chains, where a delay in fabric sourcing can miss a seasonal launch window.
+                                            This &quot;Integrated Approach&quot; mitigates the risk of fragmented supply chains, where a delay in fabric sourcing can miss a seasonal launch window.
                                         </p>
                                     </div>
                                     <div className="bg-[#2D2A2E] p-8 rounded-2xl text-white shadow-xl flex flex-col justify-center relative overflow-hidden">
@@ -462,7 +462,7 @@ export default function HowToStartBlogClient({ initialLikeCount, initialComments
                                                 {/* Placeholder for video/image - using a generic image for now */}
                                                 <div className="absolute inset-0 bg-gray-900 flex items-center justify-center">
                                                     <div className="text-center p-6">
-                                                        <p className="text-white text-lg font-medium opacity-80 italic">"Krazy Kreators handled the details, so I could build the brand."</p>
+                                                        <p className="text-white text-lg font-medium opacity-80 italic">&quot;Krazy Kreators handled the details, so I could build the brand.&quot;</p>
                                                     </div>
                                                 </div>
                                             </div>
@@ -477,7 +477,7 @@ export default function HowToStartBlogClient({ initialLikeCount, initialComments
                                 <div className="bg-green-50/50 rounded-2xl p-8 border border-green-100">
                                     <h3 className="text-xl font-bold text-[#2D2A2E] mb-4">The Digital Product ID Era</h3>
                                     <p className="text-lg text-[#666666] leading-relaxed mb-6">
-                                        For brands exporting to Europe or planning a global presence, the 'Digital Product ID' is becoming a standard. This is no longer just about "being green"—it is about following the rules to sell globally. New international sustainability laws effectively mandates that brands account for their environmental footprint.
+                                        For brands exporting to Europe or planning a global presence, the &apos;Digital Product ID&apos; is becoming a standard. This is no longer just about &quot;being green&quot;—it is about following the rules to sell globally. New international sustainability laws effectively mandates that brands account for their environmental footprint.
                                     </p>
                                     <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mt-8">
                                         <div className="bg-white p-6 rounded-xl shadow-sm">
@@ -503,13 +503,13 @@ export default function HowToStartBlogClient({ initialLikeCount, initialComments
                                     <div className="border-t-4 border-[#CBB49A] pt-6">
                                         <h4 className="text-xl font-bold text-[#2D2A2E] mb-4">Financial Prudence</h4>
                                         <p className="text-[#666666] leading-relaxed">
-                                            The "Gap" for new brands is the cash withdrawal between production payment and sales revenue. Ensure your budget accounts for <strong>Total Final Cost</strong> (making + shipping + taxes) rather than just unit price. Smart founders allocate 40% of their initial budget to marketing, not just stock.
+                                            The &quot;Gap&quot; for new brands is the cash withdrawal between production payment and sales revenue. Ensure your budget accounts for <strong>Total Final Cost</strong> (making + shipping + taxes) rather than just unit price. Smart founders allocate 40% of their initial budget to marketing, not just stock.
                                         </p>
                                     </div>
                                     <div className="border-t-4 border-[#2D2A2E] pt-6">
                                         <h4 className="text-xl font-bold text-[#2D2A2E] mb-4">Community-First Marketing</h4>
                                         <p className="text-[#666666] leading-relaxed">
-                                            In 2026, trust is the currency. Focus on cultivating deep relationships with nano-influencers (1k-10k followers) who align with your brand values, rather than burning budget on broad expensive automated ads. Community events and "Founder's Journal" style content build higher customer loyalty.
+                                            In 2026, trust is the currency. Focus on cultivating deep relationships with nano-influencers (1k-10k followers) who align with your brand values, rather than burning budget on broad expensive automated ads. Community events and &quot;Founder&apos;s Journal&quot; style content build higher customer loyalty.
                                         </p>
                                     </div>
                                 </div>
@@ -558,12 +558,12 @@ export default function HowToStartBlogClient({ initialLikeCount, initialComments
                                 <div className="flex flex-col md:flex-row gap-8 items-center">
                                     <div className="w-full md:w-1/2">
                                         <p className="text-lg text-[#666666] leading-relaxed mb-6">
-                                            The real work begins after launch day. The most common mistake new founders make is front-loading all their energy into the launch and having no plan for "Month 2".
+                                            The real work begins after launch day. The most common mistake new founders make is front-loading all their energy into the launch and having no plan for &quot;Month 2&quot;.
                                         </p>
                                         <ul className="space-y-4">
                                             <li className="flex items-start gap-3">
                                                 <div className="min-w-[6px] h-[6px] rounded-full bg-[#CBB49A] mt-2.5"></div>
-                                                <p className="text-[#666666]"><strong>The Drop Model:</strong> Instead of releasing everything at once, release small "capsules" every 6 weeks to maintain hype and manage cash flow.</p>
+                                                <p className="text-[#666666]"><strong>The Drop Model:</strong> Instead of releasing everything at once, release small &quot;capsules&quot; every 6 weeks to maintain hype and manage cash flow.</p>
                                             </li>
                                             <li className="flex items-start gap-3">
                                                 <div className="min-w-[6px] h-[6px] rounded-full bg-[#CBB49A] mt-2.5"></div>
@@ -578,7 +578,7 @@ export default function HowToStartBlogClient({ initialLikeCount, initialComments
                                     <div className="w-full md:w-1/2 bg-[#2D2A2E] text-white p-8 rounded-2xl shadow-xl">
                                         <h4 className="text-xl font-bold mb-4 text-[#CBB49A]">Key Metric: Repeat Purchase Rate</h4>
                                         <p className="text-gray-300 mb-6">
-                                            "In fashion, your first sale is marketing; your second sale is brand validation. If customers aren't coming back within 90 days, you have a product problem, not a marketing problem."
+                                            &quot;In fashion, your first sale is marketing; your second sale is brand validation. If customers aren&apos;t coming back within 90 days, you have a product problem, not a marketing problem.&quot;
                                         </p>
                                         <div className="h-1 bg-white/10 rounded-full overflow-hidden">
                                             <div className="w-3/4 h-full bg-[#CBB49A]"></div>
@@ -601,13 +601,13 @@ export default function HowToStartBlogClient({ initialLikeCount, initialComments
                                     <div className="bg-[#F8F7F4] p-8 rounded-2xl">
                                         <h4 className="text-xl font-bold text-[#2D2A2E] mb-4">Professional Fulfillment Partners</h4>
                                         <p className="text-[#666666] mb-4">
-                                            Do not ship from your garage. Partner with a modern shipping partner that integrates directly with Shopify and TikTok Shop. Look for partners with "smart routing" capabilities to reduce shipping costs by up to 20%.
+                                            Do not ship from your garage. Partner with a modern shipping partner that integrates directly with Shopify and TikTok Shop. Look for partners with &quot;smart routing&quot; capabilities to reduce shipping costs by up to 20%.
                                         </p>
                                     </div>
                                     <div className="bg-[#F8F7F4] p-8 rounded-2xl">
                                         <h4 className="text-xl font-bold text-[#2D2A2E] mb-4">Handling Returns Smartly</h4>
                                         <p className="text-[#666666] mb-4">
-                                            Fashion has a 30% return rate. Turn this into an opportunity with "easy exchange systems" which encourage customers to swap sizes rather than request refunds.
+                                            Fashion has a 30% return rate. Turn this into an opportunity with &quot;easy exchange systems&quot; which encourage customers to swap sizes rather than request refunds.
                                         </p>
                                     </div>
                                 </div>
@@ -618,13 +618,13 @@ export default function HowToStartBlogClient({ initialLikeCount, initialComments
                                 <h2 className="text-3xl font-bold text-[#2D2A2E] mb-8">Step 9: Building Your Core Team</h2>
                                 <div className="space-y-6">
                                     <p className="text-lg text-[#666666] leading-relaxed">
-                                        You cannot wear every hat forever. The most successful founders transition from "doing" to "leading" by making three critical hires in their first year:
+                                        You cannot wear every hat forever. The most successful founders transition from &quot;doing&quot; to &quot;leading&quot; by making three critical hires in their first year:
                                     </p>
                                     <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
                                         <div className="border border-gray-200 p-6 rounded-xl hover:shadow-lg transition-shadow">
                                             <h4 className="font-bold text-[#2D2A2E] mb-2">1. The Content Creator</h4>
                                             <p className="text-sm text-[#666666]">
-                                                Someone who lives on TikTok/Reels. They don't need a DSLR; they need to understand native storytelling and trends.
+                                                Someone who lives on TikTok/Reels. They don&apos;t need a DSLR; they need to understand native storytelling and trends.
                                             </p>
                                         </div>
                                         <div className="border border-gray-200 p-6 rounded-xl hover:shadow-lg transition-shadow">
