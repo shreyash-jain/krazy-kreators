@@ -142,6 +142,7 @@ export async function GET() {
       engagementRate: parseFloat(row.metricValues?.[5]?.value || '0'),
     })) || [];
 
+    /**eslint-disable-next-line */
     // Calculate Totals
     interface TrendRow {
         activeUsers: number;
