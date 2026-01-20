@@ -20,22 +20,25 @@ export default function BlogRenderer({ blocks }: { blocks: Block[] }) {
             return <p key={idx} dangerouslySetInnerHTML={{ __html: String(block.data?.text || "") }} />;
           }
           case "list": {
-            const items: string[] = Array.isArray(block.data?.items) ? block.data.items : [];
-            if (block.data?.style === "ordered") {
-              return (
-                <ol key={idx} className="list-decimal pl-6">
-                  {items.map((it, i) => (
-                    <li key={i} dangerouslySetInnerHTML={{ __html: it }} />
-                  ))}
-                </ol>
-              );
-            }
+            const items: unknown[] = Array.isArray(block.data?.items) ? block.data.items : [];
+            const isOrdered = block.data?.style === "ordered";
+            const ListTag = isOrdered ? "ol" : "ul";
+            const listClass = isOrdered ? "list-decimal pl-6" : "list-disc pl-6";
+
             return (
-              <ul key={idx} className="list-disc pl-6">
-                {items.map((it, i) => (
-                  <li key={i} dangerouslySetInnerHTML={{ __html: it }} />
-                ))}
-              </ul>
+              <ListTag key={idx} className={listClass}>
+                {items.map((it, i) => {
+                  let content = "";
+                  if (typeof it === "string") {
+                    content = it;
+                  } else if (it && typeof it === "object") {
+                    // Handle potential object structure from nested lists or other plugins
+                    const obj = it as Record<string, unknown>;
+                    content = String(obj.content || obj.text || obj.value || "");
+                  }
+                  return <li key={i} dangerouslySetInnerHTML={{ __html: content }} />;
+                })}
+              </ListTag>
             );
           }
           case "quote": {
