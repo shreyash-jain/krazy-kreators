@@ -6,6 +6,8 @@ export const metadata = {
     description: "Discover why hemp and bamboo are becoming the mandatory sustainable fabric choices for 2026 fashion collections. Learn about their benefits and how to source them.",
 };
 
+
+export const runtime = 'edge';
 export const dynamic = "force-dynamic";
 
 // Define the unique blog ID
