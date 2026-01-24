@@ -15,6 +15,19 @@ export type BlogPostMeta = {
 
 export const blogPosts: BlogPostMeta[] = [
   {
+    id: 10,
+    title: "2026 Fabric Trends: Why Hemp and Bamboo Are Taking Over",
+    excerpt: "Sustainability is moving from 'nice-to-have' to 'mandatory.' Discover why hemp and bamboo are the trending eco-friendly alternatives to polyester for 2026.",
+    category: "design",
+    author: "Krazy Kreators Team",
+    date: "January 21, 2026",
+    readTime: "6 min read",
+    image: "/blog/fabric-trends-2026-banner.png",
+    slug: "2026-fabric-trends-hemp-bamboo",
+    readers: 45,
+    likes: 12,
+  },
+  {
     id: 9,
     title: "Launching a Global Clothing Brand in 2026: The Strategic Playbook",
     excerpt: "A comprehensive guide for modern fashion entrepreneurs on navigating global manufacturing, AI efficiencies, and compliance standards for scalable success.",
