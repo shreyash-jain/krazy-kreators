@@ -15,6 +15,19 @@ export type BlogPostMeta = {
 
 export const blogPosts: BlogPostMeta[] = [
   {
+    id: 11,
+    title: "The Big Shift: India-EU Trade Deal 2026 Analysis",
+    excerpt: "The 'Mother of All Deals' is finally here. We break down the massive 2026 India-EU Free Trade Agreement and what it really means for your business.",
+    category: "business",
+    author: "Krazy Kreators Team",
+    date: "January 27, 2026",
+    readTime: "8 min read",
+    image: "/blog/india-eu-fta-2026-banner.png",
+    slug: "india-eu-fta-2026-trade-deal",
+    readers: 0,
+    likes: 0,
+  },
+  {
     id: 10,
     title: "2026 Fabric Trends: Why Hemp and Bamboo Are Taking Over",
     excerpt: "Sustainability is moving from 'nice-to-have' to 'mandatory.' Discover why hemp and bamboo are the trending eco-friendly alternatives to polyester for 2026.",
