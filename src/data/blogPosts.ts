@@ -15,6 +15,19 @@ export type BlogPostMeta = {
 
 export const blogPosts: BlogPostMeta[] = [
   {
+    id: 12,
+    title: "Anti-Fast Fashion: How to Build a 'Slow Fashion' Brand",
+    excerpt: "The era of disposable clothing is ending. Learn how to capitalize on the consumer shift towards quality, ethics, and longevity.",
+    category: "sustainability",
+    author: "Krazy Kreators Team",
+    date: "January 28, 2026",
+    readTime: "7 min read",
+    image: "/blog/anti-fast-fashion-banner.png",
+    slug: "anti-fast-fashion-slow-brand",
+    readers: 0,
+    likes: 0,
+  },
+  {
     id: 11,
     title: "The Big Shift: India-EU Trade Deal 2026 Analysis",
     excerpt: "The 'Mother of All Deals' is finally here. We break down the massive 2026 India-EU Free Trade Agreement and what it really means for your business.",
