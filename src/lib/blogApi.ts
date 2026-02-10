@@ -82,15 +82,20 @@ export async function getComments(
   blogId: string,
   opts?: { baseUrl?: string }
 ): Promise<PublicComment[]> {
-  const res = await fetch(
-    resolveApiUrl(`/api/blog/comments?blogId=${encodeURIComponent(blogId)}` , opts?.baseUrl),
-    {
-    cache: 'no-store',
+  try {
+    const res = await fetch(
+      resolveApiUrl(`/api/blog/comments?blogId=${encodeURIComponent(blogId)}` , opts?.baseUrl),
+      {
+      cache: 'no-store',
+    }
+    );
+    if (!res.ok) return [];
+    const data = await res.json();
+    return (data?.comments ?? []) as PublicComment[];
+  } catch (error) {
+    console.error(`BlogApi: Error fetching comments for ${blogId}:`, error);
+    return [];
   }
-  );
-  if (!res.ok) return [];
-  const data = await res.json();
-  return (data?.comments ?? []) as PublicComment[];
 }
 
 export async function addComment(params: { blogId: string; name: string; email: string; comment: string }): Promise<PublicComment> {
