@@ -15,6 +15,19 @@ export type BlogPostMeta = {
 
 export const blogPosts: BlogPostMeta[] = [
   {
+    id: 13,
+    title: "Streetwear 2.0: Heavy GSM, Puff Prints, and Acid Washes",
+    excerpt: "Streetwear is evolving. Discover the technical execution behind the current market obsession with heavyweight tees, puff prints, and vintage acid washes.",
+    category: "manufacturing",
+    author: "Krazy Kreators Team",
+    date: "February 09, 2026",
+    readTime: "6 min read",
+    image: "/blog/streetwear-2-0-banner.png",
+    slug: "streetwear-2-0-heavy-gsm-puff-prints-acid-washes",
+    readers: 0,
+    likes: 0,
+  },
+  {
     id: 12,
     title: "Anti-Fast Fashion: How to Build a 'Slow Fashion' Brand",
     excerpt: "The era of disposable clothing is ending. Learn how to capitalize on the consumer shift towards quality, ethics, and longevity.",
