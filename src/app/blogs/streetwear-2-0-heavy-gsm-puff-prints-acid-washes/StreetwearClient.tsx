@@ -3,7 +3,7 @@
 
 import { useState, useEffect, useRef } from "react";
 import { Button } from "@/components/ui/button";
-import { ArrowRight, Share2, Heart, MessageCircle, Ruler, Printer, SprayCan, Shirt, Zap, Layers, Beaker, CheckCircle2, TrendingUp, AlertTriangle, Users } from "lucide-react";
+import { Share2, Heart, MessageCircle, Ruler, Printer, SprayCan, Shirt, Layers, Beaker, CheckCircle2, TrendingUp, AlertTriangle, Users } from "lucide-react";
 import ContactDialog from "@/components/ContactDialog";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
@@ -21,6 +21,7 @@ type StreetwearClientProps = {
 
 export default function StreetwearClient({ initialLikeCount, initialComments }: StreetwearClientProps) {
     const [contactOpen, setContactOpen] = useState(false);
+    const [showAllComments, setShowAllComments] = useState(false);
     const [scrolled, setScrolled] = useState(false);
     const [isLiked, setIsLiked] = useState(false);
     const [likeCount, setLikeCount] = useState(initialLikeCount);
@@ -152,12 +153,7 @@ export default function StreetwearClient({ initialLikeCount, initialComments }: 
         }
     };
 
-    const scrollToComments = () => {
-        const cSection = document.getElementById('comments-section');
-        if (cSection) {
-            cSection.scrollIntoView({ behavior: 'smooth' });
-        }
-    };
+
 
     return (
         <div className="min-h-screen bg-white">
@@ -169,7 +165,7 @@ export default function StreetwearClient({ initialLikeCount, initialComments }: 
                     src="/blog/streetwear-2-0-banner.png"
                     alt="Streetwear 2.0 Trends"
                     fill
-                    className="object-cover"
+                    className="object-cover object-top"
                     priority
                     style={{
                         WebkitTransform: 'translateZ(0)',
@@ -245,13 +241,13 @@ export default function StreetwearClient({ initialLikeCount, initialComments }: 
                             {/* Introduction */}
                             <div className="mb-16">
                                 <p className="text-2xl font-medium text-[#2D2A2E] leading-relaxed mb-8">
-                                    Streetwear is evolving. The era of flimsy blanks, basic screen prints, and generic cuts is over. We are entering "Streetwear 2.0"—a movement defined by a demand for extreme substance, tactile texture, and unique character.
+                                    Streetwear is evolving. The era of flimsy blanks, basic screen prints, and generic cuts is over. We are entering &quot;Streetwear 2.0&quot;—a movement defined by a demand for extreme substance, tactile texture, and unique character.
                                 </p>
                                 <p className="leading-relaxed mb-6">
                                     For years, brands could get away with printing a logo on a standard Gildan or Alstyle blank. Today, the consumer is far more educated. They understand fabric weight, they recognize specialized wash treatments, and they can feel the difference between a standard print and a technical application.
                                 </p>
                                 <p className="leading-relaxed mb-6">
-                                    Currently, the market is obsessed with three key elements: **Heavyweight (240+ GSM) tees**, **Puff Printing**, and **vintage Acid Washes**. This isn't just a fleeting trend; it's a fundamental shift towards tactile, premium-feeling garments that justify higher price points and build lasting brand loyalty.
+                                    Currently, the market is obsessed with three key elements: **Heavyweight (240+ GSM) tees**, **Puff Printing**, and **vintage Acid Washes**. This isn&apos;t just a fleeting trend; it&apos;s a fundamental shift towards tactile, premium-feeling garments that justify higher price points and build lasting brand loyalty.
                                 </p>
                                 <div className="bg-amber-50 border-l-4 border-amber-500 p-6 rounded-r-xl my-8">
                                     <h4 className="flex items-center gap-2 font-bold text-amber-900 m-0 mb-2">
@@ -271,7 +267,7 @@ export default function StreetwearClient({ initialLikeCount, initialComments }: 
                                     1. Heavyweight GSM (240+)
                                 </h2>
                                 <p className="leading-relaxed mb-8">
-                                    GSM (Grams per Square Meter) is the definitive metric for fabric weight. The standard 160-180 GSM tee feels cheap in today's market. Streetwear 2.0 demands 240 GSM to 300 GSM for t-shirts and 400+ GSM for hoodies.
+                                    GSM (Grams per Square Meter) is the definitive metric for fabric weight. The standard 160-180 GSM tee feels cheap in today&apos;s market. Streetwear 2.0 demands 240 GSM to 300 GSM for t-shirts and 400+ GSM for hoodies.
                                 </p>
                                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-10">
                                     <div className="bg-[#F8F7F4] p-8 rounded-2xl border border-gray-100">
@@ -279,7 +275,7 @@ export default function StreetwearClient({ initialLikeCount, initialComments }: 
                                         <ul className="space-y-3 mb-0 list-none pl-0">
                                             <li className="flex items-start gap-3">
                                                 <CheckCircle2 className="w-5 h-5 text-green-600 mt-1 flex-shrink-0" />
-                                                <span><strong>Structure & Drape:</strong> Unlike thinner fabrics that cling, 240+ GSM cotton creates its own silhouette. It holds a "boxy" shape that stands away from the body, which is the cornerstone of the modern streetwear aesthetic.</span>
+                                                <span><strong>Structure & Drape:</strong> Unlike thinner fabrics that cling, 240+ GSM cotton creates its own silhouette. It holds a &quot;boxy&quot; shape that stands away from the body, which is the cornerstone of the modern streetwear aesthetic.</span>
                                             </li>
                                             <li className="flex items-start gap-3">
                                                 <CheckCircle2 className="w-5 h-5 text-green-600 mt-1 flex-shrink-0" />
@@ -287,14 +283,14 @@ export default function StreetwearClient({ initialLikeCount, initialComments }: 
                                             </li>
                                             <li className="flex items-start gap-3">
                                                 <CheckCircle2 className="w-5 h-5 text-green-600 mt-1 flex-shrink-0" />
-                                                <span><strong>Perceived Value:</strong> The physical weight immediately signals quality to the customer. When a customer picks up a 300gsm tee, the "heft" justifies a higher retail price point immediately.</span>
+                                                <span><strong>Perceived Value:</strong> The physical weight immediately signals quality to the customer. When a customer picks up a 300gsm tee, the &quot;heft&quot; justifies a higher retail price point immediately.</span>
                                             </li>
                                         </ul>
                                     </div>
                                     <div className="bg-white p-8 rounded-2xl border border-gray-100 shadow-sm">
                                         <h3 className="text-xl font-bold text-[#2D2A2E] mb-3 mt-0">Best Fibers for Heavy GSM</h3>
                                         <p className="text-sm leading-relaxed mb-4">
-                                            Simply increasing weight isn't enough. You need the right yarn.
+                                            Simply increasing weight isn&apos;t enough. You need the right yarn.
                                         </p>
                                         <ul className="space-y-2 text-sm">
                                             <li><strong>Combed Cotton:</strong> Smooth, strong, and perfect for printing.</li>
@@ -358,13 +354,13 @@ export default function StreetwearClient({ initialLikeCount, initialComments }: 
                                             Common Pitfalls
                                         </h3>
                                         <p className="text-red-800 text-sm mb-0">
-                                            The most common issue with puff printing is <strong>cracking</strong>. If the curing temperature varies even by a few degrees or the dwell time is insufficient, the puff ink won't cure all the way through. This leads to the "marshmallow effect"—soft inside, hard shell—which cracks deeply after the first wash.
+                                            The most common issue with puff printing is <strong>cracking</strong>. If the curing temperature varies even by a few degrees or the dwell time is insufficient, the puff ink won&apos;t cure all the way through. This leads to the &quot;marshmallow effect&quot;—soft inside, hard shell—which cracks deeply after the first wash.
                                         </p>
                                     </div>
                                     <div className="flex flex-col justify-center">
                                        <span className="font-bold text-red-900 mb-2 text-sm">Design Tip:</span>
                                        <p className="text-red-800 text-sm italic">
-                                            "Don't try to puff fine text. The expansion will close up the letters (filling in the loops of 'e's and 'a's). Stick to bold logos and typography at least 12pt thickness."
+                                            &quot;Don&apos;t try to puff fine text. The expansion will close up the letters (filling in the loops of &apos;e&apos;s and &apos;a&apos;s). Stick to bold logos and typography at least 12pt thickness.&quot;
                                        </p>
                                     </div>
                                 </div>
@@ -377,7 +373,7 @@ export default function StreetwearClient({ initialLikeCount, initialComments }: 
                                     3. Acid Washes (Vintage Wash)
                                 </h2>
                                 <p className="leading-relaxed mb-8">
-                                    The "perfectly new" look is out. The "lived-in" aesthetic is in. Acid washing involves soaking pumice stones in chlorine bleach and tumbling them with the garments. This strips color irregularly, creating a unique, vintage patina.
+                                    The &quot;perfectly new&quot; look is out. The &quot;lived-in&quot; aesthetic is in. Acid washing involves soaking pumice stones in chlorine bleach and tumbling them with the garments. This strips color irregularly, creating a unique, vintage patina.
                                 </p>
                                 <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-10">
                                     <div className="bg-[#F8F7F4] p-8 rounded-2xl border border-gray-100">
@@ -386,7 +382,7 @@ export default function StreetwearClient({ initialLikeCount, initialComments }: 
                                         </div>
                                         <h3 className="text-xl font-bold text-[#2D2A2E] mb-3 mt-0">The Process</h3>
                                         <p className="text-sm leading-relaxed mb-4">
-                                            It's a chemical artistry. The duration of the tumble, the concentration of bleach, and the size of the stones all dictate the final pattern. No two pieces are exactly alike.
+                                            It&apos;s a chemical artistry. The duration of the tumble, the concentration of bleach, and the size of the stones all dictate the final pattern. No two pieces are exactly alike.
                                         </p>
                                         <div className="p-3 bg-white rounded-lg border border-gray-200 text-xs text-gray-500">
                                             <strong>Note:</strong> Acid washing weakens fabric slightly, so starting with a Heavy GSM base (see point 1) is crucial to maintain integrity.
@@ -418,15 +414,15 @@ export default function StreetwearClient({ initialLikeCount, initialComments }: 
                                     <div className="space-y-4">
                                         <div className="flex gap-4">
                                             <div className="w-24 shrink-0 font-bold text-gray-900">Ozone Wash</div>
-                                            <div className="text-gray-600 text-sm">A sustainable alternative using ozone gas to bleach denim and cotton. It uses 90% less water than traditional acid washing while achieving similar "vintage" results.</div>
+                                            <div className="text-gray-600 text-sm">A sustainable alternative using ozone gas to bleach denim and cotton. It uses 90% less water than traditional acid washing while achieving similar &quot;vintage&quot; results.</div>
                                         </div>
                                         <div className="flex gap-4">
                                             <div className="w-24 shrink-0 font-bold text-gray-900">Enzyme Wash</div>
-                                            <div className="text-gray-600 text-sm">Uses organic enzymes to "eat" the cellulose in the cotton. This results in an incredibly soft hand-feel (the "peach skin" effect) without the heavy abrasion of pumice stones.</div>
+                                            <div className="text-gray-600 text-sm">Uses organic enzymes to &quot;eat&quot; the cellulose in the cotton. This results in an incredibly soft hand-feel (the &quot;peach skin&quot; effect) without the heavy abrasion of pumice stones.</div>
                                         </div>
                                         <div className="flex gap-4">
                                             <div className="w-24 shrink-0 font-bold text-gray-900">Pigment Dye</div>
-                                            <div className="text-gray-600 text-sm">Instead of reacting with the fiber, the dye sits on top. When washed, the pigment falls off high points (seams, collars), creating an instant "worn-in" look that usually takes years to achieve.</div>
+                                            <div className="text-gray-600 text-sm">Instead of reacting with the fiber, the dye sits on top. When washed, the pigment falls off high points (seams, collars), creating an instant &quot;worn-in&quot; look that usually takes years to achieve.</div>
                                         </div>
                                     </div>
                                 </div>
@@ -439,7 +435,7 @@ export default function StreetwearClient({ initialLikeCount, initialComments }: 
                                     4. Fit Engineering: The Boxy Cut
                                 </h2>
                                 <p className="leading-relaxed mb-8">
-                                    A heavy fabric is wasted on a standard "retail fit." The Streetwear 2.0 aesthetic relies on specific pattern engineering to compliment the heavy drape of the fabric.
+                                    A heavy fabric is wasted on a standard &quot;retail fit.&quot; The Streetwear 2.0 aesthetic relies on specific pattern engineering to compliment the heavy drape of the fabric.
                                 </p>
                                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
                                     <div className="bg-white p-6 rounded-xl border border-gray-200 shadow-sm text-center">
@@ -448,11 +444,11 @@ export default function StreetwearClient({ initialLikeCount, initialComments }: 
                                     </div>
                                     <div className="bg-white p-6 rounded-xl border border-gray-200 shadow-sm text-center">
                                         <div className="font-bold text-lg mb-2">Wider Chest</div>
-                                        <p className="text-xs text-gray-500">Chest measurements are increased by 2-4 inches compared to standard sizing for "boxiness."</p>
+                                        <p className="text-xs text-gray-500">Chest measurements are increased by 2-4 inches compared to standard sizing for &quot;boxiness.&quot;</p>
                                     </div>
                                     <div className="bg-white p-6 rounded-xl border border-gray-200 shadow-sm text-center">
                                         <div className="font-bold text-lg mb-2">Cropped Length</div>
-                                        <p className="text-xs text-gray-500">Slightly shorter body length prevents the "dress" look when wearing oversized widths.</p>
+                                        <p className="text-xs text-gray-500">Slightly shorter body length prevents the &quot;dress&quot; look when wearing oversized widths.</p>
                                     </div>
                                     <div className="bg-white p-6 rounded-xl border border-gray-200 shadow-sm text-center">
                                         <div className="font-bold text-lg mb-2">Thick Ribbing</div>
@@ -483,7 +479,7 @@ export default function StreetwearClient({ initialLikeCount, initialComments }: 
                                             <div className="w-6 h-6 rounded-full bg-[#CBB49A] flex items-center justify-center text-[#2D2A2E] font-bold text-xs mt-0.5">2</div>
                                             <div>
                                                 <strong className="block text-[#CBB49A]">Puff Height Samples</strong>
-                                                <span className="text-gray-400 text-sm">Request physical samples of different puff heights. "High density" puff is very different from "suede" puff. Be specific.</span>
+                                                <span className="text-gray-400 text-sm">Request physical samples of different puff heights. &quot;High density&quot; puff is very different from &quot;suede&quot; puff. Be specific.</span>
                                             </div>
                                         </li>
                                         <li className="flex items-start gap-4">
@@ -502,10 +498,10 @@ export default function StreetwearClient({ initialLikeCount, initialComments }: 
                                 <h2 className="text-3xl font-bold text-[#2D2A2E] mb-8">Executing the Vision</h2>
                                 <div className="bg-gradient-to-br from-[#2D2A2E] to-gray-800 text-white p-8 rounded-2xl">
                                     <p className="text-lg leading-relaxed mb-6 text-white">
-                                        Combining these three elements—Heavy GSM, Puff Prints, and Acid Wash—creates a product that screams "Streetwear 2.0". It's tactile, visual, and substantial.
+                                        Combining these three elements—Heavy GSM, Puff Prints, and Acid Wash—creates a product that screams &quot;Streetwear 2.0&quot;. It&apos;s tactile, visual, and substantial.
                                     </p>
                                     <p className="text-xl font-bold text-[#CBB49A]">
-                                        Don't just chase the trend; understand the manufacturing that makes it possible. That is how you build a brand with staying power.
+                                        Don&apos;t just chase the trend; understand the manufacturing that makes it possible. That is how you build a brand with staying power.
                                     </p>
                                 </div>
                             </div>
@@ -519,7 +515,7 @@ export default function StreetwearClient({ initialLikeCount, initialComments }: 
                                     <span className="text-[#CBB49A] font-bold tracking-widest text-sm uppercase mb-4 block">Ready to Create?</span>
                                     <h3 className="text-3xl font-bold mb-6">Looking for a Manufacturer Who Can Execute Streetwear 2.0?</h3>
                                     <p className="text-gray-300 leading-relaxed mb-8 text-lg">
-                                        Krazy Kreators has the technical capability to handle heavy GSM fabrics, specialized puff printing, and custom wash treatments. Let's bring your vision to life.
+                                        Krazy Kreators has the technical capability to handle heavy GSM fabrics, specialized puff printing, and custom wash treatments. Let&apos;s bring your vision to life.
                                     </p>
                                     <Button
                                         onClick={() => setContactOpen(true)}
@@ -687,7 +683,7 @@ export default function StreetwearClient({ initialLikeCount, initialComments }: 
                 </div>
             </section>
 
-            <ContactDialog open={contactOpen} onOpenChange={setContactOpen} />
+            <ContactDialog open={contactOpen} onClose={() => setContactOpen(false)} />
             <Footer />
         </div>
     );

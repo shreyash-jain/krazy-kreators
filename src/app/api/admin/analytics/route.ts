@@ -144,14 +144,7 @@ export async function GET() {
 
     /**eslint-disable-next-line */
     // Calculate Totals
-    interface TrendRow {
-        activeUsers: number;
-        screenPageViews: number;
-        sessions: number;
-        newUsers: number;
-        engagementRate: number;
-        avgSessionDuration: number;
-    }
+
     const totals = {
       activeUsers: rows.reduce((acc, curr) => acc + curr.activeUsers, 0),
       screenPageViews: rows.reduce((acc, curr) => acc + curr.screenPageViews, 0),
