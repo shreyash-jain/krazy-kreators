@@ -191,7 +191,7 @@ export default function BlogsClient({ initialLikeCounts, posts }: BlogsClientPro
                       src={post.card_image || post.image}
                       alt={post.title}
                       fill
-                      className="object-cover group-hover:scale-105 transition-transform duration-300"
+                      className="object-cover object-top group-hover:scale-105 transition-transform duration-300"
                     />
                   </div>
                   <div className="p-6">
