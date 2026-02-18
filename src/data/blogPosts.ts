@@ -15,6 +15,19 @@ export type BlogPostMeta = {
 
 export const blogPosts: BlogPostMeta[] = [
   {
+    id: 14,
+    title: "Why Fashion Brands Are Moving Manufacturing to India (Beyond Just Cost)",
+    excerpt: "Beyond just cost savings: discover the geopolitical, craftsmanship, and sustainability advantages driving the global fashion industry's shift to India.",
+    category: "business",
+    author: "Krazy Kreators Team",
+    date: "February 18, 2026",
+    readTime: "9 min read",
+    image: "/blog/india-manufacturing-banner.jpg",
+    slug: "why-fashion-brands-moving-manufacturing-to-india",
+    readers: 0,
+    likes: 0,
+  },
+  {
     id: 13,
     title: "Streetwear 2.0: Heavy GSM, Puff Prints, and Acid Washes",
     excerpt: "Streetwear is evolving. Discover the technical execution behind the current market obsession with heavyweight tees, puff prints, and vintage acid washes.",
