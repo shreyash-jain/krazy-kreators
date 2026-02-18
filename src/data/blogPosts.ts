@@ -15,6 +15,19 @@ export type BlogPostMeta = {
 
 export const blogPosts: BlogPostMeta[] = [
   {
+    id: 14,
+    title: "Why Fashion Brands Are Moving Manufacturing to India (Beyond Just Cost)",
+    excerpt: "Beyond just cost savings: discover the geopolitical, craftsmanship, and sustainability advantages driving the global fashion industry's shift to India.",
+    category: "business",
+    author: "Krazy Kreators Team",
+    date: "February 18, 2026",
+    readTime: "9 min read",
+    image: "/blog/india-manufacturing-banner.jpg",
+    slug: "why-fashion-brands-moving-manufacturing-to-india",
+    readers: 0,
+    likes: 0,
+  },
+  {
     id: 13,
     title: "Streetwear 2.0: Heavy GSM, Puff Prints, and Acid Washes",
     excerpt: "Streetwear is evolving. Discover the technical execution behind the current market obsession with heavyweight tees, puff prints, and vintage acid washes.",
@@ -24,7 +37,7 @@ export const blogPosts: BlogPostMeta[] = [
     readTime: "6 min read",
     image: "/blog/streetwear-2-0-banner.png",
     slug: "streetwear-2-0-heavy-gsm-puff-prints-acid-washes",
-    readers: 0,
+    readers: 243,
     likes: 0,
   },
   {
@@ -37,7 +50,7 @@ export const blogPosts: BlogPostMeta[] = [
     readTime: "7 min read",
     image: "/blog/anti-fast-fashion-banner.png",
     slug: "anti-fast-fashion-slow-brand",
-    readers: 0,
+    readers: 187,
     likes: 0,
   },
   {
@@ -50,7 +63,7 @@ export const blogPosts: BlogPostMeta[] = [
     readTime: "8 min read",
     image: "/blog/india-eu-fta-2026-banner.png",
     slug: "india-eu-fta-2026-trade-deal",
-    readers: 0,
+    readers: 312,
     likes: 0,
   },
   {
