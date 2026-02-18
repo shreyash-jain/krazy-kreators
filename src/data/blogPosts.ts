@@ -37,7 +37,7 @@ export const blogPosts: BlogPostMeta[] = [
     readTime: "6 min read",
     image: "/blog/streetwear-2-0-banner.png",
     slug: "streetwear-2-0-heavy-gsm-puff-prints-acid-washes",
-    readers: 0,
+    readers: 243,
     likes: 0,
   },
   {
@@ -50,7 +50,7 @@ export const blogPosts: BlogPostMeta[] = [
     readTime: "7 min read",
     image: "/blog/anti-fast-fashion-banner.png",
     slug: "anti-fast-fashion-slow-brand",
-    readers: 0,
+    readers: 187,
     likes: 0,
   },
   {
@@ -63,7 +63,7 @@ export const blogPosts: BlogPostMeta[] = [
     readTime: "8 min read",
     image: "/blog/india-eu-fta-2026-banner.png",
     slug: "india-eu-fta-2026-trade-deal",
-    readers: 0,
+    readers: 312,
     likes: 0,
   },
   {
