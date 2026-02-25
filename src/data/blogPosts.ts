@@ -15,6 +15,19 @@ export type BlogPostMeta = {
 
 export const blogPosts: BlogPostMeta[] = [
   {
+    id: 15,
+    title: "The 'Drop Culture' Model: Strategies for Sold-Out Collections",
+    excerpt: "Learn why modern brands use the 'Drop' model over traditional collections, and how low MOQ manufacturing flexibility helps execute drops without inventory risk.",
+    category: "business",
+    author: "Krazy Kreators Team",
+    date: "February 25, 2026",
+    readTime: "8 min read",
+    image: "/blog/drop-culture-model-banner.png",
+    slug: "the-drop-culture-model",
+    readers: 0,
+    likes: 0,
+  },
+  {
     id: 14,
     title: "Why Fashion Brands Are Moving Manufacturing to India (Beyond Just Cost)",
     excerpt: "Beyond just cost savings: discover the geopolitical, craftsmanship, and sustainability advantages driving the global fashion industry's shift to India.",
@@ -24,7 +37,7 @@ export const blogPosts: BlogPostMeta[] = [
     readTime: "9 min read",
     image: "/blog/india-manufacturing-banner.jpg",
     slug: "why-fashion-brands-moving-manufacturing-to-india",
-    readers: 0,
+    readers: 14,
     likes: 0,
   },
   {
@@ -37,7 +50,7 @@ export const blogPosts: BlogPostMeta[] = [
     readTime: "6 min read",
     image: "/blog/streetwear-2-0-banner.png",
     slug: "streetwear-2-0-heavy-gsm-puff-prints-acid-washes",
-    readers: 243,
+    readers: 261,
     likes: 0,
   },
   {
@@ -50,7 +63,7 @@ export const blogPosts: BlogPostMeta[] = [
     readTime: "7 min read",
     image: "/blog/anti-fast-fashion-banner.png",
     slug: "anti-fast-fashion-slow-brand",
-    readers: 187,
+    readers: 202,
     likes: 0,
   },
   {
@@ -63,7 +76,7 @@ export const blogPosts: BlogPostMeta[] = [
     readTime: "8 min read",
     image: "/blog/india-eu-fta-2026-banner.png",
     slug: "india-eu-fta-2026-trade-deal",
-    readers: 312,
+    readers: 326,
     likes: 0,
   },
   {
@@ -76,7 +89,7 @@ export const blogPosts: BlogPostMeta[] = [
     readTime: "6 min read",
     image: "/blog/fabric-trends-2026-banner.png",
     slug: "2026-fabric-trends-hemp-bamboo",
-    readers: 45,
+    readers: 63,
     likes: 12,
   },
   {
@@ -89,7 +102,7 @@ export const blogPosts: BlogPostMeta[] = [
     readTime: "8 min read",
     image: "/blog/how-to-start-clothing-brand-2026-banner.jpg",
     slug: "how-to-start-clothing-brand-2026",
-    readers: 156,
+    readers: 172,
     likes: 24,
   },
   {
@@ -102,7 +115,7 @@ export const blogPosts: BlogPostMeta[] = [
     readTime: "10 min read",
     image: "/blog/costly-mistakes-startup-make-thumbnail.jpg",
     slug: "costly-mistakes-startup-make",
-    readers: 1890,
+    readers: 1904,
     likes: 145,
   },
   {
@@ -115,7 +128,7 @@ export const blogPosts: BlogPostMeta[] = [
     readTime: "8 min read",
     image: "/blog/blog_1.png",
     slug: "mood-boards-to-manufacturable-garments",
-    readers: 1247,
+    readers: 1261,
     likes: 93,
   },
   {
@@ -128,7 +141,7 @@ export const blogPosts: BlogPostMeta[] = [
     readTime: "6 min read",
     image: "/blog/blog_2_image.png",
     slug: "print-pattern-prototyping-matters",
-    readers: 892,
+    readers: 905,
     likes: 84,
   },
   {
@@ -141,7 +154,7 @@ export const blogPosts: BlogPostMeta[] = [
     readTime: "7 min read",
     image: "/blog/blog_3.png",
     slug: "bridging-gap-designers-factories",
-    readers: 1456,
+    readers: 1471,
     likes: 123,
   },
   {
@@ -154,7 +167,7 @@ export const blogPosts: BlogPostMeta[] = [
     readTime: "9 min read",
     image: "/blog/blog_4_banner.png",
     slug: "why-best-fashion-brands-work-with-dedicated-supply-chain-partners",
-    readers: 1123,
+    readers: 1142,
     likes: 64,
   },
   {
@@ -167,7 +180,7 @@ export const blogPosts: BlogPostMeta[] = [
     readTime: "11 min read",
     image: "/blog/blog_5_3.png",
     slug: "exporting-apparel-from-india-checklist-first-time-buyers",
-    readers: 987,
+    readers: 1007,
     likes: 87,
   },
   {
@@ -180,7 +193,7 @@ export const blogPosts: BlogPostMeta[] = [
     readTime: "8 min read",
     image: "/blog/blog_6_5.png",
     slug: "moq-worries-krazy-kreators-supports-small-brands-flexible-quantities",
-    readers: 1345,
+    readers: 1358,
     likes: 98,
   },
   {
@@ -193,7 +206,7 @@ export const blogPosts: BlogPostMeta[] = [
     readTime: "10 min read",
     image: "/blog/blog_7_3.png",
     slug: "how-creative-collaboration-fuels-great-fashion-collections",
-    readers: 1567,
+    readers: 1583,
     likes: 112,
   },
 ];
