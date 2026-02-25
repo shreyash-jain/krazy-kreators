@@ -267,13 +267,13 @@ export default function DropCultureClient({ initialLikeCount, initialComments }:
                                     Pioneered by streetwear legends and now adopted by luxury houses and agile indies alike, the &quot;Drop&quot; is a focused product release, tightly marketed and available in incredibly limited quantities. Rather than producing 40 different SKUs at once and waiting 6 months to see what sells, drops usually focus on 1-4 key pieces—like a killer graphic tee, a custom heavyweight hoodie, or a statement jacket.
                                 </p>
                                 
-                                <div className="mb-10 rounded-2xl overflow-hidden shadow-lg relative">
+                                <div className="mb-10 rounded-2xl overflow-hidden shadow-lg relative max-w-3xl mx-auto">
                                     <Image
-                                        src="/blog/how-to-start-clothing-brand-2026-community.jpg"
-                                        alt="Building hype and engaged community for drops"
+                                        src="/portfolio/mens-streetwear/casual-shirt/11.webp"
+                                        alt="Modern streetwear drop concept with limited inventory"
                                         width={1400}
                                         height={600}
-                                        className="w-full h-auto object-cover"
+                                        className="w-full h-auto object-cover max-h-[400px]"
                                     />
                                 </div>
                                 
@@ -312,8 +312,8 @@ export default function DropCultureClient({ initialLikeCount, initialComments }:
 
                                 <div className="mb-12 rounded-2xl overflow-hidden shadow-lg relative max-w-3xl mx-auto">
                                     <Image
-                                        src="/blog/streetwear-2-0-banner.png"
-                                        alt="Modern streetwear drop concept with limited inventory"
+                                        src="/services/enterprise/enterprise-the-challenges-big-enterprise-face.jpg"
+                                        alt="Challenges of high inventory in the fashion industry"
                                         width={1400}
                                         height={600}
                                         className="w-full h-auto object-cover max-h-[400px]"
@@ -352,13 +352,13 @@ export default function DropCultureClient({ initialLikeCount, initialComments }:
                                     This is exactly where <strong>Low MOQ (Minimum Order Quantity) manufacturing</strong> becomes your superpower. You need a fast, elite manufacturing partner who treats a 100-piece order with the exact same precision as a 10,000-piece order.
                                 </p>
 
-                                <div className="mb-10 rounded-2xl overflow-hidden shadow-lg relative">
+                                <div className="mb-10 rounded-2xl overflow-hidden shadow-lg relative max-w-3xl mx-auto">
                                     <Image
-                                        src="/blog/how-to-start-clothing-brand-2026-manufacturing.jpg"
-                                        alt="Low MOQ manufacturing process for fashion drops"
+                                        src="/services/enterprise/raw-material-hero.webp"
+                                        alt="Krazy Kreators Low MOQ manufacturing process"
                                         width={1400}
                                         height={600}
-                                        className="w-full h-auto object-cover max-h-[500px]"
+                                        className="w-full h-auto object-cover max-h-[400px]"
                                     />
                                 </div>
 
