@@ -181,7 +181,7 @@ export default function BlogsClient({ initialLikeCounts, posts }: BlogsClientPro
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           {currentPosts.map((post) => {
-            const likeCount = likeCounts[post.slug] ?? post.likes;
+            const likeCount = (likeCounts[post.slug] ?? 0) + post.likes;
             const isLiked = likedPosts.has(post.slug);
             return (
               <Link key={post.id} href={`/blogs/${post.slug}`} className="group">
