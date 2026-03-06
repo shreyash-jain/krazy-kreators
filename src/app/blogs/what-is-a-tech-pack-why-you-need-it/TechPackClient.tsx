@@ -238,13 +238,13 @@ export default function TechPackClient({ initialLikeCount, initialComments }: Te
                             {/* Introduction */}
                             <div className="mb-16">
                                 <p className="text-2xl font-medium text-[#2D2A2E] leading-relaxed mb-8">
-                                    You have a brilliant idea for a collection. You've created a stunning mood board, picked out inspiration photos, and even sketched your designs on an iPad. You send this to a factory, expecting a perfect sample. Weeks later, the sample arrives—and it looks nothing like what you imagined.
+                                    You have a brilliant idea for a collection. You&apos;ve created a stunning mood board, picked out inspiration photos, and even sketched your designs on an iPad. You send this to a factory, expecting a perfect sample. Weeks later, the sample arrives—and it looks nothing like what you imagined.
                                 </p>
                                 <p className="leading-relaxed mb-6">
                                     The fit is entirely off, the fabric feels wrong, and the print placement is two inches too high. What went wrong? The answer is almost always the same: **You skipped the clothing Tech Pack.**
                                 </p>
                                 <p className="leading-relaxed mb-6">
-                                    For designers new to production, jumping straight from a concept to a factory is the fastest way to burn through your budget. In this guide, we'll break down exactly what a Tech Pack is, why it's the foundation of fashion technical design, and why at Krazy Kreators, we actually provide them for free.
+                                    For designers new to production, jumping straight from a concept to a factory is the fastest way to burn through your budget. In this guide, we&apos;ll break down exactly what a Tech Pack is, why it&apos;s the foundation of fashion technical design, and why at Krazy Kreators, we actually provide them for free.
                                 </p>
                             </div>
 
@@ -255,7 +255,7 @@ export default function TechPackClient({ initialLikeCount, initialComments }: Te
                                     1. What Exactly Produces a Tech Pack? (The Blueprint)
                                 </h2>
                                 <p className="leading-relaxed mb-8">
-                                    A **Tech Pack** (Technical Package), also known as a garment specification sheet, is effectively the architectural blueprint for your factory. Think of it like trying to build a house: you wouldn't just hand a builder a picture of a house from Pinterest and say "build this." You hand them architectural blueprints with exact dimensions, materials, and structural plans.
+                                    A **Tech Pack** (Technical Package), also known as a garment specification sheet, is effectively the architectural blueprint for your factory. Think of it like trying to build a house: you wouldn&apos;t just hand a builder a picture of a house from Pinterest and say &quot;build this.&quot; You hand them architectural blueprints with exact dimensions, materials, and structural plans.
                                 </p>
                                 <p className="leading-relaxed mb-8">
                                     A comprehensive Tech Pack turns a subjective design into objective, measurable instructions. It typically includes:
@@ -267,7 +267,7 @@ export default function TechPackClient({ initialLikeCount, initialComments }: Te
                                             <PenTool className="w-5 h-5 text-[#CBB49A]" /> Technical Flat Sketches
                                         </h3>
                                         <p className="text-sm leading-relaxed mb-0">
-                                            These are black-and-white, 2D vector drawings (usually created in Adobe Illustrator) of the front, back, and side views of the garment. Unlike fashion illustrations which focus on "vibe" and draping, flat sketches show every seam, stitch line, dart, and hardware placement with absolute precision.
+                                            These are black-and-white, 2D vector drawings (usually created in Adobe Illustrator) of the front, back, and side views of the garment. Unlike fashion illustrations which focus on &quot;vibe&quot; and draping, flat sketches show every seam, stitch line, dart, and hardware placement with absolute precision.
                                         </p>
                                     </div>
                                     <div className="bg-[#F8F7F4] p-8 rounded-2xl border border-gray-100">
@@ -283,7 +283,7 @@ export default function TechPackClient({ initialLikeCount, initialComments }: Te
                                             <Ruler className="w-5 h-5 text-[#CBB49A]" /> Grading Rules & Measurement Specs
                                         </h3>
                                         <p className="text-sm leading-relaxed mb-0">
-                                            This is the mathematical core of the garment specification sheet. It includes the exact measurements for your base sample size (i.e. Medium), and the "grading rules" which dictate exactly how much larger or smaller every point of measure should be for sizes S, L, XL, etc.
+                                            This is the mathematical core of the garment specification sheet. It includes the exact measurements for your base sample size (i.e. Medium), and the &quot;grading rules&quot; which dictate exactly how much larger or smaller every point of measure should be for sizes S, L, XL, etc.
                                         </p>
                                     </div>
                                     <div className="bg-[#F8F7F4] p-8 rounded-2xl border border-gray-100">
@@ -312,10 +312,10 @@ export default function TechPackClient({ initialLikeCount, initialComments }: Te
                             <div className="mb-20">
                                 <h2 className="text-3xl font-bold text-[#2D2A2E] mb-8 flex items-center gap-3">
                                     <AlertTriangle className="w-8 h-8 text-[#CBB49A]" />
-                                    2. Why You Can't Manufacture Without One
+                                    2. Why You Can&apos;t Manufacture Without One
                                 </h2>
                                 <p className="leading-relaxed mb-8">
-                                    "Can't I just send a sample I like and tell them to copy it, but change the collar?" It's a question we hear daily from eager designers. While some factories might say "yes" to get your deposit, the consequences are disastrous.
+                                    &quot;Can&apos;t I just send a sample I like and tell them to copy it, but change the collar?&quot; It&apos;s a question we hear daily from eager designers. While some factories might say &quot;yes&quot; to get your deposit, the consequences are disastrous.
                                 </p>
 
                                 <div className="space-y-6">
@@ -338,7 +338,7 @@ export default function TechPackClient({ initialLikeCount, initialComments }: Te
                                         <div>
                                             <h4 className="font-bold text-[#2D2A2E] text-xl mb-2 mt-0">Sample Iteration Hell (And Budget Drain)</h4>
                                             <p className="text-sm text-gray-600 mb-0">
-                                                A sample might cost $100 to $300. If your first sample is wildly off because you lacked documentation, you have to pay for a second sample. Without a Tech Pack to point to and say, "You didn't follow line item 4," you assume all the financial liability for fixing those errors. It turns into a back-and-forth guessing game that delays your launch by months.
+                                                A sample might cost $100 to $300. If your first sample is wildly off because you lacked documentation, you have to pay for a second sample. Without a Tech Pack to point to and say, &quot;You didn&apos;t follow line item 4,&quot; you assume all the financial liability for fixing those errors. It turns into a back-and-forth guessing game that delays your launch by months.
                                             </p>
                                         </div>
                                     </div>
@@ -350,7 +350,7 @@ export default function TechPackClient({ initialLikeCount, initialComments }: Te
                                         <div>
                                             <h4 className="font-bold text-[#2D2A2E] text-xl mb-2 mt-0">Loss of Quality Control Accountability</h4>
                                             <p className="text-sm text-gray-600 mb-0">
-                                                When production is finished and 500 units arrive at your door, how do you verify they are correct? The Tech Pack acts as a definitive contract between you and the manufacturer. If the finished garment doesn't match the specific tolerances in the garment specification sheet, the factory is accountable for re-making it. Without it, you have no legal or operational leg to stand on.
+                                                When production is finished and 500 units arrive at your door, how do you verify they are correct? The Tech Pack acts as a definitive contract between you and the manufacturer. If the finished garment doesn&apos;t match the specific tolerances in the garment specification sheet, the factory is accountable for re-making it. Without it, you have no legal or operational leg to stand on.
                                             </p>
                                         </div>
                                     </div>
@@ -375,7 +375,7 @@ export default function TechPackClient({ initialLikeCount, initialComments }: Te
                                     3. The Krazy Kreators Standard: Free Tech Packs
                                 </h2>
                                 <p className="leading-relaxed mb-6">
-                                    Here is an industry secret: most technical designers will charge you anywhere from $150 to $500 <em>per style</em> to develop a proper professional tech pack. If you are launching a collection with 5 styles, that's a massive upfront investment before you've even touched a single piece of fabric.
+                                    Here is an industry secret: most technical designers will charge you anywhere from $150 to $500 <em>per style</em> to develop a proper professional tech pack. If you are launching a collection with 5 styles, that&apos;s a massive upfront investment before you&apos;ve even touched a single piece of fabric.
                                 </p>
 
                                 <div className="bg-gradient-to-br from-[#2D2A2E] to-gray-800 p-10 rounded-2xl text-white shadow-xl relative overflow-hidden">
@@ -423,7 +423,7 @@ export default function TechPackClient({ initialLikeCount, initialComments }: Te
                                     <span className="text-[#CBB49A] font-bold tracking-widest text-sm uppercase mb-4 block">Take the Next Step</span>
                                     <h3 className="text-3xl font-bold text-[#2D2A2E] mb-6">Have an idea but missing the blueprint?</h3>
                                     <p className="text-gray-600 leading-relaxed mb-8 text-lg">
-                                        Don't let technical complexities stall your launch. Book a call with Krazy Kreators today, and let us handle your Free Technical Design & Tech Pack generation during your manufacturing order.
+                                        Don&apos;t let technical complexities stall your launch. Book a call with Krazy Kreators today, and let us handle your Free Technical Design &amp; Tech Pack generation during your manufacturing order.
                                     </p>
                                     <Button
                                         onClick={() => setContactOpen(true)}
