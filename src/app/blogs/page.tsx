@@ -37,7 +37,7 @@ export default async function BlogsPage() {
           .select('id, title, excerpt, category, author, image, published_at, slug')
           .filter('published_at', 'not.is', null)
           .order('published_at', { ascending: false });
-        
+
         if (retry.error) {
           console.error('Error fetching blogs from Supabase:', {
             message: retry.error.message,
@@ -111,9 +111,32 @@ export default async function BlogsPage() {
     }));
   }
 
-  // Merge DB blogs with static blogs. 
-  // You might want to sort them by date if needed, but for now just concatenating.
-  const allPosts = [...dbBlogs, ...blogPosts];
+  // Merge DB blogs with static blogs: deduplicate by slug (DB takes priority) and sort by date
+  const slugSet = new Set<string>();
+  const merged: BlogPostMeta[] = [];
+
+  // DB blogs first (they take priority for duplicates)
+  for (const post of dbBlogs) {
+    if (!slugSet.has(post.slug)) {
+      slugSet.add(post.slug);
+      merged.push(post);
+    }
+  }
+  // Then static blogs (skip if slug already seen from DB)
+  for (const post of blogPosts) {
+    if (!slugSet.has(post.slug)) {
+      slugSet.add(post.slug);
+      merged.push(post);
+    }
+  }
+
+  // Sort all posts by date descending (newest first)
+  const allPosts = merged.sort((a, b) => {
+    const dateA = new Date(a.date).getTime();
+    const dateB = new Date(b.date).getTime();
+    return dateB - dateA;
+  });
+
   console.log(`Total posts to display: ${allPosts.length} (${dbBlogs.length} from DB, ${blogPosts.length} static)`);
 
   const entries = await Promise.all(
