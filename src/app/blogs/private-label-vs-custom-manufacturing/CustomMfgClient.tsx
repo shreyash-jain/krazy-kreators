@@ -2,7 +2,7 @@
 
 import { useState, useEffect, useRef } from "react";
 import { Button } from "@/components/ui/button";
-import { Share2, Heart, MessageCircle, FileText, Component, Ribbon, CheckCircle2, ChevronRight, Layers, ShieldCheck, Scale3D } from "lucide-react";
+import { Share2, Heart, MessageCircle, Ribbon, CheckCircle2, ChevronRight, Layers, ShieldCheck, Scale3D } from "lucide-react";
 import ContactDialog from "@/components/ContactDialog";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
@@ -182,7 +182,7 @@ export default function CustomMfgClient({ initialLikeCount, initialComments }: C
                             Private Label vs.<br />Custom Manufacturing
                         </h1>
                         <p className="text-lg sm:text-xl text-white/90 max-w-3xl mx-auto font-medium leading-relaxed drop-shadow-lg">
-                            Are you just printing on blanks, or are you building lasting brand equity? Let's break down which approach actually fits your vision.
+                            Are you just printing on blanks, or are you building lasting brand equity? Let&apos;s break down which approach actually fits your vision.
                         </p>
                     </div>
                 </div>
@@ -238,13 +238,13 @@ export default function CustomMfgClient({ initialLikeCount, initialComments }: C
                             {/* Introduction */}
                             <div className="mb-16">
                                 <p className="text-2xl font-medium text-[#2D2A2E] leading-relaxed mb-8">
-                                    Launching a new fashion collection? You're likely facing the first pivotal crossroad of your brand's future: do you buy high-quality generic blanks and slap your logo on them (Private Label/White Label), or do you design everything from scratch, building a unique garment from the yarn up (Custom Manufacturing)?
+                                    Launching a new fashion collection? You&apos;re likely facing the first pivotal crossroad of your brand&apos;s future: do you buy high-quality generic blanks and slap your logo on them (Private Label/White Label), or do you design everything from scratch, building a unique garment from the yarn up (Custom Manufacturing)?
                                 </p>
                                 <p className="leading-relaxed mb-6">
-                                    There's no single "correct" answer, but making the wrong choice for your specific business model has killed countless promising fashion startups. Are you aiming to be a fast-moving merch brand, or a premium streetwear label with silhouettes that customers actively seek out? 
+                                    There&apos;s no single &quot;correct&quot; answer, but making the wrong choice for your specific business model has killed countless promising fashion startups. Are you aiming to be a fast-moving merch brand, or a premium streetwear label with silhouettes that customers actively seek out? 
                                 </p>
                                 <p className="leading-relaxed mb-6">
-                                    In this breakdown, we'll dissect exactly what each method entails, their pros and cons, and why deeper-pocketed clients almost always pivot to custom-cut-and-sew to secure long-term brand equity.
+                                    In this breakdown, we&apos;ll dissect exactly what each method entails, their pros and cons, and why deeper-pocketed clients almost always pivot to custom-cut-and-sew to secure long-term brand equity.
                                 </p>
                             </div>
 
@@ -255,7 +255,7 @@ export default function CustomMfgClient({ initialLikeCount, initialComments }: C
                                     1. The Private Label / White Label Approach
                                 </h2>
                                 <p className="leading-relaxed mb-8">
-                                    Private Labeling (often called White Labeling in other industries) is the practice of purchasing pre-manufactured, blank garments produced by a factory, and then having them "re-labeled" with your brand's neck tag. You then apply your custom prints, embroidery, or wash treatments to these blanks.
+                                    Private Labeling (often called White Labeling in other industries) is the practice of purchasing pre-manufactured, blank garments produced by a factory, and then having them &quot;re-labeled&quot; with your brand&apos;s neck tag. You then apply your custom prints, embroidery, or wash treatments to these blanks.
                                 </p>
 
                                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-12">
@@ -274,8 +274,8 @@ export default function CustomMfgClient({ initialLikeCount, initialComments }: C
                                             The Cons
                                         </h3>
                                         <ul className="text-sm leading-relaxed space-y-3">
-                                            <li><strong>Zero Unique Identity:</strong> Your $80 t-shirt is fundamentally the exact same construction and fabric as a local gym's $20 merch t-shirt. The only difference is the graphic.</li>
-                                            <li><strong>High Margin Ceiling:</strong> Blank providers take their own profit margins. When you attempt to scale, the "per-unit" cost of a high-end blank remains stubbornly high, crushing your wholesale viability.</li>
+                                            <li><strong>Zero Unique Identity:</strong> Your $80 t-shirt is fundamentally the exact same construction and fabric as a local gym&apos;s $20 merch t-shirt. The only difference is the graphic.</li>
+                                            <li><strong>High Margin Ceiling:</strong> Blank providers take their own profit margins. When you attempt to scale, the &quot;per-unit&quot; cost of a high-end blank remains stubbornly high, crushing your wholesale viability.</li>
                                             <li><strong>Vulnerable Supply Chain:</strong> If the blank manufacturer discontinues your favorite silhouette or colorway, your flagship product is instantly dead.</li>
                                         </ul>
                                     </div>
@@ -313,9 +313,9 @@ export default function CustomMfgClient({ initialLikeCount, initialComments }: C
                                             The Pros
                                         </h3>
                                         <ul className="text-sm leading-relaxed space-y-3">
-                                            <li><strong>Proprietary Silhouette:</strong> When someone asks, "Wow, where did you get that hoodie? The fit is amazing!" they can <em>only</em> buy it from you. Your fit becomes your moat.</li>
-                                            <li><strong>Significantly Better Margins at Scale:</strong> Since you aren't paying a middleman for their blank profit margins, your unit cost drops dramatically as you produce higher volumes.</li>
-                                            <li><strong>Limitless Execution:</strong> Custom hardware, unique wash treatments (like acid or enzyme washes), complex paneling, and engineered print placements are only possible through cut & sew.</li>
+                                            <li><strong>Proprietary Silhouette:</strong> When someone asks, &quot;Wow, where did you get that hoodie? The fit is amazing!&quot; they can <em>only</em> buy it from you. Your fit becomes your moat.</li>
+                                            <li><strong>Significantly Better Margins at Scale:</strong> Since you aren&apos;t paying a middleman for their blank profit margins, your unit cost drops dramatically as you produce higher volumes.</li>
+                                            <li><strong>Limitless Execution:</strong> Custom hardware, unique wash treatments (like acid or enzyme washes), complex paneling, and engineered print placements are only possible through cut &amp; sew.</li>
                                         </ul>
                                     </div>
                                     <div className="bg-[#F8F7F4] p-8 rounded-2xl border border-gray-100">
@@ -356,10 +356,10 @@ export default function CustomMfgClient({ initialLikeCount, initialComments }: C
                                     If you want to charge $100+ for a hoodie, your customer must <em>feel</em> the value. In 2026, consumers are hyper-educated. A teenager can spot a standard print-on-demand blank from a mile away. 
                                 </p>
                                 <p className="leading-relaxed mb-6">
-                                    When you rely on private label blanks, your entire brand's value is placed strictly on your logo or graphic. If a competitor produces a cooler graphic on the exact same blank, they steal your customer.
+                                    When you rely on private label blanks, your entire brand&apos;s value is placed strictly on your logo or graphic. If a competitor produces a cooler graphic on the exact same blank, they steal your customer.
                                 </p>
                                 <p className="leading-relaxed mb-6">
-                                    But when you invest in <strong>Custom Manufacturing</strong>, you create physical value. The hefty weight of the cotton, the precise crop of the jacket, the unique dye pattern—these elements create brand loyalty that graphics alone cannot replicate. Cult brands like Represent, Cole Buxton, and Corteiz aren't printing on generic blanks; they've defined the market by pioneering completely custom, proprietary silhouettes.
+                                    But when you invest in <strong>Custom Manufacturing</strong>, you create physical value. The hefty weight of the cotton, the precise crop of the jacket, the unique dye pattern—these elements create brand loyalty that graphics alone cannot replicate. Cult brands like Represent, Cole Buxton, and Corteiz aren&apos;t printing on generic blanks; they&apos;ve defined the market by pioneering completely custom, proprietary silhouettes.
                                 </p>
 
                                 <div className="bg-gradient-to-br from-[#2D2A2E] to-gray-800 p-10 rounded-2xl text-white shadow-xl relative overflow-hidden mt-10">
@@ -367,7 +367,7 @@ export default function CustomMfgClient({ initialLikeCount, initialComments }: C
                                     <div className="relative z-10">
                                         <h3 className="text-2xl font-bold text-white mb-6 mt-0">The Krazy Kreators Advantage</h3>
                                         <p className="text-gray-300 leading-relaxed text-lg mb-8">
-                                            We built our entire supply chain to help ambitious brands bridge the gap between "private label" and "high-end fashion house." 
+                                            We built our entire supply chain to help ambitious brands bridge the gap between &quot;private label&quot; and &quot;high-end fashion house.&quot; 
                                         </p>
                                         <ul className="space-y-4 mb-0 pl-0">
                                             <li className="flex items-start gap-4">
@@ -403,7 +403,7 @@ export default function CustomMfgClient({ initialLikeCount, initialComments }: C
                                     <span className="text-[#CBB49A] font-bold tracking-widest text-sm uppercase mb-4 block">Elevate Your Brand</span>
                                     <h3 className="text-3xl font-bold text-[#2D2A2E] mb-6">Ready to graduate to Cut & Sew?</h3>
                                     <p className="text-gray-600 leading-relaxed mb-8 text-lg">
-                                        Stop relying on standard blanks. Build a brand that is physically distinct. Book a clarity call with us and let's discuss engineering your next custom collection.
+                                        Stop relying on standard blanks. Build a brand that is physically distinct. Book a clarity call with us and let&apos;s discuss engineering your next custom collection.
                                     </p>
                                     <Button
                                         onClick={() => setContactOpen(true)}
