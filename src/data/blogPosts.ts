@@ -15,6 +15,19 @@ export type BlogPostMeta = {
 
 export const blogPosts: BlogPostMeta[] = [
   {
+    id: 18,
+    title: "Sustainable Manufacturing: How to Build an Eco-Friendly Fashion Brand",
+    excerpt: "Learn how to build a modern conscious brand by using sustainable fabrics, ensuring ethical labor, and minimizing waste for high-value clients.",
+    category: "sustainability",
+    author: "Krazy Kreators Team",
+    date: "March 21, 2026",
+    readTime: "7 min read",
+    image: "/blog/eco-friendly-fashion.png",
+    slug: "sustainable-manufacturing-eco-friendly-brand",
+    readers: 0,
+    likes: 0,
+  },
+  {
     id: 17,
     title: "Private Label vs. Custom Manufacturing: Which Approach Fits Your Brand?",
     excerpt: "Deciding between buying generic blanks vs. creating unique designs? Learn why custom manufacturing is the ultimate path for long-term brand equity.",
@@ -24,8 +37,8 @@ export const blogPosts: BlogPostMeta[] = [
     readTime: "8 min read",
     image: "/blog/private-label-vs-custom-manufacturing-banner.png",
     slug: "private-label-vs-custom-manufacturing",
-    readers: 0,
-    likes: 0,
+    readers: 267,
+    likes: 12,
   },
   {
     id: 16,
