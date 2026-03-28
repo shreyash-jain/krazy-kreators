@@ -63,8 +63,8 @@ export const blogPosts: BlogPostMeta[] = [
     readTime: "8 min read",
     image: "/blog/private-label-vs-custom-manufacturing-banner.png",
     slug: "private-label-vs-custom-manufacturing",
-    readers: 0,
-    likes: 0,
+    readers: 267,
+    likes: 12,
   },
   {
     id: 16,
