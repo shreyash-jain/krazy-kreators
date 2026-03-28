@@ -79,6 +79,8 @@ export default function ExploreDesigns() {
                     alt={category.name}
                     fill
                     className="object-cover group-hover:scale-105 transition-transform duration-300"
+                    loading="lazy"
+                    sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 25vw"
                   />
                 </div>
                 <h3 className="text-center text-xs sm:text-sm md:text-base font-medium text-[#2D2A2E] uppercase tracking-wide">

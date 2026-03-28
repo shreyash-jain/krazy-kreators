@@ -3,6 +3,7 @@
 
 import { useState, useRef, useEffect, useCallback } from "react";
 import { Button } from "@/components/ui/button";
+import { getCloudinaryImageUrl } from "@/lib/cloudinaryUrl";
 import { ArrowRight, MessageSquare } from "lucide-react";
 import ContactDialog from "@/components/ContactDialog";
 import Footer from "@/components/Footer";
@@ -444,7 +445,7 @@ export default function LasClient() {
 				{/* The Creative Direction */}
 				<section className="relative py-20 sm:py-24 lg:py-32 overflow-hidden">
 					{/* Background image */}
-					<div className="absolute inset-0 bg-cover bg-center bg-no-repeat" style={{ backgroundImage: 'url("/brands/las-creative.jpg")' }}></div>
+					<div className="absolute inset-0 bg-cover bg-center bg-no-repeat" style={{ backgroundImage: `url("${getCloudinaryImageUrl('/brands/las-creative.jpg')}")` }}></div>
 					{/* Overlay for better text readability */}
 					<div className="absolute inset-0 bg-black/50"></div>
 

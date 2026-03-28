@@ -57,7 +57,7 @@ export default function WhatWeDo() {
           {/* Design Services Card (top-left) */}
           <Link href="/design-services" className="group bg-white rounded-xl sm:rounded-2xl shadow-sm border flex flex-col overflow-hidden hover:shadow-lg hover:scale-[1.02] transition-all duration-300 cursor-pointer" style={{fontFamily: 'Inter, Graphik, sans-serif'}}>
             <div className="w-full h-40 sm:h-48 md:h-56 relative">
-              <Image src="/brands/design.jpg" alt="Design Services" fill className="object-cover object-center" />
+              <Image src="/brands/design.jpg" alt="Design Services" fill className="object-cover object-center" loading="lazy" sizes="(max-width: 768px) 100vw, 50vw" />
             </div>
             <div className="flex flex-col justify-between p-4 sm:p-6 md:p-8 flex-1">
               <h3 className="text-lg sm:text-xl md:text-2xl font-bold mb-2 text-[#2D2A2E] group-hover:text-[#CBB49A] transition-colors duration-200">Design Services</h3>
@@ -68,7 +68,7 @@ export default function WhatWeDo() {
           {/* Manufacturing Card (bottom-left, above supportive text) */}
           <Link href="/manufacturing-services" className="group bg-white rounded-xl sm:rounded-2xl shadow-sm border flex flex-col overflow-hidden hover:shadow-lg hover:scale-[1.02] transition-all duration-300 cursor-pointer md:order-3" style={{fontFamily: 'Inter, Graphik, sans-serif'}}>
             <div className="w-full h-40 sm:h-48 md:h-56 relative">
-              <Image src="/brands/manufacturing.jpg" alt="Manufacturing" fill className="object-cover object-center" />
+              <Image src="/brands/manufacturing.jpg" alt="Manufacturing" fill className="object-cover object-center" loading="lazy" sizes="(max-width: 768px) 100vw, 50vw" />
             </div>
             <div className="flex flex-col justify-between p-4 sm:p-6 md:p-8 flex-1">
               <h3 className="text-lg sm:text-xl md:text-2xl font-bold mb-2 text-[#2D2A2E] group-hover:text-[#CBB49A] transition-colors duration-200">Manufacturing</h3>
@@ -79,7 +79,7 @@ export default function WhatWeDo() {
           {/* End-to-End Service Card (right, spanning both rows) */}
           <Link href="/end-to-end-services" className="group bg-white rounded-xl sm:rounded-2xl shadow-lg border-2 border-[#F6F1EB] flex flex-col overflow-hidden md:row-span-2 hover:shadow-xl hover:scale-[1.02] transition-all duration-300 cursor-pointer md:order-2" style={{fontFamily: 'Inter, Graphik, sans-serif'}}>
             <div className="w-full h-48 sm:h-56 md:h-full relative min-h-[200px]">
-              <Image src="/brands/end-to-end.jpg" alt="End-to-End Service" fill className="object-cover object-center" />
+              <Image src="/brands/end-to-end.jpg" alt="End-to-End Service" fill className="object-cover object-center" loading="lazy" sizes="(max-width: 768px) 100vw, 50vw" />
             </div>
             <div className="flex flex-col justify-between p-4 sm:p-6 md:p-8 flex-1">
               <h3 className="text-xl sm:text-2xl md:text-3xl font-bold mb-2 text-[#2D2A2E] group-hover:text-[#CBB49A] transition-colors duration-200">End-to-End Service</h3>

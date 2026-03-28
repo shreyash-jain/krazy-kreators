@@ -93,7 +93,8 @@ export default function CaseStudies() {
                   alt={`${study.title} background`}
                   fill
                   className="object-cover"
-                  sizes="(max-width: 768px) 100vw, (max-width: 1200px) 100vw, 100vw"
+                  loading="lazy"
+                  sizes="(max-width: 768px) 100vw, 80vw"
                 />
               </div>
 
@@ -111,6 +112,7 @@ export default function CaseStudies() {
                       width={80}
                       height={48}
                       className="object-contain"
+                      loading="lazy"
                     />
                   </div>
                 </div>
