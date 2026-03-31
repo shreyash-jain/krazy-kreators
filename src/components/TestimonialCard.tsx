@@ -6,6 +6,7 @@ import { cn } from "@/lib/utils";
 interface TestimonialCardProps {
   index: number;
   videoSrc: string;
+  posterSrc?: string;
   clientName: string;
   brandName: string;
   location: string;
@@ -22,6 +23,7 @@ interface TestimonialCardProps {
 const TestimonialCard: React.FC<TestimonialCardProps> = ({
   index,
   videoSrc,
+  posterSrc,
   clientName,
   brandName,
   location,
@@ -127,8 +129,8 @@ const TestimonialCard: React.FC<TestimonialCardProps> = ({
           }}
           controls={false}
           playsInline
-          preload="metadata"
-          poster=""
+          preload="none"
+          poster={posterSrc || ""}
           muted
           onLoadedMetadata={() => {
             // Force Safari to load the first frame as thumbnail

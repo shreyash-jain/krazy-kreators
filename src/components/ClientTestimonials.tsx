@@ -5,35 +5,36 @@
 
 import { useState, useCallback, useRef, useEffect } from "react";
 import TestimonialCard from "./TestimonialCard";
+import { getCloudinaryVideoUrl, getCloudinaryVideoPoster } from "@/lib/cloudinaryVideo";
 
 const testimonials = [
   {
-    videoSrc: "/testimonial/testimonial-1.mp4",
+    videoSrc: getCloudinaryVideoUrl("/testimonial/testimonial-1.mp4"),
+    posterSrc: getCloudinaryVideoPoster("/testimonial/testimonial-1.mp4"),
     clientName: "Preeti Gore",
     brandName: "Tilted Lotus",
     location: "Texas, USA",
-    // avatarSrc: "/avatars/preeti-gore.jpg", // Optional: add avatar if available
   },
   {
-    videoSrc: "/testimonial/testimonial-2.mp4",
+    videoSrc: getCloudinaryVideoUrl("/testimonial/testimonial-2.mp4"),
+    posterSrc: getCloudinaryVideoPoster("/testimonial/testimonial-2.mp4"),
     clientName: "Jivan Purewal",
     brandName: "Sankar",
     location: "London, England",
-    // avatarSrc: "/avatars/jivan-purewal.jpg", // Optional: add avatar if available
   },
   {
-    videoSrc: "/testimonial/las-testimonial.mp4",
+    videoSrc: getCloudinaryVideoUrl("/testimonial/las-testimonial.mp4"),
+    posterSrc: getCloudinaryVideoPoster("/testimonial/las-testimonial.mp4"),
     clientName: "Anika McKelvey",
     brandName: "Las Loungewear",
     location: "Miami, USA",
-    // avatarSrc: "/avatars/anika-las.jpg", // Optional: add avatar if available
   },
   {
-    videoSrc: "/testimonial/badria-testimonial.mp4",
+    videoSrc: getCloudinaryVideoUrl("/testimonial/badria-testimonial.mp4"),
+    posterSrc: getCloudinaryVideoPoster("/testimonial/badria-testimonial.mp4"),
     clientName: "Badria Al Shihhi",
     brandName: "Badria Al Shihhi",
     location: "Seeb, Oman",
-    // avatarSrc: "/avatars/badria-al-shihhi.jpg", // Optional: add avatar if available
   },
 ];
 
@@ -119,6 +120,7 @@ const TestimonialsSection = () => {
               key={i}
               index={i}
               videoSrc={t.videoSrc}
+              posterSrc={t.posterSrc}
               clientName={t.clientName}
               brandName={t.brandName}
               location={t.location}
@@ -126,7 +128,6 @@ const TestimonialsSection = () => {
               onVideoPlay={handleVideoPlay}
               setVideoRef={setVideoRef}
               setCardRef={setCardRef}
-              // avatarSrc={t.avatarSrc}
             />
           ))}
         </div>
