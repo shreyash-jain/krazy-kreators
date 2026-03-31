@@ -8,6 +8,7 @@ import { useState, useRef, useEffect, useCallback } from 'react';
 import { ArrowRight, MessageSquare } from 'lucide-react';
 
 import { Button } from '@/components/ui/button';
+import { getCloudinaryImageUrl } from '@/lib/cloudinaryUrl';
 
 import ContactDialog from '@/components/ContactDialog';
 import Footer from '@/components/Footer';
@@ -766,7 +767,7 @@ export default function BadriAlShihhiClient() {
 
         {/* Background image */}
 
-        <div className="absolute inset-0 bg-cover bg-center bg-no-repeat" style={{ backgroundImage: 'url("/brands/badria-creative.jpg")' }}></div>
+        <div className="absolute inset-0 bg-cover bg-center bg-no-repeat" style={{ backgroundImage: `url("${getCloudinaryImageUrl('/brands/badria-creative.jpg')}")` }}></div>
 
         {/* Overlay for better text readability */}
 

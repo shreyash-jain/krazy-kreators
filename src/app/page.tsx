@@ -43,7 +43,8 @@ export default function Home() {
             alt="Sustainability banner background"
             fill
             className="object-cover"
-            priority
+            loading="lazy"
+            sizes="100vw"
           />
           <div className="absolute inset-0 bg-black/40"></div>
         </div>
@@ -76,7 +77,8 @@ export default function Home() {
             alt="Raw materials banner background"
             fill
             className="object-cover"
-            priority
+            loading="lazy"
+            sizes="100vw"
           />
           <div className="absolute inset-0 bg-black/40"></div>
         </div>
