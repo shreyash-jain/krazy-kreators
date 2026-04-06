@@ -15,6 +15,19 @@ export type BlogPostMeta = {
 
 export const blogPosts: BlogPostMeta[] = [
   {
+    id: 21,
+    title: "Decoding Dyeing Techniques: Pigment Dye vs. Reactive Dye",
+    excerpt: "Understand the difference between the washed-out vintage look of pigment dyeing and the vibrant, color-fast results of reactive dyeing — and choose the right technique for your collection.",
+    category: "manufacturing",
+    author: "Krazy Kreators Team",
+    date: "April 6, 2026",
+    readTime: "8 min read",
+    image: "/blog/v2-pigment-dye-vs-reactive-dye-banner.png",
+    slug: "pigment-dye-vs-reactive-dye",
+    readers: 0,
+    likes: 0,
+  },
+  {
     id: 20,
     title: "Understanding Fabric GSM: A Guide to Choosing the Right Weight for Your Designs",
     excerpt: "What is GSM and why does it matter? Learn the difference between a midweight tee and a heavyweight hoodie, and how to pick the perfect weight for your designs.",
