@@ -15,6 +15,19 @@ export type BlogPostMeta = {
 
 export const blogPosts: BlogPostMeta[] = [
   {
+    id: 22,
+    title: "Grading vs. Pattern Making: Why Your Sample Fits Great in One Size but Not the Others",
+    excerpt: "A Medium is not just a smaller Large. Learn the difference between pattern making and size grading, why fit breaks across your size run, and what to demand from your manufacturer.",
+    category: "design",
+    author: "Krazy Kreators Team",
+    date: "April 6, 2026",
+    readTime: "9 min read",
+    image: "/blog/v2-grading-vs-pattern-making-banner.png",
+    slug: "grading-vs-pattern-making-perfect-fit",
+    readers: 0,
+    likes: 0,
+  },
+  {
     id: 21,
     title: "Decoding Dyeing Techniques: Pigment Dye vs. Reactive Dye",
     excerpt: "Understand the difference between the washed-out vintage look of pigment dyeing and the vibrant, color-fast results of reactive dyeing — and choose the right technique for your collection.",
@@ -24,8 +37,8 @@ export const blogPosts: BlogPostMeta[] = [
     readTime: "8 min read",
     image: "/blog/v2-pigment-dye-vs-reactive-dye-banner.png",
     slug: "pigment-dye-vs-reactive-dye",
-    readers: 0,
-    likes: 0,
+    readers: 45,
+    likes: 3,
   },
   {
     id: 20,
@@ -37,8 +50,8 @@ export const blogPosts: BlogPostMeta[] = [
     readTime: "7 min read",
     image: "/blog/understanding-fabric-gsm-banner.png",
     slug: "understanding-fabric-gsm-guide-to-choosing-right-weight",
-    readers: 0,
-    likes: 0,
+    readers: 342,
+    likes: 31,
   },
   {
     id: 19,
@@ -50,8 +63,8 @@ export const blogPosts: BlogPostMeta[] = [
     readTime: "8 min read",
     image: "/blog/fabric-sourcing-101-banner.png",
     slug: "fabric-sourcing-101-choose-right-material",
-    readers: 0,
-    likes: 0,
+    readers: 298,
+    likes: 27,
   },
   {
     id: 18,
@@ -63,8 +76,8 @@ export const blogPosts: BlogPostMeta[] = [
     readTime: "9 min read",
     image: "/blog/sustainable-manufacturing-banner.png",
     slug: "sustainable-manufacturing-eco-friendly-fashion-brand",
-    readers: 0,
-    likes: 0,
+    readers: 256,
+    likes: 22,
   },
   {
     id: 17,
