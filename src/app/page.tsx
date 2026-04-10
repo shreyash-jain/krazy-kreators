@@ -13,7 +13,7 @@ import WhatMakesUsUnique from "@/components/WhatMakesUsUnique";
 import DedicatedTeam from "@/components/DedicatedTeam";
 import CaseStudies from "@/components/CaseStudies";
 import TestimonialsSection from "@/components/ClientTestimonials";
-// import BlogAndTechPacks from "@/components/BlogAndTechPacks";
+import BlogAndTechPacks from "@/components/BlogAndTechPacks";
 import FAQ from "@/components/FAQ";
 import StartProject from "@/components/StartProject";
 import Footer from "@/components/Footer";
@@ -100,8 +100,7 @@ export default function Home() {
       
       <CaseStudies />
       <TestimonialsSection />
-      {/* Blogs and Tech Packs are not in the home page as i want to reuse it on our next build */}
-      {/* <BlogAndTechPacks /> */}
+      <BlogAndTechPacks />
       <FAQ />
       <StartProject />
       <Footer />

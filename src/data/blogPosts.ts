@@ -15,6 +15,19 @@ export type BlogPostMeta = {
 
 export const blogPosts: BlogPostMeta[] = [
   {
+    id: 23,
+    title: "Sustainability Simplified: Organic Cotton, GOTS, and Recycled Polyester",
+    excerpt: "Break down what various eco-certifications actually mean and explore the pros and cons of using sustainable fibers like organic cotton and recycled polyester.",
+    category: "sustainability",
+    author: "Krazy Kreators Team",
+    date: "April 10, 2026",
+    readTime: "8 min read",
+    image: "/blog/sustainability_blog_banner_v2.png",
+    slug: "sustainability-simplified-organic-cotton-gots-recycled-polyester",
+    readers: 0,
+    likes: 0,
+  },
+  {
     id: 22,
     title: "Grading vs. Pattern Making: Why Your Sample Fits Great in One Size but Not the Others",
     excerpt: "A Medium is not just a smaller Large. Learn the difference between pattern making and size grading, why fit breaks across your size run, and what to demand from your manufacturer.",
