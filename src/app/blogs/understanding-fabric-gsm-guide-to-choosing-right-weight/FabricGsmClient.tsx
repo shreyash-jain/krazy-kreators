@@ -1,8 +1,8 @@
 "use client";
 
-import { useState, useEffect, useRef } from "react";
+import { useState, useEffect } from "react";
 import { Button } from "@/components/ui/button";
-import { Share2, Heart, MessageCircle, Lightbulb, Shirt, ArrowRight } from "lucide-react";
+import { Share2, Heart, MessageCircle, Shirt } from "lucide-react";
 import ContactDialog from "@/components/ContactDialog";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
@@ -44,7 +44,7 @@ export default function FabricGsmClient({ initialLikeCount, initialComments }: F
     const [isSubmitting, setIsSubmitting] = useState(false);
     const [showSuccessMessage, setShowSuccessMessage] = useState(false);
     const [likedComments, setLikedComments] = useState<Set<string>>(new Set());
-    const endOfArticleRef = useRef<HTMLDivElement | null>(null);
+
     const { showToast } = useToast();
 
     useEffect(() => {
