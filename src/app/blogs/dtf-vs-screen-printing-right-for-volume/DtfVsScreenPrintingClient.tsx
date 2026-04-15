@@ -1,4 +1,5 @@
 "use client";
+/* eslint-disable react/no-unescaped-entities, @typescript-eslint/no-unused-vars */
 
 import { useState, useEffect, useRef } from "react";
 import { Button } from "@/components/ui/button";
