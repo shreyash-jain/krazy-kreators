@@ -4,8 +4,11 @@
 import { useState, useEffect, useRef } from "react";
 import { Button } from "@/components/ui/button";
 import { ArrowRight, MessageSquare, User, Share2, Heart, MessageCircle } from "lucide-react";
+import ContactDialog from "@/components/ContactDialog";
+import Footer from "@/components/Footer";
 import Navbar from "@/components/Navbar";
 import Image from "next/image";
+import { ToastContainer } from "@/components/Toast";
 
 import { useToast } from "@/components/Toast";
 import { likeBlog, addComment, likeComment, type PublicComment } from "@/lib/blogApi";
@@ -19,6 +22,7 @@ type BlogClientProps = {
 };
 
 export default function DtfVsScreenPrintingClient({ initialLikeCount, initialComments }: BlogClientProps) {
+    const [contactOpen, setContactOpen] = useState(false);
     const [scrolled, setScrolled] = useState(false);
     const [isLiked, setIsLiked] = useState(false);
     const [likeCount, setLikeCount] = useState(initialLikeCount);
@@ -348,9 +352,176 @@ export default function DtfVsScreenPrintingClient({ initialLikeCount, initialCom
                                 <p className="text-lg text-[#666666] leading-relaxed">At Krazy Kreators, we act as your strategic manufacturing partner. If your volume dictates DTF, we route you to cutting-edge digital presses. When you scale up to 500+ units, we seamlessly transition you to large-scale screen printing. You focus on the art and the brand; we'll handle making sure the math works.</p>
                             </div>
                         </div>
+
+                        {/* Conclusion */}
+                        <div className="bg-[#2D2A2E] text-white p-10 lg:p-12 rounded-2xl mb-12 mt-12 relative overflow-hidden text-center" ref={endOfArticleRef}>
+                            <div className="relative z-10 max-w-3xl mx-auto">
+                                <h3 className="text-3xl font-bold mb-6">Ready to Build a World-Class Brand?</h3>
+                                <p className="text-gray-300 leading-relaxed mb-8 text-lg">
+                                    Whether you need low-volume highly complex DTF testing, or large-scale precision Screen Printing, Krazy Kreators provides the infrastructure you need to succeed. We handle the complexity of manufacturing, so you can focus on your vision.
+                                </p>
+                                <Button
+                                    onClick={() => setContactOpen(true)}
+                                    className="bg-[#CBB49A] text-white hover:bg-[#b7a078] border-none px-8 py-6 text-lg rounded-full transition-all shadow-lg hover:shadow-[#CBB49A]/30"
+                                >
+                                    Start Your Project with Us
+                                </Button>
+                            </div>
+                        </div>
+
+                        {/* Post-Content Social Interaction */}
+                        <div className="border-t border-gray-200 pt-8 mb-12">
+                            <div className="p-6 bg-[#F8F7F4] rounded-xl">
+                                <div className="flex items-center justify-between">
+                                    <div className="flex items-center gap-6">
+                                        <button
+                                            onClick={handleLike}
+                                            className={`flex items-center gap-2 px-6 py-3 rounded-full text-sm font-medium transition-all duration-300 ${isLiked
+                                                ? "bg-white text-gray-600 hover:bg-[#CBB49A] hover:text-white border border-gray-200"
+                                                : "bg-white text-gray-600 hover:bg-[#CBB49A] hover:text-white border border-gray-200"
+                                                }`}
+                                        >
+                                            <Heart className={`w-5 h-5 ${isLiked ? 'fill-[#CBB49A]' : ''}`} />
+                                            {likeCount} {likeCount === 1 ? 'Like' : 'Likes'}
+                                        </button>
+
+                                        <button
+                                            onClick={handleComment}
+                                            className="flex items-center gap-2 px-6 py-3 rounded-full bg-white text-gray-600 hover:bg-gray-50 border border-gray-200 text-sm font-medium transition-all duration-300"
+                                        >
+                                            <MessageCircle className="w-5 h-5" />
+                                            {commentCount} {commentCount === 1 ? 'Comment' : 'Comments'}
+                                        </button>
+                                    </div>
+
+                                    <button
+                                        onClick={handleShare}
+                                        className="flex items-center gap-2 px-6 py-3 rounded-full bg-[#CBB49A] text-white hover:bg-[#b7a078] text-sm font-medium transition-all duration-300"
+                                    >
+                                        <Share2 className="w-5 h-5" />
+                                        Share Article
+                                    </button>
+                                </div>
+                                {/* Comments Display */}
+                                <div className="space-y-6 mt-8" data-comments-section>
+                                    {/* Input */}
+                                    <form onSubmit={handleSubmitComment} className="bg-white rounded-2xl p-6 shadow-sm border border-gray-100">
+                                        <h4 className="text-lg font-semibold text-[#2D2A2E] mb-4">Leave a Comment</h4>
+                                        <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
+                                            <input
+                                                type="text"
+                                                name="name"
+                                                value={newComment.name}
+                                                onChange={handleInputChange}
+                                                placeholder="Your Name"
+                                                className="w-full px-4 py-3 rounded-lg bg-[#F8F7F4] border-none focus:ring-1 focus:ring-[#CBB49A] outline-none transition-all"
+                                            />
+                                            <input
+                                                type="email"
+                                                name="email"
+                                                value={newComment.email}
+                                                onChange={handleInputChange}
+                                                placeholder="Your Email"
+                                                className="w-full px-4 py-3 rounded-lg bg-[#F8F7F4] border-none focus:ring-1 focus:ring-[#CBB49A] outline-none transition-all"
+                                            />
+                                        </div>
+                                        <textarea
+                                            name="comment"
+                                            value={newComment.comment}
+                                            onChange={handleInputChange}
+                                            placeholder="Share your thoughts..."
+                                            rows={4}
+                                            className="w-full px-4 py-3 rounded-lg bg-[#F8F7F4] border-none focus:ring-1 focus:ring-[#CBB49A] outline-none transition-all mb-4 resize-none"
+                                        />
+                                        <div className="flex items-center justify-between">
+                                            {showSuccessMessage && (
+                                                <span className="text-green-600 text-sm font-medium animate-fade-in">
+                                                    Comment posted successfully!
+                                                </span>
+                                            )}
+                                            <button
+                                                type="submit"
+                                                disabled={isSubmitting}
+                                                className="ml-auto px-6 py-2.5 bg-[#CBB49A] text-white font-medium rounded-full hover:bg-[#b7a078] transition-all duration-300 disabled:opacity-70 disabled:cursor-not-allowed flex items-center gap-2"
+                                            >
+                                                {isSubmitting ? (
+                                                    <span className="w-4 h-4 border-2 border-white/30 border-t-white rounded-full animate-spin" />
+                                                ) : (
+                                                    <>
+                                                        Post Comment
+                                                        <ArrowRight className="w-4 h-4" />
+                                                    </>
+                                                )}
+                                            </button>
+                                        </div>
+                                    </form>
+
+                                    {/* Existing Comments */}
+                                    {comments.length > 0 ? (
+                                        <>
+                                            {(showAllComments ? comments : comments.slice(0, 3)).map((comment) => (
+                                                <div key={comment.id} id={`comment-${comment.id}`} className="bg-white rounded-2xl p-4 sm:p-6 shadow-lg border border-gray-100 hover:shadow-xl transition-all duration-300">
+                                                    <div className="flex items-start gap-3 sm:gap-4">
+                                                        <div className="w-10 h-10 sm:w-12 sm:h-12 bg-[#CBB49A] rounded-full flex items-center justify-center text-white font-semibold text-base sm:text-lg flex-shrink-0">
+                                                            {comment.avatar}
+                                                        </div>
+                                                        <div className="flex-1 min-w-0">
+                                                            <div className="hidden sm:flex items-center gap-3 mb-3">
+                                                                <h5 className="font-semibold text-[#2D2A2E] text-lg">{comment.name}</h5>
+                                                                <span className="text-sm text-[#666666]">•</span>
+                                                                <span className="text-sm text-[#666666]">{comment.date}</span>
+                                                            </div>
+                                                            <div className="bg-[#F8F7F4] rounded-lg p-3 sm:p-4">
+                                                                <p className="text-[#2D2A2E] leading-relaxed text-sm sm:text-base break-words mb-3">
+                                                                    {comment.comment}
+                                                                </p>
+                                                                <div className="flex items-center justify-between">
+                                                                    <button
+                                                                        onClick={() => handleCommentLike(comment.id)}
+                                                                        className={`flex items-center gap-1 px-3 py-1.5 rounded-full text-xs font-medium transition-all duration-300 ${likedComments.has(comment.id)
+                                                                            ? "bg-[#CBB49A]/10 text-[#CBB49A]"
+                                                                            : "bg-gray-100 text-gray-600 hover:bg-[#CBB49A]/10 hover:text-[#CBB49A]"
+                                                                            }`}
+                                                                    >
+                                                                        <Heart className={`w-3 h-3 ${likedComments.has(comment.id) ? 'fill-[#CBB49A]' : ''}`} />
+                                                                        {comment.likes} {comment.likes === 1 ? 'Like' : 'Likes'}
+                                                                    </button>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            ))}
+
+                                            {comments.length > 3 && (
+                                                <button
+                                                    onClick={() => setShowAllComments(!showAllComments)}
+                                                    className="w-full py-3 text-center text-[#CBB49A] font-medium hover:bg-[#F8F7F4] rounded-lg transition-colors border border-[#CBB49A]/20"
+                                                >
+                                                    {showAllComments ? 'Show Less Comments' : `Show All ${comments.length} Comments`}
+                                                </button>
+                                            )}
+                                        </>
+                                    ) : (
+                                        <div className="text-center py-12 bg-white rounded-2xl border border-gray-100">
+                                            <div className="w-12 h-12 bg-gray-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                                                <MessageSquare className="w-6 h-6 text-gray-400" />
+                                            </div>
+                                            <h3 className="text-lg font-medium text-[#2D2A2E] mb-2">No comments yet</h3>
+                                            <p className="text-[#666666]">Be the first to share your thoughts!</p>
+                                        </div>
+                                    )}
+                                </div>
+                            </div>
+                        </div>
+
                     </div>
                 </div>
             </section>
+
+            <Footer />
+            <ContactDialog open={contactOpen} onClose={() => setContactOpen(false)} />
+            <ToastContainer />
         </div>
     );
 }
