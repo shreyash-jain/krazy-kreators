@@ -8,7 +8,6 @@ import ContactDialog from "@/components/ContactDialog";
 import Footer from "@/components/Footer";
 import Navbar from "@/components/Navbar";
 import Image from "next/image";
-import { ToastContainer } from "@/components/Toast";
 
 import { useToast } from "@/components/Toast";
 import { likeBlog, addComment, likeComment, type PublicComment } from "@/lib/blogApi";
@@ -44,7 +43,7 @@ export default function DtfVsScreenPrintingClient({ initialLikeCount, initialCom
     const [showAllComments, setShowAllComments] = useState(false);
     const [likedComments, setLikedComments] = useState<Set<string>>(new Set());
     const endOfArticleRef = useRef<HTMLDivElement | null>(null);
-    const { showToast } = useToast();
+    const { showToast, ToastContainer } = useToast();
 
     useEffect(() => {
         if (typeof window === 'undefined') return;
