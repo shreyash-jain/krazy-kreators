@@ -15,6 +15,19 @@ export type BlogPostMeta = {
 
 export const blogPosts: BlogPostMeta[] = [
   {
+    id: 24,
+    title: "Direct-to-Film (DTF) vs. Screen Printing: Which is Right for Your Volume?",
+    excerpt: "Compares the set-up costs, color complexity, and durability of DTF versus traditional Screen Printing based on order size. Perfect for small brands navigating high screen fees.",
+    category: "manufacturing",
+    author: "Krazy Kreators Team",
+    date: "April 15, 2026",
+    readTime: "7 min read",
+    image: "/blog/dtf-vs-screen-printing-banner.jpg",
+    slug: "dtf-vs-screen-printing-right-for-volume",
+    readers: 0,
+    likes: 0,
+  },
+  {
     id: 23,
     title: "Sustainability Simplified: Organic Cotton, GOTS, and Recycled Polyester",
     excerpt: "Break down what various eco-certifications actually mean and explore the pros and cons of using sustainable fibers like organic cotton and recycled polyester.",
