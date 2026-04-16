@@ -15,6 +15,19 @@ export type BlogPostMeta = {
 
 export const blogPosts: BlogPostMeta[] = [
   {
+    id: 25,
+    title: "Essential Trimmings: How Zippers, Buttons, and Drawstrings Define Quality",
+    excerpt: "Moves focus from the fabric to the hardware. Explains why YKK zippers or custom-dipped aglets can justify a higher retail price.",
+    category: "manufacturing",
+    author: "Krazy Kreators Team",
+    date: "April 16, 2026",
+    readTime: "6 min read",
+    image: "/blog/essential_trimmings_banner.png",
+    slug: "essential-trimmings-quality",
+    readers: 0,
+    likes: 0,
+  },
+  {
     id: 24,
     title: "Direct-to-Film (DTF) vs. Screen Printing: Which is Right for Your Volume?",
     excerpt: "Compares the set-up costs, color complexity, and durability of DTF versus traditional Screen Printing based on order size. Perfect for small brands navigating high screen fees.",

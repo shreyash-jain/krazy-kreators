@@ -8,9 +8,9 @@ cloudinary.config({
 
 const uploadImages = async () => {
     const images = [
-        { path: "G:\\gitt repoo\\krazy-kreators\\public\\blog\\dtf-vs-screen-printing-banner.jpg", public_id: "blog/dtf-vs-screen-printing-banner.jpg" },
-        { path: "G:\\gitt repoo\\krazy-kreators\\public\\blog\\dtf_screen_printing_demo.jpg", public_id: "blog/dtf_screen_printing_demo.jpg" },
-        { path: "G:\\gitt repoo\\krazy-kreators\\public\\blog\\dtf_film_peel.jpg", public_id: "blog/dtf_film_peel.jpg" }
+        { path: "G:\\gitt repoo\\krazy-kreators\\public\\blog\\essential_trimmings_banner.png", public_id: "blog/essential_trimmings_banner" },
+        { path: "G:\\gitt repoo\\krazy-kreators\\public\\blog\\premium_zipper_hardware.png", public_id: "blog/premium_zipper_hardware" },
+        { path: "G:\\gitt repoo\\krazy-kreators\\public\\blog\\custom_drawstring_aglet.png", public_id: "blog/custom_drawstring_aglet" }
     ];
 
     for (const img of images) {
