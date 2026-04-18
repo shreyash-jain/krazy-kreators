@@ -15,6 +15,19 @@ export type BlogPostMeta = {
 
 export const blogPosts: BlogPostMeta[] = [
   {
+    id: 26,
+    title: "The Lead-Time Timeline: From Design Concept to Doorstep",
+    excerpt: "A realistic breakdown of the manufacturing calendar—sampling, sourcing, production, and shipping—and why 'rush' orders can be risky for your launch.",
+    category: "business",
+    author: "Krazy Kreators Team",
+    date: "April 18, 2026",
+    readTime: "7 min read",
+    image: "/blog/lead_time_banner.png",
+    slug: "lead-time-timeline-design-to-doorstep",
+    readers: 0,
+    likes: 0,
+  },
+  {
     id: 25,
     title: "Essential Trimmings: How Zippers, Buttons, and Drawstrings Define Quality",
     excerpt: "Moves focus from the fabric to the hardware. Explains why YKK zippers or custom-dipped aglets can justify a higher retail price.",
