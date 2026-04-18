@@ -1,4 +1,5 @@
 "use client";
+/* eslint-disable react/no-unescaped-entities, @typescript-eslint/no-unused-vars */
 
 import { useState, useEffect, useRef } from "react";
 import { Button } from "@/components/ui/button";
@@ -12,21 +13,21 @@ import { useToast } from "@/components/Toast";
 import { likeBlog, addComment, likeComment, type PublicComment } from "@/lib/blogApi";
 import { recordBlogLikeUpdate } from "@/lib/blogLikeSync";
 
-const BLOG_ID = 'dtf-vs-screen-printing-right-for-volume';
+const BLOG_ID = 'lead-time-timeline-design-to-doorstep';
 
 type BlogClientProps = {
     initialLikeCount: number;
     initialComments: PublicComment[];
 };
 
-export default function DtfVsScreenPrintingClient({ initialLikeCount, initialComments }: BlogClientProps) {
+export default function LeadTimeTimelineClient({ initialLikeCount, initialComments }: BlogClientProps) {
     const [contactOpen, setContactOpen] = useState(false);
     const [scrolled, setScrolled] = useState(false);
     const [isLiked, setIsLiked] = useState(false);
     const [likeCount, setLikeCount] = useState(initialLikeCount);
-    const [commentCount, setCommentCount] = useState(initialComments.length);
+    const [commentCount, setCommentCount] = useState(initialComments?.length || 0);
     const [comments, setComments] = useState<Array<{ id: string; name: string; email: string; comment: string; date: string; avatar: string; likes: number }>>(() =>
-        initialComments.map((c) => ({
+        (initialComments || []).map((c) => ({
             id: c.id,
             name: c.name,
             email: c.email,
@@ -69,7 +70,7 @@ export default function DtfVsScreenPrintingClient({ initialLikeCount, initialCom
         try {
             await navigator.clipboard.writeText(shareUrl);
             showToast('Link copied to clipboard!', 'success');
-        } catch {
+        } catch (error) {
             showToast('Failed to copy link', 'error');
         }
     };
@@ -137,8 +138,8 @@ export default function DtfVsScreenPrintingClient({ initialLikeCount, initialCom
             {/* Hero Section */}
             <section className="relative h-[60vh] min-h-[600px] flex items-center justify-center overflow-hidden">
                 <Image
-                    src="/blog/dtf-vs-screen-printing-banner.jpg"
-                    alt="Direct-to-Film (DTF) vs. Screen Printing"
+                    src="/blog/lead_time_banner.png"
+                    alt="The Lead-Time Timeline Banner"
                     fill
                     className="object-cover"
                     style={{
@@ -154,17 +155,17 @@ export default function DtfVsScreenPrintingClient({ initialLikeCount, initialCom
                 <div className="relative z-10 w-full min-w-[80%] lg:max-w-[80%] mx-auto px-4 md:px-6 lg:px-0 text-center flex flex-col items-center mt-16">
                     <div className="flex flex-wrap justify-center items-center gap-4 mb-8">
                         <span className="px-4 py-1.5 bg-[#CBB49A] text-white text-xs sm:text-sm font-semibold rounded-full uppercase tracking-wider">
-                            Manufacturing
+                            Business
                         </span>
                         <span className="text-sm text-gray-200 font-medium tracking-wide">7 min read</span>
                         <span className="text-sm text-gray-400">•</span>
-                        <span className="text-sm text-gray-200 font-medium tracking-wide">April 15, 2026</span>
+                        <span className="text-sm text-gray-200 font-medium tracking-wide">April 18, 2026</span>
                     </div>
                     <h1 className="text-4xl sm:text-5xl lg:text-6xl xl:text-7xl font-extrabold text-white leading-tight max-w-5xl drop-shadow-lg mb-6 tracking-tight">
-                        The Great Print Debate:<br className="hidden sm:block" /> DTF vs. Screen Printing
+                        The Lead-Time Timeline
                     </h1>
                     <p className="text-xl sm:text-2xl lg:text-3xl text-gray-200 font-medium max-w-3xl drop-shadow-md leading-relaxed">
-                        Why Your Order Size Decides the Winner
+                        From Design Concept to Doorstep
                     </p>
                 </div>
             </section>
@@ -175,8 +176,6 @@ export default function DtfVsScreenPrintingClient({ initialLikeCount, initialCom
                     <div className="w-full">
                         {/* Social Interaction Container */}
                         <div className="mb-0">
-
-                            {/* Social Interaction Section */}
                             <div className="mb-12 p-4 bg-[#F8F7F4] rounded-xl flex items-center justify-between">
                                 <div className="flex flex-wrap items-center gap-4">
                                     <button onClick={handleLike} className="flex items-center gap-2 px-4 py-2 rounded-full bg-white text-gray-600 hover:bg-[#CBB49A] hover:text-white border border-gray-200 text-sm font-medium transition-all duration-300">
@@ -201,7 +200,7 @@ export default function DtfVsScreenPrintingClient({ initialLikeCount, initialCom
                                 <User className="w-4 h-4 text-white" />
                             </div>
                             <div>
-                                <p className="text-sm text-[#666666]">Hosted on April 15, 2026</p>
+                                <p className="text-sm text-[#666666]">Hosted on April 18, 2026</p>
                                 <p className="text-sm font-medium text-[#2D2A2E]">Krazy Kreators Team</p>
                             </div>
                         </div>
@@ -209,135 +208,100 @@ export default function DtfVsScreenPrintingClient({ initialLikeCount, initialCom
                         {/* Blog Content */}
                         <div className="prose prose-lg max-w-none text-[#4A484A]">
                             <p className="text-xl text-[#2D2A2E] leading-relaxed mb-10 font-medium">
-                                <strong>The Scenario:</strong> You have spent months perfecting a 6-color, incredibly detailed streetwear graphic. You request a quote for your first drop of 40 hoodies. The manufacturer sends back the invoice, and you are hit with a massive, unexpected line item: <strong>$250 in Screen Setup Fees</strong>.
+                                <strong>The Scenario:</strong> You're gearing up for your brand's highly anticipated fall launch. The mood boards are phenomenal, your designs are dialed in, and you've even picked out a venue for a launch party in late August. It's early July, you finally hand everything over to a manufacturer, and... they break the news that your clothes won't reach you until mid-October.
                             </p>
                             
                             <p className="mb-6">
-                                Before a single drop of ink has touched your garments, your profit margins are already bleeding. 
+                                Just like that, your marketing plan hits a wall. You're left scrambling, and your crucial seasonal runway vanishes.
                             </p>
                             <p className="mb-12">
-                                If you are a rising apparel brand, navigating the world of garment printing can feel like a trap. The biggest decision you face early on is choosing between the traditional heavyweight, <strong>Screen Printing</strong>, and the modern disruptor, <strong>Direct-to-Film (DTF)</strong>. The secret the industry does not always tell you? Neither method is inherently better — but picking the wrong one for your order volume can cost you thousands. Here is your cheat sheet to making the right choice.
+                                When starting a clothing label, discovering the right manufacturing partner is often seen as the biggest hurdle. But in reality, the true challenge is mastering the timing. The manufacturing calendar moves at its own pace. If you're unsure about when you actually need to kick off sampling, sourcing, and bulk production, you're going to spend your time constantly playing catch-up. Today, we're breaking down a realistic view of the timeline from your initial sketch all the way to the day inventory arrives at your doorstep—and why rushing this process is a massive gamble.
                             </p>
 
                             {/* Section 1 */}
                             <div className="mt-16 mb-20">
-                                <h2 className="text-4xl lg:text-5xl font-extrabold tracking-tight text-[#2D2A2E] mb-10 pb-4 border-b border-gray-200">The Traditional Route: Screen Printing</h2>
+                                <h2 className="text-4xl lg:text-5xl font-extrabold tracking-tight text-[#2D2A2E] mb-10 pb-4 border-b border-gray-200">The Sourcing and Sampling Phase</h2>
                                 <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center mb-8">
                                     <div className="order-2 lg:order-1">
-                                        <p className="text-xl leading-relaxed text-[#4A484A] mb-8 font-medium">Screen printing is the ancient art of apparel decoration, and it remains the industry standard for mass production.</p>
+                                        <p className="text-xl leading-relaxed text-[#4A484A] mb-8 font-medium">This is where the magic (and the heavy lifting) happens. Translating your vision from a screen to a physical, tangible garment takes time, precision, and a whole lot of communication.</p>
                                         <div className="bg-[#F8F7F4] border-l-4 border-[#CBB49A] p-8 rounded-r-2xl mb-6 shadow-sm">
-                                            <h3 className="text-2xl font-bold text-[#CBB49A] mb-3">The Catch: The Screen Tax</h3>
-                                            <p className="text-[#666666] m-0 text-lg leading-relaxed">In screen printing, every single color in your design requires its own custom mesh screen to be burned. If your logo has five colors, you need five screens. This is a highly manual, labor-intensive process.</p>
+                                            <h3 className="text-2xl font-bold text-[#CBB49A] mb-3">Weeks 1 to 4: Getting it Right</h3>
+                                            <p className="text-[#666666] m-0 text-lg leading-relaxed">During this first month, factories don't just magically start sewing. They have to source the right fabric blends, match Pantone colors for dyeing, and locate the specific zippers, buttons, and drawstrings you requested. Usually, creating that first physical prototype takes around 3 to 4 weeks. This stage ensures the blueprint is perfect before we scale.</p>
                                         </div>
                                     </div>
                                     <div className="rounded-2xl overflow-hidden shadow-2xl border border-gray-100 relative h-80 lg:h-full min-h-[400px] order-1 lg:order-2">
                                         <Image
-                                            src="/blog/dtf_screen_printing_demo.jpg"
-                                            alt="Traditional Screen Printing Process"
+                                            src="/blog/fashion_sampling.png"
+                                            alt="Designer's Desk and Fashion Sampling"
                                             fill
                                             className="object-cover transform hover:scale-105 transition-transform duration-700"
                                         />
-                                    </div>
-                                </div>
-
-                                <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mt-12">
-                                    <div className="p-8 border-2 border-green-500/20 bg-green-50/50 rounded-2xl hover:shadow-lg transition-all duration-300 transform hover:-translate-y-1">
-                                        <h4 className="text-xl font-bold text-green-800 mb-4 flex items-center gap-3 uppercase tracking-wider">
-                                            <span className="w-3 h-3 rounded-full bg-green-500 animate-pulse"></span> When It Makes Sense
-                                        </h4>
-                                        <p className="text-lg text-green-900/80 leading-relaxed">Because you pay for the screens upfront, the cost per shirt plummets as your volume goes up. If you are ordering <strong className="text-green-900">100+ to 500+ units</strong> of a 2-color design, screen printing is highly cost-effective. It sinks beautifully into the fabric, breathes well, and lasts practically forever.</p>
-                                    </div>
-                                    <div className="p-8 border-2 border-red-500/20 bg-red-50/50 rounded-2xl hover:shadow-lg transition-all duration-300 transform hover:-translate-y-1">
-                                        <h4 className="text-xl font-bold text-red-800 mb-4 flex items-center gap-3 uppercase tracking-wider">
-                                            <span className="w-3 h-3 rounded-full bg-red-500 animate-pulse"></span> When It Hurts Your Business
-                                        </h4>
-                                        <p className="text-lg text-red-900/80 leading-relaxed">If you only need 30 shirts to test a new market, dividing a $200 screen setup fee across 30 shirts makes your production cost skyrocket. For small runs with high color counts, screen printing is a <strong className="text-red-900">budget killer</strong>.</p>
                                     </div>
                                 </div>
                             </div>
 
                             {/* Section 2 */}
+                            <div className="mt-20 mb-20 bg-[#F8F7F4] p-10 lg:p-14 rounded-3xl">
+                                <h2 className="text-4xl lg:text-5xl font-extrabold tracking-tight text-[#2D2A2E] mb-10 pb-4 border-b border-[#EBEBEB]">Revisions and Final Approvals</h2>
+                                <p className="text-xl leading-relaxed text-[#4A484A] mb-10 font-medium">It's a rare day when the very first sample is 100% perfect. You will almost always find something you want to tweak.</p>
+                                <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+                                    <div className="bg-white p-8 rounded-2xl shadow-sm border border-gray-100">
+                                        <h4 className="text-xl font-bold text-[#2D2A2E] mb-4">Weeks 4 to 6: Dialing in the Details</h4>
+                                        <p className="text-lg text-[#666666] leading-relaxed">Once you receive the sample, you'll try it on, test the drape, and inspect the stitch work. Maybe the sleeves need an extra half-inch, or the neckline feels too tight. You relay this feedback to the manufacturer, which kicks off the revision process. Depending on the changes, shipping a second sample back to you might take another couple of weeks.</p>
+                                    </div>
+                                    <div className="bg-white p-8 rounded-2xl shadow-sm border border-gray-100">
+                                        <h4 className="text-xl font-bold text-[#2D2A2E] mb-4">The Sign-Off</h4>
+                                        <p className="text-lg text-[#666666] leading-relaxed">Bulk production cannot and will not start until you give the green light. Once you sign off on the golden sample, the factory orders the raw materials in bulk. If your fabric is custom dyed or knit, expect those mills to need their own processing time.</p>
+                                    </div>
+                                </div>
+                            </div>
+
+                            {/* Section 3 */}
                             <div className="mt-20 mb-20">
-                                <h2 className="text-4xl lg:text-5xl font-extrabold tracking-tight text-[#2D2A2E] mb-10 pb-4 border-b border-gray-200">The Modern Hack: Direct-to-Film (DTF)</h2>
+                                <h2 className="text-4xl lg:text-5xl font-extrabold tracking-tight text-[#2D2A2E] mb-10 pb-4 border-b border-gray-200">Bulk Production and Quality Control</h2>
                                 <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center mb-12">
                                     <div className="rounded-2xl overflow-hidden shadow-2xl border border-gray-100 relative h-80 lg:h-full min-h-[400px]">
                                         <Image
-                                            src="/blog/dtf_film_peel.jpg"
-                                            alt="DTF Transfer Film Peel"
+                                            src="/blog/production_shipping.png"
+                                            alt="Bulk Production and Packaging"
                                             fill
                                             className="object-cover transform hover:scale-105 transition-transform duration-700"
                                         />
                                     </div>
                                     <div>
-                                        <p className="text-xl leading-relaxed text-[#4A484A] mb-8 font-medium">Enter DTF. Instead of burning screens, your design is digitally printed onto a specialized film, backed with an adhesive powder, and heat-pressed seamlessly onto the fabric.</p>
-                                        <div className="bg-[#2D2A2E] p-8 rounded-2xl shadow-2xl relative overflow-hidden">
-                                            <div className="absolute top-0 right-0 w-32 h-32 bg-[#CBB49A] opacity-10 rounded-bl-full"></div>
-                                            <h3 className="text-2xl font-bold text-[#CBB49A] mb-4 relative z-10">The Magic: Zero Setup Fees</h3>
-                                            <p className="text-gray-300 text-lg leading-relaxed relative z-10">Because DTF is essentially a highly-advanced digital printer, it does not care if your design has 2 colors or 200 colors. It does not care if there are complex gradients or photo-realistic shadows. <strong className="text-white">There are zero screen setup fees.</strong></p>
-                                        </div>
-                                    </div>
-                                </div>
-
-                                <div className="grid grid-cols-1 md:grid-cols-2 gap-12 mt-8 bg-[#F8F7F4] p-10 rounded-3xl">
-                                    <div>
-                                        <h4 className="text-2xl font-bold text-[#2D2A2E] mb-4 border-l-4 border-[#CBB49A] pl-4">When It Makes Sense:</h4>
-                                        <p className="text-lg text-[#666666] leading-relaxed">DTF is the ultimate weapon for the <strong>low-volume, high-complexity</strong> brand. If you are running a limited drop of 40 pieces featuring a highly detailed, 8-color back graphic, DTF allows you to produce premium quality without the setup penalty.</p>
-                                    </div>
-                                    <div>
-                                        <h4 className="text-2xl font-bold text-[#2D2A2E] mb-4 border-l-4 border-[#CBB49A] pl-4">The Feel Factor:</h4>
-                                        <p className="text-lg text-[#666666] leading-relaxed">Historically, digital prints had a reputation for feeling like thick stickers. Modern 2026 DTF technology has completely changed the game. Today&apos;s DTF prints are thin, stretch perfectly with the garment, and easily survive rigorous wash testing.</p>
+                                        <p className="text-xl leading-relaxed text-[#4A484A] mb-8 font-medium">This is where volume comes into play. Creating one amazing sample is entirely different from making five hundred identical ones.</p>
+                                        <ul className="space-y-6">
+                                            <li className="flex items-start gap-4 bg-[#F8F7F4] p-6 rounded-2xl">
+                                                <div className="min-w-[40px] h-[40px] rounded-full bg-[#CBB49A] flex items-center justify-center font-bold text-white shadow-md">1</div>
+                                                <div>
+                                                    <h4 className="text-xl font-bold text-[#2D2A2E] mb-2">Weeks 6 to 10: The Manufacturing Engine</h4>
+                                                    <p className="text-lg text-[#666666] m-0 leading-relaxed">Once the raw goods arrive on the floor, the cutting and sewing happens. This typically takes about a month. It involves assembling garments, applying prints or embroidery, inserting labels, and finally, washing the items.</p>
+                                                </div>
+                                            </li>
+                                            <li className="flex items-start gap-4 bg-[#F8F7F4] p-6 rounded-2xl">
+                                                <div className="min-w-[40px] h-[40px] rounded-full bg-[#CBB49A] flex items-center justify-center font-bold text-white shadow-md">2</div>
+                                                <div>
+                                                    <h4 className="text-xl font-bold text-[#2D2A2E] mb-2">The QA Checkpoint</h4>
+                                                    <p className="text-lg text-[#666666] m-0 leading-relaxed">Before anything goes into a polybag, the entire batch undergoes thorough quality control. We trim loose threads, check seams, and ensure measurements match the tech pack. Quality takes time, and rushing this step is where inferior products happen.</p>
+                                                </div>
+                                            </li>
+                                        </ul>
                                     </div>
                                 </div>
                             </div>
 
-                            {/* Decision Matrix */}
-                            <div className="mt-20 mb-16">
-                                <h2 className="text-4xl lg:text-5xl font-extrabold tracking-tight text-[#2D2A2E] mb-8 pb-4 border-b border-gray-200">The Quick-Decision Matrix</h2>
-                                <p className="text-xl text-[#666666] mb-12 font-medium">Stop guessing. Pinpoint exactly what your brand needs right now:</p>
-                                
+                            {/* Section 4 */}
+                            <div className="mt-20 mb-20 bg-[#2D2A2E] p-10 lg:p-14 rounded-3xl text-white">
+                                <h2 className="text-4xl lg:text-5xl font-extrabold tracking-tight text-white mb-10 pb-4 border-b border-gray-700">Shipping and Customs: The Journey Home</h2>
+                                <p className="text-xl leading-relaxed text-gray-300 mb-10 font-medium">Your clothes are perfectly packed in boxes. Now, they just have to travel across the globe to reach you.</p>
                                 <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-                                    <div className="bg-white p-10 rounded-3xl border border-gray-200 shadow-xl relative overflow-hidden group hover:border-[#CBB49A] transition-colors duration-500">
-                                        <div className="absolute top-0 right-0 w-24 h-24 bg-gradient-to-bl from-[#CBB49A]/20 to-transparent"></div>
-                                        <h3 className="text-3xl font-black text-[#2D2A2E] mb-8 flex items-center gap-3">
-                                            <span className="bg-[#CBB49A] text-white w-10 h-10 rounded-full flex items-center justify-center text-sm shadow-md">✓</span>
-                                            Go with DTF
-                                        </h3>
-                                        <ul className="space-y-6 relative z-10">
-                                            <li className="flex items-start gap-4">
-                                                <div className="min-w-[8px] h-[8px] rounded-full bg-[#CBB49A] mt-2.5"></div>
-                                                <p className="text-lg text-[#666666] m-0 leading-relaxed"><strong className="text-[#2D2A2E]">Your Volume is Low:</strong> You are ordering anything under 50-75 units.</p>
-                                            </li>
-                                            <li className="flex items-start gap-4">
-                                                <div className="min-w-[8px] h-[8px] rounded-full bg-[#CBB49A] mt-2.5"></div>
-                                                <p className="text-lg text-[#666666] m-0 leading-relaxed"><strong className="text-[#2D2A2E]">Your Art is Complex:</strong> Your design features photographs, shading, or 4+ colors.</p>
-                                            </li>
-                                            <li className="flex items-start gap-4">
-                                                <div className="min-w-[8px] h-[8px] rounded-full bg-[#CBB49A] mt-2.5"></div>
-                                                 <p className="text-lg text-[#666666] m-0 leading-relaxed"><strong className="text-[#2D2A2E]">You Are Testing a Trend:</strong> You want to drop a quick capsule collection to test the waters without risking heavy upfront capital.</p>
-                                            </li>
-                                        </ul>
+                                    <div className="p-8 border border-gray-700 bg-gray-800/50 rounded-2xl">
+                                        <h4 className="text-xl font-bold text-[#CBB49A] mb-4">Weeks 10 to 12 (Air Freight)</h4>
+                                        <p className="text-lg text-gray-300 leading-relaxed">If you opt for air shipping, the transit time is relatively quick—usually 7 to 14 days, including the complex process of getting cleared through customs. It is notably faster than sea freight but comes with a steeper price tag per unit.</p>
                                     </div>
-                                    
-                                    <div className="bg-white p-10 rounded-3xl border border-gray-200 shadow-xl relative overflow-hidden group hover:border-[#2D2A2E] transition-colors duration-500">
-                                        <div className="absolute top-0 right-0 w-24 h-24 bg-gradient-to-bl from-[#2D2A2E]/10 to-transparent"></div>
-                                        <h3 className="text-3xl font-black text-[#2D2A2E] mb-8 flex items-center gap-3">
-                                            <span className="bg-[#2D2A2E] text-white w-10 h-10 rounded-full flex items-center justify-center text-sm shadow-md">✓</span>
-                                            Go with Screen Printing
-                                        </h3>
-                                        <ul className="space-y-6 relative z-10">
-                                            <li className="flex items-start gap-4">
-                                                <div className="min-w-[8px] h-[8px] rounded-full bg-[#2D2A2E] mt-2.5"></div>
-                                                <p className="text-lg text-[#666666] m-0 leading-relaxed"><strong className="text-[#2D2A2E]">Your Volume is High:</strong> You are producing 100+ units of the exact same design.</p>
-                                            </li>
-                                            <li className="flex items-start gap-4">
-                                                <div className="min-w-[8px] h-[8px] rounded-full bg-[#2D2A2E] mt-2.5"></div>
-                                                <p className="text-lg text-[#666666] m-0 leading-relaxed"><strong className="text-[#2D2A2E]">Your Art is Clean & Simple:</strong> You have a minimalist, typography-based design with only 1 to 3 solid colors.</p>
-                                            </li>
-                                            <li className="flex items-start gap-4">
-                                                <div className="min-w-[8px] h-[8px] rounded-full bg-[#2D2A2E] mt-2.5"></div>
-                                                <p className="text-lg text-[#666666] m-0 leading-relaxed"><strong className="text-[#2D2A2E]">Specific Colors:</strong> You require a mathematically exact Pantone color match.</p>
-                                            </li>
-                                        </ul>
+                                    <div className="p-8 border border-gray-700 bg-gray-800/50 rounded-2xl">
+                                        <h4 className="text-xl font-bold text-[#CBB49A] mb-4">Weeks 10 to 16+ (Sea Freight)</h4>
+                                        <p className="text-lg text-gray-300 leading-relaxed">Sea freight is widely favored for bulk orders due to its significant cost advantages. However, navigating ocean transit routes and dealing with port congestion can easily add 4 to 6 weeks to your timeline. Patience is non-negotiable here.</p>
                                     </div>
                                 </div>
                             </div>
@@ -345,24 +309,24 @@ export default function DtfVsScreenPrintingClient({ initialLikeCount, initialCom
                             <hr className="my-16 border-[#EBEBEB]" />
                             
                             <div className="bg-gradient-to-br from-[#F8F7F4] to-white p-10 rounded-3xl border border-[#EBEBEB]">
-                                <h3 className="text-3xl font-bold text-[#2D2A2E] mb-6">The Bottom Line</h3>
-                                <p className="text-xl text-[#4A484A] leading-relaxed mb-6 font-medium">Do not let rigid manufacturers force you into high-volume screen printing when you are just trying to test a complex design.</p>
-                                <p className="text-lg text-[#666666] leading-relaxed">At Krazy Kreators, we act as your strategic manufacturing partner. If your volume dictates DTF, we route you to cutting-edge digital presses. When you scale up to 500+ units, we seamlessly transition you to large-scale screen printing. You focus on the art and the brand; we will handle making sure the math works.</p>
+                                <h3 className="text-3xl font-bold text-[#2D2A2E] mb-6">The Danger of the "Rush" Order</h3>
+                                <p className="text-xl text-[#4A484A] leading-relaxed mb-6 font-medium">As a founder, telling your factory to rush a job might sound like an easy fix to a tight schedule, but it always comes at a harsh cost.</p>
+                                <p className="text-lg text-[#666666] leading-relaxed">When you pressure a supplier to cut corners, something breaks. Maybe the dyeing process isn't properly set, leading to bleeding colors. Maybe the stitching is rushed, leaving your garments with crooked seams. Even worse, skipped QA means the customer is the first person to spot the mistake. To maintain the integrity of your brand, respect the timeline. Build buffer into your launch dates so you're not desperately tracking a DHL plane the night before your website goes live. Quality is a slow brew.</p>
                             </div>
                         </div>
 
                         {/* Conclusion */}
                         <div className="bg-[#2D2A2E] text-white p-10 lg:p-12 rounded-2xl mb-12 mt-12 relative overflow-hidden text-center" ref={endOfArticleRef}>
                             <div className="relative z-10 max-w-3xl mx-auto">
-                                <h3 className="text-3xl font-bold mb-6">Ready to Build a World-Class Brand?</h3>
+                                <h3 className="text-3xl font-bold mb-6">Need a Manufacturing Partner You Can Trust?</h3>
                                 <p className="text-gray-300 leading-relaxed mb-8 text-lg">
-                                    Whether you need low-volume highly complex DTF testing, or large-scale precision Screen Printing, Krazy Kreators provides the infrastructure you need to succeed. We handle the complexity of manufacturing, so you can focus on your vision.
+                                    The timeline is long, but you shouldn't have to navigate it blindly. At Krazy Kreators, we map out the exact delivery schedules before you even pay a deposit, ensuring transparent, high-end production every step of the way. Stop stressing over "where is my order" and start planning your launch.
                                 </p>
                                 <Button
                                     onClick={() => setContactOpen(true)}
                                     className="bg-[#CBB49A] text-white hover:bg-[#b7a078] border-none px-8 py-6 text-lg rounded-full transition-all shadow-lg hover:shadow-[#CBB49A]/30"
                                 >
-                                    Start Your Project with Us
+                                    Start Your Production Journey
                                 </Button>
                             </div>
                         </div>
@@ -402,7 +366,6 @@ export default function DtfVsScreenPrintingClient({ initialLikeCount, initialCom
                                 </div>
                                 {/* Comments Display */}
                                 <div className="space-y-6 mt-8" data-comments-section>
-                                    {/* Input */}
                                     <form onSubmit={handleSubmitComment} className="bg-white rounded-2xl p-6 shadow-sm border border-gray-100">
                                         <h4 className="text-lg font-semibold text-[#2D2A2E] mb-4">Leave a Comment</h4>
                                         <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
@@ -454,7 +417,6 @@ export default function DtfVsScreenPrintingClient({ initialLikeCount, initialCom
                                         </div>
                                     </form>
 
-                                    {/* Existing Comments */}
                                     {comments.length > 0 ? (
                                         <>
                                             {(showAllComments ? comments : comments.slice(0, 3)).map((comment) => (
