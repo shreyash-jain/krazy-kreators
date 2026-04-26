@@ -15,6 +15,19 @@ export type BlogPostMeta = {
 
 export const blogPosts: BlogPostMeta[] = [
   {
+    id: 28,
+    title: "Your EU Buyers Are Asking About Your Supply Chain: What Every Fashion Startup Needs to Know About Sustainable Manufacturing in 2026",
+    excerpt: "Explains what sustainability in manufacturing actually means for founders, the 5 exact questions to ask manufacturers, and what the 2027 EU Digital Product Passport means for your brand.",
+    category: "sustainability",
+    author: "Krazy Kreators Team",
+    date: "April 25, 2026",
+    readTime: "8 min read",
+    image: "/blog/eu_sustainability_banner.png",
+    slug: "eu-buyers-sustainable-manufacturing-2026",
+    readers: 0,
+    likes: 0,
+  },
+  {
     id: 27,
     title: "Zero MOQ, No Warehouse, No Factory Contract: The 2026 Playbook for Launching Your First Clothing Brand",
     excerpt: "The traditional barriers of minimum orders, factory contracts, and warehousing costs no longer apply. Here is the three-step model every first-time founder needs to know.",
