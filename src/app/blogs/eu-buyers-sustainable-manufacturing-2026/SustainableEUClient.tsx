@@ -13,14 +13,14 @@ import { useToast } from "@/components/Toast";
 import { likeBlog, addComment, likeComment, type PublicComment } from "@/lib/blogApi";
 import { recordBlogLikeUpdate } from "@/lib/blogLikeSync";
 
-const BLOG_ID = 'zero-moq-no-warehouse-launch-clothing-brand-2026';
+const BLOG_ID = 'eu-buyers-sustainable-manufacturing-2026';
 
 type BlogClientProps = {
     initialLikeCount: number;
     initialComments: PublicComment[];
 };
 
-export default function ZeroMoqClient({ initialLikeCount, initialComments }: BlogClientProps) {
+export default function SustainableEUClient({ initialLikeCount, initialComments }: BlogClientProps) {
     const [contactOpen, setContactOpen] = useState(false);
     const [scrolled, setScrolled] = useState(false);
     const [isLiked, setIsLiked] = useState(false);
@@ -134,8 +134,8 @@ export default function ZeroMoqClient({ initialLikeCount, initialComments }: Blo
             {/* Hero Section */}
             <section className="relative h-[60vh] min-h-[600px] flex items-center justify-center overflow-hidden">
                 <Image
-                    src="/blog/zero_moq_banner.png"
-                    alt="Zero MOQ Clothing Brand Launch 2026"
+                    src="/blog/eu_sustainability_banner.png"
+                    alt="Sustainable Manufacturing EU Regulations 2026"
                     fill
                     className="object-cover"
                     style={{
@@ -151,17 +151,17 @@ export default function ZeroMoqClient({ initialLikeCount, initialComments }: Blo
                 <div className="relative z-10 w-full min-w-[80%] lg:max-w-[80%] mx-auto px-4 md:px-6 lg:px-0 text-center flex flex-col items-center mt-16">
                     <div className="flex flex-wrap justify-center items-center gap-4 mb-8">
                         <span className="px-4 py-1.5 bg-[#CBB49A] text-white text-xs sm:text-sm font-semibold rounded-full uppercase tracking-wider">
-                            Business
+                            Sustainability
                         </span>
                         <span className="text-sm text-gray-200 font-medium tracking-wide">8 min read</span>
                         <span className="text-sm text-gray-400">•</span>
-                        <span className="text-sm text-gray-200 font-medium tracking-wide">April 21, 2026</span>
+                        <span className="text-sm text-gray-200 font-medium tracking-wide">April 25, 2026</span>
                     </div>
                     <h1 className="text-4xl sm:text-5xl lg:text-6xl xl:text-7xl font-extrabold text-white leading-tight max-w-5xl drop-shadow-lg mb-6 tracking-tight">
-                        Zero MOQ. No Warehouse.<br className="hidden sm:block" /> No Factory Contract.
+                        Your EU Buyers Are Asking About Your Supply Chain
                     </h1>
                     <p className="text-xl sm:text-2xl lg:text-3xl text-gray-200 font-medium max-w-3xl drop-shadow-md leading-relaxed">
-                        The 2026 Playbook for Launching Your First Clothing Brand
+                        What Every Fashion Startup Needs to Know About Sustainable Manufacturing in 2026
                     </p>
                 </div>
             </section>
@@ -195,7 +195,7 @@ export default function ZeroMoqClient({ initialLikeCount, initialComments }: Blo
                                 <User className="w-4 h-4 text-white" />
                             </div>
                             <div>
-                                <p className="text-sm text-[#666666]">Published on April 21, 2026</p>
+                                <p className="text-sm text-[#666666]">Published on April 25, 2026</p>
                                 <p className="text-sm font-medium text-[#2D2A2E]">Krazy Kreators Team</p>
                             </div>
                         </div>
@@ -205,202 +205,147 @@ export default function ZeroMoqClient({ initialLikeCount, initialComments }: Blo
 
                             {/* Intro */}
                             <p className="text-xl text-[#2D2A2E] leading-relaxed mb-10 font-medium">
-                                <strong>The Scenario:</strong> You have had the idea for a clothing brand for years. You know your aesthetic. You have a name, a logo, and a clear sense of who you are designing for. What has been holding you back is not a lack of vision. It is the fear of a $15,000 minimum order, a warehouse lease you cannot afford, and a factory contract you do not fully understand.
+                                If you are planning to sell into the European market, things are changing faster than ever. It used to be that retailers only cared about your wholesale price and whether your designs would sell. Now? They are asking for your supply chain documentation before they even agree to stock your brand.
                             </p>
 
                             <p className="mb-6">
-                                That fear used to be completely reasonable. As recently as five years ago, launching a clothing brand meant either having significant startup capital or having a connection inside the industry. Neither of those things was easy to come by.
+                                Sustainability is no longer just a marketing buzzword you can slap on a label. It has become a concrete, measurable, and highly regulated requirement. And if you are a Direct-to-Consumer (D2C) founder currently sourcing your garments, you are about to hit a major compliance deadline. 
                             </p>
 
                             <p className="mb-12">
-                                In 2026, it is a different game. The barriers that once kept independent founders on the sidelines have been systematically dismantled by a new generation of flexible production partners. You no longer need a minimum order to start. You no longer need a warehouse to store inventory. And you absolutely do not need to sign a long-term factory contract before you have sold a single unit. Here is the playbook.
+                                The EU Digital Product Passport regulation, which mandates full textile traceability, rolls out in 2027. That means right now, in 2026, is the exact moment you need to get your manufacturing processes in order. Let us break down what this actually means for your day-to-day operations and how you can stay ahead of the curve.
                             </p>
 
                             {/* Section 1 */}
                             <div className="mt-16 mb-20">
-                                <h2 className="text-4xl lg:text-5xl font-extrabold tracking-tight text-[#2D2A2E] mb-10 pb-4 border-b border-gray-200">Why the Old Rules No Longer Apply</h2>
-                                <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center mb-8">
-                                    <div className="order-2 lg:order-1">
-                                        <p className="text-xl leading-relaxed text-[#4A484A] mb-8 font-medium">Traditional manufacturing was built for scale — and scale alone. The economics of running a factory made sense only when orders came in the thousands. Setup costs for machinery, dye lots, and labor had to be spread across the maximum number of units possible.</p>
-                                        <div className="bg-[#F8F7F4] border-l-4 border-[#CBB49A] p-8 rounded-r-2xl mb-6 shadow-sm">
-                                            <h3 className="text-2xl font-bold text-[#CBB49A] mb-3">The Shift That Changed Everything</h3>
-                                            <p className="text-[#666666] m-0 text-lg leading-relaxed">The rise of flexible micro-manufacturing, combined with advances in digital patterning and on-demand dyeing, means that production partners today can profitably run orders of 30, 20, or even a single sample. The infrastructure finally caught up with the demand.</p>
-                                        </div>
-                                        <p className="text-lg text-[#4A484A] leading-relaxed">The result is that first-time founders in the USA and Europe no longer need to take a financial leap of faith to test whether their brand idea has legs. They can test it with one piece.</p>
+                                <h2 className="text-4xl lg:text-5xl font-extrabold tracking-tight text-[#2D2A2E] mb-10 pb-4 border-b border-gray-200">The Practical Reality of Sustainable Manufacturing</h2>
+                                <p className="text-xl leading-relaxed text-[#4A484A] mb-8 font-medium">When you hear &quot;sustainable manufacturing,&quot; it is easy to picture something vague and unachievable. But at a practical level for startup founders, it boils down to three very tangible pillars.</p>
+                                
+                                <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-12">
+                                    <div className="bg-[#F8F7F4] p-8 rounded-2xl border-t-4 border-[#CBB49A] shadow-sm">
+                                        <h3 className="text-xl font-bold text-[#2D2A2E] mb-3">1. Material Choices</h3>
+                                        <p className="text-[#666666] leading-relaxed text-base">It starts with what goes into your garments. Are your fabrics grown with minimal water impact? Are they recycled? Can they be traced back to the farm?</p>
                                     </div>
-                                    <div className="rounded-2xl overflow-hidden shadow-2xl border border-gray-100 relative h-80 lg:h-full min-h-[400px] order-1 lg:order-2">
-                                        <Image
-                                            src="/blog/zero_moq_studio.png"
-                                            alt="Modern fashion startup studio"
-                                            fill
-                                            className="object-cover transform hover:scale-105 transition-transform duration-700"
-                                        />
+                                    <div className="bg-[#F8F7F4] p-8 rounded-2xl border-t-4 border-[#CBB49A] shadow-sm">
+                                        <h3 className="text-xl font-bold text-[#2D2A2E] mb-3">2. Process Efficiency</h3>
+                                        <p className="text-[#666666] leading-relaxed text-base">How are those materials handled? This involves looking at the dyes being used (are they low-impact?), water management systems in the factory, and energy sources.</p>
+                                    </div>
+                                    <div className="bg-[#F8F7F4] p-8 rounded-2xl border-t-4 border-[#CBB49A] shadow-sm">
+                                        <h3 className="text-xl font-bold text-[#2D2A2E] mb-3">3. Labor Practices</h3>
+                                        <p className="text-[#666666] leading-relaxed text-base">Sustainability includes the people making the clothes. Fair wages, safe working environments, and reasonable hours are foundational, not optional.</p>
                                     </div>
                                 </div>
+                                <p className="text-lg text-[#4A484A] leading-relaxed">You do not have to be perfect from day one, but you do have to be transparent. That transparency is exactly what the new EU regulations are built around.</p>
                             </div>
 
-                            {/* Section 2 — 3 Step Model */}
-                            <div className="mt-20 mb-20 bg-[#F8F7F4] p-10 lg:p-14 rounded-3xl">
-                                <h2 className="text-4xl lg:text-5xl font-extrabold tracking-tight text-[#2D2A2E] mb-4 pb-4 border-b border-[#EBEBEB]">The Three-Step Model</h2>
-                                <p className="text-xl text-[#666666] mb-12 font-medium">Start small. De-risk everything. Scale only when the market confirms it.</p>
-
-                                {/* Step 1 */}
-                                <div className="mb-12">
-                                    <div className="flex items-start gap-6 mb-6">
-                                        <div className="min-w-[56px] h-[56px] rounded-full bg-[#CBB49A] flex items-center justify-center font-extrabold text-white text-2xl shadow-md">1</div>
-                                        <div>
-                                            <h3 className="text-3xl font-bold text-[#2D2A2E] mb-4">Start with a Tech Pack</h3>
-                                            <p className="text-lg text-[#666666] leading-relaxed mb-4">Before a single piece of thread is moved, your idea needs to be documented. A tech pack is the blueprint of your garment — a detailed document that specifies every measurable aspect of your design: silhouette, measurements per size, fabric composition, GSM weight, stitch type, print placement, hardware specs, and label requirements.</p>
-                                            <p className="text-lg text-[#666666] leading-relaxed">Without a tech pack, every conversation with a manufacturer is vague, every quote is unreliable, and every sample you receive is a gamble. The tech pack is the single document that transforms your creative idea into something a factory can actually build. Think of it as the architectural drawing before the construction begins.</p>
-                                        </div>
+                            {/* Section 2 */}
+                            <div className="mt-20 mb-20 bg-[#2D2A2E] p-10 lg:p-14 rounded-3xl text-white">
+                                <h2 className="text-4xl lg:text-5xl font-extrabold tracking-tight text-white mb-6 pb-4 border-b border-gray-700">What the EU Digital Product Passport Means for You</h2>
+                                <p className="text-xl text-gray-300 mb-8 font-medium">Starting in 2027, the EU is implementing the Digital Product Passport (DPP) for textiles. If you want to sell into Europe, this matters.</p>
+                                
+                                <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+                                    <div className="order-2 lg:order-1">
+                                        <p className="text-lg text-gray-300 leading-relaxed mb-6">Think of the DPP as a digital birth certificate for your clothing. It will require brands to attach a scannable tag (like a QR code or RFID) to their garments. When scanned, it must reveal the complete journey of that product.</p>
+                                        <ul className="space-y-4 mb-6">
+                                            <li className="flex items-center gap-3"><div className="w-2 h-2 bg-[#CBB49A] rounded-full"></div><span className="text-gray-300">Where the raw materials were sourced</span></li>
+                                            <li className="flex items-center gap-3"><div className="w-2 h-2 bg-[#CBB49A] rounded-full"></div><span className="text-gray-300">Who manufactured it and under what conditions</span></li>
+                                            <li className="flex items-center gap-3"><div className="w-2 h-2 bg-[#CBB49A] rounded-full"></div><span className="text-gray-300">The environmental impact of production</span></li>
+                                            <li className="flex items-center gap-3"><div className="w-2 h-2 bg-[#CBB49A] rounded-full"></div><span className="text-gray-300">Instructions for recycling or end-of-life disposal</span></li>
+                                        </ul>
+                                        <p className="text-lg text-gray-300 leading-relaxed">For founders sourcing from regions like India, this actually presents a massive opportunity. The best Indian manufacturers are already deeply integrated with traceability software and certified organic supply chains. By partnering with a factory that can provide this data easily, you automatically bypass a major hurdle that will trip up thousands of unprepared brands next year.</p>
                                     </div>
-                                    <div className="bg-white p-6 rounded-2xl border border-gray-100 shadow-sm ml-0 lg:ml-[72px]">
-                                        <p className="text-[#CBB49A] font-bold text-sm uppercase tracking-wider mb-2">Pro Tip</p>
-                                        <p className="text-[#2D2A2E] leading-relaxed">At Krazy Kreators, we offer full tech pack development as part of our onboarding process. You do not need prior technical design experience to work with us. We translate your vision, references, and sketches into a factory-ready specification document.</p>
-                                    </div>
-                                </div>
-
-                                {/* Step 2 */}
-                                <div className="mb-12">
-                                    <div className="flex items-start gap-6 mb-6">
-                                        <div className="min-w-[56px] h-[56px] rounded-full bg-[#CBB49A] flex items-center justify-center font-extrabold text-white text-2xl shadow-md">2</div>
-                                        <div>
-                                            <h3 className="text-3xl font-bold text-[#2D2A2E] mb-4">Order One Sample</h3>
-                                            <p className="text-lg text-[#666666] leading-relaxed mb-4">Once your tech pack is complete, you order a single sample. That is it. One physical garment, built exactly to your specifications, shipped directly to your door. No minimum quantities. No bulk fabric commitment. No warehouse deposit.</p>
-                                            <p className="text-lg text-[#666666] leading-relaxed">You try it on, photograph it, test the drape and the stitch quality, and decide whether it represents your brand the way you envisioned. If something needs adjusting — maybe the collar sits slightly differently than you imagined, or the pocket placement feels off — you give that feedback and we revise. You receive a corrected sample before any commitment to scale is even on the table.</p>
-                                        </div>
-                                    </div>
-                                    <div className="rounded-2xl overflow-hidden shadow-2xl border border-gray-100 relative h-64 ml-0 lg:ml-[72px]">
+                                    <div className="rounded-2xl overflow-hidden border border-gray-700 relative h-80 lg:h-full min-h-[400px] order-1 lg:order-2">
                                         <Image
-                                            src="/blog/zero_moq_sample.png"
-                                            alt="Single garment sample quality check"
+                                            src="/blog/eu_sustainability_fabric.png"
+                                            alt="Digital Product Passport fabric concept"
                                             fill
                                             className="object-cover"
                                         />
-                                    </div>
-                                </div>
-
-                                {/* Step 3 */}
-                                <div className="mb-4">
-                                    <div className="flex items-start gap-6 mb-6">
-                                        <div className="min-w-[56px] h-[56px] rounded-full bg-[#CBB49A] flex items-center justify-center font-extrabold text-white text-2xl shadow-md">3</div>
-                                        <div>
-                                            <h3 className="text-3xl font-bold text-[#2D2A2E] mb-4">Move to Production Only When You Are Ready</h3>
-                                            <p className="text-lg text-[#666666] leading-relaxed mb-4">Here is where the model fundamentally changes the risk equation. You do not commit to bulk production until you are satisfied with the sample and confident in the demand. Some founders use that approved sample to run pre-orders. Others use it to pitch stockists. Some simply post it on social media to see how people respond before placing a single bulk order.</p>
-                                            <p className="text-lg text-[#666666] leading-relaxed">When you are ready to go into production, our flexible minimum order quantity model means you can start with a run as small as 30 to 50 pieces. There is no requirement to commit to 500 units of a design you have not yet proven sells.</p>
-                                        </div>
                                     </div>
                                 </div>
                             </div>
 
                             {/* Section 3 */}
                             <div className="mt-20 mb-20">
-                                <h2 className="text-4xl lg:text-5xl font-extrabold tracking-tight text-[#2D2A2E] mb-10 pb-4 border-b border-gray-200">What About Warehousing?</h2>
-                                <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-                                    <div className="rounded-2xl overflow-hidden shadow-2xl border border-gray-100 relative h-80 lg:h-full min-h-[400px]">
-                                        <Image
-                                            src="/blog/zero_moq_delivery.png"
-                                            alt="Direct shipping from manufacturer to customer"
-                                            fill
-                                            className="object-cover transform hover:scale-105 transition-transform duration-700"
-                                        />
+                                <h2 className="text-4xl lg:text-5xl font-extrabold tracking-tight text-[#2D2A2E] mb-10 pb-4 border-b border-gray-200">The 5 Exact Questions to Ask Your Manufacturer</h2>
+                                <p className="text-xl leading-relaxed text-[#4A484A] mb-8 font-medium">Do not wait for buyers to ask you these questions. You need to ask your manufacturing partner these exact questions today.</p>
+
+                                <div className="space-y-6">
+                                    <div className="bg-white border border-gray-200 p-6 lg:p-8 rounded-2xl shadow-sm hover:shadow-md transition-shadow">
+                                        <h3 className="text-2xl font-bold text-[#CBB49A] mb-3">1. &quot;Can you provide transaction certificates for organic materials?&quot;</h3>
+                                        <p className="text-[#666666] leading-relaxed">If a factory claims they use organic cotton (like GOTS certified), they must be able to provide a transaction certificate for your specific batch of fabric. Without it, the claim is legally meaningless in the EU.</p>
                                     </div>
-                                    <div>
-                                        <p className="text-xl leading-relaxed text-[#4A484A] mb-8 font-medium">One of the most overlooked cost centers for a new clothing brand is physical storage. A warehouse lease is a fixed commitment that does not care whether you are having a great month or a slow one.</p>
-                                        <ul className="space-y-5">
-                                            <li className="flex items-start gap-4 bg-[#F8F7F4] p-6 rounded-2xl">
-                                                <div className="min-w-[10px] h-[10px] rounded-full bg-[#CBB49A] mt-2"></div>
-                                                <div>
-                                                    <h4 className="text-lg font-bold text-[#2D2A2E] mb-1">Ship Direct to You</h4>
-                                                    <p className="text-[#666666] m-0 leading-relaxed">For small initial runs, we ship production directly to your home or studio. No warehouse needed when your first drop is 50 pieces.</p>
-                                                </div>
-                                            </li>
-                                            <li className="flex items-start gap-4 bg-[#F8F7F4] p-6 rounded-2xl">
-                                                <div className="min-w-[10px] h-[10px] rounded-full bg-[#CBB49A] mt-2"></div>
-                                                <div>
-                                                    <h4 className="text-lg font-bold text-[#2D2A2E] mb-1">Use 3PL When You Scale</h4>
-                                                    <p className="text-[#666666] m-0 leading-relaxed">As your volumes grow, third-party logistics providers offer flexible, pay-per-unit warehousing and fulfillment — no long-term lease required.</p>
-                                                </div>
-                                            </li>
-                                            <li className="flex items-start gap-4 bg-[#F8F7F4] p-6 rounded-2xl">
-                                                <div className="min-w-[10px] h-[10px] rounded-full bg-[#CBB49A] mt-2"></div>
-                                                <div>
-                                                    <h4 className="text-lg font-bold text-[#2D2A2E] mb-1">Pre-Order First, Store Later</h4>
-                                                    <p className="text-[#666666] m-0 leading-relaxed">Many founders use their approved sample to collect pre-orders before going into production. When you sell before you produce, you never have unsold inventory sitting in a warehouse at all.</p>
-                                                </div>
-                                            </li>
-                                        </ul>
+                                    <div className="bg-white border border-gray-200 p-6 lg:p-8 rounded-2xl shadow-sm hover:shadow-md transition-shadow">
+                                        <h3 className="text-2xl font-bold text-[#CBB49A] mb-3">2. &quot;How do you handle dye house wastewater?&quot;</h3>
+                                        <p className="text-[#666666] leading-relaxed">Dyeing is historically the most toxic part of fashion. You want a partner who uses Zero Liquid Discharge (ZLD) systems or properly treats their effluent water before it leaves the facility.</p>
+                                    </div>
+                                    <div className="bg-white border border-gray-200 p-6 lg:p-8 rounded-2xl shadow-sm hover:shadow-md transition-shadow">
+                                        <h3 className="text-2xl font-bold text-[#CBB49A] mb-3">3. &quot;What social compliance audits do you currently hold?&quot;</h3>
+                                        <p className="text-[#666666] leading-relaxed">Look for internationally recognized certifications like SEDEX (SMETA), SA8000, or WRAP. These prove that third-party auditors have verified safe working conditions and fair labor practices.</p>
+                                    </div>
+                                    <div className="bg-white border border-gray-200 p-6 lg:p-8 rounded-2xl shadow-sm hover:shadow-md transition-shadow">
+                                        <h3 className="text-2xl font-bold text-[#CBB49A] mb-3">4. &quot;How is your fabric waste managed?&quot;</h3>
+                                        <p className="text-[#666666] leading-relaxed">The cutting room floor generates massive waste. Ask if they have partnerships to recycle offcuts or if they end up in a landfill.</p>
+                                    </div>
+                                    <div className="bg-white border border-gray-200 p-6 lg:p-8 rounded-2xl shadow-sm hover:shadow-md transition-shadow">
+                                        <h3 className="text-2xl font-bold text-[#CBB49A] mb-3">5. &quot;Are you prepared for digital traceability requirements?&quot;</h3>
+                                        <p className="text-[#666666] leading-relaxed">A modern factory should not be confused by this question. They should already be mapping their Tier 2 and Tier 3 suppliers (yarn spinners and farmers) to prepare for the 2027 DPP rollout.</p>
                                     </div>
                                 </div>
                             </div>
 
-                            {/* Section 4 — Factory Contracts */}
-                            <div className="mt-20 mb-20 bg-[#2D2A2E] p-10 lg:p-14 rounded-3xl text-white">
-                                <h2 className="text-4xl lg:text-5xl font-extrabold tracking-tight text-white mb-10 pb-4 border-b border-gray-700">No Factory Contract. No Long-Term Lock-In.</h2>
-                                <p className="text-xl leading-relaxed text-gray-300 mb-10 font-medium">A factory contract sounds like a formality. In practice, it is often a trap for a brand that is still finding its footing.</p>
-                                <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-                                    <div className="p-8 border border-gray-700 bg-gray-800/50 rounded-2xl">
-                                        <h4 className="text-xl font-bold text-[#CBB49A] mb-4">What Traditional Contracts Demand</h4>
-                                        <p className="text-lg text-gray-300 leading-relaxed">Many factories require founders to commit to a minimum number of orders per season, pay non-refundable tooling fees, or lock in exclusivity clauses. Once signed, you are committed — regardless of whether your first collection sold out or sat unsold.</p>
-                                    </div>
-                                    <div className="p-8 border border-gray-700 bg-gray-800/50 rounded-2xl">
-                                        <h4 className="text-xl font-bold text-[#CBB49A] mb-4">The Krazy Kreators Model</h4>
-                                        <p className="text-lg text-gray-300 leading-relaxed">We work on a project-by-project basis. Your first sample does not obligate you to a bulk order. Your first bulk order does not lock you into a seasonal commitment. You grow at the pace the market dictates, not the pace a contract demands.</p>
-                                    </div>
-                                </div>
-                            </div>
-
-                            {/* Section 5 — Who This Is For */}
-                            <div className="mt-20 mb-16">
-                                <h2 className="text-4xl lg:text-5xl font-extrabold tracking-tight text-[#2D2A2E] mb-8 pb-4 border-b border-gray-200">Who This Model Is Built For</h2>
-                                <p className="text-xl text-[#666666] mb-12 font-medium">This is not a model for brands that already have $100,000 in startup capital and retail distribution lined up. This is for everyone else.</p>
-                                <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-                                    <div className="bg-white p-8 rounded-2xl shadow-md border border-gray-100 hover:shadow-xl hover:-translate-y-1 transition-all duration-300">
-                                        <div className="w-12 h-12 bg-[#CBB49A]/15 rounded-xl flex items-center justify-center mb-5">
-                                            <span className="text-2xl">🎨</span>
+                            {/* Section 4 */}
+                            <div className="mt-20 mb-16 bg-[#F8F7F4] p-10 lg:p-14 rounded-3xl border border-[#EBEBEB]">
+                                <h2 className="text-4xl lg:text-5xl font-extrabold tracking-tight text-[#2D2A2E] mb-8 pb-4 border-b border-gray-200">Fabric Choices That Make an Immediate Impact</h2>
+                                <p className="text-xl text-[#666666] mb-8 font-medium">Changing your fabric is the fastest way to improve your brand&apos;s environmental footprint. Here are the materials buyers love to see:</p>
+                                
+                                <ul className="space-y-6">
+                                    <li className="flex flex-col sm:flex-row gap-6 items-start">
+                                        <div className="min-w-[60px] h-[60px] bg-white rounded-2xl flex items-center justify-center text-2xl shadow-sm border border-gray-100">🌿</div>
+                                        <div>
+                                            <h4 className="text-xl font-bold text-[#2D2A2E] mb-2">Organic Cotton (GOTS Certified)</h4>
+                                            <p className="text-[#666666] leading-relaxed">Grown without synthetic pesticides or fertilizers. It uses significantly less water than conventional cotton and keeps soil healthy. It is the gold standard for premium streetwear.</p>
                                         </div>
-                                        <h4 className="text-xl font-bold text-[#2D2A2E] mb-3">The Creative With a Vision</h4>
-                                        <p className="text-[#666666] leading-relaxed">You have designs ready and a strong sense of your brand identity. What you lack is the capital and industry contacts to bring it to life at scale. This model lets you start with what you have.</p>
-                                    </div>
-                                    <div className="bg-white p-8 rounded-2xl shadow-md border border-gray-100 hover:shadow-xl hover:-translate-y-1 transition-all duration-300">
-                                        <div className="w-12 h-12 bg-[#CBB49A]/15 rounded-xl flex items-center justify-center mb-5">
-                                            <span className="text-2xl">📱</span>
+                                    </li>
+                                    <li className="flex flex-col sm:flex-row gap-6 items-start">
+                                        <div className="min-w-[60px] h-[60px] bg-white rounded-2xl flex items-center justify-center text-2xl shadow-sm border border-gray-100">♻️</div>
+                                        <div>
+                                            <h4 className="text-xl font-bold text-[#2D2A2E] mb-2">Recycled Polyester (rPET)</h4>
+                                            <p className="text-[#666666] leading-relaxed">If you need synthetics for activewear or outerwear, use rPET. It diverts plastic bottles from oceans and landfills and requires less energy to produce than virgin polyester.</p>
                                         </div>
-                                        <h4 className="text-xl font-bold text-[#2D2A2E] mb-3">The Content Creator Going Physical</h4>
-                                        <p className="text-[#666666] leading-relaxed">You have an audience that trusts your taste. Launching a physical product feels risky because you have never manufactured before. A single sample gives you content and proof of concept without the financial exposure.</p>
-                                    </div>
-                                    <div className="bg-white p-8 rounded-2xl shadow-md border border-gray-100 hover:shadow-xl hover:-translate-y-1 transition-all duration-300">
-                                        <div className="w-12 h-12 bg-[#CBB49A]/15 rounded-xl flex items-center justify-center mb-5">
-                                            <span className="text-2xl">🚀</span>
+                                    </li>
+                                    <li className="flex flex-col sm:flex-row gap-6 items-start">
+                                        <div className="min-w-[60px] h-[60px] bg-white rounded-2xl flex items-center justify-center text-2xl shadow-sm border border-gray-100">🎋</div>
+                                        <div>
+                                            <h4 className="text-xl font-bold text-[#2D2A2E] mb-2">Hemp and Tencel™ Lyocell</h4>
+                                            <p className="text-[#666666] leading-relaxed">Hemp is naturally pest-resistant and requires very little water. Tencel (derived from sustainably sourced wood pulp) is processed in a closed-loop system where 99% of the water and solvents are reused.</p>
                                         </div>
-                                        <h4 className="text-xl font-bold text-[#2D2A2E] mb-3">The Side-Project Founder</h4>
-                                        <p className="text-[#666666] leading-relaxed">You have a full-time job and are building something on the side. You cannot afford to risk your savings on an unproven idea. This model lets you validate the concept before you commit a dollar to bulk production.</p>
-                                    </div>
-                                </div>
+                                    </li>
+                                </ul>
                             </div>
 
                             <hr className="my-16 border-[#EBEBEB]" />
 
                             {/* Bottom Line */}
                             <div className="bg-gradient-to-br from-[#F8F7F4] to-white p-10 rounded-3xl border border-[#EBEBEB]">
-                                <h3 className="text-3xl font-bold text-[#2D2A2E] mb-6">The Takeaway</h3>
-                                <p className="text-xl text-[#4A484A] leading-relaxed mb-6 font-medium">The question is no longer whether you can afford to start a clothing brand. The question is whether you are willing to take the first step.</p>
-                                <p className="text-lg text-[#666666] leading-relaxed">A tech pack costs a fraction of a bulk order. A sample costs a fraction of a production run. And both together give you something no amount of planning or research can replace — a real, physical product you can hold, photograph, test, and sell. The founders who win in 2026 are not the ones with the largest budgets. They are the ones who started earlier, iterated faster, and scaled only what the market already proved it wanted.</p>
+                                <h3 className="text-3xl font-bold text-[#2D2A2E] mb-6">The Bottom Line</h3>
+                                <p className="text-xl text-[#4A484A] leading-relaxed mb-6 font-medium">The rules of the game are shifting, and ignorance is no longer an excuse.</p>
+                                <p className="text-lg text-[#666666] leading-relaxed">EU buyers are scrutinizing supply chains because their governments are forcing them to. By 2027, traceability will be the baseline expectation, not a premium feature. If you start asking the right questions and partnering with compliant manufacturers now, you will position your brand as a secure, forward-thinking partner for global retailers. Get your data straight, choose your materials wisely, and you will turn compliance from a headache into a competitive advantage.</p>
                             </div>
                         </div>
 
                         {/* Conclusion CTA */}
                         <div className="bg-[#2D2A2E] text-white p-10 lg:p-12 rounded-2xl mb-12 mt-12 relative overflow-hidden text-center" ref={endOfArticleRef}>
                             <div className="relative z-10 max-w-3xl mx-auto">
-                                <h3 className="text-3xl font-bold mb-6">Ready to Build Your Brand — Without the Guesswork?</h3>
+                                <h3 className="text-3xl font-bold mb-6">Need a Compliant Manufacturing Partner?</h3>
                                 <p className="text-gray-300 leading-relaxed mb-8 text-lg">
-                                    Start with a tech pack. Order one sample. Move to production only when you are ready. No MOQ, no warehouse, no factory contract — just a clear path from idea to finished garment. We have helped founders across the USA and Europe take their first step. Let us help you take yours.
+                                    At Krazy Kreators, we connect brands with fully vetted, certified manufacturers in India who are already prepared for strict global compliance standards. Let us help you build a transparent, scalable supply chain.
                                 </p>
                                 <Button
                                     onClick={() => setContactOpen(true)}
                                     className="bg-[#CBB49A] text-white hover:bg-[#b7a078] border-none px-8 py-6 text-lg rounded-full transition-all shadow-lg hover:shadow-[#CBB49A]/30"
                                 >
-                                    Start Your Brand Today
+                                    Discuss Your Supply Chain
                                     <ArrowRight className="w-5 h-5 ml-2" />
                                 </Button>
                             </div>
