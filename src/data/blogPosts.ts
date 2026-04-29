@@ -15,6 +15,19 @@ export type BlogPostMeta = {
 
 export const blogPosts: BlogPostMeta[] = [
   {
+    id: 29,
+    title: "You Design for Other People's Brands Every Day. Here Is How to Launch Your Own in 90 Days.",
+    excerpt: "A practical 90-day roadmap for freelance fashion and graphic designers to transition from creating garments for other brands to launching their own label using Zero MOQ manufacturing.",
+    category: "business",
+    author: "Krazy Kreators Team",
+    date: "April 28, 2026",
+    readTime: "9 min read",
+    image: "https://res.cloudinary.com/dn9snfizy/image/upload/v1777389258/blog/z3bgaz5se6abvjlg3eva.jpg",
+    slug: "freelance-designers-launch-clothing-brand-90-days",
+    readers: 0,
+    likes: 0,
+  },
+  {
     id: 28,
     title: "Your EU Buyers Are Asking About Your Supply Chain: What Every Fashion Startup Needs to Know About Sustainable Manufacturing in 2026",
     excerpt: "Explains what sustainability in manufacturing actually means for founders, the 5 exact questions to ask manufacturers, and what the 2027 EU Digital Product Passport means for your brand.",
