@@ -157,11 +157,11 @@ export default function RealCostClient({ initialLikeCount, initialComments }: Bl
                         <span className="text-sm text-gray-400">•</span>
                         <span className="text-sm text-gray-200 font-medium tracking-wide">April 30, 2026</span>
                     </div>
-                    <h1 className="text-4xl sm:text-5xl lg:text-6xl xl:text-7xl font-extrabold text-white leading-tight max-w-5xl drop-shadow-lg mb-6 tracking-tight">
-                        Wrong Samples. Defective Bulk Orders. No One to Call. <br className="hidden sm:block" /> The Real Cost of Choosing the Wrong Clothing Manufacturer.
+                    <h1 className="text-4xl sm:text-5xl lg:text-6xl font-extrabold text-white leading-tight max-w-4xl drop-shadow-lg mb-6 tracking-tight">
+                        The Real Cost of Choosing the Wrong Clothing Manufacturer
                     </h1>
-                    <p className="text-xl sm:text-2xl lg:text-3xl text-gray-200 font-medium max-w-3xl drop-shadow-md leading-relaxed">
-                        Why the cheapest quote is often the most expensive mistake you'll ever make.
+                    <p className="text-lg sm:text-xl lg:text-2xl text-gray-200 font-medium max-w-2xl drop-shadow-md leading-relaxed">
+                        Why the cheapest quote is often your most expensive mistake.
                     </p>
                 </div>
             </section>
