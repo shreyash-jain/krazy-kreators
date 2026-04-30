@@ -8,11 +8,10 @@ cloudinary.config({
 
 const uploadImages = async () => {
     const images = [
-        { path: "G:\\gitt repoo\\krazy-kreators\\public\\blog\\essential_trimmings_banner.png", public_id: "blog/essential_trimmings_banner" },
-        { path: "G:\\gitt repoo\\krazy-kreators\\public\\blog\\premium_zipper_hardware.png", public_id: "blog/premium_zipper_hardware" },
-        { path: "G:\\gitt repoo\\krazy-kreators\\public\\blog\\custom_drawstring_aglet.png", public_id: "blog/custom_drawstring_aglet" },
-        { path: "G:\\gitt repoo\\krazy-kreators\\public\\blog\\eu_sustainability_banner.png", public_id: "blog/eu_sustainability_banner" },
-        { path: "G:\\gitt repoo\\krazy-kreators\\public\\blog\\eu_sustainability_fabric.png", public_id: "blog/eu_sustainability_fabric" }
+        { path: "G:\\gitt repoo\\krazy-kreators\\public\\blog\\wrong_samples.png", public_id: "blog/wrong_samples" },
+        { path: "G:\\gitt repoo\\krazy-kreators\\public\\blog\\defective_bulk.png", public_id: "blog/defective_bulk" },
+        { path: "G:\\gitt repoo\\krazy-kreators\\public\\blog\\no_one_to_call.png", public_id: "blog/no_one_to_call" },
+        { path: "G:\\gitt repoo\\krazy-kreators\\public\\blog\\krazy_solution.png", public_id: "blog/krazy_solution" }
     ];
 
     for (const img of images) {
