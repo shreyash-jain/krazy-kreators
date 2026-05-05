@@ -1,5 +1,6 @@
 import DyeingTechniquesClient from "@/app/blogs/pigment-dye-vs-reactive-dye/DyeingTechniquesClient";
 import { getBlogLikeCount, getComments } from "@/lib/blogApi";
+import BlogViewTracker from "@/components/BlogViewTracker";
 
 export const metadata = {
     title: "Pigment Dye vs. Reactive Dye: Which Dyeing Technique Is Right for Your Brand? | Krazy Kreators",
@@ -39,9 +40,9 @@ export default async function DyeingTechniquesPage() {
     ]);
 
     return (
-        <DyeingTechniquesClient
-            initialLikeCount={likeCount}
-            initialComments={comments}
-        />
+        <>
+            <BlogViewTracker slug="pigment-dye-vs-reactive-dye" />
+            <DyeingTechniquesClient initialLikeCount={likeCount} initialComments={comments} />
+        </>
     );
 }

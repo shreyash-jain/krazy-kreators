@@ -1,6 +1,7 @@
 import MoodBoardsBlogClient from "./MoodBoardsBlogClient";
 import { getBlogLikeCount, getComments } from "@/lib/blogApi";
 import { headers } from 'next/headers';
+import BlogViewTracker from "@/components/BlogViewTracker";
 
 export const dynamic = 'force-dynamic';
 export const runtime = 'edge';
@@ -20,5 +21,10 @@ export default async function MoodBoardsBlogPage() {
     getBlogLikeCount("mood-boards-to-manufacturable-garments", { baseUrl }),
     getComments("mood-boards-to-manufacturable-garments", { baseUrl }),
   ]);
-  return <MoodBoardsBlogClient initialLikeCount={likeCount} initialComments={comments} />;
+  return (
+        <>
+            <BlogViewTracker slug="mood-boards-to-manufacturable-garments" />
+            <MoodBoardsBlogClient initialLikeCount={likeCount} initialComments={comments} />
+        </>
+    );
 }

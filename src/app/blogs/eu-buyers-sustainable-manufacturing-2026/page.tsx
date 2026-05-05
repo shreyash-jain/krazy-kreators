@@ -1,6 +1,7 @@
 import SustainableEUClient from "./SustainableEUClient";
 import { getBlogLikeCount, getComments } from "@/lib/blogApi";
 import { headers } from 'next/headers';
+import BlogViewTracker from "@/components/BlogViewTracker";
 
 export const dynamic = 'force-dynamic';
 export const runtime = 'edge';
@@ -20,5 +21,10 @@ export default async function SustainableEUPage() {
         getBlogLikeCount("eu-buyers-sustainable-manufacturing-2026", { baseUrl }),
         getComments("eu-buyers-sustainable-manufacturing-2026", { baseUrl }),
     ]);
-    return <SustainableEUClient initialLikeCount={likeCount} initialComments={comments} />;
+    return (
+        <>
+            <BlogViewTracker slug="eu-buyers-sustainable-manufacturing-2026" />
+            <SustainableEUClient initialLikeCount={likeCount} initialComments={comments} />
+        </>
+    );
 }

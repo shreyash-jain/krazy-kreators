@@ -43,6 +43,42 @@ export async function getBlogLikeCount(
   }
 }
 
+export async function getBlogViewCount(
+  blogId: string,
+  opts?: { baseUrl?: string }
+): Promise<number> {
+  try {
+    const url = resolveApiUrl(
+      `/api/blog/views?blogId=${encodeURIComponent(blogId)}`,
+      opts?.baseUrl
+    );
+    const res = await fetch(url, { cache: 'no-store' });
+    if (!res.ok) return 0;
+    const data = await res.json();
+    return Number(data?.count ?? 0);
+  } catch (error) {
+    console.error(`BlogApi: Error fetching views for ${blogId}:`, error);
+    return 0;
+  }
+}
+
+export async function recordBlogView(blogId: string): Promise<number> {
+  try {
+    const url = resolveApiUrl(`/api/blog/views`);
+    const res = await fetch(url, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ blogId }),
+    });
+    if (!res.ok) throw new Error('Failed to record view');
+    const data = await res.json();
+    return Number(data?.count ?? 0);
+  } catch (error) {
+    console.error(`BlogApi: Error recording view for ${blogId}:`, error);
+    throw error;
+  }
+}
+
 export async function likeBlog(blogId: string, action: 'like' | 'unlike' = 'like'): Promise<number> {
   try {
     const url = resolveApiUrl(`/api/blog/likes`);

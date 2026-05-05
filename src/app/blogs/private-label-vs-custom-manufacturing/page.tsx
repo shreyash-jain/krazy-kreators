@@ -1,5 +1,6 @@
 import CustomMfgClient from "@/app/blogs/private-label-vs-custom-manufacturing/CustomMfgClient";
 import { getBlogLikeCount, getComments } from "@/lib/blogApi";
+import BlogViewTracker from "@/components/BlogViewTracker";
 
 export const metadata = {
     title: "Private Label vs. Custom Manufacturing: Which Fits Your Brand? | Krazy Kreators",
@@ -39,9 +40,9 @@ export default async function CustomMfgPage() {
     ]);
 
     return (
-        <CustomMfgClient
-            initialLikeCount={likeCount}
-            initialComments={comments}
-        />
+        <>
+            <BlogViewTracker slug="private-label-vs-custom-manufacturing" />
+            <CustomMfgClient initialLikeCount={likeCount} initialComments={comments} />
+        </>
     );
 }

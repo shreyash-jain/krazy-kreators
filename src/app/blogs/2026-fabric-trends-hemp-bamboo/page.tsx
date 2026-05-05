@@ -1,5 +1,6 @@
 import FabricTrendsBlogClient from "./FabricTrendsBlogClient";
 import { getBlogLikeCount, getComments } from "@/lib/blogApi";
+import BlogViewTracker from "@/components/BlogViewTracker";
 
 export const metadata = {
     title: "2026 Fabric Trends Update: Why Hemp and Bamboo Are Taking Over | Krazy Kreators",
@@ -21,9 +22,9 @@ export default async function FabricTrendsPage() {
     ]);
 
     return (
-        <FabricTrendsBlogClient
-            initialLikeCount={likeCount}
-            initialComments={comments}
-        />
+        <>
+            <BlogViewTracker slug="2026-fabric-trends-hemp-bamboo" />
+            <FabricTrendsBlogClient initialLikeCount={likeCount} initialComments={comments} />
+        </>
     );
 }

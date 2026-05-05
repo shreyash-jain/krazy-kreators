@@ -1,6 +1,7 @@
 import HowToStartBlogClient from "./HowToStartBlogClient";
 import { getBlogLikeCount, getComments } from "@/lib/blogApi";
 import { headers } from 'next/headers';
+import BlogViewTracker from "@/components/BlogViewTracker";
 
 export const dynamic = 'force-dynamic';
 export const runtime = 'edge';
@@ -20,5 +21,10 @@ export default async function HowToStartBlogPage() {
         getBlogLikeCount("how-to-start-clothing-brand-2026", { baseUrl }),
         getComments("how-to-start-clothing-brand-2026", { baseUrl }),
     ]);
-    return <HowToStartBlogClient initialLikeCount={likeCount} initialComments={comments} />;
+    return (
+        <>
+            <BlogViewTracker slug="how-to-start-clothing-brand-2026" />
+            <HowToStartBlogClient initialLikeCount={likeCount} initialComments={comments} />
+        </>
+    );
 }

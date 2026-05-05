@@ -1,6 +1,7 @@
 import BridgingGapBlogClient from './BridgingGapBlogClient';
 import { getBlogLikeCount, getComments } from '@/lib/blogApi';
 import { headers } from 'next/headers';
+import BlogViewTracker from "@/components/BlogViewTracker";
 
 export const dynamic = 'force-dynamic';
 export const runtime = 'edge';
@@ -15,5 +16,10 @@ export default async function BridgingGapBlogPage() {
     getBlogLikeCount('bridging-gap-designers-factories', { baseUrl }),
     getComments('bridging-gap-designers-factories', { baseUrl }),
   ]);
-  return <BridgingGapBlogClient initialLikeCount={likeCount} initialComments={comments} />;
+  return (
+        <>
+            <BlogViewTracker slug="bridging-gap-designers-factories" />
+            <BridgingGapBlogClient initialLikeCount={likeCount} initialComments={comments} />
+        </>
+    );
 }

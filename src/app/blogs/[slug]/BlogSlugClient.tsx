@@ -13,6 +13,7 @@ import { useToast } from "@/components/Toast";
 import { likeBlog, addComment, likeComment, getComments, type PublicComment } from "@/lib/blogApi";
 import { recordBlogLikeUpdate } from "@/lib/blogLikeSync";
 import BlogRenderer from "@/components/BlogRenderer";
+import BlogViewTracker from "@/components/BlogViewTracker";
 import { format } from "date-fns";
 
 type Blog = {
@@ -215,6 +216,7 @@ export default function BlogSlugClient({ blog, initialLikeCount, initialComments
 
     return (
         <div className="min-h-screen bg-white">
+            <BlogViewTracker slug={blog.slug} />
             <Navbar invertTabs={!scrolled} />
 
             {/* Hero Section */}
