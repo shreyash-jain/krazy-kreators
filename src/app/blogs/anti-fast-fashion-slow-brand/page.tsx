@@ -1,5 +1,6 @@
 import AntiFastFashionClient from "@/app/blogs/anti-fast-fashion-slow-brand/AntiFastFashionClient";
 import { getBlogLikeCount, getComments } from "@/lib/blogApi";
+import BlogViewTracker from "@/components/BlogViewTracker";
 
 export const metadata = {
     title: "Anti-Fast Fashion: Building a Slow Fashion Brand | Krazy Kreators",
@@ -41,9 +42,9 @@ export default async function AntiFastFashionPage() {
     ]);
 
     return (
-        <AntiFastFashionClient
-            initialLikeCount={likeCount}
-            initialComments={comments}
-        />
+        <>
+            <BlogViewTracker slug="anti-fast-fashion-slow-brand" />
+            <AntiFastFashionClient initialLikeCount={likeCount} initialComments={comments} />
+        </>
     );
 }

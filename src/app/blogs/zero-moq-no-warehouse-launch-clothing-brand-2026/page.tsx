@@ -1,6 +1,7 @@
 import ZeroMoqClient from "./ZeroMoqClient";
 import { getBlogLikeCount, getComments } from "@/lib/blogApi";
 import { headers } from 'next/headers';
+import BlogViewTracker from "@/components/BlogViewTracker";
 
 export const dynamic = 'force-dynamic';
 export const runtime = 'edge';
@@ -20,5 +21,10 @@ export default async function ZeroMoqPage() {
         getBlogLikeCount("zero-moq-no-warehouse-launch-clothing-brand-2026", { baseUrl }),
         getComments("zero-moq-no-warehouse-launch-clothing-brand-2026", { baseUrl }),
     ]);
-    return <ZeroMoqClient initialLikeCount={likeCount} initialComments={comments} />;
+    return (
+        <>
+            <BlogViewTracker slug="zero-moq-no-warehouse-launch-clothing-brand-2026" />
+            <ZeroMoqClient initialLikeCount={likeCount} initialComments={comments} />
+        </>
+    );
 }

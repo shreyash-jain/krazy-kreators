@@ -1,5 +1,6 @@
 import TechPackClient from "@/app/blogs/what-is-a-tech-pack-why-you-need-it/TechPackClient";
 import { getBlogLikeCount, getComments } from "@/lib/blogApi";
+import BlogViewTracker from "@/components/BlogViewTracker";
 
 export const metadata = {
     title: "What is a Tech Pack? (And Why You Can't Manufacture Without One) | Krazy Kreators",
@@ -39,9 +40,9 @@ export default async function TechPackPage() {
     ]);
 
     return (
-        <TechPackClient
-            initialLikeCount={likeCount}
-            initialComments={comments}
-        />
+        <>
+            <BlogViewTracker slug="what-is-a-tech-pack-why-you-need-it" />
+            <TechPackClient initialLikeCount={likeCount} initialComments={comments} />
+        </>
     );
 }

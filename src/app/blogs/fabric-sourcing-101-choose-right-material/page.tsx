@@ -1,5 +1,6 @@
 import FabricSourcingClient from "@/app/blogs/fabric-sourcing-101-choose-right-material/FabricSourcingClient";
 import { getBlogLikeCount, getComments } from "@/lib/blogApi";
+import BlogViewTracker from "@/components/BlogViewTracker";
 
 export const metadata = {
     title: "Fabric Sourcing 101: How to Choose the Right Material for Your Collection | Krazy Kreators",
@@ -39,9 +40,9 @@ export default async function FabricSourcingPage() {
     ]);
 
     return (
-        <FabricSourcingClient
-            initialLikeCount={likeCount}
-            initialComments={comments}
-        />
+        <>
+            <BlogViewTracker slug="fabric-sourcing-101-choose-right-material" />
+            <FabricSourcingClient initialLikeCount={likeCount} initialComments={comments} />
+        </>
     );
 }

@@ -1,6 +1,7 @@
 import RealCostClient from "./RealCostClient";
 import { getBlogLikeCount, getComments } from "@/lib/blogApi";
 import { headers } from 'next/headers';
+import BlogViewTracker from "@/components/BlogViewTracker";
 
 export const dynamic = 'force-dynamic';
 export const runtime = 'edge';
@@ -20,5 +21,10 @@ export default async function RealCostPage() {
         getBlogLikeCount("the-real-cost-of-wrong-clothing-manufacturer", { baseUrl }),
         getComments("the-real-cost-of-wrong-clothing-manufacturer", { baseUrl }),
     ]);
-    return <RealCostClient initialLikeCount={likeCount} initialComments={comments} />;
+    return (
+        <>
+            <BlogViewTracker slug="the-real-cost-of-wrong-clothing-manufacturer" />
+            <RealCostClient initialLikeCount={likeCount} initialComments={comments} />
+        </>
+    );
 }

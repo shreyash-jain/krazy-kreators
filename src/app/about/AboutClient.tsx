@@ -66,22 +66,22 @@ export default function AboutClient() {
           <div className="grid grid-cols-2 gap-12 sm:gap-16 md:gap-20 mb-12 sm:mb-16 md:mb-20 w-full justify-items-center px-4 max-w-4xl mx-auto">
             {/* Stat 1 */}
             <div className="flex flex-col items-center min-w-[120px] sm:min-w-[150px]">
-              <span className="text-3xl sm:text-4xl md:text-5xl font-extrabold text-[#6BA292] font-sans mb-2 tracking-tight">5+</span>
+              <span className="text-3xl sm:text-4xl md:text-5xl font-extrabold text-[#6BA292] font-sans mb-2 tracking-tight">50+</span>
               <span className="text-sm sm:text-base md:text-lg text-[#2D2A2E] font-medium opacity-90 text-center">brands launched successfully</span>
             </div>
             {/* Stat 2 */}
             <div className="flex flex-col items-center min-w-[120px] sm:min-w-[150px]">
-              <span className="text-3xl sm:text-4xl md:text-5xl font-extrabold text-[#6BA292] font-sans mb-2 tracking-tight">15+</span>
+              <span className="text-3xl sm:text-4xl md:text-5xl font-extrabold text-[#6BA292] font-sans mb-2 tracking-tight">16+</span>
               <span className="text-sm sm:text-base md:text-lg text-[#2D2A2E] font-medium opacity-90 text-center">years of industry experience</span>
             </div>
             {/* Stat 3 */}
             <div className="flex flex-col items-center min-w-[120px] sm:min-w-[150px]">
-              <span className="text-3xl sm:text-4xl md:text-5xl font-extrabold text-[#6BA292] font-sans mb-2 tracking-tight">3000+</span>
+              <span className="text-3xl sm:text-4xl md:text-5xl font-extrabold text-[#6BA292] font-sans mb-2 tracking-tight">15000+</span>
               <span className="text-sm sm:text-base md:text-lg text-[#2D2A2E] font-medium opacity-90 text-center">designs prototyped & produced</span>
             </div>
             {/* Stat 4 */}
             <div className="flex flex-col items-center min-w-[120px] sm:min-w-[150px]">
-              <span className="text-3xl sm:text-4xl md:text-5xl font-extrabold text-[#6BA292] font-sans mb-2 tracking-tight">1lakh+</span>
+              <span className="text-3xl sm:text-4xl md:text-5xl font-extrabold text-[#6BA292] font-sans mb-2 tracking-tight">1 million+</span>
               <span className="text-sm sm:text-base md:text-lg text-[#2D2A2E] font-medium opacity-90 text-center">garments manufactured & shipped</span>
             </div>
           </div>

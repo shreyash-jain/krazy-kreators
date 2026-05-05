@@ -87,6 +87,27 @@ create policy if not exists leads_select_anon
   to anon
   using (true);
 
+-- Blog post views: one row per recorded view (deduped per session client-side)
+create table if not exists public.blog_post_views (
+  id uuid primary key default gen_random_uuid(),
+  created_at timestamptz not null default now(),
+  blog_id text not null
+);
+
+create index if not exists blog_post_views_blog_id_idx on public.blog_post_views (blog_id);
+
+alter table public.blog_post_views enable row level security;
+create policy if not exists blog_post_views_insert_anon
+  on public.blog_post_views
+  for insert
+  to anon
+  with check (true);
+create policy if not exists blog_post_views_select_anon
+  on public.blog_post_views
+  for select
+  to anon
+  using (true);
+
 -- Blog interactions: likes per post and comments with likes on comments
 create table if not exists public.blog_post_likes (
   id uuid primary key default gen_random_uuid(),

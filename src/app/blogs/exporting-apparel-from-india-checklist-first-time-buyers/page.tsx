@@ -1,6 +1,7 @@
 import ExportingIndiaBlogClient from './ExportingIndiaBlogClient';
 import { getBlogLikeCount, getComments } from '@/lib/blogApi';
 import { headers } from 'next/headers';
+import BlogViewTracker from "@/components/BlogViewTracker";
 
 export const dynamic = 'force-dynamic';
 export const runtime = 'edge';
@@ -15,5 +16,10 @@ export default async function ExportingIndiaBlogPage() {
     getBlogLikeCount('exporting-apparel-from-india-checklist-first-time-buyers', { baseUrl }),
     getComments('exporting-apparel-from-india-checklist-first-time-buyers', { baseUrl }),
   ]);
-  return <ExportingIndiaBlogClient initialLikeCount={likeCount} initialComments={comments} />;
+  return (
+        <>
+            <BlogViewTracker slug="exporting-apparel-from-india-checklist-first-time-buyers" />
+            <ExportingIndiaBlogClient initialLikeCount={likeCount} initialComments={comments} />
+        </>
+    );
 }

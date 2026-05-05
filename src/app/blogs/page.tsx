@@ -1,5 +1,5 @@
 import BlogsClient from "./BlogsClient";
-import { getBlogLikeCount } from "@/lib/blogApi";
+import { getBlogLikeCount, getBlogViewCount } from "@/lib/blogApi";
 import { blogPosts, BlogPostMeta } from "@/data/blogPosts";
 import { getSupabaseClient } from "@/lib/supabaseClient";
 
@@ -139,11 +139,20 @@ export default async function BlogsPage() {
 
   console.log(`Total posts to display: ${allPosts.length} (${dbBlogs.length} from DB, ${blogPosts.length} static)`);
 
-  const entries = await Promise.all(
-    allPosts.map(async (post) => [post.slug, await getBlogLikeCount(post.slug)] as const)
-  );
+  const [likeEntries, viewEntries] = await Promise.all([
+    Promise.all(allPosts.map(async (post) => [post.slug, await getBlogLikeCount(post.slug)] as const)),
+    Promise.all(allPosts.map(async (post) => [post.slug, await getBlogViewCount(post.slug)] as const)),
+  ]);
   const initialLikeCounts: Record<string, number> = {};
-  for (const [slug, count] of entries) initialLikeCounts[slug] = count;
+  for (const [slug, count] of likeEntries) initialLikeCounts[slug] = count;
+  const initialViewCounts: Record<string, number> = {};
+  for (const [slug, count] of viewEntries) initialViewCounts[slug] = count;
 
-  return <BlogsClient initialLikeCounts={initialLikeCounts} posts={allPosts} />;
+  return (
+    <BlogsClient
+      initialLikeCounts={initialLikeCounts}
+      initialViewCounts={initialViewCounts}
+      posts={allPosts}
+    />
+  );
 }
