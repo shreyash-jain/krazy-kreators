@@ -1,6 +1,7 @@
 import DtfVsScreenPrintingClient from "./DtfVsScreenPrintingClient";
 import { getBlogLikeCount, getComments } from "@/lib/blogApi";
 import { headers } from 'next/headers';
+import BlogViewTracker from "@/components/BlogViewTracker";
 
 export const dynamic = 'force-dynamic';
 export const runtime = 'edge';
@@ -20,5 +21,10 @@ export default async function DtfVsScreenPrintingPage() {
         getBlogLikeCount("dtf-vs-screen-printing-right-for-volume", { baseUrl }),
         getComments("dtf-vs-screen-printing-right-for-volume", { baseUrl }),
     ]);
-    return <DtfVsScreenPrintingClient initialLikeCount={likeCount} initialComments={comments} />;
+    return (
+        <>
+            <BlogViewTracker slug="dtf-vs-screen-printing-right-for-volume" />
+            <DtfVsScreenPrintingClient initialLikeCount={likeCount} initialComments={comments} />
+        </>
+    );
 }

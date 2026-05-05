@@ -1,5 +1,6 @@
 import FabricGsmClient from "@/app/blogs/understanding-fabric-gsm-guide-to-choosing-right-weight/FabricGsmClient";
 import { getBlogLikeCount, getComments } from "@/lib/blogApi";
+import BlogViewTracker from "@/components/BlogViewTracker";
 
 export const metadata = {
     title: "Understanding Fabric GSM: A Guide to Choosing the Right Weight | Krazy Kreators",
@@ -39,9 +40,9 @@ export default async function FabricGsmPage() {
     ]);
 
     return (
-        <FabricGsmClient
-            initialLikeCount={likeCount}
-            initialComments={comments}
-        />
+        <>
+            <BlogViewTracker slug="understanding-fabric-gsm-guide-to-choosing-right-weight" />
+            <FabricGsmClient initialLikeCount={likeCount} initialComments={comments} />
+        </>
     );
 }

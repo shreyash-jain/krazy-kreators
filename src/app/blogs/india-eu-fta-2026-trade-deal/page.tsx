@@ -1,5 +1,6 @@
 import IndiaEuTradeDealBlogClient from "./IndiaEuTradeDealBlogClient";
 import { getBlogLikeCount, getComments } from "@/lib/blogApi";
+import BlogViewTracker from "@/components/BlogViewTracker";
 
 export const metadata = {
     title: "India-EU Trade Deal 2026: Simple Guide for Business | Krazy Kreators",
@@ -21,9 +22,9 @@ export default async function IndiaEuTradeDealPage() {
     ]);
 
     return (
-        <IndiaEuTradeDealBlogClient
-            initialLikeCount={likeCount}
-            initialComments={comments}
-        />
+        <>
+            <BlogViewTracker slug="india-eu-fta-2026-trade-deal" />
+            <IndiaEuTradeDealBlogClient initialLikeCount={likeCount} initialComments={comments} />
+        </>
     );
 }

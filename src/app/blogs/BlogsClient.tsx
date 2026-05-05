@@ -11,19 +11,22 @@ import { useToast } from "@/components/Toast";
 import { likeBlog } from "@/lib/blogApi";
 import { BlogPostMeta } from "@/data/blogPosts";
 import { readBlogLikeSyncState } from "@/lib/blogLikeSync";
+import { readBlogViewSyncState } from "@/lib/blogViewSync";
 
 type BlogsClientProps = {
   initialLikeCounts: Record<string, number>;
+  initialViewCounts: Record<string, number>;
   posts: BlogPostMeta[];
 };
 
-export default function BlogsClient({ initialLikeCounts, posts }: BlogsClientProps) {
+export default function BlogsClient({ initialLikeCounts, initialViewCounts, posts }: BlogsClientProps) {
   const [contactOpen, setContactOpen] = useState(false);
   const [currentPage, setCurrentPage] = useState(1);
   const [activeFilter, setActiveFilter] = useState("all");
   const [likedPosts, setLikedPosts] = useState<Set<string>>(new Set());
   const [sharedPosts, setSharedPosts] = useState<Set<string | number>>(new Set());
   const [likeCounts, setLikeCounts] = useState<Record<string, number>>(() => ({ ...initialLikeCounts }));
+  const [viewCounts, setViewCounts] = useState<Record<string, number>>(() => ({ ...initialViewCounts }));
   const postsPerPage = 6;
   const { showToast, ToastContainer } = useToast();
 
@@ -126,19 +129,32 @@ export default function BlogsClient({ initialLikeCounts, posts }: BlogsClientPro
   useEffect(() => {
     if (typeof window === 'undefined') return;
 
-    const state = readBlogLikeSyncState();
-    if (Object.keys(state).length) {
-      setLikeCounts(prev => ({ ...prev, ...state }));
+    const likeState = readBlogLikeSyncState();
+    if (Object.keys(likeState).length) {
+      setLikeCounts(prev => ({ ...prev, ...likeState }));
+    }
+    const viewState = readBlogViewSyncState();
+    if (Object.keys(viewState).length) {
+      setViewCounts(prev => ({ ...prev, ...viewState }));
     }
 
-    const handler = (event: Event) => {
+    const likeHandler = (event: Event) => {
       const detail = (event as CustomEvent<{ slug: string; count: number }>).detail;
       if (!detail) return;
       setLikeCounts(prev => ({ ...prev, [detail.slug]: detail.count }));
     };
+    const viewHandler = (event: Event) => {
+      const detail = (event as CustomEvent<{ slug: string; count: number }>).detail;
+      if (!detail) return;
+      setViewCounts(prev => ({ ...prev, [detail.slug]: detail.count }));
+    };
 
-    window.addEventListener('blog-like-updated', handler as EventListener);
-    return () => window.removeEventListener('blog-like-updated', handler as EventListener);
+    window.addEventListener('blog-like-updated', likeHandler as EventListener);
+    window.addEventListener('blog-view-updated', viewHandler as EventListener);
+    return () => {
+      window.removeEventListener('blog-like-updated', likeHandler as EventListener);
+      window.removeEventListener('blog-view-updated', viewHandler as EventListener);
+    };
   }, []);
 
   return (
@@ -182,6 +198,7 @@ export default function BlogsClient({ initialLikeCounts, posts }: BlogsClientPro
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           {currentPosts.map((post) => {
             const likeCount = (likeCounts[post.slug] ?? 0) + post.likes;
+            const viewCount = (viewCounts[post.slug] ?? 0) + post.readers;
             const isLiked = likedPosts.has(post.slug);
             return (
               <Link key={post.id} href={`/blogs/${post.slug}`} className="group">
@@ -219,7 +236,7 @@ export default function BlogsClient({ initialLikeCounts, posts }: BlogsClientPro
                       <div className="flex items-center gap-4 text-sm text-[#666666]">
                         <div className="flex items-center gap-1">
                           <Eye className="w-4 h-4" />
-                          <span>{post.readers.toLocaleString()}</span>
+                          <span>{viewCount.toLocaleString()}</span>
                         </div>
                       </div>
 

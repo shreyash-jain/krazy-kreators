@@ -1,6 +1,7 @@
 import CreativeCollaborationBlogClient from './CreativeCollaborationBlogClient';
 import { getBlogLikeCount, getComments } from '@/lib/blogApi';
 import { headers } from 'next/headers';
+import BlogViewTracker from "@/components/BlogViewTracker";
 
 export const dynamic = 'force-dynamic';
 export const runtime = 'edge';
@@ -15,5 +16,10 @@ export default async function CreativeCollaborationBlogPage() {
     getBlogLikeCount('how-creative-collaboration-fuels-great-fashion-collections', { baseUrl }),
     getComments('how-creative-collaboration-fuels-great-fashion-collections', { baseUrl }),
   ]);
-  return <CreativeCollaborationBlogClient initialLikeCount={likeCount} initialComments={comments} />;
+  return (
+        <>
+            <BlogViewTracker slug="how-creative-collaboration-fuels-great-fashion-collections" />
+            <CreativeCollaborationBlogClient initialLikeCount={likeCount} initialComments={comments} />
+        </>
+    );
 }

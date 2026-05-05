@@ -51,6 +51,18 @@ export type BlogPostLikeInsert = {
   created_at?: string;
 };
 
+export type BlogPostViewRow = {
+  id: string;
+  blog_id: string;
+  created_at: string;
+};
+
+export type BlogPostViewInsert = {
+  id?: string;
+  blog_id: string;
+  created_at?: string;
+};
+
 export type ContactSubmissionRow = {
   id: string;
   created_at: string;

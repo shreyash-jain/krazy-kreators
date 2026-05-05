@@ -1,6 +1,7 @@
 import LeadTimeTimelineClient from "./LeadTimeTimelineClient";
 import { getBlogLikeCount, getComments } from "@/lib/blogApi";
 import { headers } from 'next/headers';
+import BlogViewTracker from "@/components/BlogViewTracker";
 
 export const dynamic = 'force-dynamic';
 export const runtime = 'edge';
@@ -20,5 +21,10 @@ export default async function LeadTimeTimelinePage() {
         getBlogLikeCount("lead-time-timeline-design-to-doorstep", { baseUrl }),
         getComments("lead-time-timeline-design-to-doorstep", { baseUrl }),
     ]);
-    return <LeadTimeTimelineClient initialLikeCount={likeCount} initialComments={comments} />;
+    return (
+        <>
+            <BlogViewTracker slug="lead-time-timeline-design-to-doorstep" />
+            <LeadTimeTimelineClient initialLikeCount={likeCount} initialComments={comments} />
+        </>
+    );
 }

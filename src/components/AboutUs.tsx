@@ -2,10 +2,10 @@ import Link from "next/link";
 import Image from "next/image";
 
 const stats = [
-  { value: "5+", label: "brands launched successfully" },
-  { value: "15+", label: "years of industry experience" },
-  { value: "3000+", label: "designs prototyped & produced" },
-  { value: "1lakh+", label: "garments manufactured & shipped" },
+  { value: "50+", label: "brands launched successfully" },
+  { value: "16+", label: "years of industry experience" },
+  { value: "15000+", label: "designs prototyped & produced" },
+  { value: "1 million+", label: "garments manufactured & shipped" },
 ];
 
 export default function AboutUs() {
