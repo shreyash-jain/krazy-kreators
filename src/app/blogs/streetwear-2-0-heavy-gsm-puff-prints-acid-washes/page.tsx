@@ -1,6 +1,7 @@
 
 import StreetwearClient from "@/app/blogs/streetwear-2-0-heavy-gsm-puff-prints-acid-washes/StreetwearClient";
 import { getBlogLikeCount, getComments } from "@/lib/blogApi";
+import BlogViewTracker from "@/components/BlogViewTracker";
 
 export const metadata = {
     title: "Streetwear 2.0: Heavy GSM, Puff Prints, and Acid Washes | Krazy Kreators",
@@ -42,9 +43,9 @@ export default async function StreetwearPage() {
     ]);
 
     return (
-        <StreetwearClient 
-            initialLikeCount={likeCount}
-            initialComments={comments}
-        />
+        <>
+            <BlogViewTracker slug="streetwear-2-0-heavy-gsm-puff-prints-acid-washes" />
+            <StreetwearClient initialLikeCount={likeCount} initialComments={comments} />
+        </>
     );
 }

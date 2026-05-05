@@ -1,5 +1,6 @@
 import DropCultureClient from "@/app/blogs/the-drop-culture-model/DropCultureClient";
 import { getBlogLikeCount, getComments } from "@/lib/blogApi";
+import BlogViewTracker from "@/components/BlogViewTracker";
 
 export const metadata = {
     title: "The 'Drop Culture' Model: Strategies for Sold-Out Collections | Krazy Kreators",
@@ -42,9 +43,9 @@ export default async function DropCulturePage() {
     ]);
 
     return (
-        <DropCultureClient 
-            initialLikeCount={likeCount}
-            initialComments={comments}
-        />
+        <>
+            <BlogViewTracker slug="the-drop-culture-model" />
+            <DropCultureClient initialLikeCount={likeCount} initialComments={comments} />
+        </>
     );
 }

@@ -1,5 +1,6 @@
 import GradingVsPatternMakingClient from "@/app/blogs/grading-vs-pattern-making-perfect-fit/GradingVsPatternMakingClient";
 import { getBlogLikeCount, getComments } from "@/lib/blogApi";
+import BlogViewTracker from "@/components/BlogViewTracker";
 
 export const metadata = {
     title: "Grading vs. Pattern Making: Why Your Sample Fits Great in One Size but Falls Apart in Others | Krazy Kreators",
@@ -39,9 +40,9 @@ export default async function GradingVsPatternMakingPage() {
     ]);
 
     return (
-        <GradingVsPatternMakingClient
-            initialLikeCount={likeCount}
-            initialComments={comments}
-        />
+        <>
+            <BlogViewTracker slug="grading-vs-pattern-making-perfect-fit" />
+            <GradingVsPatternMakingClient initialLikeCount={likeCount} initialComments={comments} />
+        </>
     );
 }

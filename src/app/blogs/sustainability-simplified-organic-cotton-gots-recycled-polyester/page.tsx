@@ -1,5 +1,6 @@
 import SustainabilitySimplifiedClient from "@/app/blogs/sustainability-simplified-organic-cotton-gots-recycled-polyester/SustainabilitySimplifiedClient";
 import { getBlogLikeCount, getComments } from "@/lib/blogApi";
+import BlogViewTracker from "@/components/BlogViewTracker";
 
 export const metadata = {
     title: "Sustainability Simplified: Organic Cotton, GOTS, and Recycled Polyester | Krazy Kreators",
@@ -39,9 +40,9 @@ export default async function SustainabilitySimplifiedPage() {
     ]);
 
     return (
-        <SustainabilitySimplifiedClient
-            initialLikeCount={likeCount}
-            initialComments={comments}
-        />
+        <>
+            <BlogViewTracker slug="sustainability-simplified-organic-cotton-gots-recycled-polyester" />
+            <SustainabilitySimplifiedClient initialLikeCount={likeCount} initialComments={comments} />
+        </>
     );
 }

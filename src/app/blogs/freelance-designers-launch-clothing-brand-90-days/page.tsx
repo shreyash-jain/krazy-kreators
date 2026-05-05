@@ -1,6 +1,7 @@
 import FreelanceDesignerClient from "./FreelanceDesignerClient";
 import { getBlogLikeCount, getComments } from "@/lib/blogApi";
 import { headers } from 'next/headers';
+import BlogViewTracker from "@/components/BlogViewTracker";
 
 export const dynamic = 'force-dynamic';
 export const runtime = 'edge';
@@ -20,5 +21,10 @@ export default async function FreelanceDesignerPage() {
         getBlogLikeCount("freelance-designers-launch-clothing-brand-90-days", { baseUrl }),
         getComments("freelance-designers-launch-clothing-brand-90-days", { baseUrl }),
     ]);
-    return <FreelanceDesignerClient initialLikeCount={likeCount} initialComments={comments} />;
+    return (
+        <>
+            <BlogViewTracker slug="freelance-designers-launch-clothing-brand-90-days" />
+            <FreelanceDesignerClient initialLikeCount={likeCount} initialComments={comments} />
+        </>
+    );
 }

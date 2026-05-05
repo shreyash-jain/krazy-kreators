@@ -1,5 +1,6 @@
 import SustainableManufacturingClient from "@/app/blogs/sustainable-manufacturing-eco-friendly-fashion-brand/SustainableManufacturingClient";
 import { getBlogLikeCount, getComments } from "@/lib/blogApi";
+import BlogViewTracker from "@/components/BlogViewTracker";
 
 export const metadata = {
     title: "Sustainable Manufacturing: How to Build an Eco-Friendly Fashion Brand | Krazy Kreators",
@@ -41,9 +42,9 @@ export default async function SustainableManufacturingPage() {
     ]);
 
     return (
-        <SustainableManufacturingClient
-            initialLikeCount={likeCount}
-            initialComments={comments}
-        />
+        <>
+            <BlogViewTracker slug="sustainable-manufacturing-eco-friendly-fashion-brand" />
+            <SustainableManufacturingClient initialLikeCount={likeCount} initialComments={comments} />
+        </>
     );
 }

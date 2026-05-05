@@ -1,6 +1,7 @@
 import CostlyMistakesBlogClient from "./CostlyMistakesBlogClient";
 import { getBlogLikeCount, getComments } from "@/lib/blogApi";
 import { headers } from 'next/headers';
+import BlogViewTracker from "@/components/BlogViewTracker";
 
 export const dynamic = 'force-dynamic';
 export const runtime = 'edge';
@@ -20,6 +21,11 @@ export default async function CostlyMistakesBlogPage() {
     getBlogLikeCount("costly-mistakes-startup-make", { baseUrl }),
     getComments("costly-mistakes-startup-make", { baseUrl }),
   ]);
-  return <CostlyMistakesBlogClient initialLikeCount={likeCount} initialComments={comments} />;
+  return (
+        <>
+            <BlogViewTracker slug="costly-mistakes-startup-make" />
+            <CostlyMistakesBlogClient initialLikeCount={likeCount} initialComments={comments} />
+        </>
+    );
 }
 

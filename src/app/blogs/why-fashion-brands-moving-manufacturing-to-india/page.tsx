@@ -1,6 +1,7 @@
 
 import IndiaManufacturingClient from "@/app/blogs/why-fashion-brands-moving-manufacturing-to-india/IndiaManufacturingClient";
 import { getBlogLikeCount, getComments } from "@/lib/blogApi";
+import BlogViewTracker from "@/components/BlogViewTracker";
 
 export const metadata = {
     title: "Why Fashion Brands Are Moving Manufacturing to India (Beyond Just Cost) | Krazy Kreators",
@@ -43,9 +44,9 @@ export default async function IndiaManufacturingPage() {
     ]);
 
     return (
-        <IndiaManufacturingClient 
-            initialLikeCount={likeCount}
-            initialComments={comments}
-        />
+        <>
+            <BlogViewTracker slug="why-fashion-brands-moving-manufacturing-to-india" />
+            <IndiaManufacturingClient initialLikeCount={likeCount} initialComments={comments} />
+        </>
     );
 }
