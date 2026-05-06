@@ -79,28 +79,78 @@ export async function recordBlogView(blogId: string): Promise<number> {
   }
 }
 
-export async function likeBlog(blogId: string, action: 'like' | 'unlike' = 'like'): Promise<number> {
+export type LikeBlogResult = { count: number; liked: boolean };
+
+export async function likeBlogWithUser(
+  blogId: string,
+  userId: string,
+  action: 'like' | 'unlike' = 'like'
+): Promise<LikeBlogResult> {
+  const url = resolveApiUrl(`/api/blog/likes`);
+  const res = await fetch(url, {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({ blogId, userId, action }),
+  });
+  if (!res.ok) {
+    throw new Error('Failed to like blog');
+  }
+  const data = await res.json();
+  return {
+    count: Number(data?.count ?? 0),
+    liked: Boolean(data?.liked),
+  };
+}
+
+// Legacy entry point used by hand-coded blog client files. Auto-fetches the
+// per-browser client id and returns only the count to preserve the original
+// signature.
+export async function likeBlog(
+  blogId: string,
+  action: 'like' | 'unlike' = 'like'
+): Promise<number> {
+  const { getOrCreateClientId } = await import('./clientId');
+  const userId = getOrCreateClientId();
+  if (!userId) throw new Error('Cannot generate client id');
+  const result = await likeBlogWithUser(blogId, userId, action);
+  return result.count;
+}
+
+export async function getBlogLikeStateForUser(
+  blogId: string,
+  userId: string
+): Promise<{ count: number; liked: boolean }> {
   try {
-    const url = resolveApiUrl(`/api/blog/likes`);
-    console.log(`BlogApi: ${action} for ${blogId} via ${url}`);
-    
-    const res = await fetch(url, {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ blogId, action }),
-    });
-    
-    if (!res.ok) {
-      console.error(`BlogApi: Failed to ${action} for ${blogId}:`, res.status, res.statusText);
-      throw new Error('Failed to like blog');
-    }
-    
+    const url = resolveApiUrl(
+      `/api/blog/likes?blogId=${encodeURIComponent(blogId)}&userId=${encodeURIComponent(userId)}`
+    );
+    const res = await fetch(url, { cache: 'no-store' });
+    if (!res.ok) return { count: 0, liked: false };
     const data = await res.json();
-    console.log(`BlogApi: ${action} result for ${blogId}:`, data);
-    return Number(data?.count ?? 0);
-  } catch (error) {
-    console.error(`BlogApi: Error ${action} for ${blogId}:`, error);
-    throw error;
+    return {
+      count: Number(data?.count ?? 0),
+      liked: Boolean(data?.liked),
+    };
+  } catch {
+    return { count: 0, liked: false };
+  }
+}
+
+export async function getMyLikedBlogs(
+  userId: string,
+  slugs: string[]
+): Promise<Record<string, boolean>> {
+  if (slugs.length === 0) return {};
+  try {
+    const url = resolveApiUrl(
+      `/api/blog/likes/me?userId=${encodeURIComponent(userId)}&slugs=${encodeURIComponent(slugs.join(','))}`
+    );
+    const res = await fetch(url, { cache: 'no-store' });
+    if (!res.ok) return {};
+    const data = await res.json();
+    return (data?.liked ?? {}) as Record<string, boolean>;
+  } catch {
+    return {};
   }
 }
 

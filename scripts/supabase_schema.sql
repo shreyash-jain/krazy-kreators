@@ -109,13 +109,21 @@ create policy if not exists blog_post_views_select_anon
   using (true);
 
 -- Blog interactions: likes per post and comments with likes on comments
+-- user_id is a stable per-browser UUID stored in localStorage; lets us scope
+-- each like to a specific visitor so unlike removes the right row and a
+-- visitor can only like once per post.
 create table if not exists public.blog_post_likes (
   id uuid primary key default gen_random_uuid(),
   created_at timestamptz not null default now(),
-  blog_id text not null
+  blog_id text not null,
+  user_id text
 );
 
 create index if not exists blog_post_likes_blog_id_idx on public.blog_post_likes (blog_id);
+create index if not exists blog_post_likes_user_id_idx on public.blog_post_likes (user_id);
+create unique index if not exists blog_post_likes_blog_user_unique
+  on public.blog_post_likes (blog_id, user_id)
+  where user_id is not null;
 
 alter table public.blog_post_likes enable row level security;
 create policy if not exists blog_post_likes_insert_anon
