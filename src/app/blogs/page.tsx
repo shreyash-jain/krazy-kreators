@@ -2,6 +2,7 @@ import BlogsClient from "./BlogsClient";
 import { getBlogLikeCount, getBlogViewCount } from "@/lib/blogApi";
 import { blogPosts, BlogPostMeta } from "@/data/blogPosts";
 import { getSupabaseClient } from "@/lib/supabaseClient";
+import { headers } from "next/headers";
 
 export const metadata = {
   title: "Blogs | Krazy Kreators",
@@ -139,9 +140,14 @@ export default async function BlogsPage() {
 
   console.log(`Total posts to display: ${allPosts.length} (${dbBlogs.length} from DB, ${blogPosts.length} static)`);
 
+  const headersList = await headers();
+  const host = headersList.get('host') || `localhost:${process.env.PORT ?? 3000}`;
+  const protocol = headersList.get('x-forwarded-proto') || (host.startsWith('localhost') ? 'http' : 'https');
+  const baseUrl = `${protocol}://${host}`;
+
   const [likeEntries, viewEntries] = await Promise.all([
-    Promise.all(allPosts.map(async (post) => [post.slug, await getBlogLikeCount(post.slug)] as const)),
-    Promise.all(allPosts.map(async (post) => [post.slug, await getBlogViewCount(post.slug)] as const)),
+    Promise.all(allPosts.map(async (post) => [post.slug, await getBlogLikeCount(post.slug, { baseUrl })] as const)),
+    Promise.all(allPosts.map(async (post) => [post.slug, await getBlogViewCount(post.slug, { baseUrl })] as const)),
   ]);
   const initialLikeCounts: Record<string, number> = {};
   for (const [slug, count] of likeEntries) initialLikeCounts[slug] = count;
