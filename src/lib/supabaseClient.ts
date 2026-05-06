@@ -42,12 +42,14 @@ export type BlogCommentLikeInsert = {
 export type BlogPostLikeRow = {
   id: string;
   blog_id: string;
+  user_id: string | null;
   created_at: string;
 };
 
 export type BlogPostLikeInsert = {
   id?: string;
   blog_id: string;
+  user_id?: string | null;
   created_at?: string;
 };
 
