@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { Button } from "@/components/ui/button";
 import { ArrowRight, ChevronLeft, ChevronRight, Share2, Heart, Eye } from "lucide-react";
 import ContactDialog from "@/components/ContactDialog";
@@ -8,10 +8,11 @@ import Footer from "@/components/Footer";
 import Image from "next/image";
 import Link from "next/link";
 import { useToast } from "@/components/Toast";
-import { likeBlog } from "@/lib/blogApi";
+import { likeBlogWithUser, getMyLikedBlogs } from "@/lib/blogApi";
 import { BlogPostMeta } from "@/data/blogPosts";
-import { readBlogLikeSyncState } from "@/lib/blogLikeSync";
+import { readBlogLikeSyncState, recordBlogLikeUpdate } from "@/lib/blogLikeSync";
 import { readBlogViewSyncState } from "@/lib/blogViewSync";
+import { getOrCreateClientId } from "@/lib/clientId";
 
 type BlogsClientProps = {
   initialLikeCounts: Record<string, number>;
@@ -27,6 +28,8 @@ export default function BlogsClient({ initialLikeCounts, initialViewCounts, post
   const [sharedPosts, setSharedPosts] = useState<Set<string | number>>(new Set());
   const [likeCounts, setLikeCounts] = useState<Record<string, number>>(() => ({ ...initialLikeCounts }));
   const [viewCounts, setViewCounts] = useState<Record<string, number>>(() => ({ ...initialViewCounts }));
+  const [pendingLikes, setPendingLikes] = useState<Set<string>>(new Set());
+  const clientIdRef = useRef<string | null>(null);
   const postsPerPage = 6;
   const { showToast, ToastContainer } = useToast();
 
@@ -65,17 +68,52 @@ export default function BlogsClient({ initialLikeCounts, initialViewCounts, post
   const currentPosts = filteredPosts.slice(startIndex, endIndex);
 
   const handleLike = async (slug: string) => {
+    if (pendingLikes.has(slug)) return;
+    const userId = clientIdRef.current ?? getOrCreateClientId();
+    if (!userId) return;
+    clientIdRef.current = userId;
+
+    const wasLiked = likedPosts.has(slug);
+    const action = wasLiked ? 'unlike' : 'like';
+    const previousCount = likeCounts[slug] ?? 0;
+    const optimisticCount = Math.max(0, previousCount + (wasLiked ? -1 : 1));
+
+    setPendingLikes(prev => {
+      const next = new Set(prev);
+      next.add(slug);
+      return next;
+    });
+    setLikeCounts(prev => ({ ...prev, [slug]: optimisticCount }));
+    setLikedPosts(prev => {
+      const next = new Set(prev);
+      if (wasLiked) next.delete(slug); else next.add(slug);
+      return next;
+    });
+
     try {
-      const action = likedPosts.has(slug) ? 'unlike' : 'like';
-      const newCount = await likeBlog(slug, action);
-      setLikeCounts(prev => ({ ...prev, [slug]: newCount }));
+      const result = await likeBlogWithUser(slug, userId, action);
+      setLikeCounts(prev => ({ ...prev, [slug]: result.count }));
       setLikedPosts(prev => {
         const next = new Set(prev);
-        if (next.has(slug)) next.delete(slug); else next.add(slug);
+        if (result.liked) next.add(slug); else next.delete(slug);
         return next;
       });
+      recordBlogLikeUpdate(slug, result.count);
     } catch {
-      // Ignore like toggle errors to keep UI responsive
+      // Roll back optimistic update on failure
+      setLikeCounts(prev => ({ ...prev, [slug]: previousCount }));
+      setLikedPosts(prev => {
+        const next = new Set(prev);
+        if (wasLiked) next.add(slug); else next.delete(slug);
+        return next;
+      });
+      showToast('Could not update like. Please try again.', 'error');
+    } finally {
+      setPendingLikes(prev => {
+        const next = new Set(prev);
+        next.delete(slug);
+        return next;
+      });
     }
   };
 
@@ -151,11 +189,32 @@ export default function BlogsClient({ initialLikeCounts, initialViewCounts, post
 
     window.addEventListener('blog-like-updated', likeHandler as EventListener);
     window.addEventListener('blog-view-updated', viewHandler as EventListener);
+
+    const userId = getOrCreateClientId();
+    clientIdRef.current = userId;
+    if (userId) {
+      const allSlugs = posts.map(p => p.slug);
+      let cancelled = false;
+      getMyLikedBlogs(userId, allSlugs).then(map => {
+        if (cancelled) return;
+        const liked = new Set<string>();
+        for (const [slug, isLiked] of Object.entries(map)) {
+          if (isLiked) liked.add(slug);
+        }
+        setLikedPosts(liked);
+      });
+      return () => {
+        cancelled = true;
+        window.removeEventListener('blog-like-updated', likeHandler as EventListener);
+        window.removeEventListener('blog-view-updated', viewHandler as EventListener);
+      };
+    }
+
     return () => {
       window.removeEventListener('blog-like-updated', likeHandler as EventListener);
       window.removeEventListener('blog-view-updated', viewHandler as EventListener);
     };
-  }, []);
+  }, [posts]);
 
   return (
     <div className="min-h-screen bg-white">
@@ -197,9 +256,10 @@ export default function BlogsClient({ initialLikeCounts, initialViewCounts, post
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           {currentPosts.map((post) => {
-            const likeCount = (likeCounts[post.slug] ?? 0) + post.likes;
-            const viewCount = (viewCounts[post.slug] ?? 0) + post.readers;
+            const likeCount = likeCounts[post.slug] ?? 0;
+            const viewCount = viewCounts[post.slug] ?? 0;
             const isLiked = likedPosts.has(post.slug);
+            const isPending = pendingLikes.has(post.slug);
             return (
               <Link key={post.id} href={`/blogs/${post.slug}`} className="group">
                 <article className="bg-white rounded-2xl shadow-lg overflow-hidden hover:shadow-xl transition-all duration-300 group-hover:-translate-y-1">
@@ -247,7 +307,8 @@ export default function BlogsClient({ initialLikeCounts, initialViewCounts, post
                             e.stopPropagation();
                             handleLike(post.slug);
                           }}
-                          className={`flex items-center gap-2 px-3 py-1.5 rounded-full text-xs font-medium transition-all duration-300 ${isLiked
+                          disabled={isPending}
+                          className={`flex items-center gap-2 px-3 py-1.5 rounded-full text-xs font-medium transition-all duration-300 disabled:opacity-60 disabled:cursor-not-allowed ${isLiked
                             ? "bg-[#CBB49A]/10 text-[#CBB49A]"
                             : "bg-gray-100 text-gray-600 hover:bg-[#CBB49A]/10 hover:text-[#CBB49A]"
                             }`}

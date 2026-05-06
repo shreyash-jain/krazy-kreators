@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import { Button } from "@/components/ui/button";
 import { ArrowRight, MessageSquare, Share2, Heart, MessageCircle, Eye } from "lucide-react";
 import ContactDialog from "@/components/ContactDialog";
@@ -10,8 +10,9 @@ import Image from "next/image";
 import Link from "next/link";
 import { blogPosts } from "@/data/blogPosts";
 import { useToast } from "@/components/Toast";
-import { likeBlog, addComment, likeComment, getComments, type PublicComment } from "@/lib/blogApi";
+import { likeBlogWithUser, addComment, likeComment, getComments, getBlogLikeStateForUser, type PublicComment } from "@/lib/blogApi";
 import { recordBlogLikeUpdate } from "@/lib/blogLikeSync";
+import { getOrCreateClientId } from "@/lib/clientId";
 import BlogRenderer from "@/components/BlogRenderer";
 import BlogViewTracker from "@/components/BlogViewTracker";
 import { format } from "date-fns";
@@ -32,13 +33,16 @@ type BlogSlugClientProps = {
     blog: Blog;
     initialLikeCount: number;
     initialComments: PublicComment[];
+    relatedCounts?: Record<string, { likes: number; views: number }>;
 };
 
-export default function BlogSlugClient({ blog, initialLikeCount, initialComments }: BlogSlugClientProps) {
+export default function BlogSlugClient({ blog, initialLikeCount, initialComments, relatedCounts = {} }: BlogSlugClientProps) {
     const [contactOpen, setContactOpen] = useState(false);
     const [scrolled, setScrolled] = useState(false);
     const [isLiked, setIsLiked] = useState(false);
     const [likeCount, setLikeCount] = useState(initialLikeCount);
+    const [likePending, setLikePending] = useState(false);
+    const clientIdRef = useRef<string | null>(null);
     const [commentCount, setCommentCount] = useState(initialComments.length);
     const [comments, setComments] = useState<Array<{ id: string; name: string; email: string; comment: string; date: string; avatar: string; likes: number }>>(() =>
         (initialComments || []).map((c) => ({
@@ -77,6 +81,22 @@ export default function BlogSlugClient({ blog, initialLikeCount, initialComments
         return () => window.removeEventListener("scroll", onScroll);
     }, []);
 
+    useEffect(() => {
+        if (typeof window === "undefined") return;
+        const userId = getOrCreateClientId();
+        clientIdRef.current = userId;
+        if (!userId) return;
+        let cancelled = false;
+        getBlogLikeStateForUser(blog.slug, userId).then(({ count, liked }) => {
+            if (cancelled) return;
+            setIsLiked(liked);
+            setLikeCount(count);
+        });
+        return () => {
+            cancelled = true;
+        };
+    }, [blog.slug]);
+
     // Refetch comments on mount to ensure we have the latest data (including deletions)
     useEffect(() => {
         const fetchLatestComments = async () => {
@@ -103,14 +123,31 @@ export default function BlogSlugClient({ blog, initialLikeCount, initialComments
     }, [blog.slug]);
 
     const handleLike = async () => {
+        if (likePending) return;
+        const userId = clientIdRef.current ?? getOrCreateClientId();
+        if (!userId) return;
+        clientIdRef.current = userId;
+
+        const wasLiked = isLiked;
+        const previousCount = likeCount;
+        const action = wasLiked ? 'unlike' : 'like';
+        const optimisticCount = Math.max(0, previousCount + (wasLiked ? -1 : 1));
+
+        setLikePending(true);
+        setIsLiked(!wasLiked);
+        setLikeCount(optimisticCount);
+
         try {
-            const action = isLiked ? 'unlike' : 'like';
-            const newCount = await likeBlog(blog.slug, action);
-            recordBlogLikeUpdate(blog.slug, newCount);
-            setIsLiked(!isLiked);
-            setLikeCount(newCount);
+            const result = await likeBlogWithUser(blog.slug, userId, action);
+            setIsLiked(result.liked);
+            setLikeCount(result.count);
+            recordBlogLikeUpdate(blog.slug, result.count);
         } catch {
-            // Ignore like errors to keep UI stable
+            setIsLiked(wasLiked);
+            setLikeCount(previousCount);
+            showToast('Could not update like. Please try again.', 'error');
+        } finally {
+            setLikePending(false);
         }
     };
 
@@ -263,7 +300,7 @@ export default function BlogSlugClient({ blog, initialLikeCount, initialComments
                             <div className="mb-8 p-4 bg-[#F8F7F4] rounded-xl">
                                 <div className="hidden sm:flex items-center justify-between">
                                     <div className="flex items-center gap-6">
-                                        <button onClick={handleLike} className={`flex items-center gap-2 px-4 py-2 rounded-full text-sm font-medium transition-all duration-300 ${isLiked ? "bg-white text-gray-600 hover:bg-[#CBB49A] hover:text-white border border-gray-200" : "bg-white text-gray-600 hover:bg-[#CBB49A] hover:text-white border border-gray-200"}`}>
+                                        <button onClick={handleLike} disabled={likePending} className={`flex items-center gap-2 px-4 py-2 rounded-full text-sm font-medium transition-all duration-300 disabled:opacity-60 disabled:cursor-not-allowed ${isLiked ? "bg-white text-gray-600 hover:bg-[#CBB49A] hover:text-white border border-gray-200" : "bg-white text-gray-600 hover:bg-[#CBB49A] hover:text-white border border-gray-200"}`}>
                                             <Heart className={`w-4 h-4 ${isLiked ? "fill-[#CBB49A]" : ""}`} />
                                             {likeCount} {likeCount === 1 ? "Like" : "Likes"}
                                         </button>
@@ -281,7 +318,7 @@ export default function BlogSlugClient({ blog, initialLikeCount, initialComments
                                 {/* Mobile Interaction Bar */}
                                 <div className="flex flex-col gap-3 sm:hidden">
                                     <div className="flex items-center justify-between">
-                                        <button onClick={handleLike} className={`flex items-center gap-2 px-4 py-2 rounded-full text-sm font-medium transition-all duration-300 flex-1 mr-2 ${isLiked ? "bg-white text-gray-600 hover:bg-[#CBB49A] hover:text-white border border-gray-200" : "bg-white text-gray-600 hover:bg-[#CBB49A] hover:text-white border border-gray-200"}`}>
+                                        <button onClick={handleLike} disabled={likePending} className={`flex items-center gap-2 px-4 py-2 rounded-full text-sm font-medium transition-all duration-300 flex-1 mr-2 disabled:opacity-60 disabled:cursor-not-allowed ${isLiked ? "bg-white text-gray-600 hover:bg-[#CBB49A] hover:text-white border border-gray-200" : "bg-white text-gray-600 hover:bg-[#CBB49A] hover:text-white border border-gray-200"}`}>
                                             <Heart className={`w-4 h-4 ${isLiked ? "fill-[#CBB49A]" : ""}`} />
                                             {likeCount} {likeCount === 1 ? "Like" : "Likes"}
                                         </button>
@@ -537,8 +574,8 @@ export default function BlogSlugClient({ blog, initialLikeCount, initialComments
                                         </div>
                                         <div className="flex items-center justify-between">
                                             <div className="flex items-center gap-4 text-sm text-[#666666]">
-                                                <div className="flex items-center gap-1"><Eye className="w-4 h-4" /><span>{post.readers.toLocaleString()}</span></div>
-                                                <div className="flex items-center gap-1"><Heart className="w-4 h-4" /><span>{post.likes}</span></div>
+                                                <div className="flex items-center gap-1"><Eye className="w-4 h-4" /><span>{(relatedCounts[post.slug]?.views ?? 0).toLocaleString()}</span></div>
+                                                <div className="flex items-center gap-1"><Heart className="w-4 h-4" /><span>{relatedCounts[post.slug]?.likes ?? 0}</span></div>
                                             </div>
                                         </div>
                                     </div>
