@@ -1,5 +1,5 @@
 import { getSupabaseClient } from "@/lib/supabaseClient";
-import { getBlogLikeCount, getComments } from "@/lib/blogApi";
+import { getBlogLikeCount, getBlogViewCount, getComments } from "@/lib/blogApi";
 import { headers } from "next/headers";
 import BlogSlugClient from "./BlogSlugClient";
 import { blogPosts } from "@/data/blogPosts";
@@ -67,16 +67,34 @@ export default async function BlogBySlugPage({ params }: PageProps) {
     return <div className="p-6">Not found</div>;
   }
 
-  const [likeCount, comments] = await Promise.all([
+  const relatedSlugs = blogPosts
+    .filter((post) => post.slug !== slug)
+    .slice(0, 3)
+    .map((post) => post.slug);
+
+  const [likeCount, comments, relatedCountEntries] = await Promise.all([
     getBlogLikeCount(slug, { baseUrl }),
     getComments(slug, { baseUrl }),
+    Promise.all(
+      relatedSlugs.map(async (s) => {
+        const [likes, views] = await Promise.all([
+          getBlogLikeCount(s, { baseUrl }),
+          getBlogViewCount(s, { baseUrl }),
+        ]);
+        return [s, { likes, views }] as const;
+      })
+    ),
   ]);
+
+  const relatedCounts: Record<string, { likes: number; views: number }> = {};
+  for (const [s, counts] of relatedCountEntries) relatedCounts[s] = counts;
 
   return (
     <BlogSlugClient
       blog={blog}
       initialLikeCount={likeCount}
       initialComments={comments}
+      relatedCounts={relatedCounts}
     />
   );
 }
