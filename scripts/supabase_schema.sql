@@ -136,6 +136,15 @@ create policy if not exists blog_post_likes_select_anon
   for select
   to anon
   using (true);
+-- Required for unlike: without this, .delete() is silently blocked by RLS
+-- and the visitor's row stays in place, so counts never drop.
+-- (CREATE POLICY has no IF NOT EXISTS on Postgres < 17, so drop-then-create.)
+drop policy if exists blog_post_likes_delete_anon on public.blog_post_likes;
+create policy blog_post_likes_delete_anon
+  on public.blog_post_likes
+  for delete
+  to anon
+  using (true);
 
 create table if not exists public.blog_comments (
   id uuid primary key default gen_random_uuid(),
