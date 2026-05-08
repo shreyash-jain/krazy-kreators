@@ -15,6 +15,19 @@ export type BlogPostMeta = {
 
 export const blogPosts: BlogPostMeta[] = [
   {
+    id: 31,
+    title: "Why US Fashion Brands Are Moving Away From China in 2026 (And What That Means for Your Manufacturing Decision)",
+    excerpt: "US tariffs on Chinese apparel imports have reshaped sourcing in 2026. Here is what it costs to stay with China-based factories, why India is the leading alternative US founders are searching for, and how to plan the transition without losing margin.",
+    category: "business",
+    author: "Krazy Kreators Team",
+    date: "May 9, 2026",
+    readTime: "9 min read",
+    image: "/blog/apparel_sourcing_hero.png",
+    slug: "us-fashion-brands-moving-from-china-2026",
+    readers: 0,
+    likes: 0,
+  },
+  {
     id: 30,
     title: "Wrong Samples. Defective Bulk Orders. No One to Call. The Real Cost of Choosing the Wrong Clothing Manufacturer.",
     excerpt: "Quantifies the real costs of working with a bad manufacturer: wrong samples wasting time and money, no dedicated contact creating confusion, defective bulk orders arriving after full payment, and hidden charges appearing after commitment.",
