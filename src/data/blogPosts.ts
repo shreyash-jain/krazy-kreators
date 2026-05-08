@@ -22,7 +22,7 @@ export const blogPosts: BlogPostMeta[] = [
     author: "Krazy Kreators Team",
     date: "May 9, 2026",
     readTime: "9 min read",
-    image: "/blog/apparel_sourcing_hero.png",
+    image: "/blog/apparel_sourcing_hero.jpg",
     slug: "us-fashion-brands-moving-from-china-2026",
     readers: 0,
     likes: 0,

@@ -137,7 +137,7 @@ export default function UsFashionBrandsClient({ initialLikeCount, initialComment
             {/* Hero Section */}
             <section className="relative h-[60vh] min-h-[600px] flex items-center justify-center overflow-hidden">
                 <Image
-                    src="/blog/apparel_sourcing_hero.png"
+                    src="/blog/apparel_sourcing_hero.jpg"
                     alt="US Fashion Brands Moving Manufacturing Away from China in 2026"
                     fill
                     className="object-cover"
@@ -248,7 +248,7 @@ export default function UsFashionBrandsClient({ initialLikeCount, initialComment
                                     </div>
                                     <div className="rounded-2xl overflow-hidden shadow-2xl border border-gray-100 relative h-80 lg:h-full min-h-[400px]">
                                         <Image
-                                            src="/blog/indian_apparel_facility.png"
+                                            src="/blog/indian_apparel_facility.jpg"
                                             alt="Modern Indian apparel manufacturing facility in 2026"
                                             fill
                                             className="object-cover transform hover:scale-105 transition-transform duration-700"
