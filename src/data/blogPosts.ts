@@ -15,6 +15,19 @@ export type BlogPostMeta = {
 
 export const blogPosts: BlogPostMeta[] = [
   {
+    id: 32,
+    title: "What the EU Digital Product Passport Means for Your Clothing Brand Right Now (And How to Prepare Before 2027)",
+    excerpt: "The EU Digital Product Passport mandates full textile traceability from 2027 and most founders have never heard of it. Here is what it is, who it affects, what to collect from your manufacturer right now, and how documented production protects your brand before EU retailers start asking.",
+    category: "compliance",
+    author: "Krazy Kreators Team",
+    date: "May 12, 2026",
+    readTime: "9 min read",
+    image: "/blog/eu_sustainability_banner.png",
+    slug: "eu-digital-product-passport-fashion-brands-2026",
+    readers: 0,
+    likes: 0,
+  },
+  {
     id: 31,
     title: "Why US Fashion Brands Are Moving Away From China in 2026 (And What That Means for Your Manufacturing Decision)",
     excerpt: "US tariffs on Chinese apparel imports have reshaped sourcing in 2026. Here is what it costs to stay with China-based factories, why India is the leading alternative US founders are searching for, and how to plan the transition without losing margin.",
