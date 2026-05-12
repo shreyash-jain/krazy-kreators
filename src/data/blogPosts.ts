@@ -22,7 +22,7 @@ export const blogPosts: BlogPostMeta[] = [
     author: "Krazy Kreators Team",
     date: "May 12, 2026",
     readTime: "9 min read",
-    image: "/blog/eu_sustainability_banner.png",
+    image: "https://res.cloudinary.com/dn9snfizy/image/upload/v1778579659/blog/eu_dpp_hero.jpg",
     slug: "eu-digital-product-passport-fashion-brands-2026",
     readers: 0,
     likes: 0,

@@ -137,7 +137,7 @@ export default function EuDigitalProductPassportClient({ initialLikeCount, initi
             {/* Hero Section */}
             <section className="relative h-[60vh] min-h-[600px] flex items-center justify-center overflow-hidden">
                 <Image
-                    src="/blog/eu_sustainability_banner.png"
+                    src="https://res.cloudinary.com/dn9snfizy/image/upload/v1778579659/blog/eu_dpp_hero.jpg"
                     alt="EU Digital Product Passport compliance for fashion brands in 2026"
                     fill
                     className="object-cover"
@@ -251,7 +251,7 @@ export default function EuDigitalProductPassportClient({ initialLikeCount, initi
                                     </div>
                                     <div className="rounded-2xl overflow-hidden shadow-2xl border border-gray-100 relative h-80 lg:h-full min-h-[400px]">
                                         <Image
-                                            src="/blog/eu_sustainability_fabric.png"
+                                            src="https://res.cloudinary.com/dn9snfizy/image/upload/v1778579660/blog/eu_dpp_traceability.jpg"
                                             alt="Textile traceability and EU Digital Product Passport readiness"
                                             fill
                                             className="object-cover transform hover:scale-105 transition-transform duration-700"
@@ -336,6 +336,15 @@ export default function EuDigitalProductPassportClient({ initialLikeCount, initi
                                 <h2 className="text-4xl lg:text-5xl font-extrabold tracking-tight text-[#2D2A2E] mb-8 pb-4 border-b border-gray-200">What Happens to Brands That Cannot Provide Traceability Data</h2>
                                 <p className="text-xl text-[#666666] mb-12 font-medium">This is the part most articles leave vague. We will not.</p>
 
+                                <div className="rounded-2xl overflow-hidden shadow-2xl border border-gray-100 relative h-80 lg:h-[480px] mb-12">
+                                    <Image
+                                        src="https://res.cloudinary.com/dn9snfizy/image/upload/v1778579661/blog/eu_dpp_customs.jpg"
+                                        alt="Apparel shipment held at EU customs for missing Digital Product Passport documentation"
+                                        fill
+                                        className="object-cover"
+                                    />
+                                </div>
+
                                 <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
                                     <div className="bg-white p-10 rounded-3xl border border-gray-200 shadow-xl relative overflow-hidden">
                                         <div className="absolute top-0 right-0 w-24 h-24 bg-gradient-to-bl from-[#CBB49A]/20 to-transparent"></div>
@@ -383,6 +392,14 @@ export default function EuDigitalProductPassportClient({ initialLikeCount, initi
                                 <p className="text-xl leading-relaxed text-[#4A484A] mb-8 font-medium">
                                     We built our process around the idea that nothing leaves the factory without a paper trail. That habit predates DPP. It is how we have worked with EU buyers for years, and it is why our brands tend to walk into wholesale conversations with the documentation already in hand.
                                 </p>
+                                <div className="rounded-2xl overflow-hidden shadow-2xl border border-gray-100 relative h-80 lg:h-[480px] mb-10">
+                                    <Image
+                                        src="https://res.cloudinary.com/dn9snfizy/image/upload/v1778579663/blog/eu_dpp_production_record.jpg"
+                                        alt="Per-lot production record tablet showing structured traceability data inside an Indian apparel unit"
+                                        fill
+                                        className="object-cover"
+                                    />
+                                </div>
                                 <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-10">
                                     <div className="p-8 bg-[#F8F7F4] rounded-2xl">
                                         <h4 className="text-xl font-bold text-[#2D2A2E] mb-3">Tier-mapped supplier register</h4>
