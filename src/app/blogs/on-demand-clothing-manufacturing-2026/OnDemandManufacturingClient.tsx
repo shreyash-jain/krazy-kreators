@@ -137,7 +137,7 @@ export default function OnDemandManufacturingClient({ initialLikeCount, initialC
             {/* Hero Section */}
             <section className="relative h-[60vh] min-h-[600px] flex items-center justify-center overflow-hidden">
                 <Image
-                    src="/blog/on_demand_hero.png"
+                    src="https://res.cloudinary.com/dn9snfizy/image/upload/v1778650008/blog/on_demand_hero.jpg"
                     alt="On-demand clothing manufacturing for 2026 fashion brands"
                     fill
                     className="object-cover"
@@ -253,6 +253,15 @@ export default function OnDemandManufacturingClient({ initialLikeCount, initialC
                                 <h2 className="text-4xl lg:text-5xl font-extrabold tracking-tight text-[#2D2A2E] mb-8 pb-4 border-b border-gray-200">The Real Cost of Unsold Inventory</h2>
                                 <p className="text-xl text-[#666666] mb-12 font-medium">Most founders calculate inventory cost wrong. They look at cost of goods, multiply by units, and treat anything sold as profit. The math leaves out four numbers that quietly destroy small brands.</p>
 
+                                <div className="rounded-2xl overflow-hidden shadow-2xl border border-gray-100 relative h-80 lg:h-[480px] mb-12">
+                                    <Image
+                                        src="https://res.cloudinary.com/dn9snfizy/image/upload/v1778650009/blog/on_demand_unsold_inventory.jpg"
+                                        alt="Unsold apparel inventory stacked in warehouse storage representing the cost of bulk ordering"
+                                        fill
+                                        className="object-cover"
+                                    />
+                                </div>
+
                                 <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
                                     <div className="bg-white p-10 rounded-3xl border border-gray-200 shadow-xl relative overflow-hidden">
                                         <div className="absolute top-0 right-0 w-24 h-24 bg-gradient-to-bl from-[#CBB49A]/20 to-transparent"></div>
@@ -286,6 +295,14 @@ export default function OnDemandManufacturingClient({ initialLikeCount, initialC
                                 <p className="text-xl leading-relaxed text-[#4A484A] mb-10 font-medium">
                                     The model has a rhythm. Once you have it set up with the right manufacturing partner, a complete run from order to shipment looks like this.
                                 </p>
+                                <div className="rounded-2xl overflow-hidden shadow-2xl border border-gray-100 relative h-80 lg:h-[480px] mb-10">
+                                    <Image
+                                        src="https://res.cloudinary.com/dn9snfizy/image/upload/v1778650011/blog/on_demand_production_flow.jpg"
+                                        alt="On-demand production flow from tech pack to finished garment laid out on a workbench"
+                                        fill
+                                        className="object-cover"
+                                    />
+                                </div>
                                 <div className="space-y-6">
                                     <div className="flex gap-6 p-6 bg-[#F8F7F4] rounded-2xl">
                                         <div className="flex-shrink-0 w-12 h-12 bg-[#CBB49A] text-white rounded-full flex items-center justify-center font-bold text-lg">1</div>
@@ -365,6 +382,14 @@ export default function OnDemandManufacturingClient({ initialLikeCount, initialC
                                 <p className="text-xl leading-relaxed text-[#4A484A] mb-8 font-medium">
                                     Zero MOQ is what on-demand manufacturing looks like when it is built into the partner relationship from day one. No floor, no commitment to a minimum, no penalty for starting small. The whole point is to remove the gap between confirmed demand and shippable product.
                                 </p>
+                                <div className="rounded-2xl overflow-hidden shadow-2xl border border-gray-100 relative h-80 lg:h-[480px] mb-10">
+                                    <Image
+                                        src="https://res.cloudinary.com/dn9snfizy/image/upload/v1778650012/blog/on_demand_zero_moq.jpg"
+                                        alt="Artisan hands finishing a small batch of garments under the Zero MOQ on-demand model"
+                                        fill
+                                        className="object-cover"
+                                    />
+                                </div>
                                 <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-10">
                                     <div className="p-8 bg-[#F8F7F4] rounded-2xl">
                                         <h4 className="text-xl font-bold text-[#2D2A2E] mb-3">One sample, no minimum</h4>
