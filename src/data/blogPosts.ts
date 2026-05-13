@@ -22,7 +22,7 @@ export const blogPosts: BlogPostMeta[] = [
     author: "Krazy Kreators Team",
     date: "May 13, 2026",
     readTime: "8 min read",
-    image: "/blog/on_demand_hero.png",
+    image: "https://res.cloudinary.com/dn9snfizy/image/upload/v1778650008/blog/on_demand_hero.jpg",
     slug: "on-demand-clothing-manufacturing-2026",
     readers: 0,
     likes: 0,
