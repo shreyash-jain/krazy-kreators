@@ -15,6 +15,19 @@ export type BlogPostMeta = {
 
 export const blogPosts: BlogPostMeta[] = [
   {
+    id: 33,
+    title: "On-Demand Manufacturing in 2026: Why the Smartest Clothing Brands Are Producing Less and Selling More",
+    excerpt: "On-demand manufacturing is the dominant model for new clothing brands in 2026. Here is what it means at the production level, why bulk no longer works for startups, the real cost of unsold inventory, and how a Zero MOQ partner makes the model practical from your first run.",
+    category: "business",
+    author: "Krazy Kreators Team",
+    date: "May 13, 2026",
+    readTime: "8 min read",
+    image: "/blog/on_demand_hero.png",
+    slug: "on-demand-clothing-manufacturing-2026",
+    readers: 0,
+    likes: 0,
+  },
+  {
     id: 32,
     title: "What the EU Digital Product Passport Means for Your Clothing Brand Right Now (And How to Prepare Before 2027)",
     excerpt: "The EU Digital Product Passport mandates full textile traceability from 2027 and most founders have never heard of it. Here is what it is, who it affects, what to collect from your manufacturer right now, and how documented production protects your brand before EU retailers start asking.",
