@@ -29,10 +29,10 @@ cloudinary.config({
 const PUBLIC_DIR = join(process.cwd(), "public");
 
 const images = [
-    { file: "blog/met_gala_real_hero.webp", publicId: "blog/met_gala_real_hero" },
-    { file: "blog/met_gala_real_hours.webp", publicId: "blog/met_gala_real_hours" },
-    { file: "blog/met_gala_real_techniques.webp", publicId: "blog/met_gala_real_techniques" },
-    { file: "blog/met_gala_real_moves.webp", publicId: "blog/met_gala_real_moves" },
+    { file: "blog/met_gala_real_hero.jpg", publicId: "blog/met_gala_real_hero" },
+    { file: "blog/met_gala_real_hours.jpg", publicId: "blog/met_gala_real_hours" },
+    { file: "blog/met_gala_real_techniques.jpg", publicId: "blog/met_gala_real_techniques" },
+    { file: "blog/met_gala_real_moves.jpg", publicId: "blog/met_gala_real_moves" },
 ];
 
 async function uploadOne({ file, publicId }) {
