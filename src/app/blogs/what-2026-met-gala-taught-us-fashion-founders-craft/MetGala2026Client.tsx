@@ -138,7 +138,7 @@ export default function MetGala2026Client({ initialLikeCount, initialComments }:
             {/* Hero Section */}
             <section className="relative h-[60vh] min-h-[600px] flex items-center justify-center overflow-hidden">
                 <Image
-                    src="/blog/met_gala_craft_hero.png"
+                    src="https://res.cloudinary.com/dn9snfizy/image/upload/v1779091040/blog/met_gala_craft_hero.jpg"
                     alt="Hand embroidery in progress on premium fabric — the craft moat for US fashion brands in 2026"
                     fill
                     className="object-cover"
@@ -221,6 +221,14 @@ export default function MetGala2026Client({ initialLikeCount, initialComments }:
                             {/* Section 1: The craft hours */}
                             <div className="mt-16 mb-20">
                                 <h2 className="text-4xl lg:text-5xl font-extrabold tracking-tight text-[#2D2A2E] mb-10 pb-4 border-b border-gray-200">The Craft Hours That Defined the Night</h2>
+                                <div className="rounded-2xl overflow-hidden shadow-2xl border border-gray-100 relative h-80 lg:h-[480px] mb-10">
+                                    <Image
+                                        src="https://res.cloudinary.com/dn9snfizy/image/upload/v1779091041/blog/met_gala_craft_hours.jpg"
+                                        alt="Hand-finished panel with hand-rolled hems, bone needle, and thread spool representing the accumulated hours of craft"
+                                        fill
+                                        className="object-cover"
+                                    />
+                                </div>
                                 <p className="text-xl leading-relaxed text-[#4A484A] mb-8 font-medium">
                                     Pay attention to the numbers that got repeated in every recap.
                                 </p>
@@ -288,6 +296,14 @@ export default function MetGala2026Client({ initialLikeCount, initialComments }:
                             {/* Section 4: What craft means */}
                             <div className="mt-20 mb-20">
                                 <h2 className="text-4xl lg:text-5xl font-extrabold tracking-tight text-[#2D2A2E] mb-10 pb-4 border-b border-gray-200">What &quot;Craft&quot; Actually Means in 2026</h2>
+                                <div className="rounded-2xl overflow-hidden shadow-2xl border border-gray-100 relative h-80 lg:h-[480px] mb-10">
+                                    <Image
+                                        src="https://res.cloudinary.com/dn9snfizy/image/upload/v1779091042/blog/met_gala_craft_techniques.jpg"
+                                        alt="French seams, hand embroidery, premium selvedge fabric, and hand-bound buttonholes — the four components of craft in 2026"
+                                        fill
+                                        className="object-cover"
+                                    />
+                                </div>
                                 <p className="text-xl leading-relaxed text-[#4A484A] mb-8 font-medium">
                                     Strip the aesthetic out of the word and craft, in product terms, is four things.
                                 </p>
@@ -334,6 +350,15 @@ export default function MetGala2026Client({ initialLikeCount, initialComments }:
                             <div className="mt-20 mb-20">
                                 <h2 className="text-4xl lg:text-5xl font-extrabold tracking-tight text-[#2D2A2E] mb-8 pb-4 border-b border-gray-200">Three Moves to Make Inside the Next Ninety Days</h2>
                                 <p className="text-xl text-[#666666] mb-10 font-medium">Treat craft as a product decision, not a marketing decision.</p>
+
+                                <div className="rounded-2xl overflow-hidden shadow-2xl border border-gray-100 relative h-80 lg:h-[480px] mb-10">
+                                    <Image
+                                        src="https://res.cloudinary.com/dn9snfizy/image/upload/v1779091043/blog/met_gala_craft_moves.jpg"
+                                        alt="Garment audit on an atelier bench with folded seam, inner care label, and product story card"
+                                        fill
+                                        className="object-cover"
+                                    />
+                                </div>
 
                                 <div className="bg-[#2D2A2E] p-10 rounded-3xl shadow-2xl relative overflow-hidden">
                                     <div className="absolute top-0 right-0 w-32 h-32 bg-[#CBB49A] opacity-10 rounded-bl-full"></div>
