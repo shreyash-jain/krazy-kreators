@@ -22,7 +22,7 @@ export const blogPosts: BlogPostMeta[] = [
     author: "Krazy Kreators Team",
     date: "May 14, 2026",
     readTime: "9 min read",
-    image: "/blog/met_gala_craft_hero.png",
+    image: "https://res.cloudinary.com/dn9snfizy/image/upload/v1779091040/blog/met_gala_craft_hero.jpg",
     slug: "what-2026-met-gala-taught-us-fashion-founders-craft",
     readers: 0,
     likes: 0,
