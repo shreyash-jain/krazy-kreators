@@ -138,8 +138,8 @@ export default function MetGala2026Client({ initialLikeCount, initialComments }:
             {/* Hero Section */}
             <section className="relative h-[60vh] min-h-[600px] flex items-center justify-center overflow-hidden">
                 <Image
-                    src="https://res.cloudinary.com/dn9snfizy/image/upload/v1779091813/blog/met_gala_craft_hero.jpg"
-                    alt="Hand embroidery in progress on premium fabric — the craft moat for US fashion brands in 2026"
+                    src="https://res.cloudinary.com/dn9snfizy/image/upload/v1779099680/blog/met_gala_real_hero.webp"
+                    alt="A 2026 Met Gala arrival — beaded gown, hand-built bodice, and a sweeping feather train captured on the red carpet"
                     fill
                     className="object-cover"
                     style={{
@@ -223,8 +223,8 @@ export default function MetGala2026Client({ initialLikeCount, initialComments }:
                                 <h2 className="text-4xl lg:text-5xl font-extrabold tracking-tight text-[#2D2A2E] mb-10 pb-4 border-b border-gray-200">The Craft Hours That Defined the Night</h2>
                                 <div className="rounded-2xl overflow-hidden shadow-2xl border border-gray-100 relative h-80 lg:h-[480px] mb-10">
                                     <Image
-                                        src="https://res.cloudinary.com/dn9snfizy/image/upload/v1779091815/blog/met_gala_craft_hours.jpg"
-                                        alt="Hand-finished panel with hand-rolled hems, bone needle, and thread spool representing the accumulated hours of craft"
+                                        src="https://res.cloudinary.com/dn9snfizy/image/upload/v1779099682/blog/met_gala_real_hours.webp"
+                                        alt="A sculptural Met Gala 2026 gown with three-dimensional ring construction — the kind of build that takes hundreds of atelier hours"
                                         fill
                                         className="object-cover"
                                     />
@@ -298,8 +298,8 @@ export default function MetGala2026Client({ initialLikeCount, initialComments }:
                                 <h2 className="text-4xl lg:text-5xl font-extrabold tracking-tight text-[#2D2A2E] mb-10 pb-4 border-b border-gray-200">What &quot;Craft&quot; Actually Means in 2026</h2>
                                 <div className="rounded-2xl overflow-hidden shadow-2xl border border-gray-100 relative h-80 lg:h-[480px] mb-10">
                                     <Image
-                                        src="https://res.cloudinary.com/dn9snfizy/image/upload/v1779091816/blog/met_gala_craft_techniques.jpg"
-                                        alt="French seams, hand embroidery, premium selvedge fabric, and hand-bound buttonholes — the four components of craft in 2026"
+                                        src="https://res.cloudinary.com/dn9snfizy/image/upload/v1779099683/blog/met_gala_real_techniques.webp"
+                                        alt="A heavily embroidered figural coat from the 2026 Met Gala — surface detail, embroidery, and premium fabric working together as craft"
                                         fill
                                         className="object-cover"
                                     />
@@ -353,8 +353,8 @@ export default function MetGala2026Client({ initialLikeCount, initialComments }:
 
                                 <div className="rounded-2xl overflow-hidden shadow-2xl border border-gray-100 relative h-80 lg:h-[480px] mb-10">
                                     <Image
-                                        src="https://res.cloudinary.com/dn9snfizy/image/upload/v1779091817/blog/met_gala_craft_moves.jpg"
-                                        alt="Garment audit on an atelier bench with folded seam, inner care label, and product story card"
+                                        src="https://res.cloudinary.com/dn9snfizy/image/upload/v1779099684/blog/met_gala_real_moves.webp"
+                                        alt="A 2026 Met Gala arrival approach — the moment before the decision is visible"
                                         fill
                                         className="object-cover"
                                     />
