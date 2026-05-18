@@ -15,6 +15,19 @@ export type BlogPostMeta = {
 
 export const blogPosts: BlogPostMeta[] = [
   {
+    id: 34,
+    title: "What the 2026 Met Gala Taught US Fashion Founders About Craft",
+    excerpt: "The 2026 Met Gala raised a record $42 million celebrating fashion as craft and art. For US clothing founders, this is not a museum moment. It is a market signal. Here is what the craft-as-moat shift means for product strategy, consumer expectations, and the three moves to make in the next ninety days.",
+    category: "strategy",
+    author: "Krazy Kreators Team",
+    date: "May 14, 2026",
+    readTime: "9 min read",
+    image: "https://res.cloudinary.com/dn9snfizy/image/upload/v1779100822/blog/met_gala_real_hero.jpg",
+    slug: "what-2026-met-gala-taught-us-fashion-founders-craft",
+    readers: 0,
+    likes: 0,
+  },
+  {
     id: 33,
     title: "On-Demand Manufacturing in 2026: Why the Smartest Clothing Brands Are Producing Less and Selling More",
     excerpt: "On-demand manufacturing is the dominant model for new clothing brands in 2026. Here is what it means at the production level, why bulk no longer works for startups, the real cost of unsold inventory, and how a Zero MOQ partner makes the model practical from your first run.",
