@@ -15,6 +15,19 @@ export type BlogPostMeta = {
 
 export const blogPosts: BlogPostMeta[] = [
   {
+    id: 35,
+    title: "Why Hailey Bieber's $1B Rhode Sale Matters for Every US Brand Founder",
+    excerpt: "Rhode sold to e.l.f. for $1 billion with two-thirds fewer SKUs than the average DTC beauty brand. For US clothing founders, the lesson is not celebrity. It is product discipline. Here is what acquirers actually paid for and the three moves to steal for your own line.",
+    category: "strategy",
+    author: "Krazy Kreators Team",
+    date: "May 21, 2026",
+    readTime: "8 min read",
+    image: "https://res.cloudinary.com/dn9snfizy/image/upload/v1779364529/blog/rhode_lesson_hero.jpg",
+    slug: "hailey-bieber-rhode-1-billion-lesson-us-brand-founders",
+    readers: 0,
+    likes: 0,
+  },
+  {
     id: 34,
     title: "What the 2026 Met Gala Taught US Fashion Founders About Craft",
     excerpt: "The 2026 Met Gala raised a record $42 million celebrating fashion as craft and art. For US clothing founders, this is not a museum moment. It is a market signal. Here is what the craft-as-moat shift means for product strategy, consumer expectations, and the three moves to make in the next ninety days.",
