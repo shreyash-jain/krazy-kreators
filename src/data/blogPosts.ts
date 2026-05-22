@@ -15,6 +15,19 @@ export type BlogPostMeta = {
 
 export const blogPosts: BlogPostMeta[] = [
   {
+    id: 36,
+    title: "The 'Made in India' Trend Reshaping American Luxury in 2026",
+    excerpt: "Prada is launching a Kolhapuri collection. Harry Styles is wearing Harago. Sabyasachi is opening more flagship doors than any single luxury house this year. India's luxury fashion market is on track to hit $2.12 billion by 2028. For US clothing founders, 'Made in India' has shifted from cost-coded to craft-coded — here is how to position around the once-in-a-decade window.",
+    category: "strategy",
+    author: "Krazy Kreators Team",
+    date: "May 22, 2026",
+    readTime: "9 min read",
+    image: "https://res.cloudinary.com/dn9snfizy/image/upload/v1779440925/blog/made_in_india_hero.jpg",
+    slug: "made-in-india-american-luxury-2026",
+    readers: 0,
+    likes: 0,
+  },
+  {
     id: 35,
     title: "Why Hailey Bieber's $1B Rhode Sale Matters for Every US Brand Founder",
     excerpt: "Rhode sold to e.l.f. for $1 billion with two-thirds fewer SKUs than the average DTC beauty brand. For US clothing founders, the lesson is not celebrity. It is product discipline. Here is what acquirers actually paid for and the three moves to steal for your own line.",
