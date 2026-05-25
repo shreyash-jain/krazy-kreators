@@ -93,7 +93,10 @@ export default function QuietLuxuryClient({ initialLikeCount, initialComments }:
                 else newSet.add(commentId);
                 return newSet;
             });
-        } catch { }
+        } catch (error) {
+            console.error("Failed to update comment like", error);
+            showToast("Failed to update comment like", "error");
+        }
     };
 
     const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
