@@ -455,31 +455,51 @@ export default function QuietLuxuryClient({ initialLikeCount, initialComments }:
                                     <form onSubmit={handleSubmitComment} className="bg-white rounded-2xl p-6 shadow-sm border border-gray-100">
                                         <h4 className="text-lg font-semibold text-[#2D2A2E] mb-4">Leave a Comment</h4>
                                         <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
-                                            <input
-                                                type="text"
-                                                name="name"
-                                                value={newComment.name}
+                                            <div className="space-y-2">
+                                                <label htmlFor="comment-name" className="block text-sm font-medium text-[#2D2A2E]">
+                                                    Name
+                                                </label>
+                                                <input
+                                                    id="comment-name"
+                                                    type="text"
+                                                    name="name"
+                                                    value={newComment.name}
+                                                    onChange={handleInputChange}
+                                                    autoComplete="name"
+                                                    placeholder="Your Name"
+                                                    className="w-full px-4 py-3 rounded-lg bg-[#F8F7F4] border-none focus:ring-1 focus:ring-[#CBB49A] outline-none transition-all"
+                                                />
+                                            </div>
+                                            <div className="space-y-2">
+                                                <label htmlFor="comment-email" className="block text-sm font-medium text-[#2D2A2E]">
+                                                    Email
+                                                </label>
+                                                <input
+                                                    id="comment-email"
+                                                    type="email"
+                                                    name="email"
+                                                    value={newComment.email}
+                                                    onChange={handleInputChange}
+                                                    autoComplete="email"
+                                                    placeholder="Your Email"
+                                                    className="w-full px-4 py-3 rounded-lg bg-[#F8F7F4] border-none focus:ring-1 focus:ring-[#CBB49A] outline-none transition-all"
+                                                />
+                                            </div>
+                                        </div>
+                                        <div className="space-y-2 mb-4">
+                                            <label htmlFor="comment-message" className="block text-sm font-medium text-[#2D2A2E]">
+                                                Comment
+                                            </label>
+                                            <textarea
+                                                id="comment-message"
+                                                name="comment"
+                                                value={newComment.comment}
                                                 onChange={handleInputChange}
-                                                placeholder="Your Name"
-                                                className="w-full px-4 py-3 rounded-lg bg-[#F8F7F4] border-none focus:ring-1 focus:ring-[#CBB49A] outline-none transition-all"
-                                            />
-                                            <input
-                                                type="email"
-                                                name="email"
-                                                value={newComment.email}
-                                                onChange={handleInputChange}
-                                                placeholder="Your Email"
-                                                className="w-full px-4 py-3 rounded-lg bg-[#F8F7F4] border-none focus:ring-1 focus:ring-[#CBB49A] outline-none transition-all"
+                                                placeholder="Share your thoughts..."
+                                                rows={4}
+                                                className="w-full px-4 py-3 rounded-lg bg-[#F8F7F4] border-none focus:ring-1 focus:ring-[#CBB49A] outline-none transition-all resize-none"
                                             />
                                         </div>
-                                        <textarea
-                                            name="comment"
-                                            value={newComment.comment}
-                                            onChange={handleInputChange}
-                                            placeholder="Share your thoughts..."
-                                            rows={4}
-                                            className="w-full px-4 py-3 rounded-lg bg-[#F8F7F4] border-none focus:ring-1 focus:ring-[#CBB49A] outline-none transition-all mb-4 resize-none"
-                                        />
                                         <div className="flex items-center justify-between">
                                             {showSuccessMessage && (
                                                 <span className="text-green-600 text-sm font-medium animate-fade-in">
