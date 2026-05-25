@@ -15,6 +15,19 @@ export type BlogPostMeta = {
 
 export const blogPosts: BlogPostMeta[] = [
   {
+    id: 37,
+    title: "The Quiet Luxury Aesthetic Is Dead. What's Next for US Brands?",
+    excerpt: "Quiet luxury, clean girl, and old money are commodified by mid-2026 — Target collections, Shein dupes, and saturated algorithms have collapsed the category into sameness. Aesthetics die. Perspectives don't. Here is what's actually next for US fashion brands and how to rebuild positioning that outlasts the next cycle.",
+    category: "strategy",
+    author: "Krazy Kreators Team",
+    date: "May 22, 2026",
+    readTime: "8 min read",
+    image: "https://res.cloudinary.com/dn9snfizy/image/upload/v1779715991/blog/quiet_luxury_hero.jpg",
+    slug: "quiet-luxury-dead-whats-next-us-brands-2026",
+    readers: 0,
+    likes: 0,
+  },
+  {
     id: 36,
     title: "The 'Made in India' Trend Reshaping American Luxury in 2026",
     excerpt: "Prada is launching a Kolhapuri collection. Harry Styles is wearing Harago. Sabyasachi is opening more flagship doors than any single luxury house this year. India's luxury fashion market is on track to hit $2.12 billion by 2028. For US clothing founders, 'Made in India' has shifted from cost-coded to craft-coded — here is how to position around the once-in-a-decade window.",
