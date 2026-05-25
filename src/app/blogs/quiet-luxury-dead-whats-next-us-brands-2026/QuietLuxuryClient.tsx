@@ -56,13 +56,16 @@ export default function QuietLuxuryClient({ initialLikeCount, initialComments }:
     }, []);
 
     const handleLike = async () => {
+        const action = isLiked ? "unlike" : "like";
         try {
-            const action = isLiked ? "unlike" : "like";
             const newCount = await likeBlog(BLOG_ID, action);
             recordBlogLikeUpdate(BLOG_ID, newCount);
             setIsLiked(!isLiked);
             setLikeCount(newCount);
-        } catch { }
+        } catch (error) {
+            console.error(`Failed to ${action} blog ${BLOG_ID}`, error);
+            showToast("Failed to update like. Please try again.", "error");
+        }
     };
 
     const handleShare = async () => {
