@@ -394,7 +394,7 @@ export default function QuietLuxuryClient({ initialLikeCount, initialComments }:
                                 </p>
                                 <p className="text-lg text-[#666666] leading-relaxed">
                                     None of this means the brands currently sitting in the quiet luxury category are finished. It means the work for the next twelve months is to surface the perspective that the aesthetic was masking and re-cut the product around it. Craft, tech, drop — the lane is a choice. The lane is also urgent.{" "}
-                                    <Link href="/case-studies" className="text-[#CBB49A] underline underline-offset-4 hover:text-[#b7a078]">
+                                    <Link href="/case-studies/drover" className="text-[#CBB49A] underline underline-offset-4 hover:text-[#b7a078]">
                                         See how perspective-led brands move from aesthetic to anchor on a real product line.
                                     </Link>
                                 </p>
