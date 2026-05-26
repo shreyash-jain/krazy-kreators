@@ -15,6 +15,19 @@ export type BlogPostMeta = {
 
 export const blogPosts: BlogPostMeta[] = [
   {
+    id: 38,
+    title: "What US Founders Should Steal from the DONDA-Core Resurgence",
+    excerpt: "February 2026 marked the ten-year anniversary of The Life of Pablo. DONDA-era references are back across resale, runways, and US streetwear collabs. For US founders, the resurgence is not nostalgia — it is a blueprint. Cultural anchor, limited drop, product as artifact. Here is the playbook to steal before the next five years of streetwear get decided.",
+    category: "strategy",
+    author: "Krazy Kreators Team",
+    date: "May 23, 2026",
+    readTime: "8 min read",
+    image: "https://res.cloudinary.com/dn9snfizy/image/upload/v1779781812/blog/donda_core_hero.jpg",
+    slug: "donda-core-resurgence-us-founders-2026",
+    readers: 0,
+    likes: 0,
+  },
+  {
     id: 37,
     title: "The Quiet Luxury Aesthetic Is Dead. What's Next for US Brands?",
     excerpt: "Quiet luxury, clean girl, and old money are commodified by mid-2026 — Target collections, Shein dupes, and saturated algorithms have collapsed the category into sameness. Aesthetics die. Perspectives don't. Here is what's actually next for US fashion brands and how to rebuild positioning that outlasts the next cycle.",
