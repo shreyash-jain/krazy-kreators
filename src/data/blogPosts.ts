@@ -15,6 +15,19 @@ export type BlogPostMeta = {
 
 export const blogPosts: BlogPostMeta[] = [
   {
+    id: 39,
+    title: "Why 80–90% of US Clothing Brands Fail in 5 Years (and the 4 Operational Mistakes Behind It)",
+    excerpt: "Eighty to ninety percent of new US clothing brands fail by year five. The story most founders tell themselves is creative failure. The actual cause is four operational mistakes — wrong manufacturer, wrong MOQ math, wrong sampling cycle, wrong fabric sourcing — all made in the first 90 days, before a single garment ships. Here is the operational map of where US clothing brands actually die.",
+    category: "business",
+    author: "Krazy Kreators Team",
+    date: "May 26, 2026",
+    readTime: "9 min read",
+    image: "https://res.cloudinary.com/dprx4pret/image/upload/v1780041209/blog/five_year_fail_hero.jpg",
+    slug: "80-percent-us-clothing-brands-fail-5-years-operational-mistakes",
+    readers: 0,
+    likes: 0,
+  },
+  {
     id: 37,
     title: "The Quiet Luxury Aesthetic Is Dead. What's Next for US Brands?",
     excerpt: "Quiet luxury, clean girl, and old money are commodified by mid-2026 — Target collections, Shein dupes, and saturated algorithms have collapsed the category into sameness. Aesthetics die. Perspectives don't. Here is what's actually next for US fashion brands and how to rebuild positioning that outlasts the next cycle.",
