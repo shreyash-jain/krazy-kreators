@@ -23,10 +23,13 @@ export default async function PlusOneSourcingPage() {
         getComments("us-plus-one-sourcing-playbook-2026", { baseUrl }),
     ]);
 
+    const sanitizedComments = comments.map((c) => ({ ...c, email: "" }));
+
     return (
         <>
             <BlogViewTracker slug="us-plus-one-sourcing-playbook-2026" />
-            <PlusOneSourcingClient initialLikeCount={likeCount} initialComments={comments} />
+            <PlusOneSourcingClient initialLikeCount={likeCount} initialComments={sanitizedComments} />
         </>
+    );
     );
 }
