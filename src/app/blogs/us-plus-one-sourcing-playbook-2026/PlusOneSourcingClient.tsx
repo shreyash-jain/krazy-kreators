@@ -119,7 +119,7 @@ export default function PlusOneSourcingClient({ initialLikeCount, initialComment
             const newCommentData = {
                 id: created.id,
                 name: created.name,
-                email: created.email,
+                email: "",
                 comment: created.comment,
                 date: new Date(created.created_at).toLocaleString(),
                 avatar: (created.name || "?").charAt(0).toUpperCase(),
