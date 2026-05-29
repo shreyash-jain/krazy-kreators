@@ -144,7 +144,7 @@ export default function QuietLuxuryClient({ initialLikeCount, initialComments }:
             {/* Hero Section */}
             <section className="relative h-[60vh] min-h-[600px] flex items-center justify-center overflow-hidden">
                 <Image
-                    src="https://res.cloudinary.com/dn9snfizy/image/upload/v1779715991/blog/quiet_luxury_hero.jpg"
+                    src="https://res.cloudinary.com/dprx4pret/image/upload/v1780041192/blog/quiet_luxury_hero.jpg"
                     alt="Editorial diptych of a minimalist beige cashmere sweater on the left and a maximalist gold-embroidered ivory silk jacket on the right — the death of one aesthetic and the rise of the next"
                     fill
                     className="object-cover"
@@ -264,7 +264,7 @@ export default function QuietLuxuryClient({ initialLikeCount, initialComments }:
                                 <h2 className="text-4xl lg:text-5xl font-extrabold tracking-tight text-[#2D2A2E] mb-10 pb-4 border-b border-gray-200">What Dies. What Doesn&apos;t.</h2>
                                 <div className="rounded-2xl overflow-hidden shadow-2xl border border-gray-100 relative h-80 lg:h-[480px] mb-10">
                                     <Image
-                                        src="https://res.cloudinary.com/dn9snfizy/image/upload/v1779715996/blog/quiet_luxury_commodified.jpg"
+                                        src="https://res.cloudinary.com/dprx4pret/image/upload/v1780041195/blog/quiet_luxury_commodified.jpg"
                                         alt="Overhead flat-lay of seven near-identical beige and oatmeal minimalist sweaters folded in a stack — the visual of total category commoditization"
                                         fill
                                         className="object-cover"
@@ -289,7 +289,7 @@ export default function QuietLuxuryClient({ initialLikeCount, initialComments }:
                                 <h2 className="text-4xl lg:text-5xl font-extrabold tracking-tight text-[#2D2A2E] mb-10 pb-4 border-b border-gray-200">What Is Actually Next</h2>
                                 <div className="rounded-2xl overflow-hidden shadow-2xl border border-gray-100 relative h-80 lg:h-[480px] mb-10">
                                     <Image
-                                        src="https://res.cloudinary.com/dn9snfizy/image/upload/v1779715999/blog/quiet_luxury_next.jpg"
+                                        src="https://res.cloudinary.com/dprx4pret/image/upload/v1780041198/blog/quiet_luxury_next.jpg"
                                         alt="A single technical charcoal nylon coat with a tonal embroidered crest and exposed-zipper system on a matte-black hanger — the perspective-driven hybrid that signals post-quiet-luxury positioning"
                                         fill
                                         className="object-cover"
@@ -339,7 +339,7 @@ export default function QuietLuxuryClient({ initialLikeCount, initialComments }:
 
                                 <div className="rounded-2xl overflow-hidden shadow-2xl border border-gray-100 relative h-80 lg:h-[480px] mb-10">
                                     <Image
-                                        src="https://res.cloudinary.com/dn9snfizy/image/upload/v1779716006/blog/quiet_luxury_perspective.jpg"
+                                        src="https://res.cloudinary.com/dprx4pret/image/upload/v1780041200/blog/quiet_luxury_perspective.jpg"
                                         alt="A designer's working table with overlapping fabric swatches, a sketch on cream paper, and a leather-bound notebook — a brand's perspective being built before the aesthetic resolves"
                                         fill
                                         className="object-cover"

@@ -138,7 +138,7 @@ export default function DondaCoreClient({ initialLikeCount, initialComments }: B
             {/* Hero Section */}
             <section className="relative h-[60vh] min-h-[600px] flex items-center justify-center overflow-hidden">
                 <Image
-                    src="https://res.cloudinary.com/dn9snfizy/image/upload/v1779781812/blog/donda_core_hero.jpg"
+                    src="https://res.cloudinary.com/dprx4pret/image/upload/v1780041202/blog/donda_core_hero.jpg"
                     alt="Macro close-up of a heavyweight cotton streetwear hoodie — visible rib-knit cuff, dense brushed-fleece interior, reinforced hem stitching — the construction layer underneath a culturally-anchored drop"
                     fill
                     className="object-cover"
@@ -258,7 +258,7 @@ export default function DondaCoreClient({ initialLikeCount, initialComments }: B
                                 <h2 className="text-4xl lg:text-5xl font-extrabold tracking-tight text-[#2D2A2E] mb-10 pb-4 border-b border-gray-200">The Data Behind It</h2>
                                 <div className="rounded-2xl overflow-hidden shadow-2xl border border-gray-100 relative h-80 lg:h-[480px] mb-10">
                                     <Image
-                                        src="https://res.cloudinary.com/dn9snfizy/image/upload/v1779781813/blog/donda_core_scarcity.jpg"
+                                        src="https://res.cloudinary.com/dprx4pret/image/upload/v1780041204/blog/donda_core_scarcity.jpg"
                                         alt="A single streetwear garment displayed alone on a sparse industrial rack against a concrete wall — scarcity by design, not by stockout"
                                         fill
                                         className="object-cover"
@@ -292,7 +292,7 @@ export default function DondaCoreClient({ initialLikeCount, initialComments }: B
 
                                 <div className="rounded-2xl overflow-hidden shadow-2xl border border-gray-100 relative h-80 lg:h-[480px] mb-10">
                                     <Image
-                                        src="https://res.cloudinary.com/dn9snfizy/image/upload/v1779781814/blog/donda_core_artifact.jpg"
+                                        src="https://res.cloudinary.com/dprx4pret/image/upload/v1780041206/blog/donda_core_artifact.jpg"
                                         alt="A single folded streetwear piece presented on a dark museum-style platform with a small inscribed brass plate — product treated as an artifact, not a catalog item"
                                         fill
                                         className="object-cover"
@@ -339,7 +339,7 @@ export default function DondaCoreClient({ initialLikeCount, initialComments }: B
                                 <h2 className="text-4xl lg:text-5xl font-extrabold tracking-tight text-[#2D2A2E] mb-10 pb-4 border-b border-gray-200">Why the Drop Model Is a Manufacturing Decision</h2>
                                 <div className="rounded-2xl overflow-hidden shadow-2xl border border-gray-100 relative h-80 lg:h-[480px] mb-10">
                                     <Image
-                                        src="https://res.cloudinary.com/dn9snfizy/image/upload/v1779781815/blog/donda_core_batch.jpg"
+                                        src="https://res.cloudinary.com/dprx4pret/image/upload/v1780041207/blog/donda_core_batch.jpg"
                                         alt="A small batch of identical streetwear garments in an atelier — controlled run, full construction quality, the manufacturing reality behind a drop-based brand"
                                         fill
                                         className="object-cover"

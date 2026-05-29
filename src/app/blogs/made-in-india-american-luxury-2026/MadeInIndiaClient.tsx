@@ -138,7 +138,7 @@ export default function MadeInIndiaClient({ initialLikeCount, initialComments }:
             {/* Hero Section */}
             <section className="relative h-[60vh] min-h-[600px] flex items-center justify-center overflow-hidden">
                 <Image
-                    src="https://res.cloudinary.com/dn9snfizy/image/upload/v1779440925/blog/made_in_india_hero.jpg"
+                    src="https://res.cloudinary.com/dprx4pret/image/upload/v1780041179/blog/made_in_india_hero.jpg"
                     alt="Macro photograph of artisan hands working hand embroidery in fine gold zari thread on cream silk — the unbranded capability that European luxury houses are now naming openly"
                     fill
                     className="object-cover"
@@ -243,7 +243,7 @@ export default function MadeInIndiaClient({ initialLikeCount, initialComments }:
                                 <h2 className="text-4xl lg:text-5xl font-extrabold tracking-tight text-[#2D2A2E] mb-10 pb-4 border-b border-gray-200">The Capability Map</h2>
                                 <div className="rounded-2xl overflow-hidden shadow-2xl border border-gray-100 relative h-80 lg:h-[480px] mb-10">
                                     <Image
-                                        src="https://res.cloudinary.com/dn9snfizy/image/upload/v1779440926/blog/made_in_india_capabilities.jpg"
+                                        src="https://res.cloudinary.com/dprx4pret/image/upload/v1780041183/blog/made_in_india_capabilities.jpg"
                                         alt="Editorial flat-lay of four Indian craft samples — zari embroidery, indigo block print, handwoven khadi, hand-burnished leather — laid out as a curated capability index"
                                         fill
                                         className="object-cover"
@@ -321,7 +321,7 @@ export default function MadeInIndiaClient({ initialLikeCount, initialComments }:
 
                                 <div className="rounded-2xl overflow-hidden shadow-2xl border border-gray-100 relative h-80 lg:h-[480px] mb-10">
                                     <Image
-                                        src="https://res.cloudinary.com/dn9snfizy/image/upload/v1779440927/blog/made_in_india_positioning.jpg"
+                                        src="https://res.cloudinary.com/dprx4pret/image/upload/v1780041186/blog/made_in_india_positioning.jpg"
                                         alt="A single premium cream silk garment on a wooden hanger with a visible hand-embroidered detail — the kind of finish that lets a US brand lead the product page with craft, not cost"
                                         fill
                                         className="object-cover"
@@ -361,7 +361,7 @@ export default function MadeInIndiaClient({ initialLikeCount, initialComments }:
                                 <h2 className="text-4xl lg:text-5xl font-extrabold tracking-tight text-[#2D2A2E] mb-10 pb-4 border-b border-gray-200">What NOT to Do</h2>
                                 <div className="rounded-2xl overflow-hidden shadow-2xl border border-gray-100 relative h-80 lg:h-[480px] mb-10">
                                     <Image
-                                        src="https://res.cloudinary.com/dn9snfizy/image/upload/v1779440928/blog/made_in_india_window.jpg"
+                                        src="https://res.cloudinary.com/dprx4pret/image/upload/v1780041189/blog/made_in_india_window.jpg"
                                         alt="A quiet artisan workbench in warm daylight — embroidery frame, brass thimble, spools of fine thread, scissors, and a cup of tea — dignified workspace, not a factory floor"
                                         fill
                                         className="object-cover"

@@ -134,7 +134,7 @@ export default function FreelanceDesignerClient({ initialLikeCount, initialComme
             {/* Hero Section */}
             <section className="relative h-[60vh] min-h-[600px] flex items-center justify-center overflow-hidden">
                 <Image
-                    src="https://res.cloudinary.com/dn9snfizy/image/upload/v1777389258/blog/z3bgaz5se6abvjlg3eva.jpg"
+                    src="/blog/how-to-start-clothing-brand-2026-banner.jpg"
                     alt="Freelance Designer Launching Clothing Brand"
                     fill
                     className="object-cover"
@@ -230,7 +230,7 @@ export default function FreelanceDesignerClient({ initialLikeCount, initialComme
                                     </div>
                                     <div className="rounded-2xl overflow-hidden shadow-2xl border border-gray-100 relative h-80 lg:h-full min-h-[400px] order-1 lg:order-2">
                                         <Image
-                                            src="https://res.cloudinary.com/dn9snfizy/image/upload/v1777389260/blog/kjfnolpjka788wheordp.jpg"
+                                            src="/blog/how-to-start-clothing-brand-2026-ai-design.jpg"
                                             alt="Freelance graphic designer modern desk setup"
                                             fill
                                             className="object-cover transform hover:scale-105 transition-transform duration-700"
@@ -256,7 +256,7 @@ export default function FreelanceDesignerClient({ initialLikeCount, initialComme
                                     </div>
                                     <div className="rounded-2xl overflow-hidden shadow-2xl border border-gray-100 relative h-64 ml-0 lg:ml-[72px]">
                                         <Image
-                                            src="https://res.cloudinary.com/dn9snfizy/image/upload/v1777389261/blog/ocpbdszn0gsp00pyk351.jpg"
+                                            src="/blog/how-to-start-clothing-brand-2026-community.jpg"
                                             alt="Fashion tech pack document next to garment sample"
                                             fill
                                             className="object-cover"
@@ -282,7 +282,7 @@ export default function FreelanceDesignerClient({ initialLikeCount, initialComme
                                 <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
                                     <div className="rounded-2xl overflow-hidden shadow-2xl border border-gray-100 relative h-80 lg:h-full min-h-[400px]">
                                         <Image
-                                            src="https://res.cloudinary.com/dn9snfizy/image/upload/v1777389262/blog/p9piq7ifl3inlcajbmmo.jpg"
+                                            src="/blog/how-to-start-clothing-brand-2026-manufacturing.jpg"
                                             alt="Minimal curated clothing rack showcasing new brand"
                                             fill
                                             className="object-cover transform hover:scale-105 transition-transform duration-700"
