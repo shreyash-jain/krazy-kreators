@@ -494,10 +494,7 @@ export default function PlusOneSourcingClient({ initialLikeCount, initialComment
                                     <div className="flex items-center gap-6">
                                         <button
                                             onClick={handleLike}
-                                            className={`flex items-center gap-2 px-6 py-3 rounded-full text-sm font-medium transition-all duration-300 ${isLiked
-                                                ? "bg-white text-gray-600 hover:bg-[#CBB49A] hover:text-white border border-gray-200"
-                                                : "bg-white text-gray-600 hover:bg-[#CBB49A] hover:text-white border border-gray-200"
-                                                }`}
+                                            className="flex items-center gap-2 px-6 py-3 rounded-full text-sm font-medium transition-all duration-300 bg-white text-gray-600 hover:bg-[#CBB49A] hover:text-white border border-gray-200"
                                         >
                                             <Heart className={`w-5 h-5 ${isLiked ? "fill-[#CBB49A]" : ""}`} />
                                             {likeCount} {likeCount === 1 ? "Like" : "Likes"}
