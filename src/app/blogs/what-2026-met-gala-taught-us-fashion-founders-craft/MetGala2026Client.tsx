@@ -138,7 +138,7 @@ export default function MetGala2026Client({ initialLikeCount, initialComments }:
             {/* Hero Section */}
             <section className="relative h-[60vh] min-h-[600px] flex items-center justify-center overflow-hidden">
                 <Image
-                    src="https://res.cloudinary.com/dn9snfizy/image/upload/v1779100822/blog/met_gala_real_hero.jpg"
+                    src="https://res.cloudinary.com/dprx4pret/image/upload/v1780142703/blog/met_gala_real_hero.jpg"
                     alt="Beyoncé at the 2026 Met Gala in a Balmain skeletal-bone beaded bodice, sweeping feather cape, and crystal crown halo by Olivier Rousteing"
                     fill
                     className="object-cover"
@@ -223,7 +223,7 @@ export default function MetGala2026Client({ initialLikeCount, initialComments }:
                                 <h2 className="text-4xl lg:text-5xl font-extrabold tracking-tight text-[#2D2A2E] mb-10 pb-4 border-b border-gray-200">The Craft Hours That Defined the Night</h2>
                                 <div className="rounded-2xl overflow-hidden shadow-2xl border border-gray-100 relative h-80 lg:h-[480px] mb-10">
                                     <Image
-                                        src="https://res.cloudinary.com/dn9snfizy/image/upload/v1779100824/blog/met_gala_real_hours.jpg"
+                                        src="https://res.cloudinary.com/dprx4pret/image/upload/v1780142705/blog/met_gala_real_hours.jpg"
                                         alt="Rihanna at the 2026 Met Gala in Maison Margiela by Glenn Martens — the bodice took 1,380 hours and was hand-encrusted with over 115,000 jewels"
                                         fill
                                         className="object-cover"
@@ -298,7 +298,7 @@ export default function MetGala2026Client({ initialLikeCount, initialComments }:
                                 <h2 className="text-4xl lg:text-5xl font-extrabold tracking-tight text-[#2D2A2E] mb-10 pb-4 border-b border-gray-200">What &quot;Craft&quot; Actually Means in 2026</h2>
                                 <div className="rounded-2xl overflow-hidden shadow-2xl border border-gray-100 relative h-80 lg:h-[480px] mb-10">
                                     <Image
-                                        src="https://res.cloudinary.com/dn9snfizy/image/upload/v1779100826/blog/met_gala_real_techniques.jpg"
+                                        src="https://res.cloudinary.com/dprx4pret/image/upload/v1780142706/blog/met_gala_real_techniques.jpg"
                                         alt="Manish Malhotra at the 2026 Met Gala in his own cape — four embroidery techniques, the signatures of 50 artisans, and 3D sculptural figures of tailors on the shoulders"
                                         fill
                                         className="object-cover"
@@ -353,7 +353,7 @@ export default function MetGala2026Client({ initialLikeCount, initialComments }:
 
                                 <div className="rounded-2xl overflow-hidden shadow-2xl border border-gray-100 relative h-80 lg:h-[480px] mb-10">
                                     <Image
-                                        src="https://res.cloudinary.com/dn9snfizy/image/upload/v1779100827/blog/met_gala_real_moves.jpg"
+                                        src="https://res.cloudinary.com/dprx4pret/image/upload/v1780142707/blog/met_gala_real_moves.jpg"
                                         alt="Anna Wintour at the 2026 Met Gala in a mint feathered Chanel jacket over a turquoise embroidered gown"
                                         fill
                                         className="object-cover"
