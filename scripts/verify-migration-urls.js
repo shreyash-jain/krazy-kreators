@@ -3,7 +3,11 @@ const fs = require('fs');
 const path = require('path');
 
 const map = JSON.parse(fs.readFileSync(path.join(__dirname, '.migration-url-map.json'), 'utf8'));
-const urls = Object.values(map).map(v => v.url);
+
+const urls = Object.entries(map).flatMap(([publicId, info]) => {
+    const base = `https://res.cloudinary.com/dprx4pret/image/upload/v${info.version}/${publicId}`;
+    return [`${base}.jpg`, `${base}.png`];
+});
 
 (async () => {
     const results = await Promise.all(urls.map(async u => {
