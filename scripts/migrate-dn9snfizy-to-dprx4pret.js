@@ -6,10 +6,18 @@ const cloudinary = require('cloudinary').v2;
 const path = require('path');
 const fs = require('fs');
 
+const CLOUD_NAME = process.env.CLOUDINARY_CLOUD_NAME || 'dprx4pret';
+const API_KEY = process.env.CLOUDINARY_API_KEY;
+const API_SECRET = process.env.CLOUDINARY_API_SECRET;
+
+if (!API_KEY || !API_SECRET) {
+    throw new Error('Missing CLOUDINARY_API_KEY / CLOUDINARY_API_SECRET env vars');
+}
+
 cloudinary.config({
-    cloud_name: 'dprx4pret',
-    api_key: '621363843253194',
-    api_secret: 'rExED-_UaoIRUOfkRbZUEF_APu8',
+    cloud_name: CLOUD_NAME,
+    api_key: API_KEY,
+    api_secret: API_SECRET,
 });
 
 const root = path.join(__dirname, '..', 'public', 'blog');
