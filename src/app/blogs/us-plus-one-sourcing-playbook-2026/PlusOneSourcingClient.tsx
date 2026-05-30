@@ -144,8 +144,8 @@ export default function PlusOneSourcingClient({ initialLikeCount, initialComment
             {/* Hero Section */}
             <section className="relative h-[60vh] min-h-[600px] flex items-center justify-center overflow-hidden">
                 <Image
-                    src="https://res.cloudinary.com/dprx4pret/image/upload/v1779966507/blog/plus_one_sourcing_hero.jpg"
-                    alt="Stylized world map with subtle lines connecting the US to India — the Plus-One sourcing diversification reshaping US apparel in 2026"
+                    src="https://res.cloudinary.com/dprx4pret/image/upload/v1780211458/blog/plus_one_sourcing_hero.jpg"
+                    alt="A US-based designer and an Indian master artisan working together across a sunlit workbench over a cream silk garment with hand-finished embroidery — the human partnership behind plus-one sourcing"
                     fill
                     className="object-cover"
                     style={{
@@ -168,10 +168,10 @@ export default function PlusOneSourcingClient({ initialLikeCount, initialComment
                         <span className="text-sm text-gray-200 font-medium tracking-wide">May 28, 2026</span>
                     </div>
                     <h1 className="text-4xl sm:text-5xl lg:text-6xl xl:text-7xl font-extrabold text-white leading-tight max-w-5xl drop-shadow-lg mb-6 tracking-tight">
-                        The US &lsquo;Plus-One&rsquo; Sourcing Playbook<br className="hidden sm:block" /> for Clothing Brand Founders in 2026
+                        Why US Brands Aren&apos;t Leaving China in 2026<br className="hidden sm:block" /> — They&apos;re Adding to It
                     </h1>
                     <p className="text-xl sm:text-2xl lg:text-3xl text-gray-200 font-medium max-w-3xl drop-shadow-md leading-relaxed">
-                        US brands are not leaving China. They are adding. The country you add shapes everything.
+                        Plus-one sourcing is the move that decides premium positioning. The country you add is the playbook.
                     </p>
                 </div>
             </section>
@@ -214,50 +214,50 @@ export default function PlusOneSourcingClient({ initialLikeCount, initialComment
                         {/* Blog Content */}
                         <div className="prose prose-lg max-w-none text-[#4A484A]">
                             <p className="text-xl text-[#2D2A2E] leading-relaxed mb-10 font-medium">
-                                The story you are hearing about US fashion sourcing is that brands are leaving China. That is not quite right, and the distinction matters.
+                                Prada&apos;s Kolhapuri collection. Harry Styles in Harago. Sabyasachi at New York scale. Every US founder watching this thinks the story is celebrity. The story is sourcing.
                             </p>
 
                             <p className="mb-6">
-                                What is actually happening is more strategic. US brands are not leaving China. They are <strong>adding</strong>. Adding a second country to the sourcing footprint. Adding a partner who can do what the first partner cannot. Adding redundancy that did not feel necessary until tariff policy made it expensive to operate without it. The shape of US apparel sourcing in 2026 is not a migration. It is a diversification.
+                                Every US brand sourcing predominantly from China in 2024 is facing the same 2026 math. Tariff-adjusted landed cost no longer covers the margin model. The reflex is to move. The smarter brands aren&apos;t moving — they&apos;re adding.
                             </p>
                             <p className="mb-12">
-                                The industry has a name for this. <strong>Plus-One sourcing</strong>. The principle is that one country can no longer hold everything. The execution is a brand decision, not a cost decision. The country you add to your sourcing footprint shapes what you can charge, what story you can tell, and what shelves you can land on. For apparel in 2026, India is winning the largest share of US Plus-One reshoring. This is what the playbook actually looks like.
+                                The industry has a name for it. <strong>Plus-one sourcing</strong>. One country can no longer hold the whole footprint. The country you add to your sourcing map decides what you can charge, what story you put on the product page, and what shelves you can land. For US apparel in 2026, India is winning that second slot decisively. Here&apos;s how the math actually works.
                             </p>
 
                             {/* Section 1: Why Plus-One */}
                             <div className="mt-16 mb-20">
                                 <h2 className="text-4xl lg:text-5xl font-extrabold tracking-tight text-[#2D2A2E] mb-10 pb-4 border-b border-gray-200">Why Plus-One, Not Move</h2>
                                 <p className="text-xl leading-relaxed text-[#4A484A] mb-8 font-medium">
-                                    The reflex when tariffs hit a single sourcing country is to move production wholesale to a cheaper one. Most US founders who tried that in 2024 and early 2025 are now retracing those steps.
+                                    The reflex when tariffs hit your sourcing country is to move everything to the next cheap one. Most US founders who tried that in 2024 are now retracing the steps in 2026.
                                 </p>
                                 <p className="text-lg leading-relaxed text-[#666666] mb-6">
-                                    Wholesale moves are slow. They burn the calendar that was supposed to ship the next season. They require rebuilding a relationship that took the founder two years to build with the original factory. And they replicate the original mistake: depending on a single country for everything.
+                                    Wholesale moves are slow. They burn the launch calendar. They cost the relationship you spent two years building with your original factory. And they replicate the original mistake — one country holding everything.
                                 </p>
                                 <p className="text-lg leading-relaxed text-[#666666] mb-6">
-                                    Plus-One is the operational answer to the same problem with none of those costs. Keep the existing relationship for what it does well. Add a second sourcing country for what the first one cannot do — or for what the first one does but at a tariff penalty the brand can no longer absorb. The result is redundancy if a tariff event or a port closure disrupts one country, optionality on routing different categories to the country that does each best, faster iteration because small-batch experimentation lives in the country with the right MOQ infrastructure, and category-specific routing where knitwear can be sourced from India and Turkey simultaneously while technical sportswear runs through Vietnam and Indonesia.
+                                    Plus-one keeps the existing relationship for what it does well and adds a second country for what the first one can&apos;t do, or can&apos;t do without a tariff penalty you can no longer absorb. The result is real: redundancy if a tariff event or a port closure pulls one country offline. Optionality on routing each category to the country that does it best. Faster iteration, because small-batch experimentation can live in the country with the right MOQ infrastructure. Knitwear in India and Turkey at the same time. Technical sportswear through Vietnam and Indonesia. One brand, two operating contexts.
                                 </p>
 
                                 <div className="bg-[#F8F7F4] border-l-4 border-[#CBB49A] p-8 rounded-r-2xl mb-10 shadow-sm">
                                     <h3 className="text-2xl font-bold text-[#CBB49A] mb-3">Two partners, not one.</h3>
                                     <p className="text-[#666666] m-0 text-lg leading-relaxed">
-                                        Most US brands need two sourcing partners for the next decade — one for volume, one for craft. The Plus-One question is which country becomes the second one, and which category it serves first.
+                                        Most US brands will run two sourcing partners for the next decade. One for volume. One for craft. The plus-one question is which country becomes the second — and which category it serves first.
                                     </p>
                                 </div>
                             </div>
 
                             {/* Section 2: Which countries by category */}
                             <div className="mt-20 mb-20">
-                                <h2 className="text-4xl lg:text-5xl font-extrabold tracking-tight text-[#2D2A2E] mb-10 pb-4 border-b border-gray-200">Which Countries Are Winning Plus-One, By Category</h2>
+                                <h2 className="text-4xl lg:text-5xl font-extrabold tracking-tight text-[#2D2A2E] mb-10 pb-4 border-b border-gray-200">Where the Money Is Actually Going</h2>
                                 <div className="rounded-2xl overflow-hidden shadow-2xl border border-gray-100 relative h-80 lg:h-[480px] mb-10">
                                     <Image
-                                        src="https://res.cloudinary.com/dprx4pret/image/upload/v1779966508/blog/plus_one_sourcing_categories.jpg"
+                                        src="https://res.cloudinary.com/dprx4pret/image/upload/v1780211460/blog/plus_one_sourcing_categories.jpg"
                                         alt="Editorial flat-lay of distinct apparel samples from different sourcing geographies — the visual map of category-specific Plus-One routing"
                                         fill
                                         className="object-cover"
                                     />
                                 </div>
                                 <p className="text-xl leading-relaxed text-[#4A484A] mb-12 font-medium">
-                                    Stripped of the narrative noise, the 2026 picture is category-specific. Different US brand categories are landing on different Plus-One countries based on what the category actually needs.
+                                    Strip the narrative noise and the 2026 picture is category-specific. Different US brand categories are landing on different plus-one countries based on what the category actually needs.
                                 </p>
 
                                 <div className="space-y-6 mb-10">
@@ -299,23 +299,23 @@ export default function PlusOneSourcingClient({ initialLikeCount, initialComment
                                 </div>
 
                                 <p className="text-lg leading-relaxed text-[#666666]">
-                                    A US brand that ships across multiple categories — and most do — should expect to land on two Plus-One countries inside the next twelve months, not one. The country that fits the brand&apos;s flagship category becomes the primary Plus-One. A second sits in reserve for the categories the primary cannot serve.
+                                    Most US brands ship across more than one category. The country that fits the brand&apos;s flagship category becomes the primary plus-one. A second country sits in reserve for what the primary can&apos;t serve. Founders who try to route everything through a single country in 2026 are repeating 2018&apos;s mistake on a new map — the cost shows up twelve months in, when the second category needs something the first country can&apos;t deliver.
                                 </p>
                             </div>
 
                             {/* Section 3: Why India is leading apparel Plus-One */}
                             <div className="mt-20 mb-20">
-                                <h2 className="text-4xl lg:text-5xl font-extrabold tracking-tight text-[#2D2A2E] mb-10 pb-4 border-b border-gray-200">Why India Is Leading the Apparel Plus-One Race</h2>
+                                <h2 className="text-4xl lg:text-5xl font-extrabold tracking-tight text-[#2D2A2E] mb-10 pb-4 border-b border-gray-200">Why India Is Winning the Premium Plus-One</h2>
                                 <div className="rounded-2xl overflow-hidden shadow-2xl border border-gray-100 relative h-80 lg:h-[480px] mb-10">
                                     <Image
-                                        src="https://res.cloudinary.com/dprx4pret/image/upload/v1779966509/blog/plus_one_sourcing_india.jpg"
+                                        src="https://res.cloudinary.com/dprx4pret/image/upload/v1780211461/blog/plus_one_sourcing_india.jpg"
                                         alt="Close-up of an Indian artisan's hands hand-finishing a premium garment — the capability layer that is pulling the largest share of US Plus-One apparel reshoring in 2026"
                                         fill
                                         className="object-cover"
                                     />
                                 </div>
                                 <p className="text-xl leading-relaxed text-[#4A484A] mb-12 font-medium">
-                                    For US apparel brands specifically, India is the Plus-One country pulling the most reshoring share in 2026. Four reasons converge.
+                                    For US apparel brands at the premium end, India is pulling the largest share of plus-one reshoring in 2026. Four conditions converge — and they only converge here.
                                 </p>
 
                                 <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-10">
@@ -349,7 +349,7 @@ export default function PlusOneSourcingClient({ initialLikeCount, initialComment
                                 </div>
 
                                 <p className="text-lg leading-relaxed text-[#666666]">
-                                    These four are not independent. They compound. Capability that the customer recognizes, at a tariff-adjusted price that holds margin, with MOQ economics that let the brand experiment. The four conditions that have to align for a Plus-One country to actually become the operational backbone of a US brand are aligned for India in 2026 in a way they were not in 2022.{" "}
+                                    The four don&apos;t operate independently — they compound. A craft technique the customer recognizes. A tariff-adjusted price that holds the margin model. MOQ economics that let the brand test a SKU before betting on it. A cultural backdrop that lets the founder name the origin openly on the product page. None of these conditions were aligned for India in 2022. All four are now.{" "}
                                     <Link href="/blogs/made-in-india-american-luxury-2026" className="text-[#CBB49A] underline underline-offset-4 hover:text-[#b7a078]">
                                         The full cultural reframe is its own piece.
                                     </Link>
@@ -359,11 +359,11 @@ export default function PlusOneSourcingClient({ initialLikeCount, initialComment
                             {/* Section 4: The Plus-One Playbook */}
                             <div className="mt-20 mb-20">
                                 <h2 className="text-4xl lg:text-5xl font-extrabold tracking-tight text-[#2D2A2E] mb-8 pb-4 border-b border-gray-200">The Plus-One Playbook</h2>
-                                <p className="text-xl text-[#666666] mb-10 font-medium">Five steps. None are tactical. All are sequenced.</p>
+                                <p className="text-xl text-[#666666] mb-10 font-medium">Five moves. Sequenced. None are tactical.</p>
 
                                 <div className="rounded-2xl overflow-hidden shadow-2xl border border-gray-100 relative h-80 lg:h-[480px] mb-10">
                                     <Image
-                                        src="https://res.cloudinary.com/dprx4pret/image/upload/v1779966510/blog/plus_one_sourcing_playbook.jpg"
+                                        src="https://res.cloudinary.com/dprx4pret/image/upload/v1780211462/blog/plus_one_sourcing_playbook.jpg"
                                         alt="A founder's planning desk with a sourcing audit document, fabric swatches, and a country map — the Plus-One decision being made on paper before it is made in production"
                                         fill
                                         className="object-cover"
@@ -418,9 +418,9 @@ export default function PlusOneSourcingClient({ initialLikeCount, initialComment
 
                             {/* Section 5: Common Mistakes */}
                             <div className="mt-20 mb-20">
-                                <h2 className="text-4xl lg:text-5xl font-extrabold tracking-tight text-[#2D2A2E] mb-10 pb-4 border-b border-gray-200">The Common Plus-One Mistakes</h2>
+                                <h2 className="text-4xl lg:text-5xl font-extrabold tracking-tight text-[#2D2A2E] mb-10 pb-4 border-b border-gray-200">The Mistakes That Cost the First Year</h2>
                                 <p className="text-xl leading-relaxed text-[#4A484A] mb-8 font-medium">
-                                    The mistakes are predictable and expensive. Four patterns cost US brands the first year of Plus-One execution.
+                                    The mistakes are predictable. Four patterns cost US brands the first year of plus-one execution and most are avoidable on paper before the first PO ships.
                                 </p>
 
                                 <div className="space-y-6 mb-10">
@@ -455,18 +455,29 @@ export default function PlusOneSourcingClient({ initialLikeCount, initialComment
                                 </div>
                             </div>
 
+                            {/* Where the Right Partner Fits — outcome language, no feature dump */}
+                            <div className="mt-20 mb-20">
+                                <h2 className="text-4xl lg:text-5xl font-extrabold tracking-tight text-[#2D2A2E] mb-10 pb-4 border-b border-gray-200">Where the Right Partner Changes the Math</h2>
+                                <p className="text-xl leading-relaxed text-[#4A484A] mb-6 font-medium">
+                                    Plus-one lives or dies in one place — the manufacturing relationship.
+                                </p>
+                                <p className="text-lg leading-relaxed text-[#666666]">
+                                    Founders who pull off the move in 2026 share one trait: they have a partner who can route the right category to the right country, hold the spec sheet across reorders, and let the brand name the origin openly on the product page. The brands trying to retrofit plus-one onto a 5,000-unit factory model fail on the first reorder.{" "}
+                                    <Link href="/case-studies" className="text-[#CBB49A] underline underline-offset-4 hover:text-[#b7a078]">
+                                        See how this looks on a real US production line.
+                                    </Link>
+                                </p>
+                            </div>
+
                             <hr className="my-16 border-[#EBEBEB]" />
 
                             <div className="bg-gradient-to-br from-[#F8F7F4] to-white p-10 rounded-3xl border border-[#EBEBEB]">
-                                <h3 className="text-3xl font-bold text-[#2D2A2E] mb-6">Plus-One Is a 2026 Decision, Not a 2027 One</h3>
+                                <h3 className="text-3xl font-bold text-[#2D2A2E] mb-6">The Capacity Race Closes in 2026</h3>
                                 <p className="text-xl text-[#4A484A] leading-relaxed mb-6 font-medium">
-                                    The decision is in front of US brands now, and the capacity is going to allocate itself over the next twelve months whether founders act on it or not.
+                                    The plus-one decision is in front of US brands right now. Capacity is going to allocate itself over the next twelve months whether founders move on it or not.
                                 </p>
                                 <p className="text-lg text-[#666666] leading-relaxed">
-                                    The US brands that lock in their Plus-One country in 2026 own the next ten years of premium positioning, because they will have the operational relationship, the named origin on the product page, and the customer trained to recognize the story. The brands that wait will source from whoever has capacity left after the leaders pick first. The math on that gap compounds every quarter.{" "}
-                                    <Link href="/case-studies" className="text-[#CBB49A] underline underline-offset-4 hover:text-[#b7a078]">
-                                        See how Plus-One looks on the production side of a live US brand.
-                                    </Link>
+                                    The brands that lock their plus-one country in 2026 own the decade. They&apos;ll have the operational relationship, the named origin on the product page, and a customer trained to read the story. The brands that wait will be sourcing from whoever has capacity left after the leaders pick first. The math on that gap compounds every quarter.
                                 </p>
                             </div>
                         </div>
@@ -476,7 +487,7 @@ export default function PlusOneSourcingClient({ initialLikeCount, initialComment
                             <div className="relative z-10 max-w-3xl mx-auto">
                                 <h3 className="text-3xl font-bold mb-6">Lock In Your Plus-One</h3>
                                 <p className="text-gray-300 leading-relaxed mb-8 text-lg">
-                                    US founders ready to lock in their Plus-One — partner with Krazy Kreators. We move US brands into Indian craft-led production without losing the year.
+                                    US founders building toward a craft-anchored plus-one in 2026 — partner with Krazy Kreators.
                                 </p>
                                 <Button
                                     onClick={() => setContactOpen(true)}
@@ -485,6 +496,15 @@ export default function PlusOneSourcingClient({ initialLikeCount, initialComment
                                     Start a Conversation
                                 </Button>
                             </div>
+                        </div>
+
+                        {/* About Krazy Kreators — 3-line editorial footer */}
+                        <div className="border-t border-gray-200 pt-8 pb-12 mb-12 text-center">
+                            <p className="text-sm uppercase tracking-widest text-[#CBB49A] font-semibold mb-3">About Krazy Kreators</p>
+                            <p className="text-base text-[#666666] leading-relaxed max-w-2xl mx-auto">
+                                Krazy Kreators is a US-facing fashion manufacturing partner. End-to-end design, sampling, premium fabric sourcing, and retail-grade production — built in India for US clothing brands.{" "}
+                                <a href="https://krazykreators.com" className="text-[#CBB49A] underline underline-offset-4 hover:text-[#b7a078]">krazykreators.com</a>
+                            </p>
                         </div>
 
                         {/* Post-Content Social Interaction */}

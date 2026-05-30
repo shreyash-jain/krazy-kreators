@@ -16,13 +16,13 @@ export type BlogPostMeta = {
 export const blogPosts: BlogPostMeta[] = [
   {
     id: 40,
-    title: "The US 'Plus-One' Sourcing Playbook for Clothing Brand Founders in 2026",
-    excerpt: "US brands are not leaving China — they are adding. Plus-One sourcing is the operational answer to the tariff era, and the country you add shapes what you can charge, what story you can tell, and what shelves you can land on. Here is which countries are winning Plus-One slots by category, why India is leading the apparel race in 2026, the five-step playbook, and the four mistakes to avoid.",
+    title: "Why US Brands Aren't Leaving China in 2026 — They're Adding to It",
+    excerpt: "Prada's Kolhapuri collection. Harry Styles in Harago. Sabyasachi at New York scale. US founders watching this think the story is celebrity — the story is sourcing. Plus-one is the 2026 move that decides which brands hit premium positioning and which compete for spillover.",
     category: "business",
     author: "Krazy Kreators Team",
     date: "May 28, 2026",
     readTime: "9 min read",
-    image: "https://res.cloudinary.com/dprx4pret/image/upload/v1779966507/blog/plus_one_sourcing_hero.jpg",
+    image: "https://res.cloudinary.com/dprx4pret/image/upload/v1780211458/blog/plus_one_sourcing_hero.jpg",
     slug: "us-plus-one-sourcing-playbook-2026",
     readers: 0,
     likes: 0,

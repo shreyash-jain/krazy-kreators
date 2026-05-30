@@ -7,9 +7,9 @@ export const dynamic = "force-dynamic";
 export const runtime = "edge";
 
 export const metadata = {
-    title: "The US 'Plus-One' Sourcing Playbook for Clothing Brand Founders in 2026 | Krazy Kreators",
+    title: "Why US Brands Aren't Leaving China in 2026 — They're Adding to It | Krazy Kreators",
     description:
-        "US brands aren't leaving China. They're adding. Plus-One sourcing is the operational answer to the tariff era — one country can't hold everything anymore. Here is what's actually happening, why India is winning the apparel Plus-One race in 2026, the five-step playbook, and the four mistakes to avoid.",
+        "US brands aren't leaving China — they're adding. The 2026 US plus-one sourcing strategy reshaping which apparel founders hit premium positioning and which compete for spillover.",
 };
 
 export default async function PlusOneSourcingPage() {
@@ -30,6 +30,5 @@ export default async function PlusOneSourcingPage() {
             <BlogViewTracker slug="us-plus-one-sourcing-playbook-2026" />
             <PlusOneSourcingClient initialLikeCount={likeCount} initialComments={sanitizedComments} />
         </>
-    );
     );
 }
