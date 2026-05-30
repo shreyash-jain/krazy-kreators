@@ -17,6 +17,13 @@ export default function cloudinaryLoader({ src, width, quality }: ImageLoaderPro
     return src;
   }
 
+  // Bypass Cloudinary for local files in public/ — Next.js can optimize them
+  // natively via /_next/image. This keeps local blog images working even when
+  // the configured Cloudinary cloud is offline.
+  if (src.startsWith("/")) {
+    return src;
+  }
+
   // Remove leading slash for Cloudinary public ID
   const publicId = src.startsWith("/") ? src.slice(1) : src;
 

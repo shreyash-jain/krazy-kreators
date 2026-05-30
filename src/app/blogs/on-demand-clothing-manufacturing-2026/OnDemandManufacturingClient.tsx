@@ -137,7 +137,7 @@ export default function OnDemandManufacturingClient({ initialLikeCount, initialC
             {/* Hero Section */}
             <section className="relative h-[60vh] min-h-[600px] flex items-center justify-center overflow-hidden">
                 <Image
-                    src="https://res.cloudinary.com/dn9snfizy/image/upload/v1778650008/blog/on_demand_hero.jpg"
+                    src="/blog/production_shipping.png"
                     alt="On-demand clothing manufacturing for 2026 fashion brands"
                     fill
                     className="object-cover"
@@ -255,7 +255,7 @@ export default function OnDemandManufacturingClient({ initialLikeCount, initialC
 
                                 <div className="rounded-2xl overflow-hidden shadow-2xl border border-gray-100 relative h-80 lg:h-[480px] mb-12">
                                     <Image
-                                        src="https://res.cloudinary.com/dn9snfizy/image/upload/v1778650009/blog/on_demand_unsold_inventory.jpg"
+                                        src="/blog/fabric_sourcing_rolls.png"
                                         alt="Unsold apparel inventory stacked in warehouse storage representing the cost of bulk ordering"
                                         fill
                                         className="object-cover"
@@ -297,7 +297,7 @@ export default function OnDemandManufacturingClient({ initialLikeCount, initialC
                                 </p>
                                 <div className="rounded-2xl overflow-hidden shadow-2xl border border-gray-100 relative h-80 lg:h-[480px] mb-10">
                                     <Image
-                                        src="https://res.cloudinary.com/dn9snfizy/image/upload/v1778650011/blog/on_demand_production_flow.jpg"
+                                        src="/blog/fashion_sampling.png"
                                         alt="On-demand production flow from tech pack to finished garment laid out on a workbench"
                                         fill
                                         className="object-cover"
@@ -384,7 +384,7 @@ export default function OnDemandManufacturingClient({ initialLikeCount, initialC
                                 </p>
                                 <div className="rounded-2xl overflow-hidden shadow-2xl border border-gray-100 relative h-80 lg:h-[480px] mb-10">
                                     <Image
-                                        src="https://res.cloudinary.com/dn9snfizy/image/upload/v1778650012/blog/on_demand_zero_moq.jpg"
+                                        src="/blog/zero_moq_studio.png"
                                         alt="Artisan hands finishing a small batch of garments under the Zero MOQ on-demand model"
                                         fill
                                         className="object-cover"

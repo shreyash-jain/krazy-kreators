@@ -13,7 +13,7 @@ export const metadata = {
         authors: ['Krazy Kreators Team'],
         images: [
             {
-                url: 'https://res.cloudinary.com/dn9snfizy/image/upload/f_auto,q_auto,w_1200/blog/v2-grading-vs-pattern-making-banner',
+                url: 'https://krazykreators.com/blog/tech-pack-banner.png',
                 width: 1200,
                 height: 630,
                 alt: 'Pattern Making and Size Grading Guide for Fashion Brands',
@@ -24,7 +24,7 @@ export const metadata = {
         card: 'summary_large_image',
         title: "Grading vs. Pattern Making: Why Fit Breaks Across Sizes",
         description: "Fit is the number one reason for returns. Learn how grading and pattern making work together to keep your silhouette consistent from XS to XXL.",
-        images: ['https://res.cloudinary.com/dn9snfizy/image/upload/f_auto,q_auto,w_1200/blog/v2-grading-vs-pattern-making-banner'],
+        images: ['https://krazykreators.com/blog/tech-pack-banner.png'],
     },
 };
 
