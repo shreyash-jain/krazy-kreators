@@ -13,7 +13,7 @@ export const metadata = {
         authors: ['Krazy Kreators Team'],
         images: [
             {
-                url: 'https://res.cloudinary.com/dn9snfizy/image/upload/f_auto,q_auto,w_1200/blog/v2-pigment-dye-vs-reactive-dye-banner',
+                url: 'https://krazykreators.com/blog/v2-pigment-dye-vs-reactive-dye-banner.png',
                 width: 1200,
                 height: 630,
                 alt: 'Pigment Dye vs Reactive Dye Comparison',
@@ -24,7 +24,7 @@ export const metadata = {
         card: 'summary_large_image',
         title: "Pigment Dye vs. Reactive Dye: Which One Is Right for Your Brand?",
         description: "The complete guide to garment dyeing techniques. Learn when to use pigment dye vs reactive dye and how to avoid common finishing mistakes.",
-        images: ['https://res.cloudinary.com/dn9snfizy/image/upload/f_auto,q_auto,w_1200/blog/v2-pigment-dye-vs-reactive-dye-banner'],
+        images: ['https://krazykreators.com/blog/v2-pigment-dye-vs-reactive-dye-banner.png'],
     },
 };
 

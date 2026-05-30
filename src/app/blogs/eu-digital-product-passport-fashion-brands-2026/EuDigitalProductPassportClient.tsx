@@ -137,7 +137,7 @@ export default function EuDigitalProductPassportClient({ initialLikeCount, initi
             {/* Hero Section */}
             <section className="relative h-[60vh] min-h-[600px] flex items-center justify-center overflow-hidden">
                 <Image
-                    src="https://res.cloudinary.com/dn9snfizy/image/upload/v1778579659/blog/eu_dpp_hero.jpg"
+                    src="/blog/eu_sustainability_banner.png"
                     alt="EU Digital Product Passport compliance for fashion brands in 2026"
                     fill
                     className="object-cover"
@@ -251,7 +251,7 @@ export default function EuDigitalProductPassportClient({ initialLikeCount, initi
                                     </div>
                                     <div className="rounded-2xl overflow-hidden shadow-2xl border border-gray-100 relative h-80 lg:h-full min-h-[400px]">
                                         <Image
-                                            src="https://res.cloudinary.com/dn9snfizy/image/upload/v1778579660/blog/eu_dpp_traceability.jpg"
+                                            src="/blog/india-modern-factory.jpg"
                                             alt="Textile traceability and EU Digital Product Passport readiness"
                                             fill
                                             className="object-cover transform hover:scale-105 transition-transform duration-700"
@@ -338,7 +338,7 @@ export default function EuDigitalProductPassportClient({ initialLikeCount, initi
 
                                 <div className="rounded-2xl overflow-hidden shadow-2xl border border-gray-100 relative h-80 lg:h-[480px] mb-12">
                                     <Image
-                                        src="https://res.cloudinary.com/dn9snfizy/image/upload/v1778579661/blog/eu_dpp_customs.jpg"
+                                        src="/blog/indian_apparel_facility.jpg"
                                         alt="Apparel shipment held at EU customs for missing Digital Product Passport documentation"
                                         fill
                                         className="object-cover"
@@ -394,7 +394,7 @@ export default function EuDigitalProductPassportClient({ initialLikeCount, initi
                                 </p>
                                 <div className="rounded-2xl overflow-hidden shadow-2xl border border-gray-100 relative h-80 lg:h-[480px] mb-10">
                                     <Image
-                                        src="https://res.cloudinary.com/dn9snfizy/image/upload/v1778579663/blog/eu_dpp_production_record.jpg"
+                                        src="/blog/tech_pack_flat_sketch.png"
                                         alt="Per-lot production record tablet showing structured traceability data inside an Indian apparel unit"
                                         fill
                                         className="object-cover"
