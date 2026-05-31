@@ -159,7 +159,7 @@ export default function GradingVsPatternMakingClient({ initialLikeCount, initial
             {/* Hero Section */}
             <section className="relative h-[65vh] min-h-[550px] overflow-hidden">
                 <Image
-                    src="/blog/v2-grading-vs-pattern-making-banner.png"
+                    src="/blog/tech-pack-banner.png"
                     alt="Pattern making table with graded size set and measurement tools"
                     fill
                     className="object-cover object-center"
@@ -273,7 +273,7 @@ export default function GradingVsPatternMakingClient({ initialLikeCount, initial
                                 </div>
                                 <div>
                                     <div className="rounded-xl overflow-hidden shadow-lg border border-gray-100 bg-[#F8F7F4]">
-                                        <Image src="/blog/v2-pattern-making-table.png" alt="Pattern maker working on garment pattern pieces on a table" width={800} height={600} className="w-full h-auto object-cover" />
+                                        <Image src="/blog/tech_pack_flat_sketch.png" alt="Pattern maker working on garment pattern pieces on a table" width={800} height={600} className="w-full h-auto object-cover" />
                                     </div>
                                     <p className="text-sm text-gray-400 mt-3 text-center">Pattern making translates your design vision into precise, cuttable template pieces</p>
                                 </div>
@@ -283,7 +283,7 @@ export default function GradingVsPatternMakingClient({ initialLikeCount, initial
                             <div className="mb-12 grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
                                 <div className="order-2 md:order-1">
                                     <div className="rounded-xl overflow-hidden shadow-lg border border-gray-100 bg-[#F8F7F4]">
-                                        <Image src="/blog/v2-size-grading-process.png" alt="Graded pattern nest showing multiple sizes scaled from a base pattern" width={800} height={600} className="w-full h-auto object-cover" />
+                                        <Image src="/blog/gsm-weight-comparison.png" alt="Graded pattern nest showing multiple sizes scaled from a base pattern" width={800} height={600} className="w-full h-auto object-cover" />
                                     </div>
                                     <p className="text-sm text-gray-400 mt-3 text-center">A graded nest showing how the base pattern scales proportionally across every size</p>
                                 </div>
@@ -409,7 +409,7 @@ export default function GradingVsPatternMakingClient({ initialLikeCount, initial
                                 </div>
                                 <div>
                                     <div className="rounded-xl overflow-hidden shadow-lg border border-gray-100 bg-[#F8F7F4]">
-                                        <Image src="/blog/v2-fit-testing-garment.png" alt="Garment fit testing across multiple sizes" width={800} height={600} className="w-full h-auto object-cover" />
+                                        <Image src="/blog/fabric_quality_check.png" alt="Garment fit testing across multiple sizes" width={800} height={600} className="w-full h-auto object-cover" />
                                     </div>
                                     <p className="text-sm text-gray-400 mt-3 text-center">Every size should look intentional, not like a stretched or shrunken version of the sample</p>
                                 </div>

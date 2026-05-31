@@ -194,7 +194,7 @@ export default function Hero({ onGetStartedClick, onStartDemoClick }: HeroProps)
           >
             <video
               ref={videoRef}
-              src="https://res.cloudinary.com/dn9snfizy/video/upload/q_auto,f_auto/hero-video.mp4"
+              src="/hero-video.mp4"
               poster="/brands/design.jpg"
               className="w-full h-full object-cover aspect-video"
               autoPlay

@@ -75,7 +75,7 @@ export default function ExportingIndiaBlogClient({ initialLikeCount, initialComm
 
       <section className="relative h-[60vh] min-h-[500px] overflow-hidden">
         <Image
-          src="/blog/blog -2 image.png"
+          src="/blog/blog_5_1.png"
           alt="Exporting Apparel from India"
           fill
           className="object-cover"

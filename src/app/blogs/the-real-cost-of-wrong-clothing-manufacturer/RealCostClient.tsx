@@ -134,7 +134,7 @@ export default function RealCostClient({ initialLikeCount, initialComments }: Bl
             {/* Hero Section */}
             <section className="relative h-[60vh] min-h-[600px] flex items-center justify-center overflow-hidden">
                 <Image
-                    src="https://res.cloudinary.com/dn9snfizy/image/upload/blog/defective_bulk.png"
+                    src="https://res.cloudinary.com/dprx4pret/image/upload/v1780041167/blog/defective_bulk.png"
                     alt="Defective Bulk Order Frustration"
                     fill
                     className="object-cover"
@@ -230,7 +230,7 @@ export default function RealCostClient({ initialLikeCount, initialComments }: Bl
                                     </div>
                                     <div className="rounded-2xl overflow-hidden shadow-2xl border border-gray-100 relative h-80 lg:h-full min-h-[400px] order-1 lg:order-2">
                                         <Image
-                                            src="https://res.cloudinary.com/dn9snfizy/image/upload/blog/wrong_samples.png"
+                                            src="https://res.cloudinary.com/dprx4pret/image/upload/v1780041170/blog/wrong_samples.png"
                                             alt="Stressed founder looking at defective samples"
                                             fill
                                             className="object-cover transform hover:scale-105 transition-transform duration-700"
@@ -260,7 +260,7 @@ export default function RealCostClient({ initialLikeCount, initialComments }: Bl
                                 <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
                                     <div className="rounded-2xl overflow-hidden shadow-2xl border border-gray-100 relative h-80 lg:h-full min-h-[400px]">
                                         <Image
-                                            src="https://res.cloudinary.com/dn9snfizy/image/upload/blog/no_one_to_call.png"
+                                            src="https://res.cloudinary.com/dprx4pret/image/upload/v1780041173/blog/no_one_to_call.png"
                                             alt="Frustrated founder with no responsive contact"
                                             fill
                                             className="object-cover transform hover:scale-105 transition-transform duration-700"
@@ -320,7 +320,7 @@ export default function RealCostClient({ initialLikeCount, initialComments }: Bl
                                     </div>
                                     <div className="rounded-2xl overflow-hidden shadow-2xl border border-gray-100 relative h-80 lg:h-full min-h-[400px]">
                                         <Image
-                                            src="https://res.cloudinary.com/dn9snfizy/image/upload/blog/krazy_solution.png"
+                                            src="https://res.cloudinary.com/dprx4pret/image/upload/v1780041175/blog/krazy_solution.png"
                                             alt="Confident brand owner with perfect garment sample"
                                             fill
                                             className="object-cover transform hover:scale-105 transition-transform duration-700"
