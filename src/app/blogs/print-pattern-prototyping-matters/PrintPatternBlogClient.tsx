@@ -196,7 +196,7 @@ export default function PrintPatternBlogClient({ initialLikeCount, initialCommen
       {/* Hero Section */}
       <section className="relative h-[60vh] min-h-[500px] overflow-hidden">
         <Image
-          src="/blog/blog -2 image.png"
+          src="/blog/blog_2_image.png"
           alt="Print, Pattern & Prototyping Process"
           fill
           className="object-cover"
@@ -309,7 +309,7 @@ export default function PrintPatternBlogClient({ initialLikeCount, initialCommen
             {/* Featured Image */}
             <div className="mb-12 rounded-2xl overflow-hidden shadow-lg">
               <Image
-                src="/blog/blog -2 image.png"
+                src="/blog/blog_2_image.png"
                 alt="Print, Pattern & Prototyping Process"
                 width={800}
                 height={600}
@@ -322,7 +322,7 @@ export default function PrintPatternBlogClient({ initialLikeCount, initialCommen
                 }}
                 onLoad={() => {
                   if (typeof window !== 'undefined') {
-                    const img = document.querySelector('img[src="/blog/blog -2 image.png"]') as HTMLImageElement;
+                    const img = document.querySelector('img[src="/blog/blog_2_image.png"]') as HTMLImageElement;
                     if (img) {
                       img.style.opacity = '1';
                     }

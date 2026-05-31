@@ -138,7 +138,7 @@ export default function RhodeLessonClient({ initialLikeCount, initialComments }:
             {/* Hero Section */}
             <section className="relative h-[60vh] min-h-[600px] flex items-center justify-center overflow-hidden">
                 <Image
-                    src="https://res.cloudinary.com/dn9snfizy/image/upload/v1779364529/blog/rhode_lesson_hero.jpg"
+                    src="https://res.cloudinary.com/dprx4pret/image/upload/v1780142709/blog/rhode_lesson_hero.jpg"
                     alt="A single ivory wool coat hanging on a long, otherwise empty industrial garment rack against a soft cream plaster wall — SKU restraint rendered as a single image"
                     fill
                     className="object-cover"
@@ -243,7 +243,7 @@ export default function RhodeLessonClient({ initialLikeCount, initialComments }:
                                 <h2 className="text-4xl lg:text-5xl font-extrabold tracking-tight text-[#2D2A2E] mb-10 pb-4 border-b border-gray-200">What Rhode Actually Got Right</h2>
                                 <div className="rounded-2xl overflow-hidden shadow-2xl border border-gray-100 relative h-80 lg:h-[480px] mb-10">
                                     <Image
-                                        src="https://res.cloudinary.com/dn9snfizy/image/upload/v1779355963/blog/rhode_lesson_sku_discipline.jpg"
+                                        src="https://res.cloudinary.com/dprx4pret/image/upload/v1780142711/blog/rhode_lesson_sku_discipline.jpg"
                                         alt="Five garments laid flat in a disciplined row — the visual logic of a brand that ships fewer SKUs, each one earning its place"
                                         fill
                                         className="object-cover"
@@ -286,7 +286,7 @@ export default function RhodeLessonClient({ initialLikeCount, initialComments }:
                                 <h2 className="text-4xl lg:text-5xl font-extrabold tracking-tight text-[#2D2A2E] mb-10 pb-4 border-b border-gray-200">Why Most Celebrity Brands Stall</h2>
                                 <div className="rounded-2xl overflow-hidden shadow-2xl border border-gray-100 relative h-80 lg:h-[480px] mb-10">
                                     <Image
-                                        src="https://res.cloudinary.com/dn9snfizy/image/upload/v1779355964/blog/rhode_lesson_authenticity.jpg"
+                                        src="https://res.cloudinary.com/dprx4pret/image/upload/v1780142712/blog/rhode_lesson_authenticity.jpg"
                                         alt="Two near-identical white shirts hanging side by side — the quiet difference between an operated brand and a licensed one shows up in the product first"
                                         fill
                                         className="object-cover"
@@ -344,7 +344,7 @@ export default function RhodeLessonClient({ initialLikeCount, initialComments }:
                                 <h2 className="text-4xl lg:text-5xl font-extrabold tracking-tight text-[#2D2A2E] mb-10 pb-4 border-b border-gray-200">Why This Is a Manufacturing Problem, Not a Marketing One</h2>
                                 <div className="rounded-2xl overflow-hidden shadow-2xl border border-gray-100 relative h-80 lg:h-[480px] mb-10">
                                     <Image
-                                        src="https://res.cloudinary.com/dn9snfizy/image/upload/v1779355965/blog/rhode_lesson_repeatability.jpg"
+                                        src="https://res.cloudinary.com/dprx4pret/image/upload/v1780142713/blog/rhode_lesson_repeatability.jpg"
                                         alt="Three identical garments on dress forms in a working atelier — the manufacturing reality behind a brand that can promise the same product, twelve months from now"
                                         fill
                                         className="object-cover"
