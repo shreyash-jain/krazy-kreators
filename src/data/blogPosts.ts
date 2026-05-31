@@ -24,6 +24,10 @@ export const blogPosts: BlogPostMeta[] = [
     readTime: "9 min read",
     image: "https://res.cloudinary.com/dprx4pret/image/upload/v1780041209/blog/five_year_fail_hero.jpg",
     slug: "80-percent-us-clothing-brands-fail-5-years-operational-mistakes",
+    readers: 0,
+    likes: 0,
+  },
+  {
     id: 40,
     title: "Why US Brands Aren't Leaving China in 2026 — They're Adding to It",
     excerpt: "Prada's Kolhapuri collection. Harry Styles in Harago. Sabyasachi at New York scale. US founders watching this think the story is celebrity — the story is sourcing. Plus-one is the 2026 move that decides which brands hit premium positioning and which compete for spillover.",
