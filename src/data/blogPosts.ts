@@ -15,6 +15,19 @@ export type BlogPostMeta = {
 
 export const blogPosts: BlogPostMeta[] = [
   {
+    id: 40,
+    title: "Why US Brands Aren't Leaving China in 2026 — They're Adding to It",
+    excerpt: "Prada's Kolhapuri collection. Harry Styles in Harago. Sabyasachi at New York scale. US founders watching this think the story is celebrity — the story is sourcing. Plus-one is the 2026 move that decides which brands hit premium positioning and which compete for spillover.",
+    category: "business",
+    author: "Krazy Kreators Team",
+    date: "May 28, 2026",
+    readTime: "9 min read",
+    image: "https://res.cloudinary.com/dprx4pret/image/upload/v1780211458/blog/plus_one_sourcing_hero.jpg",
+    slug: "us-plus-one-sourcing-playbook-2026",
+    readers: 0,
+    likes: 0,
+  },
+  {
     id: 38,
     title: "What US Founders Should Steal from the DONDA-Core Resurgence",
     excerpt: "February 2026 marked the ten-year anniversary of The Life of Pablo. DONDA-era references are back across resale, runways, and US streetwear collabs. For US founders, the resurgence is not nostalgia — it is a blueprint. Cultural anchor, limited drop, product as artifact. Here is the playbook to steal before the next five years of streetwear get decided.",
