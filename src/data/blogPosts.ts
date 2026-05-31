@@ -15,6 +15,15 @@ export type BlogPostMeta = {
 
 export const blogPosts: BlogPostMeta[] = [
   {
+    id: 39,
+    title: "Why 80–90% of US Clothing Brands Fail in 5 Years (and the 4 Operational Mistakes Behind It)",
+    excerpt: "Eighty to ninety percent of new US clothing brands fail by year five. The story most founders tell themselves is creative failure. The actual cause is four operational mistakes — wrong manufacturer, wrong MOQ math, wrong sampling cycle, wrong fabric sourcing — all made in the first 90 days, before a single garment ships. Here is the operational map of where US clothing brands actually die.",
+    category: "business",
+    author: "Krazy Kreators Team",
+    date: "May 26, 2026",
+    readTime: "9 min read",
+    image: "https://res.cloudinary.com/dprx4pret/image/upload/v1780041209/blog/five_year_fail_hero.jpg",
+    slug: "80-percent-us-clothing-brands-fail-5-years-operational-mistakes",
     id: 40,
     title: "Why US Brands Aren't Leaving China in 2026 — They're Adding to It",
     excerpt: "Prada's Kolhapuri collection. Harry Styles in Harago. Sabyasachi at New York scale. US founders watching this think the story is celebrity — the story is sourcing. Plus-one is the 2026 move that decides which brands hit premium positioning and which compete for spillover.",
@@ -37,6 +46,7 @@ export const blogPosts: BlogPostMeta[] = [
     readTime: "8 min read",
     image: "https://res.cloudinary.com/dprx4pret/image/upload/v1780041202/blog/donda_core_hero.jpg",
     slug: "donda-core-resurgence-us-founders-2026",
+
     readers: 0,
     likes: 0,
   },
