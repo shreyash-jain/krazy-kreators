@@ -15,6 +15,19 @@ export type BlogPostMeta = {
 
 export const blogPosts: BlogPostMeta[] = [
   {
+    id: 41,
+    title: "What to Lock for Holiday Before the Window Closes",
+    excerpt: "Black Friday 2026 lands Friday, November 27. The overseas production cycle runs 4 to 5 months, which puts the real deadline this June — not October. Here's the calendar math, the five stages of an overseas cycle, and the three decisions every US brand has to lock by end of month: styles, materials, and a paid production slot.",
+    category: "manufacturing",
+    author: "Krazy Kreators Team",
+    date: "June 5, 2026",
+    readTime: "7 min read",
+    image: "https://res.cloudinary.com/dprx4pret/image/upload/v1780646331/blog/holiday_production_window_hero.jpg",
+    slug: "holiday-2026-production-window-us-founders-order-now",
+    readers: 0,
+    likes: 0,
+  },
+  {
     id: 39,
     title: "Why 80–90% of US Clothing Brands Fail in 5 Years (and the 4 Operational Mistakes Behind It)",
     excerpt: "Eighty to ninety percent of new US clothing brands fail by year five. The story most founders tell themselves is creative failure. The actual cause is four operational mistakes — wrong manufacturer, wrong MOQ math, wrong sampling cycle, wrong fabric sourcing — all made in the first 90 days, before a single garment ships. Here is the operational map of where US clothing brands actually die.",
