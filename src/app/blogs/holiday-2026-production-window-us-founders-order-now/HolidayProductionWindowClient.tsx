@@ -252,7 +252,7 @@ export default function HolidayProductionWindowClient({ initialLikeCount, initia
                     {/* Interaction bar */}
                     <div className="mb-12 p-4 bg-[#F8F7F4] rounded-xl flex items-center justify-between">
                         <div className="flex flex-wrap items-center gap-4">
-                            <button onClick={handleLike} className="flex items-center gap-2 px-4 py-2 rounded-full bg-white text-gray-600 hover:bg-[#CBB49A] hover:text-white border border-gray-200 text-sm font-medium transition-all duration-300">
+                            <button onClick={handleLike} aria-pressed={isLiked} className="flex items-center gap-2 px-4 py-2 rounded-full bg-white text-gray-600 hover:bg-[#CBB49A] hover:text-white border border-gray-200 text-sm font-medium transition-all duration-300">
                                 <Heart className={`w-4 h-4 ${isLiked ? "fill-current" : ""}`} />
                                 {likeCount} {likeCount === 1 ? "Like" : "Likes"}
                             </button>
