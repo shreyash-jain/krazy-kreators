@@ -15,6 +15,19 @@ export type BlogPostMeta = {
 
 export const blogPosts: BlogPostMeta[] = [
   {
+    id: 42,
+    title: "Monsoon Math: June Rain and Your December Delivery",
+    excerpt: "Your holiday and December orders aren't made in October. They're cut, dyed, and finished in July and August — the middle of monsoon — in the same factories that will hand them to a vessel by mid-September. Rain doesn't just delay shipments; it shifts dye absorption, drying time, and finishing windows. Here's what a monsoon-ready factory does differently, and the questions to put to your sourcing partner this week.",
+    category: "manufacturing",
+    author: "Krazy Kreators Team",
+    date: "June 8, 2026",
+    readTime: "7 min read",
+    image: "https://res.cloudinary.com/dprx4pret/image/upload/v1780913835/blog/monsoon_production_hero.jpg",
+    slug: "monsoon-production-december-delivery-us-brands-2026",
+    readers: 0,
+    likes: 0,
+  },
+  {
     id: 41,
     title: "What to Lock for Holiday Before the Window Closes",
     excerpt: "Black Friday 2026 lands Friday, November 27. The overseas production cycle runs 4 to 5 months, which puts the real deadline this June — not October. Here's the calendar math, the five stages of an overseas cycle, and the three decisions every US brand has to lock by end of month: styles, materials, and a paid production slot.",
