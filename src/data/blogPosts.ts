@@ -15,6 +15,19 @@ export type BlogPostMeta = {
 
 export const blogPosts: BlogPostMeta[] = [
   {
+    id: 43,
+    title: "NYFW Men's Just Signaled Where US Fashion's Headed",
+    excerpt: "NYFW Men's just wrapped, and the signal worth catching isn't a single look. It's the throughline you can now draw across the year's major fashion moments — the Met Gala, Cannes, and the spring shows. Craft is winning over spectacle. Menswear is the category pulling that signal forward. For US founders building their 2027 lines right now, here's the directional read and four founder moves the data supports.",
+    category: "strategy",
+    author: "Krazy Kreators Team",
+    date: "June 10, 2026",
+    readTime: "7 min read",
+    image: "https://res.cloudinary.com/dprx4pret/image/upload/v1781067595/blog/nyfw_mens_2026_hero.jpg",
+    slug: "where-american-fashion-going-2026-nyfw-mens",
+    readers: 0,
+    likes: 0,
+  },
+  {
     id: 42,
     title: "Monsoon Math: June Rain and Your December Delivery",
     excerpt: "Your holiday and December orders aren't made in October. They're cut, dyed, and finished in July and August — the middle of monsoon — in the same factories that will hand them to a vessel by mid-September. Rain doesn't just delay shipments; it shifts dye absorption, drying time, and finishing windows. Here's what a monsoon-ready factory does differently, and the questions to put to your sourcing partner this week.",
