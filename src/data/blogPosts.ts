@@ -15,6 +15,20 @@ export type BlogPostMeta = {
 
 export const blogPosts: BlogPostMeta[] = [
   {
+    id: 45,
+    title: "Wasn't He Six Just Yesterday?",
+    excerpt: "There's a sentence his father said to him when he was six. The father has long forgotten saying it. The son hasn't. Father's Day 2026 will move a record $27.9 billion across US retail — and the shopper most of that record runs through is the grown son choosing on his own dime, his own taste, for the first time. What he's buying isn't the piece. It's a sentence handed back, slightly later than scheduled. Here's what that demands of the piece, the brand, and the people who build it.",
+    category: "strategy",
+    author: "Priya Anand",
+    date: "June 17, 2026",
+    readTime: "7 min read",
+    image: "https://res.cloudinary.com/dprx4pret/image/upload/v1781695354/blog/fathers_day_2026_hero.jpg",
+    card_image: "https://res.cloudinary.com/dprx4pret/image/upload/v1781697645/blog/fathers_day_2026_growth.jpg",
+    slug: "fathers-day-2026-us-menswear-quality-shift",
+    readers: 0,
+    likes: 0,
+  },
+  {
     id: 43,
     title: "NYFW Men's Just Signaled Where US Fashion's Headed",
     excerpt: "NYFW Men's just wrapped, and the signal worth catching isn't a single look. It's the throughline you can now draw across the year's major fashion moments — the Met Gala, Cannes, and the spring shows. Craft is winning over spectacle. Menswear is the category pulling that signal forward. For US founders building their 2027 lines right now, here's the directional read and four founder moves the data supports.",
