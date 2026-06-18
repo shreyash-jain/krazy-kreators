@@ -15,6 +15,19 @@ export type BlogPostMeta = {
 
 export const blogPosts: BlogPostMeta[] = [
   {
+    id: 46,
+    title: "The Jersey Standard: Product as Global Stage",
+    excerpt: "One shirt, judged in 4K by billions: the World Cup jersey is the most-scrutinized garment on earth, which makes it a live masterclass in product. Nike, adidas, and Puma spent four years engineering quality into the fibre, building a deliberate authentic-vs-replica ladder, and turning each launch into a cultural drop. Here's the playbook — and how a US founder runs it at any scale.",
+    category: "strategy",
+    author: "Priya Anand",
+    date: "June 18, 2026",
+    readTime: "8 min read",
+    image: "https://res.cloudinary.com/dprx4pret/image/upload/v1781769714/blog/wc_jersey_hero.jpg",
+    slug: "world-cup-jersey-quality-playbook-us-brands-2026",
+    readers: 0,
+    likes: 0,
+  },
+  {
     id: 44,
     title: "The Tunnel-Fit Economy Reshaping US Menswear",
     excerpt: "A player wears a jacket nobody can name, and by the fourth quarter the brand's site has sold out. NBA tunnel walks are now US menswear's biggest runway — a discovery engine a small DTC brand can ride overnight. But the 4K camera that makes the sale is unforgiving: the spike only converts if the bulk you ship matches the sample they wore. Here's how the tunnel-fit economy works, and the play for founders.",
