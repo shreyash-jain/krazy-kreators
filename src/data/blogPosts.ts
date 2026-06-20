@@ -15,15 +15,16 @@ export type BlogPostMeta = {
 
 export const blogPosts: BlogPostMeta[] = [
   {
-    id: 44,
-    title: "The Tunnel-Fit Economy Reshaping US Menswear",
-    excerpt: "A player wears a jacket nobody can name, and by the fourth quarter the brand's site has sold out. NBA tunnel walks are now US menswear's biggest runway — a discovery engine a small DTC brand can ride overnight. But the 4K camera that makes the sale is unforgiving: the spike only converts if the bulk you ship matches the sample they wore. Here's how the tunnel-fit economy works, and the play for founders.",
+    id: 45,
+    title: "Wasn't He Six Just Yesterday?",
+    excerpt: "There's a sentence his father said to him when he was six. The father has long forgotten saying it. The son hasn't. Father's Day 2026 will move a record $27.9 billion across US retail — and the shopper most of that record runs through is the grown son choosing on his own dime, his own taste, for the first time. What he's buying isn't the piece. It's a sentence handed back, slightly later than scheduled. Here's what that demands of the piece, the brand, and the people who build it.",
     category: "strategy",
-    author: "Priya Anand",
+    author: "Krazy Kreator Team",
     date: "June 17, 2026",
     readTime: "7 min read",
-    image: "https://res.cloudinary.com/dprx4pret/image/upload/v1781692537/blog/tunnel_fit_hero.jpg",
-    slug: "tunnel-fit-economy-nba-us-menswear-dtc-2026",
+    image: "https://res.cloudinary.com/dprx4pret/image/upload/v1781695354/blog/fathers_day_2026_hero.jpg",
+    card_image: "https://res.cloudinary.com/dprx4pret/image/upload/v1781697645/blog/fathers_day_2026_growth.jpg",
+    slug: "fathers-day-2026-us-menswear-quality-shift",
     readers: 0,
     likes: 0,
   },
