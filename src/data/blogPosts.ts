@@ -19,7 +19,7 @@ export const blogPosts: BlogPostMeta[] = [
     title: "Wasn't He Six Just Yesterday?",
     excerpt: "There's a sentence his father said to him when he was six. The father has long forgotten saying it. The son hasn't. Father's Day 2026 will move a record $27.9 billion across US retail — and the shopper most of that record runs through is the grown son choosing on his own dime, his own taste, for the first time. What he's buying isn't the piece. It's a sentence handed back, slightly later than scheduled. Here's what that demands of the piece, the brand, and the people who build it.",
     category: "strategy",
-    author: "Priya Anand",
+    author: "Krazy Kreator Team",
     date: "June 17, 2026",
     readTime: "7 min read",
     image: "https://res.cloudinary.com/dprx4pret/image/upload/v1781695354/blog/fathers_day_2026_hero.jpg",
