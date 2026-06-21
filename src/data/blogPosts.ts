@@ -15,6 +15,19 @@ export type BlogPostMeta = {
 
 export const blogPosts: BlogPostMeta[] = [
   {
+    id: 47,
+    title: "The Away Kit Became the Real Fashion Object",
+    excerpt: "A violet shirt with no club, no match, no team you can name — and it's the most interesting object in American fashion right now. The 2026 World Cup made the away kit, not the home shirt, the season's breakout fashion object, because off-palette colorways read as design instead of merch. US buyers are team-agnostic: they buy the look, not the loyalty. Here's how a founder rides blokecore with a fashion-first colorway — no license required.",
+    category: "strategy",
+    author: "Priya Anand",
+    date: "June 21, 2026",
+    readTime: "7 min read",
+    image: "/blog/awaykit_hero.jpg",
+    slug: "blokecore-away-kit-fashion-us-brands-2026",
+    readers: 0,
+    likes: 0,
+  },
+  {
     id: 45,
     title: "Wasn't He Six Just Yesterday?",
     excerpt: "There's a sentence his father said to him when he was six. The father has long forgotten saying it. The son hasn't. Father's Day 2026 will move a record $27.9 billion across US retail — and the shopper most of that record runs through is the grown son choosing on his own dime, his own taste, for the first time. What he's buying isn't the piece. It's a sentence handed back, slightly later than scheduled. Here's what that demands of the piece, the brand, and the people who build it.",
