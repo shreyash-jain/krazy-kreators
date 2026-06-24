@@ -1,8 +1,6 @@
 import BlogsClient from "./BlogsClient";
-import { getBlogLikeCount, getBlogViewCount } from "@/lib/blogApi";
 import { blogPosts, BlogPostMeta } from "@/data/blogPosts";
 import { getSupabaseClient } from "@/lib/supabaseClient";
-import { headers } from "next/headers";
 
 export const metadata = {
   title: "Blogs | Krazy Kreators",
@@ -140,19 +138,31 @@ export default async function BlogsPage() {
 
   console.log(`Total posts to display: ${allPosts.length} (${dbBlogs.length} from DB, ${blogPosts.length} static)`);
 
-  const headersList = await headers();
-  const host = headersList.get('host') || `localhost:${process.env.PORT ?? 3000}`;
-  const protocol = headersList.get('x-forwarded-proto') || (host.startsWith('localhost') ? 'http' : 'https');
-  const baseUrl = `${protocol}://${host}`;
+  // Count likes/views by querying Supabase directly, in two queries, and
+  // tallying per slug. (Previously this fetched the site's own /api/blog/*
+  // routes over HTTP; same-zone subrequests are unreliable on Cloudflare's
+  // edge runtime, so every count came back 0. The API routes themselves read
+  // Supabase the same way — blog_id stores the slug.)
+  const tallyBySlug = async (
+    table: 'blog_post_likes' | 'blog_post_views'
+  ): Promise<Record<string, number>> => {
+    const counts: Record<string, number> = {};
+    if (!supabase) return counts;
+    const { data, error } = await supabase.from(table).select('blog_id');
+    if (error) {
+      console.error(`Error reading ${table}:`, error.message);
+      return counts;
+    }
+    for (const row of (data ?? []) as { blog_id: string | null }[]) {
+      if (row.blog_id) counts[row.blog_id] = (counts[row.blog_id] ?? 0) + 1;
+    }
+    return counts;
+  };
 
-  const [likeEntries, viewEntries] = await Promise.all([
-    Promise.all(allPosts.map(async (post) => [post.slug, await getBlogLikeCount(post.slug, { baseUrl })] as const)),
-    Promise.all(allPosts.map(async (post) => [post.slug, await getBlogViewCount(post.slug, { baseUrl })] as const)),
+  const [initialLikeCounts, initialViewCounts] = await Promise.all([
+    tallyBySlug('blog_post_likes'),
+    tallyBySlug('blog_post_views'),
   ]);
-  const initialLikeCounts: Record<string, number> = {};
-  for (const [slug, count] of likeEntries) initialLikeCounts[slug] = count;
-  const initialViewCounts: Record<string, number> = {};
-  for (const [slug, count] of viewEntries) initialViewCounts[slug] = count;
 
   return (
     <BlogsClient
