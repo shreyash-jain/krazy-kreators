@@ -18,7 +18,7 @@ export const blogPosts: BlogPostMeta[] = [
     id: 46,
     title: "The Jersey Standard: Product as Global Stage",
     excerpt: "One shirt, judged in 4K by billions: the World Cup jersey is the most-scrutinized garment on earth, which makes it a live masterclass in product. Nike, adidas, and Puma spent four years engineering quality into the fibre, building a deliberate authentic-vs-replica ladder, and turning each launch into a cultural drop. Here's the playbook — and how a US founder runs it at any scale.",
-    category: "strategy",
+    category: "Manufacturing",
     author: "Krazy Kreator Team",
     date: "June 22, 2026",
     readTime: "8 min read",
