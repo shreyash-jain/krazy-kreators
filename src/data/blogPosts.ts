@@ -15,6 +15,19 @@ export type BlogPostMeta = {
 
 export const blogPosts: BlogPostMeta[] = [
   {
+    id: 48,
+    title: "The July 24 Tariff Cliff: Re-Cost Fall Before It Lands",
+    excerpt: "The 10% Section 122 blanket tariff that flattened every sourcing country to one rate expires July 24, 2026 — and the President can't extend it alone. Right now India, Vietnam and Bangladesh all sit at ~26.5% landed duty on a cotton tee; only China is higher. That flat line is about to fracture across 16 open Section 301 investigations. Every Fall PO you sign before the date is a bet on tariff policy. Here's how to re-cost it.",
+    category: "manufacturing",
+    author: "Marcus Reed",
+    date: "June 25, 2026",
+    readTime: "8 min read",
+    image: "https://res.cloudinary.com/dprx4pret/image/upload/blog/tariff_cliff_hero.jpg",
+    slug: "july-24-tariff-cliff-recost-fall-2026",
+    readers: 0,
+    likes: 0,
+  },
+  {
     id: 46,
     title: "The Jersey Standard: Product as Global Stage",
     excerpt: "One shirt, judged in 4K by billions: the World Cup jersey is the most-scrutinized garment on earth, which makes it a live masterclass in product. Nike, adidas, and Puma spent four years engineering quality into the fibre, building a deliberate authentic-vs-replica ladder, and turning each launch into a cultural drop. Here's the playbook — and how a US founder runs it at any scale.",
