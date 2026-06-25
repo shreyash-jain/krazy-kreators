@@ -14,13 +14,10 @@ import { recordBlogLikeUpdate } from "@/lib/blogLikeSync";
 
 const BLOG_ID = "july-24-tariff-cliff-recost-fall-2026";
 
-// NOTE: these 4 assets still need to be generated from the image prompts and uploaded
-// to Cloudinary cloud `dprx4pret` under /blog/ with the filenames below (version-less
-// URLs resolve to the latest upload). Until then they will 404 at runtime.
-const HERO_IMAGE = "https://res.cloudinary.com/dprx4pret/image/upload/blog/tariff_cliff_hero.jpg";
-const SEAM_IMAGE = "https://res.cloudinary.com/dprx4pret/image/upload/blog/tariff_cliff_seam_macro.jpg";
-const TREE_IMAGE = "https://res.cloudinary.com/dprx4pret/image/upload/blog/tariff_cliff_decision_tree.jpg";
-const CLOSING_IMAGE = "https://res.cloudinary.com/dprx4pret/image/upload/blog/tariff_cliff_po_closing.jpg";
+const HERO_IMAGE = "/blog/tariff_cliff_hero.jpg";
+const SEAM_IMAGE = "/blog/tariff_cliff_seam_macro.jpg";
+const TREE_IMAGE = "/blog/tariff_cliff_decision_tree.jpg";
+const CLOSING_IMAGE = "/blog/tariff_cliff_po_closing.jpg";
 
 const TOC = [
     { id: "what-expires", label: "What expires July 24 — and what doesn't" },
