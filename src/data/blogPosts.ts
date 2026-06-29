@@ -22,7 +22,7 @@ export const blogPosts: BlogPostMeta[] = [
     author: "Marcus Reed",
     date: "June 25, 2026",
     readTime: "8 min read",
-    image: "https://res.cloudinary.com/dprx4pret/image/upload/blog/tariff_cliff_hero.jpg",
+    image: "/blog/tariff_cliff_hero.jpg",
     slug: "july-24-tariff-cliff-recost-fall-2026",
     readers: 0,
     likes: 0,
