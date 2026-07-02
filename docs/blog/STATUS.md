@@ -1,0 +1,38 @@
+# Blog Work — Status & Handoff Ledger
+
+**This is the living state of blog work.** It exists so anyone picking up — a new teammate, or a fresh AI session — knows exactly where things stand and what to do next, without needing any chat history. The other docs say *how* to make a blog; this says *where we are*.
+
+> **Handoff protocol (everyone follows this):**
+> - **Before you start:** read `docs/blog/README.md`, then this file.
+> - **While you work:** keep the "In flight" table current.
+> - **Before you leave:** update statuses, record blockers, and list the next actions. Push your branch. That's what lets the next person continue the series.
+
+*Last updated: 2026-07-02.*
+
+---
+
+## In flight — branches, state, next action
+
+| Blog / work | Branch | State | Open item / next action |
+|---|---|---|---|
+| Tariff cliff (July 24 / Section 122) | merged to `main` (PR #47) | ✅ Live | Its byline on `main` still shows a persona name until the byline-fix (on the de-minimis branch) reaches `main`. |
+| De-minimis ($800 rule) | `blog/de-minimis-end-us-brands-2026` | Pushed to origin; **not merged** | (1) Closing image is a **duplicate of the Section-1 macro** — replace `public/blog/de_minimis_closing.jpg` with the parcel-vs-pallet shot. (2) This branch also carries the **"Krazy Kreators Team" byline fix** for 6 older posts — merging it standardizes all bylines. Open a PR. |
+| Osaka Wimbledon (walk-on) | `blog/naomi-osaka-wimbledon-kimono-us-brands-2026` | Pushed to origin; **not merged** | **Licensing** on the 3 real press photos (`.webp`) must be cleared before merge. Otherwise complete (6 images, build green). Open a PR. |
+| Blog system docs (this folder) | `docs/blog-system-runbook` | Pushed to origin; **not merged** | Merge to `main` to make the pipeline + master prompt canonical for everyone. |
+
+## Standing decisions (so nobody re-litigates them)
+- **Byline = "Krazy Kreators Team"** + desk label. No persona names. (Set 2026-06-30.)
+- **Images:** the assistant can't save chat-pasted images — files must land in `public/blog/`. Naming: `<slug>-hero`, `<slug>-section1`, `<slug>-teaching`, `<slug>-macro`, `<slug>-closing`.
+- **One blog at a time** until the shared-`<BlogArticle>` refactor lands (avoids id collisions + the merge-drop hazard). See `PIPELINE.md`.
+
+## Open blockers / decisions pending
+- **Osaka press-photo licensing** — owner to confirm before merge.
+- **De-minimis closing image** — swap the duplicate.
+- **Deploy:** an earlier Vercel preview failed on the tariff PR while the local build passed → likely env/config/stale, not code. If a preview fails, read the provider dashboard log (the `gh`/`vercel` CLIs aren't authenticated in the working environment).
+
+## Recommended next actions (in order)
+1. Decide licensing on the Osaka photos → open its PR.
+2. Swap the de-minimis closing image → open its PR (this also lands the byline fix).
+3. Merge `docs/blog-system-runbook` to `main` so the system is canonical.
+4. Then merge the blog PRs one at a time, re-checking the `blogPosts.ts` count invariant after each (see `PIPELINE.md` § merge-drop).
+5. When bandwidth allows: greenlight the shared-`<BlogArticle>` refactor (`PIPELINE.md`) to end the copy-paste.
