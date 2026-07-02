@@ -15,6 +15,19 @@ export type BlogPostMeta = {
 
 export const blogPosts: BlogPostMeta[] = [
   {
+    id: 49,
+    title: "Every Parcel Pays Now: The End of the $800 Rule",
+    excerpt: "The $800 de minimis exemption that let DTC brands ship single orders straight from overseas, duty-free, is gone — China since May 2025, every other country since August 2025. 2026 is the first full year every parcel owes duty and a customs entry, and on a small order the brokerage fee often costs more than the duty itself. That's what broke the ship-direct model. The fix isn't a cheaper country — it's consolidating into bulk import plus a US 3PL. Here's the per-parcel math and the move.",
+    category: "manufacturing",
+    author: "Krazy Kreators Team",
+    date: "June 29, 2026",
+    readTime: "8 min read",
+    image: "/blog/de_minimis_hero.jpg",
+    slug: "de-minimis-end-us-brands-2026",
+    readers: 0,
+    likes: 0,
+  },
+  {
     id: 48,
     title: "The July 24 Tariff Cliff: Re-Cost Fall Before It Lands",
     excerpt: "The 10% Section 122 blanket tariff that flattened every sourcing country to one rate expires July 24, 2026 — and the President can't extend it alone. Right now India, Vietnam and Bangladesh all sit at ~26.5% landed duty on a cotton tee; only China is higher. That flat line is about to fracture across 16 open Section 301 investigations. Every Fall PO you sign before the date is a bet on tariff policy. Here's how to re-cost it.",
