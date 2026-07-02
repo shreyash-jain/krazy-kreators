@@ -1,10 +1,13 @@
 # Krazy Kreators Blog — START HERE
 
-**If you are a new teammate, or an AI session about to touch the KK blog: read this folder before you write or ship anything.** These three files are the single source of truth. You do not need any prior chat history or tribal knowledge — everything is here.
+**If you are a new teammate, or an AI session about to touch the KK blog: read this folder before you write or ship anything.** These files are the single source of truth. You do not need any prior chat history or tribal knowledge — everything is here.
 
 Read in this order:
-1. **[MASTER_PROMPT.md](./MASTER_PROMPT.md)** — how to *write* a KK blog (voice, rules, structure, images, exact output format). This is a paste-ready generation prompt.
-2. **[PIPELINE.md](./PIPELINE.md)** — how to *build and ship* it (branch → scaffold → images → verify → PR → publish), the code architecture, and the traps that will bite you.
+1. **[STATUS.md](./STATUS.md)** — *where the work stands right now*: which blogs are drafted/pushed/merged, what's blocked, what to do next. **Start here so you can continue the series.**
+2. **[MASTER_PROMPT.md](./MASTER_PROMPT.md)** — how to *write* a KK blog (voice, rules, structure, images, exact output format). A paste-ready generation prompt.
+3. **[PIPELINE.md](./PIPELINE.md)** — how to *build and ship* it (branch → scaffold → images → verify → PR → publish), the code architecture, and the traps that will bite you.
+
+**Handoff rule:** before you step away, update **STATUS.md** (statuses, blockers, next actions) and push your branch. That single habit is what lets the next person pick up exactly where you left off.
 
 ---
 
