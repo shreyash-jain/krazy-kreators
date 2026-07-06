@@ -15,6 +15,20 @@ export type BlogPostMeta = {
 
 export const blogPosts: BlogPostMeta[] = [
   {
+    id: 51,
+    title: "The 10% Tariff Floor Expires July 24 — Then What?",
+    excerpt:
+      "Section 122's flat 10% surcharge made every sourcing country look the same. It expires July 24, 2026 — and the proposed replacement, USTR's Section 301 forced-labor duties, sorts suppliers by policy: 10% for countries that ban forced-labor imports (Bangladesh, Cambodia, Pakistan, Indonesia, Mexico), 12.5% for the rest (China, India, Vietnam). Your country choice is now a compliance decision. Here's the new stack, the textile mechanism in the fine print, and the move before Fall POs lock.",
+    category: "manufacturing",
+    author: "Krazy Kreators Team",
+    date: "July 5, 2026",
+    readTime: "7 min read",
+    image: "/blog/apparel-tariffs-301-hero.jpg",
+    slug: "apparel-tariffs-july-2026-forced-labor-301-regime",
+    readers: 0,
+    likes: 0,
+  },
+  {
     id: 49,
     title: "Every Parcel Pays Now: The End of the $800 Rule",
     excerpt: "The $800 de minimis exemption that let DTC brands ship single orders straight from overseas, duty-free, is gone — China since May 2025, every other country since August 2025. 2026 is the first full year every parcel owes duty and a customs entry, and on a small order the brokerage fee often costs more than the duty itself. That's what broke the ship-direct model. The fix isn't a cheaper country — it's consolidating into bulk import plus a US 3PL. Here's the per-parcel math and the move.",
