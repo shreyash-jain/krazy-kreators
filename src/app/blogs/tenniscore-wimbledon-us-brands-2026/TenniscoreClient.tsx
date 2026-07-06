@@ -508,7 +508,7 @@ export default function TenniscoreClient({ initialLikeCount, initialComments }: 
                                 <div className="rounded-2xl overflow-hidden shadow-xl border border-gray-100 mb-7 max-w-2xl mx-auto bg-[#F8F7F4]">
                                     <Image
                                         src={CLOSING_IMAGE}
-                                        alt="A playful graphic editorial still: a single crisp white knit polo folded on a bold kelly-green seamless background, a tennis ball and a hard-edged cream shadow shape for graphic contrast, bright high-key studio light. Generic unbranded garment, no logos, no faces."
+                                        alt="A playful graphic editorial still: a single crisp white knit polo folded on a bold navy seamless background, a bright green tennis ball and a hard-edged cream shadow shape for graphic contrast, bright high-key studio light. Generic unbranded garment, no logos, no faces."
                                         width={1024}
                                         height={1024}
                                         sizes="(max-width: 1024px) 100vw, 42rem"
