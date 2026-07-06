@@ -15,7 +15,7 @@
 
 | Blog / work | Branch | State | Open item / next action |
 |---|---|---|---|
-| Forced-labor 301 regime (10% vs 12.5%) | `blog/apparel-tariffs-july-2026-forced-labor-301-regime` | ✅ Images generated; build green (exit 0) | Ready for commit, push, and PR. |
+| Forced-labor 301 regime (10% vs 12.5%) | pushed direct to `main` (c4a573b, 2026-07-06) | ✅ Live | id 51. Merged fast-forward to main and pushed (no PR, per owner). 4 images in place, build green, invariant 51==51. Verify the provider deploy went green on the dashboard. |
 | Tariff cliff (July 24 / Section 122) | merged to `main` (PR #47) | ✅ Live | Its byline on `main` still shows a persona name until the byline-fix (on the de-minimis branch) reaches `main`. |
 | De-minimis ($800 rule) | `blog/de-minimis-end-us-brands-2026` | Pushed to origin; **not merged** | (1) Closing image is a **duplicate of the Section-1 macro** — replace `public/blog/de_minimis_closing.jpg` with the parcel-vs-pallet shot. (2) This branch also carries the **"Krazy Kreators Team" byline fix** for 6 older posts — merging it standardizes all bylines. Open a PR. |
 | Osaka Wimbledon (walk-on) | `blog/naomi-osaka-wimbledon-kimono-us-brands-2026` | Pushed to origin; **not merged** | **Licensing** on the 3 real press photos (`.webp`) must be cleared before merge. Otherwise complete (6 images, build green). Open a PR. |
