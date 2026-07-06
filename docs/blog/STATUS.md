@@ -15,6 +15,7 @@
 
 | Blog / work | Branch | State | Open item / next action |
 |---|---|---|---|
+| Tennis-Core / Wimbledon (July #5) | `blog/tenniscore-wimbledon-us-brands-2026` | Scaffolded; **build green (exit 0)**; PR flow | id **52**. Culture & Brand. Facts verified on live web. **Needs 4 images** in `public/blog/`: `tenniscore-hero.jpg`, `-section1.jpg`, `-teaching.jpg`, `-closing.jpg` (teaching = "Anatomy of a Tenniscore Piece": 5 cues + 200–260 GSM + optic-white/cream/kelly-green/navy palette — must match body). Push branch → PR → await sign-off → merge. **No direct-to-main.** |
 | Forced-labor 301 regime (10% vs 12.5%) | pushed direct to `main` (c4a573b, 2026-07-06) | ✅ Live | id 51. Merged fast-forward to main and pushed (no PR, per owner). 4 images in place, build green, invariant 51==51. Verify the provider deploy went green on the dashboard. |
 | Tariff cliff (July 24 / Section 122) | merged to `main` (PR #47) | ✅ Live | Its byline on `main` still shows a persona name until the byline-fix (on the de-minimis branch) reaches `main`. |
 | De-minimis ($800 rule) | `blog/de-minimis-end-us-brands-2026` | Pushed to origin; **not merged** | (1) Closing image is a **duplicate of the Section-1 macro** — replace `public/blog/de_minimis_closing.jpg` with the parcel-vs-pallet shot. (2) This branch also carries the **"Krazy Kreators Team" byline fix** for 6 older posts — merging it standardizes all bylines. Open a PR. |
