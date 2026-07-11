@@ -15,6 +15,20 @@ export type BlogPostMeta = {
 
 export const blogPosts: BlogPostMeta[] = [
   {
+    id: 54,
+    title: "The 'Made in USA' Clothing Label Trap",
+    excerpt:
+      "Since spring, the FTC has treated the label sewn into your collar like the legal document it is — a March executive order, an April enforcement sweep, then a fresh round of warning letters on July 6. Here's the rule most founders miss: if your fabric is imported, you cannot make an unqualified 'Made in USA' claim. The good news is that a qualified claim is fully legal, often stronger — and 'made well' is a claim you can always defend. The label law, the enforcement wave, and the sourcing story that survives both.",
+    category: "strategy",
+    author: "Krazy Kreators Team",
+    date: "July 10, 2026",
+    readTime: "8 min read",
+    image: "/blog/made-in-usa-hero.jpg",
+    slug: "made-in-usa-clothing-label-rules-2026",
+    readers: 0,
+    likes: 0,
+  },
+  {
     id: 51,
     title: "The 10% Tariff Floor Expires July 24 — Then What?",
     excerpt:
