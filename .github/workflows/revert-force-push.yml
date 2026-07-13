@@ -4,7 +4,6 @@ on:
   push:
     branches:
       - main
-      - force-push-test
 
 permissions:
   contents: write
