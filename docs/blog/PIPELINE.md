@@ -50,6 +50,7 @@ rm -rf .next && npm run build   # THE gate — exit 0 AND route shows as: ƒ /bl
 
 ### Phase 6 — Commit / push / PR
 - Commit **scoped to this blog's files only** — leave unrelated working-tree files (`.claude/`, `.github/`, other people's WIP) alone.
+- **Confirm `.npmrc` exists at repo root before pushing** (`ls .npmrc`). Without it the Cloudflare deploy fails on `ERESOLVE` — see Operational guards. Once it's on `main` every branch inherits it; if a branch predates it, cherry-pick it in.
 - Push the branch; open a PR; the provider preview build runs on the PR.
 
 ### Phase 7 — Merge = publish
@@ -88,6 +89,7 @@ rm -rf .next && npm run build   # THE gate — exit 0 AND route shows as: ƒ /bl
 - **Merge-drop hazard.** Every post inserts at the top of the `blogPosts` array, so two branches merging can silently keep one entry and drop the other. The dropped post's page/route still work, so it "exists" but never appears in the `/blogs` listing. **After any merge, entry count must equal page-dir count** (Phase 5). If a post "isn't showing," check `blogPosts.ts` before suspecting the build.
 - **Git-LFS `hero-video.mp4`** — see Phase 2.
 - **Deploy.** Happens via the provider dashboard (Vercel/Cloudflare) on push; `main` = production. The `gh` and `vercel` CLIs are typically **not authenticated** in this environment, so read build logs from the dashboard, and don't assume you can trigger/inspect deploys from the shell.
+- **Cloudflare `ERESOLVE` / the `.npmrc` guard (must stay at repo root).** Cloudflare Pages builds with `npx @cloudflare/next-on-pages@1`, which npm-installs the latest `wrangler` (peer `@cloudflare/workers-types@^5`) alongside `next-on-pages` (peer `@cloudflare/workers-types@^4`). Strict npm peer resolution can't satisfy both and aborts with **`npm error code ERESOLVE`**, so the deploy exits 1 **even though `next build` is green locally** (a local build never runs `next-on-pages`, so it can't catch this). The fix lives in the repo-root **`.npmrc` → `legacy-peer-deps=true`** (npm's own recommended fallback; `pnpm` ignores the key and uses the committed lockfile). **Never delete `.npmrc`.** Because every blog branches off `main`, this file MUST be on `main` or each new branch re-inherits the failure — it landed with the first post that needed it; keep it there. If a Cloudflare build fails with `ERESOLVE ... @cloudflare/workers-types`, the branch is simply missing `.npmrc`.
 
 ---
 
