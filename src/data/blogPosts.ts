@@ -15,6 +15,20 @@ export type BlogPostMeta = {
 
 export const blogPosts: BlogPostMeta[] = [
   {
+    id: 52,
+    title: "Tennis-Core Won Wimbledon. Can Your Brand?",
+    excerpt:
+      "Tenniscore — pleated whites, collared polos, kelly green and navy — owns the aesthetic conversation every Wimbledon fortnight. But it's no fad: the demand under it is a real racket-sport boom (24.3M Americans now play pickleball), and the look lives inside quiet luxury, where construction and fabric carry the value instead of a logo. That's exactly what's hard to fake. Here's why it stuck, the five construction cues that separate country-club from costume, and when a US brand should — and shouldn't — chase the whites.",
+    category: "trends",
+    author: "Krazy Kreators Team",
+    date: "July 6, 2026",
+    readTime: "7 min read",
+    image: "/blog/tenniscore-hero.jpg",
+    slug: "tenniscore-wimbledon-us-brands-2026",
+    readers: 0,
+    likes: 0,
+  },
+  {
     id: 51,
     title: "The 10% Tariff Floor Expires July 24 — Then What?",
     excerpt:
