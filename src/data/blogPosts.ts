@@ -15,16 +15,16 @@ export type BlogPostMeta = {
 
 export const blogPosts: BlogPostMeta[] = [
   {
-    id: 52,
-    title: "Tennis-Core Won Wimbledon. Can Your Brand?",
+    id: 54,
+    title: "The 'Made in USA' Clothing Label Trap",
     excerpt:
-      "Tenniscore — pleated whites, collared polos, kelly green and navy — owns the aesthetic conversation every Wimbledon fortnight. But it's no fad: the demand under it is a real racket-sport boom (24.3M Americans now play pickleball), and the look lives inside quiet luxury, where construction and fabric carry the value instead of a logo. That's exactly what's hard to fake. Here's why it stuck, the five construction cues that separate country-club from costume, and when a US brand should — and shouldn't — chase the whites.",
-    category: "trends",
+      "Since spring, the FTC has treated the label sewn into your collar like the legal document it is — a March executive order, an April enforcement sweep, then a fresh round of warning letters on July 6. Here's the rule most founders miss: if your fabric is imported, you cannot make an unqualified 'Made in USA' claim. The good news is that a qualified claim is fully legal, often stronger — and 'made well' is a claim you can always defend. The label law, the enforcement wave, and the sourcing story that survives both.",
+    category: "strategy",
     author: "Krazy Kreators Team",
-    date: "July 6, 2026",
-    readTime: "7 min read",
-    image: "/blog/tenniscore-hero.jpg",
-    slug: "tenniscore-wimbledon-us-brands-2026",
+    date: "July 10, 2026",
+    readTime: "8 min read",
+    image: "/blog/made-in-usa-hero.jpg",
+    slug: "made-in-usa-clothing-label-rules-2026",
     readers: 0,
     likes: 0,
   },
