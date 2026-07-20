@@ -17,6 +17,7 @@ const BLOG_ID = "rebuild-landed-cost-august-2026";
 const HERO_IMAGE = "/blog/rebuild-cost-august-hero.jpg";
 const STACK_IMAGE = "/blog/rebuild-cost-august-section1.jpg";
 const TABLE_IMAGE = "/blog/rebuild-cost-august-teaching.jpg";
+const MACRO_IMAGE = "/blog/rebuild-cost-august-macro.jpg";
 const CLOSING_IMAGE = "/blog/rebuild-cost-august-closing.jpg";
 
 const TOC = [
@@ -513,6 +514,18 @@ export default function RebuildCostClient({ initialLikeCount, initialComments }:
                                 <p className="text-base lg:text-lg leading-snug text-[#4A484A] mb-4">
                                     While everyone watches the duty line, three smaller charges sit underneath it and don&apos;t move with the tariff fight at all. They&apos;re the reason a rebuilt sheet has to be landed cost, not FOB plus a duty guess.
                                 </p>
+
+                                <div className="rounded-2xl overflow-hidden shadow-xl border border-gray-100 mb-7 max-w-2xl mx-auto bg-[#F8F7F4]">
+                                    <Image
+                                        src={MACRO_IMAGE}
+                                        alt="Extreme macro of neatly folded natural-cotton tees stacked inside an open corrugated shipping carton, the soft cotton weave meeting the rough kraft cardboard edge, a strip of packing tape catching one highlight, soft window light from the left, very shallow depth of field. No logos, no readable text."
+                                        width={1024}
+                                        height={1024}
+                                        sizes="(max-width: 1024px) 100vw, 42rem"
+                                        className="w-full h-auto"
+                                    />
+                                </div>
+
                                 <ul className="space-y-1.5 text-[#2D2A2E] leading-snug mb-4 list-disc pl-5">
                                     <li>The <strong>Merchandise Processing Fee (MPF)</strong> — 0.3464% of customs value on a formal entry, floored at $33.58 and capped at $651.50 for FY2026 (<a href="https://www.cbp.gov/trade/basic-import-export/user-fee-table" target="_blank" rel="noopener noreferrer" className="underline text-[#CBB49A] hover:text-[#b7a078]">US Customs and Border Protection</a>).</li>
                                     <li>The <strong>Harbor Maintenance Fee (HMF)</strong> — 0.125% of value on ocean shipments, same source.</li>
@@ -564,7 +577,7 @@ export default function RebuildCostClient({ initialLikeCount, initialComments }:
                                 <div className="rounded-2xl overflow-hidden shadow-xl border border-gray-100 mb-7 max-w-2xl mx-auto bg-[#F8F7F4]">
                                     <Image
                                         src={CLOSING_IMAGE}
-                                        alt="A freshly printed cost sheet with three side-by-side columns and a small calculator and pen resting on a brushed-steel desk, one hard shaft of window light splitting the frame so half the page is bright and half falls into deep shadow. No faces, no readable text."
+                                        alt="Three printed cost-sheet paper strips of different lengths fanned side by side from short to long, a slim calculator and a pen resting beside them on a warm walnut tabletop, warm low-angle side light casting three staggered soft shadows. No readable text or numbers, no logos, no faces."
                                         width={1024}
                                         height={1024}
                                         sizes="(max-width: 1024px) 100vw, 42rem"
