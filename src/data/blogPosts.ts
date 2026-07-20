@@ -15,6 +15,20 @@ export type BlogPostMeta = {
 
 export const blogPosts: BlogPostMeta[] = [
   {
+    id: 55,
+    title: "After the Cliff: Rebuild Your Cost Sheet for August",
+    excerpt:
+      "Section 122's flat 10% blanket lapsed July 24, 2026 — and the anticlimax is a trap: nothing on your cost sheet changed, but the number that gets fixed at the dock did. Duty is assessed the day your goods clear customs, so Fall goods clearing in August pay August's regime, not the 10% you costed at in spring. Cost a $14 tee three ways — 16.5% if the blanket lapses clean, 26.5% at Section 301's 10% floor, 29% at 12.5% — a $1.75-per-unit swing. Here's the landed-cost rebuild: duty at the clearance-date scenario, the fixed CBP fees that don't move with the court fight, consolidation, and a pass-through clause.",
+    category: "manufacturing",
+    author: "Krazy Kreators Team",
+    date: "July 20, 2026",
+    readTime: "9 min read",
+    image: "/blog/rebuild-cost-august-hero.jpg",
+    slug: "rebuild-landed-cost-august-2026",
+    readers: 0,
+    likes: 0,
+  },
+  {
     id: 54,
     title: "The 'Made in USA' Clothing Label Trap",
     excerpt:
