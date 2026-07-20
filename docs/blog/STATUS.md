@@ -7,7 +7,7 @@
 > - **While you work:** keep the "In flight" table current.
 > - **Before you leave:** update statuses, record blockers, and list the next actions. Push your branch. That's what lets the next person continue the series.
 
-*Last updated: 2026-07-02.*
+*Last updated: 2026-07-20.*
 
 ---
 
@@ -15,6 +15,7 @@
 
 | Blog / work | Branch | State | Open item / next action |
 |---|---|---|---|
+| After the Cliff — landed-cost rebuild (Aug) | `blog/rebuild-landed-cost-august-2026` | Scaffolded; **build green (exit 0)**, route `ƒ /blogs/rebuild-landed-cost-august-2026`; invariant 55==55; PR flow | id **55**. Production & Sourcing. Sequel to the July-24 cliff post — the post-lapse *landed-cost rebuild* for Aug-clearing goods (duty follows entry date; 3 scenarios 16.5% / 26.5% / 29%; + MPF/HMF/brokerage; consolidate; pass-through clause). Facts verified on live web (CRS, White & Case, CBP fee table, Tariffs Tool, Greenwich). **Needs 4 images** in `public/blog/`: `rebuild-cost-august-hero.jpg`, `-section1.jpg`, `-teaching.jpg`, `-closing.jpg` (teaching = "The $14 tee's August landed cost, three ways" — columns must total **$16.43 / $17.83 / $18.18** to match body). Push branch → PR → await sign-off → merge. **No direct-to-main.** |
 | Tennis-Core / Wimbledon (July #5) | `blog/tenniscore-wimbledon-us-brands-2026` | Scaffolded; **build green (exit 0)**; PR flow | id **52**. Culture & Brand. Facts verified on live web. **Needs 4 images** in `public/blog/`: `tenniscore-hero.jpg`, `-section1.jpg`, `-teaching.jpg`, `-closing.jpg` (teaching = "Anatomy of a Tenniscore Piece": 5 cues + 200–260 GSM + optic-white/cream/kelly-green/navy palette — must match body). Push branch → PR → await sign-off → merge. **No direct-to-main.** |
 | Forced-labor 301 regime (10% vs 12.5%) | pushed direct to `main` (c4a573b, 2026-07-06) | ✅ Live | id 51. Merged fast-forward to main and pushed (no PR, per owner). 4 images in place, build green, invariant 51==51. Verify the provider deploy went green on the dashboard. |
 | Tariff cliff (July 24 / Section 122) | merged to `main` (PR #47) | ✅ Live | Its byline on `main` still shows a persona name until the byline-fix (on the de-minimis branch) reaches `main`. |
