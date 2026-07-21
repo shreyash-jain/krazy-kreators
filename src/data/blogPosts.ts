@@ -15,6 +15,20 @@ export type BlogPostMeta = {
 
 export const blogPosts: BlogPostMeta[] = [
   {
+    id: 56,
+    title: "Prime Day's Over. Your Margin Report Isn't.",
+    excerpt:
+      "The deals ended in June. The number they created lands now — in your July settlement, after the refunds clear and the fulfillment fees post. The marketplace discount cycle trains inventory to move and customers to wait, and a 30% Prime Day cut on a 40%-margin tee needs 4× the units just to hold the same profit dollars. Then Amazon's ~17% apparel referral and its new 3.5% FBA surcharge come out of what's left. Here's the make-vs-discount math founders skip — and why a $3 cut in landed cost, designed in at the tech pack, beats a discount weekend on every drop that follows.",
+    category: "business",
+    author: "Krazy Kreators Team",
+    date: "July 21, 2026",
+    readTime: "7 min read",
+    image: "/blog/prime-day-hero.jpg",
+    slug: "dtc-margin-after-prime-day-2026",
+    readers: 0,
+    likes: 0,
+  },
+  {
     id: 55,
     title: "After the Cliff: Rebuild Your Cost Sheet for August",
     excerpt:
