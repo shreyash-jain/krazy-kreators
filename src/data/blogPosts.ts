@@ -15,6 +15,20 @@ export type BlogPostMeta = {
 
 export const blogPosts: BlogPostMeta[] = [
   {
+    id: 59,
+    title: "How to Start a Clothing Brand in 2026: A Step-by-Step Guide",
+    excerpt:
+      "Almost nobody fails at the idea — they fail between the idea and the second production run. This is the build order that gets a first collection made and sold: eight steps, each ending in a document, number, or filing you can point at. Niche, range plan, entity and Class 25 trademark, tech pack, fabric and sampling, landed cost, labelling, first run. The step first-time founders skip is landed cost: with the $800 de-minimis exemption suspended since June 2026, the factory quote is only 77% of what a garment really costs you. Plus a 12-month build order and the first-year founder checklist.",
+    category: "business",
+    author: "Krazy Kreators Team",
+    date: "August 5, 2026",
+    readTime: "11 min read",
+    image: "/blog/start-clothing-brand-hero.jpg",
+    slug: "how-to-start-a-clothing-brand-2026",
+    readers: 0,
+    likes: 0,
+  },
+  {
     id: 56,
     title: "Prime Day's Over. Your Margin Report Isn't.",
     excerpt:
