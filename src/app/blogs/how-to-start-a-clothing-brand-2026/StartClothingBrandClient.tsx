@@ -233,7 +233,7 @@ export default function StartClothingBrandClient({ initialLikeCount, initialComm
             <section className="relative h-[60vh] min-h-[560px] max-h-[720px] flex items-center justify-center overflow-hidden">
                 <Image
                     src={HERO_IMAGE}
-                    alt="A first-time clothing founder's work table at dawn: an open sketchbook and a printed spec sheet sharp in the mid-ground, a single unbranded sample tee on a form softly out of focus behind, cool window light. No faces, no logos, no readable text."
+                    alt="A long cutting table shot from a low three-quarter angle: a full paper pattern laid flat with weights holding the corners, a bolt of cotton part-unrolled at the far end, tailor's shears resting off to one side, tall window light raking across the surface. No people, no logos, no readable text."
                     fill
                     className="object-cover"
                     priority
@@ -392,7 +392,7 @@ export default function StartClothingBrandClient({ initialLikeCount, initialComm
                                 <div className="rounded-2xl overflow-hidden shadow-xl border border-gray-100 mb-7 max-w-2xl mx-auto bg-[#F8F7F4]">
                                     <Image
                                         src={SECTION1_IMAGE}
-                                        alt="A documentary-wide view of a small design studio at golden hour: a long table with rolled fabric, a dress form holding one unfinished sample, taped spec sheets on the wall behind, warm low sun through a dusty window. No faces, no brand marks, no readable text."
+                                        alt="One hard shaft of light cutting diagonally across a nearly empty clothing rail holding just three unbranded garments, everything else falling into deep shadow, dust visible in the beam. Moody and conceptual. No people, no logos, no readable text."
                                         width={1024}
                                         height={1024}
                                         sizes="(max-width: 1024px) 100vw, 42rem"
@@ -572,7 +572,7 @@ export default function StartClothingBrandClient({ initialLikeCount, initialComm
                                 <div className="rounded-2xl overflow-hidden shadow-xl border border-gray-100 mb-7 max-w-2xl mx-auto bg-[#F8F7F4]">
                                     <Image
                                         src={MACRO_IMAGE}
-                                        alt="Extreme macro of heavyweight cotton jersey at a shoulder seam — individual knit loops, the ridge of a twin-needle topstitch, and a hint of rib collar, raking side light, very shallow depth of field. No logos, no readable text."
+                                        alt="Extreme macro of a tailor's chalk line and a row of pattern notches marked on cotton cloth, the steel edge of shears and a tracing wheel entering the frame out of focus in the foreground, raking side light, very shallow depth of field. No logos, no readable text."
                                         width={1024}
                                         height={1024}
                                         sizes="(max-width: 1024px) 100vw, 42rem"
@@ -757,7 +757,7 @@ export default function StartClothingBrandClient({ initialLikeCount, initialComm
                                 <div className="rounded-2xl overflow-hidden shadow-xl border border-gray-100 mb-7 max-w-2xl mx-auto bg-[#F8F7F4]">
                                     <Image
                                         src={CLOSING_IMAGE}
-                                        alt="A single finished unbranded heavyweight tee on a matte display form in clean directional studio light, one sealed shipping carton just visible and out of focus behind it, wood floor, calm and resolved. No logos, no readable text, no faces."
+                                        alt="A low documentary-wide view of one strapped pallet of sealed unbranded cartons standing in a quiet warehouse bay, a roller door half open to cool morning light, bare concrete floor and long shadows. No people, no logos, no readable text."
                                         width={1024}
                                         height={1024}
                                         sizes="(max-width: 1024px) 100vw, 42rem"
