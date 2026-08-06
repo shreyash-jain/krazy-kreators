@@ -18,11 +18,11 @@ export const blogPosts: BlogPostMeta[] = [
     id: 59,
     title: "How to Start a Clothing Brand in 2026: A Step-by-Step Guide",
     excerpt:
-      "Almost nobody fails at the idea — they fail between the idea and the second production run. This is the build order that gets a first collection made and sold: eight steps, each ending in a document, number, or filing you can point at. Niche, range plan, entity and Class 25 trademark, tech pack, fabric and sampling, landed cost, labelling, first run. The step first-time founders skip is landed cost: with the $800 de-minimis exemption suspended since June 2026, the factory quote is only 77% of what a garment really costs you. Plus a 12-month build order and the first-year founder checklist.",
+      "Most clothing brands don't fail because of bad design — they fail because they never learned how manufacturing works. This is the build order that gets a first collection made and sold: eight steps, each ending in a document, number, or filing you can point at. Niche, range plan, entity and Class 25 trademark, tech pack, fabric and sampling, landed cost, labelling, first run. The step first-time founders skip is landed cost: with the $800 de-minimis exemption suspended since June 2026, the factory quote is only 77% of what a garment really costs you. Includes what's inside a tech pack, the three sampling rounds, a real 8-month launch, the sampling mistake we see constantly, a 12-month build order and a plain-English glossary.",
     category: "business",
     author: "Krazy Kreators Team",
     date: "August 5, 2026",
-    readTime: "11 min read",
+    readTime: "15 min read",
     image: "/blog/start-clothing-brand-hero.jpg",
     slug: "how-to-start-a-clothing-brand-2026",
     readers: 0,

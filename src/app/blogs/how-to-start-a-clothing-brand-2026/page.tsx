@@ -134,6 +134,14 @@ const faqJsonLd = {
     mainEntity: [
         {
             "@type": "Question",
+            name: "Why do most new clothing brands fail?",
+            acceptedAnswer: {
+                "@type": "Answer",
+                text: "Rarely the design. The common cause is manufacturing literacy: a specification that was never written down, fabric chosen by feel instead of by composition and GSM, a sample approved from a photograph, and a retail price set against a factory quote rather than a landed cost. Each is a process failure and each is preventable by working in sequence.",
+            },
+        },
+        {
+            "@type": "Question",
             name: "How do you start a clothing brand in 2026?",
             acceptedAnswer: {
                 "@type": "Answer",
@@ -199,6 +207,33 @@ const faqJsonLd = {
     ],
 };
 
+const glossaryJsonLd = {
+    "@context": "https://schema.org",
+    "@type": "DefinedTermSet",
+    name: "Clothing brand manufacturing glossary",
+    description: "Plain-English definitions of the manufacturing terms a first-time clothing founder meets.",
+    url: `${URL}#glossary`,
+    hasDefinedTerm: [
+        ["Tech pack", "The technical specification a factory manufactures from — sketches, measurements, fabric, trims, stitches, labels, packing."],
+        ["GSM", "Grams per square metre: how heavy the cloth is. A 180 GSM tee is light and summery; 240 GSM reads premium and structured."],
+        ["MOQ", "Minimum order quantity — the smallest run a factory or mill will accept, usually set per style, per colour, and per fabric."],
+        ["FOB", "Free on board: the price of the goods loaded at the origin port, excluding freight, duty and later fees."],
+        ["Landed cost", "What a unit truly costs once freight, duty, customs fees, brokerage and inbound logistics are added."],
+        ["HTS code", "The Harmonized Tariff Schedule classification that sets the US duty rate. Cotton knit tees sit at 6109.10.00."],
+        ["Grading", "Scaling an approved base-size pattern up and down into a full size run while holding the fit relationships."],
+        ["Pre-production sample", "The final sample, signed off before bulk, that becomes the quality benchmark for the whole run."],
+        ["Colourway", "One colour version of a style. Each colourway is a separate production line item and its own inventory risk."],
+        ["Sell-through rate", "The percentage of a production run sold within a set window."],
+        ["Lead time", "Elapsed time from placing the bulk order to goods arriving. Fabric availability is usually the long pole."],
+        ["3PL", "Third-party logistics: the warehouse that stores inventory and ships orders on the brand's behalf."],
+    ].map(([name, description]) => ({
+        "@type": "DefinedTerm",
+        name,
+        description,
+        inDefinedTermSet: `${URL}#glossary`,
+    })),
+};
+
 const breadcrumbJsonLd = {
     "@context": "https://schema.org",
     "@type": "BreadcrumbList",
@@ -227,6 +262,7 @@ export default async function StartClothingBrandPage() {
             <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(articleJsonLd) }} />
             <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(howToJsonLd) }} />
             <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqJsonLd) }} />
+            <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(glossaryJsonLd) }} />
             <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbJsonLd) }} />
             <BlogViewTracker slug={SLUG} />
             <StartClothingBrandClient initialLikeCount={likeCount} initialComments={sanitizedComments} />

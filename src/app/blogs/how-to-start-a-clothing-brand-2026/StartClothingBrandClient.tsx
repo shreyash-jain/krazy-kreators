@@ -19,6 +19,10 @@ const SECTION1_IMAGE = "/blog/start-clothing-brand-section1.jpg";
 const TEACHING_IMAGE = "/blog/start-clothing-brand-teaching.jpg";
 const MACRO_IMAGE = "/blog/start-clothing-brand-macro.jpg";
 const CLOSING_IMAGE = "/blog/start-clothing-brand-closing.jpg";
+const TECHPACK_IMAGE = "/blog/start-clothing-brand-techpack.jpg";
+const FABRIC_IMAGE = "/blog/start-clothing-brand-fabric.jpg";
+const SAMPLING_IMAGE = "/blog/start-clothing-brand-sampling.jpg";
+const COSTFLOW_IMAGE = "/blog/start-clothing-brand-costflow.jpg";
 
 const TOC = [
     { id: "reality-check", label: "What the first year actually costs you" },
@@ -31,6 +35,7 @@ const TOC = [
     { id: "labels-compliance", label: "Step 7 — Labels are federal law, not decoration" },
     { id: "first-run", label: "Step 8 — Launch small, sell through, then scale" },
     { id: "build-order", label: "The 12-month build order" },
+    { id: "glossary", label: "The terms you'll hear, in plain English" },
     { id: "bottom-line", label: "The bottom line" },
     { id: "faqs", label: "FAQs" },
 ];
@@ -245,7 +250,7 @@ export default function StartClothingBrandClient({ initialLikeCount, initialComm
                         <span className="px-4 py-1.5 bg-[#CBB49A] text-white text-xs sm:text-sm font-semibold rounded-full uppercase tracking-wider">
                             Growth &amp; Business
                         </span>
-                        <span className="text-sm text-gray-200 font-medium tracking-wide">11 min read</span>
+                        <span className="text-sm text-gray-200 font-medium tracking-wide">15 min read</span>
                         <span className="text-sm text-gray-400">•</span>
                         <span className="text-sm text-gray-200 font-medium tracking-wide">August 5, 2026</span>
                     </div>
@@ -295,7 +300,7 @@ export default function StartClothingBrandClient({ initialLikeCount, initialComm
                     <div className="border-l-4 border-[#CBB49A] bg-[#F8F7F4] p-5 sm:p-6 rounded-r-2xl mb-10">
                         <p className="text-xs font-bold uppercase tracking-[0.18em] text-[#CBB49A] mb-2">TL;DR</p>
                         <ul className="space-y-1.5 text-[#2D2A2E] text-base sm:text-lg leading-snug">
-                            <li>• To start a clothing brand in 2026, work in this order: <strong>niche → range plan → entity and trademark → tech pack → fabric and sampling → landed cost → labelling → first production run</strong>.</li>
+                            <li>• Brands rarely fail on design. They fail on <strong>manufacturing literacy</strong> — so work in this order: <strong>niche → range plan → entity and trademark → tech pack → fabric and sampling → landed cost → labelling → first production run</strong>.</li>
                             <li>• The step most first-time founders skip is <strong>landed cost</strong>. Since the $800 de-minimis exemption was suspended, the factory quote is roughly <strong>77%</strong> of what a garment really costs you.</li>
                             <li>• Budget <strong>9–12 months</strong> from first sketch to first shipment, and don&apos;t design the second run until the first one sells through.</li>
                         </ul>
@@ -372,15 +377,19 @@ export default function StartClothingBrandClient({ initialLikeCount, initialComm
 
                             {/* Opening */}
                             <p className="text-lg lg:text-xl text-[#2D2A2E] leading-snug mb-5 font-medium">
-                                Almost nobody fails at the idea. They fail somewhere between the idea and the second production run.
+                                In our experience, most clothing brands don&apos;t fail because of bad design. They fail because they never learned how manufacturing works.
                             </p>
 
                             <p className="mb-4 text-base lg:text-lg leading-snug">
-                                The US apparel market will turn over roughly <strong>$373 billion in 2026</strong> (<a href="https://www.statista.com/outlook/cmo/apparel/united-states/" target="_blank" rel="noopener noreferrer" className="underline text-[#CBB49A] hover:text-[#b7a078]">Statista</a>). At the same time, about one in five new US businesses closes inside its first year, and only around half are still trading at year five (<a href="https://www.bls.gov/bdm/" target="_blank" rel="noopener noreferrer" className="underline text-[#CBB49A] hover:text-[#b7a078]">Bureau of Labor Statistics</a>).
+                                The designs are usually fine. What sinks a first collection is a spec that was never written down, a fabric chosen off a feel rather than a number, a sample signed off from a photo, and a retail price set against a factory quote that was never the real cost.
+                            </p>
+
+                            <p className="mb-4 text-base lg:text-lg leading-snug">
+                                The US apparel market will turn over roughly <strong>$373 billion in 2026</strong> (<a href="https://www.statista.com/outlook/cmo/apparel/united-states/" target="_blank" rel="noopener noreferrer" className="underline text-[#CBB49A] hover:text-[#b7a078]">Statista</a>), and about one in five new US businesses closes inside its first year, with only around half still trading at year five (<a href="https://www.bls.gov/bdm/" target="_blank" rel="noopener noreferrer" className="underline text-[#CBB49A] hover:text-[#b7a078]">Bureau of Labor Statistics</a>).
                             </p>
 
                             <p className="mb-8 text-base lg:text-lg leading-snug">
-                                Both numbers are true at once, and the distance between them is almost entirely sequence. Below is the build order that gets a first collection made and sold — eight steps, each one ending in a specific document, number, or filing you can point at before you spend money on the next.
+                                Both numbers are true at once, and the distance between them is mostly sequence. Below is the build order that gets a first collection made and sold — eight steps, each one ending in a specific document, number, or filing you can point at before you spend money on the next.
                             </p>
 
                             {/* H2 — reality check */}
@@ -414,9 +423,24 @@ export default function StartClothingBrandClient({ initialLikeCount, initialComm
                                     &ldquo;A first collection is not a creative project with a budget attached. It&apos;s a costing exercise with a creative brief attached.&rdquo;
                                 </blockquote>
 
-                                <p className="text-base lg:text-lg leading-snug text-[#4A484A]">
+                                <p className="text-base lg:text-lg leading-snug text-[#4A484A] mb-6">
                                     None of that is a reason not to start. It is a reason to start in order — and the failure patterns are consistent enough that we mapped them separately in <Link href="/blogs/80-percent-us-clothing-brands-fail-5-years-operational-mistakes" className="underline text-[#CBB49A] hover:text-[#b7a078]">the four operational mistakes behind most US clothing-brand failures</Link>.
                                 </p>
+
+                                {/* Real example 1 */}
+                                <div className="my-8 p-6 rounded-2xl bg-[#F8F7F4] border-l-4 border-[#CBB49A]">
+                                    <p className="text-xs font-bold uppercase tracking-[0.18em] text-[#CBB49A] mb-3">What this looks like in practice</p>
+                                    <h4 className="text-xl font-extrabold text-[#2D2A2E] mb-3">Eight months from first conversation to a launched brand</h4>
+                                    <p className="text-base lg:text-lg leading-snug text-[#4A484A] mb-3">
+                                        Badria Al Shihhi came in with a background in chemical engineering and public leadership — not fashion — and wanted a namesake label. The blocker wasn&apos;t taste. It was that traditional factories wouldn&apos;t take on a small first order with that much style variety.
+                                    </p>
+                                    <p className="text-base lg:text-lg leading-snug text-[#4A484A] mb-3">
+                                        Design, fabric sourcing, sample construction and a controlled first production run took <strong>eight months</strong> end to end, finishing with a fashion-show debut for the first collection. That is what the 9–12 month range in this guide looks like when the sequence holds and nothing has to be redone.
+                                    </p>
+                                    <Link href="/case-studies/badri-al-shihhi" className="inline-flex items-center gap-2 text-[#CBB49A] font-semibold hover:text-[#b7a078]">
+                                        Read the full case study <ArrowRight className="w-4 h-4" />
+                                    </Link>
+                                </div>
                             </section>
 
                             {/* H2 — Step 1 */}
@@ -462,8 +486,28 @@ export default function StartClothingBrandClient({ initialLikeCount, initialComm
                                     Keep the first drop to three to five styles. Every extra style multiplies through fabric minimums, sampling rounds, grading, photography, and inventory risk — and it is the fastest way to turn a launch budget into a warehouse.
                                 </p>
                                 <p className="text-base lg:text-lg leading-snug text-[#4A484A] mb-4">
-                                    Then decide the manufacturing route, because it changes everything downstream. <Link href="/blogs/private-label-vs-custom-manufacturing" className="underline text-[#CBB49A] hover:text-[#b7a078]">Private label versus custom manufacturing</Link> is the real fork: private label puts your label on an existing block and gets you to market fast; custom development builds a pattern that is yours and takes longer.
+                                    Then decide the manufacturing route, because it changes everything downstream. <Link href="/blogs/private-label-vs-custom-manufacturing" className="underline text-[#CBB49A] hover:text-[#b7a078]">Private label versus custom manufacturing</Link> is the real fork, and beginners are rarely shown the trade-off side by side:
                                 </p>
+
+                                <div className="overflow-x-auto mb-5">
+                                    <table className="w-full text-left text-sm sm:text-base border-collapse">
+                                        <thead>
+                                            <tr className="border-b-2 border-[#CBB49A]">
+                                                <th className="py-2 pr-4 font-bold text-[#2D2A2E]">&nbsp;</th>
+                                                <th className="py-2 pr-4 font-bold text-[#2D2A2E]">Private label</th>
+                                                <th className="py-2 font-bold text-[#2D2A2E]">Custom development</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody className="text-[#4A484A]">
+                                            <tr className="border-b border-gray-200"><td className="py-2 pr-4 font-semibold text-[#2D2A2E]">What you get</td><td className="py-2 pr-4">Your branding on an existing garment block</td><td className="py-2">A pattern developed for your fit, owned by you</td></tr>
+                                            <tr className="border-b border-gray-200"><td className="py-2 pr-4 font-semibold text-[#2D2A2E]">Time to market</td><td className="py-2 pr-4">Fastest — the block already exists</td><td className="py-2">Longer — pattern, grading, more sample rounds</td></tr>
+                                            <tr className="border-b border-gray-200"><td className="py-2 pr-4 font-semibold text-[#2D2A2E]">Upfront cost</td><td className="py-2 pr-4">Lower — no development to fund</td><td className="py-2">Higher — you pay for the development</td></tr>
+                                            <tr className="border-b border-gray-200"><td className="py-2 pr-4 font-semibold text-[#2D2A2E]">Fit as a differentiator</td><td className="py-2 pr-4">Limited — the block is what it is</td><td className="py-2">This is the whole point</td></tr>
+                                            <tr className="border-b border-gray-200"><td className="py-2 pr-4 font-semibold text-[#2D2A2E]">Copyable by a rival</td><td className="py-2 pr-4">Easily — same block is available to them</td><td className="py-2">Much harder</td></tr>
+                                            <tr><td className="py-2 pr-4 font-semibold text-[#2D2A2E]">Best when</td><td className="py-2 pr-4">Testing demand, or the product isn&apos;t the differentiator</td><td className="py-2">Fit or construction <em>is</em> the reason to buy</td></tr>
+                                        </tbody>
+                                    </table>
+                                </div>
 
                                 <div className="bg-white border-2 border-[#CBB49A] p-5 rounded-2xl mb-6 shadow-sm">
                                     <p className="text-sm font-bold uppercase tracking-[0.16em] text-[#CBB49A] mb-3">Step 2 is done when you have</p>
@@ -542,6 +586,37 @@ export default function StartClothingBrandClient({ initialLikeCount, initialComm
                                 <p className="text-base lg:text-lg leading-snug text-[#4A484A] mb-4">
                                     A <strong>tech pack</strong> <em>(the technical specification a factory manufactures from)</em> carries the flat sketch, the graded measurement chart, the fabric and trim specification, stitch types, seam allowances, label placement, and packing instructions. It is the difference between ordering a garment and describing one.
                                 </p>
+
+                                <div className="rounded-2xl overflow-hidden shadow-xl border border-gray-100 mb-7 max-w-2xl mx-auto bg-[#F8F7F4]">
+                                    <Image
+                                        src={TECHPACK_IMAGE}
+                                        alt="A clean branded infographic titled 'What's inside a tech pack' showing a generic flat sketch of a t-shirt at the centre with eight labelled callout lines pointing outward: flat sketch, graded measurement chart with tolerances, fabric specification with composition and GSM, trim and thread specification, stitch and seam types, label and care-label placement, colourway sheet, and packing instructions. Flat editorial line-art on off-white, no photographic elements."
+                                        width={1024}
+                                        height={1024}
+                                        sizes="(max-width: 1024px) 100vw, 42rem"
+                                        className="w-full h-auto"
+                                    />
+                                </div>
+
+                                <div className="overflow-x-auto mb-5">
+                                    <table className="w-full text-left text-sm sm:text-base border-collapse">
+                                        <thead>
+                                            <tr className="border-b-2 border-[#CBB49A]">
+                                                <th className="py-2 pr-4 font-bold text-[#2D2A2E]">Tech pack section</th>
+                                                <th className="py-2 font-bold text-[#2D2A2E]">What goes wrong if you leave it out</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody className="text-[#4A484A]">
+                                            <tr className="border-b border-gray-200"><td className="py-2 pr-4">Flat sketch</td><td className="py-2">The factory interprets proportion from a photo</td></tr>
+                                            <tr className="border-b border-gray-200"><td className="py-2 pr-4">Graded measurement chart + tolerances</td><td className="py-2">Sizes drift; returns cluster in one size</td></tr>
+                                            <tr className="border-b border-gray-200"><td className="py-2 pr-4">Fabric spec (composition, GSM, finish)</td><td className="py-2">A lighter, cheaper cloth is substituted</td></tr>
+                                            <tr className="border-b border-gray-200"><td className="py-2 pr-4">Trim + thread spec</td><td className="py-2">Zips and thread come in at the cheapest grade</td></tr>
+                                            <tr className="border-b border-gray-200"><td className="py-2 pr-4">Stitch + seam types</td><td className="py-2">Seams fail at wear points after a few washes</td></tr>
+                                            <tr className="border-b border-gray-200"><td className="py-2 pr-4">Label + care-label placement</td><td className="py-2">Relabelling by hand after the run lands</td></tr>
+                                            <tr><td className="py-2 pr-4">Packing instructions</td><td className="py-2">Goods arrive creased, unfolded, or mis-cartoned</td></tr>
+                                        </tbody>
+                                    </table>
+                                </div>
                                 <p className="text-base lg:text-lg leading-snug text-[#4A484A] mb-4">
                                     Send a sketch and a reference photo, and the factory will fill every gap with the cheapest reasonable option — different thread, different interlining, a hem that reads wrong. That is not sabotage. It is what an unspecified field means.
                                 </p>
@@ -583,12 +658,70 @@ export default function StartClothingBrandClient({ initialLikeCount, initialComm
                                 <p className="text-base lg:text-lg leading-snug text-[#4A484A] mb-4">
                                     Fabric is chosen on four specifications, not on how a swatch feels in a showroom: composition, <strong>GSM</strong> <em>(grams per square metre — the weight of the cloth)</em>, construction, and finish. Those four decide drape, durability, shrinkage, and roughly half your cost sheet.
                                 </p>
+
+                                <div className="rounded-2xl overflow-hidden shadow-xl border border-gray-100 mb-3 max-w-2xl mx-auto bg-[#F8F7F4]">
+                                    <Image
+                                        src={FABRIC_IMAGE}
+                                        alt="A length of heavyweight cotton jersey pulled off a standing fabric roll and held up against raking window light so the weave, weight and drape read clearly, a second and third roll stacked out of focus behind. Hands only, cropped at the wrist. No logos, no readable text."
+                                        width={1024}
+                                        height={1024}
+                                        sizes="(max-width: 1024px) 100vw, 42rem"
+                                        className="w-full h-auto"
+                                    />
+                                </div>
+                                <p className="text-sm text-[#666666] italic text-center mb-7 max-w-2xl mx-auto">
+                                    Judge cloth the way a buyer does — off the roll, against the light, at the weight you&apos;ll actually produce in. A square of fabric on a table tells you almost nothing about drape.
+                                </p>
+
+                                <div className="overflow-x-auto mb-5">
+                                    <table className="w-full text-left text-sm sm:text-base border-collapse">
+                                        <thead>
+                                            <tr className="border-b-2 border-[#CBB49A]">
+                                                <th className="py-2 pr-4 font-bold text-[#2D2A2E]">Spec</th>
+                                                <th className="py-2 pr-4 font-bold text-[#2D2A2E]">What it means</th>
+                                                <th className="py-2 font-bold text-[#2D2A2E]">What it decides</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody className="text-[#4A484A]">
+                                            <tr className="border-b border-gray-200"><td className="py-2 pr-4">Composition</td><td className="py-2 pr-4">The fibre blend, e.g. 100% cotton</td><td className="py-2">Feel, breathability, care label, duty code</td></tr>
+                                            <tr className="border-b border-gray-200"><td className="py-2 pr-4">GSM</td><td className="py-2 pr-4">Grams per square metre</td><td className="py-2">Weight, opacity, perceived quality</td></tr>
+                                            <tr className="border-b border-gray-200"><td className="py-2 pr-4">Construction</td><td className="py-2 pr-4">Knit or woven, and the structure</td><td className="py-2">Stretch, drape, how it must be sewn</td></tr>
+                                            <tr><td className="py-2 pr-4">Finish</td><td className="py-2 pr-4">Treatment after the cloth is made</td><td className="py-2">Shrinkage, hand-feel, colour retention</td></tr>
+                                        </tbody>
+                                    </table>
+                                </div>
                                 <p className="text-base lg:text-lg leading-snug text-[#4A484A] mb-4">
                                     Ask for a wash test before you commit. A jersey that loses 6% in length after three washes will generate returns that no photography fixes — and the return, not the garment, is what your customer remembers. Our <Link href="/blogs/fabric-sourcing-101-choose-right-material" className="underline text-[#CBB49A] hover:text-[#b7a078]">fabric sourcing guide</Link> walks the selection criteria in detail.
                                 </p>
                                 <p className="text-base lg:text-lg leading-snug text-[#4A484A] mb-4">
                                     Then sample. Expect two to three rounds: a proto for the pattern, a fit sample on a real body in your base size, and a pre-production sample that is signed off and becomes the quality benchmark for the whole run. Approve nothing on a photo.
                                 </p>
+
+                                <div className="rounded-2xl overflow-hidden shadow-xl border border-gray-100 mb-7 max-w-2xl mx-auto bg-[#F8F7F4]">
+                                    <Image
+                                        src={SAMPLING_IMAGE}
+                                        alt="A clean branded infographic titled 'The three sampling rounds' showing three numbered stages left to right with a generic garment outline above each: 1 Proto sample — proves the pattern; 2 Fit sample — worn on a real body in the base size; 3 Pre-production sample — signed off, becomes the quality benchmark for the whole run. Flat editorial line-art on off-white, no photographic elements."
+                                        width={1024}
+                                        height={1024}
+                                        sizes="(max-width: 1024px) 100vw, 42rem"
+                                        className="w-full h-auto"
+                                    />
+                                </div>
+
+                                {/* Real example 2 — sampling mistake */}
+                                <div className="my-8 p-6 rounded-2xl bg-white border-2 border-[#CBB49A] shadow-sm">
+                                    <p className="text-xs font-bold uppercase tracking-[0.18em] text-[#CBB49A] mb-3">A mistake we see constantly at this stage</p>
+                                    <h4 className="text-xl font-extrabold text-[#2D2A2E] mb-3">The sample was beautiful. The bulk run wasn&apos;t the same garment.</h4>
+                                    <p className="text-base lg:text-lg leading-snug text-[#4A484A] mb-3">
+                                        It is the most common failure in a first production run, and it has a name in every one of our project debriefs: sample quality that doesn&apos;t carry through to bulk. A sample is sewn slowly, by one skilled person, often on cloth from a different roll. Bulk is sewn fast, by a line, on the cloth you actually bought.
+                                    </p>
+                                    <p className="text-base lg:text-lg leading-snug text-[#4A484A] mb-3">
+                                        The fix is procedural, not creative. Supervise the sample run rather than receiving it in the post. Do fit approvals on real bodies and test movement, not just measurements. Send trial garments out for a wear test before you commit — on <Link href="/case-studies/drover" className="underline text-[#CBB49A] hover:text-[#b7a078]">Drover</Link> that meant wear-testing trial shirts; on <Link href="/case-studies/hy-official" className="underline text-[#CBB49A] hover:text-[#b7a078]">HY Official&apos;s</Link> SS24 Camp Shirt it meant repeated sample iterations on fit, fall and finish before anything went to bulk.
+                                    </p>
+                                    <p className="text-base lg:text-lg leading-snug text-[#4A484A]">
+                                        The cheapest round of sampling is always the one you do before the bulk order, not after it.
+                                    </p>
+                                </div>
 
                                 <div className="bg-white border-2 border-[#CBB49A] p-5 rounded-2xl mb-6 shadow-sm">
                                     <p className="text-sm font-bold uppercase tracking-[0.16em] text-[#CBB49A] mb-3">Step 5 is done when you have</p>
@@ -633,6 +766,17 @@ export default function StartClothingBrandClient({ initialLikeCount, initialComm
                                             <tr className="border-t-2 border-[#CBB49A]"><td className="py-2 pr-4 font-bold text-[#2D2A2E]">Landed cost</td><td className="py-2 font-bold text-[#2D2A2E]">$15.58</td></tr>
                                         </tbody>
                                     </table>
+                                </div>
+
+                                <div className="rounded-2xl overflow-hidden shadow-xl border border-gray-100 mb-7 max-w-2xl mx-auto bg-[#F8F7F4]">
+                                    <Image
+                                        src={COSTFLOW_IMAGE}
+                                        alt="A clean branded infographic titled 'What a $12.00 tee actually costs you' showing a vertical waterfall of five stacked cost bars accumulating left to right: Factory FOB $12.00, plus Freight and insurance $0.85, plus US duty at 16.5% $1.98, plus Customs fees and broker $0.30, plus Inbound to 3PL and inspection $0.45, ending in a total bar labelled Landed cost $15.58, with a caption reading 'The factory quote is 77% of the real number'. Flat editorial data-viz on off-white, no photographic elements."
+                                        width={1024}
+                                        height={1024}
+                                        sizes="(max-width: 1024px) 100vw, 42rem"
+                                        className="w-full h-auto"
+                                    />
                                 </div>
 
                                 <p className="text-base lg:text-lg leading-snug text-[#4A484A] mb-4">
@@ -748,6 +892,39 @@ export default function StartClothingBrandClient({ initialLikeCount, initialComm
                                 </p>
                             </section>
 
+                            {/* Glossary */}
+                            <section id="glossary" className="scroll-mt-28 mt-12 mb-12">
+                                <h2 className="text-3xl lg:text-4xl font-extrabold tracking-tight text-[#2D2A2E] mb-5 pb-2 border-b border-gray-200">
+                                    The terms you&apos;ll hear, in plain English
+                                </h2>
+
+                                <p className="text-base lg:text-lg leading-snug text-[#4A484A] mb-6">
+                                    Most of the confusion in a first manufacturing conversation is vocabulary, not concepts. These are the words that will come at you, and what each one actually means.
+                                </p>
+
+                                <dl className="grid sm:grid-cols-2 gap-4">
+                                    {[
+                                        { t: "Tech pack", d: "The technical specification a factory manufactures from — sketches, measurements, fabric, trims, stitches, labels, packing. Your contract with the maker." },
+                                        { t: "GSM", d: "Grams per square metre: how heavy the cloth is. A 180 GSM tee is light and summery; 240 GSM reads premium and structured." },
+                                        { t: "MOQ", d: "Minimum order quantity — the smallest run a factory or mill will accept, usually set per style, per colour, and per fabric." },
+                                        { t: "FOB", d: "Free on board: the price of the goods loaded at the origin port. It excludes freight, duty and every fee after that point." },
+                                        { t: "Landed cost", d: "What a unit truly costs once freight, duty, customs fees, brokerage and inbound logistics are added. The number you price from." },
+                                        { t: "HTS code", d: "The Harmonized Tariff Schedule classification that sets your US duty rate. Cotton knit tees sit at 6109.10.00." },
+                                        { t: "Grading", d: "Scaling an approved base-size pattern up and down into a full size run while holding the fit relationships." },
+                                        { t: "Proto / fit / PP sample", d: "The three sampling rounds: proto proves the pattern, fit sample is worn on a real body, pre-production sample is signed off as the quality benchmark." },
+                                        { t: "Colourway", d: "One colour version of a style. Each colourway is a separate production line item and its own inventory risk." },
+                                        { t: "Sell-through rate", d: "The percentage of a production run sold within a set window. The number that tells you whether to reorder or stop." },
+                                        { t: "Lead time", d: "Elapsed time from placing the bulk order to goods arriving. Fabric availability, not sewing, is usually the long pole." },
+                                        { t: "3PL", d: "Third-party logistics: the warehouse that stores your inventory and ships orders to customers on your behalf." },
+                                    ].map((item) => (
+                                        <div key={item.t} className="p-4 rounded-xl bg-[#F8F7F4] border border-gray-100">
+                                            <dt className="font-bold text-[#2D2A2E] mb-1">{item.t}</dt>
+                                            <dd className="text-sm sm:text-base leading-snug text-[#4A484A]">{item.d}</dd>
+                                        </div>
+                                    ))}
+                                </dl>
+                            </section>
+
                             {/* Closing prose */}
                             <section id="bottom-line" className="scroll-mt-28 mt-12 mb-10">
                                 <h2 className="text-3xl lg:text-4xl font-extrabold tracking-tight text-[#2D2A2E] mb-5 pb-2 border-b border-gray-200">
@@ -779,6 +956,10 @@ export default function StartClothingBrandClient({ initialLikeCount, initialComm
                                     FAQs
                                 </h2>
                                 <div className="space-y-6">
+                                    <div>
+                                        <h3 className="text-xl font-bold text-[#2D2A2E] mb-2">Why do most new clothing brands fail?</h3>
+                                        <p className="text-base lg:text-lg leading-snug text-[#4A484A]">In our experience it is rarely the design. It is manufacturing literacy — a specification that was never written down, fabric chosen by feel instead of by composition and GSM, a sample approved from a photograph, and a retail price set against a factory quote rather than a landed cost. Each of those is a process failure, and each one is preventable by working in sequence.</p>
+                                    </div>
                                     <div>
                                         <h3 className="text-xl font-bold text-[#2D2A2E] mb-2">How do you start a clothing brand in 2026?</h3>
                                         <p className="text-base lg:text-lg leading-snug text-[#4A484A]">In this order: define a one-sentence niche, build a range plan of three to five styles, register the entity and clear the name with the USPTO, write a tech pack per style, select fabric by specification and sample until fit is signed off, calculate landed cost rather than the factory quote, apply US labelling requirements, then produce a small first run and measure sell-through before scaling.</p>
