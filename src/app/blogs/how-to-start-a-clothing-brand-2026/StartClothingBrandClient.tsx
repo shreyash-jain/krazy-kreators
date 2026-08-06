@@ -662,7 +662,7 @@ export default function StartClothingBrandClient({ initialLikeCount, initialComm
                                 <div className="rounded-2xl overflow-hidden shadow-xl border border-gray-100 mb-3 max-w-2xl mx-auto bg-[#F8F7F4]">
                                     <Image
                                         src={FABRIC_IMAGE}
-                                        alt="A length of heavyweight cotton jersey pulled off a standing fabric roll and held up against raking window light so the weave, weight and drape read clearly, a second and third roll stacked out of focus behind. Hands only, cropped at the wrist. No logos, no readable text."
+                                        alt="Two hands pulling a length of undyed natural cloth off a standing fabric roll and holding it up to window light so the weave, weight and drape read clearly, more rolls stacked out of focus behind. Hands only, cropped at the wrist. No logos, no readable text."
                                         width={1024}
                                         height={1024}
                                         sizes="(max-width: 1024px) 100vw, 42rem"
