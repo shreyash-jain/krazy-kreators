@@ -15,6 +15,20 @@ export type BlogPostMeta = {
 
 export const blogPosts: BlogPostMeta[] = [
   {
+    id: 58,
+    title: "The De Minimis Hangover: 6 Months, Real Numbers",
+    excerpt:
+      "2026 is the first full year every parcel entering the US owes duty — and six months of real data have settled the argument. US-bound postal volumes fell more than 80%; USPS projects a 56% drop for inbound. Here's why: on a direct parcel, duty is charged on the retail price your customer paid, not your factory price. One $48 cotton tee costs $46.91 to deliver direct from India — $12.72 duty, $2.69 MPF, a $17.50 disbursement fee, $14 freight — against $13.13 bulk-imported into a US 3PL. Ship-direct doesn't break even until a ~$62 order; bulk plus 3PL crosses at ~$14. The per-parcel math, the returns trap, and who should still ship direct.",
+    category: "business",
+    author: "Krazy Kreators Team",
+    date: "July 27, 2026",
+    readTime: "10 min read",
+    image: "/blog/de-minimis-hangover-hero.jpg",
+    slug: "de-minimis-hangover-2026-parcel-costs",
+    readers: 0,
+    likes: 0,
+  },
+  {
     id: 56,
     title: "Prime Day's Over. Your Margin Report Isn't.",
     excerpt:
