@@ -15,6 +15,20 @@ export type BlogPostMeta = {
 
 export const blogPosts: BlogPostMeta[] = [
   {
+    id: 59,
+    title: "The Half-Year Reset: 5 Numbers to Re-Check for Q3",
+    excerpt:
+      "Fall and Holiday are about to load onto a cost sheet built in January — and the duty line under it changed three days ago. Section 122's flat 10% expired July 24; USTR's forced-labor Section 301 duties took its place at 10% or 12.5%, with no expiry date at all. Re-derive the five numbers that decide whether the second half pays for the first: landed cost per unit ($10.93 on a worked $8 FOB tee), sell-through at week 8 against nine weeks of category cover, MOQ exposure in dollars, the lead time you can defend at 56.6% schedule reliability, and the cash-cycle cost almost nobody puts on a cost sheet — about $0.25 a unit, nearly three times what CBP charges.",
+    category: "business",
+    author: "Krazy Kreators Team",
+    date: "July 27, 2026",
+    readTime: "9 min read",
+    image: "/blog/half-year-reset-hero.jpg",
+    slug: "half-year-reset-q3-apparel-kpis-2026",
+    readers: 0,
+    likes: 0,
+  },
+  {
     id: 56,
     title: "Prime Day's Over. Your Margin Report Isn't.",
     excerpt:
