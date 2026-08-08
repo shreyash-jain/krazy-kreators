@@ -15,7 +15,7 @@ export type BlogPostMeta = {
 
 export const blogPosts: BlogPostMeta[] = [
   {
-    id: 59,
+    id: 61,
     title: "How to Start a Clothing Brand in 2026: A Step-by-Step Guide",
     excerpt:
       "Most clothing brands don't fail because of bad design — they fail because they never learned how manufacturing works. This is the build order that gets a first collection made and sold: eight steps, each ending in a document, number, or filing you can point at. Niche, range plan, entity and Class 25 trademark, tech pack, fabric and sampling, landed cost, labelling, first run. The step first-time founders skip is landed cost: with the $800 de-minimis exemption suspended since June 2026, the factory quote is only 77% of what a garment really costs you. Includes what's inside a tech pack, the three sampling rounds, a real 8-month launch, the sampling mistake we see constantly, a 12-month build order and a plain-English glossary.",
@@ -25,6 +25,36 @@ export const blogPosts: BlogPostMeta[] = [
     readTime: "15 min read",
     image: "/blog/start-clothing-brand-hero.jpg",
     slug: "how-to-start-a-clothing-brand-2026",
+    id: 58,
+    title: "The De Minimis Hangover: 6 Months, Real Numbers",
+    excerpt:
+      "2026 is the first full year every parcel entering the US owes duty — and six months of real data have settled the argument. US-bound postal volumes fell more than 80%; USPS projects a 56% drop for inbound. Here's why: on a direct parcel, duty is charged on the retail price your customer paid, not your factory price. One $48 cotton tee costs $46.91 to deliver direct from India — $12.72 duty, $2.69 MPF, a $17.50 disbursement fee, $14 freight — against $13.13 bulk-imported into a US 3PL. Ship-direct doesn't break even until a ~$62 order; bulk plus 3PL crosses at ~$14. The per-parcel math, the returns trap, and who should still ship direct.",
+    category: "business",
+    author: "Krazy Kreators Team",
+    date: "July 27, 2026",
+    readTime: "10 min read",
+    image: "/blog/de-minimis-hangover-hero.jpg",
+    slug: "de-minimis-hangover-2026-parcel-costs",
+    id: 59,
+    title: "The Half-Year Reset: 5 Numbers to Re-Check for Q3",
+    excerpt:
+      "Fall and Holiday are about to load onto a cost sheet built in January — and the duty line under it changed three days ago. Section 122's flat 10% expired July 24; USTR's forced-labor Section 301 duties took its place at 10% or 12.5%, with no expiry date at all. Re-derive the five numbers that decide whether the second half pays for the first: landed cost per unit ($10.93 on a worked $8 FOB tee), sell-through at week 8 against nine weeks of category cover, MOQ exposure in dollars, the lead time you can defend at 56.6% schedule reliability, and the cash-cycle cost almost nobody puts on a cost sheet — about $0.25 a unit, nearly three times what CBP charges.",
+    category: "business",
+    author: "Krazy Kreators Team",
+    date: "July 27, 2026",
+    readTime: "9 min read",
+    image: "/blog/half-year-reset-hero.jpg",
+    slug: "half-year-reset-q3-apparel-kpis-2026",
+    id: 57,
+    title: "A Second Origin, Costed in 30 Days",
+    excerpt:
+      "Concentrate production in one country and you've tied your cost sheet to that country's trade politics — a single Section 301 ruling can add ~$2 a unit overnight, roughly $8,000 on a 4,000-piece buy of one style. The fix isn't a cheaper country; it's a costed, sampled, MOQ-cleared second origin held in reserve for your highest-exposure styles. This is the 'plus-one' execution: how to stand one up for your top 3 styles in 30 days by running sampling, MOQ, and lead-time in parallel — not as a relay. Two to three sampling rounds, a tech pack that decides the timeline, honest MOQ and lead-time negotiation, and the landed-cost comparison founders get wrong.",
+    category: "manufacturing",
+    author: "Krazy Kreators Team",
+    date: "July 23, 2026",
+    readTime: "8 min read",
+    image: "/blog/second-origin-costed-30-days-hero.jpg",
+    slug: "second-origin-costed-30-days",
     readers: 0,
     likes: 0,
   },
