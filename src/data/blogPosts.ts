@@ -15,6 +15,20 @@ export type BlogPostMeta = {
 
 export const blogPosts: BlogPostMeta[] = [
   {
+    id: 57,
+    title: "A Second Origin, Costed in 30 Days",
+    excerpt:
+      "Concentrate production in one country and you've tied your cost sheet to that country's trade politics — a single Section 301 ruling can add ~$2 a unit overnight, roughly $8,000 on a 4,000-piece buy of one style. The fix isn't a cheaper country; it's a costed, sampled, MOQ-cleared second origin held in reserve for your highest-exposure styles. This is the 'plus-one' execution: how to stand one up for your top 3 styles in 30 days by running sampling, MOQ, and lead-time in parallel — not as a relay. Two to three sampling rounds, a tech pack that decides the timeline, honest MOQ and lead-time negotiation, and the landed-cost comparison founders get wrong.",
+    category: "manufacturing",
+    author: "Krazy Kreators Team",
+    date: "July 23, 2026",
+    readTime: "8 min read",
+    image: "/blog/second-origin-costed-30-days-hero.jpg",
+    slug: "second-origin-costed-30-days",
+    readers: 0,
+    likes: 0,
+  },
+  {
     id: 56,
     title: "Prime Day's Over. Your Margin Report Isn't.",
     excerpt:
