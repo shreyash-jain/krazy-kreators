@@ -15,6 +15,34 @@ export type BlogPostMeta = {
 
 export const blogPosts: BlogPostMeta[] = [
   {
+    id: 62,
+    title: "No MOQ Clothing Manufacturers: What You Really Pay",
+    excerpt:
+      "You have a design, a name, and about eight thousand dollars — then the first factory asks for 500 pieces per color. That is where most clothing brands quietly die. A no MOQ clothing manufacturer solves it, but the phrase covers three different promises: true zero minimum (printing on a blank someone else mass-produced), a sample room that will cut and sew 10–30 pieces of your own pattern, and a flexible minimum held across a whole collection instead of per style. Here is what small batch clothing production actually costs — roughly $27–38 a tee at 10–25 units against $6.50–9 at 1,000 — why the fabric mill, not the factory, sets the real floor, and the number that should decide your first order. Sell 150 pieces and a small run makes $3,600 while the cheaper 1,000-unit order is down $2,150 with 850 units in storage.",
+    category: "manufacturing",
+    author: "Krazy Kreators Team",
+    date: "August 10, 2026",
+    readTime: "10 min read",
+    image: "/blog/no-moq-clothing-manufacturers-hero.jpg",
+    slug: "no-moq-clothing-manufacturers",
+    readers: 0,
+    likes: 0,
+  },
+  {
+    id: 60,
+    title: "Custom Clothing Manufacturing Cost at Every MOQ Tier",
+    excerpt:
+      "Ask three manufacturers what a custom cotton tee costs and you get three numbers that look nothing alike — because they're quoting different things. This breaks a garment price into its five real lines (fabric, trims, cut-make, finishing, overhead) and prices the same tee at four order sizes: roughly $14–22 a unit at 50–150 pieces, down to $5–7 at 5,000. Then the part quotes leave out. One-time development runs $500–1,500 a style and never scales — $9.00 per garment at 100 units, 18 cents at 5,000. Fabric moves the price more than volume does: a 180→240 GSM organic upgrade adds $3.22 a unit, while quintupling your run saves $2.50. And an $8.50 factory price lands at $11.59 once freight, 16.5% duty, CBP fees and brokerage are in — the quote is 73% of the real number.",
+    category: "manufacturing",
+    author: "Krazy Kreators Team",
+    date: "August 7, 2026",
+    readTime: "10 min read",
+    image: "/blog/custom-manufacturing-cost-hero.jpg",
+    slug: "custom-clothing-manufacturing-cost",
+    readers: 0,
+    likes: 0,
+  },
+  {
     id: 61,
     title: "How to Start a Clothing Brand in 2026: A Step-by-Step Guide",
     excerpt:
