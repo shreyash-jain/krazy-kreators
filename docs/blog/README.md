@@ -21,7 +21,9 @@ Read in this order:
 
 ## Tech stack in one line
 
-Next.js App Router · each post is a server `page.tsx` + a client `*Client.tsx` · `runtime = "edge"` · likes/comments via Supabase API routes · images served from `public/blog/` through a custom Cloudinary loader · deploys through the **provider dashboard (Vercel/Cloudflare)** on push — **`main` = production**.
+Next.js App Router · each post is a server `page.tsx` + a client `*Client.tsx` · `runtime = "edge"` · likes/comments via Supabase API routes · images served from `public/blog/` through a custom Cloudinary loader · deploys to **Cloudflare** on push — **`main` = production**.
+
+> **Deploys go to Cloudflare only.** The Vercel integration is **no longer active**, but the Vercel GitHub app was never disconnected — so it still posts a `Vercel` status check on every PR, and that check **always fails**. Ignore it. It says nothing about your branch: a branch whose `npm run build` passes cleanly will still show `Vercel — fail`. Never block a merge on it and never chase its logs (`npx vercel inspect` just hangs). The real gates are the local production `npm run build` and the Cloudflare build.
 
 ## The non-negotiables (full detail in the two docs)
 
@@ -30,6 +32,7 @@ Next.js App Router · each post is a server `page.tsx` + a client `*Client.tsx` 
 3. **Run `npm run build` before handing off or pushing** — not just `next dev`. It's the build the deploy actually runs.
 4. **Check `postcss.config.mjs` is clean before every push** — it's a recurring malware-injection target (see PIPELINE § Operational guards).
 5. **After any blog merge, entry count in `src/data/blogPosts.ts` must equal the number of blog page directories.** A silent merge can drop a post from the listing.
+6. **A failing `Vercel` check on a PR is expected noise — never a merge blocker.** We deploy to Cloudflare only (see "Tech stack" above).
 
 ## Where everything lives
 
