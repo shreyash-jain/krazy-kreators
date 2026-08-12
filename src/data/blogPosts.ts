@@ -15,6 +15,20 @@ export type BlogPostMeta = {
 
 export const blogPosts: BlogPostMeta[] = [
   {
+    id: 63,
+    title: "What Is a Tech Pack? The File Your Factory Builds From",
+    excerpt:
+      "Send a factory three photos and a paragraph, and six weeks later a box arrives with exactly what you asked for — two inches too wide, hemmed with the wrong stitch, in a cotton that feels nothing like the one in your head. Nobody lied to you. You never said. A tech pack is the document that turns a design into instructions, and this is what goes in one: all eight pages, what each one prevents, and why a CAD and a clothing spec sheet are pages inside it rather than alternatives to it. The same half-inch error costs $0 in the tech pack, $150 in the first sample, $900 in the PP sample and $11,500 in a 500-unit run. Includes a 12-working-day build timeline, the 12-point check before you hit send, a plain-English glossary, and the labeling pages that carry legal weight under the FTC's Textile and Care Labeling rules.",
+    category: "design",
+    author: "Krazy Kreators Team",
+    date: "August 10, 2026",
+    readTime: "12 min read",
+    image: "/blog/what-is-a-tech-pack-hero.jpg",
+    slug: "what-is-a-tech-pack",
+    readers: 0,
+    likes: 0,
+  },
+  {
     id: 62,
     title: "No MOQ Clothing Manufacturers: What You Really Pay",
     excerpt:
