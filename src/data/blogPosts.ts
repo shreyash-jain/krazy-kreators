@@ -25,6 +25,10 @@ export const blogPosts: BlogPostMeta[] = [
     readTime: "15 min read",
     image: "/blog/start-clothing-brand-hero.jpg",
     slug: "how-to-start-a-clothing-brand-2026",
+    readers: 0,
+    likes: 0,
+  },
+  {
     id: 58,
     title: "The De Minimis Hangover: 6 Months, Real Numbers",
     excerpt:
@@ -35,6 +39,10 @@ export const blogPosts: BlogPostMeta[] = [
     readTime: "10 min read",
     image: "/blog/de-minimis-hangover-hero.jpg",
     slug: "de-minimis-hangover-2026-parcel-costs",
+    readers: 0,
+    likes: 0,
+  },
+  {
     id: 59,
     title: "The Half-Year Reset: 5 Numbers to Re-Check for Q3",
     excerpt:
@@ -45,6 +53,10 @@ export const blogPosts: BlogPostMeta[] = [
     readTime: "9 min read",
     image: "/blog/half-year-reset-hero.jpg",
     slug: "half-year-reset-q3-apparel-kpis-2026",
+    readers: 0,
+    likes: 0,
+  },
+  {
     id: 57,
     title: "A Second Origin, Costed in 30 Days",
     excerpt:
