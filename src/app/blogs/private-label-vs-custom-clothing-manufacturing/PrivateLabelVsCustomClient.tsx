@@ -31,17 +31,13 @@ const TOC = [
     { id: "pick", label: "Three questions that decide it" },
     { id: "wrong", label: "When custom is the wrong call" },
     { id: "the-move", label: "What we’d do in your shoes" },
-    { id: "faq", label: "Common questions" },
 ];
 
 const ACCENT = "#CBB49A";
 
-type Faq = { q: string; a: string };
-
 type BlogClientProps = {
     initialLikeCount: number;
     initialComments: PublicComment[];
-    faqs: Faq[];
 };
 
 /* ------------------------------------------------------------------ */
@@ -645,7 +641,7 @@ function LandedCostGraphic() {
 
 /* ------------------------------------------------------------------ */
 
-export default function PrivateLabelVsCustomClient({ initialLikeCount, initialComments, faqs }: BlogClientProps) {
+export default function PrivateLabelVsCustomClient({ initialLikeCount, initialComments }: BlogClientProps) {
     const [contactOpen, setContactOpen] = useState(false);
     const [scrolled, setScrolled] = useState(false);
     const [scrollProgress, setScrollProgress] = useState(0);
@@ -850,7 +846,7 @@ export default function PrivateLabelVsCustomClient({ initialLikeCount, initialCo
                         <span className="px-4 py-1.5 bg-[#CBB49A] text-white text-xs sm:text-sm font-semibold rounded-full uppercase tracking-wider">
                             Manufacturing
                         </span>
-                        <span className="text-sm text-gray-200 font-medium tracking-wide">11 min read</span>
+                        <span className="text-sm text-gray-200 font-medium tracking-wide">7 min read</span>
                         <span className="text-sm text-gray-400">&bull;</span>
                         <span className="text-sm text-gray-200 font-medium tracking-wide">August 14, 2026</span>
                     </div>
@@ -982,12 +978,8 @@ export default function PrivateLabelVsCustomClient({ initialLikeCount, initialCo
                                 Two suppliers quote your tee. One says $9 a piece, 50 minimum, three weeks. The other says $12, 300 minimum, four months.
                             </p>
 
-                            <p className="mb-4 text-base lg:text-lg leading-snug">
-                                It looks like the first one is simply better at their job. It is not. They are selling two different things, and the quotes are not comparable in any useful way.
-                            </p>
-
                             <p className="mb-8 text-base lg:text-lg leading-snug">
-                                This is the difference between private label and custom clothing manufacturing, explained without the jargon: what each one actually is, what each really costs, how long each takes, and how to tell which one your brand needs right now.
+                                The first is not better at their job. They are selling two different things. Here is the difference between private label and custom clothing manufacturing, without the jargon.
                             </p>
 
                             {/* H2 1 */}
@@ -1008,15 +1000,11 @@ export default function PrivateLabelVsCustomClient({ initialLikeCount, initialCo
                                 </div>
 
                                 <p className="text-base lg:text-lg leading-snug text-[#4A484A] mb-4">
-                                    <strong>Private label</strong> means you start from a garment that already exists. A supplier has already drawn the pattern, chosen the cloth, and made that tee in bulk. You buy it, they cut out their label and sew in yours, and you usually add a print or an embroidery.
-                                </p>
-
-                                <p className="text-base lg:text-lg leading-snug text-[#4A484A] mb-4">
-                                    <strong>Custom manufacturing</strong> &mdash; the trade calls it <em>cut and sew</em> (built from flat fabric to your own pattern) &mdash; starts from nothing. You pick the fabric, the fit, the seams, the trims. The factory makes a garment that did not exist before you ordered it.
+                                    <strong>Private label</strong> starts from a garment that already exists. A supplier drew the pattern, chose the cloth, made the tee in bulk. You buy it, they sew your label in, you add a print.
                                 </p>
 
                                 <p className="text-base lg:text-lg leading-snug text-[#4A484A] mb-6">
-                                    That is the whole difference. Everything else in this article &mdash; price, minimums, timing, control &mdash; is a consequence of it.
+                                    <strong>Custom</strong> &mdash; the trade calls it <em>cut and sew</em> &mdash; starts from nothing. You pick the fabric, fit, seams and trims. That is the whole difference; price, minimums and timing all follow from it.
                                 </p>
 
                                 <div className="not-prose rounded-2xl border border-gray-200 bg-[#F8F7F4] p-5 sm:p-6 mb-2">
@@ -1034,7 +1022,7 @@ export default function PrivateLabelVsCustomClient({ initialLikeCount, initialCo
                                 </h2>
 
                                 <p className="text-base lg:text-lg leading-snug text-[#4A484A] mb-6">
-                                    Suppliers use these three terms loosely, and the gap between them is where founders get surprised. Ask which one a quote refers to before you compare prices.
+                                    Suppliers use these three terms loosely, and the gap between them is where founders get surprised.
                                 </p>
 
                                 <SpectrumGraphic />
@@ -1055,7 +1043,7 @@ export default function PrivateLabelVsCustomClient({ initialLikeCount, initialCo
                                 </div>
 
                                 <p className="text-base lg:text-lg leading-snug text-[#4A484A]">
-                                    One question separates them all: <em>who owns the pattern?</em> If the answer is the supplier, you are renting. Ask it early, in writing, and ask whether the exclusivity has an end date.
+                                    One question separates them: <em>who owns the pattern?</em> If the answer is the supplier, you are renting. Ask it early, in writing.
                                 </p>
                             </section>
 
@@ -1066,7 +1054,7 @@ export default function PrivateLabelVsCustomClient({ initialLikeCount, initialCo
                                 </h2>
 
                                 <p className="text-base lg:text-lg leading-snug text-[#4A484A] mb-6">
-                                    Everything that follows in detail, side by side first. Figures are typical ranges for a simple knit style; your numbers will move with fabric, country and complexity.
+                                    Typical ranges for a simple knit style. Your numbers will move with fabric, country and complexity.
                                 </p>
 
                                 <div className="not-prose overflow-x-auto rounded-2xl border border-gray-200 mb-6">
@@ -1134,7 +1122,7 @@ export default function PrivateLabelVsCustomClient({ initialLikeCount, initialCo
                                 </div>
 
                                 <p className="text-base lg:text-lg leading-snug text-[#4A484A]">
-                                    Read the last two rows first. Everything above them is logistics; those two are the actual strategic question. One caveat on the minimums: they are typical, not fixed, and how far they genuinely bend is worked through in <Link href="/blogs/no-moq-clothing-manufacturers" className="underline text-[#CBB49A] hover:text-[#b7a078]">what a no MOQ clothing manufacturer really costs</Link>.
+                                    Read the last two rows first &mdash; everything above them is logistics. The minimums are typical, not fixed; how far they bend is worked through in <Link href="/blogs/no-moq-clothing-manufacturers" className="underline text-[#CBB49A] hover:text-[#b7a078]">what a no MOQ clothing manufacturer really costs</Link>.
                                 </p>
                             </section>
 
@@ -1145,17 +1133,13 @@ export default function PrivateLabelVsCustomClient({ initialLikeCount, initialCo
                                 </h2>
 
                                 <p className="text-base lg:text-lg leading-snug text-[#4A484A] mb-4">
-                                    Take one mid-weight cotton crew tee and price it both ways at 300 pieces. The private label route buys a finished blank and decorates it. The custom route buys cloth and builds the garment.
+                                    One mid-weight cotton crew tee, priced both ways at 300 pieces.
                                 </p>
 
                                 <CostStackGraphic />
 
                                 <p className="text-base lg:text-lg leading-snug text-[#4A484A] mb-4">
-                                    Custom is $6.32 more per garment here, which reads as a straightforward loss. It is not, because $3.00 of that gap is <strong>development</strong> &mdash; the tech pack, the pattern, the grading and the sample rounds &mdash; and development is paid once per style, no matter how many you make.
-                                </p>
-
-                                <p className="text-base lg:text-lg leading-snug text-[#4A484A] mb-6">
-                                    Spread that $900 across a bigger run and it thins out fast. This is the single most misunderstood line in a custom quote.
+                                    Custom is $6.32 more a garment, which reads as a loss. It is not: $3.00 of that gap is <strong>development</strong> &mdash; tech pack, pattern, grading, samples &mdash; paid once per style, however many you make.
                                 </p>
 
                                 <div className="not-prose overflow-x-auto rounded-2xl border border-gray-200 mb-6">
@@ -1198,7 +1182,7 @@ export default function PrivateLabelVsCustomClient({ initialLikeCount, initialCo
                                 </div>
 
                                 <p className="text-base lg:text-lg leading-snug text-[#4A484A] mb-4">
-                                    There is a second effect the table does not show. On private label you pay someone else&rsquo;s margin on the cloth, because it is already inside the price of the blank. On custom you buy the cloth yourself, so at volume the fabric line usually comes in cheaper than the blank it replaces. It is also the line you have most control over &mdash; the weight you specify moves a garment&rsquo;s cost more than the order size does, which is the point of <Link href="/blogs/understanding-fabric-gsm-guide-to-choosing-right-weight" className="underline text-[#CBB49A] hover:text-[#b7a078]">the GSM guide to choosing fabric weight</Link>. The full tier-by-tier breakdown sits in <Link href="/blogs/custom-clothing-manufacturing-cost" className="underline text-[#CBB49A] hover:text-[#b7a078]">what custom clothing manufacturing costs at every MOQ tier</Link>.
+                                    On private label you also pay someone else&rsquo;s margin on the cloth. Buy it yourself and the weight you specify moves cost more than order size does &mdash; see <Link href="/blogs/understanding-fabric-gsm-guide-to-choosing-right-weight" className="underline text-[#CBB49A] hover:text-[#b7a078]">the GSM guide</Link>, and <Link href="/blogs/custom-clothing-manufacturing-cost" className="underline text-[#CBB49A] hover:text-[#b7a078]">costs at every MOQ tier</Link>.
                                 </p>
 
                                 <blockquote className="border-l-4 border-[#CBB49A] pl-5 my-7 text-xl lg:text-2xl font-serif italic text-[#2D2A2E] leading-snug">
@@ -1224,17 +1208,17 @@ export default function PrivateLabelVsCustomClient({ initialLikeCount, initialCo
                                 </div>
 
                                 <p className="text-base lg:text-lg leading-snug text-[#4A484A] mb-4">
-                                    Time is where the two models separate hardest, and where founders most often get caught. Private label is quick because the slow part already happened in someone else&rsquo;s factory, months ago.
+                                    Private label is quick because the slow part already happened, in someone else&rsquo;s factory, months ago.
                                 </p>
 
                                 <CalendarGraphic />
 
                                 <p className="text-base lg:text-lg leading-snug text-[#4A484A] mb-4">
-                                    Two things make the custom bar shorter in practice. The first is deciding fabric early, because lab dips (small test swatches dyed to your colour for approval) sit on the critical path and every re-do costs a week. The second is a complete tech pack up front &mdash; the spec document a factory builds from &mdash; which is the difference between two sample rounds and five. That document is covered in <Link href="/blogs/what-is-a-tech-pack-why-you-need-it" className="underline text-[#CBB49A] hover:text-[#b7a078]">what a tech pack is and why you can&rsquo;t manufacture without one</Link>.
+                                    Two things shorten it: deciding fabric early, because lab dips (test swatches dyed to your colour) sit on the critical path, and a complete <Link href="/blogs/what-is-a-tech-pack-why-you-need-it" className="underline text-[#CBB49A] hover:text-[#b7a078]">tech pack</Link> up front &mdash; the difference between two sample rounds and five.
                                 </p>
 
                                 <p className="text-base lg:text-lg leading-snug text-[#4A484A]">
-                                    Work backwards from the date you need stock, not forwards from today. A custom style aimed at a November drop is a June decision, and the brands that miss the season are almost always the ones who started the maths from the wrong end.
+                                    Work backwards from the date you need stock: a November drop is a June decision.
                                 </p>
                             </section>
 
@@ -1256,23 +1240,15 @@ export default function PrivateLabelVsCustomClient({ initialLikeCount, initialCo
                                 </div>
 
                                 <p className="text-base lg:text-lg leading-snug text-[#4A484A] mb-4">
-                                    Run private label for two years and you finish with your artwork, your audience and your customer list. Those are real assets. What you do not have is the garment &mdash; the supplier still owns the pattern, and can sell it to whoever asks next.
+                                    Two years of private label leaves you your artwork, audience and customer list. Real assets &mdash; but not the garment. The supplier owns the pattern and can sell it to whoever asks next.
                                 </p>
 
                                 <p className="text-base lg:text-lg leading-snug text-[#4A484A] mb-4">
-                                    Run custom for two years and you finish with <Link href="/blogs/grading-vs-pattern-making-perfect-fit" className="underline text-[#CBB49A] hover:text-[#b7a078]">a graded pattern</Link> (your fit, sized across the range), a fabric specification and a set of suppliers who know your standard. Season two starts from that instead of from zero, which is why custom gets cheaper and faster the longer you do it.
+                                    Two years of custom leaves you <Link href="/blogs/grading-vs-pattern-making-perfect-fit" className="underline text-[#CBB49A] hover:text-[#b7a078]">a graded pattern</Link> (your fit, sized across the range), a fabric spec and suppliers who know your standard. Season two starts from there, not from zero.
                                 </p>
-
-                                <p className="text-base lg:text-lg leading-snug text-[#4A484A] mb-6">
-                                    Worth being precise about one thing: neither route protects your <em>brand</em>. That comes from a registered trademark, and in the US a Class 25 apparel filing starts at <a href="https://www.uspto.gov/trademarks/fees-payment-information" target="_blank" rel="noopener noreferrer" className="underline text-[#CBB49A] hover:text-[#b7a078]">$350 per class</a> at the USPTO. Own the name whichever model you pick.
-                                </p>
-
-                                <blockquote className="border-l-4 border-[#CBB49A] pl-5 my-7 text-xl lg:text-2xl font-serif italic text-[#2D2A2E] leading-snug">
-                                    &ldquo;The blank is available to everyone. That includes the brand that undercuts you next season.&rdquo;
-                                </blockquote>
 
                                 <p className="text-base lg:text-lg leading-snug text-[#4A484A]">
-                                    That is not an argument for going custom on day one. It is an argument for knowing what you are buying, so the decision to move is yours and not a surprise.
+                                    Neither route protects your <em>brand</em>. That takes a trademark &mdash; a US Class 25 filing starts at <a href="https://www.uspto.gov/trademarks/fees-payment-information" target="_blank" rel="noopener noreferrer" className="underline text-[#CBB49A] hover:text-[#b7a078]">$350 per class</a>. Own the name whichever model you pick.
                                 </p>
                             </section>
 
@@ -1315,11 +1291,7 @@ export default function PrivateLabelVsCustomClient({ initialLikeCount, initialCo
                                 </h2>
 
                                 <p className="text-base lg:text-lg leading-snug text-[#4A484A] mb-4">
-                                    Whichever route you take, the factory price is not the price. Cotton knit tees enter the US at a <a href="https://hts.usitc.gov/search?query=61091000" target="_blank" rel="noopener noreferrer" className="underline text-[#CBB49A] hover:text-[#b7a078]">16.5% duty rate under heading 6109.10.00</a>, and since CBP moved to an <a href="https://www.federalregister.gov/documents/2026/06/24/2026-12670/indefinite-suspension-of-the-de-minimis-exemption-for-merchandise-arriving-through-all-modes-other" target="_blank" rel="noopener noreferrer" className="underline text-[#CBB49A] hover:text-[#b7a078]">indefinite suspension of the $800 de minimis exemption</a> in June 2026, nothing arrives duty-free any more.
-                                </p>
-
-                                <p className="text-base lg:text-lg leading-snug text-[#4A484A] mb-6">
-                                    Here is the custom tee from earlier, carried through to the warehouse door.
+                                    The factory price is not the price. Cotton knit tees enter the US at <a href="https://hts.usitc.gov/search?query=61091000" target="_blank" rel="noopener noreferrer" className="underline text-[#CBB49A] hover:text-[#b7a078]">16.5% duty under heading 6109.10.00</a>, and since CBP&rsquo;s <a href="https://www.federalregister.gov/documents/2026/06/24/2026-12670/indefinite-suspension-of-the-de-minimis-exemption-for-merchandise-arriving-through-all-modes-other" target="_blank" rel="noopener noreferrer" className="underline text-[#CBB49A] hover:text-[#b7a078]">indefinite suspension of the $800 de minimis exemption</a> in June 2026, nothing arrives duty-free.
                                 </p>
 
                                 <LandedCostGraphic />
@@ -1362,11 +1334,11 @@ export default function PrivateLabelVsCustomClient({ initialLikeCount, initialCo
                                 </div>
 
                                 <p className="text-base lg:text-lg leading-snug text-[#4A484A] mb-4">
-                                    The factory quote is <strong>77% of the real number</strong>. Miss that and a range planned at 60% margin ships at closer to 50%.
+                                    The factory quote is <strong>77% of the real number</strong>. Miss that and a range planned at 60% margin ships nearer 50%.
                                 </p>
 
                                 <p className="text-base lg:text-lg leading-snug text-[#4A484A]">
-                                    Private label has the same costs, they are just harder to see: if you buy blanks from a US wholesaler, the duty was already paid by whoever imported them and is baked into the price you pay. That is a genuine convenience. It also means you are paying it plus their margin, and you cannot audit either. The parcel-level version of this maths is in <Link href="/blogs/de-minimis-hangover-2026-parcel-costs" className="underline text-[#CBB49A] hover:text-[#b7a078]">the de minimis hangover</Link>.
+                                    Private label carries the same costs, hidden: buy US blanks and the duty is baked in, with the importer&rsquo;s margin on top. Convenient, impossible to audit. Parcel-level version: <Link href="/blogs/de-minimis-hangover-2026-parcel-costs" className="underline text-[#CBB49A] hover:text-[#b7a078]">the de minimis hangover</Link>.
                                 </p>
                             </section>
 
@@ -1377,17 +1349,17 @@ export default function PrivateLabelVsCustomClient({ initialLikeCount, initialCo
                                 </h2>
 
                                 <p className="text-base lg:text-lg leading-snug text-[#4A484A] mb-4">
-                                    Forget the price comparison for a moment. The model is chosen by where your product&rsquo;s value sits and how much room you have to be wrong.
+                                    Forget price for a moment. The model is chosen by where your product&rsquo;s value sits and how much room you have to be wrong.
                                 </p>
 
                                 <DecisionGraphic />
 
                                 <p className="text-base lg:text-lg leading-snug text-[#4A484A] mb-4">
-                                    Question one does most of the work. If people buy your tee for the graphic on it, a well-chosen blank carries that perfectly, and spending four months and $900 to build your own version of a garment that already exists is money going nowhere. If people keep telling you the fit is boxy or the fabric feels thin, no amount of artwork fixes it.
+                                    Question one does most of the work. If people buy your tee for the graphic, a good blank carries it. If they keep saying the fit is boxy, no artwork fixes that.
                                 </p>
 
                                 <p className="text-base lg:text-lg leading-snug text-[#4A484A] mb-6">
-                                    Question three is the one founders skip. Roughly a third of business establishments are still trading a decade in &mdash; <a href="https://www.bls.gov/opub/ted/2024/34-7-percent-of-business-establishments-born-in-2013-were-still-operating-in-2023.htm" target="_blank" rel="noopener noreferrer" className="underline text-[#CBB49A] hover:text-[#b7a078]">34.7% of those born in 2013</a>, on Bureau of Labor Statistics figures. A first order you cannot survive losing is not a bold bet, it is the whole company on one guess about a colour.
+                                    Question three is the one founders skip. Only <a href="https://www.bls.gov/opub/ted/2024/34-7-percent-of-business-establishments-born-in-2013-were-still-operating-in-2023.htm" target="_blank" rel="noopener noreferrer" className="underline text-[#CBB49A] hover:text-[#b7a078]">34.7% of establishments born in 2013</a> still traded a decade later. A first order you cannot survive losing is the whole company on one guess about a colour.
                                 </p>
 
                                 <div className="not-prose grid sm:grid-cols-2 gap-5">
@@ -1432,19 +1404,15 @@ export default function PrivateLabelVsCustomClient({ initialLikeCount, initialCo
                                 </div>
 
                                 <p className="text-base lg:text-lg leading-snug text-[#4A484A] mb-4">
-                                    Custom is not the mature choice and private label is not the beginner one. Plenty of profitable brands never leave blanks, because their product genuinely is the artwork &mdash; tour merch, creator drops, club and team kit, anything where speed and design turnover beat construction.
+                                    Custom is not the mature choice; private label is not the beginner one. Plenty of profitable brands never leave blanks, because their product genuinely is the artwork. A mediocre bespoke tee at $18 loses to an excellent blank at $9.
                                 </p>
 
                                 <p className="text-base lg:text-lg leading-snug text-[#4A484A] mb-4">
-                                    Custom done badly is also worse than private label done well. A mediocre bespoke tee at $18 loses to an excellent blank at $9 every time, and the customer never once wonders who owned the pattern. If you cannot yet specify what you want the fabric and the fit to do, custom will simply produce an expensive version of your uncertainty.
-                                </p>
-
-                                <p className="text-base lg:text-lg leading-snug text-[#4A484A] mb-4">
-                                    Timing argues for caution too. Clothing retailers were carrying <a href="https://fred.stlouisfed.org/series/MRTSIR448USN" target="_blank" rel="noopener noreferrer" className="underline text-[#CBB49A] hover:text-[#b7a078]">1.99 months of inventory against monthly sales in May 2026</a> on Census Bureau figures, and in the McKinsey and Business of Fashion <a href="https://www.mckinsey.com/industries/retail/our-insights/state-of-fashion" target="_blank" rel="noopener noreferrer" className="underline text-[#CBB49A] hover:text-[#b7a078]">State of Fashion 2026</a>, 46% of executives expected conditions to worsen. Committing four months and a 300-piece minimum into that needs a better reason than wanting to be a real brand.
+                                    Timing argues for caution too. Clothing retailers carried <a href="https://fred.stlouisfed.org/series/MRTSIR448USN" target="_blank" rel="noopener noreferrer" className="underline text-[#CBB49A] hover:text-[#b7a078]">1.99 months of inventory against monthly sales in May 2026</a>, and in McKinsey and BoF&rsquo;s <a href="https://www.mckinsey.com/industries/retail/our-insights/state-of-fashion" target="_blank" rel="noopener noreferrer" className="underline text-[#CBB49A] hover:text-[#b7a078]">State of Fashion 2026</a>, 46% of executives expected conditions to worsen.
                                 </p>
 
                                 <p className="text-base lg:text-lg leading-snug text-[#4A484A]">
-                                    There is a mirror failure, though. A brand that has sold the same borrowed tee out five times and still has no pattern of its own has spent years building demand for a garment it cannot protect. That is not caution either.
+                                    The mirror failure is real too. A brand that has sold the same borrowed tee out five times and still owns no pattern has built years of demand for a garment it cannot protect.
                                 </p>
                             </section>
 
@@ -1454,28 +1422,9 @@ export default function PrivateLabelVsCustomClient({ initialLikeCount, initialCo
                                     What we&rsquo;d do in your shoes
                                 </h2>
 
-                                <p className="text-base lg:text-lg leading-snug text-[#2D2A2E] mb-3">
-                                    Stop treating it as a permanent identity and treat it as a sequence. Prove the demand on private label, where being wrong costs weeks instead of seasons, then move your one proven best-seller to custom and leave the rest on blanks.
-                                </p>
-
                                 <p className="text-base lg:text-lg leading-snug text-[#2D2A2E] mb-6">
-                                    Almost nobody needs to convert a whole range at once. So: which single style of yours has earned its own pattern &mdash; and what is stopping you moving just that one?
+                                    Treat it as a sequence, not an identity. Prove demand on private label, then move your one proven best-seller to custom. So: which single style has earned its own pattern &mdash; and what is stopping you moving just that one?
                                 </p>
-                            </section>
-
-                            {/* FAQ */}
-                            <section id="faq" className="scroll-mt-28 mt-12 mb-10">
-                                <h2 className="text-3xl lg:text-4xl font-extrabold tracking-tight text-[#2D2A2E] mb-5 pb-2 border-b border-gray-200">
-                                    Common questions
-                                </h2>
-                                <div className="not-prose space-y-4">
-                                    {faqs.map((f) => (
-                                        <div key={f.q} className="rounded-2xl border border-gray-200 bg-[#F8F7F4] p-5">
-                                            <h3 className="font-bold text-[#2D2A2E] mb-2 leading-snug text-lg">{f.q}</h3>
-                                            <p className="text-[#4A484A] leading-snug">{f.a}</p>
-                                        </div>
-                                    ))}
-                                </div>
                             </section>
 
                             {/* End-of-post CTA pair */}

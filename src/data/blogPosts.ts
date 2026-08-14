@@ -22,7 +22,7 @@ export const blogPosts: BlogPostMeta[] = [
     category: "manufacturing",
     author: "Krazy Kreators Team",
     date: "August 14, 2026",
-    readTime: "11 min read",
+    readTime: "7 min read",
     image: "/blog/private-label-vs-custom-hero.jpg",
     slug: "private-label-vs-custom-clothing-manufacturing",
     readers: 0,
