@@ -31,13 +31,17 @@ const TOC = [
     { id: "pick", label: "Three questions that decide it" },
     { id: "wrong", label: "When custom is the wrong call" },
     { id: "the-move", label: "What we’d do in your shoes" },
+    { id: "faq", label: "Common questions" },
 ];
 
 const ACCENT = "#CBB49A";
 
+type Faq = { q: string; a: string };
+
 type BlogClientProps = {
     initialLikeCount: number;
     initialComments: PublicComment[];
+    faqs: Faq[];
 };
 
 /* ------------------------------------------------------------------ */
@@ -641,7 +645,7 @@ function LandedCostGraphic() {
 
 /* ------------------------------------------------------------------ */
 
-export default function PrivateLabelVsCustomClient({ initialLikeCount, initialComments }: BlogClientProps) {
+export default function PrivateLabelVsCustomClient({ initialLikeCount, initialComments, faqs }: BlogClientProps) {
     const [contactOpen, setContactOpen] = useState(false);
     const [scrolled, setScrolled] = useState(false);
     const [scrollProgress, setScrollProgress] = useState(0);
@@ -1425,6 +1429,21 @@ export default function PrivateLabelVsCustomClient({ initialLikeCount, initialCo
                                 <p className="text-base lg:text-lg leading-snug text-[#2D2A2E] mb-6">
                                     Treat it as a sequence, not an identity. Prove demand on private label, then move your one proven best-seller to custom. So: which single style has earned its own pattern &mdash; and what is stopping you moving just that one?
                                 </p>
+                            </section>
+
+                            {/* FAQ */}
+                            <section id="faq" className="scroll-mt-28 mt-12 mb-10">
+                                <h2 className="text-3xl lg:text-4xl font-extrabold tracking-tight text-[#2D2A2E] mb-5 pb-2 border-b border-gray-200">
+                                    Common questions
+                                </h2>
+                                <div className="not-prose space-y-4">
+                                    {faqs.map((f) => (
+                                        <div key={f.q} className="rounded-2xl border border-gray-200 bg-[#F8F7F4] p-5">
+                                            <h3 className="font-bold text-[#2D2A2E] mb-2 leading-snug text-lg">{f.q}</h3>
+                                            <p className="text-[#4A484A] leading-snug">{f.a}</p>
+                                        </div>
+                                    ))}
+                                </div>
                             </section>
 
                             {/* End-of-post CTA pair */}
