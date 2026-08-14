@@ -1134,7 +1134,7 @@ export default function PrivateLabelVsCustomClient({ initialLikeCount, initialCo
                                 </div>
 
                                 <p className="text-base lg:text-lg leading-snug text-[#4A484A]">
-                                    Read the last two rows first. Everything above them is logistics; those two are the actual strategic question.
+                                    Read the last two rows first. Everything above them is logistics; those two are the actual strategic question. One caveat on the minimums: they are typical, not fixed, and how far they genuinely bend is worked through in <Link href="/blogs/no-moq-clothing-manufacturers" className="underline text-[#CBB49A] hover:text-[#b7a078]">what a no MOQ clothing manufacturer really costs</Link>.
                                 </p>
                             </section>
 
@@ -1198,7 +1198,7 @@ export default function PrivateLabelVsCustomClient({ initialLikeCount, initialCo
                                 </div>
 
                                 <p className="text-base lg:text-lg leading-snug text-[#4A484A] mb-4">
-                                    There is a second effect the table does not show. On private label you pay someone else&rsquo;s margin on the cloth, because it is already inside the price of the blank. On custom you buy the cloth yourself, so at volume the fabric line usually comes in cheaper than the blank it replaces. The full tier-by-tier breakdown sits in <Link href="/blogs/custom-clothing-manufacturing-cost" className="underline text-[#CBB49A] hover:text-[#b7a078]">what custom clothing manufacturing costs at every MOQ tier</Link>.
+                                    There is a second effect the table does not show. On private label you pay someone else&rsquo;s margin on the cloth, because it is already inside the price of the blank. On custom you buy the cloth yourself, so at volume the fabric line usually comes in cheaper than the blank it replaces. It is also the line you have most control over &mdash; the weight you specify moves a garment&rsquo;s cost more than the order size does, which is the point of <Link href="/blogs/understanding-fabric-gsm-guide-to-choosing-right-weight" className="underline text-[#CBB49A] hover:text-[#b7a078]">the GSM guide to choosing fabric weight</Link>. The full tier-by-tier breakdown sits in <Link href="/blogs/custom-clothing-manufacturing-cost" className="underline text-[#CBB49A] hover:text-[#b7a078]">what custom clothing manufacturing costs at every MOQ tier</Link>.
                                 </p>
 
                                 <blockquote className="border-l-4 border-[#CBB49A] pl-5 my-7 text-xl lg:text-2xl font-serif italic text-[#2D2A2E] leading-snug">
@@ -1260,7 +1260,7 @@ export default function PrivateLabelVsCustomClient({ initialLikeCount, initialCo
                                 </p>
 
                                 <p className="text-base lg:text-lg leading-snug text-[#4A484A] mb-4">
-                                    Run custom for two years and you finish with a graded pattern (your fit, sized across the range), a fabric specification and a set of suppliers who know your standard. Season two starts from that instead of from zero, which is why custom gets cheaper and faster the longer you do it.
+                                    Run custom for two years and you finish with <Link href="/blogs/grading-vs-pattern-making-perfect-fit" className="underline text-[#CBB49A] hover:text-[#b7a078]">a graded pattern</Link> (your fit, sized across the range), a fabric specification and a set of suppliers who know your standard. Season two starts from that instead of from zero, which is why custom gets cheaper and faster the longer you do it.
                                 </p>
 
                                 <p className="text-base lg:text-lg leading-snug text-[#4A484A] mb-6">
