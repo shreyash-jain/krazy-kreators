@@ -73,7 +73,7 @@ function CostStackGraphic() {
 
     return (
         <figure className="my-8 rounded-2xl border border-gray-200 bg-[#F8F7F4] p-5 sm:p-7 not-prose">
-            <p className="text-[11px] font-bold uppercase tracking-[0.18em] text-[#CBB49A] mb-1">Infographic 01</p>
+            <p className="text-[11px] font-bold uppercase tracking-[0.18em] text-[#CBB49A] mb-1">Infographic 02</p>
             <h3 className="text-xl sm:text-2xl font-extrabold text-[#2D2A2E] mb-1 leading-snug">
                 The same tee, both ways, at 300 units
             </h3>
@@ -191,7 +191,7 @@ const TICKS = [
 function CalendarGraphic() {
     return (
         <figure className="my-8 rounded-2xl border border-gray-200 bg-[#F8F7F4] p-5 sm:p-7 not-prose">
-            <p className="text-[11px] font-bold uppercase tracking-[0.18em] text-[#CBB49A] mb-1">Infographic 02</p>
+            <p className="text-[11px] font-bold uppercase tracking-[0.18em] text-[#CBB49A] mb-1">Infographic 03</p>
             <h3 className="text-xl sm:text-2xl font-extrabold text-[#2D2A2E] mb-1 leading-snug">
                 Weeks to delivered stock, first style
             </h3>
@@ -333,7 +333,7 @@ const QUESTIONS = [
 function DecisionGraphic() {
     return (
         <figure className="my-8 rounded-2xl border border-gray-200 bg-[#F8F7F4] p-5 sm:p-7 not-prose">
-            <p className="text-[11px] font-bold uppercase tracking-[0.18em] text-[#CBB49A] mb-1">Infographic 03</p>
+            <p className="text-[11px] font-bold uppercase tracking-[0.18em] text-[#CBB49A] mb-1">Infographic 05</p>
             <h3 className="text-xl sm:text-2xl font-extrabold text-[#2D2A2E] mb-1 leading-snug">
                 Three questions, one answer
             </h3>
@@ -407,6 +407,237 @@ function DecisionGraphic() {
                 Three yeses and custom is the right call. A single no usually means it is simply too early &mdash; which
                 is not a failure, it is a sequence. Most brands that end up with a strong custom range got there by
                 selling private label first.
+            </figcaption>
+        </figure>
+    );
+}
+
+/* ------------------------------------------------------------------ */
+/* Infographic — the exclusivity spectrum                              */
+/* Three cards at x = 0 / 243 / 486, each 214 wide                     */
+/* ------------------------------------------------------------------ */
+const TIERS = [
+    {
+        x: 0,
+        name: "White label",
+        l1: "Finished, unbranded garment",
+        l2: "You add: your label",
+        meta: "MOQ from ~12 · 3–5 wks",
+        pips: 1,
+    },
+    {
+        x: 243,
+        name: "Private label",
+        l1: "Finished, with small tweaks",
+        l2: "You add: label, colour, print",
+        meta: "MOQ 24–100 · 3–5 wks",
+        pips: 2,
+    },
+    {
+        x: 486,
+        name: "Custom / cut and sew",
+        l1: "Built from your own pattern",
+        l2: "You choose: everything",
+        meta: "MOQ 300–500 · 14–26 wks",
+        pips: 3,
+    },
+];
+
+function SpectrumGraphic() {
+    return (
+        <figure className="my-8 rounded-2xl border border-gray-200 bg-[#F8F7F4] p-5 sm:p-7 not-prose">
+            <p className="text-[11px] font-bold uppercase tracking-[0.18em] text-[#CBB49A] mb-1">Infographic 01</p>
+            <h3 className="text-xl sm:text-2xl font-extrabold text-[#2D2A2E] mb-1 leading-snug">
+                The exclusivity spectrum
+            </h3>
+            <p className="text-sm text-[#666666] mb-5">
+                These are not three industries. They are three points on one line, and the line runs from
+                &ldquo;anyone can buy this&rdquo; to &ldquo;only you can.&rdquo;
+            </p>
+
+            <div className="overflow-x-auto">
+                <svg
+                    viewBox="0 0 700 300"
+                    role="img"
+                    aria-label="Spectrum of three production models. White label: a finished unbranded garment, you add your label, minimum from about 12 pieces, 3 to 5 weeks, lowest exclusivity. Private label: finished with small tweaks, you add label, colour and print, minimum 24 to 100 pieces, 3 to 5 weeks, medium exclusivity. Custom cut and sew: built from your own pattern, you choose everything, minimum 300 to 500 pieces, 14 to 26 weeks, full exclusivity."
+                    className="w-full h-auto min-w-[620px]"
+                >
+                    <title>White label, private label and custom on one exclusivity spectrum</title>
+
+                    {TIERS.map((t, i) => (
+                        <g key={t.name}>
+                            <rect
+                                x={t.x}
+                                y="10"
+                                width="214"
+                                height="176"
+                                rx="12"
+                                fill={i === 2 ? "#2D2A2E" : "#FFFFFF"}
+                                stroke={i === 2 ? "#2D2A2E" : "#D9D3C8"}
+                                strokeWidth="1.5"
+                            />
+                            <text
+                                x={t.x + 18}
+                                y="44"
+                                fontSize="17"
+                                fontWeight="800"
+                                fill={i === 2 ? "#FFFFFF" : "#2D2A2E"}
+                            >
+                                {t.name}
+                            </text>
+                            <text x={t.x + 18} y="76" fontSize="13" fill={i === 2 ? "#E8E0D4" : "#4A484A"}>
+                                {t.l1}
+                            </text>
+                            <text x={t.x + 18} y="98" fontSize="13" fill={i === 2 ? "#E8E0D4" : "#4A484A"}>
+                                {t.l2}
+                            </text>
+                            <text
+                                x={t.x + 18}
+                                y="130"
+                                fontSize="12"
+                                fontWeight="700"
+                                fill={i === 2 ? "#CBB49A" : "#8C7A5E"}
+                            >
+                                {t.meta}
+                            </text>
+
+                            {[0, 1, 2].map((p) => (
+                                <rect
+                                    key={p}
+                                    x={t.x + 18 + p * 26}
+                                    y="150"
+                                    width="20"
+                                    height="10"
+                                    rx="3"
+                                    fill={p < t.pips ? (i === 2 ? "#CBB49A" : "#8C7A5E") : i === 2 ? "#4A484A" : "#E4DFD6"}
+                                />
+                            ))}
+                            <text x={t.x + 100} y="160" fontSize="11" fill={i === 2 ? "#B9AFA0" : "#8C8880"}>
+                                exclusivity
+                            </text>
+                        </g>
+                    ))}
+
+                    <defs>
+                        <marker id="spectrum-arrow" markerWidth="10" markerHeight="8" refX="9" refY="4" orient="auto">
+                            <polygon points="0 0, 10 4, 0 8" fill="#CBB49A" />
+                        </marker>
+                    </defs>
+                    <line
+                        x1="10"
+                        y1="228"
+                        x2="686"
+                        y2="228"
+                        stroke="#CBB49A"
+                        strokeWidth="2.5"
+                        markerEnd="url(#spectrum-arrow)"
+                    />
+                    <text x="10" y="256" fontSize="13" fill="#666666">
+                        the same garment is sold to anyone
+                    </text>
+                    <text x="690" y="256" fontSize="13" fill="#666666" textAnchor="end">
+                        it exists only for you
+                    </text>
+                    <text x="10" y="282" fontSize="13" fill="#8C7A5E" fontWeight="700">
+                        cheapest, fastest
+                    </text>
+                    <text x="690" y="282" fontSize="13" fill="#8C7A5E" fontWeight="700" textAnchor="end">
+                        slowest, most yours
+                    </text>
+                </svg>
+            </div>
+
+            <figcaption className="mt-4 text-sm text-[#4A484A] leading-snug border-t border-gray-200 pt-4">
+                Suppliers move between these three words freely, and the middle one does the most work. Ask which end of
+                this line a quote actually sits on before you compare it to anything.
+            </figcaption>
+        </figure>
+    );
+}
+
+/* ------------------------------------------------------------------ */
+/* Infographic — landed cost stack                                     */
+/* Scale: $15.35 = 560px from x=90, so 1 dollar = 36.48px              */
+/* Segment widths sum exactly to 560                                    */
+/* ------------------------------------------------------------------ */
+const LANDED_SEGMENTS = [
+    { label: "Factory price", value: "$11.80", x: 90, w: 430, fill: "#2D2A2E" },
+    { label: "Freight and insurance", value: "$0.85", x: 520, w: 31, fill: "#8C7A5E" },
+    { label: "Duty at 16.5%", value: "$1.95", x: 551, w: 71, fill: ACCENT },
+    { label: "CBP processing fees", value: "$0.30", x: 622, w: 11, fill: "#D8CBB6" },
+    { label: "Customs brokerage", value: "$0.45", x: 633, w: 17, fill: "#E5D9C6" },
+];
+
+function LandedCostGraphic() {
+    return (
+        <figure className="my-8 rounded-2xl border border-gray-200 bg-[#F8F7F4] p-5 sm:p-7 not-prose">
+            <p className="text-[11px] font-bold uppercase tracking-[0.18em] text-[#CBB49A] mb-1">Infographic 04</p>
+            <h3 className="text-xl sm:text-2xl font-extrabold text-[#2D2A2E] mb-1 leading-snug">
+                Where the quote stops and the real cost keeps going
+            </h3>
+            <p className="text-sm text-[#666666] mb-5">
+                The custom tee from earlier, carried from the factory floor to your warehouse door.
+            </p>
+
+            <div className="overflow-x-auto">
+                <svg
+                    viewBox="0 0 700 250"
+                    role="img"
+                    aria-label="Stacked bar showing landed cost. The $11.80 factory price is followed by $0.85 freight and insurance, $1.95 duty at 16.5%, $0.30 CBP processing fees and $0.45 customs brokerage, totalling a $15.35 landed cost. The factory quote is 77% of the total."
+                    className="w-full h-auto min-w-[600px]"
+                >
+                    <title>Landed cost build-up from an $11.80 factory quote to $15.35</title>
+
+                    {LANDED_SEGMENTS.map((s) => (
+                        <rect
+                            key={s.label}
+                            x={s.x}
+                            y="70"
+                            width={s.w}
+                            height="54"
+                            fill={s.fill}
+                            stroke="#F8F7F4"
+                            strokeWidth="1.5"
+                        />
+                    ))}
+
+                    <text x="300" y="103" fontSize="18" fontWeight="800" fill="#FFFFFF" textAnchor="middle">
+                        $11.80
+                    </text>
+
+                    <line x1="520" y1="52" x2="520" y2="150" stroke="#2D2A2E" strokeWidth="2" strokeDasharray="5 4" />
+                    <text x="512" y="44" fontSize="13" fontWeight="700" fill="#2D2A2E" textAnchor="end">
+                        the quote stops here
+                    </text>
+
+                    <path d="M90 160 L90 170 L520 170 L520 160" fill="none" stroke="#8C7A5E" strokeWidth="1.5" />
+                    <text x="305" y="192" fontSize="14" fontWeight="700" fill="#8C7A5E" textAnchor="middle">
+                        factory quote &mdash; 77% of the real number
+                    </text>
+
+                    <path d="M90 206 L90 216 L650 216 L650 206" fill="none" stroke="#2D2A2E" strokeWidth="1.5" />
+                    <text x="370" y="238" fontSize="15" fontWeight="800" fill="#2D2A2E" textAnchor="middle">
+                        $15.35 landed cost
+                    </text>
+                </svg>
+            </div>
+
+            <ul className="mt-5 grid sm:grid-cols-2 gap-x-8 gap-y-2">
+                {LANDED_SEGMENTS.map((s) => (
+                    <li key={s.label} className="flex items-center gap-2 text-sm text-[#4A484A]">
+                        <span
+                            className="inline-block w-3 h-3 rounded-sm flex-shrink-0 border border-black/10"
+                            style={{ backgroundColor: s.fill }}
+                        />
+                        <span className="flex-1">{s.label}</span>
+                        <span className="tabular-nums font-semibold text-[#2D2A2E]">{s.value}</span>
+                    </li>
+                ))}
+            </ul>
+
+            <figcaption className="mt-4 text-sm text-[#4A484A] leading-snug border-t border-gray-200 pt-4">
+                Every line to the right of the dashed rule is invisible on a quote sheet and unavoidable in reality. Plan
+                a range on the $11.80 and you have quietly budgeted away about ten points of margin.
             </figcaption>
         </figure>
     );
@@ -806,6 +1037,8 @@ export default function PrivateLabelVsCustomClient({ initialLikeCount, initialCo
                                     Suppliers use these three terms loosely, and the gap between them is where founders get surprised. Ask which one a quote refers to before you compare prices.
                                 </p>
 
+                                <SpectrumGraphic />
+
                                 <div className="not-prose space-y-4 mb-6">
                                     <div className="rounded-2xl border border-gray-200 bg-white p-5">
                                         <p className="font-bold text-[#2D2A2E] mb-1">White label</p>
@@ -1088,6 +1321,8 @@ export default function PrivateLabelVsCustomClient({ initialLikeCount, initialCo
                                 <p className="text-base lg:text-lg leading-snug text-[#4A484A] mb-6">
                                     Here is the custom tee from earlier, carried through to the warehouse door.
                                 </p>
+
+                                <LandedCostGraphic />
 
                                 <div className="not-prose overflow-x-auto rounded-2xl border border-gray-200 mb-6">
                                     <table className="w-full text-left text-sm min-w-[460px]">

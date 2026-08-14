@@ -1,8 +1,16 @@
 # Image prompts — `private-label-vs-custom-clothing-manufacturing` (id 63)
 
-Five photographic slots, five different registers. **The three teaching graphics are built natively as
-inline SVG in the client component** (cost stack at 300 units, the lead-time calendar, the three-question
-decision chart), so there is nothing to generate for them and their numbers cannot drift from the body.
+Five photographic slots, five different registers. **The five teaching graphics are built natively as
+inline SVG in the client component**, so there is nothing to generate for them and their numbers cannot
+drift from the body:
+
+| # | Graphic | Section | Key figures it must match |
+|---|---|---|---|
+| 01 | Exclusivity spectrum | `three-words` | MOQ from ~12 / 24–100 / 300–500 · 3–5 wks / 14–26 wks |
+| 02 | Cost stack at 300 units | `cost` | $8.48 vs $14.80 · segments sum to each total |
+| 03 | Lead-time calendar | `time` | 3–5 wks vs 14–26 wks · phase widths on a 0–26 axis |
+| 04 | Landed cost stack | `landed-cost` | $11.80 + $0.85 + $1.95 + $0.30 + $0.45 = $15.35 · 77% |
+| 05 | Three-question decision | `pick` | three yeses → custom |
 
 Save the generated files to `public/blog/` with these exact names:
 
