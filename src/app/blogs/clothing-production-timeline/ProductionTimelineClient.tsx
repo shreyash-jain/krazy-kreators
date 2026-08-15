@@ -510,6 +510,273 @@ function SlipGraphic() {
 }
 
 /* ------------------------------------------------------------------ */
+/* Infographic 05 — first run vs reorder                               */
+/* Bars start at x = 180, scale 19px per week (23 wks → 437px → 617).  */
+/* ------------------------------------------------------------------ */
+const REORDER_ROWS = [
+    {
+        name: "First run",
+        note: "nothing exists yet",
+        y: 50,
+        total: "23 wks",
+        end: 617,
+        segs: [
+            { x: 180, w: 209, fill: P1 },
+            { x: 389, w: 133, fill: P3 },
+            { x: 522, w: 95, fill: P4 },
+        ],
+    },
+    {
+        name: "Reorder",
+        note: "same style, second time",
+        y: 160,
+        total: "12 wks",
+        end: 408,
+        segs: [
+            { x: 180, w: 133, fill: P3 },
+            { x: 313, w: 95, fill: P4 },
+        ],
+    },
+];
+
+function ReorderGraphic() {
+    return (
+        <figure className="my-8 rounded-2xl border border-gray-200 bg-[#F8F7F4] p-5 sm:p-7 not-prose">
+            <p className="text-[11px] font-bold uppercase tracking-[0.18em] text-[#CBB49A] mb-1">Infographic 05</p>
+            <h3 className="text-xl sm:text-2xl font-extrabold text-[#2D2A2E] mb-1 leading-snug">
+                The second time is half the wait
+            </h3>
+            <p className="text-sm text-[#666666] mb-5">
+                The same style ordered again, once the pattern and the fabric spec already exist.
+            </p>
+
+            <div className="overflow-x-auto">
+                <svg
+                    viewBox="0 0 700 250"
+                    role="img"
+                    aria-label="Two bars comparing a first production run with a reorder of the same style. The first run takes 23 weeks: 11 weeks of development, 7 weeks making, 5 weeks moving. A reorder takes 12 weeks, made up only of the 7 weeks making and 5 weeks moving, because the 11 development weeks are not repeated."
+                    className="w-full h-auto min-w-[620px]"
+                >
+                    <title>A first production run of 23 weeks against a 12-week reorder</title>
+
+                    {REORDER_ROWS.map((row) => (
+                        <g key={row.name}>
+                            <text x="0" y={row.y + 20} fontSize="16" fontWeight="800" fill="#2D2A2E">
+                                {row.name}
+                            </text>
+                            <text x="0" y={row.y + 39} fontSize="12" fill="#666666">
+                                {row.note}
+                            </text>
+                            {row.segs.map((s) => (
+                                <rect
+                                    key={s.x}
+                                    x={s.x}
+                                    y={row.y}
+                                    width={s.w}
+                                    height="44"
+                                    fill={s.fill}
+                                    stroke="#F8F7F4"
+                                    strokeWidth="1.5"
+                                />
+                            ))}
+                            <text x={row.end + 10} y={row.y + 28} fontSize="15" fontWeight="800" fill="#2D2A2E">
+                                {row.total}
+                            </text>
+                        </g>
+                    ))}
+
+                    {/* bracket under the development block of the first run */}
+                    <path d="M180 104 L180 116 L389 116 L389 104" fill="none" stroke="#8C7A5E" strokeWidth="1.5" />
+                    <text x="284" y="138" fontSize="13" fontWeight="700" fill="#8C7A5E" textAnchor="middle">
+                        the 11 weeks a reorder skips
+                    </text>
+                </svg>
+            </div>
+
+            <figcaption className="mt-5 text-sm text-[#4A484A] leading-snug border-t border-gray-200 pt-4">
+                Development is a one-time cost in time as well as money. Drop to about ten weeks if the mill still holds
+                your cloth &mdash; which is the real argument for finishing one style properly instead of starting three.
+            </figcaption>
+        </figure>
+    );
+}
+
+/* ------------------------------------------------------------------ */
+/* Infographic 06 — what your reply speed costs                        */
+/* Bars start at x = 210, scale 30px per week (14 wks → 420px → 630).  */
+/* Totals reconcile with Infographic 02: development is 8 wks fast,    */
+/* 14 wks slow — the same 6-week spread the six gates below produce.   */
+/* ------------------------------------------------------------------ */
+const GATES = [
+    "Tech pack",
+    "Lab dips",
+    "First sample",
+    "Fit round 1",
+    "Fit round 2",
+    "PP sample",
+];
+
+function ApprovalGraphic() {
+    return (
+        <figure className="my-8 rounded-2xl border border-gray-200 bg-[#F8F7F4] p-5 sm:p-7 not-prose">
+            <p className="text-[11px] font-bold uppercase tracking-[0.18em] text-[#CBB49A] mb-1">Infographic 06</p>
+            <h3 className="text-xl sm:text-2xl font-extrabold text-[#2D2A2E] mb-1 leading-snug">
+                Six times someone waits on you
+            </h3>
+            <p className="text-sm text-[#666666] mb-5">
+                Development has six approval gates. Sit on each for a week and you have added six weeks without anyone
+                working slower.
+            </p>
+
+            <div className="overflow-x-auto">
+                <svg
+                    viewBox="0 0 700 296"
+                    role="img"
+                    aria-label="Two bars showing how reply speed changes development time. Answering the same day keeps development at 8 weeks. Taking about a week at each of the six approval gates stretches development to 14 weeks. The six gates are the tech pack, lab dips, first sample, fit round one, fit round two and the pre-production sample."
+                    className="w-full h-auto min-w-[640px]"
+                >
+                    <title>Development time at same-day approvals versus week-long approvals</title>
+
+                    <text x="0" y="66" fontSize="15" fontWeight="700" fill="#2D2A2E">
+                        You answer
+                    </text>
+                    <text x="0" y="84" fontSize="15" fontWeight="700" fill="#2D2A2E">
+                        the same day
+                    </text>
+                    <rect x="210" y="46" width="240" height="40" fill={P1} />
+                    <text x="460" y="72" fontSize="15" fontWeight="800" fill="#2D2A2E">
+                        8 wks
+                    </text>
+
+                    <text x="0" y="136" fontSize="15" fontWeight="700" fill="#2D2A2E">
+                        You answer
+                    </text>
+                    <text x="0" y="154" fontSize="15" fontWeight="700" fill="#2D2A2E">
+                        within a week
+                    </text>
+                    <rect x="210" y="116" width="240" height="40" fill={P1} />
+                    <rect x="450" y="116" width="180" height="40" fill="#B4453A" fillOpacity="0.55" />
+                    <text x="640" y="142" fontSize="15" fontWeight="800" fill="#2D2A2E">
+                        14 wks
+                    </text>
+                    <text x="540" y="142" fontSize="13" fontWeight="700" fill="#FFFFFF" textAnchor="middle">
+                        + 6 weeks
+                    </text>
+
+                    {GATES.map((g, i) => (
+                        <g key={g}>
+                            <rect
+                                x={i * 115}
+                                y="200"
+                                width="107"
+                                height="38"
+                                rx="19"
+                                fill="#FFFFFF"
+                                stroke="#D9D3C8"
+                                strokeWidth="1.5"
+                            />
+                            <text
+                                x={i * 115 + 53}
+                                y="224"
+                                fontSize="11.5"
+                                fontWeight="700"
+                                fill="#4A484A"
+                                textAnchor="middle"
+                            >
+                                {g}
+                            </text>
+                        </g>
+                    ))}
+                    <text x="345" y="268" fontSize="13" fill="#8C7A5E" fontWeight="700" textAnchor="middle">
+                        six gates &middot; about a week each &middot; none of it is the factory
+                    </text>
+                </svg>
+            </div>
+
+            <figcaption className="mt-5 text-sm text-[#4A484A] leading-snug border-t border-gray-200 pt-4">
+                This is the entire gap between the fast lane and the first-timer lane in the chart further up. Nobody
+                sews slower in the second row &mdash; the schedule simply spends six weeks in an inbox.
+            </figcaption>
+        </figure>
+    );
+}
+
+/* ------------------------------------------------------------------ */
+/* Infographic 07 — air against ocean                                  */
+/* Bars start at x = 180, scale 12px per day (40 days → 480px → 660).  */
+/* Ranges are the Freightos door-to-door figures quoted in the body.   */
+/* ------------------------------------------------------------------ */
+const DAY_TICKS = [
+    { d: 0, x: 180 },
+    { d: 10, x: 300 },
+    { d: 20, x: 420 },
+    { d: 30, x: 540 },
+    { d: 40, x: 660 },
+];
+
+function FreightGraphic() {
+    return (
+        <figure className="my-8 rounded-2xl border border-gray-200 bg-[#F8F7F4] p-5 sm:p-7 not-prose">
+            <p className="text-[11px] font-bold uppercase tracking-[0.18em] text-[#CBB49A] mb-1">Infographic 07</p>
+            <h3 className="text-xl sm:text-2xl font-extrabold text-[#2D2A2E] mb-1 leading-snug">
+                The only stage money can actually shorten
+            </h3>
+            <p className="text-sm text-[#666666] mb-5">
+                Door-to-door transit, India to the US. The paler end of each bar is the slow end of the range.
+            </p>
+
+            <div className="overflow-x-auto">
+                <svg
+                    viewBox="0 0 700 246"
+                    role="img"
+                    aria-label="Two bars comparing freight transit from India to the US. Air freight takes 8 to 10 days door to door. Ocean freight takes 30 to 40 days door to door, roughly three to four weeks longer."
+                    className="w-full h-auto min-w-[620px]"
+                >
+                    <title>Air freight at 8 to 10 days against ocean freight at 30 to 40 days</title>
+
+                    {DAY_TICKS.map((t) => (
+                        <line key={t.d} x1={t.x} y1="34" x2={t.x} y2="182" stroke="#E4DFD6" strokeWidth="1" />
+                    ))}
+
+                    <text x="0" y="66" fontSize="15" fontWeight="800" fill="#2D2A2E">
+                        Air freight
+                    </text>
+                    <text x="0" y="85" fontSize="13" fontWeight="700" fill="#8C7A5E">
+                        8&ndash;10 days
+                    </text>
+                    <rect x="180" y="46" width="96" height="40" fill={P2} />
+                    <rect x="276" y="46" width="24" height="40" fill={P2} fillOpacity="0.4" />
+
+                    <text x="0" y="146" fontSize="15" fontWeight="800" fill="#2D2A2E">
+                        Ocean freight
+                    </text>
+                    <text x="0" y="165" fontSize="13" fontWeight="700" fill="#8C7A5E">
+                        30&ndash;40 days
+                    </text>
+                    <rect x="180" y="126" width="360" height="40" fill={P4} />
+                    <rect x="540" y="126" width="120" height="40" fill={P4} fillOpacity="0.45" />
+
+                    <line x1="180" y1="182" x2="660" y2="182" stroke="#D9D3C8" strokeWidth="2" />
+                    {DAY_TICKS.map((t) => (
+                        <text key={t.d} x={t.x} y="200" fontSize="11.5" fill="#666666" textAnchor="middle">
+                            {t.d === 0 ? "factory door" : `${t.d} days`}
+                        </text>
+                    ))}
+                    <text x="420" y="230" fontSize="13" fontWeight="700" fill="#8C7A5E" textAnchor="middle">
+                        about three weeks of calendar, bought with cash
+                    </text>
+                </svg>
+            </div>
+
+            <figcaption className="mt-5 text-sm text-[#4A484A] leading-snug border-t border-gray-200 pt-4">
+                Worth knowing before you panic-book it: three weeks is the most money can buy you here, and it is the
+                dearest of the four things that genuinely speed a schedule up. Deciding a fabric on time is free.
+            </figcaption>
+        </figure>
+    );
+}
+
+/* ------------------------------------------------------------------ */
 
 export default function ProductionTimelineClient({ initialLikeCount, initialComments, faqs }: BlogClientProps) {
     const [contactOpen, setContactOpen] = useState(false);
@@ -704,7 +971,7 @@ export default function ProductionTimelineClient({ initialLikeCount, initialComm
             <section className="relative min-h-[640px] lg:min-h-[72vh] flex items-center justify-center overflow-hidden pt-32 pb-16 sm:pt-36 sm:pb-20">
                 <Image
                     src={HERO_IMAGE}
-                    alt="A design studio wall late in the day: a long paper production calendar pinned across it, marked up in pencil, with a first sketch at one end and a finished folded garment resting at the other, hands reaching in from the edge of the frame."
+                    alt="A long paper production calendar pinned across a studio wall, ruled into columns headed Wk 35 through Wk 46 and marked up in pencil with sample, fitting, production run, shipment and a circled deadline. A hand reaches in from the left to mark one of the squares. A tunic-top flat sketch with fabric swatches is taped up beside it, scissors and studio tools hang along the wall, and a folded olive garment rests on a shelf at the right."
                     fill
                     className="object-cover"
                     priority
@@ -890,7 +1157,7 @@ export default function ProductionTimelineClient({ initialLikeCount, initialComm
                                 <div className="rounded-2xl overflow-hidden shadow-xl border border-gray-100 mb-7 max-w-2xl mx-auto bg-[#F8F7F4]">
                                     <Image
                                         src={SECTION1_IMAGE}
-                                        alt="A cutting room at the midpoint of a production run: cloth spread in many flat layers down a long table with marker paper pinned over the top, a cutting head parked at the far end, high windows throwing raking daylight across the stack."
+                                        alt="A large industrial cutting room with brick walls and high factory windows. Pale cloth is spread in dozens of flat layers down a long wooden table, with marker paper pinned over the top showing the pattern pieces drawn out in blue. A cutting head sits parked at the far end of the table, racks of fabric rolls are stacked floor to ceiling along the right-hand wall, and offcuts litter the worn wooden floor."
                                         width={1024}
                                         height={1024}
                                         sizes="(max-width: 1024px) 100vw, 42rem"
@@ -943,7 +1210,7 @@ export default function ProductionTimelineClient({ initialLikeCount, initialComm
                                 <div className="rounded-2xl overflow-hidden shadow-xl border border-gray-100 mb-7 max-w-2xl mx-auto bg-[#F8F7F4]">
                                     <Image
                                         src={SAMPLING_IMAGE}
-                                        alt="Three versions of the same shirt hanging in a row on a sample-room rail, each pinned and chalk-marked differently, a tape measure draped over the rail and a window casting hard side light across them."
+                                        alt="Three versions of the same linen shirt hanging in a row on a metal rail against a bare plaster wall. The left one is covered in chalked fit corrections and pinned along the sleeve and body; the middle one carries fewer marks, mostly balance lines across the chest; the right one is nearly clean with a single note about final placement. A cloth tape measure hangs over the rail between them and hard window light throws their shadows across the wall."
                                         width={1024}
                                         height={1024}
                                         sizes="(max-width: 1024px) 100vw, 42rem"
@@ -1003,7 +1270,7 @@ export default function ProductionTimelineClient({ initialLikeCount, initialComm
                                 <div className="rounded-2xl overflow-hidden shadow-xl border border-gray-100 mb-7 max-w-2xl mx-auto bg-[#F8F7F4]">
                                     <Image
                                         src={MACRO_IMAGE}
-                                        alt="Extreme macro of a folded, polybagged garment stacked in an open carton: the crease of the fold, a printed size sticker and the corrugated cardboard edge sharp in the foreground, the rest of the stack falling out of focus."
+                                        alt="Close-up looking down into an open cardboard carton of finished stock. Folded navy garments sealed in clear polybags stand packed in rows; the nearest one carries a plain white size sticker printed with the letter L. The corrugated edge of the box is sharp across the foreground and the rest of the stack falls away into shallow focus."
                                         width={1024}
                                         height={1024}
                                         sizes="(max-width: 1024px) 100vw, 42rem"
@@ -1018,6 +1285,8 @@ export default function ProductionTimelineClient({ initialLikeCount, initialComm
                                 <p className="text-base lg:text-lg leading-snug text-[#4A484A] mb-4">
                                     Ocean freight from India to the US runs <a href="https://www.freightos.com/shipping-routes/shipping-from-india-to-the-united-states/" target="_blank" rel="noopener noreferrer" className="underline text-[#CBB49A] hover:text-[#b7a078]">30 to 40 days door to door</a>; air freight is 8 to 10 days and costs many times more. Four weeks on a ship is the single easiest week-block to forget.
                                 </p>
+
+                                <FreightGraphic />
 
                                 <p className="text-base lg:text-lg leading-snug text-[#4A484A] mb-4">
                                     Then customs. Entry paperwork has to be filed <a href="https://www.cbp.gov/sites/default/files/assets/documents/2020-Feb/icp073_3_0.pdf" target="_blank" rel="noopener noreferrer" className="underline text-[#CBB49A] hover:text-[#b7a078]">within 15 calendar days of the shipment arriving</a>, duty gets paid, and only then does the truck move. Cotton knit tops enter at <a href="https://hts.usitc.gov/search?query=61091000" target="_blank" rel="noopener noreferrer" className="underline text-[#CBB49A] hover:text-[#b7a078]">16.5% under heading 6109.10.00</a>, and since CBP&rsquo;s <a href="https://www.federalregister.gov/documents/2026/06/24/2026-12670/indefinite-suspension-of-the-de-minimis-exemption-for-merchandise-arriving-through-all-modes-other" target="_blank" rel="noopener noreferrer" className="underline text-[#CBB49A] hover:text-[#b7a078]">indefinite suspension of the $800 de minimis exemption</a> in June 2026, no route in arrives duty-free.
@@ -1131,9 +1400,15 @@ export default function ProductionTimelineClient({ initialLikeCount, initialComm
                                     What genuinely makes it faster
                                 </h2>
 
-                                <p className="text-base lg:text-lg leading-snug text-[#4A484A] mb-6">
+                                <p className="text-base lg:text-lg leading-snug text-[#4A484A] mb-4">
                                     Four things actually compress a clothing production timeline. Everything else is pressure applied to a stage that cannot absorb it.
                                 </p>
+
+                                <p className="text-base lg:text-lg leading-snug text-[#4A484A] mb-4">
+                                    Start with the one nobody bills you for. Development has six moments where work stops until you answer.
+                                </p>
+
+                                <ApprovalGraphic />
 
                                 <div className="not-prose grid sm:grid-cols-2 gap-5 mb-6">
                                     <div className="rounded-2xl border border-gray-200 bg-white p-5">
@@ -1172,7 +1447,7 @@ export default function ProductionTimelineClient({ initialLikeCount, initialComm
                                 <div className="rounded-2xl overflow-hidden shadow-xl border border-gray-100 mb-7 max-w-2xl mx-auto bg-[#F8F7F4]">
                                     <Image
                                         src={CLOSING_IMAGE}
-                                        alt="A quiet loading bay at dusk, roller door half open, a single stack of sealed cartons on a pallet catching the last daylight, the truck bay beyond it empty and in shadow."
+                                        alt="A warehouse loading bay at dusk with the roller door raised halfway. A single wooden pallet stacked with sealed, unmarked cardboard cartons stands alone in the middle of the empty concrete bay, lit by the cold blue evening light coming through the open door. The rest of the space, and the yard beyond, falls away into shadow."
                                         width={1024}
                                         height={1024}
                                         sizes="(max-width: 1024px) 100vw, 42rem"
@@ -1188,8 +1463,14 @@ export default function ProductionTimelineClient({ initialLikeCount, initialComm
                                     Printing your artwork on an existing blank takes three to five weeks, because the eleven-week development half already happened in someone else&rsquo;s factory. That trade &mdash; speed against owning the garment &mdash; is the whole of <Link href="/blogs/private-label-vs-custom-manufacturing" className="underline text-[#CBB49A] hover:text-[#b7a078]">private label versus custom manufacturing</Link>.
                                 </p>
 
+                                <p className="text-base lg:text-lg leading-snug text-[#4A484A] mb-4">
+                                    The other direction is real too. A reorder of a style you have already made is not 23 weeks, because the pattern exists, the fabric is specified and the factory has your sample on the shelf.
+                                </p>
+
+                                <ReorderGraphic />
+
                                 <p className="text-base lg:text-lg leading-snug text-[#4A484A]">
-                                    The other direction is real too. A reorder of a style you have already made is not 23 weeks; it is closer to eight, because the pattern exists, the fabric is specified and the factory has your sample on the shelf. The first time is the expensive one. That is exactly why finishing a style properly is worth more than starting three.
+                                    The first time is the expensive one, in weeks as much as in cash. That is exactly why finishing one style properly is worth more than starting three.
                                 </p>
                             </section>
 
