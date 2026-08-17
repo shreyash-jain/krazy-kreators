@@ -1116,11 +1116,11 @@ export default function ProductionTimelineClient({ initialLikeCount, initialComm
                             </p>
 
                             <p className="mb-5 text-base lg:text-lg leading-snug">
-                                About four months if everything goes right. Closer to six the first time. That gap is almost never the factory being slow &mdash; it is the weeks that pass while a decision waits on someone.
+                                About four months if everything goes right. Closer to six the first time. That gap is rarely the factory being slow. It is the weeks lost waiting for someone to say yes.
                             </p>
 
                             <p className="mb-8 text-base lg:text-lg leading-snug">
-                                Here is the whole clothing production timeline, stage by stage, with the honest week counts and the parts nobody warns you about.
+                                Here is the whole clothing production timeline, stage by stage. Real week counts, and the parts nobody warns you about.
                             </p>
 
                             {/* H2 1 */}
@@ -1130,17 +1130,17 @@ export default function ProductionTimelineClient({ initialLikeCount, initialComm
                                 </h2>
 
                                 <p className="text-base lg:text-lg leading-snug text-[#4A484A] mb-4">
-                                    Four months is not a marketing number. It is what a focused collection takes when nothing waits. Our own <Link href="/" className="underline text-[#CBB49A] hover:text-[#b7a078]">four-step process runs to that schedule</Link> &mdash; design, sampling and sourcing, bulk production, quality check and dispatch.
+                                    Four months is a real number. It is what a small, focused collection takes when nothing sits waiting. Our own <Link href="/" className="underline text-[#CBB49A] hover:text-[#b7a078]">four-step process runs on that schedule</Link> &mdash; design, sampling and sourcing, bulk production, then quality check and dispatch.
                                 </p>
 
                                 <p className="text-base lg:text-lg leading-snug text-[#4A484A] mb-4">
-                                    The catch is what &ldquo;nothing waits&rdquo; means. It means you answer a fit question the day it arrives, not the following Tuesday. It means the fabric was chosen in week five, not week nine.
+                                    The catch is hiding in those three words. Nothing sits waiting means you answer a fit question the day it lands, not the following Tuesday. It means you picked the fabric in week five, not week nine.
                                 </p>
 
                                 <LanesGraphic />
 
                                 <p className="text-base lg:text-lg leading-snug text-[#4A484A] mb-4">
-                                    Three lanes, one factory. The difference between the top row and the bottom is thirteen weeks, and most of it is decision time.
+                                    Three lanes, same factory. Thirteen weeks separate the top row from the bottom. Almost all of that is you deciding.
                                 </p>
 
                                 <blockquote className="border-l-4 border-[#CBB49A] pl-5 my-7 text-xl lg:text-2xl font-serif italic text-[#2D2A2E] leading-snug">
@@ -1172,7 +1172,7 @@ export default function ProductionTimelineClient({ initialLikeCount, initialComm
                                 <ScheduleGraphic />
 
                                 <p className="text-base lg:text-lg leading-snug text-[#4A484A]">
-                                    Read it once and the shape of the thing changes. Most founders picture manufacturing as sewing. Sewing is four of the twenty-three weeks. For a shorter version of this map, see <Link href="/blogs/lead-time-timeline-design-to-doorstep" className="underline text-[#CBB49A] hover:text-[#b7a078]">the lead-time timeline from concept to doorstep</Link>.
+                                    Look at it once and the shape changes. Most founders think manufacturing means sewing. Sewing is four weeks out of twenty-three. For a shorter version of this map, see <Link href="/blogs/lead-time-timeline-design-to-doorstep" className="underline text-[#CBB49A] hover:text-[#b7a078]">the lead-time timeline from concept to doorstep</Link>.
                                 </p>
                             </section>
 
@@ -1187,7 +1187,7 @@ export default function ProductionTimelineClient({ initialLikeCount, initialComm
                                 </p>
 
                                 <p className="text-base lg:text-lg leading-snug text-[#4A484A] mb-4">
-                                    This is the cheapest phase and the one that decides the rest. A vague tech pack does not save you two weeks in month one. It costs you three in month three, when the samples come back nearly right.
+                                    This is the cheapest phase, and it decides everything after it. A vague tech pack does not save you two weeks now. It costs you three later, when the samples come back nearly right.
                                 </p>
 
                                 <div className="not-prose rounded-2xl border border-gray-200 bg-[#F8F7F4] p-5 sm:p-6 mb-2">
@@ -1219,11 +1219,11 @@ export default function ProductionTimelineClient({ initialLikeCount, initialComm
                                 </div>
 
                                 <p className="text-base lg:text-lg leading-snug text-[#4A484A] mb-4">
-                                    Seven weeks, and the ones founders find hardest, because two things run at once and both can stall the other.
+                                    Seven weeks, and the hardest to manage. Two jobs run side by side here, and either one can stall the other.
                                 </p>
 
                                 <p className="text-base lg:text-lg leading-snug text-[#4A484A] mb-4">
-                                    <strong>Fabric first, weeks 5 to 7.</strong> You <Link href="/blogs/fabric-sourcing-101-choose-right-material" className="underline text-[#CBB49A] hover:text-[#b7a078]">choose the cloth</Link>, then approve lab dips &mdash; small swatches dyed to your exact colour. Lab dips come back, get rejected, get redyed. That loop is why fabric sits on the critical path.
+                                    <strong>Fabric first, weeks 5 to 7.</strong> You <Link href="/blogs/fabric-sourcing-101-choose-right-material" className="underline text-[#CBB49A] hover:text-[#b7a078]">choose the cloth</Link>, then approve lab dips &mdash; small swatches dyed to your exact colour. A lab dip comes back, you reject it, they dye it again. That back-and-forth is why fabric, not the factory, usually sets the pace.
                                 </p>
 
                                 <p className="text-base lg:text-lg leading-snug text-[#4A484A] mb-4">
@@ -1279,7 +1279,7 @@ export default function ProductionTimelineClient({ initialLikeCount, initialComm
                                 </div>
 
                                 <p className="text-base lg:text-lg leading-snug text-[#4A484A] mb-4">
-                                    One week for inspection and packing: garments checked against the approved sample, then folded, tagged, polybagged and boxed. Then the goods have to travel, and that is a bigger slice of the calendar than most people budget for.
+                                    One week for inspection and packing: garments checked against the approved sample, then folded, tagged, bagged and boxed. After that the goods still have to travel, and travel eats more of the calendar than most people expect.
                                 </p>
 
                                 <p className="text-base lg:text-lg leading-snug text-[#4A484A] mb-4">
@@ -1352,7 +1352,7 @@ export default function ProductionTimelineClient({ initialLikeCount, initialComm
                                 </p>
 
                                 <p className="text-base lg:text-lg leading-snug text-[#4A484A]">
-                                    You cannot move these dates. You can only decide which side of them your production sits on &mdash; and that decision is made months earlier than it feels like it should be.
+                                    You cannot move these dates. All you can choose is which side of them your production lands on &mdash; and you make that choice months earlier than feels natural.
                                 </p>
                             </section>
 
@@ -1373,7 +1373,7 @@ export default function ProductionTimelineClient({ initialLikeCount, initialComm
                                 <BackwardPlannerGraphic />
 
                                 <p className="text-base lg:text-lg leading-snug text-[#4A484A] mb-4">
-                                    That is the whole discipline. It also tells you something uncomfortable and useful: if the date you want is closer than 23 weeks away, you are not planning a timeline any more &mdash; you are choosing which corner to cut. The same arithmetic for a Q4 launch is laid out in <Link href="/blogs/holiday-2026-production-window-us-founders-order-now" className="underline text-[#CBB49A] hover:text-[#b7a078]">the holiday production window</Link>.
+                                    That is the whole trick. It also tells you something hard to hear but useful: if the date you want is less than 23 weeks away, you are not planning a timeline any more. You are picking which corner to cut. The same sum for a Q4 launch is laid out in <Link href="/blogs/holiday-2026-production-window-us-founders-order-now" className="underline text-[#CBB49A] hover:text-[#b7a078]">the holiday production window</Link>.
                                 </p>
                             </section>
 
@@ -1384,13 +1384,13 @@ export default function ProductionTimelineClient({ initialLikeCount, initialComm
                                 </h2>
 
                                 <p className="text-base lg:text-lg leading-snug text-[#4A484A] mb-4">
-                                    Schedules rarely break in one dramatic moment. They erode a few days at a time, and by the time it is visible you have lost a month.
+                                    Schedules rarely break all at once. They slip a few days at a time, and by the time you notice, a month has gone.
                                 </p>
 
                                 <SlipGraphic />
 
                                 <p className="text-base lg:text-lg leading-snug text-[#4A484A]">
-                                    The last bar is the dangerous one, because it is not additive &mdash; it is a cliff. Miss a factory shutdown by three days and you do not lose three days. You lose the shutdown, plus the restart, plus the queue of everyone else who also missed it.
+                                    The last bar is the dangerous one. It does not cost you a few days at a time &mdash; it drops off a cliff. Miss a factory shutdown by three days and you do not lose three days. You lose the shutdown, then the slow restart, then the queue of everyone else who also missed it.
                                 </p>
                             </section>
 
@@ -1401,7 +1401,7 @@ export default function ProductionTimelineClient({ initialLikeCount, initialComm
                                 </h2>
 
                                 <p className="text-base lg:text-lg leading-snug text-[#4A484A] mb-4">
-                                    Four things actually compress a clothing production timeline. Everything else is pressure applied to a stage that cannot absorb it.
+                                    Four things actually shorten a clothing production timeline. Everything else is just pressure on a stage that cannot take any.
                                 </p>
 
                                 <p className="text-base lg:text-lg leading-snug text-[#4A484A] mb-4">
@@ -1434,7 +1434,7 @@ export default function ProductionTimelineClient({ initialLikeCount, initialComm
                                 </div>
 
                                 <p className="text-base lg:text-lg leading-snug text-[#4A484A]">
-                                    Notice that four of the five things that work cost nothing. The one that costs money &mdash; air freight &mdash; buys you the least time. What you pay for speed at the end is always dearer than what you save by deciding early; the per-unit version of that trade is broken down in <Link href="/blogs/custom-clothing-manufacturing-cost" className="underline text-[#CBB49A] hover:text-[#b7a078]">costs at every MOQ tier</Link>.
+                                    Notice that four of the five things that work cost nothing. The only one that costs money &mdash; air freight &mdash; buys the least time. Buying speed at the end always costs more than deciding early costs you; the per-unit version of that trade is broken down in <Link href="/blogs/custom-clothing-manufacturing-cost" className="underline text-[#CBB49A] hover:text-[#b7a078]">costs at every MOQ tier</Link>.
                                 </p>
                             </section>
 
@@ -1456,7 +1456,7 @@ export default function ProductionTimelineClient({ initialLikeCount, initialComm
                                 </div>
 
                                 <p className="text-base lg:text-lg leading-snug text-[#4A484A] mb-4">
-                                    Everything above assumes you are building garments from your own patterns. Plenty of brands are not, and their timeline is a different animal entirely.
+                                    Everything above assumes you are building garments from your own patterns. Plenty of brands are not, and their timeline is a different thing altogether.
                                 </p>
 
                                 <p className="text-base lg:text-lg leading-snug text-[#4A484A] mb-4">
