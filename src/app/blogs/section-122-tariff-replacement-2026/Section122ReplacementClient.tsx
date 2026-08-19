@@ -16,6 +16,7 @@ const BLOG_ID = "section-122-tariff-replacement-2026";
 
 const HERO_IMAGE = "/blog/section-122-replacement-hero.jpg";
 const SECTION1_IMAGE = "/blog/section-122-replacement-section1.jpg";
+const GARMENT_IMAGE = "/blog/section-122-replacement-garment.jpg";
 const MACRO_IMAGE = "/blog/section-122-replacement-macro.jpg";
 const CLOSING_IMAGE = "/blog/section-122-replacement-closing.jpg";
 
@@ -229,7 +230,7 @@ export default function Section122ReplacementClient({ initialLikeCount, initialC
             <section className="relative h-[60vh] min-h-[560px] max-h-[720px] flex items-center justify-center overflow-hidden">
                 <Image
                     src={HERO_IMAGE}
-                    alt="A container terminal at first light — one lane of stacked shipping containers sharply lit while the rows behind fall into cold blue shadow, a gantry arm crossing the top of the frame. No people, no readable logos or text."
+                    alt="A line of container trucks queued at a port exit gate on an overcast weekday morning, worn asphalt streaked with tyre marks, chain-link fence and gate canopy cutting across the frame, stacked containers beyond in flat grey light. No people, no logos, no readable text."
                     fill
                     className="object-cover"
                     priority
@@ -388,7 +389,7 @@ export default function Section122ReplacementClient({ initialLikeCount, initialC
                                 <div className="rounded-2xl overflow-hidden shadow-xl border border-gray-100 mb-7 max-w-2xl mx-auto bg-[#F8F7F4]">
                                     <Image
                                         src={SECTION1_IMAGE}
-                                        alt="A customs broker's desk at the end of a working day — a thick printed entry summary fanned open beside a cold cup of coffee and a stamped folder, low warm lamplight from the left, the office beyond falling into shadow. No faces, no readable text, no logos."
+                                        alt="A working import desk under ordinary ceiling fluorescents — a thick creased stack of clipped customs entry paperwork with a ballpoint resting across it, a scuffed keyboard edge and a coffee ring on the laminate. Cluttered and unstyled. No faces, no logos, no readable text."
                                         width={1024}
                                         height={1024}
                                         sizes="(max-width: 1024px) 100vw, 42rem"
@@ -567,7 +568,7 @@ export default function Section122ReplacementClient({ initialLikeCount, initialC
                                 <div className="rounded-2xl overflow-hidden shadow-xl border border-gray-100 mb-7 max-w-2xl mx-auto bg-[#F8F7F4]">
                                     <Image
                                         src={MACRO_IMAGE}
-                                        alt="Extreme macro of the cut edge of a knitted cotton jersey panel meeting a plain twill neck tape, the loops of the knit and the weave of the tape both razor sharp, everything beyond dissolving into shallow focus. Soft north-window light, fine natural grain, no printing, no logos."
+                                        alt="Extreme macro into a garment's inside side seam where a small woven country-of-origin label is folded and stitched down, the label's woven edge and the overlock stitching razor sharp, the printed face turned away from the camera. Soft overcast window light. No readable text, no logos."
                                         width={1024}
                                         height={1024}
                                         sizes="(max-width: 1024px) 100vw, 42rem"
@@ -610,6 +611,17 @@ export default function Section122ReplacementClient({ initialLikeCount, initialC
                                 <p className="text-base lg:text-lg leading-snug text-[#4A484A] mb-6">
                                     Take a blank cotton tee at <strong>$14 FOB</strong> <em>(the supplier&apos;s price at the origin port, before freight and duty)</em> on a 5,000-piece run brought in as one ocean entry. Here is the duty per tee before July 24 and after.
                                 </p>
+
+                                <div className="rounded-2xl overflow-hidden shadow-xl border border-gray-100 mb-7 max-w-2xl mx-auto bg-[#F8F7F4]">
+                                    <Image
+                                        src={GARMENT_IMAGE}
+                                        alt="One unbranded cotton crew tee laid slightly rumpled across a plain sample-room table, the knit texture and shoulder seam sharp in a narrow band of focus, a metal tape measure pushed to the edge of frame, ordinary north-window daylight. No tags, no printing, no logos, no readable text."
+                                        width={1024}
+                                        height={1024}
+                                        sizes="(max-width: 1024px) 100vw, 42rem"
+                                        className="w-full h-auto"
+                                    />
+                                </div>
 
                                 <figure className="mb-7 rounded-2xl border border-gray-100 bg-[#F8F7F4] p-4 sm:p-6 shadow-sm overflow-x-auto">
                                     <svg viewBox="0 0 960 470" role="img" aria-label="Paired bar chart comparing duty per tee on a 14 dollar cotton T-shirt before and after 24 July 2026: India unchanged at 3 dollars 71, Vietnam rising from 3 dollars 71 to 4 dollars 06, China rising from 4 dollars 76 to 5 dollars 11, the EU, Japan and Korea falling from 3 dollars 71 to 2 dollars 31, and CAFTA-DR and USMCA apparel unchanged at zero." className="w-full h-auto min-w-[640px]">
@@ -684,7 +696,7 @@ export default function Section122ReplacementClient({ initialLikeCount, initialC
                                 <div className="rounded-2xl overflow-hidden shadow-xl border border-gray-100 mb-7 max-w-2xl mx-auto bg-[#F8F7F4]">
                                     <Image
                                         src={CLOSING_IMAGE}
-                                        alt="A quiet warehouse aisle in late afternoon, two pallets of sealed unmarked cartons standing under a shaft of light from a high window, the racking beyond receding into cool shadow. No people, no readable text, no brand marks."
+                                        alt="Two shrink-wrapped pallets of plain cartons standing just inside a half-raised roller door at a third-party warehouse, flat daylight from the gap mixing with cold overhead fluorescents, scuffed floor paint and stray tape on the concrete. No people, no readable text, no brand marks."
                                         width={1024}
                                         height={1024}
                                         sizes="(max-width: 1024px) 100vw, 42rem"
