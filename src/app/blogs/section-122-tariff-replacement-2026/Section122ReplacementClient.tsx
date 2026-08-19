@@ -246,8 +246,9 @@ export default function Section122ReplacementClient({ initialLikeCount, initialC
                         <span className="text-sm text-gray-400">•</span>
                         <span className="text-sm text-gray-200 font-medium tracking-wide">August 19, 2026</span>
                     </div>
-                    <h1 className="text-4xl sm:text-5xl lg:text-6xl xl:text-7xl font-extrabold text-white leading-tight max-w-5xl drop-shadow-lg mb-6 tracking-tight">
-                        Section 122 Is Gone.<br className="hidden sm:block" /> Here&apos;s What Replaced It.
+                    <h1 className="text-3xl sm:text-4xl lg:text-5xl xl:text-6xl font-extrabold text-white leading-tight max-w-5xl drop-shadow-lg mb-6 tracking-tight">
+                        Section 122 Is Gone &mdash; Here&apos;s What Actually Replaced It<br className="hidden lg:block" />{" "}
+                        <span className="block lg:inline text-2xl sm:text-3xl lg:text-4xl xl:text-5xl mt-2 lg:mt-0">(and What It Means for Your Next Cost Sheet)</span>
                     </h1>
                     <p className="text-xl sm:text-2xl lg:text-3xl text-gray-200 font-medium max-w-3xl drop-shadow-md leading-relaxed">
                         The flat 10% on everything ended. What took its place charges different countries different rates — and some apparel lanes nothing at all.

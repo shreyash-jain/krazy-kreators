@@ -8,7 +8,8 @@ export const runtime = "edge";
 
 const SLUG = "section-122-tariff-replacement-2026";
 const URL = `https://www.krazykreators.com/blogs/${SLUG}`;
-const TITLE = "Section 122 Is Gone. Here's What Replaced It.";
+const TITLE =
+    "Section 122 Is Gone — Here's What Actually Replaced It (and What It Means for Your Next Cost Sheet)";
 const DESCRIPTION =
     "Section 122's 10% tariff expired July 24, 2026. A Section 301 forced-labor duty replaced it at 10% or 12.5% — here's what it does to your apparel cost sheet.";
 

@@ -16,7 +16,7 @@ export type BlogPostMeta = {
 export const blogPosts: BlogPostMeta[] = [
   {
     id: 65,
-    title: "Section 122 Is Gone. Here's What Replaced It.",
+    title: "Section 122 Is Gone — Here's What Actually Replaced It (and What It Means for Your Next Cost Sheet)",
     excerpt:
       "The flat 10% surcharge that sat on almost every US import expired at 12:01 a.m. on July 24, 2026 — and a Section 301 forced-labor duty started in the same minute. It is not a blanket. India, Bangladesh, Cambodia, Indonesia, Pakistan and Sri Lanka pay 10%; Vietnam, China, Turkey, Thailand and the Philippines pay 12.5%; and three lanes pay nothing extra at all — qualifying CAFTA-DR apparel, USMCA goods, and apparel from the EU, Japan, Korea, Taiwan and Switzerland, whose normal duty already exceeds the cap. Six countries changed lanes between the June proposal and the final notice, so a cost sheet built in June has India 2.5 points too high. Here is the new duty map origin by origin, and what it does to a $14 tee.",
     category: "manufacturing",
