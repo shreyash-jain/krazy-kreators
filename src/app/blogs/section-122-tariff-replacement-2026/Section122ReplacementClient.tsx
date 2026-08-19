@@ -697,8 +697,8 @@ export default function Section122ReplacementClient({ initialLikeCount, initialC
                                     <Image
                                         src={CLOSING_IMAGE}
                                         alt="A third-party warehouse receiving bay mid-afternoon — shrink-wrapped pallets of plain cartons staged in a row, a worker's back in the middle distance pushing a pallet jack, a half-raised roller door letting flat daylight in against cold overhead fluorescents, scuffed floor paint and stray tape on the concrete. No faces, no logos, markings unreadable."
-                                        width={1024}
-                                        height={1024}
+                                        width={1376}
+                                        height={768}
                                         sizes="(max-width: 1024px) 100vw, 42rem"
                                         className="w-full h-auto"
                                     />
