@@ -230,7 +230,7 @@ export default function Section122ReplacementClient({ initialLikeCount, initialC
             <section className="relative h-[60vh] min-h-[560px] max-h-[720px] flex items-center justify-center overflow-hidden">
                 <Image
                     src={HERO_IMAGE}
-                    alt="A line of container trucks queued at a port exit gate on an overcast weekday morning, worn asphalt streaked with tyre marks, chain-link fence and gate canopy cutting across the frame, stacked containers beyond in flat grey light. No people, no logos, no readable text."
+                    alt="A garment export packing floor late in the shift — a long rail of poly-bagged finished shirts receding into the depth of the room, stacked brown export cartons banked along the right wall, one worker's back and forearms mid-frame lifting a carton. High-bay light mixed with daylight from clerestory windows. No faces, no brand marks, carton markings soft and unreadable."
                     fill
                     className="object-cover"
                     priority
@@ -389,7 +389,7 @@ export default function Section122ReplacementClient({ initialLikeCount, initialC
                                 <div className="rounded-2xl overflow-hidden shadow-xl border border-gray-100 mb-7 max-w-2xl mx-auto bg-[#F8F7F4]">
                                     <Image
                                         src={SECTION1_IMAGE}
-                                        alt="A working import desk under ordinary ceiling fluorescents — a thick creased stack of clipped customs entry paperwork with a ballpoint resting across it, a scuffed keyboard edge and a coffee ring on the laminate. Cluttered and unstyled. No faces, no logos, no readable text."
+                                        alt="Two hands working through a thick clipped stack of customs entry paperwork on a cluttered import desk, a ballpoint held mid-annotation, a scuffed keyboard and a dried coffee ring at the edge of frame. Ordinary overhead office light, unstyled. No face, no logos, all print soft and unreadable."
                                         width={1024}
                                         height={1024}
                                         sizes="(max-width: 1024px) 100vw, 42rem"
@@ -568,7 +568,7 @@ export default function Section122ReplacementClient({ initialLikeCount, initialC
                                 <div className="rounded-2xl overflow-hidden shadow-xl border border-gray-100 mb-7 max-w-2xl mx-auto bg-[#F8F7F4]">
                                     <Image
                                         src={MACRO_IMAGE}
-                                        alt="Extreme macro into a garment's inside side seam where a small woven country-of-origin label is folded and stitched down, the label's woven edge and the overlock stitching razor sharp, the printed face turned away from the camera. Soft overcast window light. No readable text, no logos."
+                                        alt="Extreme macro of a thumb and forefinger lifting a small woven country-of-origin label out of a garment's inside side seam, the label's woven edge and the overlock stitching razor sharp, the printed face angled away from the camera. Soft diffused window light. No legible lettering or numbers, no logos."
                                         width={1024}
                                         height={1024}
                                         sizes="(max-width: 1024px) 100vw, 42rem"
@@ -615,7 +615,7 @@ export default function Section122ReplacementClient({ initialLikeCount, initialC
                                 <div className="rounded-2xl overflow-hidden shadow-xl border border-gray-100 mb-7 max-w-2xl mx-auto bg-[#F8F7F4]">
                                     <Image
                                         src={GARMENT_IMAGE}
-                                        alt="One unbranded cotton crew tee laid slightly rumpled across a plain sample-room table, the knit texture and shoulder seam sharp in a narrow band of focus, a metal tape measure pushed to the edge of frame, ordinary north-window daylight. No tags, no printing, no logos, no readable text."
+                                        alt="A single unbranded cotton crew tee held up by two hands against soft window light in a sample room, the jersey backlit just enough to show the knit and the shoulder seam, an open export carton of folded tees blurred behind. No face, no tags, no printing, no logos."
                                         width={1024}
                                         height={1024}
                                         sizes="(max-width: 1024px) 100vw, 42rem"
@@ -696,7 +696,7 @@ export default function Section122ReplacementClient({ initialLikeCount, initialC
                                 <div className="rounded-2xl overflow-hidden shadow-xl border border-gray-100 mb-7 max-w-2xl mx-auto bg-[#F8F7F4]">
                                     <Image
                                         src={CLOSING_IMAGE}
-                                        alt="Two shrink-wrapped pallets of plain cartons standing just inside a half-raised roller door at a third-party warehouse, flat daylight from the gap mixing with cold overhead fluorescents, scuffed floor paint and stray tape on the concrete. No people, no readable text, no brand marks."
+                                        alt="A third-party warehouse receiving bay mid-afternoon — shrink-wrapped pallets of plain cartons staged in a row, a worker's back in the middle distance pushing a pallet jack, a half-raised roller door letting flat daylight in against cold overhead fluorescents, scuffed floor paint and stray tape on the concrete. No faces, no logos, markings unreadable."
                                         width={1024}
                                         height={1024}
                                         sizes="(max-width: 1024px) 100vw, 42rem"
