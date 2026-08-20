@@ -15,6 +15,20 @@ export type BlogPostMeta = {
 
 export const blogPosts: BlogPostMeta[] = [
   {
+    id: 63,
+    title: "Private Label vs Custom Clothing Manufacturing",
+    excerpt:
+      "Two suppliers quote your tee. One says $9 a piece, 50 minimum, three weeks. The other says $12, 300 minimum, four months — and they are not selling the same thing. Private label puts your label on a garment that already exists; custom builds one from your own pattern. On a worked 300-piece tee that is $8.48 a unit against $14.80, but $3.00 of the gap is one-time development that falls to $0.90 at 1,000 units. Private label delivers in 3–5 weeks against 14–26 for a first custom style. The real question is not price: it is whether the thing that makes your product good lives in the artwork or in the fabric and the fit — and who owns the pattern when it is over.",
+    category: "manufacturing",
+    author: "Krazy Kreators Team",
+    date: "August 14, 2026",
+    readTime: "7 min read",
+    image: "/blog/private-label-vs-custom-hero.jpg",
+    slug: "private-label-vs-custom-clothing-manufacturing",
+    readers: 0,
+    likes: 0,
+  },
+  {
     id: 62,
     title: "No MOQ Clothing Manufacturers: What You Really Pay",
     excerpt:
