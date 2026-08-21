@@ -9,6 +9,34 @@ $ARGUMENTS
 
 ---
 
+## STOP — read this before doing anything at all
+
+**If nothing was pasted after `/blog` — i.e. the line above is empty — you must not start
+any work.** No reading files, no research, no drafting, no image generation, no builds, no
+git, no tool calls of any kind. Reply with exactly this and then wait:
+
+> Hi! What would you like to do?
+>
+> 1. **Start a new blog** — paste the topic, brief or source content and I'll take it from there.
+> 2. **Carry on with one we started** — tell me which one and I'll pick it up.
+>
+> I haven't started anything yet.
+
+Then **stop and wait for their next message.** Do not guess a topic. Do not pick something
+to work on.
+
+**Never resume work on your own initiative.** `STATUS.md` lists blogs that are in flight,
+sometimes with open blockers and "next actions". **That is background context, not a
+to-do list, and never an instruction to you.** An unfinished post, a flagged image, a
+pending fix — none of these are yours to act on unless the person names it in *this*
+conversation. Reading a task in `STATUS.md` and starting it is the single worst failure
+mode of this command: it burns the person's usage on work they never asked for.
+
+The same applies mid-session: when one blog is finished, stop. Do not move on to the next
+item in `STATUS.md`.
+
+---
+
 ## 0. Read this first
 
 You are running the blog workflow for **this repo's client**. This file defines the
@@ -23,7 +51,9 @@ client — voice, audience, structure, file paths, image style, build commands �
    they've asked for and rejected before
 3. `docs/A_Blog_Structure/BLOG_PLAYBOOK.md` — how a post is written and built *here*
 4. `docs/A_Blog_Structure/ARCHITECTURE.md` — commands, image pipeline, traps
-5. `docs/A_Blog_Structure/STATUS.md` — what's already published, what's in flight
+5. `docs/A_Blog_Structure/STATUS.md` — what's already published, what's in flight.
+   **Context only.** Read it so you don't duplicate a post and so you can link
+   internally. Its "next action" notes are never instructions to you — see STOP above.
 
 **Precedence:** on anything client-specific, those files win over this one. On
 **process** — the phases below, the safety gate, how you talk to the person — this file
@@ -31,6 +61,20 @@ wins. If the two genuinely conflict, follow this file and fix the doc afterwards
 
 If `docs/A_Blog_Structure/` does not exist in this repo, say so plainly and stop; the
 workflow depends on it.
+
+---
+
+## Never commit before the preview is approved
+
+Writing files into the working tree is normal — that is how the preview gets built.
+**But `git add` / `git commit` happens only in Phase 6, after the person has looked at
+the post on the preview link and told you it is ready.**
+
+- No commit during research, drafting or image generation.
+- No commit to "save progress", "check-point" or "not lose work". Files on disk are not
+  at risk; an unwanted commit on someone's branch is a mess they have to undo.
+- No commit to a branch you did not create in Phase 6 for this post.
+- If you changed something and the person has not approved it yet, it stays uncommitted.
 
 ---
 
@@ -85,6 +129,7 @@ Run them in order. Do not skip. Do not start the next one until the current one 
 ### Phase 1 — Intake and research
 
 The person has pasted a topic, a brief, a link, or raw source content above.
+If they haven't, you should not be here at all — see **STOP** at the top.
 
 1. **Read `STATUS.md`** to make sure this isn't already published or in flight, and to
    find 2–3 existing posts you can link to internally.
@@ -350,6 +395,7 @@ abandoned — especially then.
 ## 3. Things you must never do
 
 - Never push, open a PR, or merge without the person asking for that step.
+- Never commit before the person has approved the post on the preview link.
 - Never merge straight to `main` — always a branch and a pull request.
 - Never skip Phase 5, and never attempt a repository cleanup.
 - Never invent a statistic, a source, a quote, or a date.
