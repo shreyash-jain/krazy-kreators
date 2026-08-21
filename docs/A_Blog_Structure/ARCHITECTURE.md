@@ -85,12 +85,14 @@ Write a **throwaway** script into the session scratchpad — never into this rep
 this post's prompts. The API contract:
 
 ```js
-// scratchpad/gen-images.mjs  —  node scratchpad/gen-images.mjs
+// scratchpad/gen-images.mjs  —  run with: node scratchpad/gen-images.mjs
 import { readFileSync, writeFileSync } from "node:fs";
 
 const env = Object.fromEntries(
   readFileSync("C:/Users/Admin/.blog-keys.env", "utf8")
-    .split(/\r?\n/)
+    .split(/
+?
+/)
     .filter((l) => l.trim() && !l.trimStart().startsWith("#") && l.includes("="))
     .map((l) => [l.slice(0, l.indexOf("=")).trim(), l.slice(l.indexOf("=") + 1).trim()])
 );
@@ -101,40 +103,49 @@ const jobs = [
 ];
 
 for (const { file, prompt } of jobs) {
-  const res = await fetch("https://openrouter.ai/api/v1/chat/completions", {
+  const res = await fetch("https://openrouter.ai/api/v1/images", {
     method: "POST",
     headers: {
       Authorization: `Bearer ${env.OPENROUTER_API_KEY}`,
       "Content-Type": "application/json",
     },
     body: JSON.stringify({
-      model: env.OPENROUTER_IMAGE_MODEL,
-      messages: [{ role: "user", content: prompt }],
-      modalities: ["image", "text"],
+      model: env.OPENROUTER_IMAGE_MODEL,  // qwen/qwen-image-3
+      prompt,
+      size: "1822x1024",                  // 16:9 — pick the ratio the slot needs
     }),
   });
   const json = await res.json();
   if (!res.ok) throw new Error(JSON.stringify(json).slice(0, 800));
-  const url = json.choices?.[0]?.message?.images?.[0]?.image_url?.url;
-  if (!url) throw new Error("no image in response: " + JSON.stringify(json).slice(0, 800));
-  writeFileSync(file, Buffer.from(url.split(",")[1], "base64"));
+  const b64 = json.data?.[0]?.b64_json;
+  if (!b64) throw new Error("no image in response: " + JSON.stringify(json).slice(0, 800));
+  writeFileSync(file, Buffer.from(b64, "base64"));
   console.log("wrote", file);
 }
 ```
 
-> **If the response shape differs from the above, fix it here.** This recipe is the
-> repo's memory of the API — correcting it once saves every future session the
-> rediscovery. Log the working shape and the date.
+> **Two different endpoints — this is the trap.** OpenRouter has two families of image
+> model and they do **not** share an API:
+>
+> | Kind | Example | Endpoint | Where the image is |
+> |---|---|---|---|
+> | **Dedicated image model** | `qwen/qwen-image-3` (ours), `qwen/qwen-image-3-pro` | `POST /api/v1/images` with `{model, prompt, size}` | `data[0].b64_json` |
+> | Chat model that emits images | `google/gemini-3-pro-image`, `google/gemini-3.1-flash-image` | `POST /api/v1/chat/completions` with `modalities: ["image","text"]` | `choices[0].message.images[0].image_url.url` (a `data:` URL) |
+>
+> Calling a dedicated image model on `/chat/completions` returns **`404 … is an image
+> generation model and cannot be used with the chat/completions endpoint`**. Asking
+> `qwen/qwen-image-3` for `modalities:["image","text"]` returns **`404 No endpoints found
+> that support the requested output modalities`**, because its `output_modalities` is
+> `["image"]` only. **Neither 404 means the model is missing** — that misreading cost a
+> session once already.
+>
+> **Listing image models:** the default `GET /api/v1/models` (~419 entries) **excludes
+> them**. Use `GET /api/v1/models?output_modalities=image` (~45 entries), or
+> `GET /api/v1/models/<id>/endpoints` for one model's modalities and pricing.
 
-**Verified working 2026-08-21.** The recipe above ran unchanged against
-`google/gemini-3-pro-image` (~25 s per image) and `google/gemini-3.1-flash-image`
-(~18 s), both returning `choices[0].message.images[0].image_url.url` as a
-`data:image/png;base64,...` URL. Output was 16:9 and honoured the "no people, no
-text, no logos" constraints. **`qwen/qwen-image-3` does not exist on OpenRouter** —
-there are no Qwen image models there, and it fails with `404 No endpoints found that
-support the requested output modalities`. If a model id is ever rejected, list the
-valid ones with `GET https://openrouter.ai/api/v1/models` and filter on
-`architecture.output_modalities` containing `image`.
+**Verified working 2026-08-21** against `qwen/qwen-image-3` via `/api/v1/images`: ~74 s
+per image, ~2.5 MB PNG at 1822×1024, correctly honouring "no people, no text, no logos".
+
 
 **Verify every generated image before showing it:** open it and look at it, confirm no
 two slots are byte-identical (`md5sum public/blog/<slug>-*`), confirm the aspect ratio
@@ -157,7 +168,7 @@ containing `createRequire` and `_0x…` hex vars, hidden behind hundreds of spac
 renders blank in editors and diffs. **Detect by line length, never by eye:**
 
 ```bash
-awk '{print length}' postcss.config.mjs | sort -n | tail -1     # expect ≤ 40
+awk '{print length}' postcss.config.mjs | sort -n | tail -1     # expect <= 40
 ```
 
 It executes on every build and can read env secrets. If infected: restore the clean file,
