@@ -15,7 +15,21 @@ export type BlogPostMeta = {
 
 export const blogPosts: BlogPostMeta[] = [
   {
-    id: 63,
+    id: 64,
+    title: "From Sketch to Store: A Real Clothing Production Timeline",
+    excerpt:
+      "The sketches are done and you can picture the whole first drop, so you ask the only question that matters: how long until I can sell it? About four months if everything goes right, closer to six the first time — and that gap is almost never the factory being slow. Here is the full clothing production timeline stage by stage: eleven weeks of range planning, tech packs, fabric and sampling before a single garment of your run is cut, four weeks of actual sewing, then five more on a ship and through customs. Plus the three fixed dates that bend everyone's calendar, the five ways a schedule quietly grows, and why you count backwards from the shelf instead of forwards from today. A 1 March 2027 drop is a 21 September 2026 decision.",
+    category: "manufacturing",
+    author: "Krazy Kreators Team",
+    date: "August 15, 2026",
+    readTime: "11 min read",
+    image: "/blog/production-timeline-hero.jpg",
+    slug: "clothing-production-timeline",
+    readers: 0,
+    likes: 0,
+  },
+  {
+    id: 66,
     title: "What Is a Tech Pack? The File Your Factory Builds From",
     excerpt:
       "Send a factory three photos and a paragraph, and six weeks later a box arrives with exactly what you asked for — two inches too wide, hemmed with the wrong stitch, in a cotton that feels nothing like the one in your head. Nobody lied to you. You never said. A tech pack is the document that turns a design into instructions, and this is what goes in one: all eight pages, what each one prevents, and why a CAD and a clothing spec sheet are pages inside it rather than alternatives to it. The same half-inch error costs $0 in the tech pack, $150 in the first sample, $900 in the PP sample and $11,500 in a 500-unit run. Includes a 12-working-day build timeline, the 12-point check before you hit send, a plain-English glossary, and the labeling pages that carry legal weight under the FTC's Textile and Care Labeling rules.",
@@ -25,6 +39,11 @@ export const blogPosts: BlogPostMeta[] = [
     readTime: "12 min read",
     image: "/blog/what-is-a-tech-pack-hero.jpg",
     slug: "what-is-a-tech-pack",
+    readers: 0,
+    likes: 0,
+  },
+  {
+    id: 63,
     title: "Private Label vs Custom Clothing Manufacturing",
     excerpt:
       "Two suppliers quote your tee. One says $9 a piece, 50 minimum, three weeks. The other says $12, 300 minimum, four months — and they are not selling the same thing. Private label puts your label on a garment that already exists; custom builds one from your own pattern. On a worked 300-piece tee that is $8.48 a unit against $14.80, but $3.00 of the gap is one-time development that falls to $0.90 at 1,000 units. Private label delivers in 3–5 weeks against 14–26 for a first custom style. The real question is not price: it is whether the thing that makes your product good lives in the artwork or in the fabric and the fit — and who owns the pattern when it is over.",
