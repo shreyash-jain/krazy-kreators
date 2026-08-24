@@ -29,6 +29,20 @@ export const blogPosts: BlogPostMeta[] = [
     likes: 0,
   },
   {
+    id: 64,
+    title: "From Sketch to Store: A Real Clothing Production Timeline",
+    excerpt:
+      "The sketches are done and you can picture the whole first drop, so you ask the only question that matters: how long until I can sell it? About four months if everything goes right, closer to six the first time — and that gap is almost never the factory being slow. Here is the full clothing production timeline stage by stage: eleven weeks of range planning, tech packs, fabric and sampling before a single garment of your run is cut, four weeks of actual sewing, then five more on a ship and through customs. Plus the three fixed dates that bend everyone's calendar, the five ways a schedule quietly grows, and why you count backwards from the shelf instead of forwards from today. A 1 March 2027 drop is a 21 September 2026 decision.",
+    category: "manufacturing",
+    author: "Krazy Kreators Team",
+    date: "August 15, 2026",
+    readTime: "11 min read",
+    image: "/blog/production-timeline-hero.jpg",
+    slug: "clothing-production-timeline",
+    readers: 0,
+    likes: 0,
+  },
+  {
     id: 66,
     title: "What Is a Tech Pack? The File Your Factory Builds From",
     excerpt:
