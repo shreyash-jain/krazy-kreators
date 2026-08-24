@@ -1092,7 +1092,7 @@ export default function ProductionTimelineClient({ initialLikeCount, initialComm
                                             <p className="text-[11px] font-medium text-[#666666] mb-1">Design</p>
                                             <p className="text-sm font-semibold text-[#2D2A2E] leading-snug group-hover:underline">What is a tech pack, and why you can&rsquo;t manufacture without one</p>
                                         </Link>
-                                        <Link href="/blogs/private-label-vs-custom-manufacturing" className="group block p-4 rounded-xl border border-gray-100 hover:border-[#CBB49A] transition-colors">
+                                        <Link href="/blogs/private-label-vs-custom-clothing-manufacturing" className="group block p-4 rounded-xl border border-gray-100 hover:border-[#CBB49A] transition-colors">
                                             <p className="text-[11px] font-medium text-[#666666] mb-1">Manufacturing</p>
                                             <p className="text-sm font-semibold text-[#2D2A2E] leading-snug group-hover:underline">Private label vs custom clothing manufacturing</p>
                                         </Link>
@@ -1460,7 +1460,7 @@ export default function ProductionTimelineClient({ initialLikeCount, initialComm
                                 </p>
 
                                 <p className="text-base lg:text-lg leading-snug text-[#4A484A] mb-4">
-                                    Printing your artwork on an existing blank takes three to five weeks, because the eleven-week development half already happened in someone else&rsquo;s factory. That trade &mdash; speed against owning the garment &mdash; is the whole of <Link href="/blogs/private-label-vs-custom-manufacturing" className="underline text-[#CBB49A] hover:text-[#b7a078]">private label versus custom manufacturing</Link>.
+                                    Printing your artwork on an existing blank takes three to five weeks, because the eleven-week development half already happened in someone else&rsquo;s factory. That trade &mdash; speed against owning the garment &mdash; is the whole of <Link href="/blogs/private-label-vs-custom-clothing-manufacturing" className="underline text-[#CBB49A] hover:text-[#b7a078]">private label versus custom manufacturing</Link>.
                                 </p>
 
                                 <p className="text-base lg:text-lg leading-snug text-[#4A484A] mb-4">
@@ -1522,10 +1522,10 @@ export default function ProductionTimelineClient({ initialLikeCount, initialComm
                                 <div className="grid sm:grid-cols-3 gap-6">
                                     {[
                                         {
-                                            href: "/blogs/private-label-vs-custom-manufacturing",
+                                            href: "/blogs/private-label-vs-custom-clothing-manufacturing",
                                             title: "Private Label vs Custom Manufacturing",
                                             dek: "The choice that decides whether your timeline is five weeks or twenty-three.",
-                                            read: "8 min read",
+                                            read: "7 min read",
                                         },
                                         {
                                             href: "/blogs/fabric-sourcing-101-choose-right-material",

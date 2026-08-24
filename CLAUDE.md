@@ -50,8 +50,9 @@ either way, so its absence hides until deploy. **Never delete `.npmrc`.**
 
 ## Blog work
 
-**Read `docs/blog/README.md` first** — it is the single source of truth
-(README → STATUS → MASTER_PROMPT → PIPELINE). Byline is always
+**Read `docs/A_Blog_Structure/README.md` first** — it is the single source of truth
+(README → CLIENT → BLOG_PLAYBOOK → ARCHITECTURE → STATUS). The day-to-day
+workflow is the **`/blog`** command. Byline is always
 **"Krazy Kreators Team"**. Every statistic needs an inline source link on first
 mention; if you can't verify a number, reframe it qualitatively rather than
 inventing one.
