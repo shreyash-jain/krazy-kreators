@@ -15,6 +15,20 @@ export type BlogPostMeta = {
 
 export const blogPosts: BlogPostMeta[] = [
   {
+    id: 67,
+    title: "Beyond China: Why More Fashion Brands Are Sourcing From India in 2026",
+    excerpt:
+      "Sourcing clothing manufacturing from India got materially cheaper on 24 July, and the trade data has not caught up: US apparel imports from India fell 26.4% over January to May while the whole market fell 9.3%, and the China volume went to Cambodia and Indonesia instead. Then the punitive rate expired and the new forced-labor Section 301 action put India in the lower tier. A cotton tee from India now clears at 26.5% — 16.5% general rate plus 10% — against 29% from Vietnam and 36.5% from China. On a 5,000-piece run that is $7,000 against China and $1,750 against Vietnam. But Bangladesh, Cambodia, Indonesia, Pakistan and Sri Lanka pay the same 26.5%, so the duty removed India's penalty rather than handing it an edge. What decides it now is the fibre-to-garment chain on one side, and a thin man-made-fibre base and incentive schemes with expiry dates on the other.",
+    category: "manufacturing",
+    author: "Krazy Kreators Team",
+    date: "August 22, 2026",
+    readTime: "11 min read",
+    image: "/blog/india-sourcing-2026-hero.jpg",
+    slug: "sourcing-clothing-manufacturing-from-india-2026",
+    readers: 0,
+    likes: 0,
+  },
+  {
     id: 65,
     title: "Section 122 Is Gone — Here's What Actually Replaced It (and What It Means for Your Next Cost Sheet)",
     excerpt:
