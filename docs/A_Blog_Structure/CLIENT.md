@@ -97,6 +97,24 @@ Full image-slot rules, registers and realism technique: **BLOG_PLAYBOOK.md § Im
 *Append every new one, newest first, with the date and the reason. Never delete an entry
 — supersede it and say so.*
 
+- **2026-08-26 — A word count the owner gives you is a hard ceiling, and you hit it by cutting whole
+  sections, not by thinning every one.** Asked for "under 1000 words" on a 2,879-word draft, the fix was to
+  delete three complete H2 sections and keep six intact — not to trim every paragraph by a third. *Why:*
+  evenly-thinned prose reads choppy and loses the specificity that makes it credible; whole sections can go
+  without the reader noticing a seam. Keep the teaching graphics when you cut — they carry dates and rules
+  at almost no word cost, which is what lets a short post stay useful. Report the exact count back, and say
+  what the FAQ adds on top so the number is honest.
+- **2026-08-26 — "Human, easy and understanding" means plainer sentences, not a tutorial.** The owner asked
+  for this on a dense regulatory piece. What worked: explaining the mechanism before naming it, converting
+  every unit the reader does not think in (2.6 oz/sq yd → about 88 g/m²), defining terms inside the sentence
+  rather than in brackets, and cutting compressed trade-desk constructions. What stays: the confident
+  register, the specificity, the concession. It is not a licence for listicle or "what is X" framing.
+- **2026-08-26 — Extract the primary-source PDF rather than trusting a summary of it.** Three key claims
+  (the 16,290,891 apparel certificate estimate, the exact risk-score wording, and the "such as adult wearing
+  apparel relying on 16 CFR 1610.1(d)" line) appear in *no* web summary and could only be confirmed by
+  pulling text out of CPSC's own final-rule PDF. federalregister.gov and ecfr.gov both 302-redirect to an
+  unblock page, so fetch the agency's own PDF and decompress its streams. *Why:* a figure that survives only
+  in secondary coverage is a figure you cannot stand behind.
 - **2026-06-30 — Byline is "Krazy Kreators Team", not a persona.** Reversed the earlier
   named-persona system. *Why:* the personas read as invented people, which undercut the
   trade-desk authority the blog is built on.
