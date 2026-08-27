@@ -97,6 +97,20 @@ Full image-slot rules, registers and realism technique: **BLOG_PLAYBOOK.md § Im
 *Append every new one, newest first, with the date and the reason. Never delete an entry
 — supersede it and say so.*
 
+- **2026-08-24 — When the owner supplies a headline, it wins over the 62-char cap and over keyword
+  placement.** The brief's verbatim 69-char headline was reinstated after a shorter keyword-carrying
+  one was drafted. *Why:* the owner owns the words and the angle; the cap is ours, not theirs. Keep the
+  focus keyword in the slug, first sentence, one H2, meta description and JSON-LD instead, and set a
+  shorter `<title>` separately so the SERP does not truncate mid-word. Flag the trade-off once, then proceed.
+- **2026-08-24 — If the owner reaffirms a premise the data contradicts, keep the premise in the
+  headline and reconcile it in the opening — never drop the contradicting figure.** Here the brief
+  claimed brands are moving to India while OTEXA showed a 26.4% fall. The fix was to open on the claim,
+  then frame the data as a rear-view mirror in paragraph two, with the full figure intact one section down.
+  *Why:* the reader spots an unacknowledged contradiction instantly, and hiding the number costs more
+  trust than the headline gains.
+- **2026-08-22 — "Create images" means photographs; build every chart as inline SVG.** Asked for five
+  images, the owner meant five photographs. Teaching graphics stay hand-built in SVG. *Why:* image models
+  garble figures and this repo has shipped garbled numbers twice; SVG numbers cannot drift from the body.
 - **2026-06-30 — Byline is "Krazy Kreators Team", not a persona.** Reversed the earlier
   named-persona system. *Why:* the personas read as invented people, which undercut the
   trade-desk authority the blog is built on.
