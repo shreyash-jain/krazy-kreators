@@ -15,6 +15,21 @@ export type BlogPostMeta = {
 
 export const blogPosts: BlogPostMeta[] = [
   {
+    id: 68,
+    title:
+      "CPSC eFiling and California SB 707: What the New 2026 Apparel Compliance Rules Mean for Your Brand",
+    excerpt:
+      "CPSC eFiling for apparel became mandatory on 8 July 2026, and California's SB 707 deadline passed a week before it. Neither will fine you this month, which is exactly what makes them easy to misread. Most adult clothing turns out to be exempt — and what decides it is not a lawyer, it is your fabric spec: a smooth-faced cloth at 2.6 ounces per square yard or more, or anything made entirely from acrylic, modacrylic, nylon, olefin, polyester or wool. A brushed fleece or a light rayon blouse falls outside that, and needs testing, a certificate and a filing at the border. Nothing is being rejected yet. Your filings are quietly setting a risk score that decides whose containers get held in 2027.",
+    category: "manufacturing",
+    author: "Krazy Kreators Team",
+    date: "August 26, 2026",
+    readTime: "4 min read",
+    image: "/blog/cpsc-sb707-2026-hero.jpg",
+    slug: "cpsc-efiling-sb-707-apparel-compliance-2026",
+    readers: 0,
+    likes: 0,
+  },
+  {
     id: 69,
     title:
       "Sustainable Clothing Manufacturing: How to Build an Eco-Conscious Fashion Brand",
