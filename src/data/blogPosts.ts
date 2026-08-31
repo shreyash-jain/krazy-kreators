@@ -15,6 +15,21 @@ export type BlogPostMeta = {
 
 export const blogPosts: BlogPostMeta[] = [
   {
+    id: 69,
+    title:
+      "Sustainable Clothing Manufacturing: How to Build an Eco-Conscious Fashion Brand",
+    excerpt:
+      "From 27 September, “eco-friendly” is a claim you have to prove. A practical guide to sustainable clothing manufacturing — fabric choices, ethical sourcing, and the waste reduction that pays for itself.",
+    category: "sustainability",
+    author: "Krazy Kreators Team",
+    date: "August 22, 2026",
+    readTime: "12 min read",
+    image: "/blog/sustainable-clothing-2026-hero.jpg",
+    slug: "sustainable-clothing-manufacturing-eco-conscious-fashion-brand",
+    readers: 0,
+    likes: 0,
+  },
+  {
     id: 67,
     title: "Beyond China: Why More Fashion Brands Are Sourcing From India in 2026",
     excerpt:
