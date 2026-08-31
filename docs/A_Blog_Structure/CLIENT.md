@@ -115,6 +115,16 @@ Full image-slot rules, registers and realism technique: **BLOG_PLAYBOOK.md § Im
   pulling text out of CPSC's own final-rule PDF. federalregister.gov and ecfr.gov both 302-redirect to an
   unblock page, so fetch the agency's own PDF and decompress its streams. *Why:* a figure that survives only
   in secondary coverage is a figure you cannot stand behind.
+- **2026-08-26 — The briefed title and topic are not yours to change, even to avoid a
+  near-duplicate.** Research flagged that id 18 (*"Sustainable Manufacturing: How to
+  Build an Eco-Friendly Fashion Brand"*, March 2026) was almost the same title, proposed
+  a reworded headline, and was told: *"topic is this please do not change."* The title
+  shipped verbatim at **79 characters**, over the 62-char cap. *Why:* the marketing lead
+  owns the keyword plan and the client relationship; the overlap is theirs to accept.
+  **What to do instead:** raise the collision once, in one short paragraph, then keep the
+  title and differentiate on the *body* — a distinct angle, distinct evidence, and an
+  inline link to the older post so the two read as a pair rather than as rivals. Never
+  silently rewrite a supplied headline. (Same shape as the id 65 headline override.)
 - **2026-08-24 — When the owner supplies a headline, it wins over the 62-char cap and over keyword
   placement.** The brief's verbatim 69-char headline was reinstated after a shorter keyword-carrying
   one was drafted. *Why:* the owner owns the words and the angle; the cap is ours, not theirs. Keep the
@@ -138,4 +148,4 @@ Full image-slot rules, registers and realism technique: **BLOG_PLAYBOOK.md § Im
 - **Standing — every prescriptive piece concedes a counterexample or edge case.** A post
   that admits nothing reads as marketing.
 
-*Last reviewed: 2026-08-21.*
+*Last reviewed: 2026-08-26.*
