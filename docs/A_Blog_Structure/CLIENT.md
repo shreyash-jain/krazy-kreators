@@ -97,6 +97,9 @@ Full image-slot rules, registers and realism technique: **BLOG_PLAYBOOK.md § Im
 *Append every new one, newest first, with the date and the reason. Never delete an entry
 — supersede it and say so.*
 
+- **2026-09-03 — The owner may hand you a full keyword plan mid-draft; apply it verbatim, including the H2 wording.** On the holiday post they supplied a primary/focus/secondary split plus 8 related terms and exact H2 strings (*"Holiday Apparel Production Planning: When Should You Start?"* etc.), and asked for the primary to appear only **2–4 times**. *Why:* the marketing lead owns the keyword plan; their headings are more literal than BLOG_PLAYBOOK's "descriptive H2" house style, and that is their call to make. **What to do:** take the strings exactly as given, then delete any body sentence that repeats a phrase already sitting in the heading directly above it — that duplication is the keyword-stuffing they were warning against. Spend the word budget only on the terms that need a sentence; put the rest in **image alt text, chart captions and FAQ answers**, which are indexed but do not count against a word ceiling.
+- **2026-09-03 — A date-hooked brief can go stale between commissioning and writing; check the arithmetic before you accept its premise.** The brief said holiday planning "needs to start by late summer / early fall". On 3 September that was already false — 23 weeks for a first run plus 30–40 days of ocean freight lands a from-scratch collection in February. The post was rebuilt to open on that, and the honesty became its differentiator against the existing June post (id 41). *Why:* repeating advice whose window has shut is the fastest way to lose a founder who can do the sums. Correct it, say you did, and keep every other section of the brief intact.
+- **2026-09-03 — "Do not change the headline" outlives a later instruction that merely implies a new one.** The owner said *"do not change the headline"*, then later supplied an SEO table listing a different, shorter string as the H1. The long headline was **kept** and the conflict raised in one line, because the shorter string was already live as the `<title>`, so the SEO value was banked either way. *Why:* silently swapping a headline the owner explicitly protected is worse than asking. Offer the swap; do not perform it.
 - **2026-08-26 — A word count the owner gives you is a hard ceiling, and you hit it by cutting whole
   sections, not by thinning every one.** Asked for "under 1000 words" on a 2,879-word draft, the fix was to
   delete three complete H2 sections and keep six intact — not to trim every paragraph by a third. *Why:*
@@ -148,4 +151,4 @@ Full image-slot rules, registers and realism technique: **BLOG_PLAYBOOK.md § Im
 - **Standing — every prescriptive piece concedes a counterexample or edge case.** A post
   that admits nothing reads as marketing.
 
-*Last reviewed: 2026-08-26.*
+*Last reviewed: 2026-09-03.*
