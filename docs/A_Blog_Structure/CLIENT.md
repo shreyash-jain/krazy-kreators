@@ -119,7 +119,7 @@ Full image-slot rules, registers and realism technique: **BLOG_PLAYBOOK.md § Im
   near-duplicate.** Research flagged that id 18 (*"Sustainable Manufacturing: How to
   Build an Eco-Friendly Fashion Brand"*, March 2026) was almost the same title, proposed
   a reworded headline, and was told: *"topic is this please do not change."* The title
-  shipped verbatim at **78 characters**, over the 62-char cap. *Why:* the marketing lead
+  shipped verbatim at **79 characters**, over the 62-char cap. *Why:* the marketing lead
   owns the keyword plan and the client relationship; the overlap is theirs to accept.
   **What to do instead:** raise the collision once, in one short paragraph, then keep the
   title and differentiate on the *body* — a distinct angle, distinct evidence, and an
