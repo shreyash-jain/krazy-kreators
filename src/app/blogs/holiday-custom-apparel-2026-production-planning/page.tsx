@@ -56,7 +56,7 @@ export const metadata = {
 const FAQS = [
     {
         q: "When should holiday apparel production planning start?",
-        a: "For a collection made from scratch, the first week of June. The holiday apparel production timeline is longer than most founders expect: a first run takes about twenty-three weeks from tech pack to shelf — development, sampling, bulk production, then freight — and ocean shipping from India adds 30 to 40 days door to door on top of the making. Counting back from a mid-December shipping cutoff puts week one in early June. Anything started in September is not a new collection; it is decorated stock blanks, a reorder flown in, or a pre-order you cut in January.",
+        a: "The first week of June, for anything made from scratch. Work it backwards rather than forwards: fix the date you want stock in the warehouse, subtract the crossing, subtract the sewing, subtract sampling, and subtract the weeks of development before that — and week one lands in early June. Founders miss it because they count forwards from the idea instead. One practical addition: book the factory slot separately from placing the order. Capacity for October and November is committed months earlier, and a confirmed order against an unbooked slot is not a schedule, it is a queue position.",
     },
     {
         q: "Can I still make a Christmas collection if I start in September?",
@@ -64,15 +64,15 @@ const FAQS = [
     },
     {
         q: "Which apparel categories sell best as holiday gifts?",
-        a: "Matching family sets, cozy loungewear and novelty prints — and they carry very different risk. Matching sets are the strongest gifting proposition because the buyer is not the wearer and one transaction moves four garments, but a four-piece set is dead the moment one size sells out. Loungewear is the safest because it is the least seasonal: a heavyweight fleece set still sells in January, which is why it deserves the deepest buy. Novelty prints are the most dangerous — cheap to design, impossible to reorder in time, and worthless on 26 December.",
+        a: "Matching family sets, loungewear and novelty prints, in that order of gifting strength. But the more useful thing to understand is why gift buying behaves differently: the person paying is not the person wearing it, and they are usually guessing at a size. That single fact should shape the range. Relaxed and oversized cuts, ribbed and elasticated waists, and one-size pieces such as beanies, scarves and socks all survive a wrong guess; a tailored or slim fit does not. Publish real garment measurements rather than S/M/L alone, include a gift receipt in every parcel, and set the January expectation as an exchange rather than a refund — an exchange keeps the money and the customer.",
     },
     {
         q: "How do pre-orders reduce the risk of a holiday collection?",
-        a: "A pre-order moves the risk onto the customer's calendar instead of your warehouse. You take the order in November, promise January delivery, and cut only the units that actually sold — so there is no January overstock and no clearance page. The condition is that the ship date is stated plainly on the product page, in the confirmation email and on the packing slip. Founders who bury the date get the sale and lose the customer. The cost is real: everyone who will not wait for January does not buy.",
+        a: "By turning stock you might not sell into stock you already have. There is a legal frame around it in the US that founders often miss. Under the FTC's Mail, Internet, or Telephone Order Merchandise Rule you must have a reasonable basis for the shipping date you advertise, and if you state none you are held to 30 days. Miss it, and you have to get the buyer's agreement to the delay or refund them. For a delay of up to 30 days silence counts as agreement; beyond that the order cancels automatically unless the customer actively says otherwise, and a cancellation means a prompt refund. So the delivery date on a pre-order is a commitment with teeth, not marketing copy. Give yourself a date the factory has actually confirmed, then add a fortnight.",
     },
     {
         q: "How much holiday stock should I buy?",
-        a: "Depth should follow how long the garment stays sellable, not how good the unit price looks. Retailers expect 17% of holiday sales to come back as returns, against 15.8% across the year, and online returns run at 19.3% — and holiday apparel returns arrive in January when the goods are worth whatever a clearance page will pay. So a lower unit cost is only a saving if the unit sells at full price. Buy deep on loungewear that still moves in March, and shallow on anything explicitly Christmas.",
+        a: "Let shelf life set the depth, and split the buy rather than placing it all at once. A useful way to size a first cut is to ask how many units you would be comfortable still owning on 2 January, because that is the number you are really committing to. Buy that much, then hold the rest of the budget as reserved factory capacity for one reorder on whatever sells fastest in the first fortnight. Two things follow from this. Selling out early costs you less than it feels like it does, because a markdown takes the margin off every remaining unit rather than a few. And a garment that is still sellable in March can carry a deeper buy than one that stops meaning anything the day after Christmas.",
     },
     {
         q: "Does Diwali affect holiday production in India?",
