@@ -453,15 +453,40 @@ export default function BackToSchoolApparelClient({ initialLikeCount, initialCom
                         </div>
                     </div>
 
-                    {/* Key takeaways */}
-                    <div className="border-l-4 border-[#CBB49A] bg-[#F8F7F4] p-5 sm:p-6 rounded-r-2xl mb-10">
-                        <p className="text-xs font-bold uppercase tracking-[0.18em] text-[#CBB49A] mb-3">Key takeaways</p>
-                        <ul className="space-y-2 text-[#2D2A2E] text-base sm:text-lg leading-snug">
-                            <li>&bull; College families spent <strong>$103.5 billion</strong> this year, <strong>$13.1bn</strong> of it on clothing &mdash; more than school families spend on clothes.</li>
-                            <li>&bull; Most people had started shopping by <strong>early July</strong>. Count back eight weeks from the date you want stock, not forward from the idea.</li>
-                            <li>&bull; Many designs in small numbers belong on film, not screens &mdash; and you need a licence to print a university&rsquo;s name.</li>
-                        </ul>
+                    {/* At a glance — the plan in one panel */}
+                    <div className="not-prose border-l-4 border-[#CBB49A] bg-[#F8F7F4] p-5 sm:p-6 rounded-r-2xl mb-10">
+                        <p className="text-xs font-bold uppercase tracking-[0.18em] text-[#CBB49A] mb-4">Plan your fall drop &mdash; at a glance</p>
+                        <dl className="divide-y divide-gray-200">
+                            {[
+                                { k: "Design trends", v: <>Heavy loopback fleece, boxy cuts, raised puff prints, washed colour</> },
+                                { k: "Ideal products", v: <>Four SKUs: hoodie in two colours, matching crewneck, tee, one accessory</> },
+                                { k: "Fabric weight", v: <>380&ndash;450 gsm (11&ndash;13 oz/yd&sup2;) &mdash; what holds a $78 price through a term of washing</> },
+                                { k: "Print method", v: <>Many designs in small numbers &rarr; DTF. One design in depth &rarr; screens</> },
+                                { k: "Production timeline", v: <><strong>8 weeks</strong> from locked range to stock on the shelf; add 2&ndash;4 for custom fabric or embroidery</> },
+                                { k: "Watch out for", v: <>University names and logos are trademarks &mdash; you need a licence to sell them</> },
+                                {
+                                    k: "MOQ &amp; pricing",
+                                    v: (
+                                        <>
+                                            Depends on fabric, print method and run size &mdash; see{" "}
+                                            <Link href="/blogs/custom-clothing-manufacturing-cost" className="underline text-[#CBB49A] hover:text-[#b7a078]">cost at every MOQ tier</Link>{" "}
+                                            and{" "}
+                                            <Link href="/blogs/no-moq-clothing-manufacturers" className="underline text-[#CBB49A] hover:text-[#b7a078]">what a no-MOQ run really costs</Link>
+                                        </>
+                                    ),
+                                },
+                            ].map((row) => (
+                                <div key={row.k} className="py-2.5 sm:grid sm:grid-cols-[190px_minmax(0,1fr)] sm:gap-4">
+                                    <dt
+                                        className="text-sm font-bold uppercase tracking-wide text-[#2D2A2E]"
+                                        dangerouslySetInnerHTML={{ __html: row.k }}
+                                    />
+                                    <dd className="text-[#4A484A] leading-snug mt-0.5 sm:mt-0">{row.v}</dd>
+                                </div>
+                            ))}
+                        </dl>
                     </div>
+
                     {/* Mobile jump pills */}
                     <div className="lg:hidden mb-10 -mx-4 px-4 overflow-x-auto">
                         <div className="flex gap-2 min-w-max pb-2">
@@ -821,8 +846,8 @@ export default function BackToSchoolApparelClient({ initialLikeCount, initialCom
                                 </Link>
                                 <button onClick={() => setContactOpen(true)} className="group block text-left p-7 rounded-2xl bg-[#2D2A2E] text-white hover:bg-[#1f1d20] transition-colors">
                                     <p className="text-xs font-bold uppercase tracking-[0.18em] text-[#CBB49A] mb-3">Talk to us</p>
-                                    <h4 className="text-xl font-bold mb-2 group-hover:underline">Put a real date on your fall capsule</h4>
-                                    <p className="text-gray-300 leading-relaxed mb-4">Talk to a Krazy Kreators production lead about back-to-school apparel manufacturing &mdash; which fleece weight suits the price you want to hold, how the print method changes the run, and what has to be signed each week to land stock before homecoming.</p>
+                                    <h4 className="text-xl font-bold mb-2 group-hover:underline">Plan Your Back-to-School Collection with Krazy Kreators</h4>
+                                    <p className="text-gray-300 leading-relaxed mb-4">Bring us the date you want stock on the shelf and we will work backward from it &mdash; fleece weight against the price you want to hold, the print method that suits your number of designs, quantities and costing for your run, and what has to be signed each week to land it before homecoming.</p>
                                     <span className="inline-flex items-center gap-2 text-[#CBB49A] font-semibold">Start the conversation <ArrowRight className="w-4 h-4" /></span>
                                 </button>
                             </div>
@@ -993,7 +1018,7 @@ export default function BackToSchoolApparelClient({ initialLikeCount, initialCom
             {showStickyMobileCta && (
                 <div className="lg:hidden fixed bottom-0 left-0 right-0 z-50 bg-[#2D2A2E] text-white px-4 py-3 flex items-center justify-between shadow-2xl">
                     <button onClick={() => setContactOpen(true)} className="flex-1 text-left text-sm font-semibold">
-                        Talk to a production lead about your fall capsule <ArrowRight className="inline w-4 h-4 ml-1" />
+                        Plan your back-to-school collection with Krazy Kreators <ArrowRight className="inline w-4 h-4 ml-1" />
                     </button>
                     <button onClick={() => setShowStickyMobileCta(false)} aria-label="Dismiss" className="ml-3 p-1 text-gray-400 hover:text-white">
                         <X className="w-4 h-4" />
