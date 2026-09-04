@@ -27,7 +27,7 @@ const TOC = [
     { id: "dtf", label: "Why film beats screens" },
     { id: "bundles", label: "Bundles and order value" },
     { id: "timeline", label: "The eight-week capsule" },
-    { id: "the-move", label: "What we’d do in your shoes" },
+    { id: "the-move", label: "The bottom line" },
     { id: "faq", label: "Common questions" },
 ];
 
@@ -723,7 +723,7 @@ export default function BackToSchoolApparelClient({ initialLikeCount, initialCom
                                 </div>
 
                                 <p className="text-base lg:text-lg leading-snug text-[#4A484A] mb-4">
-                                    So it is not about how much you make, but how many designs &mdash; and a campus drop is nearly always many designs, few of each. See the <Link href="/blogs/dtf-vs-screen-printing-right-for-volume" className="underline text-[#CBB49A] hover:text-[#b7a078]">full cost comparison</Link> and <Link href="/blogs/no-moq-clothing-manufacturers" className="underline text-[#CBB49A] hover:text-[#b7a078]">what you really pay with a no-MOQ manufacturer</Link>.
+                                    See the <Link href="/blogs/dtf-vs-screen-printing-right-for-volume" className="underline text-[#CBB49A] hover:text-[#b7a078]">full cost comparison</Link> and <Link href="/blogs/no-moq-clothing-manufacturers" className="underline text-[#CBB49A] hover:text-[#b7a078]">what you really pay with a no-MOQ manufacturer</Link>.
                                 </p>
 
                                 <p className="text-base lg:text-lg leading-snug text-[#4A484A] mb-4">
@@ -762,7 +762,7 @@ export default function BackToSchoolApparelClient({ initialLikeCount, initialCom
                                 </div>
 
                                 <p className="text-base lg:text-lg leading-snug text-[#4A484A] mb-4">
-                                    None of them talk anyone into spending more; they meet a decision the buyer had already made. Have them assembled at the factory during the packing week &mdash; a bundle built by hand at 2am ships late. A card naming the drop and a sheet of stickers cost very little, and the stickers end up on a laptop and walk into every lecture. If you would rather not hold stock, <Link href="/blogs/on-demand-clothing-manufacturing-2026" className="underline text-[#CBB49A] hover:text-[#b7a078]">on-demand production</Link> trades margin for that freedom.
+                                    They do not talk anyone into spending more; they meet a decision already made. Have them assembled at the factory during the packing week &mdash; a bundle built by hand at 2am ships late. A card naming the drop and a sheet of stickers cost very little, and the stickers end up on a laptop and walk into every lecture. If you would rather not hold stock, <Link href="/blogs/on-demand-clothing-manufacturing-2026" className="underline text-[#CBB49A] hover:text-[#b7a078]">on-demand production</Link> trades margin for that freedom.
                                 </p>
                             </section>
 
@@ -783,14 +783,14 @@ export default function BackToSchoolApparelClient({ initialLikeCount, initialCom
                                 </p>
 
                                 <p className="text-base lg:text-lg leading-snug text-[#4A484A] mb-4">
-                                    Eight weeks suits a printed fleece capsule. Custom fabric, embroidery or garment dyeing adds two to four more, and a first order with a new factory deserves a fortnight of slack on top. What each quantity actually costs is in our guide to <Link href="/blogs/custom-clothing-manufacturing-cost" className="underline text-[#CBB49A] hover:text-[#b7a078]">manufacturing cost at every MOQ</Link>.
+                                    A first order with a new factory deserves a fortnight of slack on top of all this. What each quantity costs is in our guide to <Link href="/blogs/custom-clothing-manufacturing-cost" className="underline text-[#CBB49A] hover:text-[#b7a078]">manufacturing cost at every MOQ</Link>.
                                 </p>
                             </section>
 
                             {/* H2 7 — Closing */}
                             <section id="the-move" className="scroll-mt-28 mt-12 mb-10">
                                 <h2 className="text-3xl lg:text-4xl font-extrabold tracking-tight text-[#2D2A2E] mb-5 pb-2 border-b border-gray-200">
-                                    What we&rsquo;d do in your shoes
+                                    The bottom line
                                 </h2>
 
                                 <div className="rounded-2xl overflow-hidden shadow-xl border border-gray-100 mb-7 max-w-2xl mx-auto bg-[#F8F7F4]">
@@ -805,7 +805,11 @@ export default function BackToSchoolApparelClient({ initialLikeCount, initialCom
                                 </div>
 
                                 <p className="text-base lg:text-lg leading-snug text-[#4A484A] mb-4">
-                                    Pick one campus and four designs, not six campuses and twenty. Write down the date you want stock &mdash; the Saturday of a homecoming you can name, not &ldquo;the fall&rdquo; &mdash; and count back eight weeks. Settle the trademark question before you draw anything; it is the only thing here that can cost you the whole run after it is printed.
+                                    The fall window is larger than most small brands assume and shorter than they plan for. College families out-spend school families on clothing, and nearly all of it moves through a handful of weeks that were decided months earlier. Nothing about that is a demand problem.
+                                </p>
+
+                                <p className="text-base lg:text-lg leading-snug text-[#4A484A] mb-4">
+                                    So, in your shoes: pick one campus and four designs, not six campuses and twenty. Write down the date you want stock &mdash; the Saturday of a homecoming you can name, not &ldquo;the fall&rdquo; &mdash; and count back eight weeks. Settle the trademark question before you draw anything; it is the only thing here that can cost you the whole run after it is printed.
                                 </p>
 
                                 <p className="text-base lg:text-lg leading-snug text-[#4A484A] mb-4">
