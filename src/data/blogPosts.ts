@@ -15,6 +15,21 @@ export type BlogPostMeta = {
 
 export const blogPosts: BlogPostMeta[] = [
   {
+    id: 71,
+    title:
+      "Holiday 2026 Custom Apparel Playbook: Planning Your Christmas and Gifting Collection Early",
+    excerpt:
+      "Holiday custom apparel 2026 comes down to one number: fifteen weeks separate today from the ground shipping cutoff, and a first production run takes twenty-three. That arithmetic has already decided most of what you will sell this December. Two routes still finish in time and neither makes a new garment: decorated stock blanks at six to eight weeks, and a pre-order you cut in January. A reorder flown in fits at about thirteen and a half weeks, but you pay air freight on every unit. Inside: which of the three gifting categories deserves your deepest buy, why 17% of holiday sales come back in January, the packaging that reads as expensive, a countdown from 1 October to 17 December — and the date next June when the 2027 collection really starts.",
+    category: "manufacturing",
+    author: "Krazy Kreators Team",
+    date: "September 3, 2026",
+    readTime: "5 min read",
+    image: "/blog/holiday-custom-apparel-2026-hero.jpg",
+    slug: "holiday-custom-apparel-2026-production-planning",
+    readers: 0,
+    likes: 0,
+  },
+  {
     id: 68,
     title:
       "CPSC eFiling and California SB 707: What the New 2026 Apparel Compliance Rules Mean for Your Brand",
