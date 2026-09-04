@@ -15,6 +15,21 @@ export type BlogPostMeta = {
 
 export const blogPosts: BlogPostMeta[] = [
   {
+    id: 70,
+    title:
+      "Back-to-School 2026 Custom Apparel: How Small Brands Can Capture the Fall Merch Rush",
+    excerpt:
+      "American college students and their families spent $103.5 billion getting ready for this school year — the first time that number has passed a hundred billion — and $13.1 billion of it went on clothing, more than school families spend. Very little reached a small brand, and that is a timing problem rather than a demand one. A short, plain guide to the fall window: which fleece weights hold a price, why you need a licence to print a university's name, why many designs in small numbers belong on film rather than screens, the three bundles that lift order value, and the eight weeks to count backward from the date you want stock.",
+    category: "manufacturing",
+    author: "Krazy Kreators Team",
+    date: "September 3, 2026",
+    readTime: "5 min read",
+    image: "/blog/back-to-school-apparel-2026-hero.jpg",
+    slug: "back-to-school-custom-apparel-2026",
+    readers: 0,
+    likes: 0,
+  },
+  {
     id: 68,
     title:
       "CPSC eFiling and California SB 707: What the New 2026 Apparel Compliance Rules Mean for Your Brand",
