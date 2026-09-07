@@ -661,9 +661,9 @@ export default function TariffWatchClient({ initialLikeCount, initialComments }:
                                 </Link>
                                 <button onClick={() => setContactOpen(true)} className="group block text-left p-7 rounded-2xl bg-[#2D2A2E] text-white hover:bg-[#1f1d20] transition-colors">
                                     <p className="text-xs font-bold uppercase tracking-[0.18em] text-[#CBB49A] mb-3">Talk to us</p>
-                                    <h4 className="text-xl font-bold mb-2 group-hover:underline">Re-cost your Spring &rsquo;27 range, lane by lane</h4>
-                                    <p className="text-gray-300 leading-relaxed mb-4">Have a Krazy Kreators production lead put every style in its correct duty lane, test it at the tier above, and tell you which ones actually have a margin problem.</p>
-                                    <span className="inline-flex items-center gap-2 text-[#CBB49A] font-semibold">Start the conversation <ArrowRight className="w-4 h-4" /></span>
+                                    <h4 className="text-xl font-bold mb-2 group-hover:underline">Send us three things and we&rsquo;ll compare the lanes</h4>
+                                    <p className="text-gray-300 leading-relaxed mb-4">Your style (a tech pack or a photo is enough), your current FOB, and your target market. A Krazy Kreators production lead sends back the same garment costed across sourcing options — duty lane by duty lane — so you can see the tariff impact before you commit a run.</p>
+                                    <span className="inline-flex items-center gap-2 text-[#CBB49A] font-semibold">Send your style, FOB and market <ArrowRight className="w-4 h-4" /></span>
                                 </button>
                             </div>
 
@@ -831,7 +831,7 @@ export default function TariffWatchClient({ initialLikeCount, initialComments }:
             {showStickyMobileCta && (
                 <div className="lg:hidden fixed bottom-0 left-0 right-0 z-50 bg-[#2D2A2E] text-white px-4 py-3 flex items-center justify-between shadow-2xl">
                     <button onClick={() => setContactOpen(true)} className="flex-1 text-left text-sm font-semibold">
-                        Have a KK lead re-cost your Spring &rsquo;27 range <ArrowRight className="inline w-4 h-4 ml-1" />
+                        Send your style + FOB + market &mdash; we&rsquo;ll compare the lanes <ArrowRight className="inline w-4 h-4 ml-1" />
                     </button>
                     <button onClick={() => setShowStickyMobileCta(false)} aria-label="Dismiss" className="ml-3 p-1 text-gray-400 hover:text-white">
                         <X className="w-4 h-4" />
