@@ -15,6 +15,21 @@ export type BlogPostMeta = {
 
 export const blogPosts: BlogPostMeta[] = [
   {
+    id: 72,
+    title:
+      "US Tariff Watch 2026: How Apparel Import Duties Are Reshaping Manufacturing",
+    excerpt:
+      "September 1 was supposed to open a duty-free lane for Bangladesh, Cambodia, Indonesia and Malaysia. It came and went with nothing published, and all four still pay the full 10%. That gap is the real story in US apparel tariffs 2026 — because the rates themselves barely moved. The duty spread between the two main Asian sourcing tiers is 2.5 percentage points, yet volumes swung hard: China down 34%, India down 26% from inside the cheaper lane, Cambodia up 10%. Inside: where every origin sits as of September, what 26.5% versus 36.5% costs on one 5,000-piece run, why the rate turns out to be a poor predictor of where brands actually produce, and how to price tariff risk into a Spring '27 buy you are placing now.",
+    category: "manufacturing",
+    author: "Krazy Kreators Team",
+    date: "September 7, 2026",
+    readTime: "6 min read",
+    image: "/blog/us-apparel-import-tariffs-2026-hero.jpg",
+    slug: "us-apparel-import-tariffs-2026",
+    readers: 0,
+    likes: 0,
+  },
+  {
     id: 70,
     title:
       "Back-to-School 2026 Custom Apparel: How Small Brands Can Capture the Fall Merch Rush",
