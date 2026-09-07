@@ -546,15 +546,19 @@ export default function HolidayApparelPlaybookClient({ initialLikeCount, initial
 
                             {/* Opening */}
                             <p className="text-lg lg:text-xl text-[#2D2A2E] leading-snug mb-5 font-medium">
-                                Fifteen weeks from today, the post office stops promising Christmas. In 2025 the last date USPS would commit to for Ground Advantage was <a href="https://about.usps.com/newsroom/national-releases/2025/0917-usps-recommends-2025-holiday-mailing-and-shipping-dates.htm" target="_blank" rel="noopener noreferrer" className="underline text-[#CBB49A] hover:text-[#b7a078]">17 December</a>, and the 2026 dates land in mid-September.
+                                Fifteen weeks from today, the post office stops promising Christmas. USPS publishes its cut-offs late and they barely move: in 2025 the last <a href="https://about.usps.com/newsroom/national-releases/2025/0917-usps-recommends-2025-holiday-mailing-and-shipping-dates.htm" target="_blank" rel="noopener noreferrer" className="underline text-[#CBB49A] hover:text-[#b7a078]">Ground Advantage date was 17 December</a>. Plan to that.
                             </p>
 
                             <p className="mb-4 text-base lg:text-lg leading-snug">
-                                A first production run with a new factory takes about twenty-three weeks. That is not a scheduling problem urgency can fix. It is arithmetic, and it has already decided most of what you will sell this December.
+                                A first production run with a new factory takes about twenty-three weeks. That is arithmetic, not a scheduling problem urgency can fix, and it has already decided most of what you will sell this December.
                             </p>
 
                             <p className="mb-8 text-base lg:text-lg leading-snug">
                                 So this is not a piece about planning early. It is about holiday custom apparel 2026 as it stands today: what a US founder can still put in front of a buyer, and the date next June when the 2027 collection starts.
+                            </p>
+
+                            <p className="mb-8 text-base lg:text-lg leading-snug">
+                                It is also the plan <Link href="/end-to-end-services" className="underline text-[#CBB49A] hover:text-[#b7a078]">Krazy Kreators</Link> runs with founders who arrive in September: pick the route that still lands, buy it to the right depth, book the slot that fixes next year.
                             </p>
 
                             {/* H2 1 */}
@@ -575,7 +579,7 @@ export default function HolidayApparelPlaybookClient({ initialLikeCount, initial
                                 </div>
 
                                 <p className="text-base lg:text-lg leading-snug text-[#4A484A] mb-4">
-                                    The season is worth the trouble. November and December run at <a href="https://nrf.com/research-insights/holiday-data-and-trends/winter-holidays/winter-holiday-faqs" target="_blank" rel="noopener noreferrer" className="underline text-[#CBB49A] hover:text-[#b7a078]">about 19% of annual US retail</a>, and 2025 was the first year the pair <a href="https://nrf.com/media-center/press-releases/nrf-says-holiday-season-was-a-notable-success-as-consumers-came-out-to-spend-" target="_blank" rel="noopener noreferrer" className="underline text-[#CBB49A] hover:text-[#b7a078]">cleared $1 trillion</a>. Clothing sits near the top of the gift list: <a href="https://nrf.com/media-center/press-releases/consumers-to-spend-second-highest-amount-on-record-according-to-nrf-holiday-survey" target="_blank" rel="noopener noreferrer" className="underline text-[#CBB49A] hover:text-[#b7a078]">46% of shoppers said they wanted clothing or accessories</a>, behind only gift cards.
+                                    November and December run at <a href="https://nrf.com/research-insights/holiday-data-and-trends/winter-holidays/winter-holiday-faqs" target="_blank" rel="noopener noreferrer" className="underline text-[#CBB49A] hover:text-[#b7a078]">about 19% of annual US retail</a>, and 2025 was the first year the pair <a href="https://nrf.com/media-center/press-releases/nrf-says-holiday-season-was-a-notable-success-as-consumers-came-out-to-spend-" target="_blank" rel="noopener noreferrer" className="underline text-[#CBB49A] hover:text-[#b7a078]">cleared $1 trillion</a>. Clothing sits near the top of the gift list: <a href="https://nrf.com/media-center/press-releases/consumers-to-spend-second-highest-amount-on-record-according-to-nrf-holiday-survey" target="_blank" rel="noopener noreferrer" className="underline text-[#CBB49A] hover:text-[#b7a078]">46% of shoppers wanted clothing or accessories</a>, behind only gift cards.
                                 </p>
 
                                 <p className="text-base lg:text-lg leading-snug text-[#4A484A] mb-4">
@@ -596,19 +600,19 @@ export default function HolidayApparelPlaybookClient({ initialLikeCount, initial
                                 </h2>
 
                                 <p className="text-base lg:text-lg leading-snug text-[#4A484A] mb-4">
-                                    Three Christmas merch manufacturing lanes are open, and each is narrower than the last.
+                                    Three Christmas merch manufacturing lanes are open, each narrower than the last.
                                 </p>
 
                                 <p className="text-base lg:text-lg leading-snug text-[#4A484A] mb-4">
-                                    <strong>Decoration on stock blanks.</strong> The fastest holiday clothing production route: you buy garments that already exist, decorate them, and ship domestically. Six to eight weeks, no fabric development, no ocean. You give up fit, fabric weight, and every construction detail that would have made the garment yours &mdash; a real cost, not a footnote. For a graphic hoodie in September it is usually the honest answer.
+                                    <strong>Decoration on stock blanks.</strong> The fastest holiday clothing production route: buy garments that already exist, decorate them, ship domestically. Six to eight weeks, no fabric development, no ocean. You give up fit, fabric weight and every construction detail that would have made the garment yours &mdash; a real cost, not a footnote. For a graphic hoodie in September it is usually the honest answer.
                                 </p>
 
                                 <p className="text-base lg:text-lg leading-snug text-[#4A484A] mb-4">
-                                    <strong>A reorder, flown in.</strong> If a style already sells, cutting it again is about twelve weeks and then 8 to 10 days in a plane, which lands stock in early December at a freight cost that eats the margin you were protecting. Worth it on a proven seller. Never worth it on a guess.
+                                    <strong>A reorder, flown in.</strong> If a style already sells, cutting it again is about twelve weeks plus 8 to 10 days in a plane &mdash; stock in early December, at a freight cost that eats the margin you were protecting. Worth it on a proven seller, never on a guess.
                                 </p>
 
                                 <p className="text-base lg:text-lg leading-snug text-[#4A484A] mb-4">
-                                    <strong>Selling the thing before it exists.</strong> More on that below.
+                                    <strong>Selling it before it exists.</strong> More below.
                                 </p>
 
                                 <div className="not-prose my-8 overflow-x-auto rounded-2xl border border-gray-200">
@@ -632,6 +636,23 @@ export default function HolidayApparelPlaybookClient({ initialLikeCount, initial
                                             ))}
                                         </tbody>
                                     </table>
+                                </div>
+
+                                {/* Inline CTA - at the decision point */}
+                                <div className="not-prose mt-7 rounded-2xl border border-[#CBB49A]/50 bg-[#F8F7F4] p-5 sm:p-6 flex flex-col sm:flex-row sm:items-center gap-4">
+                                    <div className="flex-1">
+                                        <p className="text-[11px] font-bold uppercase tracking-[0.18em] text-[#CBB49A] mb-1">Not sure which lane you are in?</p>
+                                        <p className="text-[#2D2A2E] leading-snug">
+                                            Tell us what you already have &mdash; a sketch, a sample, or a style that sold last year &mdash; and a Krazy Kreators production lead will tell you which of these three is realistic before you spend anything.
+                                        </p>
+                                    </div>
+                                    <button
+                                        onClick={() => setContactOpen(true)}
+                                        className="shrink-0 px-6 py-3 bg-[#2D2A2E] text-white font-semibold rounded-full hover:bg-[#1f1d20] transition-colors inline-flex items-center justify-center gap-2"
+                                    >
+                                        Check my window
+                                        <ArrowRight className="w-4 h-4" />
+                                    </button>
                                 </div>
                             </section>
 
@@ -657,7 +678,7 @@ export default function HolidayApparelPlaybookClient({ initialLikeCount, initial
                                 </p>
 
                                 <p className="text-base lg:text-lg leading-snug text-[#4A484A] mb-4">
-                                    <strong>Matching sets</strong> are the strongest gifting proposition in custom holiday apparel, because the buyer is not the wearer and one transaction moves four garments that then get photographed. The trap is the size curve: a four-piece set is dead the moment one size sells out.
+                                    <strong>Matching sets</strong> are the strongest gifting proposition in custom holiday apparel: the buyer is not the wearer, and one transaction moves four garments that then get photographed. The trap is the size curve &mdash; a four-piece set is dead the moment one size sells out.
                                 </p>
 
                                 <p className="text-base lg:text-lg leading-snug text-[#4A484A] mb-4">
@@ -665,7 +686,7 @@ export default function HolidayApparelPlaybookClient({ initialLikeCount, initial
                                 </p>
 
                                 <p className="text-base lg:text-lg leading-snug text-[#4A484A] mb-4">
-                                    <strong>Novelty prints</strong> are where founders lose money. Cheap to design, impossible to reorder in time, and the demand curve falls off a cliff on 26 December. Print them shallow, on blanks, and accept that you are renting the season, not building a category.
+                                    <strong>Novelty prints</strong> are where founders lose money. Cheap to design, impossible to reorder in time, and worthless on 26 December. Print them shallow, on blanks, and accept that you are renting the season, not building a category.
                                 </p>
                             </section>
 
@@ -699,6 +720,13 @@ export default function HolidayApparelPlaybookClient({ initialLikeCount, initial
                                 ) : (
                                     <p className="text-[#2D2A2E] font-medium">On its way. Check your inbox.</p>
                                 )}
+                                <p className="mt-4 text-sm text-[#666666]">
+                                    Would rather skip the reading?{" "}
+                                    <button onClick={() => setContactOpen(true)} className="underline font-semibold text-[#2D2A2E] hover:text-[#CBB49A]">
+                                        Send us your holiday plan
+                                    </button>{" "}
+                                    and we will mark up the dates that will not hold.
+                                </p>
                             </div>
 
                             {/* H2 4 */}
@@ -708,7 +736,7 @@ export default function HolidayApparelPlaybookClient({ initialLikeCount, initial
                                 </h2>
 
                                 <p className="text-base lg:text-lg leading-snug text-[#4A484A] mb-4">
-                                    Deeper buys cost less per unit. True, and every seasonal apparel manufacturing quote leans on it &mdash; <Link href="/blogs/no-moq-clothing-manufacturers" className="underline text-[#CBB49A] hover:text-[#b7a078]">what a low-minimum run really costs you</Link> is the other half of that sum.
+                                    Deeper buys cost less per unit. True, and every seasonal apparel manufacturing quote leans on it &mdash; <Link href="/blogs/no-moq-clothing-manufacturers" className="underline text-[#CBB49A] hover:text-[#b7a078]">what a low-minimum run really costs</Link> is the other half of that sum.
                                 </p>
 
                                 <p className="text-base lg:text-lg leading-snug text-[#4A484A] mb-4">
@@ -716,7 +744,7 @@ export default function HolidayApparelPlaybookClient({ initialLikeCount, initial
                                 </p>
 
                                 <p className="text-base lg:text-lg leading-snug text-[#4A484A] mb-4">
-                                    So a lower unit cost is only a saving if the unit sells at full price. Buy deep on the loungewear that still moves in March. Buy shallow on anything with a snowflake on it. A <Link href="/blogs/zero-moq-no-warehouse-launch-clothing-brand-2026" className="underline text-[#CBB49A] hover:text-[#b7a078]">no-warehouse launch</Link> gives up margin per piece to avoid precisely this trade.
+                                    So a lower unit cost is only a saving if the unit sells at full price. Buy deep on loungewear that still moves in March, shallow on anything with a snowflake on it. A <Link href="/blogs/zero-moq-no-warehouse-launch-clothing-brand-2026" className="underline text-[#CBB49A] hover:text-[#b7a078]">no-warehouse launch</Link> gives up margin per piece to avoid precisely this trade.
                                 </p>
                             </section>
 
@@ -742,11 +770,11 @@ export default function HolidayApparelPlaybookClient({ initialLikeCount, initial
                                 </p>
 
                                 <p className="text-base lg:text-lg leading-snug text-[#4A484A] mb-4">
-                                    The condition is that you say the date out loud &mdash; on the product page, in the confirmation email, on the packing slip. Founders who bury it get the sale and lose the customer.
+                                    The condition is that you say the date out loud, on the product page and in the confirmation email. Founders who bury it get the sale and lose the customer.
                                 </p>
 
                                 <p className="text-base lg:text-lg leading-snug text-[#4A484A] mb-4">
-                                    Packaging is the cheapest quality signal you can buy, and holiday is the one season where the box is opened by someone who did not choose what is inside it. A branded mailer, tissue, a card &mdash; <Link href="/blogs/essential-trimmings-quality" className="underline text-[#CBB49A] hover:text-[#b7a078]">trim-level spend</Link> that reads as expensive and takes weeks rather than months. Order it alongside the garments, not after them.
+                                    Packaging is the cheapest quality signal you can buy, and holiday is the one season where the box is opened by someone who did not choose what is in it. A branded mailer, tissue, a card &mdash; <Link href="/blogs/essential-trimmings-quality" className="underline text-[#CBB49A] hover:text-[#b7a078]">trim-level spend</Link> that reads as expensive and takes weeks, not months. Order it alongside the garments, not after them.
                                 </p>
                             </section>
 
@@ -761,11 +789,11 @@ export default function HolidayApparelPlaybookClient({ initialLikeCount, initial
                                 </p>
 
                                 <p className="text-base lg:text-lg leading-snug text-[#4A484A] mb-4">
-                                    <a href="https://www.almanac.com/content/diwali" target="_blank" rel="noopener noreferrer" className="underline text-[#CBB49A] hover:text-[#b7a078]">Diwali falls on 8 November</a> and Indian factories run reduced through that week. If you make in India, <Link href="/blogs/monsoon-production-december-delivery-us-brands-2026" className="underline text-[#CBB49A] hover:text-[#b7a078]">that sits inside your window</Link> and needs planning around rather than discovering.
+                                    <a href="https://www.almanac.com/content/diwali" target="_blank" rel="noopener noreferrer" className="underline text-[#CBB49A] hover:text-[#b7a078]">Diwali falls on 8 November</a> and Indian factories run reduced through that week. If you make in India, <Link href="/blogs/monsoon-production-december-delivery-us-brands-2026" className="underline text-[#CBB49A] hover:text-[#b7a078]">that sits inside your window</Link> and needs planning around, not discovering.
                                 </p>
 
                                 <p className="text-base lg:text-lg leading-snug text-[#4A484A] mb-4">
-                                    Black Friday is 27 November, Cyber Monday 30 November. And <a href="https://nrf.com/media-center/press-releases/consumers-to-spend-second-highest-amount-on-record-according-to-nrf-holiday-survey" target="_blank" rel="noopener noreferrer" className="underline text-[#CBB49A] hover:text-[#b7a078]">42% of shoppers start before November</a> &mdash; so the October work below is not early. It is on time.
+                                    Black Friday is 27 November, Cyber Monday 30 November. And <a href="https://nrf.com/media-center/press-releases/consumers-to-spend-second-highest-amount-on-record-according-to-nrf-holiday-survey" target="_blank" rel="noopener noreferrer" className="underline text-[#CBB49A] hover:text-[#b7a078]">42% of shoppers start before November</a>, so the October work below is not early. It is on time.
                                 </p>
 
                                 <CountdownGraphic />
@@ -789,15 +817,15 @@ export default function HolidayApparelPlaybookClient({ initialLikeCount, initial
                                 </div>
 
                                 <p className="text-base lg:text-lg leading-snug text-[#4A484A] mb-4">
-                                    Pick one lane this week and commit. If nothing is in production today, that lane is blanks and decoration for the December sale, plus a pre-order on one hero piece you cut in January. Do not attempt a full collection &mdash; you will pay air freight for goods that arrive in time to be marked down.
+                                    Pick one lane this week and commit. If nothing is in production today, that means blanks and decoration for December, plus a pre-order on one hero piece you cut in January. Do not attempt a full collection &mdash; you will pay air freight for goods that arrive in time to be marked down.
                                 </p>
 
                                 <p className="text-base lg:text-lg leading-snug text-[#4A484A] mb-4">
-                                    Then put a note in the calendar for the first week of June 2027 &mdash; when the launch aimed at next Christmas actually begins, and when <Link href="/blogs/holiday-2026-production-window-us-founders-order-now" className="underline text-[#CBB49A] hover:text-[#b7a078]">the holiday window opens</Link>. Everything here is a consequence of that date passing unnoticed.
+                                    Then put a note in the calendar for the first week of June 2027 &mdash; when the launch aimed at next Christmas actually begins, and when <Link href="/blogs/holiday-2026-production-window-us-founders-order-now" className="underline text-[#CBB49A] hover:text-[#b7a078]">the holiday window opens</Link>. Everything here follows from that date passing unnoticed.
                                 </p>
 
                                 <p className="text-base lg:text-lg leading-snug text-[#4A484A] mb-4">
-                                    So: what are you actually shipping this December?
+                                    So: what are you actually shipping this December? If the answer is &ldquo;not sure yet&rdquo;, that is the twenty-minute conversation we have with founders every autumn.
                                 </p>
                             </section>
 
@@ -834,9 +862,9 @@ export default function HolidayApparelPlaybookClient({ initialLikeCount, initial
                                 </Link>
                                 <button onClick={() => setContactOpen(true)} className="group block text-left p-7 rounded-2xl bg-[#2D2A2E] text-white hover:bg-[#1f1d20] transition-colors">
                                     <p className="text-xs font-bold uppercase tracking-[0.18em] text-[#CBB49A] mb-3">Talk to us</p>
-                                    <h4 className="text-xl font-bold mb-2 group-hover:underline">Put a real date on your holiday collection</h4>
-                                    <p className="text-gray-300 leading-relaxed mb-4">Talk to a Krazy Kreators production lead about holiday apparel production planning &mdash; which lane your product actually fits this year, how deep to buy by category, and what has to be signed to make the 2027 window instead of the 2026 one.</p>
-                                    <span className="inline-flex items-center gap-2 text-[#CBB49A] font-semibold">Start the conversation <ArrowRight className="w-4 h-4" /></span>
+                                    <h4 className="text-xl font-bold mb-2 group-hover:underline">Find out what you can still ship this year</h4>
+                                    <p className="text-gray-300 leading-relaxed mb-4">Krazy Kreators takes US founders from first sketch to packed carton under one roof &mdash; design, sampling, fabric, retail-grade production and packaging, with one project manager. Bring us your holiday apparel production planning and we will tell you, honestly, which of the three routes your product fits, how deep to buy it, and what to book now so 2027 is not another rescue.</p>
+                                    <span className="inline-flex items-center gap-2 text-[#CBB49A] font-semibold">Book a 20-minute production call <ArrowRight className="w-4 h-4" /></span>
                                 </button>
                             </div>
 
@@ -1006,7 +1034,7 @@ export default function HolidayApparelPlaybookClient({ initialLikeCount, initial
             {showStickyMobileCta && (
                 <div className="lg:hidden fixed bottom-0 left-0 right-0 z-50 bg-[#2D2A2E] text-white px-4 py-3 flex items-center justify-between shadow-2xl">
                     <button onClick={() => setContactOpen(true)} className="flex-1 text-left text-sm font-semibold">
-                        Talk to a production lead about your holiday collection <ArrowRight className="inline w-4 h-4 ml-1" />
+                        What can you still ship this year? Ask a production lead <ArrowRight className="inline w-4 h-4 ml-1" />
                     </button>
                     <button onClick={() => setShowStickyMobileCta(false)} aria-label="Dismiss" className="ml-3 p-1 text-gray-400 hover:text-white">
                         <X className="w-4 h-4" />
