@@ -8,7 +8,11 @@ export const runtime = "edge";
 
 const SLUG = "custom-packaging-for-streetwear-brands";
 const URL = `https://krazykreators.com/blogs/${SLUG}`;
-const TITLE = "Custom Packaging for Streetwear Brands Just Got Complicated";
+// Headline supplied by the owner and used verbatim (91 chars, over the 62-char house
+// cap — the owner's wording wins). The shorter `metadata.title` below is set separately
+// so the SERP does not truncate mid-word.
+const TITLE =
+    "Custom Streetwear Packaging and Unboxing: Turning DTF-Printed Drops into a Brand Experience";
 const DEK =
     "Three rules changed in eight weeks: how USPS prices a box, what you are allowed to print on one, and who pays a fee for it. Pick the format before you pick the artwork.";
 
