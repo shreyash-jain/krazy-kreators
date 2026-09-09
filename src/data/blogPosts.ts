@@ -15,6 +15,20 @@ export type BlogPostMeta = {
 
 export const blogPosts: BlogPostMeta[] = [
   {
+    id: 73,
+    title: "Custom Packaging for Streetwear Brands Just Got Complicated",
+    excerpt:
+      "Three rules changed in eight weeks. On 12 July USPS cut its dimensional divisor from 166 to 139, so any parcel over one cubic foot now bills heavier — which is exactly where presentation boxes live. Two days later a federal court blocked California from enforcing the law governing recycling symbols on packaging. On 27 August a judge upheld Oregon's right to charge producers a packaging fee, ending the last argument against a scheme now running in seven states. What each one means for a drop brand: which format to pick before the artwork, what printed film really costs at drop volume, why most small brands are exempt from the fees, and why the famous unboxing statistics are weaker than the people quoting them admit.",
+    category: "business",
+    author: "Krazy Kreators Team",
+    date: "September 7, 2026",
+    readTime: "10 min read",
+    image: "/blog/streetwear-packaging-2026-hero.jpg",
+    slug: "custom-packaging-for-streetwear-brands",
+    readers: 0,
+    likes: 0,
+  },
+  {
     id: 72,
     title:
       "US Tariff Watch 2026: How Apparel Import Duties Are Reshaping Manufacturing",
