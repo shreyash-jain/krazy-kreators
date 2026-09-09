@@ -29,6 +29,36 @@ export const blogPosts: BlogPostMeta[] = [
     likes: 0,
   },
   {
+    id: 72,
+    title:
+      "US Tariff Watch 2026: How Apparel Import Duties Are Reshaping Manufacturing",
+    excerpt:
+      "September 1 was supposed to open a duty-free lane for Bangladesh, Cambodia, Indonesia and Malaysia. It came and went with nothing published, and all four still pay the full 10%. That gap is the real story in US apparel tariffs 2026 — because the rates themselves barely moved. The duty spread between the two main Asian sourcing tiers is 2.5 percentage points, yet volumes swung hard: China down 34%, India down 26% from inside the cheaper lane, Cambodia up 10%. Inside: where every origin sits as of September, what 26.5% versus 36.5% costs on one 5,000-piece run, why the rate turns out to be a poor predictor of where brands actually produce, and how to price tariff risk into a Spring '27 buy you are placing now.",
+    category: "manufacturing",
+    author: "Krazy Kreators Team",
+    date: "September 7, 2026",
+    readTime: "6 min read",
+    image: "/blog/us-apparel-import-tariffs-2026-hero.jpg",
+    slug: "us-apparel-import-tariffs-2026",
+    readers: 0,
+    likes: 0,
+  },
+  {
+    id: 71,
+    title:
+      "Holiday 2026 Custom Apparel Playbook: Planning Your Christmas and Gifting Collection Early",
+    excerpt:
+      "Holiday custom apparel 2026 comes down to one number: fifteen weeks separate today from the ground shipping cutoff, and a first production run takes twenty-three. That arithmetic has already decided most of what you will sell this December. Two routes still finish in time and neither makes a new garment: decorated stock blanks at six to eight weeks, and a pre-order you cut in January. A reorder flown in fits at about thirteen and a half weeks, but you pay air freight on every unit. Inside: which of the three gifting categories deserves your deepest buy, why 17% of holiday sales come back in January, the packaging that reads as expensive, a countdown from 1 October to 17 December — and the date next June when the 2027 collection really starts.",
+    category: "manufacturing",
+    author: "Krazy Kreators Team",
+    date: "September 3, 2026",
+    readTime: "5 min read",
+    image: "/blog/holiday-custom-apparel-2026-hero.jpg",
+    slug: "holiday-custom-apparel-2026-production-planning",
+    readers: 0,
+    likes: 0,
+  },
+  {
     id: 70,
     title:
       "Back-to-School 2026 Custom Apparel: How Small Brands Can Capture the Fall Merch Rush",
