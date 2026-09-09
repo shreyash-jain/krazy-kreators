@@ -436,9 +436,12 @@ export default function StreetwearPackagingClient({ initialLikeCount, initialCom
                         <span className="text-sm text-gray-400">&bull;</span>
                         <span className="text-sm text-gray-200 font-medium tracking-wide">September 7, 2026</span>
                     </div>
+                    {/* No <span> inside this h1: globals.css @layer base sets
+                        `p, span, li { color: #3D3846 }`, which overrides the inherited
+                        white and renders the wrapped line near-invisible on the dark hero. */}
                     <h1 className="text-2xl sm:text-3xl lg:text-4xl xl:text-5xl font-extrabold text-white leading-tight max-w-5xl drop-shadow-lg mb-6 tracking-tight text-balance">
                         Custom Streetwear Packaging and Unboxing:<br className="hidden sm:block" />{" "}
-                        <span className="text-xl sm:text-2xl lg:text-3xl xl:text-4xl">Turning DTF-Printed Drops into a Brand Experience</span>
+                        Turning DTF-Printed Drops into a Brand Experience
                     </h1>
                     <p className="text-lg sm:text-xl lg:text-2xl text-gray-200 font-medium max-w-3xl drop-shadow-md leading-relaxed">
                         Three rules changed in eight weeks: how USPS prices a box, what you are allowed to print on one, and who pays a fee for it.
