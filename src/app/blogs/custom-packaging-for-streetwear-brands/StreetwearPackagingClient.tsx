@@ -20,7 +20,7 @@ const MACRO_IMAGE = "/blog/streetwear-packaging-2026-macro.jpg";
 const CLOSING_IMAGE = "/blog/streetwear-packaging-2026-closing.jpg";
 
 const TOC = [
-    { id: "part-of-product", label: "Why the box is part of the drop" },
+    { id: "part-of-product", label: "When everything ships at once" },
     { id: "formats", label: "Mailer, box, and what sits between" },
     { id: "usps", label: "The 166-to-139 change" },
     { id: "cost", label: "What it costs at drop volume" },
@@ -59,13 +59,13 @@ const DIM_ROWS = [
     },
     {
         label: "Mailer box, 14 × 10 × 4 in",
-        sub: "560 cu in — under the threshold, billed on actual weight",
+        sub: "560 cu in — under the limit, so you pay on real weight",
         before: 2,
         after: 2,
     },
     {
         label: "Presentation box, 18 × 14 × 8 in",
-        sub: "2,016 cu in — over one cubic foot, so the divisor bites",
+        sub: "2,016 cu in — over one cubic foot, so the size rule kicks in",
         before: 13,
         after: 15,
     },
@@ -79,9 +79,9 @@ function DimWeightGraphic() {
                 Which parcels the July change actually hits
             </h3>
             <p className="text-sm text-[#666666] mb-5">
-                Billable pounds for the same hoodie in three kinds of packaging, before and after 12 July 2026. Dark
-                bars are the old rule, gold bars the new one. Dimensional pricing only applies above one cubic foot,
-                which is why the first two parcels do not move at all.
+                What USPS charges you for, on the same hoodie in three kinds of packaging, before and after 12 July
+                2026. Dark bars are the old rule, gold bars the new one. The size rule only kicks in above one cubic
+                foot, which is why the first two parcels do not move at all.
             </p>
 
             <div className="overflow-x-auto">
@@ -123,8 +123,8 @@ function DimWeightGraphic() {
             </div>
 
             <figcaption className="mt-4 text-sm text-[#4A484A] leading-snug border-t border-gray-200 pt-4">
-                The change is not a general price rise on packaging &mdash; it is a penalty on volume. Two extra
-                billable pounds on every order is the cost of the box being large enough to feel like an occasion.
+                This is not a general price rise on packaging. It is a charge for empty space. Two extra pounds on
+                every order is what it costs to make the box big enough to feel like an occasion.
             </figcaption>
         </figure>
     );
@@ -140,20 +140,20 @@ function DimWeightGraphic() {
 const SCOPE_GATES = [
     {
         n: "1",
-        q: "Gross revenue under $5 million last financial year?",
-        out: "Exempt — no registration, no report, no fee",
+        q: "Gross revenue under $5 million last fiscal year?",
+        out: "You owe nothing — no registering, no reporting, no fee",
         good: true,
     },
     {
         n: "2",
-        q: "Above that, but under one metric ton of packaging into that state this year?",
-        out: "Exempt — the tonnage test stands on its own",
+        q: "Above that, but sending under one metric ton of packaging into that state this year?",
+        out: "You still owe nothing — the weight test works on its own",
         good: true,
     },
     {
         n: "3",
         q: "Neither of the above.",
-        out: "Register with the state's producer organisation, report your material, pay the fee",
+        out: "Register with the state's producer organization, report what you ship, pay the fee",
         good: false,
     },
 ];
@@ -166,8 +166,8 @@ function ScopeTestGraphic() {
                 Whether the packaging fee reaches you at all
             </h3>
             <p className="text-sm text-[#666666] mb-5">
-                The scope test, applied state by state and reassessed every year. Oregon&rsquo;s thresholds are shown;
-                Colorado uses the same two gates with its dollar figure adjusted for inflation each July.
+                The test, run state by state and re-run every year. Oregon&rsquo;s numbers are shown; Colorado uses the
+                same two, with its dollar figure adjusted for inflation each July.
             </p>
 
             <div className="space-y-3">
@@ -192,10 +192,10 @@ function ScopeTestGraphic() {
             </div>
 
             <figcaption className="mt-4 text-sm text-[#4A484A] leading-snug border-t border-gray-200 pt-4">
-                For a sense of scale on gate two: one metric ton is roughly 70,000 parcels if you ship in a poly
-                mailer of about 14 grams, or roughly 4,500 if you ship a boxed parcel of about 220 grams with tissue
-                and a card inside. Those are typical weights rather than measured ones &mdash; weigh your own filled
-                parcel before you rely on the arithmetic.
+                To picture the second test: one metric ton is about 70,000 parcels if you ship in a poly mailer
+                weighing around 14 grams, roughly half an ounce &mdash; or about 4,500 if you ship a box weighing
+                around 220 grams, about half a pound, with tissue and a card inside. Those are typical weights, not
+                measured ones. Weigh one of your own filled parcels before you rely on the math.
             </figcaption>
         </figure>
     );
@@ -207,23 +207,23 @@ function ScopeTestGraphic() {
 const FORMAT_ROWS = [
     {
         format: "Poly mailer",
-        forWhat: "Tees, hoodies, anything that folds and cannot crease badly",
-        against: "No structure, so it reads as functional unless you dress it",
+        forWhat: "Tees, hoodies, anything that folds without creasing badly",
+        against: "No structure, so it feels purely practical unless you dress it up",
     },
     {
         format: "Mailer box (folding corrugated)",
         forWhat: "Multi-item orders, anything with a brim or a panel to protect",
-        against: "Heavier, bulkier, and the one format that can cross a cubic foot",
+        against: "Heavier, bulkier, and the only format that can cross a cubic foot",
     },
     {
         format: "Rigid presentation box",
         forWhat: "A collaboration piece, an archive release, a genuine gift purchase",
-        against: "Costly per unit, slow to make, and the customer keeps or bins it",
+        against: "Expensive per unit, slow to make, and the customer either keeps it or throws it out",
     },
     {
         format: "Tissue, sticker, card, tape",
-        forWhat: "Carrying the drop's artwork without committing your film to it",
-        against: "Adds handling seconds per order, which is real at 800 parcels",
+        forWhat: "Carrying the drop's artwork without locking your mailers into it",
+        against: "Adds a few seconds of packing per order, which adds up over 800 parcels",
     },
 ];
 
@@ -444,7 +444,7 @@ export default function StreetwearPackagingClient({ initialLikeCount, initialCom
                         Turning DTF-Printed Drops into a Brand Experience
                     </h1>
                     <p className="text-lg sm:text-xl lg:text-2xl text-gray-200 font-medium max-w-3xl drop-shadow-md leading-relaxed">
-                        Three rules changed in eight weeks: how USPS prices a box, what you are allowed to print on one, and who pays a fee for it.
+                        Not advice about pretty boxes. What the parcel does to your packing line, your shipping bill, your returns and your compliance in the 48 hours after a drop sells out.
                     </p>
                 </div>
             </section>
@@ -486,9 +486,9 @@ export default function StreetwearPackagingClient({ initialLikeCount, initialCom
                     <div className="not-prose border-l-4 border-[#CBB49A] bg-[#F8F7F4] p-5 sm:p-6 rounded-r-2xl mb-10">
                         <p className="text-xs font-bold uppercase tracking-[0.18em] text-[#CBB49A] mb-3">The short version</p>
                         <ul className="space-y-2 text-[#2D2A2E] leading-snug">
+                            <li>&bull; A drop ships everything in the same two days, so packaging is a throughput problem first. A boxed parcel with inserts takes roughly three times as long to pack as a mailer with a sticker.</li>
                             <li>&bull; USPS cut its dimensional divisor from 166 to 139 on 12 July. It only bites above one cubic foot &mdash; which is exactly where presentation boxes live.</li>
-                            <li>&bull; Seven states now charge producers a packaging fee, but under $5 million in revenue you are almost certainly exempt.</li>
-                            <li>&bull; Keep the film plain and put the drop&rsquo;s artwork on stickers and cards. It is cheaper, and it survives a change of mind.</li>
+                            <li>&bull; Keep the film plain and put the drop&rsquo;s artwork on stickers and cards. Seven states now charge a packaging fee, but under $5 million in revenue you are exempt.</li>
                         </ul>
                     </div>
 
@@ -562,21 +562,21 @@ export default function StreetwearPackagingClient({ initialLikeCount, initialCom
 
                             {/* Opening */}
                             <p className="text-lg lg:text-xl text-[#2D2A2E] leading-snug mb-5 font-medium">
-                                On 12 July the US Postal Service changed the arithmetic it uses to price a parcel. Two days later a federal judge in San Diego stopped California enforcing the law that governs what you may print on one. Six weeks after that, on 27 August, a judge in Portland upheld Oregon&rsquo;s right to charge you a fee for it.
+                                A drop that sells out in forty minutes hands you a different problem by lunchtime: several hundred parcels that have to be out of the door within two days, packed in whatever you decided to buy months ago.
                             </p>
 
                             <p className="mb-4 text-base lg:text-lg leading-snug">
-                                None of those three decisions was about streetwear. All three land on the same object: the thing your drop arrives in.
+                                That is the moment packaging stops being a design question. It becomes a question of how fast you can pack, what the carrier charges for the size of the box, what happens when a parcel comes back, and &mdash; since this summer &mdash; whether what is printed on it is legal. None of that shows up on a mood board.
                             </p>
 
                             <p className="mb-8 text-base lg:text-lg leading-snug">
-                                Custom packaging for streetwear brands has been drifting toward the centre of the product for a decade. What changed this summer is that it also became a line item with a rulebook attached &mdash; which is a better problem than it sounds, because the brands that read the rulebook get to make a cheaper decision than the ones that do not.
+                                Custom packaging for streetwear brands has been creeping closer to the product itself for years, and most of what gets written about it is advice on making it prettier. This is not that. It is about the operational decisions hiding inside the parcel &mdash; and about three rules that changed between 12 July and 27 August that made each of them more expensive to get wrong.
                             </p>
 
                             {/* H2 1 */}
                             <section id="part-of-product" className="scroll-mt-28 mt-12 mb-12">
                                 <h2 className="text-3xl lg:text-4xl font-extrabold tracking-tight text-[#2D2A2E] mb-5 pb-2 border-b border-gray-200">
-                                    Why the box is part of the drop
+                                    Why packaging is part of the product when everything ships at once
                                 </h2>
 
                                 <div className="rounded-2xl overflow-hidden shadow-xl border border-gray-100 mb-7 max-w-2xl mx-auto bg-[#F8F7F4]">
@@ -591,20 +591,34 @@ export default function StreetwearPackagingClient({ initialLikeCount, initialCom
                                 </div>
 
                                 <p className="text-base lg:text-lg leading-snug text-[#4A484A] mb-4">
-                                    A drop removes discovery from the purchase. The buyer saw the lookbook, set an alarm, and knew the exact garment they were getting before they paid. By the time the parcel lands there is nothing left to reveal about the product.
+                                    A drop squeezes a season&rsquo;s worth of shipping into a weekend. A normal shop sends parcels at the rate customers turn up. A drop sends all of them at the rate the checkout closed. Whatever your parcel is, you are about to build several hundred of it by hand, against a clock.
                                 </p>
 
                                 <p className="text-base lg:text-lg leading-snug text-[#4A484A] mb-4">
-                                    Which is precisely why the parcel carries more weight here than in ordinary retail. It is the only physical thing between the checkout and the garment, and it arrives days or weeks after the excitement peaked. The <Link href="/blogs/the-drop-culture-model" className="underline text-[#CBB49A] hover:text-[#b7a078]">drop model</Link> spends everything it has on anticipation; the parcel is where that anticipation either lands or deflates.
+                                    So time one before you decide anything else. Say a mailer with a sticker takes thirty seconds &mdash; fold, bag, seal, sticker, label &mdash; and a box with tissue, a card and branded tape takes ninety. Then 800 orders is about seven hours of packing against about twenty. Your own timings will differ. The ratio between them usually does not.
                                 </p>
 
                                 <p className="text-base lg:text-lg leading-snug text-[#4A484A] mb-4">
-                                    Print method quietly sets the pace of all this. A brand printing with DTF &mdash; direct-to-film, where the design is printed onto film and heat-pressed on, with no screens to make &mdash; can run many designs in small numbers, so it drops more often and changes artwork more often. That is the whole appeal, and it is also what makes committing your packaging to any one design expensive. If you are weighing the method itself, we compared it against screens in <Link href="/blogs/dtf-vs-screen-printing-right-for-volume" className="underline text-[#CBB49A] hover:text-[#b7a078]">DTF vs screen printing</Link>.
+                                    That is what &ldquo;part of the product&rdquo; really means here. The parcel is the last step you control, the first thing the customer handles, and the only part of the <Link href="/blogs/the-drop-culture-model" className="underline text-[#CBB49A] hover:text-[#b7a078]">drop</Link> that gets built after the money has landed. Slow it down and you are writing a delay email to every buyer. Get it wrong and all that waiting ends in a late, creased delivery.
                                 </p>
 
                                 <p className="text-base lg:text-lg leading-snug text-[#4A484A] mb-4">
-                                    That argument gets overplayed, so here is the limit of it. Packaging is a retention lever, not an acquisition one. Nobody buys a hoodie because of the mailer, and a beautiful parcel will not rescue a garment whose <Link href="/blogs/streetwear-2-0-heavy-gsm-puff-prints-acid-washes" className="underline text-[#CBB49A] hover:text-[#b7a078]">weight and finish</Link> disappoint. Spend here after the product is right, never instead.
+                                    How you print the garments sets the pace of all this. With DTF, the design goes onto a sheet of film and is heat-pressed onto the shirt, so there are no screens to make and nothing to set up between one design and the next. That means lots of designs in small runs, which is why DTF brands drop more often and change their artwork more often. It is the whole appeal. It is also why tying your packaging to any single design gets expensive. If you are still weighing the method itself, we compared it against screen printing in <Link href="/blogs/dtf-vs-screen-printing-right-for-volume" className="underline text-[#CBB49A] hover:text-[#b7a078]">DTF vs screen printing</Link>.
                                 </p>
+
+                                <p className="text-base lg:text-lg leading-snug text-[#4A484A] mb-4">
+                                    This argument gets pushed too far, so here is where it stops. Packaging keeps customers. It does not win them. Nobody buys a hoodie because of the mailer, and a beautiful parcel will not save a garment whose <Link href="/blogs/streetwear-2-0-heavy-gsm-puff-prints-acid-washes" className="underline text-[#CBB49A] hover:text-[#b7a078]">weight and finish</Link> disappoint when it comes out of the bag. Spend here once the product is right. Never instead of getting it right.
+                                </p>
+
+                                <div className="not-prose my-7 rounded-2xl border border-[#CBB49A]/40 bg-[#F8F7F4] p-5 sm:p-6">
+                                    <p className="text-xs font-bold uppercase tracking-[0.18em] text-[#CBB49A] mb-3">The questions a parcel has to answer before it looks like anything</p>
+                                    <ul className="space-y-2 text-[#2D2A2E] leading-snug">
+                                        <li>&bull; <strong>Who packs it.</strong> You, or a fulfilment warehouse &mdash; which will charge for every extra insert, needs your packaging on its shelf before the drop, and may refuse a multi-step unboxing outright</li>
+                                        <li>&bull; <strong>What happens when it comes back.</strong> A mailer with a second peel strip means a return goes out in the bag it came in; without one, every return costs a new bag</li>
+                                        <li>&bull; <strong>What it does when it is thrown.</strong> Fleece survives a mailer. A cap, or anything with a structured panel, does not &mdash; that item needs a box whatever the rest of the range ships in</li>
+                                        <li>&bull; <strong>What runs out first.</strong> A drop that oversells or takes backorders will outrun its packaging. Buy plain mailers with a buffer above the garment count, and print only the insert</li>
+                                    </ul>
+                                </div>
                             </section>
 
                             {/* H2 2 */}
@@ -614,7 +628,7 @@ export default function StreetwearPackagingClient({ initialLikeCount, initialCom
                                 </h2>
 
                                 <p className="text-base lg:text-lg leading-snug text-[#4A484A] mb-4">
-                                    There are really only three shipping formats, plus a set of inserts that do most of the branding work. A poly mailer is a sealed plastic envelope. A mailer box is folding corrugated card &mdash; the flat-packed kind that assembles into a shallow box. A rigid presentation box is the lidded sort that a buyer keeps.
+                                    There are only three ways to ship a garment, plus the small stuff you put inside, which does most of the branding work. A poly mailer is the sealed plastic envelope. A mailer box is folding cardboard &mdash; flat when it arrives, a shallow box once you fold it up. A rigid presentation box is the sturdy lidded kind people keep on a shelf.
                                 </p>
 
                                 <div className="not-prose my-7 overflow-x-auto rounded-2xl border border-gray-200">
@@ -639,7 +653,7 @@ export default function StreetwearPackagingClient({ initialLikeCount, initialCom
                                 </div>
 
                                 <p className="text-base lg:text-lg leading-snug text-[#4A484A] mb-4">
-                                    The move most established drop brands land on is a plain mailer carrying a printed sticker, a card and branded tape. Change the sticker, change the drop.
+                                    Most established drop brands end up in the same place: a plain mailer, with a printed sticker, a card and branded tape doing all the talking. Change the sticker, change the drop.
                                 </p>
 
                                 <div className="not-prose my-7 rounded-2xl border-l-4 border-[#CBB49A] bg-[#F8F7F4] p-6">
@@ -656,25 +670,25 @@ export default function StreetwearPackagingClient({ initialLikeCount, initialCom
                                 </h2>
 
                                 <p className="text-base lg:text-lg leading-snug text-[#4A484A] mb-4">
-                                    Carriers bill on whichever is greater: what a parcel weighs, or what its size suggests it should weigh. That second figure is dimensional weight &mdash; length times width times height, divided by a fixed number the carrier chooses. The smaller that number, the more you pay for air.
+                                    Carriers charge you for whichever is bigger: what your parcel actually weighs, or what its size says it ought to weigh. They work that second figure out by multiplying length by width by height, then dividing by a number they pick themselves. The trade calls it dimensional weight. The smaller their number, the more you pay for empty space.
                                 </p>
 
                                 <p className="text-base lg:text-lg leading-snug text-[#4A484A] mb-4">
-                                    On <a href="https://support.pirateship.com/en/articles/15453569-july-2026-usps-rate-and-rule-changes" target="_blank" rel="noopener noreferrer" className="underline text-[#CBB49A] hover:text-[#b7a078]">12 July 2026 USPS cut that divisor from 166 to 139</a> and began rounding every fractional inch up to the next whole one. Ground Advantage Commercial rates rose about 11.8% on average at the same time.
+                                    On <a href="https://support.pirateship.com/en/articles/15453569-july-2026-usps-rate-and-rule-changes" target="_blank" rel="noopener noreferrer" className="underline text-[#CBB49A] hover:text-[#b7a078]">12 July 2026, USPS cut that number from 166 to 139</a> and started rounding every part-inch up to the next full inch. Ground Advantage Commercial rates went up about 11.8% on average the same day.
                                 </p>
 
                                 <p className="text-base lg:text-lg leading-snug text-[#4A484A] mb-4">
-                                    Here is the part the packaging vendors leave out. USPS only applies dimensional pricing to parcels <a href="https://www.dclcorp.com/blog/shipping/usps-dim-weight-changes-2026/" target="_blank" rel="noopener noreferrer" className="underline text-[#CBB49A] hover:text-[#b7a078]">larger than one cubic foot</a> &mdash; 1,728 cubic inches. A hoodie in a poly mailer never gets near it. A hoodie in a 14 by 10 by 4 inch mailer box is 560 cubic inches, comfortably under.
+                                    Here is the part packaging suppliers tend to leave out. USPS only uses dimensional weight on parcels <a href="https://www.dclcorp.com/blog/shipping/usps-dim-weight-changes-2026/" target="_blank" rel="noopener noreferrer" className="underline text-[#CBB49A] hover:text-[#b7a078]">bigger than one cubic foot</a>, which is 1,728 cubic inches. A hoodie in a poly mailer is nowhere near that. A hoodie in a 14 by 10 by 4 inch mailer box comes to 560 cubic inches &mdash; still comfortably under.
                                 </p>
 
                                 <p className="text-base lg:text-lg leading-snug text-[#4A484A] mb-4">
-                                    An 18 by 14 by 8 inch presentation box is 2,016 cubic inches, and that one crosses the line. Under the old divisor it billed at 13 pounds. Under the new one it bills at 15. Two extra pounds on every order in the drop, for a garment that weighs under two.
+                                    An 18 by 14 by 8 inch presentation box is 2,016 cubic inches. That one crosses the line. Under the old number it was billed as 13 pounds. Under the new one, 15. You now pay for two extra pounds on every order in the drop, to ship a garment that weighs less than two.
                                 </p>
 
                                 <DimWeightGraphic />
 
                                 <p className="text-base lg:text-lg leading-snug text-[#4A484A] mb-4">
-                                    So the change is not an argument against nice packaging. It is an argument against empty volume &mdash; and it rewards anyone willing to size a box to the folded garment rather than buying a stock size with three inches of air in it.
+                                    So this is not an argument against nice packaging. It is an argument against empty space, and it rewards anyone who measures the folded garment and buys a box that fits it, instead of picking a stock size with three inches of air inside.
                                 </p>
                             </section>
 
@@ -687,7 +701,7 @@ export default function StreetwearPackagingClient({ initialLikeCount, initialCom
                                     <div>
                                         <p className="text-xs font-bold uppercase tracking-[0.18em] text-[#CBB49A] mb-2">Free download</p>
                                         <h4 className="text-2xl font-extrabold text-[#2D2A2E] mb-2">The Drop Packaging Spec Sheet</h4>
-                                        <p className="text-[#4A484A] leading-snug">One page to fill in before you brief a packaging supplier: folded dimensions of every garment in the range, the cubic-foot check, the insert list, the artwork-lock date, and the state-by-state fee questions to answer once a year. Spreadsheet + PDF.</p>
+                                        <p className="text-[#4A484A] leading-snug">One page to fill in before you talk to a packaging supplier: the folded size of every garment in the range, the cubic-foot check, your insert list, the date the artwork has to be final, and the state-by-state fee questions to answer once a year. Spreadsheet + PDF.</p>
                                     </div>
                                 </div>
                                 {!magnetSubmitted ? (
@@ -728,23 +742,23 @@ export default function StreetwearPackagingClient({ initialLikeCount, initialCom
                                 </div>
 
                                 <p className="text-base lg:text-lg leading-snug text-[#4A484A] mb-4">
-                                    Unit prices are the easy part. One supplier&rsquo;s <a href="https://www.ecopackables.com/blogs/news/how-much-does-packaging-cost" target="_blank" rel="noopener noreferrer" className="underline text-[#CBB49A] hover:text-[#b7a078]">published 2026 price guide</a> puts custom-printed poly mailers between roughly eight cents and eighty cents each, with minimums starting around 500 units for a stock size and 1,000 to 2,500 for a bespoke one. Going from 500 to 5,000 takes 30 to 50 percent off the unit price.
+                                    The price per bag is the easy part. One supplier&rsquo;s <a href="https://www.ecopackables.com/blogs/news/how-much-does-packaging-cost" target="_blank" rel="noopener noreferrer" className="underline text-[#CBB49A] hover:text-[#b7a078]">published 2026 price guide</a> puts custom-printed poly mailers somewhere between eight cents and eighty cents each. Minimum orders usually start around 500 for a standard size, and 1,000 to 2,500 if you want your own size. Order 5,000 instead of 500 and the price per bag drops by 30 to 50 percent.
                                 </p>
 
                                 <p className="text-base lg:text-lg leading-snug text-[#4A484A] mb-4">
-                                    Read that curve carefully, because it is a trap for drop brands specifically. The volume that makes printed film cheap is far larger than a single drop. Buy at the price that looks sensible and you are buying packaging for four drops you have not designed yet.
+                                    That discount is a trap for drop brands in particular. The quantity that makes printed film cheap is far bigger than any one drop. Buy at the price that looks sensible and you have just bought packaging for four drops you have not designed yet.
                                 </p>
 
                                 <p className="text-base lg:text-lg leading-snug text-[#4A484A] mb-4">
-                                    That is fine if the artwork is your wordmark. It is expensive if the artwork names the drop, because a season that sells through in an hour and a season that limps both leave you holding film you cannot use. The generic-film-plus-printed-insert approach exists to solve exactly this.
+                                    Fine, if the artwork is just your logo. Expensive, if the artwork names the drop &mdash; because whether that drop sells out in an hour or barely moves, you are left holding film you can never use again. Plain film plus a printed insert exists to solve exactly this.
                                 </p>
 
                                 <div className="not-prose my-7 rounded-2xl border border-[#CBB49A]/40 bg-[#F8F7F4] p-5 sm:p-6">
                                     <p className="text-xs font-bold uppercase tracking-[0.18em] text-[#CBB49A] mb-3">Signs you are over-buying packaging</p>
                                     <ul className="space-y-2 text-[#2D2A2E] leading-snug">
                                         <li>&bull; The artwork on the mailer names a season, a year or a collaboration</li>
-                                        <li>&bull; You ordered more units of packaging than units of garment</li>
-                                        <li>&bull; The box was chosen from a stock size chart, not from a folded measurement</li>
+                                        <li>&bull; You ordered more <em>printed</em> packaging than garments &mdash; plain film can carry a buffer for oversells, printed film cannot</li>
+                                        <li>&bull; You picked the box off a stock size chart instead of measuring a folded garment</li>
                                         <li>&bull; Nobody has weighed a filled parcel on the scale you actually ship from</li>
                                     </ul>
                                 </div>
@@ -757,15 +771,15 @@ export default function StreetwearPackagingClient({ initialLikeCount, initialCom
                                 </h2>
 
                                 <p className="text-base lg:text-lg leading-snug text-[#4A484A] mb-4">
-                                    California&rsquo;s SB 343 was written to stop the chasing-arrows symbol appearing on things that are not really recycled. Under it, a pack may only carry that symbol if the material is <a href="https://calrecycle.ca.gov/wcs/recyclinglabels" target="_blank" rel="noopener noreferrer" className="underline text-[#CBB49A] hover:text-[#b7a078]">collected by programmes serving at least 60% of Californians</a> and sorted by facilities serving at least 60% of those programmes. The rule attaches to anything manufactured after 4 October 2026.
+                                    California&rsquo;s SB 343 was written to stop the little triangle of chasing arrows turning up on things that never actually get recycled. Under it, you can only print that symbol if the material is <a href="https://calrecycle.ca.gov/wcs/recyclinglabels" target="_blank" rel="noopener noreferrer" className="underline text-[#CBB49A] hover:text-[#b7a078]">collected by recycling programs covering at least 60% of Californians</a>, and sorted by facilities serving at least 60% of those programs. It applies to anything made after 4 October 2026.
                                 </p>
 
                                 <p className="text-base lg:text-lg leading-snug text-[#4A484A] mb-4">
-                                    Except that on 14 July a federal court in San Diego <a href="https://www.nortonrosefulbright.com/en-us/knowledge/publications/a9452502/federal-court-enjoins-californias-sb-343-truth-in-recycling-law" target="_blank" rel="noopener noreferrer" className="underline text-[#CBB49A] hover:text-[#b7a078]">blocked the state from enforcing it</a>, on the grounds that the law is unconstitutionally vague and burdens truthful speech. So the deadline stands on paper while enforcement does not, and an appeal could move it either way.
+                                    Then on 14 July, a federal court in San Diego <a href="https://www.nortonrosefulbright.com/en-us/knowledge/publications/a9452502/federal-court-enjoins-californias-sb-343-truth-in-recycling-law" target="_blank" rel="noopener noreferrer" className="underline text-[#CBB49A] hover:text-[#b7a078]">blocked California from enforcing it</a>, saying the law was too vague and got in the way of truthful speech. So the deadline is still on the books, but nobody is enforcing it, and an appeal could send it either way.
                                 </p>
 
                                 <p className="text-base lg:text-lg leading-snug text-[#4A484A] mb-4">
-                                    If you are ordering a print run this month, the defensible position is to print what you can substantiate and skip the symbol. Say what the material is and where it goes &mdash; &ldquo;recycle at a store drop-off&rdquo; is accurate for poly film and survives any version of this law. A chasing-arrows logo on a mailer that no kerbside programme accepts is the claim you would have to defend.
+                                    If you are ordering a print run this month, the safe move is to print only what you can back up and leave the symbol off. Name the material, and tell people where it goes. &ldquo;Recycle at a store drop-off&rdquo; is true for poly film, and it holds up whichever way this law lands. Chasing arrows on a mailer that no curbside program accepts is the claim you would have to defend.
                                 </p>
 
                                 <p className="text-base lg:text-lg leading-snug text-[#4A484A] mb-4">
@@ -780,25 +794,25 @@ export default function StreetwearPackagingClient({ initialLikeCount, initialCom
                                 </h2>
 
                                 <p className="text-base lg:text-lg leading-snug text-[#4A484A] mb-4">
-                                    California, Colorado, Maine, Maryland, Minnesota, Oregon and Washington have all passed extended producer responsibility laws for packaging &mdash; the principle that whoever puts packaging into a state helps pay for collecting it again. Oregon&rsquo;s producer organisation has been <a href="https://www.oregon.gov/deq/recycling/pages/producers-of-covered-products.aspx" target="_blank" rel="noopener noreferrer" className="underline text-[#CBB49A] hover:text-[#b7a078]">charging fees since 1 July 2025</a>; Colorado&rsquo;s obligations began in January 2026.
+                                    Seven states &mdash; California, Colorado, Maine, Maryland, Minnesota, Oregon and Washington &mdash; have passed laws making the companies that send packaging into a state help pay for collecting it again. The trade name for this is extended producer responsibility, usually shortened to EPR. Oregon&rsquo;s producer organization has been <a href="https://www.oregon.gov/deq/recycling/pages/producers-of-covered-products.aspx" target="_blank" rel="noopener noreferrer" className="underline text-[#CBB49A] hover:text-[#b7a078]">charging fees since 1 July 2025</a>; Colorado&rsquo;s obligations began in January 2026.
                                 </p>
 
                                 <p className="text-base lg:text-lg leading-snug text-[#4A484A] mb-4">
-                                    Producers argued the fees were unconstitutional. On 27 August, after a five-day trial, a federal judge <a href="https://www.opb.org/article/2026/08/28/oregon-recycling-wholesale-distributors-lawsuit/" target="_blank" rel="noopener noreferrer" className="underline text-[#CBB49A] hover:text-[#b7a078]">upheld Oregon&rsquo;s law in full</a>, dissolving an injunction that had shielded some of them since February. That argument is now, for practical purposes, over.
+                                    The companies paying those fees argued they were unconstitutional. On 27 August, after a five-day trial, a federal judge <a href="https://www.opb.org/article/2026/08/28/oregon-recycling-wholesale-distributors-lawsuit/" target="_blank" rel="noopener noreferrer" className="underline text-[#CBB49A] hover:text-[#b7a078]">upheld Oregon&rsquo;s law in full</a> and lifted the order that had protected some of them since February. For practical purposes, that argument is over.
                                 </p>
 
                                 <p className="text-base lg:text-lg leading-snug text-[#4A484A] mb-4">
-                                    Now the part that matters to you, and it is good news. Oregon exempts any producer with <a href="https://oregon.public.law/statutes/ors_459a.863" target="_blank" rel="noopener noreferrer" className="underline text-[#CBB49A] hover:text-[#b7a078]">gross revenue under $5 million</a>, and separately any producer putting less than one metric ton of packaging into the state in a year. Colorado applies the same two gates, its dollar figure rising with inflation each July.
+                                    Now the part that matters to you, and it is good news. Oregon charges nothing to a company with <a href="https://oregon.public.law/statutes/ors_459a.863" target="_blank" rel="noopener noreferrer" className="underline text-[#CBB49A] hover:text-[#b7a078]">gross revenue under $5 million</a>, and nothing to a company of any size that sends less than one metric ton of packaging &mdash; about 2,200 pounds &mdash; into the state in a year. Colorado uses the same two tests, and raises its dollar figure with inflation every July.
                                 </p>
 
                                 <ScopeTestGraphic />
 
                                 <p className="text-base lg:text-lg leading-snug text-[#4A484A] mb-4">
-                                    Most brands reading this are exempt and will stay exempt for years. The trap is that these are annual tests: the year you cross the line, registration is not optional, and in Oregon failing to register is a violation carrying penalties of up to $25,000 a day. Diarise the check, once a year, in the same week you close your books.
+                                    Most brands reading this owe nothing, and will owe nothing for years. The catch is that both tests get run every year. The year you cross the line, registering stops being optional, and in Oregon not registering is a violation carrying penalties of up to $25,000 a day. Check it once a year, in the same week you close your books.
                                 </p>
 
                                 <p className="text-base lg:text-lg leading-snug text-[#4A484A] mb-4">
-                                    Worth knowing separately: California now runs a parallel scheme for the clothing itself, not just the box. We unpacked the July deadline in <Link href="/blogs/cpsc-efiling-sb-707-apparel-compliance-2026" className="underline text-[#CBB49A] hover:text-[#b7a078]">SB 707 and apparel compliance</Link>.
+                                    One more thing worth knowing: California now runs a separate program for the clothing itself, not just the box. We went through the July deadline in <Link href="/blogs/cpsc-efiling-sb-707-apparel-compliance-2026" className="underline text-[#CBB49A] hover:text-[#b7a078]">SB 707 and apparel compliance</Link>.
                                 </p>
                             </section>
 
@@ -809,15 +823,15 @@ export default function StreetwearPackagingClient({ initialLikeCount, initialCom
                                 </h2>
 
                                 <p className="text-base lg:text-lg leading-snug text-[#4A484A] mb-4">
-                                    This is where the industry&rsquo;s evidence is thinnest, and it is worth saying so, because the statistics get quoted at founders as though they settle the question.
+                                    This is where the evidence gets thin, and it is worth saying so plainly, because these numbers get quoted at founders as though they settle the argument.
                                 </p>
 
                                 <p className="text-base lg:text-lg leading-snug text-[#4A484A] mb-4">
-                                    The most-cited figure &mdash; that around three-quarters of Americans say packaging design influences what they buy &mdash; comes from an <a href="https://www.ipsos.com/en-us/news-polls/Most-Americans-Say-That-the-Design-of-a-Products-Packaging-Often-Influences-Their-Purchase-Decisions" target="_blank" rel="noopener noreferrer" className="underline text-[#CBB49A] hover:text-[#b7a078]">Ipsos poll of 2,002 adults</a>. The real number is 72%, it was fielded in April 2018, and it was commissioned by the Paper and Packaging Board &mdash; a paper industry body asking the public whether they prefer paper. The unboxing-and-social-sharing claim traces back to a <a href="https://www.prweb.com/releases/new_study_finds_40_percent_of_consumers_have_shared_product_photos_or_videos_on_social_media/prweb12797936.htm" target="_blank" rel="noopener noreferrer" className="underline text-[#CBB49A] hover:text-[#b7a078]">2015 survey of 524 shoppers</a>.
+                                    The figure everyone quotes &mdash; that around three-quarters of Americans say packaging design affects what they buy &mdash; comes from an <a href="https://www.ipsos.com/en-us/news-polls/Most-Americans-Say-That-the-Design-of-a-Products-Packaging-Often-Influences-Their-Purchase-Decisions" target="_blank" rel="noopener noreferrer" className="underline text-[#CBB49A] hover:text-[#b7a078]">Ipsos poll of 2,002 adults</a>. The real number is 72%, it was taken in April 2018, and it was paid for by the Paper and Packaging Board &mdash; a paper industry group asking the public whether they like paper. The claim that unboxing drives social sharing goes back to a <a href="https://www.prweb.com/releases/new_study_finds_40_percent_of_consumers_have_shared_product_photos_or_videos_on_social_media/prweb12797936.htm" target="_blank" rel="noopener noreferrer" className="underline text-[#CBB49A] hover:text-[#b7a078]">2015 survey of 524 shoppers</a>.
                                 </p>
 
                                 <p className="text-base lg:text-lg leading-snug text-[#4A484A] mb-4">
-                                    None of that makes packaging worthless. It makes the sector-wide numbers useless for sizing your budget. A drop brand has something better available anyway: ship one drop with the upgraded presentation and one without, then compare repeat purchase at 90 days.
+                                    None of that makes packaging worthless. It means the industry-wide numbers are no use for setting your budget. A drop brand has a better option anyway: ship one drop in the upgraded packaging and the next one plain, then compare how many people came back within 90 days.
                                 </p>
 
                                 <div className="not-prose my-7 rounded-2xl border-l-4 border-[#CBB49A] bg-[#F8F7F4] p-6">
@@ -827,7 +841,7 @@ export default function StreetwearPackagingClient({ initialLikeCount, initialCom
                                 </div>
 
                                 <p className="text-base lg:text-lg leading-snug text-[#4A484A] mb-4">
-                                    One thing does hold up without a survey behind it: the cheapest shareable object in the parcel is almost never the parcel. A sticker sheet ends up on a laptop lid and travels further than any box ever will.
+                                    One thing holds up without any survey behind it. The cheapest thing in the parcel worth sharing is almost never the parcel. A sticker sheet ends up on a laptop lid, and travels a lot further than any box ever will.
                                 </p>
                             </section>
 
@@ -838,15 +852,15 @@ export default function StreetwearPackagingClient({ initialLikeCount, initialCom
                                 </h2>
 
                                 <p className="text-base lg:text-lg leading-snug text-[#4A484A] mb-4">
-                                    Founders schedule the garment and buy the packaging afterwards. That ordering is backwards whenever the packaging is printed, because printed film and bespoke board both need artwork locked, a physical proof signed and a production run of their own &mdash; commonly four to eight weeks end to end.
+                                    Most founders plan the garment first and buy the packaging afterwards. That order is backwards the moment your packaging is printed, because printed film and custom board each need their own artwork sign-off, their own physical proof and their own production run. Four to eight weeks, start to finish.
                                 </p>
 
                                 <p className="text-base lg:text-lg leading-snug text-[#4A484A] mb-4">
-                                    If the factory is packing your order rather than you, the packaging has to reach the factory <em>before</em> the garments come off the line. That pulls the artwork deadline forward by however long freight to the factory takes, which is the step that catches people out. Our <Link href="/blogs/clothing-production-timeline" className="underline text-[#CBB49A] hover:text-[#b7a078]">sketch-to-store timeline</Link> shows where the garment weeks go; packaging runs alongside them, not after.
+                                    If the factory is packing your order rather than you, the packaging has to reach the factory <em>before</em> the garments come off the line. That pulls your artwork deadline forward again, by however long it takes to ship the packaging out there. It is the step that catches people out. Our <Link href="/blogs/clothing-production-timeline" className="underline text-[#CBB49A] hover:text-[#b7a078]">sketch-to-store timeline</Link> shows where the garment weeks go; packaging runs alongside them, not after.
                                 </p>
 
                                 <p className="text-base lg:text-lg leading-snug text-[#4A484A] mb-4">
-                                    Always sign off a physical proof. Matte film and uncoated board both pull colour down, and a screen will not warn you. The other reliable failure is ordering a box to a stock size before anyone has folded the actual garment &mdash; measure the folded piece first, then buy the box that fits it.
+                                    Always ask for a physical proof, and sign it yourself. Matte film and uncoated cardboard both dull color, and your screen will not warn you. The other reliable way to get this wrong is ordering a stock-size box before anyone has folded the actual garment. Fold it, measure it, then buy the box that fits.
                                 </p>
                             </section>
 
@@ -868,15 +882,15 @@ export default function StreetwearPackagingClient({ initialLikeCount, initialCom
                                 </div>
 
                                 <p className="text-base lg:text-lg leading-snug text-[#4A484A] mb-4">
-                                    Packaging deserves the attention drop brands give it. It just no longer deserves to be decided last, by artwork, from a stock size chart.
+                                    Packaging deserves the attention drop brands give it. It just deserves it as an operations decision &mdash; packing time, billable weight, returns, compliance &mdash; made before the artwork, not as a design decision made after it.
                                 </p>
 
                                 <p className="text-base lg:text-lg leading-snug text-[#4A484A] mb-4">
-                                    In your shoes: fold the garment, measure it, and buy the smallest format that protects it &mdash; checking the cubic-foot line before anything else. Keep the film plain and spend the design budget on the insert you can reprint in a week. Print only claims you can substantiate. Then set one calendar reminder a year to check whether your revenue has crossed a threshold in seven states.
+                                    If we were in your shoes: pack one parcel against a stopwatch, then fold the garment, measure it, and buy the smallest thing that protects it &mdash; checking the one-cubic-foot line before anything else. Keep the film plain, and spend the design money on the insert you can reprint in a week. Only print claims you can back up. Then set one reminder a year to check whether your revenue has crossed a line in any of those seven states.
                                 </p>
 
                                 <p className="text-base lg:text-lg leading-snug text-[#4A484A] mb-4">
-                                    What is your next drop actually shipping in &mdash; and has anyone weighed one yet?
+                                    So what is your next drop actually shipping in &mdash; and has anyone packed one with a stopwatch running yet?
                                 </p>
                             </section>
 
@@ -908,13 +922,13 @@ export default function StreetwearPackagingClient({ initialLikeCount, initialCom
                                 <Link href="/blogs/the-drop-culture-model" className="group block p-7 rounded-2xl bg-[#F8F7F4] border border-gray-100 hover:border-[#CBB49A] transition-colors">
                                     <p className="text-xs font-bold uppercase tracking-[0.18em] text-[#CBB49A] mb-3">Read next</p>
                                     <h4 className="text-xl font-bold text-[#2D2A2E] mb-2 group-hover:underline">The Drop Culture Model</h4>
-                                    <p className="text-[#666666] leading-relaxed mb-4">You know what the parcel has to do. This is the machinery it arrives at the end of &mdash; scarcity, cadence and why the calendar matters more than the discount.</p>
+                                    <p className="text-[#666666] leading-relaxed mb-4">You know what the parcel has to do. This is the machine it arrives at the end of &mdash; scarcity, timing, and why the calendar matters more than the discount.</p>
                                     <span className="inline-flex items-center gap-2 text-[#CBB49A] font-semibold">Read the breakdown <ArrowRight className="w-4 h-4" /></span>
                                 </Link>
                                 <button onClick={() => setContactOpen(true)} className="group block text-left p-7 rounded-2xl bg-[#2D2A2E] text-white hover:bg-[#1f1d20] transition-colors">
                                     <p className="text-xs font-bold uppercase tracking-[0.18em] text-[#CBB49A] mb-3">Talk to us</p>
                                     <h4 className="text-xl font-bold mb-2 group-hover:underline">Plan Your Drop Packaging with Krazy Kreators</h4>
-                                    <p className="text-gray-300 leading-relaxed mb-4">Bring us the range and the date it ships. We will work through the folded dimensions of every piece, the format that protects them without buying air, the inserts that carry the artwork, and a packaging schedule that runs alongside production instead of behind it.</p>
+                                    <p className="text-gray-300 leading-relaxed mb-4">Bring us the range and the date it ships. We will work through the folded size of every piece, the format that protects it without paying for empty space, the inserts that carry your artwork, and a packaging schedule that runs alongside production instead of behind it.</p>
                                     <span className="inline-flex items-center gap-2 text-[#CBB49A] font-semibold">Start the conversation <ArrowRight className="w-4 h-4" /></span>
                                 </button>
                             </div>
