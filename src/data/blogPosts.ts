@@ -15,6 +15,21 @@ export type BlogPostMeta = {
 
 export const blogPosts: BlogPostMeta[] = [
   {
+    id: 75,
+    title:
+      "Color and Fabric Trends for Fall/Winter 2026: What to Manufacture Next",
+    excerpt:
+      "Pantone published its Fall/Winter 2026 palette on 11 February and the coats it described have been on US shop floors since July — so a small brand reading the forecast in September needs a different question. The two forecasters agree on a red-toned brown, a purple-pink, an acid yellow-green and a warm off-white; the denim mills are moving to rigid weights up to 14.5 oz; fashion month sent the fit slimmer and the surfaces toward jacquard, bouclé and shearling. Reduced to a five-colour palette one dye house can run, a 60/30/10 line sheet, and the honest calendar: a from-scratch run lands 22 February 2027, so the open windows are a 12-week colour-up for December and Fall/Winter 2027 samples for the 16 February shows.",
+    category: "manufacturing",
+    author: "Krazy Kreators Team",
+    date: "September 11, 2026",
+    readTime: "5 min read",
+    image: "/blog/fall-winter-2026-apparel-trends-hero.jpg",
+    slug: "fall-winter-2026-apparel-trends",
+    readers: 0,
+    likes: 0,
+  },
+  {
     id: 73,
     title:
       "Custom Streetwear Packaging and Unboxing: Turning DTF-Printed Drops into a Brand Experience",
