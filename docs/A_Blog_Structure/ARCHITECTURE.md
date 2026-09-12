@@ -232,6 +232,14 @@ The `vercel`/`wrangler` CLIs are not — read deploy logs from the dashboard.
 
 ---
 
+**Uncoloured `<span>` inside a hero heading renders dark.** `src/app/globals.css` sets, in
+`@layer base`, `p, span, li { color: #3D3846; }`. A `<span>` inside a `text-white` `<h1>`
+does **not** inherit the white — it takes that charcoal, and on the dark hero image it is
+near-invisible (id 73 shipped this to `preview` when the 91-char headline was split across
+two lines with a size-only span). Tailwind colour utilities beat the base rule, so either
+put an explicit `text-white` on the span or, better, avoid the span and break with `<br>`.
+Audit: `grep -oE '<span className="[^"]*"' <post>.tsx | grep -v 'text-'`.
+
 ## Known tech debt
 
 Every post client is ~55–65% **duplicated chrome** — state hooks, like/share/comment
