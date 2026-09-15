@@ -202,30 +202,137 @@ function ScopeTestGraphic() {
 }
 
 /* ------------------------------------------------------------------ */
-/* Format comparison — figures repeated in the body of "formats"       */
+/* Infographic 3 — the format ladder                                   */
+/* A comparison figure, not a chart: three containers scored 1–3 on   */
+/* the five things that hit a drop-day operation. More filled = costs  */
+/* you more. Every score also carries a word, so nothing depends on    */
+/* colour alone. Wording matches the body of "formats" and "usps":     */
+/* mailer ~30s / box with inserts ~90s; only a parcel over one cubic   */
+/* foot pays dimensional weight, +2 lb since 12 July.                  */
 /* ------------------------------------------------------------------ */
-const FORMAT_ROWS = [
+type Score = { level: 1 | 2 | 3; word: string };
+type FormatCard = {
+    name: string;
+    tagline: string;
+    useWhen: string;
+    scores: Score[];
+};
+
+const LADDER_ROWS = ["Packing time", "Postage", "Unit cost", "Damage risk", "Return hassle"];
+
+const FORMAT_LADDER: FormatCard[] = [
     {
-        format: "Poly mailer",
-        forWhat: "Tees, hoodies, anything that folds without creasing badly",
-        against: "No structure, so it feels purely practical unless you dress it up",
+        name: "Poly mailer",
+        tagline: "The sealed plastic envelope",
+        useWhen: "Tees, hoodies, anything that folds without creasing badly",
+        scores: [
+            { level: 1, word: "About 30 seconds" },
+            { level: 1, word: "Never near a cubic foot" },
+            { level: 1, word: "Cents each" },
+            { level: 3, word: "No structure" },
+            { level: 1, word: "Second peel strip: goes back in the same bag" },
+        ],
     },
     {
-        format: "Mailer box (folding corrugated)",
-        forWhat: "Multi-item orders, anything with a brim or a panel to protect",
-        against: "Heavier, bulkier, and the only format that can cross a cubic foot",
+        name: "Mailer box",
+        tagline: "Folding cardboard, flat until you build it",
+        useWhen: "Multi-item orders, anything with a brim or a panel to protect",
+        scores: [
+            { level: 2, word: "Fold, fill, tape" },
+            { level: 2, word: "Usually under a cubic foot — measure it" },
+            { level: 2, word: "More than film" },
+            { level: 1, word: "Protects a crease" },
+            { level: 2, word: "Needs re-taping" },
+        ],
     },
     {
-        format: "Rigid presentation box",
-        forWhat: "A collaboration piece, an archive release, a genuine gift purchase",
-        against: "Expensive per unit, slow to make, and the customer either keeps it or throws it out",
-    },
-    {
-        format: "Tissue, sticker, card, tape",
-        forWhat: "Carrying the drop's artwork without locking your mailers into it",
-        against: "Adds a few seconds of packing per order, which adds up over 800 parcels",
+        name: "Rigid presentation box",
+        tagline: "The lidded kind people keep on a shelf",
+        useWhen: "A collaboration piece, an archive release, a real gift purchase",
+        scores: [
+            { level: 3, word: "About 90 seconds with inserts" },
+            { level: 3, word: "Over a cubic foot: +2 lb since 12 July" },
+            { level: 3, word: "The most per unit" },
+            { level: 1, word: "Protects everything" },
+            { level: 3, word: "Rarely survives a return" },
+        ],
     },
 ];
+
+function ScorePill({ score }: { score: Score }) {
+    return (
+        <div className="flex items-center gap-2 min-w-0">
+            <div className="flex gap-[2px] flex-shrink-0" aria-hidden>
+                {[1, 2, 3].map((n) => (
+                    <span
+                        key={n}
+                        className={`block h-2.5 w-4 rounded-sm ${n <= score.level ? (score.level === 3 ? "bg-[#2D2A2E]" : "bg-[#8C7A5E]") : "bg-[#E4DFD6]"}`}
+                    />
+                ))}
+            </div>
+            <span className="text-[13px] leading-snug text-[#4A484A] min-w-0">{score.word}</span>
+        </div>
+    );
+}
+
+function FormatLadderGraphic() {
+    return (
+        <figure className="my-8 rounded-2xl border border-gray-200 bg-[#F8F7F4] p-5 sm:p-7 not-prose">
+            <p className="text-[11px] font-bold uppercase tracking-[0.18em] text-[#CBB49A] mb-1">Infographic 03</p>
+            <h3 className="text-xl sm:text-2xl font-extrabold text-[#2D2A2E] mb-1 leading-snug">
+                Three ways to ship the same hoodie
+            </h3>
+            <p className="text-sm text-[#666666] mb-5">
+                Scored on the five things that hit you the weekend a drop ships. More filled means it costs you more.
+                Read left to right: every step toward a parcel that feels like an occasion moves four of the five
+                rows against you, and only one in your favour.
+            </p>
+
+            <div className="grid gap-4 md:grid-cols-3">
+                {FORMAT_LADDER.map((card, i) => (
+                    <div
+                        key={card.name}
+                        className={`rounded-xl border bg-white p-4 sm:p-5 flex flex-col ${i === 0 ? "border-[#CBB49A]" : "border-gray-200"}`}
+                    >
+                        {/* Keep the badge row on every card (empty on two) so the five score rows line up across all three. */}
+                        <p className="text-[10px] font-bold uppercase tracking-[0.14em] text-[#CBB49A] h-4 mb-1">
+                            {i === 0 ? "Where most drops land" : " "}
+                        </p>
+                        <h4 className="text-base sm:text-lg font-extrabold text-[#2D2A2E] leading-snug mb-1">{card.name}</h4>
+                        <p className="text-xs text-[#666666] mb-3 min-h-[2rem]">{card.tagline}</p>
+
+                        <dl className="space-y-2.5 mb-4">
+                            {LADDER_ROWS.map((row, r) => (
+                                <div key={row}>
+                                    <dt className="text-[11px] font-bold uppercase tracking-wide text-[#2D2A2E] mb-0.5">{row}</dt>
+                                    <dd><ScorePill score={card.scores[r]} /></dd>
+                                </div>
+                            ))}
+                        </dl>
+
+                        <p className="mt-auto pt-3 border-t border-gray-100 text-[13px] leading-snug text-[#4A484A]">
+                            <span className="font-semibold text-[#2D2A2E]">Use it for: </span>{card.useWhen}
+                        </p>
+                    </div>
+                ))}
+            </div>
+
+            <div className="mt-4 rounded-xl border border-dashed border-[#CBB49A]/60 bg-white/60 p-4">
+                <p className="text-[11px] font-bold uppercase tracking-wide text-[#CBB49A] mb-1">Plus the inserts &mdash; tissue, sticker, card, tape</p>
+                <p className="text-[13px] leading-snug text-[#4A484A]">
+                    Not a container; they go inside any of the three. They add seconds per parcel and almost no weight, and
+                    they are the only part of the packaging you can reprint in a week &mdash; which is why the drop&rsquo;s
+                    artwork belongs on them and not on the film.
+                </p>
+            </div>
+
+            <figcaption className="mt-4 text-sm text-[#4A484A] leading-snug border-t border-gray-200 pt-4">
+                The one row that improves as you move right is damage risk. If nothing in the range can be creased
+                permanently, that row does not apply to you, and the mailer wins on everything else.
+            </figcaption>
+        </figure>
+    );
+}
 
 export default function StreetwearPackagingClient({ initialLikeCount, initialComments, faqs }: BlogClientProps) {
     const [contactOpen, setContactOpen] = useState(false);
@@ -562,15 +669,15 @@ export default function StreetwearPackagingClient({ initialLikeCount, initialCom
 
                             {/* Opening */}
                             <p className="text-lg lg:text-xl text-[#2D2A2E] leading-snug mb-5 font-medium">
-                                A drop that sells out in forty minutes hands you a different problem by lunchtime: several hundred parcels that have to be out of the door within two days, packed in whatever you decided to buy months ago.
+                                The parcel is the only part of a drop your customer actually touches. It is also the only part you build after the money has landed &mdash; and the wrong one costs you twice: on the postage for every single order, and in the hours it takes to pack them all.
                             </p>
 
                             <p className="mb-4 text-base lg:text-lg leading-snug">
-                                That is the moment packaging stops being a design question. It becomes a question of how fast you can pack, what the carrier charges for the size of the box, what happens when a parcel comes back, and &mdash; since this summer &mdash; whether what is printed on it is legal. None of that shows up on a mood board.
+                                Neither cost is small. A box big enough to feel like an occasion now bills two pounds heavier than it did in June. A parcel with tissue, a card and tape takes about three times as long to pack as a mailer with a sticker, and a drop ships everything in the same weekend. On 800 orders, that is one long day against nearly three.
                             </p>
 
                             <p className="mb-8 text-base lg:text-lg leading-snug">
-                                Custom packaging for streetwear brands has been creeping closer to the product itself for years, and most of what gets written about it is advice on making it prettier. This is not that. It is about the operational decisions hiding inside the parcel &mdash; and about three rules that changed between 12 July and 27 August that made each of them more expensive to get wrong.
+                                Custom packaging for streetwear brands usually gets written about as a branding exercise. This is not that piece. It is about the decisions hiding inside the parcel &mdash; speed, weight, returns, and since this summer what you are legally allowed to print on it &mdash; and why the format should be chosen before the artwork.
                             </p>
 
                             {/* H2 1 */}
@@ -631,26 +738,7 @@ export default function StreetwearPackagingClient({ initialLikeCount, initialCom
                                     There are only three ways to ship a garment, plus the small stuff you put inside, which does most of the branding work. A poly mailer is the sealed plastic envelope. A mailer box is folding cardboard &mdash; flat when it arrives, a shallow box once you fold it up. A rigid presentation box is the sturdy lidded kind people keep on a shelf.
                                 </p>
 
-                                <div className="not-prose my-7 overflow-x-auto rounded-2xl border border-gray-200">
-                                    <table className="w-full min-w-[640px] text-left border-collapse bg-white">
-                                        <thead>
-                                            <tr className="bg-[#F8F7F4]">
-                                                <th className="p-4 text-sm font-bold uppercase tracking-wider text-[#2D2A2E] border-b border-gray-200">Format</th>
-                                                <th className="p-4 text-sm font-bold uppercase tracking-wider text-[#2D2A2E] border-b border-gray-200">What it is for</th>
-                                                <th className="p-4 text-sm font-bold uppercase tracking-wider text-[#2D2A2E] border-b border-gray-200">What it costs you</th>
-                                            </tr>
-                                        </thead>
-                                        <tbody>
-                                            {FORMAT_ROWS.map((row) => (
-                                                <tr key={row.format} className="align-top">
-                                                    <td className="p-4 border-b border-gray-100 font-semibold text-[#2D2A2E]">{row.format}</td>
-                                                    <td className="p-4 border-b border-gray-100 text-[#4A484A]">{row.forWhat}</td>
-                                                    <td className="p-4 border-b border-gray-100 text-[#4A484A]">{row.against}</td>
-                                                </tr>
-                                            ))}
-                                        </tbody>
-                                    </table>
-                                </div>
+                                <FormatLadderGraphic />
 
                                 <p className="text-base lg:text-lg leading-snug text-[#4A484A] mb-4">
                                     Most established drop brands end up in the same place: a plain mailer, with a printed sticker, a card and branded tape doing all the talking. Change the sticker, change the drop.
