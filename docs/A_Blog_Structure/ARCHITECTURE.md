@@ -258,3 +258,18 @@ Until that lands: **one blog at a time**, and accept that layout changes touch e
 file. This refactor is scoped and awaiting greenlight — **do not start it mid-blog.**
 
 *Last reviewed: 2026-08-21.*
+
+---
+
+## Preview deployments — the `preview` branch
+
+**Pull requests do not build previews on this repo.** Automatic preview deployments are
+off for every non-production branch (Cloudflare → *Branch control*). Only `main`
+(production) and the permanent parallel branch **`preview`** build.
+
+To show anyone a post, merge its branch into `preview` and push; the stable link
+`https://preview.kk-landing-page.pages.dev/blogs/<slug>` updates. `preview` is never merged back into
+`main`, never closed, never deleted.
+
+**Full procedure and hard rules: `CLAUDE.md` at the repo root.** It overrides
+`/blog` Phase 6 step 5, which still describes the old PR-builds-a-preview behaviour.
