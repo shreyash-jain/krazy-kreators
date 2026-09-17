@@ -15,6 +15,21 @@ export type BlogPostMeta = {
 
 export const blogPosts: BlogPostMeta[] = [
   {
+    id: 76,
+    title:
+      "Kidswear and Family Matching Apparel: A Growing Niche for Custom US Clothing Brands",
+    excerpt:
+      "On 2 April Sam's Club recalled 18,000 children's pajama sets that had sold for about $14; the adult version of the same print would very likely have been legal. That is the whole difficulty of a family matching set: it is one design, but the child's half is a different product under US law — lead-tested trims, a tracking label, a certificate filed at the border, and for pajamas above 9 months a flame test or a snug cut with the yellow hangtag. Why the category gets re-bought every year even though US births fell 1% in 2025, how one fabric survives six ASTM size tables, why the only family product still open for this December is decorated blanks, what changes on the factory floor, and the arithmetic that turns 78 SKUs into 34.",
+    category: "manufacturing",
+    author: "Krazy Kreators Team",
+    date: "September 16, 2026",
+    readTime: "6 min read",
+    image: "/blog/family-matching-apparel-manufacturing-hero.jpg",
+    slug: "family-matching-apparel-manufacturing",
+    readers: 0,
+    likes: 0,
+  },
+  {
     id: 75,
     title:
       "Color and Fabric Trends for Fall/Winter 2026: What to Manufacture Next",
