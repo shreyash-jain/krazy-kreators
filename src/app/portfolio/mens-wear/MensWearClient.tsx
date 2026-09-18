@@ -37,8 +37,8 @@ export default function MensWearClient() {
       brandName: "Drover Cowboy Threads",
       brandLogo: "/brands/drover.png",
       images: [
-        "/portfolio/mens-wear/shirt/1.png",
-        "/portfolio/mens-wear/shirt/2.png"
+        "/portfolio/mens-wear/shirt/1.webp",
+        "/portfolio/mens-wear/shirt/2.webp"
       ]
     },
     {
@@ -48,8 +48,8 @@ export default function MensWearClient() {
       brandName: "Drover Cowboy Threads",
       brandLogo: "/brands/drover.png",
       images: [
-        "/portfolio/mens-wear/shirt/3.png",
-        "/portfolio/mens-wear/shirt/4.png"
+        "/portfolio/mens-wear/shirt/3.webp",
+        "/portfolio/mens-wear/shirt/4.webp"
       ]
     },
     {
@@ -59,8 +59,8 @@ export default function MensWearClient() {
       brandName: "Drover Cowboy Threads",
       brandLogo: "/brands/drover.png",
       images: [
-        "/portfolio/mens-wear/shirt/5.png",
-        "/portfolio/mens-wear/shirt/6.png"
+        "/portfolio/mens-wear/shirt/5.webp",
+        "/portfolio/mens-wear/shirt/6.webp"
       ]
     },
     {
@@ -70,9 +70,9 @@ export default function MensWearClient() {
       brandName: "Drover Cowboy Threads",
       brandLogo: "/brands/drover.png",
       images: [
-        "/portfolio/mens-wear/shirt/7.png",
-        "/portfolio/mens-wear/shirt/8.png",
-        "/portfolio/mens-wear/shirt/9.png"
+        "/portfolio/mens-wear/shirt/7.webp",
+        "/portfolio/mens-wear/shirt/8.webp",
+        "/portfolio/mens-wear/shirt/9.webp"
       ]
     },
     // Shirts - Single images (no pagination)
@@ -83,7 +83,7 @@ export default function MensWearClient() {
       brandName: "Drover Cowboy Threads",
       brandLogo: "/brands/drover.png",
       images: [
-        "/portfolio/mens-wear/shirt/10.png"
+        "/portfolio/mens-wear/shirt/10.webp"
       ]
     },
     {
@@ -93,7 +93,7 @@ export default function MensWearClient() {
       brandName: "Drover Cowboy Threads",
       brandLogo: "/brands/drover.png",
       images: [
-        "/portfolio/mens-wear/shirt/11.png"
+        "/portfolio/mens-wear/shirt/11.webp"
       ]
     },
     {
@@ -103,7 +103,7 @@ export default function MensWearClient() {
       brandName: "Drover Cowboy Threads",
       brandLogo: "/brands/drover.png",
       images: [
-        "/portfolio/mens-wear/shirt/12.png"
+        "/portfolio/mens-wear/shirt/12.webp"
       ]
     },
     {
@@ -113,7 +113,7 @@ export default function MensWearClient() {
       brandName: "Drover Cowboy Threads",
       brandLogo: "/brands/drover.png",
       images: [
-        "/portfolio/mens-wear/shirt/13.png"
+        "/portfolio/mens-wear/shirt/13.webp"
       ]
     },
     {
@@ -123,7 +123,7 @@ export default function MensWearClient() {
       brandName: "Drover Cowboy Threads",
       brandLogo: "/brands/drover.png",
       images: [
-        "/portfolio/mens-wear/shirt/14.png"
+        "/portfolio/mens-wear/shirt/14.webp"
       ]
     },
     {
@@ -133,7 +133,7 @@ export default function MensWearClient() {
       brandName: "Drover Cowboy Threads",
       brandLogo: "/brands/drover.png",
       images: [
-        "/portfolio/mens-wear/shirt/15.png"
+        "/portfolio/mens-wear/shirt/15.webp"
       ]
     },
     {
@@ -143,7 +143,7 @@ export default function MensWearClient() {
       brandName: "Drover Cowboy Threads",
       brandLogo: "/brands/drover.png",
       images: [
-        "/portfolio/mens-wear/shirt/16.png"
+        "/portfolio/mens-wear/shirt/16.webp"
       ]
     },
     {
@@ -153,7 +153,7 @@ export default function MensWearClient() {
       brandName: "Drover Cowboy Threads",
       brandLogo: "/brands/drover.png",
       images: [
-        "/portfolio/mens-wear/shirt/17.png"
+        "/portfolio/mens-wear/shirt/17.webp"
       ]
     },
     {
@@ -163,7 +163,7 @@ export default function MensWearClient() {
       brandName: "Drover Cowboy Threads",
       brandLogo: "/brands/drover.png",
       images: [
-        "/portfolio/mens-wear/shirt/18.png"
+        "/portfolio/mens-wear/shirt/18.webp"
       ]
     },
     {
@@ -173,7 +173,7 @@ export default function MensWearClient() {
       brandName: "Drover Cowboy Threads",
       brandLogo: "/brands/drover.png",
       images: [
-        "/portfolio/mens-wear/shirt/19.png"
+        "/portfolio/mens-wear/shirt/19.webp"
       ]
     },
     {
@@ -183,7 +183,7 @@ export default function MensWearClient() {
       brandName: "Drover Cowboy Threads",
       brandLogo: "/brands/drover.png",
       images: [
-        "/portfolio/mens-wear/shirt/20.png"
+        "/portfolio/mens-wear/shirt/20.webp"
       ]
     },
     {
@@ -193,7 +193,7 @@ export default function MensWearClient() {
       brandName: "Drover Cowboy Threads",
       brandLogo: "/brands/drover.png",
       images: [
-        "/portfolio/mens-wear/shirt/21.png"
+        "/portfolio/mens-wear/shirt/21.webp"
       ]
     },
     {
@@ -203,7 +203,7 @@ export default function MensWearClient() {
       brandName: "Drover Cowboy Threads",
       brandLogo: "/brands/drover.png",
       images: [
-        "/portfolio/mens-wear/shirt/22.png"
+        "/portfolio/mens-wear/shirt/22.webp"
       ]
     },
     {
@@ -213,7 +213,7 @@ export default function MensWearClient() {
       brandName: "Drover Cowboy Threads",
       brandLogo: "/brands/drover.png",
       images: [
-        "/portfolio/mens-wear/shirt/23.png"
+        "/portfolio/mens-wear/shirt/23.webp"
       ]
     },
     {
@@ -223,7 +223,7 @@ export default function MensWearClient() {
       brandName: "Drover Cowboy Threads",
       brandLogo: "/brands/drover.png",
       images: [
-        "/portfolio/mens-wear/shirt/24.png"
+        "/portfolio/mens-wear/shirt/24.webp"
       ]
     },
     {
@@ -233,7 +233,7 @@ export default function MensWearClient() {
       brandName: "Drover Cowboy Threads",
       brandLogo: "/brands/drover.png",
       images: [
-        "/portfolio/mens-wear/shirt/25.png"
+        "/portfolio/mens-wear/shirt/25.webp"
       ]
     },
     {
@@ -243,7 +243,7 @@ export default function MensWearClient() {
       brandName: "Drover Cowboy Threads",
       brandLogo: "/brands/drover.png",
       images: [
-        "/portfolio/mens-wear/shirt/26.png"
+        "/portfolio/mens-wear/shirt/26.webp"
       ]
     },
     {
@@ -253,7 +253,7 @@ export default function MensWearClient() {
       brandName: "Drover Cowboy Threads",
       brandLogo: "/brands/drover.png",
       images: [
-        "/portfolio/mens-wear/shirt/27.png"
+        "/portfolio/mens-wear/shirt/27.webp"
       ]
     },
 
@@ -265,7 +265,7 @@ export default function MensWearClient() {
       brandName: "Drover Cowboy Threads",
       brandLogo: "/brands/drover.png",
       images: [
-        "/portfolio/mens-wear/t-shirt/image%20(36).png"
+        "/portfolio/mens-wear/t-shirt/36.webp"
       ]
     },
     {
@@ -275,7 +275,7 @@ export default function MensWearClient() {
       brandName: "Drover Cowboy Threads",
       brandLogo: "/brands/drover.png",
       images: [
-        "/portfolio/mens-wear/t-shirt/image%20(37).png"
+        "/portfolio/mens-wear/t-shirt/37.webp"
       ]
     },
     {
@@ -285,7 +285,7 @@ export default function MensWearClient() {
       brandName: "Drover Cowboy Threads",
       brandLogo: "/brands/drover.png",
       images: [
-        "/portfolio/mens-wear/t-shirt/image%20(38).png"
+        "/portfolio/mens-wear/t-shirt/38.webp"
       ]
     },
     {
@@ -295,7 +295,7 @@ export default function MensWearClient() {
       brandName: "Drover Cowboy Threads",
       brandLogo: "/brands/drover.png",
       images: [
-        "/portfolio/mens-wear/t-shirt/image%20(39).png"
+        "/portfolio/mens-wear/t-shirt/39.webp"
       ]
     },
 
@@ -307,8 +307,8 @@ export default function MensWearClient() {
       brandName: "Drover Cowboy Threads",
       brandLogo: "/brands/drover.png",
       images: [
-        "/portfolio/mens-wear/denim/image%20(40).png",
-        "/portfolio/mens-wear/denim/image%20(41).png"
+        "/portfolio/mens-wear/denim/40.webp",
+        "/portfolio/mens-wear/denim/41.webp"
       ]
     },
     {
@@ -318,8 +318,8 @@ export default function MensWearClient() {
       brandName: "Drover Cowboy Threads",
       brandLogo: "/brands/drover.png",
       images: [
-        "/portfolio/mens-wear/denim/image%20(42).png",
-        "/portfolio/mens-wear/denim/image%20(43).png"
+        "/portfolio/mens-wear/denim/42.webp",
+        "/portfolio/mens-wear/denim/43.webp"
       ]
     },
     {
@@ -329,8 +329,8 @@ export default function MensWearClient() {
       brandName: "Drover Cowboy Threads",
       brandLogo: "/brands/drover.png",
       images: [
-        "/portfolio/mens-wear/denim/image%20(44).png",
-        "/portfolio/mens-wear/denim/image%20(45).png"
+        "/portfolio/mens-wear/denim/44.webp",
+        "/portfolio/mens-wear/denim/45.webp"
       ]
     },
     {
@@ -340,8 +340,8 @@ export default function MensWearClient() {
       brandName: "Drover Cowboy Threads",
       brandLogo: "/brands/drover.png",
       images: [
-        "/portfolio/mens-wear/denim/image%20(46).png",
-        "/portfolio/mens-wear/denim/image%20(47).png"
+        "/portfolio/mens-wear/denim/46.webp",
+        "/portfolio/mens-wear/denim/47.webp"
       ]
     },
 
@@ -353,7 +353,7 @@ export default function MensWearClient() {
       brandName: "Drover Cowboy Threads",
       brandLogo: "/brands/drover.png",
       images: [
-        "/portfolio/mens-wear/winter-wear/image%20(48).png"
+        "/portfolio/mens-wear/winter-wear/48.webp"
       ]
     },
     {
@@ -363,7 +363,7 @@ export default function MensWearClient() {
       brandName: "Drover Cowboy Threads",
       brandLogo: "/brands/drover.png",
       images: [
-        "/portfolio/mens-wear/winter-wear/image%20(49).png"
+        "/portfolio/mens-wear/winter-wear/49.webp"
       ]
     },
     {
@@ -373,7 +373,7 @@ export default function MensWearClient() {
       brandName: "Drover Cowboy Threads",
       brandLogo: "/brands/drover.png",
       images: [
-        "/portfolio/mens-wear/winter-wear/image%20(50).png"
+        "/portfolio/mens-wear/winter-wear/50.webp"
       ]
     },
     {
@@ -383,7 +383,7 @@ export default function MensWearClient() {
       brandName: "Drover Cowboy Threads",
       brandLogo: "/brands/drover.png",
       images: [
-        "/portfolio/mens-wear/winter-wear/image%20(51).png"
+        "/portfolio/mens-wear/winter-wear/51.webp"
       ]
     },
     {
@@ -393,7 +393,7 @@ export default function MensWearClient() {
       brandName: "Drover Cowboy Threads",
       brandLogo: "/brands/drover.png",
       images: [
-        "/portfolio/mens-wear/winter-wear/image%20(52).png"
+        "/portfolio/mens-wear/winter-wear/52.webp"
       ]
     }
   ];
