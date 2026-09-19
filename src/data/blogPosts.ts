@@ -15,6 +15,21 @@ export type BlogPostMeta = {
 
 export const blogPosts: BlogPostMeta[] = [
   {
+    id: 77,
+    title:
+      "NIL and College Sports Merch Boom: How Manufacturing Partners Are Meeting Demand in 2026",
+    excerpt:
+      "NIL Club's Athlete Merch turned any college athlete into a product owner on March 31, and Opendorse now puts total 2026-27 NIL earnings at $4.5 billion — 61% above last year's estimate. That is a wildly different manufacturing client than a university licensing office: real low MOQ, turnaround measured in days once a moment goes viral, and a two-tier IP problem, since an athlete's NIL rights stop at their own name and never reach the school's crest. Add the Deloitte-run NIL Go clearinghouse now reviewing every merch royalty worth $600 or more, and the manufacturing partner who can produce a clean paper trail alongside a fast reprint is doing half the athlete's compliance work for them. Inside: the formats actually selling, why DTF and private label — not custom patterns — fit inside a live season window, and how one graphic becomes six shippable SKUs before the moment passes.",
+    category: "manufacturing",
+    author: "Krazy Kreators Team",
+    date: "September 18, 2026",
+    readTime: "7 min read",
+    image: "/blog/nil-college-sports-merch-manufacturing-2026-hero.jpg",
+    slug: "nil-college-sports-merch-manufacturing-2026",
+    readers: 0,
+    likes: 0,
+  },
+  {
     id: 75,
     title:
       "Color and Fabric Trends for Fall/Winter 2026: What to Manufacture Next",
