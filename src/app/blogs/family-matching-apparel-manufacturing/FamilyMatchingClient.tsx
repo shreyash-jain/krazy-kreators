@@ -248,7 +248,7 @@ export default function FamilyMatchingClient({ initialLikeCount, initialComments
                         <span className="text-sm text-gray-400">•</span>
                         <span className="text-sm text-gray-200 font-medium tracking-wide">September 16, 2026</span>
                     </div>
-                    <h1 className="text-2xl sm:text-3xl lg:text-4xl xl:text-5xl font-extrabold text-white leading-tight max-w-5xl drop-shadow-lg mb-6 tracking-tight text-balance">
+                    <h1 className="text-2xl sm:text-3xl lg:text-4xl 2xl:text-5xl font-extrabold text-white leading-tight max-w-6xl drop-shadow-lg mb-6 tracking-tight text-balance">
                         Kidswear and Family Matching Apparel:<br className="hidden sm:block" />{" "}
                         A Growing Niche for Custom US Clothing Brands
                     </h1>
