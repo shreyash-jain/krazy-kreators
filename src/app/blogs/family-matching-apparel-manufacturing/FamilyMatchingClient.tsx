@@ -229,7 +229,7 @@ export default function FamilyMatchingClient({ initialLikeCount, initialComments
             <Navbar invertTabs={!scrolled} />
 
             {/* Hero */}
-            <section className="relative h-[60vh] min-h-[560px] max-h-[720px] flex items-center justify-center overflow-hidden">
+            <section className="relative min-h-[640px] lg:min-h-[72vh] flex items-center justify-center overflow-hidden pt-32 pb-16 sm:pt-36 sm:pb-20">
                 <Image
                     src={HERO_IMAGE}
                     alt="Golden-hour photograph in a New England pumpkin field: a family of four in matching cream cable-knit sweaters walks away from the camera toward a line of orange maples, seen only from behind — the fall family photo outfit sets a family matching apparel brand sells into every September. No faces, no logos."
@@ -239,7 +239,7 @@ export default function FamilyMatchingClient({ initialLikeCount, initialComments
                 />
                 <div className="absolute inset-0 bg-black/60" />
 
-                <div className="relative z-10 w-full min-w-[80%] lg:max-w-[80%] mx-auto px-4 md:px-6 lg:px-0 text-center flex flex-col items-center mt-16">
+                <div className="relative z-10 w-full min-w-[80%] lg:max-w-[80%] mx-auto px-4 md:px-6 lg:px-0 text-center flex flex-col items-center">
                     <div className="flex flex-wrap justify-center items-center gap-4 mb-8">
                         <span className="px-4 py-1.5 bg-[#CBB49A] text-white text-xs sm:text-sm font-semibold rounded-full uppercase tracking-wider">
                             Production &amp; Sourcing
@@ -248,11 +248,11 @@ export default function FamilyMatchingClient({ initialLikeCount, initialComments
                         <span className="text-sm text-gray-400">•</span>
                         <span className="text-sm text-gray-200 font-medium tracking-wide">September 16, 2026</span>
                     </div>
-                    <h1 className="text-3xl sm:text-4xl lg:text-5xl xl:text-6xl font-extrabold text-white leading-tight max-w-5xl drop-shadow-lg mb-6 tracking-tight">
-                        Kidswear and Family Matching Apparel:<br className="hidden lg:block" />{" "}
+                    <h1 className="text-2xl sm:text-3xl lg:text-4xl xl:text-5xl font-extrabold text-white leading-tight max-w-5xl drop-shadow-lg mb-6 tracking-tight text-balance">
+                        Kidswear and Family Matching Apparel:<br className="hidden sm:block" />{" "}
                         A Growing Niche for Custom US Clothing Brands
                     </h1>
-                    <p className="text-xl sm:text-2xl lg:text-3xl text-gray-200 font-medium max-w-3xl drop-shadow-md leading-relaxed">
+                    <p className="text-lg sm:text-xl lg:text-2xl text-gray-200 font-medium max-w-3xl drop-shadow-md leading-relaxed">
                         One design, two rulebooks. The child&rsquo;s half of the set is a different product under US law &mdash; and everything follows from that.
                     </p>
                 </div>
