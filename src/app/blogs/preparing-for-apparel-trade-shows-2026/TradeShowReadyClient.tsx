@@ -239,9 +239,9 @@ export default function TradeShowReadyClient({ initialLikeCount, initialComments
                         <span className="px-4 py-1.5 bg-[#CBB49A] text-white text-xs sm:text-sm font-semibold rounded-full uppercase tracking-wider">
                             Growth &amp; Business
                         </span>
-                        <span className="text-sm text-gray-200 font-medium tracking-wide">9 min read</span>
+                        <span className="text-sm text-gray-200 font-medium tracking-wide">6 min read</span>
                         <span className="text-sm text-gray-400">•</span>
-                        <span className="text-sm text-gray-200 font-medium tracking-wide">September 9, 2026</span>
+                        <span className="text-sm text-gray-200 font-medium tracking-wide">September 21, 2026</span>
                     </div>
                     <h1 className="text-3xl sm:text-4xl lg:text-5xl xl:text-6xl font-extrabold text-white leading-tight max-w-5xl drop-shadow-lg mb-6 tracking-tight">
                         Trade Shows and Wholesale Buyers in 2026:<br className="hidden lg:block" />{" "}
@@ -282,7 +282,7 @@ export default function TradeShowReadyClient({ initialLikeCount, initialComments
                         </div>
                         <div>
                             <p className="text-sm font-semibold text-[#2D2A2E]">Krazy Kreators Team <span className="text-[#666666] font-normal">· Growth &amp; Business</span></p>
-                            <p className="text-sm text-[#666666]">Covers retail expansion and wholesale for US clothing founders · September 9, 2026</p>
+                            <p className="text-sm text-[#666666]">Covers retail expansion and wholesale for US clothing founders · September 21, 2026</p>
                         </div>
                     </div>
 
@@ -290,8 +290,8 @@ export default function TradeShowReadyClient({ initialLikeCount, initialComments
                     <div className="border-l-4 border-[#CBB49A] bg-[#F8F7F4] p-5 sm:p-6 rounded-r-2xl mb-10">
                         <p className="text-xs font-bold uppercase tracking-[0.18em] text-[#CBB49A] mb-2">TL;DR</p>
                         <ul className="space-y-1.5 text-[#2D2A2E] text-base sm:text-lg leading-snug">
-                            <li>• Wholesale order-to-ship time fell from <strong>253 days to 86</strong>. Buyers no longer fund your runway — capacity does.</li>
-                            <li>• February&rsquo;s shows are <strong>23 weeks out</strong>. A realistic production run takes 23 weeks. There is no slack in that.</li>
+                            <li>• Wholesale order-to-ship time fell from <strong>253 days to 86</strong>. Buyers no longer fund your runway. Factory capacity does.</li>
+                            <li>• February&rsquo;s shows are <strong>21 weeks out</strong>. A from-scratch collection takes 23. If your patterns already exist, you have twelve to spend.</li>
                             <li>• The most common reason a good line gets passed over is <strong>a delivery date the buyer does not believe</strong>.</li>
                         </ul>
                     </div>
@@ -367,15 +367,15 @@ export default function TradeShowReadyClient({ initialLikeCount, initialComments
 
                             {/* Opening */}
                             <p className="text-lg lg:text-xl text-[#2D2A2E] leading-snug mb-5 font-medium">
-                                The Coterie floor at the Javits Center opened this morning. If you are reading this and you are not on it, that is not your problem.
+                                Coterie packed up in New York on 11 September. Next up: Atlanta Apparel, 2&ndash;5 February 2027 (<a href="https://www.atlanta-apparel.com/Markets/atlanta-apparel" target="_blank" rel="noopener noreferrer" className="underline text-[#CBB49A] hover:text-[#b7a078]">Atlanta Apparel</a>), then MAGIC and PROJECT in Las Vegas from 16 February (<a href="https://www.magicfashionevents.com/events/magic-las-vegas/event-information/" target="_blank" rel="noopener noreferrer" className="underline text-[#CBB49A] hover:text-[#b7a078]">MAGIC</a>). That is 21 weeks to Vegas, 19 to Atlanta.
                             </p>
 
                             <p className="mb-4 text-base lg:text-lg leading-snug">
-                                Your problem is February. Atlanta Apparel runs 2&ndash;5 February 2027 (<a href="https://www.atlanta-apparel.com/Markets/atlanta-apparel" target="_blank" rel="noopener noreferrer" className="underline text-[#CBB49A] hover:text-[#b7a078]">Atlanta Apparel</a>); MAGIC and PROJECT open in Las Vegas on 16 February (<a href="https://www.magicfashionevents.com/events/magic-las-vegas/event-information/" target="_blank" rel="noopener noreferrer" className="underline text-[#CBB49A] hover:text-[#b7a078]">MAGIC</a>). From today that is twenty-three weeks. A realistic small collection also takes <Link href="/blogs/clothing-production-timeline" className="underline text-[#CBB49A] hover:text-[#b7a078]">twenty-three weeks</Link>, sampling to delivered goods.
+                                A small collection, first sample to goods in your warehouse, takes about <Link href="/blogs/clothing-production-timeline" className="underline text-[#CBB49A] hover:text-[#b7a078]">23 weeks on a realistic timeline</Link>. Start from a blank sketchbook and February has gone. Already selling direct, with patterns on file? Then it is on &mdash; as a factory job, not a marketing one.
                             </p>
 
                             <p className="mb-8 text-base lg:text-lg leading-snug">
-                                Which is the whole argument of this piece. <strong>Preparing for apparel trade shows</strong> is not a marketing exercise that starts in January with a booth deposit and a business-card order. It is a manufacturing decision, and the window on it is open now.
+                                That is the point. <strong>Preparing for apparel trade shows</strong> mostly happens in October, at the factory. The booth just shows what you did there.
                             </p>
 
                             {/* H2 1 */}
@@ -396,13 +396,7 @@ export default function TradeShowReadyClient({ initialLikeCount, initialComments
                                 </div>
 
                                 <p className="text-base lg:text-lg leading-snug text-[#4A484A] mb-4">
-                                    Something structural changed in wholesale and most brand-side advice has not caught up with it. The average time from a wholesale order being placed to the product shipping fell from <strong>253 days in 2019 to 86 days in 2024</strong> &mdash; a 66% drop, measured across JOOR&rsquo;s own transaction data (<a href="https://www.joor.com/insights/available-to-sell-digital-tradeshow" target="_blank" rel="noopener noreferrer" className="underline text-[#CBB49A] hover:text-[#b7a078]">JOOR</a>).
-                                </p>
-                                <p className="text-base lg:text-lg leading-snug text-[#4A484A] mb-4">
-                                    Read that as a founder rather than an analyst. Buyers used to write nine months out, which meant their order effectively financed your production. Now they write three months out, and an order taken at MAGIC in mid-February is expected on a shop floor around the middle of May.
-                                </p>
-                                <p className="text-base lg:text-lg leading-snug text-[#4A484A] mb-4">
-                                    The same data shows evergreen styles &mdash; <em>the pieces you carry season after season rather than replace</em> &mdash; have climbed to 47% of total sales, up from 37% five years ago. Buyers are hedging against unsold stock by ordering things they can reorder. Which puts a specific question in front of you, and it is not a design question.
+                                    Buyers give you far less time than they used to. JOOR&rsquo;s own order data shows the average gap between a wholesale order and the goods shipping fell from <strong>253 days in 2019 to 86 in 2024</strong> (<a href="https://www.joor.com/insights/available-to-sell-digital-tradeshow" target="_blank" rel="noopener noreferrer" className="underline text-[#CBB49A] hover:text-[#b7a078]">JOOR</a>). Buyers used to write nine months out, which effectively paid for your production. Now they write three months out, and a February order is expected on the floor by mid-May.
                                 </p>
 
                                 {/* Teaching graphic 1 */}
@@ -443,20 +437,17 @@ export default function TradeShowReadyClient({ initialLikeCount, initialComments
                                 </figure>
 
                                 <p className="text-base lg:text-lg leading-snug text-[#4A484A] mb-4">
-                                    The buyer you meet has also changed. Independent boutiques now account for 62% of transaction volume, up from 49% five years ago, and have grown their order volume 27% since 2020 while department stores fell 13% (<a href="https://wwd.com/sourcing-journal/industry-news/digital-first-wholesale-strategies-from-joors-2026-report-1238915864/" target="_blank" rel="noopener noreferrer" className="underline text-[#CBB49A] hover:text-[#b7a078]">JOOR&rsquo;s 2026 Wholesale Landscape, via Sourcing Journal</a>).
-                                </p>
-                                <p className="text-base lg:text-lg leading-snug text-[#4A484A] mb-4">
-                                    An independent opens small. A handful of units per style, per size run, spread across three colourways. That is wonderful for your risk and brutal for your minimums &mdash; if your factory will not cut under 300 pieces a colourway, you need six accounts saying yes before you can produce for one. Worth reading our <Link href="/blogs/custom-clothing-manufacturing-cost" className="underline text-[#CBB49A] hover:text-[#b7a078]">breakdown of what unit cost does at each MOQ tier</Link> before you quote anyone.
+                                    The buyer has changed too. Independent boutiques now make up 62% of transactions on JOOR, up from 49% five years ago (<a href="https://wwd.com/sourcing-journal/industry-news/digital-first-wholesale-strategies-from-joors-2026-report-1238915864/" target="_blank" rel="noopener noreferrer" className="underline text-[#CBB49A] hover:text-[#b7a078]">JOOR&rsquo;s 2026 Wholesale Landscape, via Sourcing Journal</a>). They open small: a few units per size, two or three colours. Easy on your risk, hard on your minimums. If your factory will not cut under 300 pieces a colourway, you need several stores to say yes before you can produce for one. See <Link href="/blogs/custom-clothing-manufacturing-cost" className="underline text-[#CBB49A] hover:text-[#b7a078]">what unit cost does at each MOQ tier</Link> before you quote anyone.
                                 </p>
                                 <p className="text-base lg:text-lg leading-snug text-[#4A484A]">
-                                    And consistency is not a virtue here, it is the product. The buyer is not purchasing the sample in their hand. They are purchasing the two-hundredth one, and the four-hundredth after that, and they need those to measure the same. That promise lives in a document, not in a conversation &mdash; which is what a <Link href="/blogs/what-is-a-tech-pack" className="underline text-[#CBB49A] hover:text-[#b7a078]">tech pack</Link> is for.
+                                    And they are not buying the sample they touched. They are buying the 200th unit off the line, and it has to measure the same, which is what a <Link href="/blogs/what-is-a-tech-pack" className="underline text-[#CBB49A] hover:text-[#b7a078]">tech pack</Link> is for.
                                 </p>
 
                                 <div className="not-prose my-7 rounded-2xl border border-[#CBB49A]/40 bg-[#F8F7F4] p-5 sm:p-6">
                                     <p className="text-xs font-bold uppercase tracking-[0.18em] text-[#CBB49A] mb-3">Signs you are not ready to take the order</p>
                                     <ul className="space-y-1.5 text-[#2D2A2E] leading-snug">
                                         <li>&bull; You cannot name a ship date without phoning your factory first</li>
-                                        <li>&bull; Your minimum per colourway is larger than three accounts combined would order</li>
+                                        <li>&bull; Your minimum per colourway is bigger than three stores combined would order</li>
                                         <li>&bull; Your best sample was made by someone who will not be sewing the bulk</li>
                                     </ul>
                                 </div>
@@ -469,16 +460,13 @@ export default function TradeShowReadyClient({ initialLikeCount, initialComments
                                 </h2>
 
                                 <p className="text-base lg:text-lg leading-snug text-[#4A484A] mb-4">
-                                    A line sheet is the order document, not the lookbook: one block per style carrying a clean product image, a style number, colourways, size run, fabric and weight, wholesale price, suggested retail, the minimum, and a delivery window. The lookbook sells the world. The line sheet gets signed.
+                                    A line sheet is the order form <em>(one block per style, the sheet buyers actually order from)</em>: product image, style number, colours, size run, fabric and weight, wholesale price, suggested retail, minimum, delivery window. The lookbook is for mood. The line sheet gets signed.
                                 </p>
                                 <p className="text-base lg:text-lg leading-snug text-[#4A484A] mb-4">
-                                    Four things separate one that reads professional from one that reads like a first attempt. Style numbers that never change between seasons. A delivery window with an actual date in it rather than &ldquo;Spring.&rdquo; The size run stated, not implied. And the suggested retail price printed next to the wholesale price &mdash; so the buyer is not doing your margin arithmetic in front of you.
+                                    Two details make it look like it came from a real brand: a date in the delivery window (&ldquo;ships 1&ndash;15 May&rdquo;, not &ldquo;Spring&rdquo;), and the suggested retail printed next to wholesale, so the buyer is not doing your margin sums in front of you.
                                 </p>
                                 <p className="text-base lg:text-lg leading-snug text-[#4A484A] mb-4">
-                                    That last one does quiet work. It tells a buyer you understand that they have to make money on this too, which is a different conversation from one where you are hoping they like it.
-                                </p>
-                                <p className="text-base lg:text-lg leading-snug text-[#4A484A] mb-4">
-                                    Your sample set has a harder job than it used to. Some 43% of buyers surveyed said they plan to conduct the majority of their appointments virtually, so your images, measurements and specifications carry weight your booth never gets to. But the samples that do get touched must be production-quality, not prototypes. If your sample is finished better than the bulk you can actually ship, you have written a cheque the run will not cash.
+                                    Samples must be sewn from bulk fabric at a quality you can repeat. A sample finished better than the run you will ship is a promise you cannot keep.
                                 </p>
 
                                 <blockquote className="border-l-4 border-[#CBB49A] pl-5 my-7 text-xl lg:text-2xl font-serif italic text-[#2D2A2E] leading-snug">
@@ -504,19 +492,13 @@ export default function TradeShowReadyClient({ initialLikeCount, initialComments
                                 </div>
 
                                 <p className="text-base lg:text-lg leading-snug text-[#4A484A] mb-4">
-                                    Here is the arithmetic nobody does before the booth deposit. Twenty-three weeks from now is MAGIC. If you are starting a collection from a blank sketchbook, you arrive on the show floor with the goods finishing, not with goods to sell into a February order.
+                                    If your patterns exist and fits are signed off, your real runway is the production and freight leg, roughly twelve of those 23 weeks. That fits inside the 21 you have. Just.
                                 </p>
                                 <p className="text-base lg:text-lg leading-snug text-[#4A484A] mb-4">
-                                    Now the honest version, because most brands reading this are not starting from blank. You have DTC traction, which means patterns exist, tech packs exist, fits are signed off. Your real runway is the production and freight leg &mdash; roughly twelve of those twenty-three weeks &mdash; and that changes everything about what is achievable.
-                                </p>
-                                <p className="text-base lg:text-lg leading-snug text-[#4A484A] mb-4">
-                                    It does not make you free. Your show sample set is a separate build competing for the same factory hours as your DTC restocks, and the wholesale order that follows lands on the same calendar again. Three demands, one production line. Brands discover this in March.
-                                </p>
-                                <p className="text-base lg:text-lg leading-snug text-[#4A484A] mb-4">
-                                    So reserve the capacity rather than assuming it. Tell your manufacturer in October what February might bring, in units and in weeks, and ask them to hold a window. A factory that cannot answer that question is a factory you will be apologising for in May &mdash; which is the expensive version of <Link href="/blogs/the-real-cost-of-wrong-clothing-manufacturer" className="underline text-[#CBB49A] hover:text-[#b7a078]">picking the wrong manufacturer</Link>.
+                                    Just, because three jobs land on the same line: show samples, your normal restocks, and the February order that then has to ship by May. Brands find this out in March.
                                 </p>
                                 <p className="text-base lg:text-lg leading-snug text-[#4A484A]">
-                                    If your minimums are the binding constraint rather than your calendar, the route is usually a different production model, not a different factory. Our comparison of <Link href="/blogs/private-label-vs-custom-clothing-manufacturing" className="underline text-[#CBB49A] hover:text-[#b7a078]">private label against fully custom manufacturing</Link> lays out which one survives small opening orders, and <Link href="/blogs/no-moq-clothing-manufacturers" className="underline text-[#CBB49A] hover:text-[#b7a078]">what a &ldquo;no MOQ&rdquo; promise actually costs per unit</Link>.
+                                    So book the capacity before the booth. In October, tell your manufacturer what February might bring, in units and weeks, and get a window held in writing. If they cannot, that is the expensive version of <Link href="/blogs/the-real-cost-of-wrong-clothing-manufacturer" className="underline text-[#CBB49A] hover:text-[#b7a078]">picking the wrong manufacturer</Link>. If minimums are the problem rather than the calendar, the fix is usually a different production model: see <Link href="/blogs/private-label-vs-custom-clothing-manufacturing" className="underline text-[#CBB49A] hover:text-[#b7a078]">private label against fully custom</Link> and <Link href="/blogs/no-moq-clothing-manufacturers" className="underline text-[#CBB49A] hover:text-[#b7a078]">what a &ldquo;no MOQ&rdquo; promise really costs</Link>.
                                 </p>
                             </section>
 
@@ -528,7 +510,7 @@ export default function TradeShowReadyClient({ initialLikeCount, initialComments
                                     </div>
                                     <div>
                                         <p className="text-xs font-bold uppercase tracking-[0.18em] text-[#CBB49A] mb-2">Free download</p>
-                                        <h4 className="text-2xl font-extrabold text-[#2D2A2E] mb-2">The 23-Week Pre-Show Production Checklist</h4>
+                                        <h4 className="text-2xl font-extrabold text-[#2D2A2E] mb-2">The Pre-Show Production Checklist</h4>
                                         <p className="text-[#4A484A] leading-snug">One page, counted back from 16 February 2027: when to lock the range, when to book factory capacity, when samples must be sewn, when the line sheet has to be finished, and the last date an order taken on the floor can still ship on time. PDF.</p>
                                     </div>
                                 </div>
@@ -557,6 +539,7 @@ export default function TradeShowReadyClient({ initialLikeCount, initialComments
                                 </p>
                             </div>
 
+
                             {/* H2 4 */}
                             <section id="pricing" className="scroll-mt-28 mt-12 mb-12">
                                 <h2 className="text-3xl lg:text-4xl font-extrabold tracking-tight text-[#2D2A2E] mb-5 pb-2 border-b border-gray-200">
@@ -564,10 +547,10 @@ export default function TradeShowReadyClient({ initialLikeCount, initialComments
                                 </h2>
 
                                 <p className="text-base lg:text-lg leading-snug text-[#4A484A] mb-4">
-                                    Retail convention is that a store roughly doubles what it pays to reach the price on the tag. That single habit is what turns wholesale pricing into a trap for brands that grew up selling direct, because it works backwards from a number you do not control.
+                                    Stores roughly double what they pay to reach the tag price. That one habit is what trips up brands that grew up selling direct.
                                 </p>
                                 <p className="text-base lg:text-lg leading-snug text-[#4A484A] mb-4">
-                                    Work an actual garment. A cotton tee at $14 FOB <em>(the price at the exporting port, before freight)</em> carries $3.71 of duty at the 26.5% all-in rate now applying to most Asian origins &mdash; the full lane-by-lane picture is in our <Link href="/blogs/us-apparel-import-tariffs-2026" className="underline text-[#CBB49A] hover:text-[#b7a078]">2026 tariff breakdown</Link>. Add about a dollar of freight and handling and it lands at $18.70.
+                                    Take a cotton tee at $14 FOB <em>(the price at the port, before freight)</em>. Duty at the 26.5% all-in rate on most Asian origins (<Link href="/blogs/us-apparel-import-tariffs-2026" className="underline text-[#CBB49A] hover:text-[#b7a078]">our 2026 tariff breakdown</Link>) adds $3.71, and a dollar of freight lands it at $18.70. Sell it wholesale at $28 and the store puts it out at $56. Your own site still sells it at $38.
                                 </p>
 
                                 {/* Teaching graphic 2 */}
@@ -612,15 +595,9 @@ export default function TradeShowReadyClient({ initialLikeCount, initialComments
                                 </figure>
 
                                 <p className="text-base lg:text-lg leading-snug text-[#4A484A] mb-4">
-                                    Look at the bottom two bars. A store that buys at $28 puts the tee on the floor at $56, while your own site is still selling it at $38. You have just handed a retailer a product their customer can buy $18 cheaper by typing your name into a search bar.
+                                    That hands a retailer a product their customer can buy $18 cheaper by searching your name. Three ways out: raise your direct price, give wholesale its own styles, or take the thinner margin and treat the store as paid distribution. Just decide it before month four.
                                 </p>
-                                <p className="text-base lg:text-lg leading-snug text-[#4A484A] mb-4">
-                                    There are only three honest exits. Raise your direct price toward the implied retail. Give wholesale a distinct assortment that does not sit on your own site. Or accept the thinner margin and treat the store as paid distribution &mdash; a defensible choice, as long as you have made it deliberately rather than discovered it in month four.
-                                </p>
-                                <p className="text-base lg:text-lg leading-snug text-[#4A484A] mb-4">
-                                    Price pressure is real and getting worse: 35% of brands now cite lower price points as critical to winning retail partnerships, up from 25% three years ago. So is the other side of the ledger &mdash; 49% of brands say they now prioritise a retailer&rsquo;s ability to pay on time. Terms are part of your price. Net 60 means you are financing the run for two months after it ships.
-                                </p>
-
+                                
                                 <blockquote className="border-l-4 border-[#CBB49A] pl-5 my-7 text-xl lg:text-2xl font-serif italic text-[#2D2A2E] leading-snug">
                                     &ldquo;If your own site undercuts the store that stocks you, you have not expanded. You have competed.&rdquo;
                                 </blockquote>
@@ -633,22 +610,19 @@ export default function TradeShowReadyClient({ initialLikeCount, initialComments
                                 </h2>
 
                                 <p className="text-base lg:text-lg leading-snug text-[#4A484A] mb-4">
-                                    Almost never taste. Three things do most of the damage, and all three are manufacturing problems wearing commercial clothing.
+                                    Rarely taste. Three things do the damage, and all three start at the factory.
                                 </p>
                                 <p className="text-base lg:text-lg leading-snug text-[#4A484A] mb-4">
-                                    <strong>Fit.</strong> American shoppers returned $849.9 billion of merchandise in 2025 &mdash; 15.8% of annual retail sales, and 19.3% of everything bought online (<a href="https://nrf.com/media-center/press-releases/consumers-expected-to-return-nearly-850-billion-in-merchandise-in-2025" target="_blank" rel="noopener noreferrer" className="underline text-[#CBB49A] hover:text-[#b7a078]">NRF and Happy Returns</a>). A buyer carries that cost. If your size 12 fits like a 10 because the grading was guessed rather than <Link href="/blogs/grading-vs-pattern-making-perfect-fit" className="underline text-[#CBB49A] hover:text-[#b7a078]">properly drafted from the base pattern</Link>, they mark down the sizes that fail and quietly do not reorder.
+                                    <strong>Fit.</strong> Shoppers returned $849.9 billion of merchandise in 2025, 15.8% of US retail sales (<a href="https://nrf.com/media-center/press-releases/consumers-expected-to-return-nearly-850-billion-in-merchandise-in-2025" target="_blank" rel="noopener noreferrer" className="underline text-[#CBB49A] hover:text-[#b7a078]">NRF and Happy Returns</a>). The buyer carries that cost. If your size 12 fits like a 10 because the grading was eyeballed rather than <Link href="/blogs/grading-vs-pattern-making-perfect-fit" className="underline text-[#CBB49A] hover:text-[#b7a078]">drafted from the base pattern</Link>, they mark down what fails and do not reorder.
                                 </p>
                                 <p className="text-base lg:text-lg leading-snug text-[#4A484A] mb-4">
-                                    <strong>Floor-readiness.</strong> Goods that turn up without polybags, hangtags or scannable barcodes cost the store labour it did not budget for. A buyer will not raise this at the booth. They will simply choose the brand whose cartons open onto a shop floor.
+                                    <strong>Packaging.</strong> Goods without polybags, hangtags or scannable barcodes cost the store labour it did not budget. Nobody says so at the booth. They just pick the brand whose cartons open straight onto the floor.
                                 </p>
                                 <p className="text-base lg:text-lg leading-snug text-[#4A484A] mb-4">
-                                    <strong>Timelines.</strong> Retail buys to a floor-set date. Miss the window and the order is not late, it is cancelled &mdash; the shelf has already gone to whoever did deliver.
+                                    <strong>Timelines.</strong> Stores buy to a floor-set date. Miss it and the order is not late, it is cancelled.
                                 </p>
                                 <p className="text-base lg:text-lg leading-snug text-[#4A484A] mb-4">
-                                    One concession, and it matters: sometimes a pass has nothing to do with you. They bought the category last week, the budget is committed, the shop is three-deep in cotton tees. That is a timing loss, not a verdict, and the brands that end up stocked are the ones who send the line sheet again in June without being asked.
-                                </p>
-                                <p className="text-base lg:text-lg leading-snug text-[#4A484A]">
-                                    Worth saying plainly too: wholesale is not automatically the right next move. On the numbers above, a brand with genuinely strong direct margin can take an order, deliver it perfectly, and still make less money than it did before. <strong>Retail expansion for fashion startups</strong> buys reach, credibility and a customer you could not have found alone. It does not buy margin, and any advice that suggests otherwise is selling something.
+                                    Sometimes it is not about you: they bought tees last week. Send the line sheet again in June. And wholesale is not always the right move. A brand with strong direct margin can deliver a perfect order and make less than before. <strong>Retail expansion for fashion startups</strong> buys reach, not margin.
                                 </p>
 
                                 <div className="not-prose my-7 rounded-2xl border border-[#CBB49A]/40 bg-[#F8F7F4] p-5 sm:p-6">
@@ -679,26 +653,26 @@ export default function TradeShowReadyClient({ initialLikeCount, initialComments
                                 </div>
 
                                 <p className="text-base lg:text-lg leading-snug text-[#4A484A] mb-4">
-                                    Dates below are counted back from 16 February 2027. Move them if your show is Atlanta on 2 February, or Atlanta&rsquo;s October market on the 6th if you want a lower-stakes first outing before the big rooms.
+                                    Counted back from 16 February. Two weeks earlier for Atlanta.
                                 </p>
 
                                 <div className="not-prose my-7 rounded-2xl border border-gray-200 bg-white p-5 sm:p-6 shadow-sm">
                                     <ol className="space-y-4 text-[#2D2A2E] leading-snug list-none">
-                                        <li><span className="font-bold text-[#CBB49A]">Now &mdash; September.</span> Lock the range. Decide which styles are evergreen and reorderable, and cut anything you could not produce again in twelve weeks.</li>
-                                        <li><span className="font-bold text-[#CBB49A]">October.</span> Book factory capacity for a February order in writing, in units and weeks. Confirm minimums per style and per colourway.</li>
-                                        <li><span className="font-bold text-[#CBB49A]">October.</span> Finish tech packs and graded size specs for every style going on the rail. Fit sessions happen here or they happen in front of a buyer.</li>
-                                        <li><span className="font-bold text-[#CBB49A]">November.</span> Sew the show samples at production quality, from bulk fabric &mdash; not from whatever the sample room had left.</li>
-                                        <li><span className="font-bold text-[#CBB49A]">December.</span> Build the line sheet: landed cost, wholesale, suggested retail, minimums, delivery window with a date. Set your terms and your account tiers.</li>
-                                        <li><span className="font-bold text-[#CBB49A]">January.</span> Price-check your own site against the retail your wholesale implies. Fix the gap before a buyer finds it.</li>
-                                        <li><span className="font-bold text-[#CBB49A]">February.</span> Walk in able to answer one question without hesitating: <em>when can you ship, and can you do it again in ninety days?</em></li>
+                                        <li><span className="font-bold text-[#CBB49A]">Now &mdash; late September.</span> Lock the range. Cut anything you could not make again in twelve weeks.</li>
+                                        <li><span className="font-bold text-[#CBB49A]">October.</span> Book factory capacity for February in writing: units and weeks. Confirm minimums.</li>
+                                        <li><span className="font-bold text-[#CBB49A]">October.</span> Finish tech packs and graded specs for every style on the rail.</li>
+                                        <li><span className="font-bold text-[#CBB49A]">November.</span> Sew show samples at production quality, from bulk fabric.</li>
+                                        <li><span className="font-bold text-[#CBB49A]">December.</span> Build the line sheet: landed cost, wholesale, suggested retail, minimums, a dated delivery window.</li>
+                                        <li><span className="font-bold text-[#CBB49A]">January.</span> Check your site against the retail your wholesale implies. Close the gap.</li>
+                                        <li><span className="font-bold text-[#CBB49A]">February.</span> Walk in able to answer: <em>when can you ship, and can you do it again in ninety days?</em></li>
                                     </ol>
                                 </div>
 
                                 <p className="text-base lg:text-lg leading-snug text-[#4A484A] mb-4">
-                                    None of this is about the booth. Every item on that list is a manufacturing commitment made months before anyone sees the collection, which is exactly why <strong>trade show ready apparel manufacturing</strong> is decided in October and merely revealed in February.
+                                    Every line there is a factory decision made months before anyone sees the rail. <strong>Trade show ready apparel manufacturing</strong> is decided in October and only revealed in February.
                                 </p>
                                 <p className="text-base lg:text-lg leading-snug text-[#4A484A]">
-                                    Krazy Kreators builds to this calendar with founders every season &mdash; the sampling, the graded specs, the capacity booked before it is needed. If you are aiming at a February room, the honest question is not whether the collection is ready. It is whether your factory could take the order twice. Which of those two are you less sure about?
+                                    Krazy Kreators works this calendar with founders every season: samples from bulk fabric, graded specs, capacity held early. If you are aiming at a February room, the question is not whether the collection is ready. It is whether your factory could take the order twice. Which are you less sure about?
                                 </p>
                             </section>
 
@@ -710,27 +684,27 @@ export default function TradeShowReadyClient({ initialLikeCount, initialComments
                                 <div className="space-y-7">
                                     <div>
                                         <h3 className="text-xl font-bold text-[#2D2A2E] mb-2">When should I start preparing for apparel trade shows?</h3>
-                                        <p className="text-base lg:text-lg leading-snug text-[#4A484A]">Count back from the show, not forward from today. Atlanta Apparel runs 2&ndash;5 February 2027 and MAGIC and PROJECT open in Las Vegas on 16 February 2027 &mdash; about 23 weeks from early September, which is what a realistic small collection takes from sampling to delivered goods. If you already sell direct and your patterns and tech packs exist, your real runway is the 12-week production and freight leg, but the show sample set is a separate build competing for the same factory time. Book capacity before you book the booth.</p>
+                                        <p className="text-base lg:text-lg leading-snug text-[#4A484A]">Count back from the show. Atlanta Apparel runs 2&ndash;5 February 2027 and MAGIC opens in Las Vegas on 16 February, about 21 weeks from late September. A small collection built from scratch takes around 23 weeks, so it will not make it. If you already sell direct and your patterns and tech packs exist, the production and freight leg is roughly 12 weeks and February is realistic. Book the factory capacity before you book the booth.</p>
                                     </div>
                                     <div>
                                         <h3 className="text-xl font-bold text-[#2D2A2E] mb-2">What do wholesale buyers expect from a clothing brand?</h3>
-                                        <p className="text-base lg:text-lg leading-snug text-[#4A484A]">Three things, in this order: consistency, a delivery date, and a price that leaves them margin. Consistency means unit 200 measures the same as the sample they touched. A delivery date means a window with a date in it, not a season. Margin means a wholesale price a store can roughly double to reach a shelf price its customers will pay. The collection gets you the appointment; those three answers get you the order.</p>
+                                        <p className="text-base lg:text-lg leading-snug text-[#4A484A]">Three things: consistency, a delivery date, and a price that leaves them margin. Consistency means unit 200 measures the same as the sample they touched. A delivery date means a window with a real date in it, not a season. Margin means a wholesale price a store can roughly double and still sell.</p>
                                     </div>
                                     <div>
                                         <h3 className="text-xl font-bold text-[#2D2A2E] mb-2">What goes on a line sheet for buyers?</h3>
-                                        <p className="text-base lg:text-lg leading-snug text-[#4A484A]">One block per style: a clean product image, a style number that never changes, colourways, size run, fabric and weight, wholesale price, suggested retail price, the minimum per style or colourway, and a delivery window with a date. Printing the suggested retail matters &mdash; it saves the buyer doing your margin arithmetic in front of you, and it signals you understand how their business works.</p>
+                                        <p className="text-base lg:text-lg leading-snug text-[#4A484A]">One block per style: a clean product image, a style number that never changes, colours, size run, fabric and weight, wholesale price, suggested retail price, the minimum per style or colour, and a delivery window with a date. Printing the suggested retail saves the buyer doing your margin sums in front of you.</p>
                                     </div>
                                     <div>
                                         <h3 className="text-xl font-bold text-[#2D2A2E] mb-2">How much lead time do wholesale buyers give you now?</h3>
-                                        <p className="text-base lg:text-lg leading-snug text-[#4A484A]">Far less than they used to. JOOR&rsquo;s transaction data shows the average time from a wholesale order being placed to the product shipping fell from 253 days in 2019 to 86 days in 2024, a 66% drop. An order written at a February show is expected on the retail floor around mid-May. That collapse is why production capacity, rather than collection design, now decides whether you can accept the order in front of you.</p>
+                                        <p className="text-base lg:text-lg leading-snug text-[#4A484A]">Much less than they used to. JOOR&rsquo;s order data shows the average time from a wholesale order being placed to the goods shipping fell from 253 days in 2019 to 86 days in 2024. An order written at a February show is expected on the shop floor around mid-May, so factory capacity, not design, decides whether you can take it.</p>
                                     </div>
                                     <div>
                                         <h3 className="text-xl font-bold text-[#2D2A2E] mb-2">How do I price for wholesale without breaking my DTC pricing?</h3>
-                                        <p className="text-base lg:text-lg leading-snug text-[#4A484A]">Work from landed cost up, then check the retail price it implies against what you already charge on your own site. Retail convention is roughly a doubling from wholesale to shelf, so a garment landing at $18.70 and selling wholesale at $28 implies $56 at retail. If your own site sells it at $38, you are undercutting the store that just stocked you by $18. Fix that before the show &mdash; raise the direct price, or give wholesale a distinct assortment.</p>
+                                        <p className="text-base lg:text-lg leading-snug text-[#4A484A]">Work up from landed cost, then check the retail price it implies against what your own site charges. Stores roughly double wholesale, so a tee landing at $18.70 and sold wholesale at $28 implies $56 on the shelf. If your site sells it at $38, you are undercutting the store by $18. Raise the direct price or give wholesale its own styles.</p>
                                     </div>
                                     <div>
                                         <h3 className="text-xl font-bold text-[#2D2A2E] mb-2">Why do buyers pass on collections they like?</h3>
-                                        <p className="text-base lg:text-lg leading-snug text-[#4A484A]">Usually fit, timelines or floor-readiness rather than taste. Inconsistent grading means the store marks down the sizes that fit wrong and does not reorder. A missed delivery window is a cancelled order, because retail buys to a floor-set date. Goods arriving without polybags, hangtags and barcodes cost the buyer labour they did not budget. And sometimes it is none of those &mdash; they simply bought the category last week. Follow up anyway.</p>
+                                        <p className="text-base lg:text-lg leading-snug text-[#4A484A]">Usually fit, timelines or packaging rather than taste. Uneven grading means the store marks down the sizes that fit wrong and does not reorder. A missed delivery window is a cancelled order, because stores buy to a floor-set date. Goods without polybags, hangtags and barcodes cost the buyer labour they did not budget. And sometimes they simply bought the category last week. Follow up anyway.</p>
                                     </div>
                                 </div>
                             </section>

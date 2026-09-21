@@ -49,8 +49,8 @@ const articleJsonLd = {
         "Trade Shows and Wholesale Buyers in 2026: Preparing Your Apparel Line for Retail",
     description: DESCRIPTION,
     image: "https://www.krazykreators.com/blog/preparing-for-apparel-trade-shows-2026-hero.jpg",
-    datePublished: "2026-09-09",
-    dateModified: "2026-09-09",
+    datePublished: "2026-09-21",
+    dateModified: "2026-09-21",
     author: { "@type": "Organization", name: "Krazy Kreators", url: "https://www.krazykreators.com" },
     publisher: {
         "@type": "Organization",
@@ -73,7 +73,7 @@ const faqJsonLd = {
             name: "When should I start preparing for apparel trade shows?",
             acceptedAnswer: {
                 "@type": "Answer",
-                text: "Count back from the show, not forward from today. Atlanta Apparel runs 2-5 February 2027 and MAGIC and PROJECT open in Las Vegas on 16 February 2027 — about 23 weeks from early September 2026, which is what a realistic small collection takes from sampling to delivered goods. If you already sell direct to consumer and your patterns and tech packs exist, your real runway is the 12-week production and freight leg, but the show sample set is a separate build that competes for the same factory time. Book capacity before you book the booth.",
+                text: "Count back from the show. Atlanta Apparel runs 2-5 February 2027 and MAGIC opens in Las Vegas on 16 February, about 21 weeks from late September 2026. A small collection built from scratch takes around 23 weeks, so it will not make it. If you already sell direct and your patterns and tech packs exist, the production and freight leg is roughly 12 weeks and February is realistic. Book the factory capacity before you book the booth.",
             },
         },
         {
@@ -81,7 +81,7 @@ const faqJsonLd = {
             name: "What do wholesale buyers expect from a clothing brand?",
             acceptedAnswer: {
                 "@type": "Answer",
-                text: "Three things, in this order: consistency, a delivery date, and a price that leaves them margin. Consistency means unit 200 measures the same as the sample they touched. A delivery date means a window with an actual date in it, not a season. Margin means a wholesale price that a store can roughly double to reach a retail price its customers will pay. The collection gets you the appointment; those three answers get you the order.",
+                text: "Three things: consistency, a delivery date, and a price that leaves them margin. Consistency means unit 200 measures the same as the sample they touched. A delivery date means a window with a real date in it, not a season. Margin means a wholesale price a store can roughly double and still sell.",
             },
         },
         {
@@ -89,7 +89,7 @@ const faqJsonLd = {
             name: "What goes on a line sheet for buyers?",
             acceptedAnswer: {
                 "@type": "Answer",
-                text: "One block per style: a clean product image, a style number that never changes, the colourways, the size run, the fabric and weight, the wholesale price, the suggested retail price, the minimum per style or per colourway, and a delivery window with a date. Printing the suggested retail price matters — it saves the buyer doing your margin arithmetic in front of you, and it signals you understand how their business works.",
+                text: "One block per style: a clean product image, a style number that never changes, colours, size run, fabric and weight, wholesale price, suggested retail price, the minimum per style or colour, and a delivery window with a date. Printing the suggested retail saves the buyer doing your margin sums in front of you.",
             },
         },
         {
@@ -97,7 +97,7 @@ const faqJsonLd = {
             name: "How much lead time do wholesale buyers give you now?",
             acceptedAnswer: {
                 "@type": "Answer",
-                text: "Far less than they used to. JOOR's transaction data shows the average time from a wholesale order being placed to the product shipping fell from 253 days in 2019 to 86 days in 2024, a 66% drop. An order written at a February show is expected on the retail floor around mid-May. That collapse is why production capacity, not collection design, is now the thing that decides whether you can accept the order in front of you.",
+                text: "Much less than they used to. JOOR's order data shows the average time from a wholesale order being placed to the goods shipping fell from 253 days in 2019 to 86 days in 2024. An order written at a February show is expected on the shop floor around mid-May, so factory capacity, not design, decides whether you can take it.",
             },
         },
         {
@@ -105,7 +105,7 @@ const faqJsonLd = {
             name: "How do I price for wholesale without breaking my DTC pricing?",
             acceptedAnswer: {
                 "@type": "Answer",
-                text: "Work from landed cost up, then check the retail price it implies against what you already charge on your own site. Retail convention is roughly a doubling from wholesale to shelf, so a garment landing at $18.70 and selling wholesale at $28 implies a $56 retail price. If your own site sells the same garment at $38, you are undercutting the store that just stocked you by $18. Fix that before the show, either by raising your direct price or by giving wholesale a distinct assortment.",
+                text: "Work up from landed cost, then check the retail price it implies against what your own site charges. Stores roughly double wholesale, so a tee landing at $18.70 and sold wholesale at $28 implies $56 on the shelf. If your site sells it at $38, you are undercutting the store by $18. Raise the direct price or give wholesale its own styles.",
             },
         },
         {
@@ -113,7 +113,7 @@ const faqJsonLd = {
             name: "Why do buyers pass on collections they like?",
             acceptedAnswer: {
                 "@type": "Answer",
-                text: "Usually fit, timelines, or floor-readiness rather than taste. Inconsistent grading means the store marks down the sizes that fit wrong and does not reorder. A delivery window you miss is a cancelled order, because retail buys to a floor-set date. And goods that arrive without the polybags, hangtags and barcodes a store needs cost the buyer labour they did not budget. Sometimes it is none of those — they simply bought the category last week. Follow up anyway.",
+                text: "Usually fit, timelines or packaging rather than taste. Uneven grading means the store marks down the sizes that fit wrong and does not reorder. A missed delivery window is a cancelled order, because stores buy to a floor-set date. Goods without polybags, hangtags and barcodes cost the buyer labour they did not budget. And sometimes they simply bought the category last week. Follow up anyway.",
             },
         },
     ],
