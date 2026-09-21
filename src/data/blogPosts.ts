@@ -64,11 +64,11 @@ export const blogPosts: BlogPostMeta[] = [
     title:
       "Trade Shows and Wholesale Buyers in 2026: Preparing Your Apparel Line for Retail",
     excerpt:
-      "The Coterie floor opened in New York this morning, which makes February the next real window — Atlanta Apparel on 2 February 2027, MAGIC and PROJECT in Las Vegas on the 16th. That is twenty-three weeks away, and twenty-three weeks is exactly what a realistic production run takes. Meanwhile the wholesale clock has collapsed underneath everyone: the average time from a buyer's order to the goods shipping fell from 253 days in 2019 to 86 in 2024. What buyers now check before they write, what belongs on a line sheet, how to book factory capacity before you sell it, why a wholesale price can quietly undercut your own website by eighteen dollars, and the three manufacturing failures that get a good collection passed over.",
+      "Coterie packed up in New York on 11 September, which makes February the next real window: Atlanta Apparel on 2 February 2027, MAGIC and PROJECT in Las Vegas from the 16th. That is 21 weeks away. A collection built from scratch takes about 23, so this is a post for brands that already sell direct and want to walk into a February room with samples, a line sheet and factory capacity a buyer can trust. What buyers check before they write an order, what belongs on a line sheet, why you book the factory before the booth, how a wholesale price can quietly undercut your own website by eighteen dollars, and the three manufacturing problems that get a good collection passed over.",
     category: "business",
     author: "Krazy Kreators Team",
-    date: "September 9, 2026",
-    readTime: "9 min read",
+    date: "September 21, 2026",
+    readTime: "6 min read",
     image: "/blog/preparing-for-apparel-trade-shows-2026-hero.jpg",
     slug: "preparing-for-apparel-trade-shows-2026",
     readers: 0,
