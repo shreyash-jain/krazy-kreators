@@ -15,6 +15,21 @@ export type BlogPostMeta = {
 
 export const blogPosts: BlogPostMeta[] = [
   {
+    id: 78,
+    title:
+      "EU Green Claims Directive 2026: What Fashion Brands Must Prove Before September 27",
+    excerpt:
+      "From 27 September 2026, “eco-friendly” on a hangtag is a legal claim in 27 countries, and self-made eco badges are banned outright. The law does not ban sustainability — it bans sustainability you cannot show a document for, and it covers any brand selling to EU consumers, wherever it sits, with no phase-in for stock already on shelves. A specific claim like “100% GOTS-certified organic cotton” is still legal; it needs evidence on file, not a certificate for every sentence. Inside: the vague-vs-compliant table, who the law reaches, why the proof lives with your manufacturer rather than your marketing team, the five moves to make before the next EU order ships, and what the fines look like.",
+    category: "sustainability",
+    author: "Krazy Kreators Team",
+    date: "September 22, 2026",
+    readTime: "5 min read",
+    image: "/blog/eu-green-claims-directive-2026-fashion-brands-hero.jpg",
+    slug: "eu-green-claims-directive-2026-fashion-brands",
+    readers: 0,
+    likes: 0,
+  },
+  {
     id: 77,
     title:
       "NIL and College Sports Merch Boom: How Manufacturing Partners Are Meeting Demand in 2026",
