@@ -2,7 +2,8 @@
 
 import { useState, useEffect, useCallback } from 'react';
 import Image from 'next/image';
-import { X, ChevronLeft, ChevronRight } from 'lucide-react';
+import { X, ChevronLeft, ChevronRight, Download } from 'lucide-react';
+import { fullSizeSrc } from '@/data/portfolioFullSize';
 
 interface ImageModalProps {
   isOpen: boolean;
@@ -23,25 +24,39 @@ export default function ImageModal({
   productName,
   categoryName 
 }: ImageModalProps) {
-  const [isLoading, setIsLoading] = useState(false);
+  // The grid shows compressed WebPs; the modal swaps in the untouched
+  // original once it has loaded, so magnifying never shows a downscaled file.
+  const [fullLoaded, setFullLoaded] = useState(false);
+
+  const displaySrc = images[currentIndex];
+  const fullSrc = displaySrc ? fullSizeSrc(displaySrc) : displaySrc;
+  const hasSeparateFull = fullSrc !== displaySrc;
+
+  useEffect(() => {
+    setFullLoaded(false);
+  }, [isOpen, currentIndex, fullSrc]);
 
   const nextImage = useCallback(() => {
     if (images.length <= 1) return;
-    setIsLoading(true);
     onIndexChange((currentIndex + 1) % images.length);
   }, [images.length, currentIndex, onIndexChange]);
 
   const prevImage = useCallback(() => {
     if (images.length <= 1) return;
-    setIsLoading(true);
     onIndexChange((currentIndex - 1 + images.length) % images.length);
   }, [images.length, currentIndex, onIndexChange]);
 
   const goToImage = useCallback((index: number) => {
     if (index === currentIndex) return;
-    setIsLoading(true);
     onIndexChange(index);
   }, [currentIndex, onIndexChange]);
+
+  const downloadName = (() => {
+    const label = (categoryName || productName || 'krazy-kreators')
+      .toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '');
+    const ext = fullSrc?.match(/\.[a-z0-9]+$/i)?.[0] ?? '';
+    return `${label}-${currentIndex + 1}${ext}`;
+  })();
 
   // Handle keyboard navigation
   useEffect(() => {
@@ -100,23 +115,30 @@ export default function ImageModal({
     };
   }, [isOpen]);
 
-  const handleImageLoad = () => {
-    setIsLoading(false);
-  };
-
   if (!isOpen) return null;
 
   return (
     <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/90 backdrop-blur-sm"
          role="dialog" aria-modal="true">
-      {/* Close button */}
-      <button
-        onClick={onClose}
-        className="absolute top-4 right-4 z-10 bg-white/10 hover:bg-white/20 text-white p-2 rounded-full transition-all duration-300 hover:scale-110"
-        aria-label="Close modal"
-      >
-        <X className="w-6 h-6" />
-      </button>
+      {/* Download original + close */}
+      <div className="absolute top-4 right-4 z-10 flex items-center gap-2">
+        <a
+          href={fullSrc}
+          download={downloadName}
+          className="bg-white/10 hover:bg-white/20 text-white p-2 rounded-full transition-all duration-300 hover:scale-110"
+          aria-label="Download original image"
+          title="Download original image"
+        >
+          <Download className="w-6 h-6" />
+        </a>
+        <button
+          onClick={onClose}
+          className="bg-white/10 hover:bg-white/20 text-white p-2 rounded-full transition-all duration-300 hover:scale-110"
+          aria-label="Close modal"
+        >
+          <X className="w-6 h-6" />
+        </button>
+      </div>
 
       {/* Category name */}
       <div className="absolute top-4 left-4 z-10 bg-black/50 text-white px-4 py-2 rounded-lg backdrop-blur-sm">
@@ -150,20 +172,37 @@ export default function ImageModal({
         {/* Image */}
         <div className="relative w-full h-full flex items-center justify-center p-16"
              style={{ WebkitTransform: 'translateZ(0)', transform: 'translateZ(0)' }}>
-          {isLoading && (
-            <div className="absolute inset-0 flex items-center justify-center bg-black/20 rounded-lg">
-              <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-white"></div>
-            </div>
-          )}
+          {/* Compressed version paints immediately... */}
           <Image
-            src={images[currentIndex]}
+            src={displaySrc}
             alt={`${productName} - Image ${currentIndex + 1}`}
             width={1200}
             height={800}
             className="w-full h-full object-contain rounded-lg"
-            onLoad={handleImageLoad}
             priority
           />
+          {/* ...and the original fades in over it once downloaded. */}
+          {hasSeparateFull && (
+            <Image
+              key={fullSrc}
+              src={fullSrc}
+              alt=""
+              aria-hidden
+              width={1600}
+              height={2400}
+              unoptimized
+              className={`absolute inset-0 w-full h-full p-16 object-contain rounded-lg transition-opacity duration-300 ${
+                fullLoaded ? 'opacity-100' : 'opacity-0'
+              }`}
+              onLoad={() => setFullLoaded(true)}
+            />
+          )}
+          {hasSeparateFull && !fullLoaded && (
+            <div className="absolute bottom-6 right-6 flex items-center gap-2 bg-black/50 text-white/80 text-xs px-3 py-1.5 rounded-full backdrop-blur-sm">
+              <div className="animate-spin rounded-full h-3 w-3 border-b-2 border-white"></div>
+              Loading full resolution
+            </div>
+          )}
         </div>
       </div>
 

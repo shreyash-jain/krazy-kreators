@@ -139,7 +139,7 @@ export default function ResortWearClient() {
       brandName: "Tilted Lotus",
       brandLogo: "/brands/titled-lotus.png",
       images: [
-        "/portfolio/resort-wear/slip-dress/5_71d83f80-0061-4244-81fd-154c90c64d17.png (1).webp"
+        "/portfolio/resort-wear/slip-dress/5_71d83f80-0061-4244-81fd-154c90c64d17.webp"
       ]
     },
     {
@@ -149,7 +149,7 @@ export default function ResortWearClient() {
       brandName: "Tilted Lotus",
       brandLogo: "/brands/titled-lotus.png",
       images: [
-        "/portfolio/resort-wear/slip-dress/image (55).webp"
+        "/portfolio/resort-wear/slip-dress/55.webp"
       ]
     },
     {
@@ -159,7 +159,7 @@ export default function ResortWearClient() {
       brandName: "Tilted Lotus",
       brandLogo: "/brands/titled-lotus.png",
       images: [
-        "/portfolio/resort-wear/slip-dress/image (56).webp"
+        "/portfolio/resort-wear/slip-dress/56.webp"
       ]
     },
 
@@ -171,7 +171,7 @@ export default function ResortWearClient() {
       brandName: "Tilted Lotus",
       brandLogo: "/brands/titled-lotus.png",
       images: [
-        "/portfolio/resort-wear/dress/image (57).webp"
+        "/portfolio/resort-wear/dress/57.webp"
       ]
     },
     {
@@ -181,7 +181,7 @@ export default function ResortWearClient() {
       brandName: "Tilted Lotus",
       brandLogo: "/brands/titled-lotus.png",
       images: [
-        "/portfolio/resort-wear/dress/image (58).webp"
+        "/portfolio/resort-wear/dress/58.webp"
       ]
     },
     {
@@ -191,7 +191,7 @@ export default function ResortWearClient() {
       brandName: "Tilted Lotus",
       brandLogo: "/brands/titled-lotus.png",
       images: [
-        "/portfolio/resort-wear/dress/image (59).webp"
+        "/portfolio/resort-wear/dress/59.webp"
       ]
     },
 
@@ -236,8 +236,8 @@ export default function ResortWearClient() {
       brandName: "Tilted Lotus",
       brandLogo: "/brands/titled-lotus.png",
       images: [
-        "/portfolio/resort-wear/bralette/1_1.png",
-        "/portfolio/resort-wear/bralette/1_2.png"
+        "/portfolio/resort-wear/bralette/1_1.webp",
+        "/portfolio/resort-wear/bralette/1_2.webp"
       ]
     },
     {
@@ -247,7 +247,7 @@ export default function ResortWearClient() {
       brandName: "Tilted Lotus",
       brandLogo: "/brands/titled-lotus.png",
       images: [
-        "/portfolio/resort-wear/bralette/2.png"
+        "/portfolio/resort-wear/bralette/2.webp"
       ]
     },
     {
@@ -257,7 +257,7 @@ export default function ResortWearClient() {
       brandName: "Tilted Lotus",
       brandLogo: "/brands/titled-lotus.png",
       images: [
-        "/portfolio/resort-wear/bralette/3.png"
+        "/portfolio/resort-wear/bralette/3.webp"
       ]
     },
     {
@@ -267,7 +267,7 @@ export default function ResortWearClient() {
       brandName: "Tilted Lotus",
       brandLogo: "/brands/titled-lotus.png",
       images: [
-        "/portfolio/resort-wear/bralette/4.png"
+        "/portfolio/resort-wear/bralette/4.webp"
       ]
     },
     {
@@ -277,7 +277,7 @@ export default function ResortWearClient() {
       brandName: "Tilted Lotus",
       brandLogo: "/brands/titled-lotus.png",
       images: [
-        "/portfolio/resort-wear/bralette/5.png"
+        "/portfolio/resort-wear/bralette/5.webp"
       ]
     }
   ];

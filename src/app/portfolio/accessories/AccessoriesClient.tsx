@@ -37,10 +37,10 @@ export default function AccessoriesClient() {
       brandName: "LAS Loungewear",
       brandLogo: "/brands/las-loungewear.png",
       images: [
-        "/portfolio/accessories/socks/c331f7_29eeb91058d640748652c7ad334b7879~mv2 (1) (1).webp",
-        "/portfolio/accessories/socks/c331f7_37b28ba6d7774f0abf8d3124dcd97851~mv2 (1).webp",
-        "/portfolio/accessories/socks/c331f7_ef9a49a4b60b441e9b77004895a62004~mv2 (1).webp",
-        "/portfolio/accessories/socks/c331f7_fb07cae6396e471fada3c7041f75205b~mv2 (1).webp"
+        "/portfolio/accessories/socks/c331f7_29eeb91058d640748652c7ad334b7879~mv2.webp",
+        "/portfolio/accessories/socks/c331f7_37b28ba6d7774f0abf8d3124dcd97851~mv2.webp",
+        "/portfolio/accessories/socks/c331f7_ef9a49a4b60b441e9b77004895a62004~mv2.webp",
+        "/portfolio/accessories/socks/c331f7_fb07cae6396e471fada3c7041f75205b~mv2.webp"
       ]
     },
 
@@ -314,7 +314,7 @@ export default function AccessoriesClient() {
       brandName: "Drover Cowboy Threads",
       brandLogo: "/brands/drover.png",
       images: [
-        "/portfolio/accessories/caps/cap1side (1).webp"
+        "/portfolio/accessories/caps/cap1side.webp"
       ]
     },
     {
@@ -324,7 +324,7 @@ export default function AccessoriesClient() {
       brandName: "Drover Cowboy Threads",
       brandLogo: "/brands/drover.png",
       images: [
-        "/portfolio/accessories/caps/cap2side_212de2d5-0b33-4d94-a19f-353c30b75e9d (1).jpg"
+        "/portfolio/accessories/caps/cap2side_212de2d5-0b33-4d94-a19f-353c30b75e9d.webp"
       ]
     },
     {
@@ -334,7 +334,7 @@ export default function AccessoriesClient() {
       brandName: "Drover Cowboy Threads",
       brandLogo: "/brands/drover.png",
       images: [
-        "/portfolio/accessories/caps/cap3side (1).webp"
+        "/portfolio/accessories/caps/cap3side.webp"
       ]
     },
     {
@@ -344,7 +344,7 @@ export default function AccessoriesClient() {
       brandName: "Drover Cowboy Threads",
       brandLogo: "/brands/drover.png",
       images: [
-        "/portfolio/accessories/caps/SteelBlue_side_2 (1).webp"
+        "/portfolio/accessories/caps/SteelBlue_side_2.webp"
       ]
     }
   ];
