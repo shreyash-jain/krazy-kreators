@@ -15,6 +15,21 @@ export type BlogPostMeta = {
 
 export const blogPosts: BlogPostMeta[] = [
   {
+    id: 74,
+    title:
+      "Trade Shows and Wholesale Buyers in 2026: Preparing Your Apparel Line for Retail",
+    excerpt:
+      "Coterie packed up in New York on 11 September, which makes February the next real window: Atlanta Apparel on 2 February 2027, MAGIC and PROJECT in Las Vegas from the 16th. That is 21 weeks away. A collection built from scratch takes about 23, so this is a post for brands that already sell direct and want to walk into a February room with samples, a line sheet and factory capacity a buyer can trust. What buyers check before they write an order, what belongs on a line sheet, why you book the factory before the booth, how a wholesale price can quietly undercut your own website by eighteen dollars, and the three manufacturing problems that get a good collection passed over.",
+    category: "business",
+    author: "Krazy Kreators Team",
+    date: "September 21, 2026",
+    readTime: "6 min read",
+    image: "/blog/preparing-for-apparel-trade-shows-2026-hero.jpg",
+    slug: "preparing-for-apparel-trade-shows-2026",
+    readers: 0,
+    likes: 0,
+  },
+  {
     id: 77,
     title:
       "NIL and College Sports Merch Boom: How Manufacturing Partners Are Meeting Demand in 2026",
