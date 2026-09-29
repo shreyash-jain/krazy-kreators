@@ -30,6 +30,36 @@ export const blogPosts: BlogPostMeta[] = [
     likes: 0,
   },
   {
+    id: 74,
+    title:
+      "Trade Shows and Wholesale Buyers in 2026: Preparing Your Apparel Line for Retail",
+    excerpt:
+      "Coterie packed up in New York on 11 September, which makes February the next real window: Atlanta Apparel on 2 February 2027, MAGIC and PROJECT in Las Vegas from the 16th. That is 21 weeks away. A collection built from scratch takes about 23, so this is a post for brands that already sell direct and want to walk into a February room with samples, a line sheet and factory capacity a buyer can trust. What buyers check before they write an order, what belongs on a line sheet, why you book the factory before the booth, how a wholesale price can quietly undercut your own website by eighteen dollars, and the three manufacturing problems that get a good collection passed over.",
+    category: "business",
+    author: "Krazy Kreators Team",
+    date: "September 21, 2026",
+    readTime: "6 min read",
+    image: "/blog/preparing-for-apparel-trade-shows-2026-hero.jpg",
+    slug: "preparing-for-apparel-trade-shows-2026",
+    readers: 0,
+    likes: 0,
+  },
+  {
+    id: 77,
+    title:
+      "NIL and College Sports Merch Boom: How Manufacturing Partners Are Meeting Demand in 2026",
+    excerpt:
+      "NIL Club's Athlete Merch turned any college athlete into a product owner on March 31, and Opendorse now puts total 2026-27 NIL earnings at $4.5 billion — 61% above last year's estimate. That is a wildly different manufacturing client than a university licensing office: real low MOQ, turnaround measured in days once a moment goes viral, and a two-tier IP problem, since an athlete's NIL rights stop at their own name and never reach the school's crest. Add the Deloitte-run NIL Go clearinghouse now reviewing every merch royalty worth $600 or more, and the manufacturing partner who can produce a clean paper trail alongside a fast reprint is doing half the athlete's compliance work for them. Inside: the formats actually selling, why DTF and private label — not custom patterns — fit inside a live season window, and how one graphic becomes six shippable SKUs before the moment passes.",
+    category: "manufacturing",
+    author: "Krazy Kreators Team",
+    date: "September 18, 2026",
+    readTime: "7 min read",
+    image: "/blog/nil-college-sports-merch-manufacturing-2026-hero.jpg",
+    slug: "nil-college-sports-merch-manufacturing-2026",
+    readers: 0,
+    likes: 0,
+  },
+  {
     id: 76,
     title:
       "Kidswear and Family Matching Apparel: A Growing Niche for Custom US Clothing Brands",
