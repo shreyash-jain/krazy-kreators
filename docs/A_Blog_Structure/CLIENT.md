@@ -159,4 +159,4 @@ Full image-slot rules, registers and realism technique: **BLOG_PLAYBOOK.md § Im
 - **Standing — every prescriptive piece concedes a counterexample or edge case.** A post
   that admits nothing reads as marketing.
 
-*Last reviewed: 2026-09-21.*
+*Last reviewed: 2026-09-26.*
