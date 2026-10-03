@@ -15,6 +15,21 @@ export type BlogPostMeta = {
 
 export const blogPosts: BlogPostMeta[] = [
   {
+    id: 81,
+    title:
+      "From Indian Art to Global Fashion: How US Clothing Brands Can Source Authentic Indian Textiles",
+    excerpt:
+      "The swatch is the easy part. The five stages between a piece of Indian cloth and finished garments clearing US customs: a fabric spec with tolerances, finding a supplier and checking every craft claim, samples in the right order, four lab tests before bulk, and the labels, duty and paperwork at the US border, where Indian goods now pay their normal rate plus 10%.",
+    category: "manufacturing",
+    author: "Krazy Kreators Team",
+    date: "October 3, 2026",
+    readTime: "8 min read",
+    image: "/blog/source-authentic-indian-textiles-us-clothing-brands-hero.jpg",
+    slug: "source-authentic-indian-textiles-us-clothing-brands",
+    readers: 0,
+    likes: 0,
+  },
+  {
     id: 79,
     title:
       "Why US Fashion Brands Are Choosing Indian Textiles for Their Next Collection",
