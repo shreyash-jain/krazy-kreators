@@ -17,9 +17,9 @@ export const blogPosts: BlogPostMeta[] = [
   {
     id: 79,
     title:
-      "Why US Fashion Brands Are Choosing Indian Textiles for Their Next Collection",
+      "What Indian Textiles Offer US Fashion Brands",
     excerpt:
-      "US clothing imports from India fell this year, mostly big retailers buying basics. The smaller, design-led labels still going there are going for the cloth: mill cotton alongside hand-woven Chanderi, ikat, khadi and block prints, cut into modern clothes. Inside: an eight-fabric guide for a US line sheet, how to use Indian craft without making traditional clothing, sampling before you commit, what to verify before calling anything sustainable, and a six-part checklist for choosing an Indian manufacturer.",
+      "US clothing imports from India fell this year, mostly big retailers buying basics. What India offers a smaller, design-led label did not change: mill cotton alongside hand-woven Chanderi, ikat, khadi and block prints, cut into modern clothes. Inside: an eight-fabric guide for a US line sheet, how to use Indian craft without making traditional clothing, sampling before you commit, what to verify before calling anything sustainable, and a six-part checklist for choosing an Indian manufacturer.",
     category: "manufacturing",
     author: "Krazy Kreators Team",
     date: "October 3, 2026",

@@ -44,16 +44,43 @@ const STATS = [
     { big: "27.8%", label: "of the world's GOTS-certified facilities, more than any other country", src: "GOTS, 2025" },
 ];
 
-// Infographic 2. Fabric guide: what each cloth is, and where it works in a US collection.
-const FABRICS = [
-    { name: "Cotton", swatch: "#E9E1D3", what: "Mill-woven poplin, voile and twill, plus knit jersey.", use: "Tees, shirting, summer dresses" },
-    { name: "Khadi", swatch: "#D8C7A6", what: "Cotton spun and woven by hand. Dry, slightly uneven handle.", use: "Camp shirts, relaxed trousers" },
-    { name: "Chanderi", swatch: "#E8D9B0", what: "Sheer silk-cotton from Madhya Pradesh, often with gold zari.", use: "Evening tops, overlays, resortwear" },
-    { name: "Ikat", swatch: "#3E4A6B", what: "Yarn is dyed before weaving, so pattern edges blur.", use: "Statement shirts, light jackets" },
+// Infographic 2. Fabric guide. The four handloom fabrics get a close-up photo beside the description.
+const CLOSEUPS = [
+    {
+        name: "Khadi",
+        img: "/blog/indian-textiles-for-us-fashion-brands-khadi.jpg",
+        alt: "Draped undyed khadi cotton in window light, its soft, slightly uneven hand-spun texture setting it apart from mill cotton. No text.",
+        what: "Cotton spun and woven by hand. The threads vary in thickness, so the cloth feels dry and slightly uneven, and it breathes.",
+        use: "Summer shirts, relaxed trousers",
+    },
+    {
+        name: "Chanderi",
+        img: "/blog/indian-textiles-for-us-fashion-brands-chanderi.jpg",
+        alt: "Sheer ivory Chanderi silk-cotton hanging against window light, small gold zari motifs woven into it. No text.",
+        what: "Sheer silk-cotton from Madhya Pradesh, light enough to see through, often with small gold zari motifs woven in.",
+        use: "Evening tops, overlays, resortwear",
+    },
+    {
+        name: "Ikat",
+        img: "/blog/indian-textiles-for-us-fashion-brands-ikat.jpg",
+        alt: "Macro of indigo, rust and cream ikat cotton showing the feathered edges where resist-dyed threads meet. No text.",
+        what: "The yarn is tie-dyed before it goes on the loom, so the pattern edges come out feathered rather than crisp.",
+        use: "Statement shirts, light jackets",
+    },
+    {
+        name: "Block print",
+        img: "/blog/indian-textiles-for-us-fashion-brands-blockprint.jpg",
+        alt: "Hand block-printed cotton in indigo and madder red with faint overlaps where each wooden block was set down. No text.",
+        what: "Pattern stamped by hand with carved wooden blocks. Look closely and you can see where each block was set down.",
+        use: "Dresses, loungewear, scarves",
+    },
+];
+
+const OTHER_FABRICS = [
+    { name: "Cotton", swatch: "#E9E1D3", what: "Mill-woven poplin, voile and twill, plus knit jersey.", use: "Tees, shirting, dresses" },
     { name: "Silk", swatch: "#B88A4A", what: "Smooth mulberry silk or textured, slubby tussar.", use: "Slip dresses, luxury tops" },
     { name: "Linen blends", swatch: "#CFC6B4", what: "Linen with cotton for less crease and a softer hand.", use: "Resort sets, overshirts" },
-    { name: "Handloom", swatch: "#A2543A", what: "Any cloth woven on a hand-operated loom, usually in small runs.", use: "Limited capsules, hero pieces" },
-    { name: "Block print", swatch: "#6B3A2E", what: "Pattern stamped by hand with carved wooden blocks.", use: "Dresses, loungewear, scarves" },
+    { name: "Handloom", swatch: "#A2543A", what: "Any cloth woven on a hand-operated loom, usually in short runs.", use: "Limited capsules, hero pieces" },
 ];
 
 // Infographic 3. Prototype to production.
@@ -77,9 +104,6 @@ const CHECKS = [
     { head: "International shipping", items: ["Packaging spec", "Dispatch and paperwork", "Realistic delivery timelines"] },
 ];
 
-// Infographic 5. Idea to delivery with Krazy Kreators.
-const JOURNEY = ["Idea", "Design", "Sourcing", "Prototype", "Sample", "Production", "QC", "Delivery"];
-
 const FAQS = [
     {
         q: "Why are US fashion brands sourcing textiles from India?",
@@ -95,7 +119,7 @@ const FAQS = [
     },
     {
         q: "Can US startups order small quantities from Indian manufacturers?",
-        a: "Many Indian manufacturers run small batches, though minimums vary by fabric and technique. Hand-woven and hand-printed cloth is often made in short runs anyway. Ask each manufacturer for the minimum per style and per colour before you sample.",
+        a: "Many Indian manufacturers run small batches, though minimums vary by fabric and technique. Hand-woven and hand-printed cloth is often made in short runs anyway. Ask each manufacturer for the minimum per style and per colour before you commit.",
     },
     {
         q: "How do I choose an Indian clothing manufacturer?",
@@ -103,7 +127,7 @@ const FAQS = [
     },
     {
         q: "How does textile sourcing from India work?",
-        a: "You share a design and tech pack, review fabric swatches and colour lab dips, approve a sample for fit and finish, then the production run is made, inspected, packed and shipped to the US. An end-to-end partner handles all of it; buying fabric alone means arranging the sewing and shipping yourself.",
+        a: "It follows the seven steps in section 4. The bigger choice is whether you buy fabric only and arrange the sewing and shipping yourself, or use one partner for the whole chain.",
     },
 ];
 
@@ -323,11 +347,10 @@ export default function IndianTextilesClient({ initialLikeCount, initialComments
                         <span className="text-sm text-gray-200 font-medium tracking-wide">October 3, 2026</span>
                     </div>
                     <h1 className="text-3xl sm:text-4xl lg:text-5xl xl:text-6xl font-extrabold text-white leading-tight max-w-5xl drop-shadow-lg mb-6 tracking-tight">
-                        Why US Fashion Brands Are Choosing Indian Textiles<br className="hidden lg:block" />{" "}
-                        for Their Next Collection
+                        What Indian Textiles Offer US Fashion Brands
                     </h1>
                     <p className="text-xl sm:text-2xl lg:text-3xl text-gray-200 font-medium max-w-3xl drop-shadow-md leading-relaxed">
-                        Total volume from India fell this year. The brands still going there are going for the cloth, and that is a different decision.
+                        US imports from India fell this year. What India offers a design-led label, in fabric, craft and room to customise, did not.
                     </p>
                 </div>
             </section>
@@ -371,7 +394,7 @@ export default function IndianTextilesClient({ initialLikeCount, initialComments
                         <ul className="space-y-1.5 text-[#2D2A2E] text-base sm:text-lg leading-snug">
                             <li>• India&rsquo;s draw for a US label is <strong>range</strong>: mill cotton and hand-woven ikat, Chanderi and block prints from one country, cut into modern clothes.</li>
                             <li>• Since 24 July 2026 Indian goods pay a <strong>10% Section 301 duty</strong> on top of the normal rate, the lower of the two new tiers.</li>
-                            <li>• Sample before you commit, and never call a fabric sustainable without the <strong>certificate</strong> behind it.</li>
+                            <li>• Before you call any of it sustainable, get the <strong>certificate</strong> for that fabric on file.</li>
                         </ul>
                     </div>
 
@@ -450,7 +473,7 @@ export default function IndianTextilesClient({ initialLikeCount, initialComments
                             </p>
 
                             <p className="mb-5 text-base lg:text-lg leading-snug">
-                                One caveat before the headline gets ahead of itself. US clothing imports from India fell 25.8% to $2.45 billion in the first seven months of 2026, after a year of tariff swings (<a href="https://www.thedailystar.net/business/news/bangladesh-overtakes-china-again-apparel-exports-us-4265426" target="_blank" rel="noopener noreferrer" className={LINK}>OTEXA data via The Daily Star</a>). That figure is mostly big retailers buying basics by the container. It tells you very little about a smaller label deciding where its next fabric comes from, and that label is who this piece is for.
+                                This is not a story about more brands buying from India. US clothing imports from India fell 25.8% to $2.45 billion in the first seven months of 2026, after a year of tariff swings (<a href="https://www.thedailystar.net/business/news/bangladesh-overtakes-china-again-apparel-exports-us-4265426" target="_blank" rel="noopener noreferrer" className={LINK}>OTEXA data via The Daily Star</a>). Most of that drop is big retailers buying basics by the container. What India offers a smaller label choosing its next fabric is a separate question, and it is the one this piece answers.
                             </p>
 
                             <p className="mb-8 text-base lg:text-lg leading-snug">
@@ -480,7 +503,7 @@ export default function IndianTextilesClient({ initialLikeCount, initialComments
                                     Why Are US Fashion Brands Looking at India for Textile Sourcing?
                                 </h2>
                                 <p className="text-base lg:text-lg leading-snug text-[#4A484A] mb-4">
-                                    Textile sourcing in India appeals for practical reasons. The fabric range runs from mill-made jersey to hand-woven silk, sometimes within one state. Embroidery and block printing are a working trade with export buyers, not a museum display. Most mills and garment units will change a colour, a print or a weave for you, and will sample before you commit to a run.
+                                    Textile sourcing in India appeals for practical reasons. The fabric range runs from mill-made jersey to hand-woven silk, sometimes within one state, and most mills and garment units will change a colour, a print or a weave for you.
                                 </p>
                                 <p className="text-base lg:text-lg leading-snug text-[#4A484A]">
                                     Duty is also less of an obstacle than it was in 2025. Since 24 July 2026, Indian goods pay the normal US rate plus a 10% Section 301 duty, the lower of the two new tiers (<a href="https://ustr.gov/about/policy-offices/press-office/press-releases/2026/july/ustr-takes-action-forced-labor-section-301-investigations" target="_blank" rel="noopener noreferrer" className={LINK}>USTR</a>). Our <Link href="/blogs/us-apparel-import-tariffs-2026" className={LINK}>tariff tracker</Link> has the full rates by country.
@@ -509,22 +532,37 @@ export default function IndianTextilesClient({ initialLikeCount, initialComments
                                     Most founders know Indian cotton. Fewer have worked with the hand-woven cloth, and that is where a collection starts to look different. Chanderi from Madhya Pradesh and Pochampally ikat from Telangana are both protected Geographical Indications, India&rsquo;s legal mark for products tied to a place (<a href="https://static.pib.gov.in/WriteReadData/specificdocs/documents/2021/nov/doc2021112441.pdf" target="_blank" rel="noopener noreferrer" className={LINK}>PIB</a>).
                                 </p>
                                 <p className="text-base lg:text-lg leading-snug text-[#4A484A]">
-                                    None of these fabrics has to become a sari or a kurta. Khadi&rsquo;s dry, uneven texture makes a good summer shirt. Ikat cut as a camp-collar shirt looks like nothing else on a US rail.
+                                    The four handloom fabrics below are easiest to tell apart up close.
                                 </p>
 
-                                {/* Infographic 2 — fabric guide */}
+                                {/* Infographic 2 — fabric guide with close-ups */}
                                 <figure className="not-prose my-8 rounded-2xl border border-gray-200 bg-[#F8F7F4] p-5 sm:p-6">
-                                    <p className="text-[11px] font-bold uppercase tracking-[0.18em] text-[#CBB49A] mb-1">Indian textiles, translated for a US collection</p>
-                                    <p className="text-sm text-[#666666] mb-5">Eight fabrics, what each one is, and where it earns a place on the line sheet</p>
-                                    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
-                                        {FABRICS.map((f) => (
-                                            <div key={f.name} className="rounded-xl bg-white border border-gray-200 overflow-hidden">
-                                                <div className="h-3" style={{ backgroundColor: f.swatch }} />
-                                                <div className="p-4">
+                                    <p className="text-[11px] font-bold uppercase tracking-[0.18em] text-[#CBB49A] mb-1">Indian textiles, up close</p>
+                                    <p className="text-sm text-[#666666] mb-5">Four handloom fabrics, what each one is, and where it earns a place on a US line sheet</p>
+                                    <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                                        {CLOSEUPS.map((f) => (
+                                            <div key={f.name} className="flex gap-4 rounded-xl bg-white border border-gray-200 p-3">
+                                                <div className="relative w-28 h-28 sm:w-36 sm:h-36 flex-shrink-0 rounded-lg overflow-hidden">
+                                                    <Image src={f.img} alt={f.alt} fill sizes="144px" className="object-cover" />
+                                                </div>
+                                                <div className="min-w-0">
                                                     <p className="font-bold text-[#2D2A2E]">{f.name}</p>
                                                     <p className="mt-1 text-sm text-[#4A484A] leading-snug">{f.what}</p>
-                                                    <p className="mt-3 text-[11px] font-bold uppercase tracking-wider text-[#8C7355]">Use it for</p>
+                                                    <p className="mt-2 text-[11px] font-bold uppercase tracking-wider text-[#8C7355]">Use it for</p>
                                                     <p className="text-sm text-[#2D2A2E] leading-snug">{f.use}</p>
+                                                </div>
+                                            </div>
+                                        ))}
+                                    </div>
+                                    <p className="mt-6 mb-3 text-[11px] font-bold uppercase tracking-[0.18em] text-[#8C7355]">Also in the range</p>
+                                    <div className="grid grid-cols-2 lg:grid-cols-4 gap-3">
+                                        {OTHER_FABRICS.map((f) => (
+                                            <div key={f.name} className="rounded-xl bg-white border border-gray-200 overflow-hidden">
+                                                <div className="h-2" style={{ backgroundColor: f.swatch }} />
+                                                <div className="p-3">
+                                                    <p className="font-bold text-sm text-[#2D2A2E]">{f.name}</p>
+                                                    <p className="mt-1 text-xs text-[#4A484A] leading-snug">{f.what}</p>
+                                                    <p className="mt-2 text-xs text-[#2D2A2E]"><span className="font-semibold text-[#8C7355]">For:</span> {f.use}</p>
                                                 </div>
                                             </div>
                                         ))}
@@ -551,7 +589,7 @@ export default function IndianTextilesClient({ initialLikeCount, initialComments
                                 </div>
 
                                 <p className="text-base lg:text-lg leading-snug text-[#4A484A] mb-4">
-                                    Indian weaving, embroidery and printing are still done for paying customers every week. Embroiderers work zardozi <em>(raised metallic-thread embroidery)</em> and aari <em>(fine chain stitch made with a hooked needle)</em>. Printers carve their own blocks. What a US designer gets from this is not the traditional look. It is the technique, applied to a new shape: a block print scaled up and run in one colour, or a single hand-embroidered panel on an otherwise plain jacket.
+                                    Indian weaving, embroidery and printing are still done for paying customers every week. Embroiderers work zardozi <em>(raised metallic-thread embroidery)</em> and aari <em>(fine chain stitch made with a hooked needle)</em>. Printers carve their own blocks. The trick is to use the technique on a new shape: a block print scaled up and run in one colour, or a single hand-embroidered panel on an otherwise plain jacket.
                                 </p>
 
                                 <h3 className="text-2xl font-bold text-[#2D2A2E] mb-3">How US Designers Can Use Indian Craftsmanship</h3>
@@ -573,12 +611,12 @@ export default function IndianTextilesClient({ initialLikeCount, initialComments
                                     3. Customization for US Fashion Brands
                                 </h2>
                                 <p className="text-base lg:text-lg leading-snug text-[#4A484A] mb-4">
-                                    The fabric weight and weave can change. So can the dye shade, matched to your colour reference, and the print, redrawn at your scale. Embroidery placement, seam construction and the final wash or finish are all yours to specify. All of it goes into a <Link href="/blogs/what-is-a-tech-pack" className={LINK}>tech pack</Link> <em>(the specification file the factory builds from)</em> and gets checked at sampling.
+                                    The fabric weight and weave can change. So can the dye shade, matched to your colour reference, and the print, redrawn at your scale. Embroidery placement, seam construction and the final wash or finish are all yours to specify. All of it goes into a <Link href="/blogs/what-is-a-tech-pack" className={LINK}>tech pack</Link> <em>(the specification file the factory builds from)</em>.
                                 </p>
 
                                 <h3 className="text-2xl font-bold text-[#2D2A2E] mb-3">Why Custom Manufacturing Matters for Fashion Startups</h3>
                                 <p className="text-base lg:text-lg leading-snug text-[#4A484A]">
-                                    A young brand&rsquo;s pitch to a buyer is that its product isn&rsquo;t already on the next rail. Custom clothing manufacturing in India lets you own a print or a fabric a competitor can&rsquo;t order from the same catalogue. It also lets you try a new silhouette in a small run before you put real money behind it.
+                                    A young brand&rsquo;s pitch to a buyer is that its product isn&rsquo;t already on the next rail. Custom clothing manufacturing in India lets you own a print or a fabric a competitor can&rsquo;t order from the same catalogue.
                                 </p>
                             </section>
 
@@ -622,7 +660,7 @@ export default function IndianTextilesClient({ initialLikeCount, initialComments
                                 </figure>
 
                                 <p className="text-base lg:text-lg leading-snug text-[#4A484A]">
-                                    A sample shows you how a hand-woven fabric really drapes, whether a print holds its colour through a wash, and whether the fit works, all before you&rsquo;ve paid for production. Expect more than one round on a new fabric. Our <Link href="/blogs/clothing-production-timeline" className={LINK}>production timeline</Link> lays out the full calendar.
+                                    A sample shows you how a hand-woven fabric really drapes, whether a print holds its colour through a wash, and whether the fit works, all before you&rsquo;ve paid for production. Our <Link href="/blogs/clothing-production-timeline" className={LINK}>production timeline</Link> lays out the full calendar.
                                 </p>
                             </section>
 
@@ -714,7 +752,7 @@ export default function IndianTextilesClient({ initialLikeCount, initialComments
                                     ))}
                                 </div>
                                 <p className="text-base lg:text-lg leading-snug text-[#4A484A]">
-                                    That is how <Link href="/end-to-end-services" className={LINK}>Krazy Kreators</Link> works: design, sourcing, sampling, production and packaging in India, run by one team for US brands.
+                                    The trade-off is choice. With one partner you work from its mills and units, rather than picking the best supplier for each step yourself.
                                 </p>
                             </section>
 
@@ -786,31 +824,8 @@ export default function IndianTextilesClient({ initialLikeCount, initialComments
                                     9. Why US Fashion Brands Can Partner With Krazy Kreators
                                 </h2>
                                 <p className="text-base lg:text-lg leading-snug text-[#4A484A] mb-4">
-                                    Krazy Kreators works with US clothing founders from first sketch to delivered carton. That covers <Link href="/design-services" className={LINK}>design support</Link>, <Link href="/end-to-end-services/raw-materials" className={LINK}>textile sourcing</Link>, sampling, <Link href="/manufacturing-services" className={LINK}>garment manufacturing</Link>, quality control, packaging and international dispatch. Because one team runs all of it, the people who chose your fabric are the people who sign off the finished piece. You can see work for other brands in our <Link href="/case-studies" className={LINK}>case studies</Link>.
+                                    Krazy Kreators is that single partner for US clothing founders, with <Link href="/end-to-end-services/raw-materials" className={LINK}>textile sourcing</Link> and <Link href="/manufacturing-services" className={LINK}>manufacturing</Link> in India and delivery to your door. What matters for this topic is that the people who choose your khadi or ikat also sign off the finished piece, so a fabric problem gets caught before it becomes a garment problem. Our <Link href="/case-studies" className={LINK}>case studies</Link> show work for other brands.
                                 </p>
-
-                                <h3 className="text-2xl font-bold text-[#2D2A2E] mb-3">From Fashion Idea to Finished Collection</h3>
-
-                                {/* Infographic 5 — journey */}
-                                <figure className="not-prose my-6 rounded-2xl bg-[#2D2A2E] p-5 sm:p-6 overflow-x-auto">
-                                    <svg viewBox="0 0 960 170" role="img" aria-label="From fashion idea to finished collection with Krazy Kreators, in eight stages: idea, design, sourcing, prototype, sample, production, QC, delivery." className="w-full h-auto min-w-[720px]">
-                                        <text x="0" y="22" fontFamily="Helvetica, Arial, sans-serif" fontSize="17" fontWeight="700" fill="#FFFFFF">From fashion idea to finished collection</text>
-                                        <text x="0" y="44" fontFamily="Helvetica, Arial, sans-serif" fontSize="13" fill="#B0AAA2">One team, eight stages, India to your US door</text>
-                                        <line x1="40" y1="100" x2="920" y2="100" stroke="#CBB49A" strokeWidth="2" strokeDasharray="4 6" />
-                                        {JOURNEY.map((j, i) => {
-                                            const cx = 40 + i * (880 / (JOURNEY.length - 1));
-                                            const end = i === 0 || i === JOURNEY.length - 1;
-                                            return (
-                                                <g key={j}>
-                                                    <circle cx={cx} cy="100" r={end ? 18 : 14} fill={end ? "#CBB49A" : "#2D2A2E"} stroke="#CBB49A" strokeWidth="2" />
-                                                    <text x={cx} y="105" textAnchor="middle" fontFamily="Helvetica, Arial, sans-serif" fontSize="12" fontWeight="700" fill={end ? "#2D2A2E" : "#CBB49A"}>{i + 1}</text>
-                                                    <text x={cx} y="142" textAnchor="middle" fontFamily="Helvetica, Arial, sans-serif" fontSize="14" fontWeight="700" fill="#FFFFFF">{j}</text>
-                                                </g>
-                                            );
-                                        })}
-                                    </svg>
-                                    <figcaption className="mt-2 text-xs text-gray-400">Krazy Kreators · design, sourcing, production and dispatch under one roof</figcaption>
-                                </figure>
 
                                 {/* Lead-gen CTA */}
                                 <div className="not-prose mt-7 rounded-2xl border border-[#CBB49A]/50 bg-[#F8F7F4] p-5 sm:p-6 flex flex-col sm:flex-row sm:items-center gap-4">
@@ -851,10 +866,10 @@ export default function IndianTextilesClient({ initialLikeCount, initialComments
                                     Conclusion
                                 </h2>
                                 <p className="text-base lg:text-lg leading-snug text-[#4A484A] mb-4">
-                                    India gives a US brand a wide fabric range, craft that still works for a living, room to customise, and factories that can start small and grow with you. It doesn&rsquo;t remove the need to sample carefully or to back every claim. If you were starting your next collection this month, which fabric would you want in your hands first?
+                                    India gives a US brand a wide fabric range, craft that still works for a living, room to customise, and factories that can start small and grow with you. None of it replaces checking the fabric and the paperwork yourself. If you were starting your next collection this month, which fabric would you want in your hands first?
                                 </p>
                                 <p className="text-base lg:text-lg leading-snug text-[#4A484A]">
-                                    Planning your next fashion collection? Explore Krazy Kreators for <Link href="/end-to-end-services/raw-materials" className={LINK}>textile sourcing</Link>, <Link href="/design-services" className={LINK}>product development</Link> and <Link href="/manufacturing-services" className={LINK}>clothing manufacturing in India</Link>, or <Link href="/contact" className={LINK}>start your project</Link>.
+                                    Planning your next fashion collection? <Link href="/contact" className={LINK}>Explore Krazy Kreators</Link> for textile sourcing, product development and clothing manufacturing in India.
                                 </p>
                             </section>
 
@@ -877,7 +892,7 @@ export default function IndianTextilesClient({ initialLikeCount, initialComments
                                 <button onClick={() => setContactOpen(true)} className="group block text-left p-7 rounded-2xl bg-[#2D2A2E] text-white hover:bg-[#1f1d20] transition-colors">
                                     <p className="text-xs font-bold uppercase tracking-[0.18em] text-[#CBB49A] mb-3">Start your project</p>
                                     <h4 className="text-xl font-bold mb-2 group-hover:underline">Talk to a Krazy Kreators production lead about Indian textiles</h4>
-                                    <p className="text-gray-300 leading-relaxed mb-4">Send a sketch, a mood board or a style that sold. We&rsquo;ll come back with the Indian fabrics that suit it and a dated plan from sampling to delivery.</p>
+                                    <p className="text-gray-300 leading-relaxed mb-4">Send a sketch, a mood board or a style that sold, and we&rsquo;ll suggest the Indian fabrics that suit it.</p>
                                     <span className="inline-flex items-center gap-2 text-[#CBB49A] font-semibold">Start your project <ArrowRight className="w-4 h-4" /></span>
                                 </button>
                             </div>
