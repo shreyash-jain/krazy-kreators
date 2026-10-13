@@ -22,7 +22,7 @@ export const blogPosts: BlogPostMeta[] = [
       "Block print, ikat, Kalamkari, Ajrakh, Chikankari and Kantha: six Indian crafts, what each one suits in a modern US collection, and where each one gets difficult. Plus a product-by-craft table, the seven steps from traditional craft to finished collection, a sourcing checklist, and how to tell the story without overclaiming.",
     category: "manufacturing",
     author: "Krazy Kreators Team",
-    date: "October 3, 2026",
+    date: "October 13, 2026",
     readTime: "6 min read",
     image: "/blog/indian-textile-art-us-fashion-brands-hero.jpg",
     slug: "indian-textile-art-us-fashion-brands",
