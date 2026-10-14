@@ -312,7 +312,7 @@ export default function IndianTextileArtClient({ initialLikeCount, initialCommen
                         </span>
                         <span className="text-sm text-[#666666] font-medium tracking-wide">6 min read</span>
                         <span className="text-sm text-[#B0AAA2]">•</span>
-                        <span className="text-sm text-[#666666] font-medium tracking-wide">October 13, 2026</span>
+                        <span className="text-sm text-[#666666] font-medium tracking-wide">October 14, 2026</span>
                     </div>
                     <h1 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-[#2D2A2E] leading-tight max-w-5xl mb-5 tracking-tight">
                         Indian Textile Art Meets Modern Fashion:<br />
@@ -353,7 +353,7 @@ export default function IndianTextileArtClient({ initialLikeCount, initialCommen
                         </div>
                         <div>
                             <p className="text-sm font-semibold text-[#2D2A2E]">Krazy Kreators Team <span className="text-[#666666] font-normal">· Production &amp; Sourcing</span></p>
-                            <p className="text-sm text-[#666666]">October 13, 2026 · Manufacturing · 6 min read · Sources checked 3 October 2026</p>
+                            <p className="text-sm text-[#666666]">October 14, 2026 · Manufacturing · 6 min read · Sources checked 3 October 2026</p>
                         </div>
                     </div>
 

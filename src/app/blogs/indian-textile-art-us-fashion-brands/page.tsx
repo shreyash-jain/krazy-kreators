@@ -54,8 +54,8 @@ const articleJsonLd = {
     headline: HEADLINE,
     description: DESCRIPTION,
     image: HERO,
-    datePublished: "2026-10-13",
-    dateModified: "2026-10-13",
+    datePublished: "2026-10-14",
+    dateModified: "2026-10-14",
     author: { "@type": "Organization", name: "Krazy Kreators", url: "https://www.krazykreators.com" },
     publisher: {
         "@type": "Organization",
