@@ -17,7 +17,10 @@ const BLOG_ID = "source-authentic-indian-textiles-us-clothing-brands";
 
 const HERO_IMAGE = "/blog/source-authentic-indian-textiles-us-clothing-brands-hero.jpg";
 const SECTION1_IMAGE = "/blog/source-authentic-indian-textiles-us-clothing-brands-section1.jpg";
-const MACRO_IMAGE = "/blog/source-authentic-indian-textiles-us-clothing-brands-macro.jpg";
+// Real photos from Krazy Kreators client projects (case studies on the site).
+const SWATCH_PHOTO = "/brands/las-custom-fabric.jpg";
+const SAMPLING_PHOTO = "/brands/badria-sampling.jpg";
+const INSPECTION_PHOTO = "/blog/source-authentic-indian-textiles-us-clothing-brands-inspection.jpg";
 const GARMENT_IMAGE = "/blog/source-authentic-indian-textiles-us-clothing-brands-garment.jpg";
 const CLOSING_IMAGE = "/blog/source-authentic-indian-textiles-us-clothing-brands-closing.jpg";
 
@@ -435,7 +438,7 @@ export default function IndianTextileSourcingClient({ initialLikeCount, initialC
                                 Most US founders meet Indian textiles through a single piece of cloth. It might be a block-printed cotton bought in Jaipur, an ikat a customer wore to a fitting, or a swatch a mill posted after a message on Instagram. Getting from that one piece to three hundred finished dresses in a New Jersey warehouse is five separate jobs, and most of the trouble happens in the gaps between them.
                             </p>
                             <p className="mb-5 text-base lg:text-lg leading-snug">
-                                We have already written about <Link href="/blogs/indian-textiles-for-us-fashion-brands" className={LINK}>why US brands are choosing Indian textiles</Link> and <Link href="/blogs/indian-textile-art-us-fashion-brands" className={LINK}>which Indian crafts suit a modern collection</Link>. This post is the practical part. It covers what goes on the spec sheet, how to check a supplier, which samples and tests to pay for, and what US customs expects when the cartons land.
+                                We have already written about <Link href="/blogs/indian-textiles-for-us-fashion-brands" className={LINK}>why US brands are choosing Indian textiles</Link> and <Link href="/blogs/indian-textile-art-us-fashion-brands" className={LINK}>which Indian crafts suit a modern collection</Link>. This one is the practical part, in five stages.
                             </p>
                             <p className="mb-8 text-base lg:text-lg leading-snug">
                                 India is the world&rsquo;s sixth-largest exporter of textiles and apparel, with about 4% of world exports and $37.75 billion shipped in 2024&ndash;25 (<a href="https://www.pib.gov.in/PressReleasePage.aspx?PRID=2234442" target="_blank" rel="noopener noreferrer" className={LINK}>PIB</a>). A supply base that size gives you plenty of choice, and that makes picking the right supplier harder.
@@ -558,22 +561,46 @@ export default function IndianTextileSourcingClient({ initialLikeCount, initialC
                                     Step 3: Request Fabric Samples in the Right Order
                                 </h2>
 
-                                <div className="rounded-2xl overflow-hidden shadow-xl border border-gray-100 mb-7 max-w-2xl mx-auto bg-[#F8F7F4]">
-                                    <Image
-                                        src={MACRO_IMAGE}
-                                        alt="Six cotton lab-dip strips clipped on a wire in an Indian dye house, stepping from deep indigo to pale blue, with a steaming dye vat and brick walls behind: colour sampling before bulk production of Indian fabric. No people, no text."
-                                        width={1024}
-                                        height={1024}
-                                        sizes="(max-width: 1024px) 100vw, 42rem"
-                                        className="w-full h-auto"
-                                    />
+                                <div className="not-prose grid grid-cols-1 sm:grid-cols-2 gap-5 mb-8">
+                                    <figure>
+                                        <div className="rounded-2xl overflow-hidden shadow-lg border border-gray-100 bg-[#F8F7F4]">
+                                            <Image
+                                                src={SWATCH_PHOTO}
+                                                alt="Real Krazy Kreators fabric sourcing for LAS Loungewear: yarn cones and a circular knitting machine at the mill, a grid of labelled fabric swatch cards, and fabric rolls in storage."
+                                                width={901}
+                                                height={1080}
+                                                sizes="(max-width: 640px) 100vw, 22rem"
+                                                className="w-full h-auto"
+                                            />
+                                        </div>
+                                        <figcaption className="mt-3 text-sm text-[#666666] leading-snug">
+                                            <span className="block text-[11px] font-bold uppercase tracking-[0.18em] text-[#CBB49A] mb-1">From our floor</span>
+                                            Swatch cards from the mill, sent to <Link href="/case-studies/las" className={LINK}>LAS Loungewear</Link> to approve handle and colour before any fabric was ordered.
+                                        </figcaption>
+                                    </figure>
+                                    <figure>
+                                        <div className="rounded-2xl overflow-hidden shadow-lg border border-gray-100 bg-[#F8F7F4]">
+                                            <Image
+                                                src={SAMPLING_PHOTO}
+                                                alt="Real Krazy Kreators sampling for Badria Al Shihhi: pattern development, draping on a dress form, Pantone colour selection, fabric sourcing, hand embroidery and a first sample garment."
+                                                width={623}
+                                                height={1092}
+                                                sizes="(max-width: 640px) 100vw, 22rem"
+                                                className="w-full h-auto"
+                                            />
+                                        </div>
+                                        <figcaption className="mt-3 text-sm text-[#666666] leading-snug">
+                                            <span className="block text-[11px] font-bold uppercase tracking-[0.18em] text-[#CBB49A] mb-1">From our floor</span>
+                                            Sampling for <Link href="/case-studies/badri-al-shihhi" className={LINK}>Badria Al Shihhi</Link>: pattern, draping, Pantone match and embroidery, all signed off before bulk.
+                                        </figcaption>
+                                    </figure>
                                 </div>
 
                                 <p className="text-base lg:text-lg leading-snug text-[#4A484A] mb-4">
                                     Samples come in a sequence, and skipping one usually costs a round later. Start with swatches to judge the handle. Next come lab dips <em>(small pieces dyed to match your colour reference)</em>, and for a printed fabric, a strike-off <em>(a short test run of your design on the actual cloth)</em>. Embroidery gets its own sample panel. Only once all of those are approved does it make sense to sew a garment sample.
                                 </p>
                                 <p className="text-base lg:text-lg leading-snug text-[#4A484A]">
-                                    Approve colour against a physical standard that you and the supplier both hold. A photo on a phone screen is not a colour standard, and it is the most common reason a delivered shade &ldquo;isn&rsquo;t what we agreed&rdquo;.
+                                    Approve colour against a physical standard that you and the supplier both hold. A photo on a phone screen is not a colour standard, and it is a common reason a delivered shade &ldquo;isn&rsquo;t what we agreed&rdquo;.
                                 </p>
                             </section>
 
@@ -674,6 +701,23 @@ export default function IndianTextileSourcingClient({ initialLikeCount, initialC
                                 <p className="text-base lg:text-lg leading-snug text-[#4A484A] mb-4">
                                     Once the shade band is approved, the order moves through cutting, sewing, quality control, packing and shipping. Every handover is a place where responsibility can slip, which is why it helps when fabric and sewing happen in the same country. It matters at the border, too. Under US origin rules, a sewn garment comes from the country where it was wholly assembled (<a href="https://www.ecfr.gov/current/title-19/chapter-I/part-102/section-102.21" target="_blank" rel="noopener noreferrer" className={LINK}>19 CFR 102.21</a>). Indian fabric sewn into dresses in another country doesn&rsquo;t make them &ldquo;Made in India&rdquo;, and the label can&rsquo;t say so.
                                 </p>
+
+                                <figure className="not-prose my-8 max-w-md mx-auto">
+                                    <div className="rounded-2xl overflow-hidden shadow-lg border border-gray-100 bg-[#F8F7F4]">
+                                        <Image
+                                            src={INSPECTION_PHOTO}
+                                            alt="Real Krazy Kreators production floor: two checkers inspecting printed garments by hand at a long table, with machinists sewing in the background."
+                                            width={465}
+                                            height={540}
+                                            sizes="(max-width: 640px) 100vw, 28rem"
+                                            className="w-full h-auto"
+                                        />
+                                    </div>
+                                    <figcaption className="mt-3 text-sm text-[#666666] leading-snug">
+                                        <span className="block text-[11px] font-bold uppercase tracking-[0.18em] text-[#CBB49A] mb-1">From our floor</span>
+                                        Garments checked by hand on the production floor before packing, from the Badria Al Shihhi run.
+                                    </figcaption>
+                                </figure>
                                 <p className="text-base lg:text-lg leading-snug text-[#4A484A] mb-4">
                                     Every garment needs a label showing fibre content by percentage, the country of origin, and your company name or RN <em>(a registration number the FTC issues to US businesses)</em> (<a href="https://www.ftc.gov/business-guidance/resources/threading-your-way-through-labeling-requirements-under-textile-wool-acts" target="_blank" rel="noopener noreferrer" className={LINK}>FTC</a>). It also needs permanent care instructions that you have a reasonable basis for (<a href="https://www.ftc.gov/business-guidance/resources/clothes-captioning-complying-care-labeling-rule" target="_blank" rel="noopener noreferrer" className={LINK}>FTC Care Labeling Rule</a>). The wash tests from step 4 are that basis.
                                 </p>
@@ -788,7 +832,7 @@ export default function IndianTextileSourcingClient({ initialLikeCount, initialC
                                 </div>
 
                                 <p className="text-base lg:text-lg leading-snug text-[#4A484A]">
-                                    The cloth is the reason to source from India. The spec, the proof, the tests and the customs paperwork are what get it onto a US rail looking the way it did in the swatch. Which of the five stages would you rather hand to someone else?
+                                    The cloth is the reason to source from India. The five stages are what get it onto a US rail looking like the swatch. Which of them would you rather hand to someone else?
                                 </p>
                             </section>
 
