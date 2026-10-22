@@ -30,6 +30,36 @@ export const blogPosts: BlogPostMeta[] = [
     likes: 0,
   },
   {
+    id: 80,
+    title:
+      "Indian Textile Art Meets Modern Fashion: What US Brands Can Create With Indian Craftsmanship",
+    excerpt:
+      "Block print, ikat, Kalamkari, Ajrakh, Chikankari and Kantha: six Indian crafts, what each one suits in a modern US collection, and where each one gets difficult. Plus a product-by-craft table, the seven steps from traditional craft to finished collection, a sourcing checklist, and how to tell the story without overclaiming.",
+    category: "manufacturing",
+    author: "Krazy Kreators Team",
+    date: "October 14, 2026",
+    readTime: "6 min read",
+    image: "/blog/indian-textile-art-us-fashion-brands-hero.jpg",
+    slug: "indian-textile-art-us-fashion-brands",
+    readers: 0,
+    likes: 0,
+  },
+  {
+    id: 79,
+    title:
+      "What Indian Textiles Offer US Fashion Brands",
+    excerpt:
+      "US clothing imports from India fell this year, mostly big retailers buying basics. What India offers a smaller, design-led label did not change: mill cotton alongside hand-woven Chanderi, ikat, khadi and block prints, cut into modern clothes. Inside: an eight-fabric guide for a US line sheet, how to use Indian craft without making traditional clothing, sampling before you commit, what to verify before calling anything sustainable, and a six-part checklist for choosing an Indian manufacturer.",
+    category: "manufacturing",
+    author: "Krazy Kreators Team",
+    date: "October 3, 2026",
+    readTime: "7 min read",
+    image: "/blog/indian-textiles-for-us-fashion-brands-hero.jpg",
+    slug: "indian-textiles-for-us-fashion-brands",
+    readers: 0,
+    likes: 0,
+  },
+  {
     id: 78,
     title:
       "EU Green Claims Directive 2026: What Fashion Brands Must Prove Before September 27",
