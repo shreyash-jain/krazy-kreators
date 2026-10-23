@@ -15,6 +15,21 @@ export type BlogPostMeta = {
 
 export const blogPosts: BlogPostMeta[] = [
   {
+    id: 82,
+    title:
+      "Indian Handloom & Sustainable Textiles: Why They Are Trending Among US Fashion Brands",
+    excerpt:
+      "India's draft rules make a numbered Handloom Mark label compulsory on anything sold as handloom, exports included. For a US brand buying hand-woven cloth, the claim gets easier to prove and harder to fake. What makes handloom different from power-loom cloth, six weaves and where they fit in a US line, where the sustainability case holds and where it doesn't, and the five proofs to ask for before you approve a sample.",
+    category: "sustainability",
+    author: "Krazy Kreators Team",
+    date: "October 3, 2026",
+    readTime: "7 min read",
+    image: "/blog/indian-handloom-sustainable-textiles-us-fashion-brands-hero.jpg",
+    slug: "indian-handloom-sustainable-textiles-us-fashion-brands",
+    readers: 0,
+    likes: 0,
+  },
+  {
     id: 81,
     title:
       "From Indian Art to Global Fashion: How US Clothing Brands Can Source Authentic Indian Textiles",
