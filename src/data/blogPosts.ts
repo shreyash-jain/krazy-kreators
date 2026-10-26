@@ -15,6 +15,21 @@ export type BlogPostMeta = {
 
 export const blogPosts: BlogPostMeta[] = [
   {
+    id: 83,
+    title:
+      "Indian Textile Techniques US Fashion Designers Should Know in 2026",
+    excerpt:
+      "Seven Indian textile techniques, from hand block printing and Chikankari to Ajrakh, ikat, Kantha, handloom and natural dyeing, judged on what each one does to lead time, colour consistency and testing. Plus what 2026 tariff and sourcing shifts mean for US designers, a 12-point sourcing checklist and a collection-need guide.",
+    category: "manufacturing",
+    author: "Krazy Kreators Team",
+    date: "October 26, 2026",
+    readTime: "6 min read",
+    image: "/blog/indian-textile-techniques-us-fashion-designers-hero.jpg",
+    slug: "indian-textile-techniques-us-fashion-designers",
+    readers: 0,
+    likes: 0,
+  },
+  {
     id: 82,
     title:
       "Indian Handloom & Sustainable Textiles: Why They Are Trending Among US Fashion Brands",
