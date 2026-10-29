@@ -34,7 +34,6 @@ export default function ContactDialog({ open, onClose, selectedPlan }: ContactDi
   const [isFormValid, setIsFormValid] = useState(false);
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitStatus, setSubmitStatus] = useState<'idle' | 'success' | 'error'>('idle');
-  const [submitError, setSubmitError] = useState<string | null>(null);
 
   useEffect(() => {
     const onEsc = (e: KeyboardEvent) => {
@@ -131,7 +130,6 @@ export default function ContactDialog({ open, onClose, selectedPlan }: ContactDi
     if (!isFormValid || isSubmitting) return;
     setIsSubmitting(true);
     setSubmitStatus('idle');
-    setSubmitError(null);
 
     const submissionData = {
       ...formData,
@@ -150,8 +148,7 @@ export default function ContactDialog({ open, onClose, selectedPlan }: ContactDi
       });
 
       if (!res.ok) {
-        const data = await res.json().catch(() => ({}));
-        throw new Error(data?.error || 'Failed to send message');
+        throw new Error(`Contact request failed with status ${res.status}`);
       }
 
       setSubmitStatus('success');
@@ -173,8 +170,7 @@ export default function ContactDialog({ open, onClose, selectedPlan }: ContactDi
         setSubmitStatus('idle');
       }, 1200);
     } catch (err) {
-      const message = err instanceof Error ? err.message : 'Unknown error';
-      setSubmitError(message);
+      console.error('[contact] Submit failed', err);
       setSubmitStatus('error');
     } finally {
       setIsSubmitting(false);
@@ -357,7 +353,10 @@ export default function ContactDialog({ open, onClose, selectedPlan }: ContactDi
               <p className="text-center text-xs text-green-600 mt-3">Message sent. We&#39;ll get back within 24 hours.</p>
             )}
             {submitStatus === 'error' && (
-              <p className="text-center text-xs text-red-600 mt-3">{submitError || 'Something went wrong. Please try again.'}</p>
+              <p className="text-center text-xs text-red-600 mt-3">
+                Couldn&#39;t send. Please email{' '}
+                <a href="mailto:info@krazykreators.com" className="underline">info@krazykreators.com</a>
+              </p>
             )}
             <p className="text-center text-xs text-[#A9A29D] mt-3">Once submitted, our team will reach out within 24 hours.</p>
           </div>
