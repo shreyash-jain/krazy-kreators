@@ -161,9 +161,13 @@ export async function POST(request: Request) {
     const visitorEmail = stripLineBreaks(String(body.email));
     const email = {
       from: parseAddress(process.env.MAIL_FROM || process.env.SMTP_USER || ""),
-      to: (process.env.MAIL_TO || "").split(",").map((s) => s.trim()).filter(Boolean),
-      reply: EMAIL_RE.test(visitorEmail) ? visitorEmail : undefined,
-      subject: stripLineBreaks(`New inquiry from ${body.fullName} (${body.company})`),
+      to: (process.env.MAIL_TO || "").split(",").map((s) => parseAddress(s).email).filter(Boolean),
+      // Length check first: RFC 5321 caps addresses at 254, and it keeps the regex cheap.
+      reply: visitorEmail.length <= 254 && EMAIL_RE.test(visitorEmail) ? visitorEmail : undefined,
+      // Capped so the header stays well under SMTP's 998-octet line limit.
+      subject: stripLineBreaks(
+        `New inquiry from ${String(body.fullName).slice(0, 100)} (${String(body.company).slice(0, 100)})`
+      ),
       html: createEmailHtml(body),
     };
 
