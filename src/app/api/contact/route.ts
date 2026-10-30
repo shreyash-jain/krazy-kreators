@@ -199,7 +199,9 @@ export async function POST(request: Request) {
       return NextResponse.json({ error: GENERIC_ERROR }, { status: 500 });
     }
 
-    try {
+    // A fresh connection per attempt. close() errors are swallowed so a send
+    // that succeeded can never fall into the retry and duplicate the email.
+    const sendOnce = async () => {
       const { WorkerMailer } = await import("worker-mailer");
       const mailer = await WorkerMailer.connect({
         host,
@@ -212,10 +214,23 @@ export async function POST(request: Request) {
       try {
         await mailer.send(email);
       } finally {
-        await mailer.close();
+        await mailer.close().catch(() => {});
+      }
+    };
+
+    try {
+      try {
+        await sendOnce();
+      } catch (firstErr) {
+        console.warn("[contact] SMTP send failed, retrying once", {
+          message: firstErr instanceof Error ? firstErr.message : String(firstErr),
+          to: email.to,
+        });
+        await new Promise((resolve) => setTimeout(resolve, 1000));
+        await sendOnce();
       }
     } catch (sendErr) {
-      console.error("[contact] SMTP send error", {
+      console.error("[contact] SMTP send error after retry", {
         message: sendErr instanceof Error ? sendErr.message : String(sendErr),
         to: email.to,
       });
