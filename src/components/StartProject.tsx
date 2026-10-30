@@ -1,7 +1,8 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import { User, Mail, Building2, MapPin, Globe, FileText, MessageSquare } from "lucide-react";
+import SubmissionSuccess, { type SubmissionDetails } from "@/components/SubmissionSuccess";
 import CountrySelect from "@/components/CountrySelect";
 import ServicesSelect from "@/components/ServicesSelect";
 import PhoneNumberInput from "@/components/PhoneNumberInput";
@@ -21,6 +22,8 @@ export default function StartProject() {
   const [isFormValid, setIsFormValid] = useState(false);
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitStatus, setSubmitStatus] = useState<'idle' | 'success' | 'error'>('idle');
+  const [submittedDetails, setSubmittedDetails] = useState<SubmissionDetails>({});
+  const submitButtonRef = useRef<HTMLButtonElement>(null);
 
   // Check if all required fields are filled
   useEffect(() => {
@@ -63,6 +66,7 @@ export default function StartProject() {
         throw new Error(`Contact request failed with status ${res.status}`);
       }
 
+      setSubmittedDetails({ fullName: formData.fullName, services: formData.services, email: formData.email });
       setSubmitStatus('success');
       setFormData({
         fullName: '',
@@ -278,8 +282,11 @@ export default function StartProject() {
             {/* Submit Button */}
             <div className="pt-3 sm:pt-4">
               <button
+                ref={submitButtonRef}
                 type="submit"
-                disabled={!isFormValid || isSubmitting}
+                // aria-disabled (not disabled) when incomplete, so focus can return here from the success dialog
+                disabled={isSubmitting}
+                aria-disabled={!isFormValid || isSubmitting}
                 className={`w-full py-3 sm:py-4 px-6 sm:px-8 rounded-full font-medium text-base sm:text-lg transition-all duration-300 shadow-sm ${
                   isFormValid && !isSubmitting
                     ? 'bg-gradient-to-r from-[#CBB49A] to-[#b7a078] text-white hover:from-[#b7a078] hover:to-[#a69072] hover:shadow-md cursor-pointer'
@@ -288,9 +295,6 @@ export default function StartProject() {
               >
                 {isSubmitting ? 'Sending…' : 'Get Started'}
               </button>
-              {submitStatus === 'success' && (
-                <p className="text-center text-sm text-green-600 mt-3">Thanks, we&#39;ll reach out within 24 hours.</p>
-              )}
               {submitStatus === 'error' && (
                 <p className="text-center text-sm text-red-600 mt-3">
                   Couldn&#39;t send. Please email{' '}
@@ -304,6 +308,13 @@ export default function StartProject() {
           </form>
         </div>
       </div>
+
+      <SubmissionSuccess
+        open={submitStatus === 'success'}
+        details={submittedDetails}
+        onClose={() => setSubmitStatus('idle')}
+        returnFocusRef={submitButtonRef}
+      />
     </section>
   );
 } 

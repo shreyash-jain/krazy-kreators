@@ -15,7 +15,7 @@ import {
     ChevronDown,
     Leaf,
 } from "lucide-react";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import { usePathname } from "next/navigation";
 import Link from "next/link";
 import dynamic from "next/dynamic";
@@ -97,7 +97,24 @@ export default function Navbar({ invertTabs: forceInvertTabs }: NavbarProps = {}
 	const [heroInView, setHeroInView] = useState(false);
 	const [contactOpen, setContactOpen] = useState(false);
 	const [isHoveringMegaMenu, setIsHoveringMegaMenu] = useState(false);
+	const drawerCloseRef = useRef<HTMLButtonElement>(null);
 	const pathname = usePathname();
+
+	// Mobile drawer: focus its close button on open, Esc closes it, and focus
+	// returns to whichever hamburger opened it.
+	useEffect(() => {
+		if (!open) return;
+		const opener = document.activeElement as HTMLElement | null;
+		drawerCloseRef.current?.focus();
+		const onKeyDown = (e: KeyboardEvent) => {
+			if (e.key === "Escape") setOpen(false);
+		};
+		document.addEventListener("keydown", onKeyDown);
+		return () => {
+			document.removeEventListener("keydown", onKeyDown);
+			opener?.focus();
+		};
+	}, [open]);
 	const isDroverPage = pathname === "/case-studies/drover";
 	const isTiltedLotusPage = pathname === "/case-studies/tilted-lotus";
 	const isLasPage = pathname === "/case-studies/las";
@@ -278,18 +295,30 @@ export default function Navbar({ invertTabs: forceInvertTabs }: NavbarProps = {}
 					>
 						Get In Touch
 					</Button>
-					<Menu
-						className={`w-7 h-7 ${invertTabs ? "text-white" : "text-[#2D2A2E]"}`}
+					<button
+						type="button"
+						aria-label="Open menu"
+						aria-expanded={open}
+						aria-controls="mobile-menu"
+						className="rounded-md focus:outline-none focus-visible:ring-2 focus-visible:ring-[#CBB49A]"
 						onClick={() => setOpen(true)}
-					/>
+					>
+						<Menu className={`w-7 h-7 ${invertTabs ? "text-white" : "text-[#2D2A2E]"}`} aria-hidden="true" />
+					</button>
 				</div>
 
 				{/* Mobile Hamburger */}
 				<div className="md:hidden flex items-center">
-					<Menu
-						className={`w-7 h-7 ${invertTabs ? "text-white" : "text-[#2D2A2E]"}`}
+					<button
+						type="button"
+						aria-label="Open menu"
+						aria-expanded={open}
+						aria-controls="mobile-menu"
+						className="rounded-md focus:outline-none focus-visible:ring-2 focus-visible:ring-[#CBB49A]"
 						onClick={() => setOpen(true)}
-					/>
+					>
+						<Menu className={`w-7 h-7 ${invertTabs ? "text-white" : "text-[#2D2A2E]"}`} aria-hidden="true" />
+					</button>
 				</div>
 			</div>
 
@@ -327,11 +356,23 @@ export default function Navbar({ invertTabs: forceInvertTabs }: NavbarProps = {}
 			{open && (
 				<div className="fixed inset-0 z-40 flex justify-end">
 					<div className="absolute h-screen inset-0 bg-black/30" onClick={() => setOpen(false)} />
-					<div className="relative w-[80%] md:w-[60%] lg:w-[50%] bg-[#F5F0E8] h-screen shadow-lg flex flex-col animate-slide-in">
+					<div
+						id="mobile-menu"
+						role="dialog"
+						aria-modal="true"
+						aria-label="Menu"
+						className="relative w-[80%] md:w-[60%] lg:w-[50%] bg-[#F5F0E8] h-screen shadow-lg flex flex-col animate-slide-in"
+					>
 						{/* Header with close button */}
 						<div className="flex-shrink-0 p-6 pb-4">
-							<button className="self-end" onClick={() => setOpen(false)}>
-								<span className="text-2xl">&times;</span>
+							<button
+								ref={drawerCloseRef}
+								type="button"
+								aria-label="Close menu"
+								className="self-end rounded-md focus:outline-none focus-visible:ring-2 focus-visible:ring-[#CBB49A]"
+								onClick={() => setOpen(false)}
+							>
+								<span className="text-2xl" aria-hidden="true">&times;</span>
 							</button>
 						</div>
 						
@@ -366,7 +407,7 @@ export default function Navbar({ invertTabs: forceInvertTabs }: NavbarProps = {}
 						
 						{/* Footer with CTA button */}
 						<div className="flex-shrink-0 p-6 pt-4 border-t border-[#D4CCE8]">
-							<Button className="w-full rounded-full bg-[#CBB49A] text-white px-5 py-2 hover:bg-[#b7a078] transition-all duration-300" onClick={() => setContactOpen(true)}>Get In Touch</Button>
+							<Button className="w-full rounded-full bg-[#CBB49A] text-white px-5 py-2 hover:bg-[#b7a078] transition-all duration-300" onClick={() => { setOpen(false); setContactOpen(true); }}>Get In Touch</Button>
 						</div>
 					</div>
 				</div>
