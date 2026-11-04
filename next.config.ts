@@ -19,6 +19,14 @@ const nextConfig: NextConfig = {
   typescript: {
     ignoreBuildErrors: true,
   },
+  // worker-mailer (contact form SMTP) imports the Workers-only `cloudflare:sockets`.
+  // Leave it as a require() that @cloudflare/next-on-pages rewrites into a native import.
+  webpack: (config, { nextRuntime }) => {
+    if (nextRuntime === "edge") {
+      config.externals.push({ "cloudflare:sockets": "commonjs cloudflare:sockets" });
+    }
+    return config;
+  },
   async rewrites() {
     return [
       {

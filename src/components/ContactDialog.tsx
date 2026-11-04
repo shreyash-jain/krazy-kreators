@@ -1,7 +1,8 @@
 "use client";
 
 import { X } from "lucide-react";
-import { useEffect, useState } from "react";
+import { useCallback, useEffect, useId, useState } from "react";
+import { SubmissionSuccessContent, type SubmissionDetails } from "@/components/SubmissionSuccess";
 import CountrySelect from "@/components/CountrySelect";
 import ServicesSelect from "@/components/ServicesSelect";
 import PhoneNumberInput from "@/components/PhoneNumberInput";
@@ -34,15 +35,23 @@ export default function ContactDialog({ open, onClose, selectedPlan }: ContactDi
   const [isFormValid, setIsFormValid] = useState(false);
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitStatus, setSubmitStatus] = useState<'idle' | 'success' | 'error'>('idle');
-  const [submitError, setSubmitError] = useState<string | null>(null);
+  const [submittedDetails, setSubmittedDetails] = useState<SubmissionDetails>({});
+  const titleId = useId();
+  const successTitleId = useId();
+
+  // Any close clears the success view, so the form is back the next time the popup opens.
+  const handleClose = useCallback(() => {
+    setSubmitStatus((status) => (status === 'success' ? 'idle' : status));
+    onClose();
+  }, [onClose]);
 
   useEffect(() => {
     const onEsc = (e: KeyboardEvent) => {
-      if (e.key === "Escape") onClose();
+      if (e.key === "Escape") handleClose();
     };
     if (open) document.addEventListener("keydown", onEsc);
     return () => document.removeEventListener("keydown", onEsc);
-  }, [open, onClose]);
+  }, [open, handleClose]);
 
   // Check if all required fields are filled
   useEffect(() => {
@@ -131,7 +140,6 @@ export default function ContactDialog({ open, onClose, selectedPlan }: ContactDi
     if (!isFormValid || isSubmitting) return;
     setIsSubmitting(true);
     setSubmitStatus('idle');
-    setSubmitError(null);
 
     const submissionData = {
       ...formData,
@@ -150,12 +158,11 @@ export default function ContactDialog({ open, onClose, selectedPlan }: ContactDi
       });
 
       if (!res.ok) {
-        const data = await res.json().catch(() => ({}));
-        throw new Error(data?.error || 'Failed to send message');
+        throw new Error(`Contact request failed with status ${res.status}`);
       }
 
+      setSubmittedDetails({ fullName: formData.fullName, services: formData.services, email: formData.email });
       setSubmitStatus('success');
-      // Optional: reset form
       setFormData({
         fullName: '',
         email: '',
@@ -166,15 +173,8 @@ export default function ContactDialog({ open, onClose, selectedPlan }: ContactDi
         services: '',
         message: ''
       });
-
-      // Auto-close after a short delay
-      setTimeout(() => {
-        onClose();
-        setSubmitStatus('idle');
-      }, 1200);
     } catch (err) {
-      const message = err instanceof Error ? err.message : 'Unknown error';
-      setSubmitError(message);
+      console.error('[contact] Submit failed', err);
       setSubmitStatus('error');
     } finally {
       setIsSubmitting(false);
@@ -188,8 +188,9 @@ export default function ContactDialog({ open, onClose, selectedPlan }: ContactDi
   return (
     <div
       className="fixed inset-0 z-[100] flex items-center justify-center bg-black/60 p-4"
-      onClick={onClose}
+      onClick={handleClose}
       aria-modal="true"
+      aria-labelledby={submitStatus === 'success' ? successTitleId : titleId}
       role="dialog"
     >
       <div
@@ -197,18 +198,22 @@ export default function ContactDialog({ open, onClose, selectedPlan }: ContactDi
         onClick={stop}
       >
         <div className="flex items-center justify-between px-5 py-4 border-b border-[#F0ECE6] flex-shrink-0">
-          <h3 className="text-lg font-semibold text-[#2D2A2E]">Get in touch</h3>
+          <h3 id={titleId} className="text-lg font-semibold text-[#2D2A2E]">Get in touch</h3>
           <button
             aria-label="Close"
             className="p-2 rounded-md hover:bg-[#F8F7F4]"
-            onClick={onClose}
+            onClick={handleClose}
           >
             <X className="w-5 h-5 text-[#2D2A2E]" />
           </button>
         </div>
         
+        {submitStatus === 'success' && (
+          <SubmissionSuccessContent details={submittedDetails} onDone={handleClose} titleId={successTitleId} />
+        )}
+
         {/* Selected Plan Details */}
-        {selectedPlan && (
+        {selectedPlan && submitStatus !== 'success' && (
           <div className="px-5 py-4 bg-[#F8F7F4] border-b border-[#F0ECE6] flex-shrink-0">
             <div className="bg-white rounded-xl p-4 border border-[#ECE9E2]">
               <div className="flex items-center justify-between mb-2">
@@ -238,7 +243,7 @@ export default function ContactDialog({ open, onClose, selectedPlan }: ContactDi
             </div>
           </div>
         )}
-        <div className="flex-1 flex flex-col min-h-0">
+        <div className={`flex-1 flex flex-col min-h-0 ${submitStatus === 'success' ? 'hidden' : ''}`}>
           <div className="flex-1 overflow-y-auto px-5 py-5">
             <form id="contact-form" onSubmit={handleSubmit} className="space-y-4">
               <div>
@@ -353,11 +358,11 @@ export default function ContactDialog({ open, onClose, selectedPlan }: ContactDi
             >
               {isSubmitting ? 'Sending...' : 'Get Started'}
             </button>
-            {submitStatus === 'success' && (
-              <p className="text-center text-xs text-green-600 mt-3">Message sent. We&#39;ll get back within 24 hours.</p>
-            )}
             {submitStatus === 'error' && (
-              <p className="text-center text-xs text-red-600 mt-3">{submitError || 'Something went wrong. Please try again.'}</p>
+              <p className="text-center text-xs text-red-600 mt-3">
+                Couldn&#39;t send. Please email{' '}
+                <a href="mailto:info@krazykreators.com" className="underline">info@krazykreators.com</a>
+              </p>
             )}
             <p className="text-center text-xs text-[#A9A29D] mt-3">Once submitted, our team will reach out within 24 hours.</p>
           </div>

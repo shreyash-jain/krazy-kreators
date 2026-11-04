@@ -5,7 +5,8 @@ import Link from "next/link";
 import CountrySelect from "@/components/CountrySelect";
 import ServicesSelect from "@/components/ServicesSelect";
 import PhoneNumberInput from "@/components/PhoneNumberInput";
-import { useState, useEffect } from "react";
+import SubmissionSuccess, { type SubmissionDetails } from "@/components/SubmissionSuccess";
+import { useState, useEffect, useRef } from "react";
 import {
   MapPin,
   Clock,
@@ -43,6 +44,10 @@ export default function ContactClient() {
   });
 
   const [isFormValid, setIsFormValid] = useState(false);
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [submitStatus, setSubmitStatus] = useState<'idle' | 'success' | 'error'>('idle');
+  const [submittedDetails, setSubmittedDetails] = useState<SubmissionDetails>({});
+  const submitButtonRef = useRef<HTMLButtonElement>(null);
 
   useEffect(() => {
     const requiredFields = [
@@ -75,10 +80,40 @@ export default function ContactClient() {
     }));
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    if (isFormValid) {
-      console.log('Form submitted:', formData);
+    if (!isFormValid || isSubmitting) return;
+    setIsSubmitting(true);
+    setSubmitStatus('idle');
+
+    try {
+      const res = await fetch('/api/contact', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ ...formData, selectedPlan: null })
+      });
+
+      if (!res.ok) {
+        throw new Error(`Contact request failed with status ${res.status}`);
+      }
+
+      setSubmittedDetails({ fullName: formData.fullName, services: formData.services, email: formData.email });
+      setSubmitStatus('success');
+      setFormData({
+        fullName: '',
+        email: '',
+        phone: '',
+        company: '',
+        address: '',
+        country: '',
+        services: '',
+        message: ''
+      });
+    } catch (err) {
+      console.error('[contact] Submit failed', err);
+      setSubmitStatus('error');
+    } finally {
+      setIsSubmitting(false);
     }
   };
 
@@ -263,17 +298,26 @@ export default function ContactClient() {
               </div>
 
               <div className="pt-3 sm:pt-4">
-                <button 
-                  type="submit" 
-                  disabled={!isFormValid}
+                <button
+                  ref={submitButtonRef}
+                  type="submit"
+                  // aria-disabled (not disabled) when incomplete, so focus can return here from the success dialog
+                  disabled={isSubmitting}
+                  aria-disabled={!isFormValid || isSubmitting}
                   className={`w-full py-3 sm:py-4 px-6 sm:px-8 rounded-full font-medium text-base sm:text-lg transition-all duration-300 shadow-sm ${
-                    isFormValid 
-                      ? 'bg-gradient-to-r from-[#CBB49A] to-[#b7a078] text-white hover:from-[#b7a078] hover:to-[#a69072] hover:shadow-md cursor-pointer' 
+                    isFormValid && !isSubmitting
+                      ? 'bg-gradient-to-r from-[#CBB49A] to-[#b7a078] text-white hover:from-[#b7a078] hover:to-[#a69072] hover:shadow-md cursor-pointer'
                       : 'bg-gradient-to-r from-[#CBB49A]/30 to-[#b7a078]/30 text-white/70 cursor-not-allowed'
                   }`}
                 >
-                  Get Started
+                  {isSubmitting ? 'Sending…' : 'Get Started'}
                 </button>
+                {submitStatus === 'error' && (
+                  <p className="text-center text-sm text-red-600 mt-3">
+                    Couldn&#39;t send. Please email{' '}
+                    <a href="mailto:info@krazykreators.com" className="underline">info@krazykreators.com</a>
+                  </p>
+                )}
                 <p className="text-center text-xs sm:text-sm text-[#A9A29D] mt-3 sm:mt-4">Once submitted, our team will reach out within 24 hours.</p>
               </div>
             </form>
@@ -356,6 +400,13 @@ export default function ContactClient() {
       </section>
 
       <Footer />
+
+      <SubmissionSuccess
+        open={submitStatus === 'success'}
+        details={submittedDetails}
+        onClose={() => setSubmitStatus('idle')}
+        returnFocusRef={submitButtonRef}
+      />
     </main>
   );
 }
