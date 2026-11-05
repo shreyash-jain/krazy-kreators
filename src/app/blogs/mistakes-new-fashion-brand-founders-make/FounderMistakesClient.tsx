@@ -33,6 +33,9 @@ const USTR = "https://ustr.gov/about/policy-offices/press-office/press-releases/
 const NRF = "https://nrf.com/research/2025-retail-returns-landscape";
 const FTC_GUIDES = "https://www.ftc.gov/business-guidance/resources/ftcs-endorsement-guides";
 const FTC_INFLUENCERS = "https://www.ftc.gov/business-guidance/resources/disclosures-101-social-media-influencers";
+const FTC_LABELS = "https://www.ftc.gov/business-guidance/resources/threading-your-way-through-labeling-requirements-under-textile-wool-acts";
+const FTC_CARE = "https://www.ftc.gov/business-guidance/resources/clothes-captioning-complying-care-labeling-rule";
+const AATCC = "https://members.aatcc.org/store/tm150/556";
 
 // This post's palette: a warm clay accent for the mistakes, on sand.
 const CLAY = "#B5532F";
@@ -74,6 +77,17 @@ const CHECKLIST = [
     { item: "Build a customer retention strategy", to: "after-launch" },
 ];
 
+// The close: what Krazy Kreators does against each mistake. Every line is taken from the site's own service and case-study pages.
+const WHERE_WE_HELP: Record<string, React.ReactNode> = {
+    audience: <><Link href="/design-services" className={LINK}>Trend and forecast research</Link> comes before the first sketch, so the fit, the fabric and the price have a customer to answer to.</>,
+    positioning: <>We develop the collection and the labels around your brand identity. Badria Al Shihhi said what impressed her most was &ldquo;their ability to translate my personal style into a cohesive brand identity.&rdquo;</>,
+    manufacturer: <>Tech packs, in-house sampling, fit approvals and AQL inspections <em>(a standard method for sampling bulk quality)</em> are all <Link href="/manufacturing-services" className={LINK}>managed by us</Link>, with photos and video from the floor as it runs. Defects beyond the agreed limits get repaired, replaced or credited under the contract.</>,
+    pricing: <><Link href="/end-to-end-services" className={LINK}>Open costing</Link> on request: a breakdown of fabric yield, trims, cut and make, wastage, packaging, testing and logistics, so you set the price with the real numbers in front of you.</>,
+    marketing: <>For <Link href="/case-studies/badri-al-shihhi" className={LINK}>Badria Al Shihhi</Link> we planned the photoshoot from creative direction to execution, then guided the launch through her website, store opening and fashion-show debut.</>,
+    inventory: <>With your forecast we can pre-book fabric or loom time to shorten reorders, and <Link href="/end-to-end-services/raw-materials" className={LINK}>stored raw materials</Link> keep the shade, weave and trims the same from one run to the next.</>,
+    "after-launch": <>Your approved patterns and specs stay on file with us, so a fit correction from your return reasons can go into the next run.</>,
+};
+
 function Kicker({ n }: { n: number }) {
     return (
         <p className="not-prose flex items-center gap-3 text-[11px] font-bold uppercase tracking-[0.22em] mb-3" style={{ color: CLAY }}>
@@ -89,6 +103,19 @@ function Avoid({ children }: { children: React.ReactNode }) {
         <p className={P}>
             <strong className="text-[#2D2A2E]">How to avoid it:</strong> {children}
         </p>
+    );
+}
+
+// A short scenario for each mistake. Illustrative, and labelled as such on the page, so it can't be read as a client's history.
+function Happens({ children }: { children: React.ReactNode }) {
+    return (
+        <aside className="not-prose my-7 rounded-2xl border border-[#2D2A2E]/15 bg-white px-5 py-5 sm:px-6 shadow-sm">
+            <p className="flex flex-wrap items-center gap-x-3 gap-y-1 mb-2.5">
+                <span className="text-xs font-bold uppercase tracking-[0.18em] text-[#2D2A2E]">What actually happens</span>
+                <span className="text-[11px] italic text-[#8C7355]">illustration</span>
+            </p>
+            <p className="text-base lg:text-[17px] leading-snug text-[#2D2A2E]">{children}</p>
+        </aside>
     );
 }
 
@@ -512,7 +539,7 @@ export default function FounderMistakesClient({ initialLikeCount, initialComment
                                     That isn&rsquo;t unique to fashion. Of the US businesses that opened in March 2021, 47.2% were still operating five years later, according to the <a href={BLS} {...EXT} className={LINK}>Bureau of Labor Statistics</a>. Clothing brands close for ordinary reasons too, and the reasons are usually visible well before the first order ships.
                                 </p>
                                 <p className={`${P} mb-8`}>
-                                    These are the seven mistakes new fashion brand founders make most often, in roughly the order they make them, and each section ends with warning signs you can check against your own plan. Our <Link href="/blogs/costly-mistakes-startup-make" className={LINK}>earlier list of ten</Link> covers wider ground, including cash flow.
+                                    These are the seven mistakes new fashion brand founders make most often, in roughly the order they make them. Each section shows how the mistake plays out in the garment, on the cost sheet or in the stockroom, and ends with warning signs you can check against your own plan. The &ldquo;what actually happens&rdquo; boxes are illustrations with round numbers, not accounts of specific clients; where we name a brand, the details come from its case study. Our <Link href="/blogs/costly-mistakes-startup-make" className={LINK}>earlier list of ten</Link> covers wider ground, including cash flow.
                                 </p>
 
                                 <HiddenCostMap onJump={scrollToId} />
@@ -525,6 +552,12 @@ export default function FounderMistakesClient({ initialLikeCount, initialComment
                                 <p className={P}>
                                     Most briefs we receive start with a product, a heavyweight hoodie, say, or a resort shirt. The customer comes later and is often described as someone like the founder. Designing for your own taste is how most labels begin, and it can work, but you are one buyer and you already like the product.
                                 </p>
+                                <p className={P}>
+                                    In clothing, the customer decides things founders tend to treat as design choices. Their body sets the fit block <em>(the base pattern every size is graded from)</em> and the size range. Where they live sets the fabric weight.
+                                </p>
+                                <Happens>
+                                    A founder orders 300 boxy hoodies in 400 GSM fleece <em>(grams per square meter, about 12 oz per square yard)</em>, sizes S to XL, at $85. The Instagram page picks up followers, mostly women in Texas and Florida. They like the look, ask for an XS and say it&rsquo;s too warm to wear until December. The hoodie is well made, but it was cut for a customer nobody defined, and most of the run is still boxed up in spring.
+                                </Happens>
 
                                 <div className="not-prose rounded-3xl overflow-hidden my-8 max-w-2xl mx-auto">
                                     <Image
@@ -544,11 +577,10 @@ export default function FounderMistakesClient({ initialLikeCount, initialComment
                                     She didn&rsquo;t yet know the fabrics or the silhouettes. Those came out of our research into travelwear in the US and Gulf markets, which had a direction because the customer was already clear.
                                 </p>
                                 <Avoid>
-                                    describe one customer in a sentence, including where they shop now and what they pay there. Look at what those brands charge for the piece you want to make. Then test demand with a waitlist or pre-orders before you commit to a full run.
+                                    describe one customer in a sentence, including where they shop now and what they pay there. Look at what those brands charge for the piece you want to make, and fit your sample on someone who matches the description. Then test demand with a waitlist or pre-orders before you commit to a full run.
                                 </Avoid>
                                 <Signs items={[
                                     <>You describe your customer as &ldquo;anyone who likes streetwear.&rdquo;</>,
-                                    <>You haven&rsquo;t checked what competitors charge for the same piece.</>,
                                     <>Nobody outside your friends has seen a sample.</>,
                                 ]} />
                             </section>
@@ -561,10 +593,16 @@ export default function FounderMistakesClient({ initialLikeCount, initialComment
                                     Founders often give the logo weeks and the positioning an afternoon. Positioning is the harder question: why would someone buy your shirt instead of a similar one from five other labels? Without a clear answer the website and the Instagram grid start saying different things, and customers trust the brand less even when they can&rsquo;t say why.
                                 </p>
                                 <p className={P}>
+                                    The answer also has to show up in the garment, because customers judge a brand with their hands. A claim of premium gets tested by the fabric weight, the trims <em>(buttons, zips, labels and other attached components)</em> and how the seams are finished on the inside.
+                                </p>
+                                <Happens>
+                                    A founder launches &ldquo;premium everyday basics&rdquo; with a beautiful logo and a $48 tee. The tee is 140 GSM jersey, thin enough to see through in a pale color, and it twists at the side seam after two washes. The first comment on the launch post asks why it costs $48. The founder runs a discount in week two, and that becomes the price customers remember.
+                                </Happens>
+                                <p className={P}>
                                     <Link href="/case-studies/tilted-lotus" className={LINK}>Tilted Lotus</Link> began with a position before a product. Preeti Gore, its Houston-based founder, wanted South Asian art on contemporary silhouettes, made as slow fashion. Every later choice, up to the collection shown at New York Fashion Week, could be checked against that line.
                                 </p>
                                 <Avoid>
-                                    write a one-sentence positioning statement before you brief a designer. Then hold every touchpoint up against it, from the woven label to the product photos.
+                                    write a one-sentence positioning statement before you brief a designer. Then hold every touchpoint up against it, from the fabric and the woven label to the product photos.
                                 </Avoid>
                                 <Signs items={[
                                     <>Your logo is finished but you can&rsquo;t say in one sentence why someone should buy from you.</>,
@@ -579,6 +617,12 @@ export default function FounderMistakesClient({ initialLikeCount, initialComment
                                 <p className={P}>
                                     The usual story is a sample that&rsquo;s right and a bulk order that isn&rsquo;t. The fabric arrives lighter or a size runs small, and the invoice has already been paid. Sample quality that didn&rsquo;t hold in bulk was a problem <Link href="/case-studies/drover" className={LINK}>Drover</Link>, <Link href="/case-studies/hy-official" className={LINK}>HY Official</Link> and Tilted Lotus all listed before they started working with us.
                                 </p>
+                                <p className={P}>
+                                    Part of the reason is that samples and bulk are made differently. A sample comes from a sample room&rsquo;s most experienced machinists and a few yards of fabric. Bulk goes through a production line on a fabric lot nobody may have tested, which is why the sample that matters most is the pre-production sample <em>(the final sample, made from the actual bulk fabric)</em>.
+                                </p>
+                                <Happens>
+                                    A founder approves a hoodie sample and pays for 500 units. The bulk fleece comes from a different fabric lot, and nobody washes a test piece. After one wash, a customer&rsquo;s medium fits like a small. The tech pack set no shrinkage limit, so the factory says the garment is within its normal range, and the returns land on the founder.
+                                </Happens>
 
                                 <div className="not-prose grid sm:grid-cols-[minmax(0,1fr)_minmax(0,1.15fr)] gap-6 items-center my-8">
                                     <div className="rounded-3xl overflow-hidden">
@@ -601,8 +645,11 @@ export default function FounderMistakesClient({ initialLikeCount, initialComment
                                     </div>
                                 </div>
 
+                                <p className={P}>
+                                    Check the labels as well, because a factory abroad may not know US rules. The FTC requires <a href={FTC_LABELS} {...EXT} className={LINK}>fiber content, country of origin and the company&rsquo;s name or RN</a> <em>(an FTC-issued identification number)</em> on most clothing, plus a <a href={FTC_CARE} {...EXT} className={LINK}>permanent care label</a>. Cartons that arrive without them have to be relabeled before anything can be sold.
+                                </p>
                                 <Avoid>
-                                    ask who will sew the bulk and whether your sample comes from that same unit. Put fabric weight, measurements and tolerances <em>(how far each measurement may vary)</em> in a <Link href="/blogs/what-is-a-tech-pack" className={LINK}>tech pack</Link>, the spec document a factory builds from, and get it signed off. Agree in writing what happens if bulk doesn&rsquo;t match the approved sample, because <Link href="/blogs/the-real-cost-of-wrong-clothing-manufacturer" className={LINK}>the cost of skipping that</Link> lands on you.
+                                    ask who will sew the bulk and whether your sample comes from that same unit. Put fabric weight, measurements, tolerances <em>(how far each measurement may vary)</em> and a shrinkage limit in a <Link href="/blogs/what-is-a-tech-pack" className={LINK}>tech pack</Link>, the spec document a factory builds from. Before cutting starts, approve a pre-production sample and ask for a wash test (<a href={AATCC} {...EXT} className={LINK}>AATCC TM150</a> is a common US method). Agree in writing what happens if bulk doesn&rsquo;t match, because <Link href="/blogs/the-real-cost-of-wrong-clothing-manufacturer" className={LINK}>the cost of skipping that</Link> lands on you.
                                 </Avoid>
                                 <Signs items={[
                                     <>You chose the factory on unit price alone.</>,
@@ -616,7 +663,7 @@ export default function FounderMistakesClient({ initialLikeCount, initialComment
                                 <Kicker n={4} />
                                 <h2 className={H2}>4. Getting Product Pricing Wrong</h2>
                                 <p className={P}>
-                                    Most underpricing starts with the factory quote, which is only the first line of the cost. A garment made overseas also carries freight, US duty, customs fees, packaging, payment fees, returns and the cost of finding the customer.
+                                    Most underpricing starts with the factory quote, which is only the first line of the cost. A garment made overseas also carries freight, US duty, customs fees, packaging, payment fees, returns and the cost of finding the customer. Read the quote itself closely too. A CMT price <em>(cut, make and trim, labor only)</em> leaves the fabric to you, while an FOB price <em>(finished garment delivered to the port)</em> includes it, so founders comparing two quotes are sometimes comparing different things.
                                 </p>
                                 <p className={P}>
                                     Take a cotton tee made in India for $14. Since July 24, 2026 it pays the normal <a href={HTS} {...EXT} className={LINK}>16.5% duty</a> plus a <a href={USTR} {...EXT} className={LINK}>10% Section 301 duty</a>, so $3.71 goes to duty before you count freight or fees. Returns take another share: US retailers expected 19.3% of online sales to come back in 2025, against 15.8% across all sales (<a href={NRF} {...EXT} className={LINK}>NRF</a>).
@@ -637,15 +684,17 @@ export default function FounderMistakesClient({ initialLikeCount, initialComment
                                 </figure>
 
                                 <p className={P}>
-                                    Then there&rsquo;s the channel. A wholesale buyer usually expects to roughly double your wholesale price on the shelf, so a retail price that only works direct-to-consumer leaves no room for stores later.
+                                    Then there&rsquo;s the channel. Stores usually price at about double what they pay you, a markup the trade calls keystone, so a retail price that only works direct-to-consumer leaves no room for wholesale later.
                                 </p>
+                                <Happens>
+                                    A founder sees that $14 quote and sets retail at $34, in line with competitors. At more than double the quote, it looks safe. Then a boutique asks for wholesale pricing, which at keystone is $17. The tee has already cost $17.71 before freight, so every piece in that order loses money.
+                                </Happens>
                                 <Avoid>
-                                    build the price up from <Link href="/blogs/custom-clothing-manufacturing-cost" className={LINK}>landed cost</Link> (everything it costs to get the garment to your door), then check it against what competitors charge. If the two numbers don&rsquo;t meet, change the fabric or the product before you cut the margin.
+                                    build the price up from <Link href="/blogs/custom-clothing-manufacturing-cost" className={LINK}>landed cost</Link> (everything it costs to get the garment to your door), then check it against what competitors charge. If the two numbers don&rsquo;t meet, change the fabric or the product before you cut the margin. Leave room for end-of-season markdowns too, since part of most runs sells at a discount.
                                 </Avoid>
                                 <Signs items={[
-                                    <>Your retail price is the factory quote times two.</>,
+                                    <>You can&rsquo;t say whether your quote is CMT or FOB.</>,
                                     <>Duty and returns aren&rsquo;t on your cost sheet.</>,
-                                    <>A wholesale order would lose you money.</>,
                                 ]} />
 
                                 {/* Mid-article soft CTA */}
@@ -667,7 +716,13 @@ export default function FounderMistakesClient({ initialLikeCount, initialComment
                                     A launch with nobody waiting for it usually means a slow first month, however good the clothes are, and the stock is already paid for.
                                 </p>
                                 <p className={P}>
-                                    Start talking while the collection is still in sampling. Fit sessions and fabric choices make honest content, and they give people a reason to join an email list before there is anything to buy. <Link href="/case-studies/badri-al-shihhi" className={LINK}>Badria Al Shihhi</Link>&rsquo;s first collection opened with a fashion-show debut, alongside her online store and first physical shop, so the launch had a date people could plan around.
+                                    Clothing adds a calendar problem. Stock has to land while customers are still buying for that season, and a first run takes around 23 weeks on our <Link href="/blogs/clothing-production-timeline" className={LINK}>production timeline</Link>, so the marketing and the production have to be planned back from the same date.
+                                </p>
+                                <Happens>
+                                    A founder briefs a linen resort shirt in mid-March. On that timeline it lands in late August, when shoppers have moved on to fall. The photos get shot the week the cartons arrive, the first post goes up on launch day, and mostly friends and family see it. The shirts wait for next spring with the cash tied up in them.
+                                </Happens>
+                                <p className={P}>
+                                    Start talking while the collection is still in sampling. Fit sessions and fabric choices make honest Instagram content, and they give people a reason to join an email list before there is anything to buy. Shoot from the pre-production sample, so the photos and the lookbook are ready before the stock is. <Link href="/case-studies/badri-al-shihhi" className={LINK}>Badria Al Shihhi</Link>&rsquo;s first collection opened with a fashion-show debut, alongside her online store and first physical shop, so the launch had a date people could plan around.
                                 </p>
                                 <p className={P}>
                                     Creators and paid ads come after that. If you send free product to influencers, the FTC expects the connection to be <a href={FTC_INFLUENCERS} {...EXT} className={LINK}>disclosed in the post itself</a>, and its <a href={FTC_GUIDES} {...EXT} className={LINK}>guidance to companies</a> is blunt: &ldquo;Your company is ultimately responsible for what others do on your behalf.&rdquo; Run small paid tests before launch, so the launch budget goes on the message that already works.
@@ -676,7 +731,7 @@ export default function FounderMistakesClient({ initialLikeCount, initialComment
                                     write the marketing plan when you approve the first sample, not when the stock lands. Pick the one channel your customer actually uses and build there first.
                                 </Avoid>
                                 <Signs items={[
-                                    <>Your first post about the brand goes up on launch day.</>,
+                                    <>Your photos can&rsquo;t be shot until the stock lands.</>,
                                     <>You don&rsquo;t have an email list.</>,
                                 ]} />
                             </section>
@@ -692,7 +747,7 @@ export default function FounderMistakesClient({ initialLikeCount, initialComment
                                             Too much stock ties your cash up in boxes, and the usual way out is a discount, which teaches customers to wait for the next sale.
                                         </p>
                                         <p className="text-base lg:text-lg leading-snug text-[#4A484A]">
-                                            Too little is the nicer problem, but a style that sells out in a week can take months to come back. Our <Link href="/blogs/clothing-production-timeline" className={LINK}>production timeline</Link> puts a reorder at about 12 weeks.
+                                            Too little is the nicer problem, but a style that sells out in a week can take months to come back. Our production timeline puts a reorder at about 12 weeks.
                                         </p>
                                     </div>
                                     <div className="rounded-3xl overflow-hidden sm:order-last order-first">
@@ -708,6 +763,12 @@ export default function FounderMistakesClient({ initialLikeCount, initialComment
                                 </div>
 
                                 <p className={P}>
+                                    Clothing makes the forecast harder because a style isn&rsquo;t one item. One shirt in three colors and five sizes is 15 separate items, and each can sell out or sit on its own. The split of units across sizes is called the size curve, and it should follow your customer, not an even spread.
+                                </p>
+                                <Happens>
+                                    A founder orders 300 tees split evenly: 60 each in XS, S, M, L and XL. Three weeks after launch the medium and large are gone, and the remaining 180 are in sizes fewer people want. To most visitors the store looks sold out, while the cash sits in the stockroom. By the time the reorder lands it comes from a new dye lot <em>(one batch of dyed fabric)</em>, and the navy doesn&rsquo;t quite match the first run.
+                                </Happens>
+                                <p className={P}>
                                     Badria Al Shihhi planned for this from the start, with many styles and a small quantity of each.
                                 </p>
 
@@ -720,10 +781,9 @@ export default function FounderMistakesClient({ initialLikeCount, initialComment
                                     Small batches cost more per piece. You are paying a little more on each garment so you don&rsquo;t pay for the ones nobody buys.
                                 </p>
                                 <Avoid>
-                                    start with smaller runs and reorder what sells. Track sell-through <em>(the share of your stock sold in a set period)</em> by style every week for the first two months, and plan bigger buys around the US retail calendar, holiday above all.
+                                    start with smaller runs and reorder what sells, weighting the size curve with whatever pre-order data you have. Keep a swatch from the first run so the mill has a shade to match. Track sell-through <em>(the share of your stock sold in a set period)</em> by style every week for the first two months, and plan bigger buys around the US retail calendar, holiday above all.
                                 </Avoid>
                                 <Signs items={[
-                                    <>You ordered the same quantity of every size and color.</>,
                                     <>Your first order used most of your cash.</>,
                                     <>You don&rsquo;t know your sell-through by style.</>,
                                 ]} />
@@ -829,8 +889,45 @@ export default function FounderMistakesClient({ initialLikeCount, initialComment
                                 </div>
 
                                 <p className={P}>
-                                    None of the mistakes new fashion brand founders make are rare, and most of them can be caught before the bulk order if you look for them. If we were in your shoes, we would take the checklist above, mark the two items you are least sure of and settle those first. Which two would you pick?
+                                    None of the mistakes new fashion brand founders make are rare, and most of them can be caught before the bulk order if you look for them. The trouble is that each one sits with a different person: a researcher, a designer, a factory, a freight forwarder, a photographer. Nobody is looking at the whole chain, so the gap between two of them is where the money goes.
                                 </p>
+                                <p className={P}>
+                                    That gap is the job we do. Here is what we cover against each of the seven, so you can see where a partner changes the outcome and where it&rsquo;s still your call.
+                                </p>
+
+                                <div className="not-prose my-8 rounded-2xl border-2 border-[#2D2A2E] bg-white overflow-hidden">
+                                    <div className="bg-[#2D2A2E] px-4 sm:px-5 py-3">
+                                        <p className="text-xs font-bold uppercase tracking-[0.18em] text-white">Where we step in, mistake by mistake</p>
+                                    </div>
+                                    <ol>
+                                        {MISTAKES.map((m) => (
+                                            <li key={m.id} className="flex gap-4 px-4 sm:px-5 py-4 border-b border-dashed border-gray-300 last:border-b-0">
+                                                <span className={`${SERIF} text-2xl leading-none shrink-0 w-8`} style={{ color: CLAY }}>{String(m.n).padStart(2, "0")}</span>
+                                                <div>
+                                                    <button onClick={() => scrollToId(m.id)} className="text-left text-sm font-bold text-[#2D2A2E] hover:underline mb-1">{m.short}</button>
+                                                    <p className="text-[15px] leading-snug text-[#4A484A]">{WHERE_WE_HELP[m.id]}</p>
+                                                </div>
+                                            </li>
+                                        ))}
+                                    </ol>
+                                </div>
+
+                                <p className={P}>
+                                    Two things we don&rsquo;t do for you. We can&rsquo;t choose your customer, and we can&rsquo;t sell the collection once it exists. A founder who has not decided who the brand is for will get a well-made product either way, and that is the one mistake a partner can only point at. The sooner you have a customer in mind, the more of the rest we can take off your plate.
+                                </p>
+                                <p className={P}>
+                                    If we were in your shoes, we would take the checklist above, mark the two items you are least sure of and settle those first. Which two would you pick?
+                                </p>
+
+                                <div className="not-prose mt-8 rounded-2xl px-5 py-6 sm:px-7 flex flex-col sm:flex-row sm:items-center gap-5" style={{ backgroundColor: SAND }}>
+                                    <p className="flex-1 text-[#2D2A2E] leading-snug">
+                                        <span className="block font-bold text-lg mb-1">Send us the two you marked.</span>
+                                        Tell us which items you are least sure of and where your collection is today. A production lead will reply with what we would settle first.
+                                    </p>
+                                    <button onClick={() => setContactOpen(true)} className="shrink-0 inline-flex items-center justify-center gap-2 px-6 py-3 rounded-full text-white text-sm font-semibold hover:opacity-90 transition-opacity" style={{ backgroundColor: CLAY }}>
+                                        Talk to a production lead <ArrowRight className="w-4 h-4" />
+                                    </button>
+                                </div>
                             </section>
 
                             {/* FAQs */}
@@ -864,9 +961,9 @@ export default function FounderMistakesClient({ initialLikeCount, initialComment
                                 </Link>
                                 <button onClick={() => setContactOpen(true)} className="group block text-left p-7 rounded-2xl bg-[#2D2A2E] text-white hover:bg-[#1f1d20] transition-colors">
                                     <p className="text-xs font-bold uppercase tracking-[0.18em] text-[#CBB49A] mb-3">Start your project</p>
-                                    <h4 className="text-xl font-bold mb-2 group-hover:underline">Planning to launch your own fashion brand?</h4>
-                                    <p className="text-gray-300 leading-relaxed mb-4">The right strategy can make all the difference. Connect with our team to turn your fashion idea into a brand built for growth.</p>
-                                    <span className="inline-flex items-center gap-2 text-[#CBB49A] font-semibold">Talk to our team <ArrowRight className="w-4 h-4" /></span>
+                                    <h4 className="text-xl font-bold mb-2 group-hover:underline">Check your launch plan against these seven</h4>
+                                    <p className="text-gray-300 leading-relaxed mb-4">Talk to a Krazy Kreators production lead about your sample, your costing or your first run, before the bulk order is placed.</p>
+                                    <span className="inline-flex items-center gap-2 text-[#CBB49A] font-semibold">Talk to a production lead <ArrowRight className="w-4 h-4" /></span>
                                 </button>
                             </div>
 
