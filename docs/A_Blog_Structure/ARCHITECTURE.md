@@ -207,6 +207,21 @@ stay on `main`, because every blog branches off `main`. **Never delete it.** If 
 Cloudflare build fails with `ERESOLVE … @cloudflare/workers-types`, the branch is simply
 missing `.npmrc`.
 
+**A 200 on the preview does not prove the post is deployed.** Unknown `/blogs/<slug>` paths
+return 200 with the site's default title until the new build lands, so wait on the Cloudflare
+check run for the commit or on a post image returning `image/jpeg`. When grepping the page
+for text, strip React's `<!-- -->` markers first: "Mistake 7 of 7" is served as
+`Mistake <!-- -->7<!-- --> of 7` and a plain grep misses it. The post's page text was live
+about four minutes after the push, and the 25 minutes spent "waiting" on 2026-11-04 was this bug.
+
+**Phase 5 will keep listing the 2026-10-19 force-push to `main`** while it stays in the
+activity window (forged `76b25eab`, auto-reverted to `d299a0b9` in 26 s; see the id 81 row in
+`STATUS.md`). That event is on record. A force-push with a **later** timestamp is a new
+incident and still means stop.
+
+**Headless Edge will not go below about 500 px wide**, so a 390 px screenshot clips on the
+right. Live posts clip the same way; it is not a page bug.
+
 **The Vercel check always fails.** The Vercel integration is no longer active but the
 GitHub app was never disconnected, so it still posts a `Vercel` status check on every PR
 and that check always fails. It says nothing about the branch. **Ignore it**; never block

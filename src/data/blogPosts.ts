@@ -15,6 +15,21 @@ export type BlogPostMeta = {
 
 export const blogPosts: BlogPostMeta[] = [
   {
+    id: 84,
+    title:
+      "7 Common Mistakes New Fashion Brand Founders Make (And How to Avoid Them)",
+    excerpt:
+      "Lessons from launching 50+ fashion brands. Seven mistakes we see new founders make, from designing without a defined customer to pricing off the factory quote, each with a real launch example and the warning signs to check against your own plan. Plus a pre-launch checklist you can tick off on the page.",
+    category: "business",
+    author: "Krazy Kreators Team",
+    date: "November 4, 2026",
+    readTime: "9 min read",
+    image: "/blog/mistakes-new-fashion-brand-founders-make-hero.jpg",
+    slug: "mistakes-new-fashion-brand-founders-make",
+    readers: 0,
+    likes: 0,
+  },
+  {
     id: 83,
     title:
       "Indian Textile Techniques US Fashion Designers Should Know in 2026",
