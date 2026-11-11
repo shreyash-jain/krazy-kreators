@@ -15,6 +15,21 @@ export type BlogPostMeta = {
 
 export const blogPosts: BlogPostMeta[] = [
   {
+    id: 85,
+    title:
+      "Quiet Luxury Explained: How to Build a Premium Clothing Brand Without Loud Logos",
+    excerpt:
+      "Brunello Cucinelli closed 2025 at €1.41 billion in revenue with no logo on the front. A new label has no reputation to borrow, so the garment has to carry it: fabric weight, fit, five places customers check by hand, and the approvals that happen before bulk.",
+    category: "strategy",
+    author: "Krazy Kreators Team",
+    date: "November 11, 2026",
+    readTime: "5 min read",
+    image: "/blog/how-to-build-a-premium-clothing-brand-hero.jpg",
+    slug: "how-to-build-a-premium-clothing-brand",
+    readers: 0,
+    likes: 0,
+  },
+  {
     id: 84,
     title:
       "7 Common Mistakes New Fashion Brand Founders Make (And How to Avoid Them)",
