@@ -15,6 +15,20 @@ export type BlogPostMeta = {
 
 export const blogPosts: BlogPostMeta[] = [
   {
+    id: 87,
+    title: "Western Wear Is Back: How to Start a Western Fashion Brand in 2026",
+    excerpt:
+      "Oversized denim, fringe jackets and co-ord sets are showing up in feeds more than almost anything else right now, and shoppers who find the look online are already looking for somewhere to buy it. An 8-step build order for a new western wear label: niche, market research, the five fabrics that come up most often, a small first collection, a manufacturer who samples before bulk, real startup costs, brand and store, and marketing — plus the mistakes that sink most launches.",
+    category: "business",
+    author: "Krazy Kreators Team",
+    date: "November 19, 2026",
+    readTime: "7 min read",
+    image: "/blog/how-to-start-western-fashion-brand-2026-hero.jpg",
+    slug: "how-to-start-western-fashion-brand-2026",
+    readers: 0,
+    likes: 0,
+  },
+  {
     id: 85,
     title:
       "Quiet Luxury Explained: How to Build a Premium Clothing Brand Without Loud Logos",
