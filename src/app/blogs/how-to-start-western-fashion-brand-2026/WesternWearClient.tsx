@@ -441,10 +441,25 @@ export default function WesternWearClient({ initialLikeCount, initialComments }:
                                     Step 2 — Research the market and competitors
                                 </h2>
                                 <p className="text-base lg:text-lg leading-snug text-[#4A484A] mb-4">
-                                    Once the niche is set, look at who is already selling into it. Study five or six established western-wear labels: what they charge, which products sell out first, and what customers complain about in reviews.
+                                    Once the niche is set, build a working list of five or six labels selling into it at a similar price point and aesthetic, and treat their product pages as a dataset rather than inspiration. Note which SKUs carry a &ldquo;bestseller&rdquo; or &ldquo;low stock&rdquo; badge, which have the most reviews, and which colourways or sizes sell out first &mdash; that says more about real demand than a single viral post does.
                                 </p>
+                                <p className="text-base lg:text-lg leading-snug text-[#4A484A] mb-4">
+                                    Reviews are the fastest competitive intelligence available, and most founders skim past them. Read the one- and two-star reviews on four or five competitor products specifically. The complaint that keeps repeating &mdash; fringe shedding after a few washes, a cut that runs small, a fabric that pills by the third wear &mdash; is usually the exact gap you can build a brand around.
+                                </p>
+
+                                <div className="not-prose my-7 rounded-2xl border border-gray-200 bg-[#F8F7F4] p-5 sm:p-6">
+                                    <p className="text-xs font-bold uppercase tracking-[0.18em] text-[#CBB49A] mb-3">A 30-minute research routine</p>
+                                    <ol className="space-y-1.5 text-[#2D2A2E] leading-snug list-decimal list-inside">
+                                        <li>Pull up five or six competitor sites in the same niche and price band.</li>
+                                        <li>Sort each by bestseller or most-reviewed; note the three styles that keep reappearing across all of them.</li>
+                                        <li>Read 15&ndash;20 one- and two-star reviews across those styles and log the complaint that repeats.</li>
+                                        <li>Check Google Trends for your core search term over the last 12 months to confirm the interest is steady, not a single spike.</li>
+                                        <li>Save 20&ndash;30 reference images to one folder, tagged by silhouette rather than just &ldquo;inspo.&rdquo;</li>
+                                    </ol>
+                                </div>
+
                                 <p className="text-base lg:text-lg leading-snug text-[#4A484A]">
-                                    Instagram, Pinterest and Google Trends are enough to spot a gap without paying for formal research. The goal is not to copy a competitor&rsquo;s range. It is to find the one thing they are doing poorly and build your unique selling proposition around that.
+                                    The goal is not to copy a competitor&rsquo;s range. It is to find the one thing they are doing poorly and build your unique selling proposition around fixing it.
                                 </p>
                             </section>
 
@@ -566,29 +581,57 @@ export default function WesternWearClient({ initialLikeCount, initialComments }:
                                     Step 5 — Find a reliable clothing manufacturer
                                 </h2>
                                 <p className="text-base lg:text-lg leading-snug text-[#4A484A] mb-4">
-                                    Manufacturing is where a good design either survives or falls apart. Check a few things before you commit to a factory: whether they can source the fabric you specified, whether quality holds across a full run and not just the sample, whether they support a custom design rather than only their existing patterns, their sampling and prototyping process, their production capacity, and whether delivery dates hold.
+                                    Manufacturing is where a good design either survives or falls apart, and the difference rarely shows up in the first conversation with a factory. It shows up in the first washed sample. A reliable partner starts from a <Link href="/blogs/what-is-a-tech-pack" className="underline text-[#CBB49A] hover:text-[#b7a078]">tech pack</Link>: a spec sheet with exact measurements graded across your size run, construction notes and trim placement called out piece by piece, built from your sketch or a reference garment before a single yard of fabric is cut. Skip that step and two &ldquo;identical&rdquo; production runs can come back measuring differently, with nobody able to say why.
+                                </p>
+
+                                <h3 className="text-xl font-bold text-[#2D2A2E] mt-6 mb-3">What happens between a sketch and a finished sample</h3>
+                                <div className="not-prose my-5 rounded-2xl border border-gray-200 bg-[#F8F7F4] p-5 sm:p-6">
+                                    <ul className="space-y-1.5 text-[#2D2A2E] leading-snug">
+                                        <li>&bull; <span className="font-semibold">Tech pack and pattern</span> &mdash; measurements graded across the full size run, with construction and trim called out piece by piece.</li>
+                                        <li>&bull; <span className="font-semibold">Proto sample</span> &mdash; a first fit sample, usually revised once or twice before the fit is locked.</li>
+                                        <li>&bull; <span className="font-semibold">Pre-production sample</span> &mdash; built in the actual bulk fabric and trims, not a substitute. This is the sample to approve, because it is the version the factory will try to match at scale.</li>
+                                        <li>&bull; <span className="font-semibold">Inline and final inspection</span> &mdash; checks during cutting and sewing, then a random check across the finished run for stitch density, measurement tolerance and trim security before it ships.</li>
+                                    </ul>
+                                </div>
+
+                                <h3 className="text-xl font-bold text-[#2D2A2E] mt-6 mb-3">Fabric-specific checks a western-wear line needs</h3>
+                                <p className="text-base lg:text-lg leading-snug text-[#4A484A] mb-4">
+                                    Western wear has its own failure points, and they are specific enough that a generic quality checklist misses them.
+                                </p>
+                                <div className="not-prose my-5 rounded-2xl border border-gray-200 bg-[#F8F7F4] p-5 sm:p-6">
+                                    <ul className="space-y-1.5 text-[#2D2A2E] leading-snug">
+                                        <li>&bull; Raw or rigid denim can shrink several percent on its first wash &mdash; a swatch should be pre-washed and measured before patterns are cut, not after.</li>
+                                        <li>&bull; Fringe and suede-look trims need a rub and colourfastness check, since a dark dye can transfer onto a lighter base fabric in the customer&rsquo;s wash, not just the factory&rsquo;s.</li>
+                                        <li>&bull; Fringe should be bar-tacked or lock-stitched at the base, not run on a single straight stitch &mdash; that is the difference between fringe that survives a season and fringe that is gone after three washes.</li>
+                                        <li>&bull; Die-cut fringe comes out even length to length; hand-trimmed fringe does not, and the inconsistency shows in a flat-lay or product photo even when it reads fine on the body.</li>
+                                    </ul>
+                                </div>
+
+                                <h3 className="text-xl font-bold text-[#2D2A2E] mt-6 mb-3">A realistic timeline</h3>
+                                <p className="text-base lg:text-lg leading-snug text-[#4A484A] mb-4">
+                                    A first western-wear order typically moves through tech pack finalisation, two to three sample rounds, bulk cutting and sewing, and then four to six weeks of ocean freight to the US. Budgeting three to four months end to end, sampling included, keeps a launch date honest instead of aspirational.
                                 </p>
 
                                 <h3 className="text-xl font-bold text-[#2D2A2E] mt-6 mb-3">Questions to ask your manufacturer</h3>
                                 <div className="not-prose my-5 rounded-2xl border border-gray-200 bg-[#F8F7F4] p-5 sm:p-6">
                                     <ol className="space-y-1.5 text-[#2D2A2E] leading-snug list-decimal list-inside">
-                                        <li>What is your minimum order quantity?</li>
-                                        <li>Can you provide product samples before bulk?</li>
-                                        <li>Do you support custom designs?</li>
-                                        <li>How do you maintain quality between the sample and the finished run?</li>
+                                        <li>Can you provide a pre-production sample in the actual bulk fabric before cutting the full run?</li>
+                                        <li>Do you pre-wash and measure denim before patterns are cut?</li>
+                                        <li>How is fringe or trim attached &mdash; bar-tacked or straight-stitched?</li>
+                                        <li>What inspection happens between cutting, sewing and shipment, and who signs off at each stage?</li>
                                     </ol>
                                 </div>
 
                                 <p className="text-base lg:text-lg leading-snug text-[#4A484A]">
-                                    Krazy Kreators works with US founders at exactly this stage of the process &mdash; sourcing the fabric, building the <Link href="/blogs/what-is-a-tech-pack" className="underline text-[#CBB49A] hover:text-[#b7a078]">tech pack</Link>, and sampling a design before it goes into production &mdash; so a first western-wear collection is built against a spec rather than a guess.
+                                    None of this is guesswork a factory can shortcut. It is a sequence, and skipping a step &mdash; approving a proto sample instead of the pre-production sample, say &mdash; is how a brand discovers a problem only after a few hundred units have already shipped.
                                 </p>
 
                                 <div className="not-prose my-7 rounded-2xl border border-[#CBB49A]/40 bg-[#F8F7F4] p-5 sm:p-6">
                                     <p className="text-xs font-bold uppercase tracking-[0.18em] text-[#CBB49A] mb-3">Signs you are making this mistake</p>
                                     <ul className="space-y-1.5 text-[#2D2A2E] leading-snug">
-                                        <li>&bull; You chose a factory on the lowest quote alone</li>
-                                        <li>&bull; You never saw a sample before approving bulk</li>
-                                        <li>&bull; Nobody can tell you how they catch a quality drift between runs</li>
+                                        <li>&bull; You approved the fit sample, not the pre-production sample, before bulk cutting started</li>
+                                        <li>&bull; Nobody can tell you whether fringe is bar-tacked or straight-stitched</li>
+                                        <li>&bull; Your denim was never pre-washed and measured before the patterns were cut</li>
                                     </ul>
                                 </div>
                             </section>
@@ -601,6 +644,17 @@ export default function WesternWearClient({ initialLikeCount, initialComments }:
                                 <p className="text-base lg:text-lg leading-snug text-[#4A484A] mb-4">
                                     The major expenses sit in a short list: fabric and raw materials, sampling and stitching, manufacturing, packaging and labels, a website, and marketing. A simple way to see where the money goes is to cost one product end to end.
                                 </p>
+
+                                <div className="not-prose my-7 rounded-2xl border border-[#CBB49A]/40 bg-[#F8F7F4] p-5 sm:p-6">
+                                    <p className="text-xs font-bold uppercase tracking-[0.18em] text-[#CBB49A] mb-3">Costs founders forget to budget for</p>
+                                    <ul className="space-y-1.5 text-[#2D2A2E] leading-snug">
+                                        <li>&bull; Ocean freight and import duties on top of the factory price, not folded into it</li>
+                                        <li>&bull; A second or third sample round, since the first fit sample is rarely the one you approve</li>
+                                        <li>&bull; Payment-processing and marketplace fees, which take a cut of every sale before it reaches your account</li>
+                                        <li>&bull; Product photography, shot separately from any lookbook or campaign imagery</li>
+                                        <li>&bull; A returns and damaged-stock buffer, since western wear&rsquo;s fit-sensitive fringe and denim pieces return more than a basic tee</li>
+                                    </ul>
+                                </div>
 
                                 <figure className="not-prose my-8 rounded-2xl border border-gray-200 bg-[#F8F7F4] p-5 sm:p-6 overflow-x-auto">
                                     <svg viewBox="0 0 760 180" role="img" aria-label="A worked example, not a quote: an illustrative per-piece cost breakdown for one western-wear top adding fabric $4.50, trims $0.60, stitching and labour $3.00, packaging and labels $0.70, totalling $8.80 before shipping and overhead." className="w-full h-auto min-w-[480px]">
@@ -627,7 +681,7 @@ export default function WesternWearClient({ initialLikeCount, initialComments }:
                                 </figure>
 
                                 <p className="text-base lg:text-lg leading-snug text-[#4A484A]">
-                                    Hold a realistic margin above that landed cost rather than pricing off instinct, and recheck the number once you have an actual quote from your manufacturer.
+                                    Hold a realistic margin above that landed cost rather than pricing off instinct, and recheck the number once you have an actual quote from your manufacturer. Multiply the per-piece figure by the quantities you actually plan to produce across every style in the first collection, not the quantities you hope to sell &mdash; that total, plus the forgotten costs above, is the number to have in hand before you commit to a production run.
                                 </p>
                             </section>
 
@@ -641,6 +695,15 @@ export default function WesternWearClient({ initialLikeCount, initialComments }:
                                 <p className="text-base lg:text-lg leading-snug text-[#4A484A] mb-4">
                                     A brand identity for western wear earns its keep in photos as much as on a hangtag: a memorable name, a logo and colour palette that read clearly in a square product shot, consistent packaging and labels, and a brand story that explains why you are making this particular version of the look.
                                 </p>
+
+                                <div className="not-prose my-5 rounded-2xl border border-gray-200 bg-[#F8F7F4] p-5 sm:p-6">
+                                    <p className="text-xs font-bold uppercase tracking-[0.18em] text-[#CBB49A] mb-3">Before you call the branding &ldquo;done&rdquo;</p>
+                                    <ul className="space-y-1.5 text-[#2D2A2E] leading-snug">
+                                        <li>&bull; Run the name through the USPTO&rsquo;s trademark database and check the matching domain and social handles are actually available &mdash; a name you cannot register or claim online costs more to fix later than to check now.</li>
+                                        <li>&bull; Lock a three-colour palette and test it against an actual product photo, not just a mood board. Western wear&rsquo;s warm denim and suede tones can clash with a palette chosen on a screen.</li>
+                                        <li>&bull; Decide the unboxing sequence before you order packaging &mdash; mailer or box, tissue or none, one insert card with care instructions and your story rather than five, since every added piece is a per-unit cost that compounds across the whole run.</li>
+                                    </ul>
+                                </div>
 
                                 <h3 className="text-xl font-bold text-[#2D2A2E] mt-6 mb-3">Launch your online store</h3>
                                 <p className="text-base lg:text-lg leading-snug text-[#4A484A]">
