@@ -13,7 +13,7 @@ const TITLE = "Why Loungewear Is the Smartest Category to Launch Your Clothing B
 const HEADLINE = "Why Loungewear Is the Smartest Category to Launch Your Clothing Brand In";
 const DESCRIPTION =
     "Discover why loungewear is a smart category for new fashion brands, from product variety and comfort to manufacturing flexibility and brand growth.";
-const HERO = "https://www.krazykreators.com/blog/start-a-loungewear-clothing-brand-hero.jpg";
+const HERO = "https://www.krazykreators.com/blog/start-a-loungewear-clothing-brand-1.jpg";
 
 export const metadata = {
     title: `${TITLE} | Krazy Kreators`,
