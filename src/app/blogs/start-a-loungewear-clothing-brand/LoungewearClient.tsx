@@ -370,8 +370,8 @@ export default function LoungewearClient({ initialLikeCount, initialComments }: 
                                             { src: "/blog/start-a-loungewear-clothing-brand-1.jpg", alt: "A woman on a sunlit stone staircase in a long indigo denim hooded coat worn open over a black V-neck top and black bike shorts, one hand in her hair." },
                                             { src: "/blog/start-a-loungewear-clothing-brand-2.jpg", alt: "A woman turning to look over her shoulder in a long denim hooded coat, black joggers with ribbed cuffs and black sneakers, on a dark wood floor in a white studio." },
                                         ].map((p) => (
-                                            <div key={p.src} className="rounded-2xl overflow-hidden shadow-lg border border-gray-100 bg-[#F8F7F4]">
-                                                <Image src={p.src} alt={p.alt} width={442} height={590} sizes="(max-width: 672px) 50vw, 20rem" className="w-full h-auto block" />
+                                            <div key={p.src} className="relative aspect-[2/3] rounded-2xl overflow-hidden shadow-lg border border-gray-100 bg-[#F8F7F4]">
+                                                <Image src={p.src} alt={p.alt} fill sizes="(max-width: 672px) 50vw, 20rem" className="object-cover object-center" />
                                             </div>
                                         ))}
                                     </div>
