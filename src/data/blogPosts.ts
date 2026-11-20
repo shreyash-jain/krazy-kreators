@@ -23,7 +23,7 @@ export const blogPosts: BlogPostMeta[] = [
     author: "Krazy Kreators Team",
     date: "November 16, 2026",
     readTime: "7 min read",
-    image: "/blog/start-a-loungewear-clothing-brand-hero.jpg",
+    image: "/blog/start-a-loungewear-clothing-brand-1.jpg",
     slug: "start-a-loungewear-clothing-brand",
     readers: 0,
     likes: 0,

@@ -15,14 +15,6 @@ import { FAQS } from "./faqs";
 
 const BLOG_ID = "start-a-loungewear-clothing-brand";
 
-const HERO_IMAGE = "/blog/start-a-loungewear-clothing-brand-hero.jpg";
-const SECTION1_IMAGE = "/blog/start-a-loungewear-clothing-brand-section1.jpg";
-const MACRO_IMAGE = "/blog/start-a-loungewear-clothing-brand-macro.jpg";
-const CLOSING_IMAGE = "/blog/start-a-loungewear-clothing-brand-closing.jpg";
-const ENTRY_IMAGE = "/blog/start-a-loungewear-clothing-brand-entry.jpg";
-const REPEAT_IMAGE = "/blog/start-a-loungewear-clothing-brand-repeat.jpg";
-const STEPS_IMAGE = "/blog/start-a-loungewear-clothing-brand-steps.jpg";
-const RIGHTCAT_IMAGE = "/blog/start-a-loungewear-clothing-brand-rightcat.jpg";
 
 const TOC = [
     { id: "comfort", label: "Comfort and everyday fashion" },
@@ -225,16 +217,7 @@ export default function LoungewearClient({ initialLikeCount, initialComments }: 
             <Navbar invertTabs={!scrolled} />
 
             {/* Hero */}
-            <section className="relative h-[60vh] min-h-[560px] max-h-[720px] flex items-center justify-center overflow-hidden">
-                <Image
-                    src={HERO_IMAGE}
-                    alt="A sunlit living room on a slow morning: a sage-green fleece sweatshirt and matching joggers draped over the arm of a grey linen sofa, a single ceramic mug on the wooden floor, sheer curtains glowing with low sun and a leafy plant out of focus in the foreground. No people, no text, no logos."
-                    fill
-                    className="object-cover"
-                    priority
-                />
-                <div className="absolute inset-0 bg-black/60" />
-
+            <section className="relative bg-[#2D2A2E] h-[60vh] min-h-[560px] max-h-[720px] flex items-center justify-center overflow-hidden">
                 <div className="relative z-10 w-full min-w-[80%] lg:max-w-[80%] mx-auto px-4 md:px-6 lg:px-0 text-center flex flex-col items-center mt-16">
                     <div className="flex flex-wrap justify-center items-center gap-4 mb-8">
                         <span className="px-4 py-1.5 bg-[#CBB49A] text-white text-xs sm:text-sm font-semibold rounded-full uppercase tracking-wider">
@@ -381,16 +364,22 @@ export default function LoungewearClient({ initialLikeCount, initialComments }: 
                                     Growing Consumer Preference for Comfort and Everyday Fashion
                                 </h2>
 
-                                <div className="rounded-2xl overflow-hidden shadow-xl border border-gray-100 mb-7 max-w-2xl mx-auto bg-[#F8F7F4]">
-                                    <Image
-                                        src={SECTION1_IMAGE}
-                                        alt="An oatmeal crewneck sweatshirt hanging from a wooden peg by a hallway door, a green canvas tote and a set of house keys on the shelf beside it, soft window light from the right. The everyday setting for a loungewear piece. No labels, no logos, no lettering."
-                                        width={1024}
-                                        height={1024}
-                                        sizes="(max-width: 1024px) 100vw, 42rem"
-                                        className="w-full h-auto"
-                                    />
-                                </div>
+                                <figure className="not-prose my-7">
+                                    <div className="grid grid-cols-1 sm:grid-cols-3 gap-3 max-w-xs sm:max-w-none mx-auto">
+                                        {[
+                                            { src: "/blog/start-a-loungewear-clothing-brand-1.jpg", w: 442, h: 590, alt: "A woman on a sunlit stone staircase in a long indigo denim hooded coat worn open over a black V-neck top and black bike shorts, one hand in her hair." },
+                                            { src: "/blog/start-a-loungewear-clothing-brand-2.jpg", w: 442, h: 590, alt: "A woman turning to look over her shoulder in a long denim hooded coat, black joggers with ribbed cuffs and black sneakers, on a dark wood floor in a white studio." },
+                                            { src: "/blog/start-a-loungewear-clothing-brand-3.jpg", w: 576, h: 864, alt: "A smiling woman in a long heather-grey hooded wrap layer over light grey joggers with a ribbed ankle and white sneakers, in a white studio." },
+                                        ].map((p) => (
+                                            <div key={p.src} className="rounded-xl overflow-hidden border border-gray-100 bg-[#F8F7F4]">
+                                                <Image src={p.src} alt={p.alt} width={p.w} height={p.h} sizes="(max-width: 640px) 80vw, 14rem" className="w-full h-auto" />
+                                            </div>
+                                        ))}
+                                    </div>
+                                    <figcaption className="mt-3 text-sm text-[#666666] leading-snug">
+                                        Comfort that leaves the house: long layers, joggers and sneakers worn through the day. Photos: LAS Travel &amp; Loungewear, used with permission.
+                                    </figcaption>
+                                </figure>
 
                                 <p className="text-base lg:text-lg leading-snug text-[#4A484A] mb-4">Comfort used to be what you gave up to look put together. For much everyday clothing that has flipped. The same sweatshirt now goes to the school gate, a video call from the kitchen table and an airport.</p>
                                 <p className="text-base lg:text-lg leading-snug text-[#4A484A] mb-4">That wider use is the opening for a new brand. A lounge set bought for evenings in gets worn on Saturday errands, so it has to look decent in daylight and survive a weekly wash.</p>
@@ -402,17 +391,6 @@ export default function LoungewearClient({ initialLikeCount, initialComments }: 
                                 <h2 className="text-3xl lg:text-4xl font-extrabold tracking-tight text-[#2D2A2E] mb-5 pb-2 border-b border-gray-200">
                                     Lower Entry Barriers for New Clothing Brands
                                 </h2>
-
-                                <div className="rounded-2xl overflow-hidden shadow-xl border border-gray-100 mb-7 max-w-2xl mx-auto bg-[#F8F7F4]">
-                                    <Image
-                                        src={ENTRY_IMAGE}
-                                        alt="Charcoal fleece joggers with a drawstring and gathered ankles draped over a pale wooden chair beside a small black carry-on suitcase in a sunlit hotel room, a white bed behind. No people, no logos, no lettering."
-                                        width={1024}
-                                        height={1024}
-                                        sizes="(max-width: 1024px) 100vw, 42rem"
-                                        className="w-full h-auto"
-                                    />
-                                </div>
 
 
                                 <p className="text-base lg:text-lg leading-snug text-[#4A484A] mb-4">A tailored jacket has a lining, interfacing and a collar that must roll correctly. A sweatshirt has a body, two sleeves, a neckband, two cuffs and a hem. A jogger is two legs, a waistband and elastic. Fewer pieces to pattern and sew means fewer arguments at the fit sample (the trial garment you check against your measurements).</p>
@@ -494,17 +472,6 @@ export default function LoungewearClient({ initialLikeCount, initialComments }: 
                                     Opportunities for Customisation and Brand Differentiation
                                 </h2>
 
-                                <div className="rounded-2xl overflow-hidden shadow-xl border border-gray-100 mb-7 max-w-2xl mx-auto bg-[#F8F7F4]">
-                                    <Image
-                                        src={MACRO_IMAGE}
-                                        alt="Extreme close-up of sage French terry fabric with a flat cover-stitched seam running diagonally across the frame, the soft loops of the knit catching side light. No labels, no logos, no lettering."
-                                        width={1024}
-                                        height={1024}
-                                        sizes="(max-width: 1024px) 100vw, 42rem"
-                                        className="w-full h-auto"
-                                    />
-                                </div>
-
                                 <p className="text-base lg:text-lg leading-snug text-[#4A484A] mb-4">Loungewear lets a small brand look different without inventing a new garment. There are four levers: print and colour; fabric weight and hand-feel; fit, such as a longer sleeve or a size range competitors skip; and trims, like a woven neck label or tonal embroidery.</p>
                                 <p className="text-base lg:text-lg leading-snug text-[#4A484A] mb-4">Pick one or two. A brand known for one rib texture or colour palette is easier to remember than one with custom everything, and each custom element adds sampling time.</p>
                                 <p className="text-base lg:text-lg leading-snug text-[#4A484A] mb-4">Know how <Link href="/blogs/private-label-vs-custom-clothing-manufacturing" className="underline text-[#CBB49A] hover:text-[#b7a078]">private label clothing manufacturing</Link> differs from fully custom work before you brief anyone. The first adapts styles a manufacturer already makes. The second builds fit and fabric from your design.</p>
@@ -526,17 +493,6 @@ export default function LoungewearClient({ initialLikeCount, initialComments }: 
                                 <h2 className="text-3xl lg:text-4xl font-extrabold tracking-tight text-[#2D2A2E] mb-5 pb-2 border-b border-gray-200">
                                     Why Loungewear Can Support Repeat Purchases
                                 </h2>
-
-                                <div className="rounded-2xl overflow-hidden shadow-xl border border-gray-100 mb-7 max-w-2xl mx-auto bg-[#F8F7F4]">
-                                    <Image
-                                        src={REPEAT_IMAGE}
-                                        alt="Close-up of a heather-grey fleece sweatshirt sleeve with a ribbed cuff resting on a marble cafe table beside a white espresso cup and saucer, soft window light. No people, no logos, no lettering."
-                                        width={1024}
-                                        height={1024}
-                                        sizes="(max-width: 1024px) 100vw, 42rem"
-                                        className="w-full h-auto"
-                                    />
-                                </div>
 
 
                                 <p className="text-base lg:text-lg leading-snug text-[#4A484A] mb-4">Nobody re-orders a bad sweatshirt. These clothes get worn and washed weekly, so the first wash is your real launch. A set that keeps its colour sends a customer back for a second one. One that pills by week three gets a one-star review.</p>
@@ -584,17 +540,6 @@ export default function LoungewearClient({ initialLikeCount, initialComments }: 
                                     Choosing the Right Loungewear Manufacturer Matters
                                 </h2>
 
-                                <div className="rounded-2xl overflow-hidden shadow-xl border border-gray-100 mb-7 max-w-2xl mx-auto bg-[#F8F7F4]">
-                                    <Image
-                                        src={CLOSING_IMAGE}
-                                        alt="A bright product-development studio: a dress form wearing a half-finished sage jersey lounge set with pinned seams, a rail of unbranded oat, grey and sage sweatshirts, joggers and tees behind it, and a roll of sage knit fabric with scissors and a tape measure on a wooden table by a tall window. No people, no logos, no lettering."
-                                        width={1822}
-                                        height={1024}
-                                        sizes="(max-width: 1024px) 100vw, 42rem"
-                                        className="w-full h-auto"
-                                    />
-                                </div>
-
                                 <p className="text-base lg:text-lg leading-snug text-[#4A484A] mb-4">If the category is simple, the manufacturer decides whether it looks simple. Most loungewear complaints trace back to six production decisions.</p>
                                 <ul className="list-none space-y-3 mb-5 text-base lg:text-lg leading-snug text-[#4A484A]">
                                     <li><strong className="text-[#2D2A2E]">Fabric.</strong> Is the bulk cloth the cloth you approved, washed and measured for shrinkage before cutting?</li>
@@ -632,17 +577,6 @@ export default function LoungewearClient({ initialLikeCount, initialComments }: 
                                     How to Start Your Own Loungewear Clothing Brand: A Step-by-Step Approach
                                 </h2>
 
-                                <div className="rounded-2xl overflow-hidden shadow-xl border border-gray-100 mb-7 max-w-2xl mx-auto bg-[#F8F7F4]">
-                                    <Image
-                                        src={STEPS_IMAGE}
-                                        alt="A plain white garment rail on a sunlit seaside terrace holding black, charcoal and heather-grey lounge sets on wooden hangers, a white balustrade and palm trees behind. No people, no logos, no lettering."
-                                        width={1822}
-                                        height={1024}
-                                        sizes="(max-width: 1024px) 100vw, 42rem"
-                                        className="w-full h-auto"
-                                    />
-                                </div>
-
 
                                 <ol className="list-decimal pl-6 space-y-2.5 mb-5 text-base lg:text-lg leading-snug text-[#4A484A]">
                                     <li>Research your audience and the brands already selling to them.</li>
@@ -663,17 +597,6 @@ export default function LoungewearClient({ initialLikeCount, initialComments }: 
                                 <h2 className="text-3xl lg:text-4xl font-extrabold tracking-tight text-[#2D2A2E] mb-5 pb-2 border-b border-gray-200">
                                     Is Loungewear the Right Category for Your Fashion Startup?
                                 </h2>
-
-                                <div className="rounded-2xl overflow-hidden shadow-xl border border-gray-100 mb-7 max-w-2xl mx-auto bg-[#F8F7F4]">
-                                    <Image
-                                        src={RIGHTCAT_IMAGE}
-                                        alt="A long black knit hooded cardigan hanging on a wooden coat stand in a white-tiled entryway, a patch of afternoon sun across the tiles and a grey canvas weekend bag on the floor. No people, no logos, no lettering."
-                                        width={1024}
-                                        height={1024}
-                                        sizes="(max-width: 1024px) 100vw, 42rem"
-                                        className="w-full h-auto"
-                                    />
-                                </div>
 
 
                                 <p className="text-base lg:text-lg leading-snug text-[#4A484A] mb-4">
