@@ -468,24 +468,6 @@ export default function LoungewearClient({ initialLikeCount, initialComments }: 
                                     </figcaption>
                                 </figure>
 
-                                <figure className="not-prose my-8">
-                                    <div className="grid grid-cols-2 sm:grid-cols-4 gap-3">
-                                        {[
-                                            { src: "/blog/start-a-loungewear-clothing-brand-las-1.jpg", h: 1199, alt: "A woman in light grey fleece joggers with a drawstring waist and a white cropped shirt, walking past a white balustrade, face out of frame." },
-                                            { src: "/blog/start-a-loungewear-clothing-brand-las-2.jpg", h: 1199, alt: "Black gathered-ankle joggers with a high elasticated waist worn with a grey cropped top, shot from the chest down against a pale stone wall." },
-                                            { src: "/blog/start-a-loungewear-clothing-brand-las-3.jpg", h: 1231, alt: "A long black hooded sweatshirt dress with oversized sleeves, seen from behind against a plain studio wall." },
-                                            { src: "/blog/start-a-loungewear-clothing-brand-las-4.jpg", h: 1200, alt: "White wide-leg trousers with a deep waistband and a black mesh-back tank top, seen from behind in a studio." },
-                                        ].map((p) => (
-                                            <div key={p.src} className="rounded-xl overflow-hidden border border-gray-100 bg-[#F8F7F4]">
-                                                <Image src={p.src} alt={p.alt} width={800} height={p.h} sizes="(max-width: 640px) 50vw, 20rem" className="w-full h-auto" />
-                                            </div>
-                                        ))}
-                                    </div>
-                                    <figcaption className="mt-3 text-sm text-[#666666] leading-snug">
-                                        What the families look like when the shapes stay plain: joggers, wide-leg trousers and a long hooded layer. Photos: LAS Travel &amp; Loungewear, used with permission.
-                                    </figcaption>
-                                </figure>
-
                                 <p className="text-base lg:text-lg leading-snug text-[#4A484A] mb-4">Colour and print multiply this further: one jogger in four colours is four products to the customer and one pattern to the manufacturer.</p>
                                 <p className="text-base lg:text-lg leading-snug text-[#4A484A] mb-4">Sleepwear deserves a flag. In the US, <a href="https://www.cpsc.gov/s3fs-public/1615-and-1616-Fact-Sheet-Childrens-Sleepwear-English.pdf" target="_blank" rel="noopener noreferrer" className="underline text-[#CBB49A] hover:text-[#b7a078]">children&rsquo;s sleepwear above 9 months and up to size 14</a> must pass a flame test or be cut snug and labelled as such. Adult pajamas fall outside those rules, so a kids&rsquo; version of the same print is a different product, as our post on <Link href="/blogs/family-matching-apparel-manufacturing" className="underline text-[#CBB49A] hover:text-[#b7a078]">family matching apparel</Link> explains.</p>
                             </section>
