@@ -364,19 +364,18 @@ export default function LoungewearClient({ initialLikeCount, initialComments }: 
                                     Growing Consumer Preference for Comfort and Everyday Fashion
                                 </h2>
 
-                                <figure className="not-prose my-7">
-                                    <div className="grid grid-cols-1 sm:grid-cols-3 gap-3 max-w-xs sm:max-w-none mx-auto">
+                                <figure className="not-prose my-8">
+                                    <div className="grid grid-cols-2 gap-3 sm:gap-5 max-w-2xl mx-auto">
                                         {[
-                                            { src: "/blog/start-a-loungewear-clothing-brand-1.jpg", w: 442, h: 590, alt: "A woman on a sunlit stone staircase in a long indigo denim hooded coat worn open over a black V-neck top and black bike shorts, one hand in her hair." },
-                                            { src: "/blog/start-a-loungewear-clothing-brand-2.jpg", w: 442, h: 590, alt: "A woman turning to look over her shoulder in a long denim hooded coat, black joggers with ribbed cuffs and black sneakers, on a dark wood floor in a white studio." },
-                                            { src: "/blog/start-a-loungewear-clothing-brand-3.jpg", w: 576, h: 864, alt: "A smiling woman in a long heather-grey hooded wrap layer over light grey joggers with a ribbed ankle and white sneakers, in a white studio." },
+                                            { src: "/blog/start-a-loungewear-clothing-brand-1.jpg", alt: "A woman on a sunlit stone staircase in a long indigo denim hooded coat worn open over a black V-neck top and black bike shorts, one hand in her hair." },
+                                            { src: "/blog/start-a-loungewear-clothing-brand-2.jpg", alt: "A woman turning to look over her shoulder in a long denim hooded coat, black joggers with ribbed cuffs and black sneakers, on a dark wood floor in a white studio." },
                                         ].map((p) => (
-                                            <div key={p.src} className="rounded-xl overflow-hidden border border-gray-100 bg-[#F8F7F4]">
-                                                <Image src={p.src} alt={p.alt} width={p.w} height={p.h} sizes="(max-width: 640px) 80vw, 14rem" className="w-full h-auto" />
+                                            <div key={p.src} className="relative aspect-[3/4] rounded-2xl overflow-hidden shadow-lg border border-gray-100 bg-[#F8F7F4]">
+                                                <Image src={p.src} alt={p.alt} fill sizes="(max-width: 672px) 50vw, 20rem" className="object-cover" />
                                             </div>
                                         ))}
                                     </div>
-                                    <figcaption className="mt-3 text-sm text-[#666666] leading-snug">
+                                    <figcaption className="mt-3 text-center text-sm text-[#666666] leading-snug">
                                         Comfort that leaves the house: long layers, joggers and sneakers worn through the day. Photos: LAS Travel &amp; Loungewear, used with permission.
                                     </figcaption>
                                 </figure>
