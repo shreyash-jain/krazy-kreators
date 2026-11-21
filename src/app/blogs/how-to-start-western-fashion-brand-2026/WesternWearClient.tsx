@@ -458,8 +458,12 @@ export default function WesternWearClient({ initialLikeCount, initialComments }:
                                     </ol>
                                 </div>
 
-                                <p className="text-base lg:text-lg leading-snug text-[#4A484A]">
+                                <p className="text-base lg:text-lg leading-snug text-[#4A484A] mb-4">
                                     The goal is not to copy a competitor&rsquo;s range. It is to find the one thing they are doing poorly and build your unique selling proposition around fixing it.
+                                </p>
+
+                                <p className="text-base lg:text-lg leading-snug text-[#4A484A]">
+                                    This research has to run deeper than a mood board once it reaches the factory. On <Link href="/case-studies/drover" className="underline text-[#CBB49A] hover:text-[#b7a078]">Drover Cowboy Threads</Link>, our research phase meant studying rodeo riders, ranchers and western-lifestyle customers specifically &mdash; not &ldquo;western wear shoppers&rdquo; broadly &mdash; and that specificity is what decided which silhouettes made the final cut, not just which ones looked good in a mood board.
                                 </p>
                             </section>
 
@@ -581,17 +585,24 @@ export default function WesternWearClient({ initialLikeCount, initialComments }:
                                     Step 5 — Find a reliable clothing manufacturer
                                 </h2>
                                 <p className="text-base lg:text-lg leading-snug text-[#4A484A] mb-4">
-                                    Manufacturing is where a good design either survives or falls apart, and the difference rarely shows up in the first conversation with a factory. It shows up in the first washed sample. A reliable partner starts from a <Link href="/blogs/what-is-a-tech-pack" className="underline text-[#CBB49A] hover:text-[#b7a078]">tech pack</Link>: a spec sheet with exact measurements graded across your size run, construction notes and trim placement called out piece by piece, built from your sketch or a reference garment before a single yard of fabric is cut. Skip that step and two &ldquo;identical&rdquo; production runs can come back measuring differently, with nobody able to say why.
+                                    Manufacturing is where a good design either survives or falls apart, and the difference rarely shows up in the first conversation with a factory. It shows up in the first washed sample. Every build we run starts from a <Link href="/blogs/what-is-a-tech-pack" className="underline text-[#CBB49A] hover:text-[#b7a078]">tech pack</Link>: flat sketches, measurements graded across the full size run, and construction notes specific enough to call out a detail as small as no top-stitch at a seam or a double yoke &mdash; built before a single yard of fabric is cut. Skip that step and two &ldquo;identical&rdquo; production runs can come back measuring differently, with nobody able to say why.
                                 </p>
 
-                                <h3 className="text-xl font-bold text-[#2D2A2E] mt-6 mb-3">What happens between a sketch and a finished sample</h3>
+                                <h3 className="text-xl font-bold text-[#2D2A2E] mt-6 mb-3">How a sketch becomes a finished, wearable sample</h3>
                                 <div className="not-prose my-5 rounded-2xl border border-gray-200 bg-[#F8F7F4] p-5 sm:p-6">
                                     <ul className="space-y-1.5 text-[#2D2A2E] leading-snug">
                                         <li>&bull; <span className="font-semibold">Tech pack and pattern</span> &mdash; measurements graded across the full size run, with construction and trim called out piece by piece.</li>
                                         <li>&bull; <span className="font-semibold">Proto sample</span> &mdash; a first fit sample, usually revised once or twice before the fit is locked.</li>
                                         <li>&bull; <span className="font-semibold">Pre-production sample</span> &mdash; built in the actual bulk fabric and trims, not a substitute. This is the sample to approve, because it is the version the factory will try to match at scale.</li>
-                                        <li>&bull; <span className="font-semibold">Inline and final inspection</span> &mdash; checks during cutting and sewing, then a random check across the finished run for stitch density, measurement tolerance and trim security before it ships.</li>
+                                        <li>&bull; <span className="font-semibold">Inline and final inspection</span> &mdash; checks during cutting and sewing for stitch accuracy and print alignment, then a random check across the finished run for material, durability and trim security before it ships.</li>
                                     </ul>
+                                </div>
+
+                                <div className="not-prose my-7 rounded-2xl border border-[#CBB49A]/40 bg-[#F8F7F4] p-5 sm:p-6">
+                                    <p className="text-xs font-bold uppercase tracking-[0.18em] text-[#CBB49A] mb-3">From our own build: Drover Cowboy Threads</p>
+                                    <p className="text-[#2D2A2E] leading-snug">
+                                        Western shirts get worn hard &mdash; on a horse, not just on a hanger &mdash; so the tech pack for <Link href="/case-studies/drover" className="underline text-[#CBB49A] hover:text-[#b7a078]">Drover</Link> specified gussets and stretch-compatible seams for riding movement, not just a flattering flat-lay. We supervised the sample runs ourselves, approved fit across different body types moving as well as standing, and sent trial shirts out for wear testing before bulk cutting started. That shirt now sells in 29 US states, Canada and Australia &mdash; the construction choice was invisible on the rack and is the reason the brand holds up after repeat wear.
+                                    </p>
                                 </div>
 
                                 <h3 className="text-xl font-bold text-[#2D2A2E] mt-6 mb-3">Fabric-specific checks a western-wear line needs</h3>
@@ -600,7 +611,7 @@ export default function WesternWearClient({ initialLikeCount, initialComments }:
                                 </p>
                                 <div className="not-prose my-5 rounded-2xl border border-gray-200 bg-[#F8F7F4] p-5 sm:p-6">
                                     <ul className="space-y-1.5 text-[#2D2A2E] leading-snug">
-                                        <li>&bull; Raw or rigid denim can shrink several percent on its first wash &mdash; a swatch should be pre-washed and measured before patterns are cut, not after.</li>
+                                        <li>&bull; Raw or rigid denim can shrink several percent on its first wash &mdash; we pre-wash and measure a swatch before patterns are cut, not after.</li>
                                         <li>&bull; Fringe and suede-look trims need a rub and colourfastness check, since a dark dye can transfer onto a lighter base fabric in the customer&rsquo;s wash, not just the factory&rsquo;s.</li>
                                         <li>&bull; Fringe should be bar-tacked or lock-stitched at the base, not run on a single straight stitch &mdash; that is the difference between fringe that survives a season and fringe that is gone after three washes.</li>
                                         <li>&bull; Die-cut fringe comes out even length to length; hand-trimmed fringe does not, and the inconsistency shows in a flat-lay or product photo even when it reads fine on the body.</li>
@@ -650,6 +661,9 @@ export default function WesternWearClient({ initialLikeCount, initialComments }:
                                     <ul className="space-y-1.5 text-[#2D2A2E] leading-snug">
                                         <li>&bull; Ocean freight and import duties on top of the factory price, not folded into it</li>
                                         <li>&bull; A second or third sample round, since the first fit sample is rarely the one you approve</li>
+                                        <li>&bull; A lab dip or strike-off if you want a custom colour match &mdash; that is costed and approved separately from the garment itself</li>
+                                        <li>&bull; Grading the pattern across your full size run (an S&ndash;3XL range, say), not just the sample size</li>
+                                        <li>&bull; Fibre-content and country-of-origin labelling, which US rules require on every garment before it can legally ship, and which has to be finalised before cutting starts, not stuck on after</li>
                                         <li>&bull; Payment-processing and marketplace fees, which take a cut of every sale before it reaches your account</li>
                                         <li>&bull; Product photography, shot separately from any lookbook or campaign imagery</li>
                                         <li>&bull; A returns and damaged-stock buffer, since western wear&rsquo;s fit-sensitive fringe and denim pieces return more than a basic tee</li>
@@ -701,6 +715,7 @@ export default function WesternWearClient({ initialLikeCount, initialComments }:
                                     <ul className="space-y-1.5 text-[#2D2A2E] leading-snug">
                                         <li>&bull; Run the name through the USPTO&rsquo;s trademark database and check the matching domain and social handles are actually available &mdash; a name you cannot register or claim online costs more to fix later than to check now.</li>
                                         <li>&bull; Lock a three-colour palette and test it against an actual product photo, not just a mood board. Western wear&rsquo;s warm denim and suede tones can clash with a palette chosen on a screen.</li>
+                                        <li>&bull; Decide how the logo is applied &mdash; woven label, embroidery or print &mdash; before the tech pack is finalised. Each is sourced and set up differently at the factory, and switching after cutting has started means redoing that step.</li>
                                         <li>&bull; Decide the unboxing sequence before you order packaging &mdash; mailer or box, tissue or none, one insert card with care instructions and your story rather than five, since every added piece is a per-unit cost that compounds across the whole run.</li>
                                     </ul>
                                 </div>
