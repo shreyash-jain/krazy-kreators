@@ -15,6 +15,20 @@ export type BlogPostMeta = {
 
 export const blogPosts: BlogPostMeta[] = [
   {
+    id: 88,
+    title: "Small Batch vs. Mass Production: Why Zero MOQ Is the Future of Fashion",
+    excerpt:
+      "Ask why zero MOQ keeps coming up in fashion manufacturing and the honest answer isn't \"it's cheaper\" — a 50-piece pilot run almost never beats a 1,000-piece order on cost per garment. The real case is what it doesn't tie up: cash sitting in stock nobody has bought yet, the kind of bet that cost American Eagle a $75 million write-down on unsold spring stock in 2025. What mass production still does better, what small-batch buys you instead, and how to tell which one your next run actually needs.",
+    category: "manufacturing",
+    author: "Krazy Kreators Team",
+    date: "November 24, 2026",
+    readTime: "8 min read",
+    image: "/blog/small-batch-vs-mass-production-zero-moq-fashion-hero.jpg",
+    slug: "small-batch-vs-mass-production-zero-moq-fashion",
+    readers: 0,
+    likes: 0,
+  },
+  {
     id: 87,
     title: "Western Wear Is Back: How to Start a Western Fashion Brand in 2026",
     excerpt:
