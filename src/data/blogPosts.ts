@@ -29,6 +29,20 @@ export const blogPosts: BlogPostMeta[] = [
     likes: 0,
   },
   {
+    id: 86,
+    title: "Why Loungewear Is the Smartest Category to Launch Your Clothing Brand In",
+    excerpt:
+      "In one 2026 US survey, sweatpants, sweatshirts and joggers topped the clothing people planned to buy. For a founder deciding where to start, loungewear has plain shapes, many products from one fabric and a small first drop that tells you what to make next. It also has traps in the cloth and the fit, and in children's sleepwear rules. What to launch first, what to leave out, and what to ask a manufacturer before you commit.",
+    category: "business",
+    author: "Krazy Kreators Team",
+    date: "November 16, 2026",
+    readTime: "7 min read",
+    image: "/blog/start-a-loungewear-clothing-brand-1.jpg",
+    slug: "start-a-loungewear-clothing-brand",
+    readers: 0,
+    likes: 0,
+  },
+  {
     id: 85,
     title:
       "Quiet Luxury Explained: How to Build a Premium Clothing Brand Without Loud Logos",
